@@ -1,0 +1,16 @@
+<zone iname="The Undercroft">
+    <battlefieldObjective iname="Corrupters Crown" id="7017" iconSet="1" x="30890" y="53034">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Soul Blight Stone" id="7018" iconSet="1" x="22557" y="53202">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Soul Blight North" id="7040" iconSet="1" x="21865" y="51174">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Soul Blight Court" id="7042" iconSet="1" x="24490" y="53120">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Soul Blight OverlookOverlook" id="7043" iconSet="1" x="21859" y="55236">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Upper Temple" id="7049" iconSet="1" x="38152" y="53050">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Lower Temple" id="7048" iconSet="1" x="36185" y="53053">
+    </battlefieldObjective>
+</zone>

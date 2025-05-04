@@ -1,0 +1,281 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+    <Windows>       
+                
+        <Window name="CampaignTrackerPairingTemplate" >
+            <Size>
+                <AbsPoint x="400" y="40" />
+            </Size>
+            <Windows>                          
+
+            </Windows>        
+        </Window>
+
+        <Window name="CampaignTrackerFort" inherits="WorldMapFortButtonSmall" >
+            <Anchors>
+                <Anchor point="left" relativePoint="right" relativeTo="$parentZone3">
+                    <AbsPoint x="-10" y="0" />
+                </Anchor>
+            </Anchors>
+           <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_CampaignMap.OnClickZone" />
+                <EventHandler event="OnMouseOver" function="EA_Window_CampaignMap.OnMouseOverZone" />
+            </EventHandlers>
+        </Window>
+        <Window name="CampaignTrackerZone" inherits="WorldMapZoneButtonTiny"  >
+            <Anchors>
+                <Anchor point="left" relativePoint="right" relativeTo="$parentZone5" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_CampaignMap.OnClickZone" />
+                <EventHandler event="OnMouseOver" function="EA_Window_CampaignMap.OnMouseOverZone" />
+            </EventHandlers>
+        </Window>
+        
+         <Window name="CampaignTrackerCityOrder" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="59" y="61" />
+            </Size>        
+            <Windows>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos-MINI" handleinput="false">
+                    <Size>
+                        <AbsPoint x="59" y="61" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="top" relativeTo="$parentControlIcon">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="bottom" relativeTo="$parentControlIcon">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="CampaignTrackerCityDestruction" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="59" y="61" />
+            </Size>         
+            <Windows>
+               <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos-MINI" handleinput="false">
+                    <Size>
+                        <AbsPoint x="59" y="61" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="top" relativeTo="$parentControlIcon">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="bottom" relativeTo="$parentControlIcon">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+         
+        <Window name="CampaignTrackerTemplate" >
+            <Size>
+                <AbsPoint x="286" y="150" />
+            </Size>
+            <Windows>                     
+                
+                <!-- GvD Zones -->
+                <!--
+                <Window name="$parentZone4" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone3">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+               -->
+               <Window name="$parentZone3" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone5" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone5" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentZone105" >
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone9" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone5" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!--
+                <Window name="$parentZone10" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone9" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->                
+                         
+                <!-- EvC Zones -->
+                <!--
+                <Window name="$parentZone104" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone103">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->
+               <Window name="$parentZone103" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone105" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone105" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone109" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone105" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!--
+                <Window name="$parentZone110" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone109" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->
+                
+               <!-- HEvDE Zones -->
+               <!--
+               <Window name="$parentZone204" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone203">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->
+               <Window name="$parentZone203" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone205" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone205" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZone105" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone209" inherits="CampaignTrackerZone"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone205" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!--
+                <Window name="$parentZone210" inherits="CampaignTrackerFort" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone209" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->
+                
+                <Window name="$parentZone162" inherits="CampaignTrackerCityOrder" id="162">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone109" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone161" inherits="CampaignTrackerCityDestruction" id="161">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone103"  >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+           
+            </Windows>
+        </Window>
+         
+         
+         
+         <!-- HUD Campaign Tracker -->
+         
+         <Window name="EA_Window_CampaignMap" layer="default" movable="true" savesettings="true" >
+            <Size>
+                <AbsPoint x="350" y="150" />
+            </Size>           
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="-10" y="-270" />
+                </Anchor>
+            </Anchors>   
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_CampaignMap.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_CampaignMap.Shutdown" />
+                <EventHandler event="OnShown" function="EA_Window_CampaignMap.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_CampaignMap.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentTracker" inherits="CampaignTrackerTemplate" >
+                   <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                
+                </Window>
+           </Windows>
+        </Window>
+          
+         
+    </Windows>
+
+</Interface>

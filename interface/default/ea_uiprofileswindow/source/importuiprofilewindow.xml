@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ImportUiProfileWindow.lua" />
+    </Scripts>
+    <Windows>
+
+
+        <Button name="EA_Window_ImportUiProfileRowTemplate" inherits="EA_Button_DefaultListRow" >
+            <Size>
+                <AbsPoint x="1000" y="34"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileImport.OnClickUiProfileRow" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <Label name="$parentName" maxchars="80" font="font_chat_text" handleinput="false"  >
+                    <Size>
+                        <AbsPoint x="250" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCharacter" maxchars="80" font="font_chat_text" handleinput="false"  >
+                    <Size>
+                        <AbsPoint x="250" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentServer" maxchars="80" font="font_chat_text" handleinput="false"  >
+                    <Size>
+                        <AbsPoint x="250" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCharacter">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLastUpdated" maxchars="80" font="font_chat_text" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="250" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentServer">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+
+        <Button name="UiProfileSortButton" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="245" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileImport.OnClickProfilesListSortButton" />
+                <EventHandler event="OnMouseOver" function="EA_Window_UiProfileImport.OnMouseOverProfilesListSortButton" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Customize Ui Window -->
+        <Window name="EA_Window_UiProfileImport" movable="true" layer="popup" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="1035" y="400" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_UiProfileImport.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentWindowImage" inherits="EA_Default_CustomizeUIImage" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileImport.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+
+                <!-- Basic Instructions -->
+                <Label name="$parentInstructions" font="font_chat_text" handleinput="false" wordwrap="true" autoresize="false" textAutoFitMinScale="0.75"  textalign="center" >
+                    <Size>
+                        <AbsPoint x="900" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+
+                <Window name="$parentModListSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="UiProfileSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="250" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentProfilesList">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton2" inherits="UiProfileSortButton" id="2">
+                    <Size>
+                        <AbsPoint x="250" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton3" inherits="UiProfileSortButton" id="3">
+                    <Size>
+                        <AbsPoint x="250" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton4" inherits="UiProfileSortButton" id="4">
+                    <Size>
+                        <AbsPoint x="275" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <DynamicImage name="$parentSortUpArrow" inherits="EA_ListSortUpArrow" />
+                <DynamicImage name="$parentSortDownArrow" inherits="EA_ListSortDownArrow" />
+
+
+
+                <ListBox name="$parentProfilesList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_ImportUiProfileRowTemplate" visiblerows="6" rowspacing="2">
+                    <Size>
+                        <AbsPoint x="1025" y="220" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="100"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="EA_Window_UiProfileImport.profilesListData" populationfunction="EA_Window_UiProfileImport.UpdateProfileRows">
+                        <ListColumns>
+                            <ListColumn windowname="Server" variable="server" format="wstring" />
+                            <ListColumn windowname="Character" variable="character" format="wstring" />
+                            <ListColumn windowname="Name" variable="name" format="wstring" />
+                            <ListColumn windowname="LastUpdated" variable="lastUpdatedText" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+
+                <!--Buttons-->                        
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+                
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="-100" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileImport.OnOkayButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="100" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileImport.OnCancelButton" />
+                    </EventHandlers>
+                </Button>           
+                
+              
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

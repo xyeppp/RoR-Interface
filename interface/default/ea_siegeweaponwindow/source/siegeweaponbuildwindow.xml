@@ -1,0 +1,238 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponBuildWindow.lua" />
+	</Scripts>
+	<Windows>
+
+		
+
+		<Button name="SiegeWeaponDefRequiredItem" inherits="EA_Button_DefaultIconFrame_Small" handleinput="true" >
+            <EventHandlers>
+				<EventHandler event="OnMouseOver" function="SiegeWeaponBuildWindow.OnMouseOverRequiredItem"/>
+				<EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.OnClickRequiredItem" />				
+			</EventHandlers>
+        </Button>
+		
+
+       <!-- Siege Weapon Row Button -->
+       <Button name="SiegeWeaponDefinitionRow" inherits="EA_Button_ResizeIconFrame_NoNormalImage" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="550" y="110" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.OnSelectWeapon" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="4" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-4" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                
+                
+
+                <Label name="$parentName" inherits="EA_Label_DefaultSubHeading" wordwrap="false" autoresize="false" handleinput="false" textalign="left" >
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                   <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>                    
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+
+                <Button name="$parentFireAbility" inherits="EA_Button_DefaultIconFrame_Large" layer="secondary" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="SiegeWeaponBuildWindow.OnMouseOverFireAbility"/>
+				        <EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.OnClickFireAbility" />
+			        </EventHandlers>
+                </Button>
+             
+                <Label name="$parentType" inherits="EA_Label_DefaultText" wordwrap="false" autoresize="false" handleinput="false" textalign="left" >
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRequires" inherits="EA_Label_DefaultText" wordwrap="false" autoresize="false" autoresizewidth="true" handleinput="false" textalign="left" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentType">
+                            <AbsPoint x="0" y="13" />
+                        </Anchor>
+                    </Anchors>                    
+                    <Color r="150" g="150" b="150" />
+                </Label>
+                
+                <Button name="$parentItem1" inherits="SiegeWeaponDefRequiredItem" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRequires">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+               <Button name="$parentItem2" inherits="SiegeWeaponDefRequiredItem" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItem1">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                 <Button name="$parentItem3" inherits="SiegeWeaponDefRequiredItem" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItem2">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                               
+                <Label name="$parentHitPoints" inherits="EA_Label_ChatText" wordwrap="false" autoresize="false" autoresizewidth="false" handleinput="false" textalign="right" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentFireAbility">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>                    
+                </Label>
+               <Label name="$parentLevel" inherits="EA_Label_ChatText" wordwrap="false" autoresize="false" autoresizewidth="false" handleinput="false" textalign="right" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentHitPoints">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                    
+                </Label>
+
+            </Windows>
+        </Button>
+
+
+
+		<!-- Bug Report Window -->
+		<Window name="SiegeWeaponBuildWindow" movable="true" layer="secondary">
+			<Size>
+				<AbsPoint x="650" y="495" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="SiegeWeaponBuildWindow.Initialize" />
+				<EventHandler event="OnShutdown" function="SiegeWeaponBuildWindow.Shutdown" />
+				<EventHandler event="OnShown" function="SiegeWeaponBuildWindow.OnShown" />
+				<EventHandler event="OnHidden" function="SiegeWeaponBuildWindow.OnHidden" />
+			</EventHandlers>
+			<Windows>
+			    <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />                             
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                 <Label name="$parentInstructions" inherits="EA_Label_DefaultText" wordwrap="false" autoresize="false" handleinput="false" textalign="left" >
+                    <Size>
+                        <AbsPoint x="580" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="15" />                        
+                        </Anchor>
+                    </Anchors>                  
+                </Label>
+                
+                
+                <!-- Weapon Defs List -->
+                <FullResizeImage name="$parentListBackground" inherits="EA_FullResizeImage_DefaultFrame" layer="background"> 
+                    <Size>
+                        <AbsPoint x="600" y="350" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentInstructions" >
+                            <AbsPoint x="0" y="5" />                        
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>                
+                <ListBox name="$parentWeaponDefsList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="SiegeWeaponDefinitionRow" visiblerows="3" rowcount="150" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="580" y="330" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentListBackground" >
+                            <AbsPoint x="0" y="10" />                        
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="SiegeWeaponBuildWindow.weaponsData" populationfunction="SiegeWeaponBuildWindow.PopulateWeaponDefs">
+                        <ListColumns>
+                            <ListColumn windowname="FireAbilityIcon" variable="fireAbility.iconNum" format="icon" />
+                            <ListColumn windowname="Name" variable="name" format="wstring"/>
+                            <ListColumn windowname="Type" variable="weaponTypeName" format="wstring"/>
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+                
+                
+                <!-- Close the window redundantly -->
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="-75" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Build the weapon button-->
+                <Button name="$parentBuildButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="75" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SiegeWeaponBuildWindow.BuildWeapon" />
+                    </EventHandlers>
+                </Button>
+
+                
+             
+			</Windows>
+		</Window>
+		
+	</Windows>
+</Interface>

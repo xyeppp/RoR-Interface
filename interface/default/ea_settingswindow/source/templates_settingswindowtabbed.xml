@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+    
+        <!-- Tab button definition for the row of available subsections -->
+        <Button name="EA_Templates_SettingsWindowTabButton" inherits="EA_Button_Tab">
+            <Size>
+              <AbsPoint x="124" y="35" /> <!-- <AbsPoint x="125" y="92" /> -->
+            </Size>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnLButtonUpTab" />
+              <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTab" /> 
+            </EventHandlers>
+            <TextOffset x="0" y="0" />
+        </Button>
+        
+        <Button name="SettingsWindowTabbedButton" inherits="EA_Button_DefaultResizeable" layer="default" >
+            <Size>
+                <AbsPoint x="160" y="39" />
+            </Size>
+        </Button>
+        
+        <FullResizeImage name="SettingsSectionBackground" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" layer="background">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </FullResizeImage>
+    
+        <!-- Specialized elements that use their WindowID and an OnMouseOver event handler to display tooltips -->
+        
+        <Window name="TooltipCheckButton" inherits="EA_LabelCheckButton" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </Window>
+        
+        <Window name="TooltipCheckButtonWide" inherits="EA_LabelCheckButtonWide" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </Window>
+        
+        <Button name="TooltipGenericCheckButton" inherits="EA_GenericCheckButton" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_GenericCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_GenericCheckButton.Toggle" />
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </Button>
+        
+        <Label name="TooltipItemTitle" inherits="EA_Settings_ItemTitle" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </Label>
+        
+        <ComboBox name="TooltipComboBox" inherits="EA_ComboBox_DefaultResizable">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </ComboBox>
+        
+        <Window name="TooltipWindow">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+            </EventHandlers>
+        </Window>
+
+    </Windows>
+</Interface>
+    

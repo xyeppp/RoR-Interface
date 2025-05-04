@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Text_Default 
+
+    This file contains all of the standard EditBox definitions for the Default UI.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Windows>
+
+        <!-- Label Defs ***********************************************************************************************-->
+
+        <!--# EditBox: EA_EditBox_NoFrame                   
+            This is the default EditBox without a frame.
+            Code:
+            (begin code)
+             <EditBox name="EA_EditBox_NoFrame">
+             ...
+             </EditBox>
+            (end) 
+        -->
+        <EditBox name="EA_EditBox_NoFrame" font="font_default_text" background="EA_Window_DefaultFrame" popable="false"/>
+
+
+        <!--# EditBox: EA_EditBox_DefaultFrame                   
+            This is the default single lineEditBox with a frame. 
+            Code:
+            (begin code)
+             <EditBox name="EA_EditBox_DefaultFrame">
+             ...
+             </EditBox>
+            (end) 
+        -->
+        <EditBox name="EA_EditBox_DefaultFrame" font="font_default_text" background="EA_FullResizeImage_TanBorder" popable="false">
+            <TextOffset x="4" y="2" />
+        </EditBox>
+
+
+        <!--# EditBox: EA_EditBox_DefaultFrame_Multiline                   
+            This is the default multiline EditBox with a frame. 
+            Code:
+            (begin code)
+             <EditBox name="EA_EditBox_DefaultFrame_Multiline">
+             ...
+             </EditBox>
+            (end) 
+        -->
+        <EditBox name="EA_EditBox_DefaultFrame_Multiline" font="font_default_text" background="EA_FullResizeImage_TanBorder" scrolling="vert" popable="false">
+            <TextOffset x="4" y="2" />
+        </EditBox>
+
+    </Windows>
+</Interface>

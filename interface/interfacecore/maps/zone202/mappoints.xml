@@ -1,0 +1,303 @@
+<zone iname="Avelorn">
+    <landmark iname="Handmaiden's Enclave" id="1" mapIcon="1208" x="12805" y="23402">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ghyran's Path" id="2" mapIcon="1208" x="15646" y="29420">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Isha's Fall" id="3" mapIcon="1055" x="17068" y="53939">
+        <race>DarkElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Scornblade's Siege" id="4" mapIcon="1251" x="23981" y="23100">
+        <race>DarkElf</race>
+        <number>11</number>
+        <ranks realm="destruction" min="22" max="23" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Fernwood" id="5" mapIcon="1208" x="29683" y="9515">
+        <race>HighElf</race>
+        <number>10</number>
+        <ranks realm="order" min="20" max="21" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Gaen Mere" id="6" mapIcon="1054" x="41996" y="54695">
+        <race>HighElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Tor Saroir" id="7" mapIcon="1214" x="44259" y="41361">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Whisperwood" id="8" mapIcon="1208" x="44522" y="34160">
+        <race>HighElf</race>
+        <number>12</number>
+        <ranks realm="order" min="24" max="25" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Shrine of Memory" id="9" mapIcon="1213" x="51696" y="14329">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Burnwood" id="10" mapIcon="1251" x="5291" y="12421">
+        <race>DarkElf</race>
+        <number>10</number>
+        <ranks realm="destruction" min="20" max="21" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave of Narielle" id="11" mapIcon="1060" x="55112" y="1802">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Shrine of Solace" id="12" mapIcon="1213" x="5571" y="62806">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Anulii Ruins" id="13" mapIcon="1210" x="57255" y="51503">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Grimwater" id="14" mapIcon="1207" x="59527" y="9547">
+        <race>HighElf</race>
+        <number>11</number>
+        <ranks realm="order" min="22" max="23" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave of Whispers" id="15" mapIcon="1062" x="63000" y="36109">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Jade Coast" id="16" mapIcon="1251" x="6600" y="45380">
+        <race>DarkElf</race>
+        <number>12</number>
+        <ranks realm="destruction" min="24" max="25" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="The Lost Vale" id="17" mapIcon="1256" x="2916" y="45743">
+        <importance>major</importance>
+		<specialType>1</specialType>
+    </landmark>
+    <landmark iname="The Lost Vale" id="18" mapIcon="1203" x="40620" y="50841">
+        <importance>major</importance>
+		<specialType>1</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="28201" y="61534" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="43040" y="63990" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="23347" y="53253" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Wild Hunt: Curse of Kurnous" id="22" mapIcon="1072" x="30322" y="61645" liveevent="23">
+        <importance>minor</importance>
+        <specialType>10</specialType>
+    </landmark>
+    <landmark iname="Altar of the Winds" id="23" mapIcon="1213" x="35117" y="38550">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Shrine of the Phoenix" id="24" mapIcon="1213" x="37425" y="44044">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Garden of Mernai" id="25" mapIcon="1206" x="6154" y="53621">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Jade Stand" id="418" iconSet="1" x="11998" y="57292">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="24" max="25" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Spirited Resistance" id="402" iconSet="1" x="13932" y="4120">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Quyl-Isha Temple" id="404" iconSet="1" x="18120" y="13719">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Sea Guard Beachhead" id="417" iconSet="1" x="2172" y="36488">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="24" max="25" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Pool of Elthrai" id="409" iconSet="1" x="15482" y="35678">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="22" max="23" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Everspring" id="408" iconSet="1" x="23784" y="32696">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="22" max="23" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Slash &amp; Burn" id="410" iconSet="1" x="27284" y="2344">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Dartian Forest" id="411" iconSet="1" x="28940" y="25873">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="22" max="23" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Watchtower of Aethwyn" id="416" iconSet="1" x="29120" y="44463">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="24" max="25" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Corruption" id="413" iconSet="1" x="29953" y="17983">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Corruption" id="426" iconSet="1" x="37604" y="45912">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Rotten Embrace" id="412" iconSet="1" x="40414" y="16662">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Shrieking Meadow" id="407" iconSet="1" x="49369" y="3421">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Stormriver's End" id="425" iconSet="1" x="50611" y="49051">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Falls of Renewal" id="405" iconSet="1" x="50732" y="21250">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Wavesinger" id="403" iconSet="1" x="5118" y="24303">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Well of Whispers" id="427" iconSet="1" x="54386" y="39060">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Deathwind Pass" id="406" iconSet="1" x="56806" y="26468">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <!-- BEGIN Saphery points -->
+    <battlefieldObjective iname="The Spire of Teclis: Healing Boon" id="5064" iconSet="1" x="39624" y="11013" zone="208">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Sari' Daroir: Defensive Boon" id="5063" iconSet="1" x="26326" y="6143" zone="208">
+    </battlefieldObjective>
+    <keep iname="Well of Qhaysh" id="23" iconSet="1" x="17360" y="15774" zone="208">
+        <objectiveId>5062</objectiveId>
+    </keep>
+    <!-- END Saphery points -->
+    <battlefieldObjective iname="The Wood Choppaz: Artisan's Gift" id="5066" iconSet="1" x="20193" y="62763">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Maiden's Landing: Merchant's Gift" id="5065" iconSet="1" x="38709" y="63063">
+    </battlefieldObjective>
+    <keep iname="Ghrond's Sacristy" id="24" iconSet="1" x="29119" y="53846">
+        <objectiveId>5067</objectiveId>
+    </keep>
+    <zoneTransition iname="To Ellyrion" x="48000" y="0">
+        <zone>207</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ellyrion" x="0" y="16000">
+        <zone>207</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Saphery" x="16000" y="65535">
+        <zone>208</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Saphery" x="48000" y="65535">
+        <zone>208</zone>
+    </zoneTransition>
+</zone>

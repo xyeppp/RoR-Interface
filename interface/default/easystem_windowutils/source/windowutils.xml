@@ -1,0 +1,24 @@
+ <Interface xmlns:xsi="http://www.w3.org/1501/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Windows>
+	             
+        <FullResizeImage name="ResizingWindowFrame" layer="overlay" texture="EA_WindowResizeFrame"  handleinput="true">
+            <Sizes>
+                <TopLeft x="6" y="6" />
+                <Middle x="45" y="45" />
+                <BottomRight x="6" y="6" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="8" y="0" />
+                <TopRight x="55" y="0" />
+                <MiddleLeft x="0" y="8" />
+                <MiddleCenter x="8" y="8" />
+                <MiddleRight x="55" y="8" />
+                <BottomLeft x="0" y="55" />
+                <BottomCenter x="8" y="55" />
+                <BottomRight x="55" y="55" />
+            </TexCoords>
+        </FullResizeImage>
+        
+   </Windows>
+</Interface>

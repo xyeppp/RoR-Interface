@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Cultivating01_d5" file="Textures/EA_Cultivating01_d5.dds">
+      <Slice id="Black-Slot" left="948" top="707" width="64" height="64" />
+      <Slice id="Dirt" left="423" top="262" width="64" height="64" />
+      <Slice id="Dirt-Mini" left="68" top="427" width="34" height="34" />
+      <Slice id="Dirt-Mini-SLOT" left="170" top="427" width="34" height="34" />
+      <Slice id="Dirt-Slot" left="948" top="642" width="64" height="64" />
+      <Slice id="GreenCross" left="423" top="132" width="64" height="64" />
+      <Slice id="GreenCross-Mini" left="0" top="427" width="34" height="34" />
+      <Slice id="GreenCross-Mini-SLOT" left="102" top="427" width="34" height="34" />
+      <Slice id="GreenCross-Slot" left="948" top="512" width="64" height="64" />
+      <Slice id="Home-Button" left="274" top="427" width="70" height="38" />
+      <Slice id="Home-Button-Depressed" left="204" top="427" width="70" height="38" />
+      <Slice id="Home-Button-Rollover" left="344" top="427" width="70" height="38" />
+      <Slice id="IconFrame-1" left="423" top="0" width="68" height="68" />
+      <Slice id="IconFrame-2" left="423" top="68" width="64" height="64" />
+      <Slice id="IconFrame-Mini" left="571" top="300" width="23" height="23" />
+      <Slice id="IdiotBox-Background" left="0" top="475" width="427" height="37" />
+      <Slice id="PlantStage-1" left="491" top="0" width="175" height="296" />
+      <Slice id="PlantStage-2" left="666" top="0" width="175" height="296" />
+      <Slice id="PlantStage-3" left="841" top="0" width="175" height="296" />
+      <Slice id="PlantStageIcon-1" left="520" top="364" width="74" height="74" />
+      <Slice id="PlantStageIcon-2" left="520" top="438" width="74" height="74" />
+      <Slice id="PlantStageIcon-3" left="446" top="438" width="74" height="74" />
+      <Slice id="Plot" left="813" top="300" width="211" height="212" />
+      <Slice id="PlotDivider-Horizontal" left="491" top="296" width="215" height="4" />
+      <Slice id="PlotDivider-Vertical" left="805" top="300" width="4" height="212" />
+      <Slice id="Plot-Rollover" left="594" top="300" width="211" height="212" />
+      <Slice id="PlotView-Background" left="0" top="0" width="423" height="427" />
+      <Slice id="RoundFrame" left="423" top="326" width="78" height="78" />
+      <Slice id="ShroomPlotView-Background" left="0" top="512" width="423" height="427" />
+      <Slice id="ShroomStage-1" left="423" top="512" width="175" height="296" />
+      <Slice id="ShroomStage-2" left="598" top="512" width="175" height="296" />
+      <Slice id="ShroomStage-3" left="773" top="512" width="175" height="296" />
+      <Slice id="ShroomStageIcon-1" left="423" top="808" width="74" height="74" />
+      <Slice id="ShroomStageIcon-2" left="497" top="808" width="74" height="74" />
+      <Slice id="ShroomStageIcon-3" left="571" top="808" width="74" height="74" />
+      <Slice id="SmallRoundFrame" left="556" top="323" width="38" height="38" />
+      <Slice id="Square-1" left="487" top="300" width="21" height="21" />
+      <Slice id="Square-2" left="508" top="300" width="21" height="21" />
+      <Slice id="Square-3" left="529" top="300" width="21" height="21" />
+      <Slice id="Square-4" left="550" top="300" width="21" height="21" />
+      <Slice id="WaterDrop" left="423" top="197" width="64" height="64" />
+      <Slice id="WaterDrop-Mini" left="34" top="427" width="34" height="34" />
+      <Slice id="WaterDrop-Mini-SLOT" left="136" top="427" width="34" height="34" />
+      <Slice id="WaterDrop-Slot" left="948" top="577" width="64" height="64" />
+    </Texture>
+  </Assets>
+</Interface>

@@ -1,0 +1,24 @@
+<zone iname="Reikwald">
+    <landmark iname="Portal to Stonewatch" id="1" mapIcon="1073" x="10129" y="22182">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to Shining Way" id="2" mapIcon="1073" x="33293" y="25341">
+        <importance>major</importance>
+    </landmark>
+    <zoneTransition iname="To Reikland" x="16000" y="0">
+        <zone>109</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Reikland" x="48000" y="0">
+        <zone>109</zone>
+    </zoneTransition>
+	<battlefieldObjective iname="Bastion Point" id="8020" iconSet="1" x="22237" y="12896">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Griffons Stand" id="8021" iconSet="1" x="19293" y="18218">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Mercenary Encampment" id="8022" iconSet="1" x="24995" y="10365">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Reiksguard Quarters" id="8023" iconSet="1" x="26129" y="17401">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Farmstead" id="8024" iconSet="1" x="17517" y="11694">
+    </battlefieldObjective>
+</zone>

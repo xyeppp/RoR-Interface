@@ -1,0 +1,1408 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TargetUnitFrame.lua" />
+        <Script file="Source/MouseOverTargetUnitFrame.lua" />
+        <Script file="Source/GroupMemberUnitFrame.lua" />
+        <Script file="Source/PlayerPetUnitFrame.lua" />
+        <Script file="Source/GroupPetUnitFrame.lua" />
+        <Script file="Source/UnitFrames.lua" />
+        <Script file="Source/StatusBar.lua" />
+        <Script file="Source/RvRIndicator.lua" />
+        <Script file="Source/BuffTracker.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="BuffIcon" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="BuffFrame.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd" function="BuffFrame.OnMouseOverEnd" />
+                <EventHandler event="OnRButtonUp" function="BuffFrame.OnRButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentIconBase" filtering="true" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <DynamicImage name="$parentFrame" texture="EA_BuffFrames01" slice="Neutral-Frame" handleinput="false" layer="background" >
+                    <Size>
+                        <AbsPoint x="32" y="43" />
+                    </Size>
+                    <TexDims x="64" y="76" />
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentIconBase">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTimer" handleinput="false" layer="overlay" font="font_clear_small_bold" maxchars="5" textalign="center" >
+                    <Size>
+                        <AbsPoint x="48" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!-- Hostile Status Bar Template -->
+        <HorizontalResizeImage name="UnitFrameHostileStatusBarFilled" texture="EA_HUD_01" slice="Enemy-Health">
+            <Size>
+                <AbsPoint x="73" y="20" />
+            </Size>
+            <Sizes left="0" middle="73" right="0" />
+            <TexSlices>
+                <Middle id="Enemy-Health" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <StatusBar name="UnitFrameHostileStatusBar" layer="background" background="" foreground="UnitFrameHostileStatusBarFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="165" y="28" />
+            </Size>
+        </StatusBar>
+
+        <!-- Hostile Sigil template -->
+        <Button name="UnitFrameHostileSigilButton" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="popup" handleinput="true">
+            <Size>
+                <AbsPoint x="25" y="25" />
+            </Size>
+            <TexDims x="17" y="17" />
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp"     function="TargetUnitFrame.SigilLButtonUp" />
+                <EventHandler event="OnMouseOver"   function="TargetUnitFrame.SigilMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Player's Health Bar Background Template -->
+        <DynamicImage name="HealthBarBackground" texture="EA_HUD_01" slice="Player-HealthBar-Frame-Background" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="180" y="28" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Player's Health Bar Frame Template -->
+        <DynamicImage name="HealthBarFrame" texture="EA_HUD_01" slice="Player-HealthBar-Frame" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="180" y="28" />
+            </Size>
+        </DynamicImage>
+
+        <!-- Pet's Health Bar Frame Template -->
+        <DynamicImage name="PetHealthBarFrame" texture="EA_HUD_01" slice="Pet-Healthbar-Frame" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="156" y="28" />
+            </Size>
+        </DynamicImage>
+
+        <!-- Friendly Health Status Bar (Large - player/friendly targets) -->
+        <HorizontalResizeImage name="UnitFrameFriendlyHealthStatusBarFilled" texture="EA_HUD_01" slice="Player-Health">
+            <Size>
+                <AbsPoint x="73" y="20" />
+            </Size>
+            <Sizes left="0" middle="73" right="0" />
+            <TexSlices>
+                <Middle id="Player-Health" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="UnitFramePetHealthStatusBarFilled" textureScale="0.9" texture="EA_HUD_01" slice="Player-Health">
+            <Size>
+                <AbsPoint x="51" y="18" />
+            </Size>
+            <Sizes left="0" middle="73" right="0" />
+            <TexSlices>
+                <Middle id="Player-Health" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        <StatusBar name="UnitFrameFriendlyHealthStatusBar" layer="background" background="" foreground="UnitFrameFriendlyHealthStatusBarFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="180" y="20" />
+            </Size>
+        </StatusBar>
+        <StatusBar name="UnitFramePetHealthStatusBar" layer="background" background="" foreground="UnitFramePetHealthStatusBarFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="180" y="18" />
+            </Size>
+        </StatusBar>
+
+        <!-- Friendly Unit Frame Status Bar (Large - player/friendly targets) -->
+        <StatusBar name="UnitFrameFriendlyStatusBar" layer="background" background="" foreground="UnitFrameFriendlyHealthStatusBarFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="165" y="28" />
+            </Size>
+        </StatusBar>
+
+
+        <!-- Friendly Health Status Bar (Mini Window - Warband/Scenario Group) -->
+        <HorizontalResizeImage name="UnitFrameFriendlyHealthStatusBarSmallFilled" texture="EA_HUD_01" slice="Player-Health">
+            <Size>
+                <AbsPoint x="44" y="55" />
+            </Size>
+            <Sizes left="0" middle="44" right="0" />
+            <TexSlices>
+                <Middle id="WarbandUnitFrame-Healthbar" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <StatusBar name="UnitFrameFriendlyHealthStatusSmallBar" layer="background" background="" foreground="UnitFrameFriendlyHealthStatusBarSmallFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="139" y="55" />
+            </Size>
+        </StatusBar>
+
+
+        <!-- Player's AP Bar Background Template -->
+        <DynamicImage name="APBarBackground" texture="EA_HUD_01" slice="Player-APBar-Frame-Background" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="180" y="12" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Player's AP Bar Frame Template -->
+        <DynamicImage name="APBarFrame" texture="EA_HUD_01" slice="Player-APBar-Frame" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="180" y="12" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- General Unit Frame AP Bar Filler -->
+        <HorizontalResizeImage name="UnitFrameAPStatusBarFilled" texture="EA_HUD_01" slice="AP-Bar">
+            <Size>
+                <AbsPoint x="73" y="8" />
+            </Size>
+            <Sizes left="0" middle="73" right="0" />
+            <TexSlices>
+                <Middle id="AP-Bar" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <!-- General Unit Frame AP Status Bar -->
+        <StatusBar name="UnitFrameAPStatusBar" background="" foreground="UnitFrameAPStatusBarFilled" reverseFill="false" interpolate="true">
+            <Size>
+                <AbsPoint x="180" y="12" />
+            </Size>
+        </StatusBar>
+
+
+        <!-- RvR Flag Indicator Template -->
+        <DynamicImage name="RvRFlagIndicator" texture="EA_HUD_01" slice="RvR-Flag" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="41" y="53" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RvRIndicator.OnMouseOver" />
+            </EventHandlers>
+            <TexCoords x="113" y="90" />
+        </DynamicImage>
+
+
+        <!-- Portrait Frame Template -->
+        <DynamicImage name="PortraitFrame" texture="EA_HUD_01" slice="Portrait-Frame" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="105" y="111" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Portrait Background Template -->
+        <DynamicImage name="PortraitBackground" texture="EA_HUD_01" slice="Portrait-Background" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="88" y="88" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Level Background Template -->
+        <!-- Circle is 28x28, with upper left as x=156, y=90 (for centering); slice is 31x32 to include shadow. -->
+        <DynamicImage name="LevelBackgroundTemplate" texture="EA_HUD_01" slice="Rank-Circle" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="31" y="32" />
+            </Size>
+        </DynamicImage>
+
+        <!-- Level Background Template for Targets (with tintable center) -->
+        <DynamicImage name="TargetLevelBackgroundTemplate" inherits="LevelBackgroundTemplate">
+            <Windows>
+                <DynamicImage name="$parentTint" texture="EA_HUD_01" slice="Rank-Circle-ConTintable" popable="false" handleinput="false" layer="popup">
+                    <Anchors>
+                        <!-- Anchoring center to center seems to cause some rounding issues.... -->
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="25" y="25" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </DynamicImage>
+
+        <!-- Advancement Points Available Indicator Template -->
+        <DynamicImage name="AdvancementIndicator" texture="EA_HUD_01" slice="Advancement-Points-Available" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="13" y="16" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Renown Points Available Indicator Template -->
+        <DynamicImage name="RenownIndicator" texture="EA_HUD_01" slice="Renown-Points-Available" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="13" y="16" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Group Leader Crown Template -->
+        <DynamicImage name="GroupLeaderCrown" texture="EA_HUD_01" slice="Group-Leader-Crown" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="25" y="16" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Warband Leader Crown Template -->
+        <DynamicImage name="WarbandLeaderCrown" texture="EA_HUD_01" slice="Warband-Leader-Crown" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="25" y="16" />
+            </Size>
+        </DynamicImage>
+
+        <!-- Main Assist Crown Template -->
+        <DynamicImage name="MainAssistCrown" texture="EA_HUD_01" slice="PartyMarker-Skull" popable="false" handleinput="true" layer="overlay">
+          <Size>
+            <AbsPoint x="30" y="33" />
+          </Size>
+        </DynamicImage>
+
+        <!-- Master Looter image Template -->
+        <DynamicImage name="MasterLooterImage" texture="EA_HUD_01" slice="Warband-Loot-Master" popable="false" handleinput="true" layer="overlay">
+          <Size>
+            <AbsPoint x="25" y="25" />
+          </Size>
+        </DynamicImage>
+
+        <!-- Assistant image Template -->
+        <DynamicImage name="WarbandAssistantImage" texture="EA_HUD_01" slice="Warband-Assistant" popable="false" handleinput="true" layer="overlay">
+          <Size>
+            <AbsPoint x="25" y="14" />
+          </Size>
+        </DynamicImage>
+
+        <!-- Dead Guy Template -->
+        <DynamicImage name="DeathImage" texture="EA_HUD_01" slice="Deadguy-Portrait" handleinput="false" layer="background">
+            <Size>
+                <AbsPoint x="88" y="88" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Skull Image (for lord, hero, and special monsters) Template -->
+        <DynamicImage name="SkullImage" texture="EA_HUD_01" slice="LordHeroSpecial-Skull" handleinput="false" layer="background">
+            <Size>
+                <AbsPoint x="22" y="29" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Aggro Portrait Glow Template -->
+        <DynamicImage name="AggroPortraitGlow" texture="EA_HUD_01" slice="Aggro-Portrait-Hemisphere-Glow" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="88" y="45" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Sword (RIGHT) Template -->
+        <DynamicImage name="SwordRight" texture="EA_HUD_01" slice="Player-Combat-Sword" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="34" y="31" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Sword (LEFT) Template -->
+        <DynamicImage name="SwordLeft" texture="EA_HUD_01" slice="Player-Combat-Sword" mirrorTexCoords="true" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="34" y="31" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Morale Mini Templates -->
+        <!-- Initially points to the first slice, then can be dynamically changed to the remaining slices depending on the player's
+             morale ability unlocks based on moralePercent -->
+        <DynamicImage name="MoraleMiniTemplate" texture="EA_HUD_01" slice="Morale-Mini-1" popable="false" handleinput="true" layer="overlay">
+            <Size>
+                <AbsPoint x="25" y="25" />
+            </Size>
+        </DynamicImage>
+
+
+        <!-- Template for the Player's Status Container -->
+        <Window name="PlayerStatusContainerTemplate" popable="false" movable="false">
+            <Size>
+                <AbsPoint x="180" y="40" />
+            </Size>
+            <Windows>
+
+                <!-- Health Bar Background -->
+                <DynamicImage name="$parentHealthBarBG" inherits="HealthBarBackground" handleinput="false" layer="background" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Player Health Bar -->
+                <StatusBar name="$parentHealthPercentBar" inherits="UnitFrameFriendlyHealthStatusBar" popable="false" layer="background" interpolate="true">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="11" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- Health Bar Frame -->
+                <DynamicImage name="$parentHealthBarFrame" inherits="HealthBarFrame" handleinput="false" layer="background" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- AP Bar Background -->
+                <DynamicImage name="$parentAPBarBG" inherits="APBarBackground" handleinput="false" layer="background" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPBarFrame">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- AP Health Bar -->
+                <StatusBar name="$parentAPPercentBar" inherits="UnitFrameAPStatusBar" popable="false" layer="background" interpolate="true">
+                    <Size>
+                        <AbsPoint x="175" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPBarFrame">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- AP Bar Frame -->
+                <DynamicImage name="$parentAPBarFrame" inherits="APBarFrame" handleinput="false" layer="background" popable="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Health Text -->
+                <Label name="$parentHealthText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- AP Text -->
+                <Label name="$parentAPText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="175" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+        </Window>
+
+        <!-- AnchorWindow for the Group Member  Frames -->
+        <Window name="GroupMemberUnitFrameAnchor" movable="false" layer="default" popable="false">
+            <Size>
+                <AbsPoint x="240" y="85" />
+            </Size>
+        </Window>
+
+        <!-- Template for the Group Members's Status Container -->
+        <Window name="GroupMemberUnitFrame" popable="false" movable="false" layer="default">
+            <Size>
+                <AbsPoint x="240" y="85" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="GroupMemberUnitFrame.OnMouseOver" />
+                <EventHandler event="OnLButtonUp" function="GroupMemberUnitFrame.OnLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="GroupMemberUnitFrame.OnRButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <!-- Portrait -->
+                <CircleImage name="$parentPortrait" textureScale="0.65" numsegments="16" handleinput="false" popable="false" layer="background">
+                    <Size>
+                        <AbsPoint x="72" y="72" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="40" y="40" />
+                </CircleImage>
+
+                <!-- Death Portrait  -->
+                <DynamicImage name="$parentDeathPortrait" inherits="DeathImage" textureScale="0.8" handleinput="false" layer="default" popable="false">
+                    <Size>
+                        <AbsPoint x="70" y="70" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="9" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Portrait Frame-->
+                <DynamicImage name="$parentPortraitFrame" textureScale="0.85" inherits="PortraitFrame" handleinput="false" layer="secondary" popable="false">
+                    <Size>
+                        <AbsPoint x="85" y="90" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCareerIcon"  textureScale="1.0" handleinput="false"  layer="secondary">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="56" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level Background -->
+                <DynamicImage name="$parentLevelBackground" inherits="LevelBackgroundTemplate" handleinput="false" popable="false" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level Text -->
+                <Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresize="false" popable="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="31" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+              <!-- Group Leader Crown -->
+              <DynamicImage name="$parentGroupLeaderCrown" inherits="GroupLeaderCrown" handleinput="false" popable="false" layer="popup">
+                <Anchors>
+                  <Anchor point="top" relativePoint="top" relativeTo="$parentPortraitFrame">
+                    <AbsPoint x="4" y="0" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+
+
+              <!-- Warband Leader Crown -->
+              <DynamicImage name="$parentWarbandLeaderCrown" inherits="WarbandLeaderCrown" handleinput="false" popable="false" layer="popup">
+                <Anchors>
+                  <Anchor point="top" relativePoint="top" relativeTo="$parentPortraitFrame">
+                    <AbsPoint x="4" y="0" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+
+
+              <!-- Main Assist Crown -->
+              <DynamicImage name="$parentMainAssistCrown" inherits="MainAssistCrown" handleinput="false" popable="false" layer="popup">
+                <Anchors>
+                    <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                        <AbsPoint x="53" y="-30" />
+                    </Anchor>
+                </Anchors>
+              </DynamicImage>
+
+                <!-- Morale Mini -->
+                <!-- Slice is dynamically changed depending on what abilities the player's morale percentage has unlocked -->
+                <DynamicImage name="$parentMoraleMini" inherits="MoraleMiniTemplate" handleinput="false" layer="secondary" popable="false">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="8" y="-6" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Entity's Name -->
+                <Label name="$parentName" font="font_heading_unitframe_large_name" maxchars="15" textalign="bottomleft" layer="default" ellipsisOnCrop="true">
+                    <Size>
+                        <AbsPoint x="180" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="4" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- Offline Text -->
+                <Label name="$parentOfflineText" font="font_clear_small_bold" maxchars="15" textalign="leftcenter" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- Distant Text -->
+                <Label name="$parentDistantText" font="font_clear_small_bold" maxchars="15" textalign="leftcenter" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Health Bar Background -->
+                <DynamicImage name="$parentHealthBarBG" textureScale="0.8" inherits="HealthBarBackground" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="144" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Player Health Bar -->
+                <StatusBar name="$parentHealthPercentBar" inherits="UnitFrameFriendlyHealthStatusBar" popable="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="9" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- Health Bar Frame -->
+                <DynamicImage name="$parentHealthBarFrame" textureScale="0.8" inherits="HealthBarFrame" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="146" y="21" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="-8" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- AP Bar Background -->
+                <DynamicImage name="$parentAPBarBG" textureScale="0.8" inherits="APBarBackground" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="144" y="10" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPBarFrame">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- AP Health Bar -->
+                <StatusBar name="$parentAPPercentBar" inherits="UnitFrameAPStatusBar" popable="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPBarFrame">
+                            <AbsPoint x="2" y="1" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentAPBarFrame">
+                            <AbsPoint x="-6" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- AP Bar Frame -->
+                <DynamicImage name="$parentAPBarFrame" textureScale="0.8" inherits="APBarFrame" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="146" y="9" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Health Text -->
+                <Label name="$parentHealthText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- AP Text -->
+                <Label name="$parentAPText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="175" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAPPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <!-- Template for the Player's Pet Status Container -->
+        <Window name="PlayerPetUnitFrame" popable="false" movable="false" layer="default">
+            <Size>
+                <AbsPoint x="180" y="90" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="PlayerPetUnitFrame.OnLButtonDown" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Portrait Frame-->
+                <DynamicImage name="$parentPortraitFrame" textureScale="0.7" inherits="PortraitFrame" layer="secondary" popable="false">
+                    <Size>
+                        <AbsPoint x="70" y="74" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level -->
+                <DynamicImage name="$parentLevelBackground" inherits="LevelBackgroundTemplate" popable="false" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level Text -->
+                <Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresize="false" popable="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="31" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Entity's Name -->
+                <Label name="$parentName" font="font_heading_unitframe_large_name" maxchars="32" textalign="bottomleft" layer="default" ellipsisOnCrop="true">
+                    <Size>
+                        <AbsPoint x="200" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="38" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Health Bar Background -->
+                <DynamicImage name="$parentHealthBarBG" textureScale="0.7" inherits="HealthBarBackground" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="121" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Player's Pet Health Bar -->
+                <StatusBar name="$parentHealthPercentBar" inherits="UnitFramePetHealthStatusBar" popable="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="38" y="3" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- Health Bar Frame -->
+                <DynamicImage name="$parentHealthBarFrame" textureScale="0.8" inherits="PetHealthBarFrame" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="125" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="-40" y="45" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Health Text -->
+                <Label name="$parentHealthText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Portrait -->
+                <CircleImage name="$parentPortrait" textureScale="0.5" numsegments="16" popable="false" layer="background">
+                    <Size>
+                        <AbsPoint x="61" y="56" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </CircleImage>
+            </Windows>
+        </Window>
+
+
+        <!-- AnchorWindow for the Group Member Pet Frames -->
+        <Window name="GroupPetUnitFrameAnchor" movable="false" layer="default" popable="false">
+            <Size>
+                <AbsPoint x="180" y="40" />
+            </Size>
+        </Window>
+
+
+        <!-- Template for the Group Members Pet Status Container -->
+        <Window name="GroupPetUnitFrame" popable="false" movable="false" layer="default">
+            <Size>
+                <AbsPoint x="180" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="GroupPetUnitFrame.OnLButtonDown" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Portrait Frame-->
+                <DynamicImage name="$parentPortraitFrame" textureScale="0.5" inherits="PortraitFrame" handleinput="false" layer="secondary" popable="false">
+                    <Size>
+                        <AbsPoint x="52" y="52" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level -->
+                <!--<DynamicImage name="$parentLevelBackground" textureScale="0.7" inherits="LevelBackgroundTemplate" handleinput="false" popable="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>-->
+
+                <!-- Level Text -->
+                <!--<Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresize="false" popable="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="31" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>-->
+
+                <!-- Entity's Name -->
+                <Label name="$parentName" font="font_heading_unitframe_large_name" maxchars="15" textalign="bottomleft" layer="default" ellipsisOnCrop="true">
+                    <Size>
+                        <AbsPoint x="180" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="38" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Health Bar Background -->
+                <DynamicImage name="$parentHealthBarBG" textureScale="0.65" inherits="HealthBarBackground" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="79" y="10" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Group Member's Pet Health Bar -->
+                <StatusBar name="$parentHealthPercentBar" inherits="UnitFramePetHealthStatusBar" popable="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="33" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+
+                <!-- Health Bar Frame -->
+                <DynamicImage name="$parentHealthBarFrame" textureScale="0.65" inherits="PetHealthBarFrame" handleinput="false" layer="background" popable="false">
+                    <Size>
+                        <AbsPoint x="101" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="-36" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Health Text -->
+                <Label name="$parentHealthText" font="font_clear_small_bold" maxchars="15" textalign="center" layer="default">
+                    <Size>
+                        <AbsPoint x="165" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthPercentBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Portrait -->
+                <CircleImage name="$parentPortrait" textureScale="0.35" numsegments="16" handleinput="false" popable="false" layer="background">
+                    <Size>
+                        <AbsPoint x="38" y="38" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </CircleImage>
+            </Windows>
+        </Window>
+
+        <!-- Template for the name, health, and con information -->
+        <!-- (initially setup for enemies) -->
+        <Window name="TargetUnitFrameStatusContainer" handleinput="true" popable="false" layer="background">
+            <Size>
+                <AbsPoint x="165" y="50" />
+            </Size>
+
+            <Windows>
+
+                <!-- Health Bar Background -->
+                <DynamicImage name="$parentHealthBarBG" inherits="HealthBarBackground" handleinput="false" layer="background" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Health Bar Frame -->
+                <DynamicImage name="$parentHealthBarFrame" inherits="HealthBarFrame" mirrorTexCoords="true" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Name Field -->
+                <Label name="$parentName" font="font_heading_unitframe_large_name" maxchars="24" textalign="rightcenter" autoresizewidth="false" layer="overlay" ellipsisOnCrop="true" textAutoFitMinScale="0.85">
+                    <Size>
+                        <AbsPoint x="172" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="10" y="4"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="-10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <!-- Target Tier, Grudge, Etc. back here-->
+                <Label name="$parentTierLabel" font="font_heading_unitframe_con" maxchars="64" textalign="rightcenter" textautoresizewidth="false" layer="overlay" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="16" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="-16" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <Label name="$parentConLabel" font="font_heading_unitframe_con" maxchars="64" autoresizewidth="true" layer="overlay">
+                    <Size>
+                        <AbsPoint x="330" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentHealthBarBG">
+                            <AbsPoint x="147" y="26" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <!-- Crossed Swords (for Hostiles only) -->
+                <DynamicImage name="$parentSwordLeft" inherits="SwordLeft" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="center" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSwordRight" inherits="SwordRight" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="center" relativeTo="$parentHealthBarFrame">
+                            <AbsPoint x="-2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+
+        <!-- AnchorWindow for the Target Frames -->
+        <Window name="TargetUnitFrameAnchor" movable="false" layer="default" popable="false">
+            <Size>
+                <AbsPoint x="265" y="111" />
+            </Size>
+        </Window>
+
+
+        <!-- Large Unit Frame Window -->
+        <Window name="TargetUnitFrame" movable="false" layer="default" popable="false" savesettings="true">
+            <Size>
+                <AbsPoint x="265" y="111" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnRButtonUp" function="TargetUnitFrame.OnRButtonUp" />
+            </EventHandlers>
+            <Windows>
+
+               <!-- Portrait Background-->
+                <DynamicImage name="$parentPortraitBackground" inherits="PortraitBackground" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="9" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- Temporary portrait image until we get portrait rendering working again -->
+                <DynamicImage name="$parentTempPortraitBG" texture="EA_TempTargets_d3" slice="background" handleinput="false" layer="default">
+                    <Size>
+                        <AbsPoint x="128" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentTempPortraitFG" texture="EA_TempTargets_d3" slice="skull" handleinput="false" layer="default">
+                    <Size>
+                        <AbsPoint x="128" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame" />
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Portrait Frame-->
+                <!-- NOTE: The anchor point that this contains is a default.  This is going to be dynamically reanchored when the unit frame is created.) -->
+                <DynamicImage name="$parentPortraitFrame" inherits="PortraitFrame" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCareerIcon" textureScale="1.0" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="56" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="TargetUnitFrame.MouseOverCareerIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+
+
+                <!-- Portrait -->
+                <!-- BUG: This uses the render_scene_target_portrait...that is not usually correct. -->
+                <!-- Look into dynamically changing the portrait texture or using a nif display -->
+                <!-- NOTE: As of FM4 reskin, Lucas would like this portrait to render in the opposite
+                           direction if it is an enemy target! Whenever this functionality is put back
+                           in, make sure to flip it for enemies and then back to normal for friendlies!
+                           (gnelson) -->
+                <!--
+                <CircleImage name="$parentPortrait" texture="render_scene_target_portrait" numsegments="16" handleinput="false" layer="default" popable="false">
+                    <Size>
+                        <AbsPoint x="82" y="82" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="19" y="19" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="50" y="50" />
+                </CircleImage>
+                -->
+
+                <!-- Level Background -->
+                <DynamicImage name="$parentLevelBackground" inherits="TargetLevelBackgroundTemplate" handleinput="false" popable="false" layer="default">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="-17" y="17" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level Text "font_clear_small"-->
+                <Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresizewidth="false" popable="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="28" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <!-- Skulls -->
+                <!-- These are based on the difficulty mask from the server. -->
+                <DynamicImage name="$parentSkull1" inherits="SkullImage" layer="popup" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <DynamicImage name="$parentSkull2" inherits="SkullImage" layer="popup" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSkull1">
+                            <AbsPoint x="-20" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <DynamicImage name="$parentSkull3" inherits="SkullImage" layer="popup" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSkull1">
+                            <AbsPoint x="20" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentSkull4" inherits="SkullImage" layer="popup" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSkull1">
+                            <AbsPoint x="20" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+
+        <!-- Background gradient for MouseOverTargetUnitFrame -->
+        <!-- Can fit any window wider than 212px; the left 212px are a vertically tileable gradient, and the remainder is solid.  -->
+        <Window name="MouseOverTooltipBackground" handleinput="false" layer="background">
+            <!-- Needs a size / anchoring. -->
+            <Windows>
+
+                <!-- Left cap gradient, fills the leftmost 212 units. -->
+                <!-- x-coords from left to right are  134 |<->| 346 for this slice. -->
+                <VerticalResizeImage name="$parentLeft" texture="EA_HUD_01" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="212" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sizes top="0" middle="27" bottom="0" />
+                    <TexSlices>
+                        <Middle id="Character-Tooltip-Background-Gradient" />
+                    </TexSlices>
+                </VerticalResizeImage>
+
+                <!-- Right full resize; fills the remainder of the window.  "134" top="678" width="212" height="27" /> -->
+                <FullResizeImage name="$parentRight" texture="EA_HUD_01" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="212" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                    <Sizes>
+                        <TopLeft x="0" y="0" />
+                        <BottomRight x="0" y="0" />
+                        <Middle x="2" y="27" />
+                    </Sizes>
+                    <TexCoords>
+                        <TopLeft x="344" y="678" />
+                        <TopCenter x="344" y="678" />
+                        <TopRight x="346" y="678" />
+                        <MiddleLeft x="344" y="678" />
+                        <MiddleCenter x="344" y="678" />
+                        <MiddleRight x="346" y="678" />
+                        <BottomLeft x="344" y="705" />
+                        <BottomCenter x="344" y="705" />
+                        <BottomRight x="346" y="705" />
+                    </TexCoords>
+                </FullResizeImage>
+
+            </Windows>
+        </Window>
+
+        <FullResizeImage name="MouseOverBackground" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="206" y="27" />
+            </Size>
+            <Sizes>
+                <TopLeft x="202" y="10" />
+                <Middle x="2" y="7" />
+                <BottomRight x="2" y="10" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="140" y="678" />
+                <TopCenter x="342" y="678" />
+                <TopRight x="344" y="678" />
+                <MiddleLeft x="140" y="688" />
+                <MiddleCenter x="342" y="688" />
+                <MiddleRight x="344" y="688" />
+                <BottomLeft x="140" y="695" />
+                <BottomCenter x="342" y="695" />
+                <BottomRight x="344" y="695" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!-- Positioning the Name label affects all of the elements, except for the background. -->
+        <Window name="MouseOverTargetUnitFrame" movable="false" layer="default" popable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="300" y="100" />
+            </Size>
+            <Windows>
+
+                <!-- MouseOver Background -->
+                <!--<Window name="$parentBackground" inherits="MouseOverTooltipBackground" handleinput="false" layer="background">-->
+                <Window name="$parentBackground" inherits="MouseOverTooltipBackground" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- MouseOver Name -->
+                <Label name="$parentName" font="font_heading_target_mouseover_name" maxchars="40" textalign="rightcenter" autoresizewidth="false" layer="overlay" ellipsisOnCrop="true" textAutoFitMinScale="0.85">
+                    <Size>
+                        <AbsPoint x="265" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-10" y="9" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- MouseOver class/title, etc -->
+                <Label name="$parentCareerLabel" font="font_heading_unitframe_con" maxchars="64" autoresizewidth="true" autoresize="true" layer="overlay" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- MouseOver Target Tier, Grudge, Etc. -->
+                <Label name="$parentTierLabel" font="font_heading_unitframe_con" maxchars="64" autoresizewidth="true" layer="overlay" >
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCareerLabel">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- MouseOver Con Description -->
+                <Label name="$parentConLabel" font="font_heading_unitframe_con" maxchars="64" autoresizewidth="true" layer="overlay">
+                    <Size>
+                        <AbsPoint x="330" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="-3" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- MouseOver Level Background Circle -->
+                <!-- Reanchored by MouseOverTargetUnitFrame:UpdateUnitTier to make room for the mouseover Tier text -->
+                <DynamicImage name="$parentLevelBackground" inherits="TargetLevelBackgroundTemplate" handleinput="false" popable="false" layer="default">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentTierLabel">
+                            <!-- The "Rank-Circle" slice is 32px wide, but the last few are shadow; so this approximately should line up the circle with the end of the Name text. -->
+                            <AbsPoint x="0" y="-1" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- MouseOver Level Text -->
+                <Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresizewidth="false" popable="false" layer="popup">
+                    <Size>
+                        <!-- The circle part of the "Rank-Circle" slice is 28x28 -->
+                        <AbsPoint x="28" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+            </Windows>
+        </Window>
+
+        <!-- Autoresized to text; MouseOverTargetUnitFrame:ShowAndUpdateForStaticObject() anchors to the mouse.  -->
+        <Window name="MouseOverTargetObjectWindow" movable="false" layer="secondary">
+            <Windows>
+
+                <!-- Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentObjectName">
+                            <AbsPoint x="-7" y="-4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentObjectName">
+                            <AbsPoint x="7" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Object Name Field -->
+                <Label name="$parentObjectName" font="font_clear_medium" textalign="leftcenter" layer="secondary" autoresizewidth="true" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="300" y="25"/>
+                    </Size>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

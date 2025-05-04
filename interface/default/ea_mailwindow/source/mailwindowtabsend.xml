@@ -1,0 +1,419 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/MailWindowTabSend.lua" />
+    </Scripts>
+    <Windows>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="MailWindowTabSendSocket" layer="secondary" movable="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="MailWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="MailWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="MailWindowTabSend.Initialize" />
+                <EventHandler event="OnShutdown" function="MailWindowTabSend.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- To -->
+                <Label name="$parentToHeader" inherits="SendMailHeaderTemplate" >
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentToEditBox">
+                            <AbsPoint x="-15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <EditBox name="$parentToEditBox" inherits="EA_EditBox_DefaultFrame" history="15" maxchars="32" taborder="1">
+                    <Size>
+                        <AbsPoint x="350" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-25" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+                
+                <!-- Subject -->
+                <Label name="$parentSubjectHeader" inherits="SendMailHeaderTemplate">
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentSubjectEditBox">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <EditBox name="$parentSubjectEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="29" taborder="2">
+                    <Size>
+                        <AbsPoint x="400" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentToEditBox">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentToEditBox">
+                            <AbsPoint x="0" y="47" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+                <!-- Message -->
+                <Label name="$parentMessageBodyHeader" inherits="SendMailHeaderTemplate">
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentMessageBodyEditBox">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <EditBox name="$parentMessageBodyEditBox" inherits="EA_EditBox_DefaultFrame_Multiline" maxchars="299" taborder="3" scrollbar="EA_ScrollBar_DefaultVerticalChain">
+                    <Size>
+                        <AbsPoint x="400" y="168"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubjectEditBox">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSubjectEditBox">
+                            <AbsPoint x="0" y="165" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+                <!-- Display Seperator Top -->
+                <Window name="$parentDisplaySeperatorTop" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="bottomleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-40" />
+                        </Anchor>
+                        <Anchor point="right" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Attachments Header -->
+                <Label name="$parentAttachmentHeader" inherits="SendMailHeaderTemplate" textalign="right">
+                    <Size>
+                        <AbsPoint x="200" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentMessageBodyEditBox">
+                            <AbsPoint x="0" y="24" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- COD Check Box COD -->
+                <Button name="$parentCODCheckBoxButton" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentMessageBodyEditBox">
+                            <AbsPoint x="-2" y="25" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnLButtonUpCOD" />
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentCODCheckBoxButtonHeader" inherits="SendMailHeaderTemplate" textalign="rightcenter">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCODCheckBoxButton">
+                            <AbsPoint x="-8" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Edit Box Gold -->
+                <EditBox name="$parentEditBoxGold" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="4">
+                    <Size>
+                        <AbsPoint x="50" y="34"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                    </EventHandlers>
+                </EditBox>
+
+                <!-- Plus Button Gold -->
+                <Button name="$parentButtonPlusGold" inherits="EA_Button_DefaultPlus">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxGold">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressGoldPlusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Minus Button Gold -->
+                <Button name="$parentButtonMinusGold" inherits="EA_Button_DefaultMinus">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentEditBoxGold">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressGoldMinusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Gold Coin Icon -->
+                <DynamicImage name="$parentGoldCoin" inherits="EA_Templates_GoldCoin">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="left" relativeTo="$parentButtonPlusGold">
+                            <AbsPoint x="5" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Edit Box Silver -->
+                <EditBox name="$parentEditBoxSilver" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="5">
+                    <Size>
+                        <AbsPoint x="50" y="34"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottomright" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                    </EventHandlers>
+                </EditBox>
+
+                <!-- Plus Button Silver -->
+                <Button name="$parentButtonPlusSilver" inherits="EA_Button_DefaultPlus">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxSilver">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressSilverPlusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Minus Button Silver -->
+                <Button name="$parentButtonMinusSilver" inherits="EA_Button_DefaultMinus">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentEditBoxSilver">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressSilverMinusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Silver Coin Icon -->
+                <DynamicImage name="$parentSilverCoin" inherits="EA_Templates_SilverCoin">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="left" relativeTo="$parentButtonPlusSilver">
+                            <AbsPoint x="5" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Edit Box Brass -->
+                <EditBox name="$parentEditBoxBrass" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="6">
+                    <Size>
+                        <AbsPoint x="50" y="34"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentBrassCoin">
+                            <AbsPoint x="-28" y="-6" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                    </EventHandlers>
+                </EditBox>
+
+                <!-- Plus Button Brass -->
+                <Button name="$parentButtonPlusBrass" inherits="EA_Button_DefaultPlus">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEditBoxBrass">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressBrassPlusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Minus Button Brass -->
+                <Button name="$parentButtonMinusBrass" inherits="EA_Button_DefaultMinus">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentEditBoxBrass">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnPressBrassMinusButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Brass Coin Icon -->
+                <DynamicImage name="$parentBrassCoin" inherits="EA_Templates_BrassCoin">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="-14"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Background  -->
+                <DynamicImage name="$parentBackground" texture="EA_Backpack01_d5" slice="BackpackBackground" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="412" y="120" />
+                </DynamicImage>
+              
+                <!-- Attachment Slots -->
+                <ActionButtonGroup name="$parentAttachmentSlots" inherits="EA_ActionButtonGroup_DefaultSmall" draganddrop="true"  gameactionbutton="right"  >
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentDisplaySeperatorMiddle">
+                      <AbsPoint x="0" y="4" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnActionButtonLButtonDown" function="MailWindowTabSend.OnLButtonDownAttachmentSlot" />
+                    <EventHandler event="OnActionButtonLButtonUp" function="MailWindowTabSend.OnLButtonUpAttachmentSlot" />
+                    <EventHandler event="OnActionButtonRButtonUp" function="MailWindowTabSend.OnRButtonUpAttachmentSlot" />
+                    <EventHandler event="OnActionButtonMouseOver" function="MailWindowTabSend.OnMouseOverAttachmentSlot" />
+                  </EventHandlers>
+                </ActionButtonGroup>
+
+                <!-- Display Seperator -->
+                <Window name="$parentDisplaySeperatorMiddle" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentDisplaySeperatorBottom" >
+                            <AbsPoint x="0" y="-32" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDisplaySeperatorBottom" >
+                            <AbsPoint x="0" y="-32" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Postage Cost container -->
+                <Window name="$parentPostage" inherits="MailWindowMoneyWindowTemplate">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDisplaySeperatorMiddle">
+                            <AbsPoint x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Money In Backpack container -->
+                <Window name="$parentMoneyInBackpack" inherits="MailWindowMoneyWindowTemplate">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPostage">
+                            <AbsPoint x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Postage Cost 
+                <Label name="$parentPostageHeader" inherits="SendMailHeaderTemplate" textalign="center">
+                    <Size>
+                        <AbsPoint x="150" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo ="$parentPostageFrame">
+                            <AbsPoint x="-10" y="90" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentPostageFrame" inherits="MoneyFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDisplaySeperator">
+                            <AbsPoint x="-15" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+-->
+                <!-- Display Seperator -->
+                <Window name="$parentDisplaySeperatorBottom" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBarBackground" >
+                            <AbsPoint x="0" y="-45" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground" >
+                            <AbsPoint x="0" y="-45" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Result Header -->
+                <Label name="$parentResultText" inherits="MailRowTextTemplate" maxchars="256" wordwrap="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="300" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDisplaySeperatorBottom">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground">
+                            <AbsPoint x="-10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!--************-->
+                <!-- Button Bar -->
+                <!--************-->
+                <Window name="$parentBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="60" />
+                    </Size>
+                </Window>
+
+                <Button name="$parentCommandSendButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentBarBackground">
+                            <AbsPoint x="0" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabSend.OnLButtonUpSendButton" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

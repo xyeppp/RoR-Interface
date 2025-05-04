@@ -1,0 +1,292 @@
+<zone iname="Reikland">
+    <landmark iname="Raven Landing" id="1" mapIcon="1043" x="14578" y="43414">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="West Temple" id="2" mapIcon="1034" x="15945" y="28980">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Reik River Observatory" id="3" mapIcon="1032" x="18686" y="16303">
+        <race>Empire</race>
+        <number>16</number>
+        <ranks realm="order" min="32" max="33" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Deathwatch Landing" id="4" mapIcon="1053" x="24821" y="13199">
+        <race>Empire</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Bandit Cave" id="5" mapIcon="1062" x="2666" y="28501">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="6" mapIcon="1062" x="3469" y="45649">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="The Inevitable Fire" id="7" mapIcon="1065" x="34880" y="53597">
+        <race>Chaos</race>
+        <number>22</number>
+        <ranks realm="destruction" min="40" max="40" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave" id="8" mapIcon="1063" x="37677" y="19549">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Elf Landing" id="9" mapIcon="1065" x="37911" y="43004">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Fields" id="10" mapIcon="1069" x="40792" y="49230">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Darkstone Vantage" id="11" mapIcon="1052" x="41879" y="30649">
+        <race>Chaos</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Castle Reiksguard" id="12" mapIcon="1035" x="42149" y="61172">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bandit Cave" id="13" mapIcon="1062" x="4524" y="21480">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Heinrich Passage" id="14" mapIcon="1061" x="4638" y="61003">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Vanik's Horde" id="15" mapIcon="1065" x="46808" y="34927">
+        <race>Chaos</race>
+        <number>21</number>
+        <ranks realm="destruction" min="39" max="39" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Mark of the Reaver" id="16" mapIcon="1031" x="48897" y="8777">
+        <race>Chaos</race>
+        <number>20</number>
+        <ranks realm="destruction" min="38" max="38" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Sigmar Shrine" id="17" mapIcon="1036" x="50582" y="19448">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cemetary" id="18" mapIcon="1070" x="52684" y="3661">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ritterburg" id="19" mapIcon="1035" x="58956" y="29481">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Temple of Reikland" id="20" mapIcon="1034" x="61036" y="4292">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Mishrae's Alcove" id="21" mapIcon="1063" x="61175" y="44297">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bruin Caverns" id="22" mapIcon="1062" x="62584" y="21813">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Morr's Maze" id="23" mapIcon="1061" x="63207" y="36640">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Heinrich Passage" id="24" mapIcon="1062" x="6629" y="64565">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Kreuznach" id="25" mapIcon="1031" x="8965" y="34197">
+        <race>Empire</race>
+        <number>15</number>
+        <ranks realm="order" min="30" max="31" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="26" mapIcon="1259" x="33871" y="14636" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="27" mapIcon="1259" x="23666" y="36415" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1259" x="25701" y="53134" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: The Murderball Rally" id="29" mapIcon="1097" x="35407" y="17677" liveevent="30">
+        <importance>minor</importance>
+        <specialType>12</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Order" id="30" mapIcon="1096" x="26710" y="50934" liveevent="30">
+        <importance>minor</importance>
+        <specialType>16</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Destruction" id="31" mapIcon="1095" x="18953" y="48220" liveevent="30">
+        <importance>minor</importance>
+        <specialType>17</specialType>
+    </landmark>
+    <publicQuest iname="The Enemy Within" id="297" iconSet="1" x="12036" y="16859">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Root of Rebellion" id="307" iconSet="1" x="3588" y="47861">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Rain of Fire" id="316" iconSet="1" x="41413" y="19561">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="All the King's Men" id="319" iconSet="1" x="41982" y="57121">
+        <difficulty>hard</difficulty>
+        <players min="24" />
+        <rewards>advanced</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Castle Grauenburg" id="298" iconSet="1" x="4524" y="7947">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ambush at Garrisonburg" id="311" iconSet="1" x="47765" y="15126">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Stoneclan's Demise" id="312" iconSet="1" x="48659" y="38799">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Reikland Training Grounds" id="318" iconSet="1" x="48698" y="55937">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Hunting the Hunters" id="314" iconSet="1" x="55098" y="49238">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Fields of Reikland" id="313" iconSet="1" x="55330" y="58984">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Vulgar Display of Power" id="315" iconSet="1" x="56880" y="34139">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Reik River Bandits" id="296" iconSet="1" x="5921" y="27151">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Dark Retribution" id="317" iconSet="1" x="61070" y="7575">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Heinrich Estate" id="302" iconSet="1" x="7772" y="61974">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Fields of Ruin" id="305" iconSet="1" x="8301" y="56546">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Reikwatch: Defensive Boon" id="5085" iconSet="1" x="31936" y="39190">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Frostbeard's Quarry: Artisan's Gift" id="5086" iconSet="1" x="37623" y="7779">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Schwenderhalle Manor: Merchant's Gift" id="5087" iconSet="1" x="25486" y="64097">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Runehammer Gunworks: Healing Boon" id="5088" iconSet="1" x="22426" y="45883">
+    </battlefieldObjective>
+    <keep iname="Morr's Repose" id="16" iconSet="1" x="23051" y="59406">
+        <objectiveId>605</objectiveId>
+    </keep>
+    <keep iname="Wilhelm's Fist" id="15" iconSet="1" x="30687" y="27079">
+        <objectiveId>604</objectiveId>
+    </keep>
+    <zoneTransition iname="To Talabecland" x="0" y="16000">
+        <zone>108</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Praag" x="16000" y="0">
+        <zone>105</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Praag" x="48000" y="0">
+        <zone>105</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Reikwald" x="16000" y="65535">
+        <zone>110</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Reikwald" x="48000" y="65535">
+        <zone>110</zone>
+    </zoneTransition>
+</zone>

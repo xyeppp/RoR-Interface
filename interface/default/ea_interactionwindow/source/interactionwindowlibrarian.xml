@@ -1,0 +1,398 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionWindowLibrarian.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Tab button definition for the row of available subsections -->
+        <Button name="EA_Window_InteractionLibrarianStoreTabButtonTemplate" inherits="EA_Button_Tab">
+            <Size>
+                <AbsPoint x="150" y="55" />
+            </Size>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+        <!-- Checkbox button/label for the store filters -->
+        <Window name="EA_Window_InteractionLibrarianStoreFilterTemplate" inherits="EA_LabelCheckButton">
+            <Size>
+                <AbsPoint x="125" y="30" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.ToggleLibrarianStoreFilter" />
+            </EventHandlers>
+        </Window>
+
+        <!-- Sort Button Template -->
+        <Button name="EA_Window_InteractionLibrarianStoreSortingHeaderTemplate" inherits="EA_Button_DefaultListSort">
+            <Size>
+                <AbsPoint x="145" y="30" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.ChangeSorting" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Item Row -->
+        <Window name="EA_Window_InteractionLibrarianStoreRowTemplate" draganddrop="true">
+            <Size>
+                <AbsPoint x="410" y="80" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.OnItemLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_InteractionLibrarianStore.OnItemRButtonUp" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <Button name="$parentItemPic" inherits="EA_Button_DefaultIcon_Large" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionLibrarianStore.MouseOverLibrarianStoreItem" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.OnItemLButtonUp" />
+                        <EventHandler event="OnLButtonDown" function="EA_Window_InteractionLibrarianStore.OnItemLButtonDown" />
+                        <EventHandler event="OnRButtonUp" function="EA_Window_InteractionLibrarianStore.OnItemRButtonUp" />
+                    </EventHandlers>
+                </Button>
+                <!-- font_default_text -->
+                <Label name="$parentItemName" wordwrap="true" font="font_default_sub_heading" textalign="left" maxchars="80" inherits="EA_Label_DefaultText" handleinput="false">
+                    <Size>
+                        <AbsPoint x="310" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentItemType" inherits="EA_Label_DefaultText_Small" textalign="left" wordwrap="false"  maxchars="40"  handleinput="false">
+                    <Size>
+                        <AbsPoint x="310" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="6" />
+                        </Anchor>
+                    </Anchors>
+
+                    <Color r="166" g="171" b="179" a="255" />
+                </Label>
+
+                <Label name="$parentItemDesc" inherits="EA_Label_DefaultText_Small" textalign="left" wordwrap="false"  maxchars="40"  handleinput="false">
+                  <Size>
+                    <AbsPoint x="310" y="20" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentItemPic">
+                      <AbsPoint x="10" y="6" />
+                    </Anchor>
+                  </Anchors>
+
+                  <Color r="166" g="171" b="179" a="255" />
+                </Label>
+
+                <Window name="$parentItemCost" inherits="MoneyFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentItemAltCost" inherits="LibrarianAltCurrencyFrame" skipinput="true">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentItemCostBrassFrame">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Window>
+        <!-- End Item Row -->
+
+
+        <!-- LibrarianStore/Merchant Window -->
+        <Window name="EA_Window_InteractionLibrarianStore" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="450" y="720" /> 
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionLibrarianStore.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionLibrarianStore.Shutdown" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionLibrarianStore.OnRButtonUp" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionLibrarianStore.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionLibrarianStore.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.OnItemLButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_MerchantImage"/>
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.Done" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Tabs Block -->
+                <Window name="$parentTabs">
+                    <Size>
+                        <AbsPoint x="450" y="60" /> 
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentSellTab" inherits="EA_Window_InteractionLibrarianStoreTabButtonTemplate" id="1" handleinput="no">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentSellTab">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentSellTab">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" >
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        
+                    </Windows>
+                </Window>
+
+                <Window name="$parentFilter">
+                    <Size>
+                        <AbsPoint x="450" y="70" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs">
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentByUsable" inherits="EA_Window_InteractionLibrarianStoreFilterTemplate">
+                            <Size>
+                                <AbsPoint x="200" y="30" />
+                            </Size>
+                            <Anchors>
+
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="37" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+                
+                <!-- Header Names for Sorting  -->
+                <Window name="$parentHeader">
+                    <Size>
+                        <AbsPoint x="435" y="30" />
+                    </Size>
+
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs">
+                            <AbsPoint x="10" y="40" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                      <Window name="$parentMiddle">
+                        <Size>
+                          <AbsPoint x="1" y="1" />
+                        </Size>
+
+                        <Anchors>
+                          <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                        </Anchors>
+                      </Window>
+
+                          <Button name="$parentName" inherits="EA_Window_InteractionLibrarianStoreSortingHeaderTemplate" id="1">
+                            <Anchors>
+                              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                <AbsPoint x="0" y="0" />
+                              </Anchor>
+                              <Anchor point="topleft" relativePoint="topright" relativeTo="$parentMiddle">
+                                <AbsPoint x="0" y="0" />
+                              </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentType" inherits="EA_Window_InteractionLibrarianStoreSortingHeaderTemplate" id="2">
+                            <Anchors>
+                              <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="-6" y="0" />
+                              </Anchor>
+                              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentMiddle">
+                                <AbsPoint x="0" y="0" />
+                              </Anchor>
+                          </Anchors>
+                        </Button>
+                    </Windows>
+                </Window>
+               
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_InteractionLibrarianStoreRowTemplate"  visiblerows="5" rowcount="200" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="433" y="400" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeader" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionLibrarianStore.displayData" populationfunction="EA_Window_InteractionLibrarianStore.PopulateLibrarianStoreItemData">
+                        <ListColumns>
+                            <ListColumn windowname="ItemPicIconBase" variable="iconNum" format="icon" />
+                            <ListColumn windowname="ItemType" variable="typeText" format="wstring" />               
+                            <!--              
+                            <ListColumn windowname="ItemName" variable="name" format="wstring" />
+                            <ListColumn windowname="ItemCost" variable="cost" format="number" />
+                            -->
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <HorizontalResizeImage name="$parentMiddleDivider" inherits="EA_BrownHorizontalRule">
+                    <Size>
+                        <AbsPoint x="435" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Money Available -->
+                <Window name="$parentMoneyAvailable" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="40" y="-75" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="$parentMoneyAvailableHeader" inherits="EA_Label_DefaultText" textalign="right" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="120" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentMoneyAvailableGoldText">
+                            <AbsPoint x="-40" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <!-- section separator -->
+                <Window name="$parentBottomDivider" inherits="EA_Window_DefaultSeparator" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!--Metal Background to Buttons-->
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="topleft" relativeTo="$parentBottomDivider">
+                            <AbsPoint x="10" y="5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-10" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+
+                <Button name="$parentRepairToggle" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="20" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.ToggleRepairMode" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionLibrarianStore.RepairButtonMouseOver" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentRepairAll" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.RepairAll" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionLibrarianStore.RepairAllButtonMouseOver" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentDone" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-20" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLibrarianStore.Done" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

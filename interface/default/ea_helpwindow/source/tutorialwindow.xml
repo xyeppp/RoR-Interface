@@ -1,0 +1,182 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TutorialWindow.lua"/>
+    </Scripts>
+    <Windows>
+    
+        <!-- Templates -->
+        <Button name="TutorialWindowTabTemplate" inherits="EA_Button_BottomTab">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TutorialWindow.OnLButtonUpTab" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+    
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="TutorialWindow" inherits="EA_Window_Default" movable="true" 
+                 layer="popup" savesettings="false" alpha="0.80" >
+            <Size>
+                <AbsPoint x="1030" y="900"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" >
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="TutorialWindow.Initialize"/>
+                <EventHandler event="OnShutdown"    function="TutorialWindow.Shutdown"/>
+                <EventHandler event="OnShown"       function="TutorialWindow.OnShown" />
+                <EventHandler event="OnHidden"       function="TutorialWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Header -->
+                <FullResizeImage name="$parentTopFrame" inherits="EA_FullResizeImage_DefaultBubbleBackground"  >
+                    <Size>
+                        <AbsPoint x="0" y="125"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="50" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-50" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentTopFrame" >
+                            <AbsPoint x="20" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentTitleText" font="font_journal_heading"
+                       textalign="left" autoresize="true" wordwrap="false" >
+                    <Size>
+                        <AbsPoint x="700" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentTopFrame" >
+                            <AbsPoint x="150" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" />
+                </Label>
+
+                <Window name="$parentSocket">
+                    <Size>
+                        <AbsPoint x="950" y="700"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTopFrame" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!-- Tab windows are created on an as-needed basis in TutorialWindow.SelectTab -->
+
+
+
+                <!-- Back Button -->
+                <Button name="$parentBack"  inherits="EA_Button_DefaultBigLeftArrow" drawchildrenfirst="true" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TutorialWindow.TabBack" />
+                    </EventHandlers>
+                    <Windows>
+                        <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultBubbleBackground" handleinput="false" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="-20" y="-20" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="20" y="20" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                    </Windows>
+                </Button>
+                <!-- Forward Button -->
+                <Button name="$parentForward" inherits="EA_Button_DefaultBigRightArrow" drawchildrenfirst="true" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TutorialWindow.TabForward" />
+                    </EventHandlers>
+                    <Windows>
+                        <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultBubbleBackground" handleinput="false" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="-20" y="-20" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                                    <AbsPoint x="20" y="20" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                    </Windows>
+                </Button>
+
+                <!-- Bottom Frame -->
+                <FullResizeImage name="$parentBottomFrame" inherits="EA_FullResizeImage_DefaultBubbleBackground"  >
+                    <Size>
+                        <AbsPoint x="0" y="75"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="50" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-50" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+
+                <Button name="$parentCloseButton" inherits="EA_Button_InteractionConversationImportant" autoresize="false" >
+                    <Size>
+                        <AbsPoint x="100" y="42" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentBottomFrame">
+                            <AbsPoint x="-30" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TutorialWindow.OnCloseButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentShowTutorials" inherits="EA_Window_ParchmentCheckButton" >
+                    <Size>
+                        <AbsPoint x="250" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentBottomFrame">
+                            <AbsPoint x="30" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TutorialWindow.ToggleDisableTutorials" />
+                    </EventHandlers>
+                </Window>
+
+            </Windows>
+        </Window> <!-- end Tutorial Window -->
+        
+        
+    </Windows>
+</Interface>

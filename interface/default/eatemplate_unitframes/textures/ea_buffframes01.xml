@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_BuffFrames01" file="Textures/EA_BuffFrames01.dds">
+            <Slice id="Buff-Frame" left="0" top="0" width="64" height="88" />
+            <Slice id="Debuff-Frame" left="0" top="84" width="64" height="88" />
+            <Slice id="Neutral-Frame" left="0" top="183" width="64" height="84" />
+        </Texture>
+    </Assets>
+</Interface>

@@ -1,0 +1,31 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_PlayerAssist.lua" />
+    </Scripts>
+    <Windows>
+        <Button name="EA_Button_PlayerAssist" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="43" y="43" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_PlayerAssist.DisplayTooltip" />
+            </EventHandlers>
+            <TexSlices>
+                <Normal          id="MainAssist-BASE"   />
+                <NormalHighlit   id="MainAssist-PRESS"  />
+                <Pressed         id="MainAssist-RollOVER"  />
+                <Disabled        id="MainAssist-GREY"  />
+            </TexSlices>
+        </Button>
+        <Window name="EA_AssistWindow" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="43" y="43" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="263" y="-372" />
+                </Anchor>
+            </Anchors>
+        </Window>
+    </Windows>
+</Interface>

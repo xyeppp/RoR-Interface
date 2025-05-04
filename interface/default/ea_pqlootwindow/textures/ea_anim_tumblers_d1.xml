@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="PQLootAnimTumblers" file="Textures/EA_Anim_Tumblers_d1.dds" />
+    </Assets>
+
+    <Windows>
+        <!-- Tumbler Animations -->
+
+        <AnimatedImage name="PQLootAnimTumbler" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="40"  y="30" />
+                <AnimFrame id="2" x="60" y="30" />
+                <AnimFrame id="3" x="80" y="30" />
+                <AnimFrame id="4" x="100" y="30" />
+                <AnimFrame id="5" x="120" y="30" />
+                <AnimFrame id="6" x="140" y="30" />
+                <AnimFrame id="7" x="160" y="30" />
+                <AnimFrame id="8" x="180" y="30" />
+            </AnimFrames>
+        </AnimatedImage>
+
+        <AnimatedImage name="PQLootAnimNumeral0" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="90" />
+                <AnimFrame id="2" x="20"  y="90" />
+                <AnimFrame id="3" x="40"  y="90" />
+                <AnimFrame id="4" x="60" y="90" />
+                <AnimFrame id="5" x="80" y="90" />
+                <AnimFrame id="6" x="100" y="90" />
+                <AnimFrame id="7" x="120" y="90" />
+                <AnimFrame id="8" x="140" y="90" />
+                <AnimFrame id="9" x="160" y="90" />
+                <AnimFrame id="10" x="180" y="90" />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral1" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="120"  />
+                <AnimFrame id="2" x="20"  y="120"  />
+                <AnimFrame id="3" x="40"  y="120"  />
+                <AnimFrame id="4" x="60" y="120"  />
+                <AnimFrame id="5" x="80" y="120"  />
+                <AnimFrame id="6" x="100" y="120"  />
+                <AnimFrame id="7" x="120" y="120"  />
+                <AnimFrame id="8" x="140" y="120"  />
+                <AnimFrame id="9" x="160" y="120"  />
+                <AnimFrame id="10" x="180" y="120"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral2" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="150"  />
+                <AnimFrame id="2" x="20"  y="150"  />
+                <AnimFrame id="3" x="40"  y="150"  />
+                <AnimFrame id="4" x="60" y="150"  />
+                <AnimFrame id="5" x="80" y="150"  />
+                <AnimFrame id="6" x="100" y="150"  />
+                <AnimFrame id="7" x="120" y="150"  />
+                <AnimFrame id="8" x="140" y="150"  />
+                <AnimFrame id="9" x="160" y="150"  />
+                <AnimFrame id="10" x="180" y="150"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral3" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="180"  />
+                <AnimFrame id="2" x="20"  y="180"  />
+                <AnimFrame id="3" x="40"  y="180"  />
+                <AnimFrame id="4" x="60" y="180"  />
+                <AnimFrame id="5" x="80" y="180"  />
+                <AnimFrame id="6" x="100" y="180"  />
+                <AnimFrame id="7" x="120" y="180"  />
+                <AnimFrame id="8" x="140" y="180"  />
+                <AnimFrame id="9" x="160" y="180"  />
+                <AnimFrame id="10" x="180" y="180"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral4" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="210"  />
+                <AnimFrame id="2" x="20"  y="210"  />
+                <AnimFrame id="3" x="40"  y="210"  />
+                <AnimFrame id="4" x="60" y="210"  />
+                <AnimFrame id="5" x="80" y="210"  />
+                <AnimFrame id="6" x="100" y="210"  />
+                <AnimFrame id="7" x="120" y="210"  />
+                <AnimFrame id="8" x="140" y="210"  />
+                <AnimFrame id="9" x="160" y="210"  />
+                <AnimFrame id="10" x="180" y="210"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral5" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="240"  />
+                <AnimFrame id="2" x="20"  y="240"  />
+                <AnimFrame id="3" x="40"  y="240"  />
+                <AnimFrame id="4" x="60" y="240"  />
+                <AnimFrame id="5" x="80" y="240"  />
+                <AnimFrame id="6" x="100" y="240"  />
+                <AnimFrame id="7" x="120" y="240"  />
+                <AnimFrame id="8" x="140" y="240"  />
+                <AnimFrame id="9" x="160" y="240"  />
+                <AnimFrame id="10" x="180" y="240"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral6" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="270"  />
+                <AnimFrame id="2" x="20"  y="270"  />
+                <AnimFrame id="3" x="40"  y="270"  />
+                <AnimFrame id="4" x="60" y="270"  />
+                <AnimFrame id="5" x="80" y="270"  />
+                <AnimFrame id="6" x="100" y="270"  />
+                <AnimFrame id="7" x="120" y="270"  />
+                <AnimFrame id="8" x="140" y="270"  />
+                <AnimFrame id="9" x="160" y="270"  />
+                <AnimFrame id="10" x="180" y="270"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral7" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="300"  />
+                <AnimFrame id="2" x="20"  y="300"  />
+                <AnimFrame id="3" x="40"  y="300"  />
+                <AnimFrame id="4" x="60" y="300"  />
+                <AnimFrame id="5" x="80" y="300"  />
+                <AnimFrame id="6" x="100" y="300"  />
+                <AnimFrame id="7" x="120" y="300"  />
+                <AnimFrame id="8" x="140" y="300"  />
+                <AnimFrame id="9" x="160" y="300"  />
+                <AnimFrame id="10" x="180" y="300"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral8" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="330"  />
+                <AnimFrame id="2" x="20"  y="330"  />
+                <AnimFrame id="3" x="40"  y="330"  />
+                <AnimFrame id="4" x="60" y="330"  />
+                <AnimFrame id="5" x="80" y="330"  />
+                <AnimFrame id="6" x="100" y="330"  />
+                <AnimFrame id="7" x="120" y="330"  />
+                <AnimFrame id="8" x="140" y="330"  />
+                <AnimFrame id="9" x="160" y="330"  />
+                <AnimFrame id="10" x="180" y="330"  />
+            </AnimFrames>
+        </AnimatedImage>
+        <AnimatedImage name="PQLootAnimNumeral9" texture="PQLootAnimTumblers" fps="30" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="20" y="30"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0"  y="360"  />
+                <AnimFrame id="2" x="20"  y="360"  />
+                <AnimFrame id="3" x="40"  y="360"  />
+                <AnimFrame id="4" x="60" y="360"  />
+                <AnimFrame id="5" x="80" y="360"  />
+                <AnimFrame id="6" x="100" y="360"  />
+                <AnimFrame id="7" x="120" y="360"  />
+                <AnimFrame id="8" x="140" y="360"  />
+                <AnimFrame id="9" x="160" y="360"  />
+                <AnimFrame id="10" x="180" y="360"  />
+            </AnimFrames>
+        </AnimatedImage>
+
+        <!--  TODO: need to add the slowing down numeric tumbers -->
+    </Windows>
+
+</Interface>

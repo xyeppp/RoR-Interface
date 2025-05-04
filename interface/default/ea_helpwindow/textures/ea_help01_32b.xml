@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Help01_32b" file="Textures/EA_Help01_32b.dds">
+      <Slice id="Icon-Bug" left="90" top="0" width="89" height="85" />
+      <Slice id="Icon-FAQ" left="1" top="0" width="89" height="85" />
+      <Slice id="Icon-Feedback" left="90" top="85" width="89" height="85" />
+      <Slice id="Icon-Appeal" left="1" top="85" width="89" height="85" />
+      <Slice id="Icon-Manual" left="1" top="170" width="89" height="85" />
+    </Texture>
+  </Assets>
+</Interface>

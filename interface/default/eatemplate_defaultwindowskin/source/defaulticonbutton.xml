@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_DefaultIconFrame
+
+    This file contains for the icon frame artwork. This includes the Square Ability/Item icon images and re-sizable row artwork.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+       <!--# DynamicImage: EA_Image_DefaultIcon
+            This is the default icon template in a fixed texture coordinates image.
+        -->
+        <DynamicImage name="EA_Image_DefaultIcon" handleinput="false" >
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <TexCoords x="0" y="0" />
+            <TexDims x="64" y="64" />
+        </DynamicImage>
+
+        <!--# DynamicImage: EA_Image_DefaultIconFrame
+            This is the default icon frame in a fixed texture coordinates image.
+        -->
+        <DynamicImage name="EA_Image_DefaultIconFrame" texture="EA_SquareFrame" handleinput="false" >
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <TexCoords x="0" y="0" />
+            <TexDims x="64" y="64" />
+        </DynamicImage>
+
+
+        <!--# Button: EA_Button_DefaultIconFrame
+            This is a Static Size Button with the Icon Frame artwork. This is 55x55.
+        -->
+        <Button name="EA_Button_DefaultIconFrame" inherits="EA_Button_Default" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <DynamicImage name="$parentDisabledIcon"  handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+            </Windows>
+            <TexCoords>
+                <Normal texture="EA_SquareFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_SquareFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+
+        <!--# Button: EA_Button_DefaultIconFrame_Small
+            This is a Static Size Button with the Icon Frame artwork. This is 40x40.
+        -->
+        <Button name="EA_Button_DefaultIconFrame_Small" inherits="EA_Button_DefaultIconFrame" texturescale="0.625" >
+            <Size>
+                <AbsPoint x="40" y="40" />
+            </Size>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultIconFrame_Large
+            This is a Static Size Button with the Icon Frame artwork. This is 64x64.
+        -->
+        <Button name="EA_Button_DefaultIconFrame_Large" inherits="EA_Button_DefaultIconFrame" texturescale="1.0" >
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+        </Button>
+
+
+        <!--# Button: EA_Button_ResizeIconFrame
+            This is a FullResize Button with the Icon Frame artwork.
+        -->
+        <Button name="EA_Button_ResizeIconFrame" inherits="EA_Button_Default" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="685" y="60" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <Normal def="EA_Button_ResizeIconFrameNormal" />
+                <NormalHighlit def="EA_Button_ResizeIconFrameHighlight" />
+                <Pressed def="EA_Button_ResizeIconFramePressed" />
+                <PressedHighlit def="EA_Button_ResizeIconFramePressed"  />
+                <Disabled def="EA_Button_ResizeIconFrameDisabled"  />
+            </ResizeImages>
+        </Button>
+
+        <!--# Button: EEA_Button_ResizeIconFrame
+            This is a FullResize Button with the Icon Frame artwork without a 'normal' state so it only shows the
+            fame on mouse over and pressed.
+        -->
+        <Button name="EA_Button_ResizeIconFrame_NoNormalImage" inherits="EA_Button_Default" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="685" y="60" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <NormalHighlit def="EA_Button_ResizeIconFrameHighlight" />
+                <Pressed def="EA_Button_ResizeIconFramePressed" />
+                <PressedHighlit def="EA_Button_ResizeIconFramePressed"  />
+            </ResizeImages>
+        </Button>
+
+        <FullResizeImage name="EA_Button_ResizeIconFrameNormal" texture="EA_TilableSquareFrame">
+            <Size>
+                <AbsPoint x="685" y="60" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="44" y="44" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="10" y="0" />
+                <TopRight x="54" y="0" />
+                <MiddleLeft x="0" y="10" />
+                <MiddleCenter x="10" y="10" />
+                <MiddleRight x="54" y="10" />
+                <BottomLeft x="0" y="54" />
+                <BottomCenter x="10" y="54" />
+                <BottomRight x="54" y="54" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <FullResizeImage name="EA_Button_ResizeIconFramePressed" texture="EA_TilableSquareFrame_Pressed">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="44" y="44" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="10" y="0" />
+                <TopRight x="54" y="0" />
+                <MiddleLeft x="0" y="10" />
+                <MiddleCenter x="10" y="10" />
+                <MiddleRight x="54" y="10" />
+                <BottomLeft x="0" y="54" />
+                <BottomCenter x="10" y="54" />
+                <BottomRight x="54" y="54" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <FullResizeImage name="EA_Button_ResizeIconFrameDisabled" texture="EA_TilableSquareFrame">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="44" y="44" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="10" y="0" />
+                <TopRight x="54" y="0" />
+                <MiddleLeft x="0" y="10" />
+                <MiddleCenter x="10" y="10" />
+                <MiddleRight x="54" y="10" />
+                <BottomLeft x="0" y="54" />
+                <BottomCenter x="10" y="54" />
+                <BottomRight x="54" y="54" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <FullResizeImage name="EA_Button_ResizeIconFrameHighlight" texture="EA_TilableSquareFrame_Highlight" frameonly="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="44" y="44" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="10" y="0" />
+                <TopRight x="54" y="0" />
+                <MiddleLeft x="0" y="10" />
+                <MiddleCenter x="10" y="10" />
+                <MiddleRight x="54" y="10" />
+                <BottomLeft x="0" y="54" />
+                <BottomCenter x="10" y="54" />
+                <BottomRight x="54" y="54" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <FullResizeImage name="EA_Button_ResizeIconFramePressed" texture="EA_TilableSquareFrame_Pressed">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="44" y="44" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="10" y="0" />
+                <TopRight x="54" y="0" />
+                <MiddleLeft x="0" y="10" />
+                <MiddleCenter x="10" y="10" />
+                <MiddleRight x="54" y="10" />
+                <BottomLeft x="0" y="54" />
+                <BottomCenter x="10" y="54" />
+                <BottomRight x="54" y="54" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!--# Button: EA_Button_DefaultTimerFrame
+            This is a Static Size Button with the Icon Frame artwork along with a few cooldown and label elements not
+            present in the EA_Button_DefaultIconFrame.
+            It does not contain a DynamicImage element for its disabled-icon frame, instead, the Icon child should switch
+            its texture at runtime between the enabled/disabled icon images.
+            This is 64x64.
+        -->
+        <Button name="EA_Button_DefaultTimerFrame" inherits="EA_Button_Default" font="font_clear_tiny" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <CooldownDisplay name="$parentCooldown" handleinput="false">
+                    <Size>
+                        <AbsPoint x="60" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent"/>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentTimer" handleinput="false" font="font_chat_text" maxchars="10" text="" textalign="center">
+                            <Size>
+                                <AbsPoint x="55" y="22" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="243" g="243" b="16" a="255" />
+                        </Label>
+                    </Windows>
+                </CooldownDisplay>
+                <Label name="$parentText" font="font_chat_text" maxchars="12" textalign="right" textAutoFitMinScale="0.5" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="45" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentCount" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="45" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+            <TexCoords>
+                <Normal texture="EA_SquareFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_SquareFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <Button name="EA_Button_DefaultTimerFrame_Small" inherits="EA_Button_DefaultTimerFrame" texturescale=".75">
+            <Size>
+                <AbsPoint x="48" y="48" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="46" y="46" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="1" y="1" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <FullResizeImage name="$parentCooldown" inherits="EA_FullResizeImage_TintableSolidBackground" layer="secondary" handleinput="false" drawchildrenfirst="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentTimer" handleinput="false" font="font_clear_tiny" maxchars="10" text="" textalign="center">
+                            <Size>
+                                <AbsPoint x="40" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="243" g="243" b="16" a="255" />
+                        </Label>
+                    </Windows>
+                </FullResizeImage>
+                <Label name="$parentText" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Button>
+
+    </Windows>
+</Interface>

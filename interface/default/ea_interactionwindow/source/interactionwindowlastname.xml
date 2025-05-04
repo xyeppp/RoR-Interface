@@ -1,0 +1,121 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionWindowLastName.lua" />
+    </Scripts>
+
+    <Windows>
+        <!--Healer Window-->
+        <Window name="EA_Window_InteractionLastName" layer="secondary" movable="false" inherits="EA_Window_Default"  savesettings="false">
+            <Size>
+                <AbsPoint x="370" y="240" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomleft" >
+                    <AbsPoint x="100" y="-650" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionLastName.Initialize" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionLastName.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionLastName.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionLastName.Hide" />
+                    </EventHandlers>
+                </Button>
+				
+				<!-- Key Input Label -->
+				<Label name="$parentKeyInputLabel" inherits="EA_Label_DefaultText" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+						<Anchor point="center" relativePoint="center" >
+							<AbsPoint x="0" y="-50" />
+						</Anchor>
+					</Anchors>
+				</Label>
+				
+				<!-- Key Input -->				
+				<EditBox name="$parentTextInput" font="font_chat_text" maxchars="12" scrolling="horz" handleinput="true" input="nospaces">
+					<Size>
+						<AbsPoint x="250" y="30" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="top" relativeTo="$parentKeyInputLabel">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnKeyEnter" function="" />
+					</EventHandlers>
+				</EditBox>
+				
+				<FullResizeImage name="$parentTextInputBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTextInput">							
+							<AbsPoint x="-5" y="-5" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTextInput">							
+							<AbsPoint x="5" y="5" />
+						</Anchor>
+					</Anchors>
+				</FullResizeImage>
+				
+				<Label name="$parentCostLabel" inherits="EA_Label_DefaultText" textalign="right" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="135" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTextInputBackground" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentCost" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCostLabel" >
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Button name="$parentAccept" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottomright" >
+							<AbsPoint x="-15" y="-20" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_InteractionLastName.OnAcceptButton" />
+					</EventHandlers>
+				</Button>
+				
+				<Button name="$parentCancel" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottomleft" >
+							<AbsPoint x="15" y="-20" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_InteractionLastName.OnCancelButton" />
+					</EventHandlers>
+				</Button>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
+

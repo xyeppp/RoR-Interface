@@ -1,0 +1,12 @@
+<zone iname="Howling Gorge">
+    <battlefieldObjective iname="" id="5160" iconSet="1" x="24912" y="35144">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5161" iconSet="1" x="31074" y="32595">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5162" iconSet="1" x="27282" y="30698">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5163" iconSet="1" x="23836" y="28464">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5164" iconSet="1" x="29211" y="25406">
+    </battlefieldObjective>
+</zone>

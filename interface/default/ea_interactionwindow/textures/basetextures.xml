@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_Interaction" file="Textures/EA_Interaction01_d5.dds">
+            <Slice id="Button-Center" left="313" top="940" width="53" height="42" />
+            <Slice id="Button-Center-Depressed" left="451" top="940" width="53" height="42" />
+            <Slice id="Button-Center-ROLLOVER" left="382" top="940" width="53" height="42" />
+            <Slice id="Button-Left" left="305" top="940" width="8" height="42" />
+            <Slice id="Button-Left026" left="374" top="940" width="8" height="42" />
+            <Slice id="Button-Left-Depressed" left="443" top="940" width="8" height="42" />
+            <Slice id="Button-Right" left="366" top="940" width="8" height="42" />
+            <Slice id="Button-Right-Depressed" left="504" top="940" width="8" height="42" />
+            <Slice id="Button-Right-ROLLOVER" left="435" top="940" width="8" height="42" />
+            <Slice id="CompleteQuest-Frame-Bottom" left="0" top="654" width="512" height="60" />
+            <Slice id="CompleteQuest-Frame-Center-Span" left="0" top="559" width="512" height="95" />
+            <Slice id="CompleteQuest-Frame-Top" left="0" top="507" width="512" height="52" />
+            <Slice id="CompleteQuest-Side-Pointer" left="292" top="205" width="146" height="95" />
+            <Slice id="Default-Frame-Bottom" left="0" top="145" width="512" height="60" />
+            <Slice id="Default-Frame-Center-Span" left="0" top="52" width="512" height="93" />
+            <Slice id="Default-Frame-Top" left="0" top="0" width="512" height="52" />
+            <Slice id="Default-Side-Pointer" left="0" top="205" width="146" height="95" />
+            <Slice id="Down-Arrow" left="215" top="935" width="9" height="12" />
+            <Slice id="Down-Arrow-ROLLOVER" left="215" top="947" width="9" height="12" />
+            <Slice id="id3-dots-divider" left="305" top="929" width="46" height="11" />
+            <Slice id="Important-Button-Center" left="313" top="982" width="53" height="42" />
+            <Slice id="Important-Button-Center-Depressed" left="451" top="982" width="53" height="42" />
+            <Slice id="Important-Button-Center-ROLLOVER" left="382" top="982" width="53" height="42" />
+            <Slice id="Important-Button-Left" left="305" top="982" width="8" height="42" />
+            <Slice id="Important-Button-Left-Depressed" left="443" top="982" width="8" height="42" />
+            <Slice id="Important-Button-Left-ROLLOVER" left="374" top="982" width="8" height="42" />
+            <Slice id="Important-Button-Right" left="366" top="982" width="8" height="42" />
+            <Slice id="Important-Button-Right-Depressed" left="504" top="982" width="8" height="42" />
+            <Slice id="Important-Button-Right-ROLLOVER" left="435" top="982" width="8" height="42" />
+            <Slice id="NewQuest-Frame-Bottom" left="0" top="447" width="512" height="60" />
+            <Slice id="NewQuest-Frame-Center-Span" left="0" top="352" width="512" height="95" />
+            <Slice id="NewQuest-Frame-Top" left="0" top="300" width="512" height="52" />
+            <Slice id="NewQuest-Side-Pointer" left="146" top="205" width="146" height="95" />
+            <Slice id="PublicQuest-Center-Span" left="0" top="766" width="512" height="95" />
+            <Slice id="PublicQuest-Frame-Bottom" left="0" top="861" width="512" height="60" />
+            <Slice id="PublicQuest-Frame-Top" left="0" top="714" width="512" height="52" />
+            <Slice id="PublicQuest-Side-Pointer" left="0" top="929" width="145" height="95" />
+            <Slice id="Scrollbar-Background-Bottom" left="145" top="1012" width="30" height="12" />
+            <Slice id="Scrollbar-Background-Center" left="145" top="939" width="30" height="73" />
+            <Slice id="Scrollbar-Background-Top" left="145" top="927" width="30" height="12" />
+            <Slice id="Scrollbar-Bottom" left="205" top="1017" width="30" height="6" />
+            <Slice id="Scrollbar-Bottom-Depressed" left="265" top="1018" width="30" height="6" />
+            <Slice id="Scrollbar-Bottom-ROLLOVER" left="235" top="1018" width="30" height="6" />
+            <Slice id="Scrollbar-Button" left="175" top="930" width="30" height="31" />
+            <Slice id="Scrollbar-Button-Depressed" left="175" top="992" width="30" height="31" />
+            <Slice id="Scrollbar-Button-ROLLOVER" left="175" top="961" width="30" height="31" />
+            <Slice id="Scrollbar-Center" left="205" top="965" width="30" height="52" />
+            <Slice id="Scrollbar-Center-Depressed" left="265" top="966" width="30" height="52" />
+            <Slice id="Scrollbar-Center-ROLLOVER" left="235" top="966" width="30" height="52" />
+            <Slice id="Scrollbar-Top" left="205" top="959" width="30" height="6" />
+            <Slice id="Scrollbar-Top-Depressed" left="265" top="960" width="30" height="6" />
+            <Slice id="Scrollbar-Top-ROLLOVER" left="235" top="960" width="30" height="6" />
+            <Slice id="Up-Arrow" left="206" top="935" width="9" height="12" />
+            <Slice id="Up-Arrow-ROLLOVER" left="206" top="947" width="9" height="12" />
+
+            <!-- The following slices overlap other slices and so cannot be created in Photoshop -->
+            <Slice id="Default" left="0" top="52" width="465" height="95" />
+            <Slice id="New Quest" left="0" top="352" width="465" height="95" />
+            <Slice id="Finished Quest" left="0" top="559" width="465" height="95" />
+            <Slice id="PQ" left="0" top="766" width="465" height="95" />
+        </Texture>
+        
+        <Texture name="EA_TravelMap_EvC_d1" file="Textures/EA_TravelMap_EvC_d1.dds" />
+        <Texture name="EA_TravelMap_Elves_d1" file="Textures/EA_TravelMap_Elves_d1.dds" />
+        <Texture name="EA_TravelMap_GvD_d1" file="Textures/EA_TravelMap_GvD_d1.dds" />
+        <Texture name="EA_TravelMap_TK_d1" file="Textures/EA_TravelMap_TK_d1.dds" />
+        
+        <Texture name="EA_BlacksmithBG" file="Textures/EA_BlacksmithBG_d1.dds" />
+    </Assets>
+</Interface>

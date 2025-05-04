@@ -1,0 +1,87 @@
+<zone iname="Dangerous Territory">
+    <warcamp iname="Conqueror's Descent" id="1" mapIcon="1054" x="1400" y="25600">
+        <race>HighElf</race>
+        <services>
+            <service>Renown Trainer</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Crimson Scar" id="2" mapIcon="1206" x="1600" y="23300">
+        <race>DarkElf</race>
+        <number>15</number>
+        <ranks realm="destruction" min="30" max="31" />
+        <services>
+            <service>Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Asuryan's Reach" id="3" mapIcon="1206" x="16700" y="50400">
+        <race>HighElf</race>
+        <number>22</number>
+        <ranks realm="destruction" min="40" max="40" />
+        <services>
+            <service>Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Cinderblade" id="4" mapIcon="1206" x="2650" y="54200">
+        <race>HighElf</race>
+        <number>20</number>
+        <ranks realm="destruction" min="38" max="38" />
+        <services>
+            <service>Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Drakeshadow" id="5" mapIcon="1206" x="46000" y="7250">
+        <race>DarkElf</race>
+        <number>16</number>
+        <ranks realm="destruction" min="32" max="33" />
+        <services>
+            <service>Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Drakestar's Lament" id="6" mapIcon="1206" x="48300" y="58900">
+        <race>HighElf</race>
+        <number>21</number>
+        <ranks realm="destruction" min="39" max="39" />
+        <services>
+            <service>Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Conqueror's Watch" id="7" mapIcon="1055" x="53000" y="45300">
+        <race>DarkElf</race>
+        <services>
+            <service>Renown Trainer</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+</zone>

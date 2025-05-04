@@ -1,0 +1,391 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/HeraldryEditor.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                       Main Window Definition                      -->
+    <!--*******************************************************************-->
+
+    <Window name="HeraldryEditor" inherits="EA_Window_Default" movable="true" layer="secondary">
+      <Size>
+        <AbsPoint x="482" y="533"/>
+      </Size>
+      <Anchors>
+        <Anchor point="bottom" relativePoint="bottomleft" relativeTo="GuildWindow">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="HeraldryEditor.Initialize" />
+        <EventHandler event="OnShutdown" function="HeraldryEditor.Shutdown" />
+        <EventHandler event="OnShown" function="HeraldryEditor.OnShown" />
+        <EventHandler event="OnHidden" function="HeraldryEditor.OnHidden" />
+        <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOver" />
+      </EventHandlers>
+      <Windows>
+
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnHidden" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Main Window Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" >
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" />
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOver" />
+          </EventHandlers>
+        </Window>
+
+        <!-- Herald Frame -->
+        <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TanBorder" handleinput="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="15" y="10"/>
+            </Anchor>
+            <Anchor point="bottom" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-10" y="-110"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Heraldry Standard Scene. This is the render that appears in the UI. Its defined in GuildHeraldryScene.cpp -->
+        <NifDisplay name="HeraldryStandardScene" nif="GuildHeraldryNif" layer="background" scale="1.00" ortho="false" fov="0.58" autoprops="false" rotateaxis="3">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentFrame">
+              <AbsPoint x="5" y="5"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFrame">
+              <AbsPoint x="-5" y="-5"/>
+            </Anchor>
+          </Anchors>
+          <Translation x="0.0" y="-140.0" z="80" />
+          <Rotation x="0.0" y="180.0" z="180.0" />
+        </NifDisplay>
+
+
+        <!-- Herald Description -->
+        <Label name="$parentDescriptionHeader" font="font_guild_MP_R_17" maxchars="64" textalign="leftcenter" wordwrap="true"  popable="false">
+          <Size>
+            <AbsPoint x="275" y="50" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFrame">
+              <AbsPoint x="0" y="4" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Show Best Options Header -->
+        <Label name="$parentShowBestOptionsHeader" font="font_guild_MP_R_17" maxchars="64" textalign="leftcenter" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="225" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Best Color Options -->
+        <ComboBox name="$parentBestOptionsComboBox" inherits="EA_ComboBox_DefaultResizableSmall" >
+          <Size>
+            <AbsPoint x="225" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShowBestOptionsHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnSelChanged" function="HeraldryEditor.OnSelChangedBestOptionsComboBox" />
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverBestOptionsComboBox" />
+          </EventHandlers>
+        </ComboBox>
+
+        <!-- Shape Header -->
+        <Label name="$parentShapeHeader" inherits="EA_Templates_GuildHeraldryChoiceHeader">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBestOptionsComboBoxSelectedButton">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverShapeHeader" />
+          </EventHandlers>
+        </Label>
+
+        <!-- Shape Left Arrow -->
+        <Button name="$parentShapeLeftArrow" inherits="EA_Button_Guild_Left_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentShapeHeader">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpShapeLeftArrow"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Shape Choice -->
+        <Label name="$parentShapeChoice" inherits="EA_Templates_GuildHeraldryChoice">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentShapeLeftArrow">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Shape Right Arrow -->
+        <Button name="$parentShapeRightArrow" inherits="EA_Button_Guild_Right_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentShapeChoice">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpShapeRightArrow"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Shape Color Header -->
+        <Label name="$parentShapeColorHeader" inherits="EA_Templates_GuildHeraldryChoiceHeader">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShapeHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseoverPrimaryColorHeader" />
+          </EventHandlers>
+        </Label>
+
+        <DynamicImage name="$parentCustomColorFrame1" slice="Round-Swatch-Selection-Ring" texture="EA_HUD_01" popable="false" sticky="false" >
+          <Size>
+            <AbsPoint x="38" y="38" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentCustomColor1">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+        <!-- Shape Color Circle -->
+        <Button name="$parentCustomColor1" inherits="EA_Templates_Color_Picker_Button" handleinput="true" id="1">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentShapeColorHeader">
+              <AbsPoint x="40" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseoverColorBox" />
+            <EventHandler event="OnMouseOverEnd" function="HeraldryEditor.OnMouseoverEndColorBox" />
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpColorBox" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Pattern Header -->
+        <Label name="$parentPatternHeader" inherits="EA_Templates_GuildHeraldryChoiceHeader">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShapeColorHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverPatternHeader" />
+          </EventHandlers>
+        </Label>
+
+        <!-- Pattern Left Arrow -->
+        <Button name="$parentPatternLeftArrow" inherits="EA_Button_Guild_Left_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentPatternHeader">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpPatternLeftArrow"/>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverPatternHeader" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Pattern Choice -->
+        <Label name="$parentPatternChoice" inherits="EA_Templates_GuildHeraldryChoice">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentPatternLeftArrow">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Pattern Right Arrow -->
+        <Button name="$parentPatternRightArrow" inherits="EA_Button_Guild_Right_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentPatternChoice">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpPatternRightArrow"/>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverPatternHeader" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Pattern Color Header -->
+        <Label name="$parentPatternColorHeader" inherits="EA_Templates_GuildHeraldryChoiceHeader">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPatternHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseoverSecondaryColorLabel" />
+          </EventHandlers>
+        </Label>
+
+        <DynamicImage name="$parentCustomColorFrame2" slice="Round-Swatch-Selection-Ring" texture="EA_HUD_01" popable="false" sticky="false" >
+          <Size>
+            <AbsPoint x="38" y="38" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentCustomColor2">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+        <!-- Pattern Color Circle -->
+        <Button name="$parentCustomColor2" inherits="EA_Templates_Color_Picker_Button" id="2">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentPatternColorHeader">
+              <AbsPoint x="40" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseoverColorBox" />
+            <EventHandler event="OnMouseOverEnd" function="HeraldryEditor.OnMouseoverEndColorBox" />
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpColorBox" />
+          </EventHandlers>
+        </Button>
+
+        <!--***************-->
+        <!--    Emblems    -->
+        <!--***************-->
+
+        <!-- Emblem Header -->
+        <Label name="$parentEmblemHeader" inherits="EA_Templates_GuildHeraldryChoiceHeader">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPatternColorHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverEmblem" />
+          </EventHandlers>
+        </Label>
+
+        <!-- Emblem Left Arrow -->
+        <Button name="$parentEmblemLeftArrow" inherits="EA_Button_Guild_Left_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentEmblemHeader">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpEmblemLeftArrow"/>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverEmblem" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Emblem Choice -->
+        <Label name="$parentEmblemChoice" inherits="EA_Templates_GuildHeraldryChoice">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentEmblemLeftArrow">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Emblem Right Arrow -->
+        <Button name="$parentEmblemRightArrow" inherits="EA_Button_Guild_Right_Arrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentEmblemChoice">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpEmblemRightArrow"/>
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseOverEmblem" />
+          </EventHandlers>
+        </Button>
+
+        <!--************-->
+        <!-- Button Bar -->
+        <!--************-->
+
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+          <Size>
+            <AbsPoint x="0" y="60" />
+          </Size>
+        </Window>
+        
+        <!-- Button Bar Background
+        <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="9" y="-60"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-9" y="-8"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+ -->
+        <Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable" >
+          <Size>
+            <AbsPoint x="110" y="39"/>
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="right" relativeTo="$parentButtonBackground">
+              <AbsPoint x="-25" y="5"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpSaveButton" />
+            <EventHandler event="OnMouseOver" function="HeraldryEditor.OnMouseoverHeraldrySaveButton" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+          <Size>
+            <AbsPoint x="110" y="39"/>
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="left" relativeTo="$parentButtonBackground">
+              <AbsPoint x="25" y="5"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="HeraldryEditor.OnLButtonUpCancelButton" />
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+      <!-- End of Whole Window Definition Parts -->
+    </Window>
+    <!-- End of Whole Window Definition  -->
+
+  </Windows>
+  <!-- End of Heraldry Editor -->
+</Interface>

@@ -1,0 +1,98 @@
+ <Interface xmlns:xsi="http://www.w3.org/1501/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Windows>
+       
+        
+        <!-- Options Window -->
+        <Window name="LayoutEditorOptions" inherits="EA_Window_Default" movable="true" layer="popup" >
+            <Size>
+                <AbsPoint x="500" y="300" />
+            </Size>
+            <Anchors>
+                <Anchor point="left" relativePoint="left" />
+            </Anchors>
+            <Windows>            
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />    
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />       
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.OnOptionsCancelButton" />
+                    </EventHandlers>
+                </Button>                                                 
+                        
+            
+                <!--Buttons-->                        
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" >  
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+                        
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="" >
+                            <AbsPoint x="50" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.OnOptionsOkayButton" />
+                    </EventHandlers>
+                </Button>           
+                                        
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                            <AbsPoint x="-50" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.OnOptionsCancelButton" />
+                    </EventHandlers>
+                </Button> 
+                
+                
+                <!-- Snap Windows -->
+                <Label name="$parentSnapWindowSectionLabel" inherits="EA_Settings_SectionTitle" >
+                    <Size>
+                        <AbsPoint x="350" y="32" />
+                    </Size>                   
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                
+                <Window name="$parentSnapWindowsCheck" inherits="EA_LabelCheckButtonWide">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSnapWindowSectionLabel" >
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentSnapWindowsDistanceLabel" inherits="EA_Settings_ItemTitle" >
+                    <Size>
+                        <AbsPoint x="250" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSnapWindowsCheck" >
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentSnapWindowsDistanceCombo" inherits="EA_ComboBox_DefaultResizableSmall" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSnapWindowsDistanceLabel">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                    
+                
+            </Windows>
+         </Window>
+        
+        
+   </Windows>
+</Interface>

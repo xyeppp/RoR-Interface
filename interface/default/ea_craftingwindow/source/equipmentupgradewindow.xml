@@ -1,0 +1,218 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EquipmentUpgradeWindow.lua" />
+    </Scripts>
+
+    <Windows>
+        <Window name="EquipmentUpgradeWindow" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="441" y="445" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomleft" >
+                    <AbsPoint x="100" y="-650" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EquipmentUpgradeWindow.Initialize" />
+                <EventHandler event="OnShown"       function="EquipmentUpgradeWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                
+                <!-- Basic window elements -->
+                <DynamicImage name="$parentBackgroundImage" textureScale="1.5" handleinput="false" layer="background" sticky="false" texture="EA_BlacksmithBG">
+                    <Size>
+                        <AbsPoint x="434" y="403" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundImage">
+                            <AbsPoint x="7" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_BlacksmithImage"/>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EquipmentUpgradeWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Labels, Images, Other core elements -->
+                <Label name="$parentLevelLabel" font="font_default_text_large" textalign="rightcenter" handleinput="false">
+                    <Size>
+                        <AbsPoint x="130" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="right" relativeTo="$parentBackgroundImage">
+                            <AbsPoint x="126" y="85" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentLevelText" font="font_default_text_large" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="56" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLevelLabel">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="226" g="216" b="45" />
+                </Label>
+                
+                <Label name="$parentSuccessLabel" font="font_default_text_large" textalign="rightcenter" handleinput="false">
+                    <Size>
+                        <AbsPoint x="130" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="right" relativeTo="$parentBackgroundImage">
+                            <AbsPoint x="130" y="220" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentSuccessText" font="font_default_text_large" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="68" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSuccessLabel">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="44" g="206" b="44" />
+                </Label>
+                
+                <Button name="$parentMainItem" texturescale="1.46875" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" id="1">
+                    <Size>
+                        <AbsPoint x="94" y="94" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImage">
+                            <AbsPoint x="70" y="106" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentIconBase" textureScale="1.46875" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="94" y="94" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                    <TexCoords>
+                        <Normal texture="EA_TilableSquareFrame" x="0" y="0" />
+                        <NormalHighlit texture="EA_TilableSquareFrame_Highlight" x="0" y="0" />
+                        <Pressed texture="EA_TilableSquareFrame_Pressed" x="0" y="0" />
+                        <Disabled texture="EA_TilableSquareFrame" x="0" y="0" />
+                    </TexCoords>
+                    <TextOffset x="5" />
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EquipmentUpgradeWindow.SlotLButtonUp" />
+                        <EventHandler event="OnRButtonUp" function="EquipmentUpgradeWindow.SlotRButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EquipmentUpgradeWindow.SlotMouseOver" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentRefinementsLabel" font="font_default_text_large" textalign="bottom" handleinput="false">
+                    <Size>
+                        <AbsPoint x="200" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentRefinementItem">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentRefinementItem" texturescale="1.171" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" id="2">
+                    <Size>
+                        <AbsPoint x="75" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImage">
+                            <AbsPoint x="295" y="188" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentIconBase" textureScale="1.171" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="75" y="75" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                    <TexCoords>
+                        <Normal texture="EA_TilableSquareFrame" x="0" y="0" />
+                        <NormalHighlit texture="EA_TilableSquareFrame_Highlight" x="0" y="0" />
+                        <Pressed texture="EA_TilableSquareFrame_Pressed" x="0" y="0" />
+                        <Disabled texture="EA_TilableSquareFrame" x="0" y="0" />
+                    </TexCoords>
+                    <TextOffset x="5" />
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EquipmentUpgradeWindow.SlotLButtonUp" />
+                        <EventHandler event="OnRButtonUp" function="EquipmentUpgradeWindow.SlotRButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EquipmentUpgradeWindow.SlotMouseOver" />
+                    </EventHandlers>
+                </Button>
+    
+                <Window name="$parentMoney" inherits="LargeTextMoneyFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Buttons -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+                
+                <Button name="$parentUpgradeButton" inherits="EA_Button_DefaultResizeable" >
+                    <Size>
+                        <AbsPoint x="160" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="15" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EquipmentUpgradeWindow.Upgrade" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentDoneButton" inherits="EA_Button_DefaultResizeable" >
+                    <Size>
+                        <AbsPoint x="160" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-15" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EquipmentUpgradeWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
+

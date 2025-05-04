@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="TitleWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="TitleWindow" layer="popup" movable="false" handleinput="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" />
+                <Anchor point="bottomright" relativePoint="bottomright" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="TitleWindow.Initialize" />
+                <EventHandler event="OnUpdate"     function="TitleWindow.Update" />
+            </EventHandlers>
+            <Windows>
+                
+                <!-- Image for Videos -->
+                <DynamicImage name="$parentBackground" layer="background" texture="title_screen_video">
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft"/>
+				        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+					<TexCoords x="0" y="0" />
+				</DynamicImage>
+
+
+                <!-- Initial Loading Screen -->
+                <Window name="$parentLoadingScreen" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentMythicLogo" layer="secondary" handleinput="false" texture="EA_Texture_MythicLogo" >
+                            <Size>
+                                <AbsPoint x="256" y="205" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                                    <AbsPoint x="-30" y="-30" />
+                                </Anchor>
+                            </Anchors>
+                            <TexDims x="256" y="205" />
+                        </DynamicImage>
+                       
+                        <DynamicImage name="$parentESRBLogo" layer="secondary" handleinput="false" texture="EA_Texture_ESRBLogo" >
+                            <Size>
+                                <AbsPoint x="256" y="64" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                                    <AbsPoint x="30" y="-30" />
+                                </Anchor>
+                            </Anchors>
+                            <TexDims x="256" y="64" />
+                        </DynamicImage>
+
+                        <!-- The GOA logo is no longer shown. However, the image is being kept around so the ESRB Logo can be hidden if the GOA logo exists (meaning the player is in Europe.) -->
+                        <DynamicImage name="$parentGOALogo" layer="secondary" handleinput="false" texture="EA_Texture_GOALogo" >
+                            <Size>
+                                <AbsPoint x="256" y="64" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                                    <AbsPoint x="30" y="-40" />
+                                </Anchor>
+                            </Anchors>
+                            <TexDims x="256" y="64" />
+                        </DynamicImage>
+                        
+
+                        <!-- Legal Text -->
+                        <Label name="$parentLegalText" layer="secondary" handleinput="false" font="font_chat_text" maxchars="2048" autoresize="true" textalign="center" wordwrap="true" >
+                            <Size>
+                                <AbsPoint x="900" y="0" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="" >
+                                    <AbsPoint x="0" y="-30" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="225" g="196" b="99" />
+                        </Label>
+
+                        <!-- Game Rating Text -->
+                        <Label name="$parentGameRatingText" layer="secondary" handleinput="false" font="font_title_window_game_rating_text" maxchars="2048" autoresize="true" textalign="left" wordwrap="true" >
+                            <Size>
+                                <AbsPoint x="900" y="0" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="" >
+                                    <AbsPoint x="30" y="-120" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="225" g="255" b="255" />
+                        </Label>
+
+                        <!-- Game Rating Icon -->
+                        <DynamicImage name="$parentGameRatingIcon" layer="secondary" handleinput="false" texture="EA_Texture_GameRatingIcon" >
+                            <Size>
+                                <AbsPoint x="512" y="128" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="10" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <TexDims x="512" y="128" />
+                        </DynamicImage>
+
+                    </Windows>
+                    
+                </Window>
+
+                <!-- Loading Text -->
+                <Label name="$parentLoadingText" layer="secondary" handleinput="false" font="font_heading_huge" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="1200" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+                
+            </Windows>            
+
+        </Window>
+    </Windows>
+</Interface>

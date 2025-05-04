@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+	<Scripts>
+		<Script file="Source/LoadingScreen.lua" />
+		<Script file="Source/StandardLoadingScreen.lua" />
+		<Script file="Source/ScenarioEnterLoadingScreen.lua" />
+		<Script file="Source/ScenarioExitLoadingScreen.lua" />
+		<Script file="Source/NoDataLoadingScreen.lua" />
+		<Script file="Source/PatchNotesLoadingScreen.lua" />
+	</Scripts>
+	
+	<Windows>	
+	
+		<Window name="EA_Window_LoadingScreen" layer="overlay" savesettings="false" popable="false" > 
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" />
+				<Anchor point="bottomright" relativePoint="bottomright" />
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_LoadingScreen.Initialize" />
+				<EventHandler event="OnShutdown" function="EA_Window_LoadingScreen.Shutdown" />
+				<EventHandler event="OnUpdate" function="EA_Window_LoadingScreen.OnUpdate" />
+				<EventHandler event="OnLButtonDown" function="EA_Window_LoadingScreen.OnLButtonDown" />
+			</EventHandlers>
+		    <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" > 
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+                
+                <Window name="$parentStandard" inherits="EA_Window_StandardLoadingScreenDef" />
+                <Window name="$parentScenarioEnter" inherits="EA_Window_ScenarioEnterLoadingScreenDef" />
+                <Window name="$parentScenarioExit" inherits="EA_Window_ScenarioExitLoadingScreenDef" />
+                <Window name="$parentNoData" inherits="EA_Window_NoDataLoadingScreenDef" />
+                <Window name="$parentPatchNotes" inherits="EA_Window_PatchNotesLoadingScreenDef" />
+
+            </Windows>
+		</Window>	
+		
+		
+	</Windows>
+</Interface>

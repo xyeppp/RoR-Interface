@@ -1,0 +1,152 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <Button name="EA_Template_InteractionOptionLine" inherits="EA_Button_InteractionConversation" autoresize="false">
+            <Size>
+                <AbsPoint x="412" y="42" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionBase.OptionLButtonUp" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Template_InteractionQuestLine" inherits="EA_Button_InteractionConversation" drawchildrenfirst="false" autoresize="false">
+            <Size>
+                <AbsPoint x="412" y="42" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionBase.QuestLButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+            <TextOffset x="45" y="0" />
+        </Button>
+
+        <!-- The horizontal images for the resizeable button -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonConversation" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Button-Left" />
+                <Middle id="Button-Center" />
+                <Right  id="Button-Right" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonConversationHighlit" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Button-Left026" />
+                <Middle id="Button-Center-ROLLOVER" />
+                <Right  id="Button-Right-ROLLOVER" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonConversationPressed" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Button-Left-Depressed" />
+                <Middle id="Button-Center-Depressed" />
+                <Right  id="Button-Right-Depressed" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonConversationDisabled" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Button-Left" />
+                <Middle id="Button-Center" />
+                <Right  id="Button-Right" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <Button name="EA_Button_InteractionConversation" inherits="EA_Button_DefaultResizeable"
+                backgroundtexture="EA_Interaction" highlighttexture="EA_Interaction" layer="default"
+                drawchildrenfirst="true" font="font_journal_text">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <ResizeImages>
+                <Normal         def="EA_HorizontalResizeImage_ResizeableButtonConversation" />
+                <NormalHighlit  def="EA_HorizontalResizeImage_ResizeableButtonConversationHighlit" />
+                <Pressed        def="EA_HorizontalResizeImage_ResizeableButtonConversationPressed"  />
+                <Disabled       def="EA_HorizontalResizeImage_ResizeableButtonConversationDisabled"  />
+            </ResizeImages>
+            <TextColors>
+                <Normal         r="0"   g="0"   b="0"   a="255" />
+                <NormalHighlit  r="0"   g="0"   b="0"   a="255" />
+                <Pressed        r="0"   g="0"   b="0"   a="255" />
+                <PressedHighlit r="0"   g="0"   b="0"   a="255" />
+                <Disabled       r="100" g="100" b="100" a="255" />
+            </TextColors>
+            <TextOffset x="0" y="0" />
+        </Button>
+
+        <!-- The horizontal images for the 'important' button -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableImportantButtonConversation" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Important-Button-Left" />
+                <Middle id="Important-Button-Center" />
+                <Right  id="Important-Button-Right" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableImportantButtonConversationHighlit" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Important-Button-Left-ROLLOVER" />
+                <Middle id="Important-Button-Center-ROLLOVER" />
+                <Right  id="Important-Button-Right-ROLLOVER" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableImportantButtonConversationPressed" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="130" y="42" />
+            </Size>
+            <Sizes left="8" middle="53" right="8" />
+            <TexSlices>
+                <Left   id="Important-Button-Left-Depressed" />
+                <Middle id="Important-Button-Center-Depressed" />
+                <Right  id="Important-Button-Right-Depressed" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <Button name="EA_Button_InteractionConversationImportant" inherits="EA_Button_InteractionConversation">
+            <ResizeImages>
+                <Normal         def="EA_HorizontalResizeImage_ResizeableImportantButtonConversation" />
+                <NormalHighlit  def="EA_HorizontalResizeImage_ResizeableImportantButtonConversationHighlit" />
+                <Pressed        def="EA_HorizontalResizeImage_ResizeableImportantButtonConversationPressed"  />
+            </ResizeImages>
+        </Button>
+
+    </Windows>
+</Interface>

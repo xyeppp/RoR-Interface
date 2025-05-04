@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>             
+             
+       <Window name="LayoutWindowRow">
+			<Size>
+				<AbsPoint x="510" y="34"/>
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="LayoutEditor.OnClickWindowBrowserRow" />
+			</EventHandlers>
+			<Windows>								
+				<FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Size>
+						<AbsPoint x="510" y="35"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FullResizeImage>				
+				<Label name="$parentName" maxchars="80" font="font_chat_text" >
+					<Size>
+						<AbsPoint x="370" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="">
+							<AbsPoint x="5" y="6"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				 <Button name="$parentLocked" inherits="EA_Button_DefaultToggleCircle">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentHidden">
+                            <AbsPoint x="-45" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="LayoutEditor.OnToggleLocked" />
+			        </EventHandlers>
+                </Button>
+                <Button name="$parentHidden" inherits="EA_Button_DefaultToggleCircle">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="-30" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="LayoutEditor.OnToggleHidden" />
+			        </EventHandlers>
+                </Button>
+			</Windows>
+		</Window>
+		
+		<Label name="WindowDetailsLabelDef" font="font_default_text" autoresize="true" textalign="left" handleinput="false" wordwrap="true" />
+        
+        <Window name="WindowDetailsSectionDef" >
+             <Size>
+                <AbsPoint x="500" y="20" />
+             </Size>
+             <Windows>
+                <Label name="$parentLabel" inherits="WindowDetailsLabelDef" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <Label name="$parentText" inherits="WindowDetailsLabelDef" >
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLabel">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>  
+            </Windows>      
+        </Window>
+
+        <Button name="LayoutEditorWindowBrowserSortButton" inherits="EA_Button_ListSort" >
+           <Size>
+                <AbsPoint x="245" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="LayoutEditor.OnClickWindowBrowserListSortButton" />
+                <EventHandler event="OnMouseOver" function="LayoutEditor.OnMouseOverWindowBrowserListSortButton" />
+            </EventHandlers>
+        </Button>
+
+		
+        <!-- Ui Mod Window -->
+        <Window name="LayoutEditorWindowBrowserTemplate" movable="true" layer="popup" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="560" y="600" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />    
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />  
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.ToggleWindowBrowser" />
+                    </EventHandlers>
+                </Button>      
+                                         
+        
+                                
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="LayoutEditorWindowBrowserSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="340" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton2" inherits="LayoutEditorWindowBrowserSortButton" id="2">
+                    <Size>
+                        <AbsPoint x="90" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton3" inherits="LayoutEditorWindowBrowserSortButton" id="3">
+                    <Size>
+                        <AbsPoint x="110" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentSortUpArrow" inherits="EA_ListSortUpArrow" />
+                <DynamicImage name="$parentSortDownArrow" inherits="EA_ListSortDownArrow" />
+               
+                
+                
+               <ListBox name="$parentWindowsList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="LayoutWindowRow" visiblerows="10" rowspacing="2">
+					<Size>
+						<AbsPoint x="535" y="358" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortButton1">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="LayoutEditor.windowBrowserDataList" populationfunction="LayoutEditor.UpdateWindowBrowserRows" />
+				</ListBox>		
+                              
+                <!-- Buttons Background  -->  
+                
+                <!--Buttons-->                        
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" >
+                    <Size>
+                        <AbsPoint x="0" y="130" />
+                    </Size>
+                </Window>
+                
+                <!-- Buttons -->
+                <!--
+                <Button name="$parentShowAllButton" inherits="LayoutEditorControlButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentHideAllButton">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.ShowAllWindows" />
+                        <EventHandler event="OnMouseOver" function="LayoutEditor.OnMouseOverShowAllWindows" />
+                    </EventHandlers>
+                </Button>                        
+                
+                <Button name="$parentHideAllButton" inherits="LayoutEditorControlButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="20" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.HideAllWindows" />
+                        <EventHandler event="OnMouseOver" function="LayoutEditor.OnMouseOverHideAllWindows" />
+                    </EventHandlers>
+                </Button> 
+                -->
+                <Button name="$parentLockAllButton" inherits="LayoutEditorControlButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentUnlockAllButton">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.LockAllWindows" />
+                        <EventHandler event="OnMouseOver" function="LayoutEditor.OnMouseOverLockAllWindows" />
+                    </EventHandlers>
+                </Button>                        
+                
+                <Button name="$parentUnlockAllButton" inherits="LayoutEditorControlButton" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-20" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LayoutEditor.UnlockAllWindows" />
+                        <EventHandler event="OnMouseOver" function="LayoutEditor.OnMouseOverUnlockAllWindows" />
+                    </EventHandlers>
+                </Button> 
+                
+          
+            </Windows>
+        </Window>
+        
+        
+    </Windows>
+</Interface>

@@ -1,0 +1,302 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/GuildWindow.lua"/>
+    </Scripts>
+    <Windows>
+
+        <!--*******************************************************************-->
+        <!--                       Main Window Definition                      -->
+        <!--*******************************************************************-->
+
+        <Window name="GuildWindow" inherits="EA_Window_Default" movable="true" layer="default" savesettings="false">
+            <Size>
+                <AbsPoint x="918" y="760"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="GuildWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="GuildWindow.OnShutdown" />
+                <EventHandler event="OnShown"       function="GuildWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="GuildWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="GuildWindow.OnLButtonUpClose" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_GuildImage"/>
+
+                <!-- Guild XP Bar -->
+                <Window name="GuildXPBarWindow" inherits="EA_Window_HUDGuildXPBar" movable="false" layer="default" popable="false">
+                    <Size>
+                        <AbsPoint x="0" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="2" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="-5" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="GuildWindow.OnMouseOverXPBar" />
+                    </EventHandlers>
+                </Window>
+
+                <!-- Level Background -->
+                <DynamicImage name="GuildXPRankBackground" inherits="EA_DynamicImage_RankBackground" handleinput="false" popable="false" layer="default">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="center" relativeTo="GuildXPBarWindow">
+                            <AbsPoint x="3" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Level Text -->
+                <Label name="GuildXPRankText" font="font_guild_MP_R_17" maxchars="3" textalign="center" autoresize="false" popable="false" layer="overlay">
+                    <Size>
+                        <AbsPoint x="31" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="GuildXPRankBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="GuildWindow.OnMouseOverXPBar" />
+                    </EventHandlers>
+                </Label>
+
+
+                <!-- TABS Begin -->
+                <Window name="$parentTab" >
+                    <Size>
+                        <AbsPoint x="0" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>                    
+
+                    <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill">
+                        <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                        </Anchors>
+                    </FullResizeImage>
+
+                    <Windows>
+                        <Window name="$parentTabSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" handleinput="true" layer="popup">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo ="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentProfile">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Button name="$parentProfile" inherits="EA_Templates_GuildWindowTabButton" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentCalendar" inherits="EA_Templates_GuildWindowTabButton" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentProfile"/>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentRoster" inherits="EA_Templates_GuildWindowTabButton" id="3">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentCalendar"/>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentAlliance" inherits="EA_Templates_GuildWindowTabButton" id="4">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentRoster"/>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentRewards" inherits="EA_Templates_GuildWindowTabButton" id="5">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentAlliance"/>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentAdmin" inherits="EA_Templates_GuildWindowTabButton" id="6">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentRewards"/>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentRecruit" inherits="EA_Templates_GuildWindowTabButton" id="7">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentAdmin"/>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentTabSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentRecruit">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                    </Windows>
+                </Window>
+                <!-- TABS End -->
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                           <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!--*****************************-->
+                <!--     Guild Window Socket     -->
+                <!--*****************************-->
+
+                <Window name="GuildWindowSocket" movable="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTab">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                    </Windows>
+                </Window>
+
+                <Window name ="GWProfile"  inherits ="GuildWindowTabProfileSocket"/>
+                <Window name ="GWCalendar" inherits ="GuildWindowTabCalendarSocket"/>
+                <Window name ="GWRoster"   inherits ="GuildWindowTabRosterSocket"/>
+                <Window name ="GWAlliance" inherits ="GuildWindowTabAllianceSocket"/>
+                <Window name ="GWRewards"  inherits ="GuildWindowTabRewardsSocket"/>
+                <Window name ="GWAdmin"    inherits ="GuildWindowTabAdminSocket"/>
+                <Window name ="GWRecruit"  inherits ="GuildWindowTabRecruitSocket"/>
+
+            </Windows>
+            <!-- End of Windows for "GuildWindow"-->
+        </Window>
+        <!-- End of "GuildWindow" -->
+
+        <!-- Transfer Guild Confirmation Window -->
+        <Window name="TransferGuildConfirmationWindow" layer="background" movable="false" savesettings="false">
+          <Size>
+            <AbsPoint x="700" y="475" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnKeyEscape" function="GuildWindow.HideTransferGuildConfirmationDialog"/>
+            <EventHandler event="OnKeyEnter" function="GuildWindow.HideTransferGuildConfirmationDialog"/>
+            <EventHandler event="OnLButtonUp" function="GuildWindow.GiveTranferGuildDialogEditBoxFocus"/>
+            <EventHandler event="OnLButtonDown" function="GuildWindow.GiveTranferGuildDialogEditBoxFocus"/>
+            <EventHandler event="OnMouseOver" function="GuildWindow.OnMouseOverTransferGuildConfirmationDialog" />
+            <EventHandler event="OnMouseOverEnd" function="GuildWindow.OnMouseOverTransferGuildConfirmationDialog" />
+          </EventHandlers>
+          <Windows>
+            <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" layer="background" alpha="0.5">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+              </Anchors>
+              <TintColor r="0" g="0" b="0" />
+            </FullResizeImage>
+            <Window name="$parentBackgroundFrame" inherits="EA_Window_DefaultFrame" handleinput="false">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <Label name="$parentLabelDialog" font="font_default_text_large" maxchars="800" textalign="leftcenter" wordwrap="true" autoresize="false" handleinput="false" autoresizewidth="false" >
+                <Size>
+                  <AbsPoint x="675" y="325" />
+                </Size>
+                <Anchors>
+                  <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                    <AbsPoint x="0" y="10" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+            <EditBox name="$parentEdit" inherits="EA_EditBox_NoFrame" taborder="1" maxchars="3" scrolling="horz" input="text" layer="popup" caserestriction="upper">
+                <Size>
+                  <AbsPoint x="70" y="30" />
+                </Size>
+                <Anchors>
+                  <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                    <AbsPoint x="0" y="-50" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindow.OnMouseOverTransferGuildConfirmationDialog" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindow.OnMouseOverTransferGuildConfirmationDialog" />
+                  <EventHandler event="OnTextChanged"  function="GuildWindow.OnTextChangedTransferGuildConfirmationDialog" />
+                </EventHandlers>
+                <TextOffset x="10" y="4" />
+              </EditBox>
+            <Button name="$parentConfirmTransferButton" inherits="TransFerGuildConfirmationButtonTemplate" layer="popup" handleinput="true">
+                <TextColors>
+                  <Disabled r="75"  g="75"  b="75" a="255"/>
+                </TextColors>
+                <Anchors>
+                  <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                    <AbsPoint x="25" y="-25" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="GuildWindow.ConfirmTransferGuild"/>
+                </EventHandlers>
+              </Button>
+            <Button name="$parentCancel" inherits="TransFerGuildConfirmationButtonTemplate" handleinput="true" layer="popup">
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="-25" y="-25" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindow.HideTransferGuildConfirmationDialog"/>
+              </EventHandlers>
+            </Button>
+          </Windows>
+        </Window>
+    </Windows>
+</Interface>

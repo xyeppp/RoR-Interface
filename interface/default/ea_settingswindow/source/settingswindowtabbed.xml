@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/SettingsWindowTabbed.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Settings Window -->
+        <Window name="SettingsWindowTabbed" movable="true" savesettings="false" layer="secondary">
+            <Size>
+                <AbsPoint x="900" y="800" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="SettingsWindowTabbed.Initialize" />
+                <EventHandler event="OnKeyEnter" function="SettingsWindowTabbed.Cancel" />
+                <EventHandler event="OnShown" function="SettingsWindowTabbed.OnShow" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                
+                <DynamicImage name="$parentWindowImage" inherits="EA_Default_SettingsImage" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Buttons -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+                
+
+                
+                <!-- Tabs  -->
+                <Window name="$parentTabButtons">
+                    <Size>
+                        <AbsPoint x="625" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar"/>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar"/>
+                    </Anchors>
+
+                    <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill">
+                        <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                        </Anchors>
+                    </FullResizeImage>
+                    <Windows>
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="background" popable="false">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentGeneral">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Button name="$parentGeneral" inherits="EA_Templates_SettingsWindowTabButton" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentVideo" inherits="EA_Templates_SettingsWindowTabButton" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentGeneral">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentSound" inherits="EA_Templates_SettingsWindowTabButton" id="3">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentVideo">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+                        <Button name="$parentChat" inherits="EA_Templates_SettingsWindowTabButton" id="4">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentSound">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+                        <Button name="$parentTargetting" inherits="EA_Templates_SettingsWindowTabButton" id="5">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentChat">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+                        <Button name="$parentInterface" inherits="EA_Templates_SettingsWindowTabButton" id="6">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentTargetting">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+
+                        <Button name="$parentServer" inherits="EA_Templates_SettingsWindowTabButton" id="7">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentInterface">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+
+		                <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+		                  <Anchors>
+		                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentServer">
+		                      <AbsPoint x="0" y="-6" />
+		                    </Anchor>
+		                    <Anchor point="bottomright" relativePoint="bottomright" >
+		                      <AbsPoint x="0" y="-6" />
+		                    </Anchor>
+		                  </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+                <!-- Tabs End -->
+
+
+                <Window name="SettingsWindowTabbedSocket">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabButtons" >
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="-5" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    
+                </Window>
+                <Window name ="SWTabGeneral" inherits ="SettingsWindowTabGeneral"/>
+                <Window name ="SWTabVideo" inherits ="SettingsWindowTabVideo"/>
+                <Window name ="SWTabSound" inherits ="SettingsWindowTabSound"/>
+                <Window name ="SWTabChat" inherits ="SettingsWindowTabChat"/>
+                <Window name ="SWTabTargetting" inherits ="SettingsWindowTabTargetting"/>
+                <Window name ="SWTabInterface" inherits ="SettingsWindowTabInterface"/>  
+                <Window name ="SWTabServer" inherits ="SettingsWindowTabServer"/>  				
+                
+                
+                <Button name="$parentOkayButton" inherits="SettingsWindowTabbedButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="SettingsWindowTabbed">
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnOkayButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentApplyButton" inherits="SettingsWindowTabbedButton">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOkayButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnApplyButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentResetButton" inherits="SettingsWindowTabbedButton">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentApplyButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnResetButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="SettingsWindowTabbedButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentResetButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabbed.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+                
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

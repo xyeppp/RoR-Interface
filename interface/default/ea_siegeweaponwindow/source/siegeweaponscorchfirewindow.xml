@@ -1,0 +1,201 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponScorchFireWindow.lua" />
+	</Scripts>
+	<Windows>
+        
+        <Window name="PowerMeterWindow" handleinput="false" >
+            <Size>
+                <AbsPoint x="250" y="243" />
+            </Size>
+            <Windows>            
+                 <Label name="$parentTitle" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="246" y="30" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="top" relativePoint="top" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			         <Color r="235" g="235" b="235" />
+                </Label>                
+                <DynamicImage name="$parentBackgroundImage" texture="EA_Siege01" slice="PowerRangeBG" layer="background" >
+                    <Size>
+                        <AbsPoint x="246" y="243" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+					        <AbsPoint x="0" y="10" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="246" y="243" />
+                </DynamicImage>            
+                <DynamicImage name="$parentCurrentForceBar" texture="EA_Siege01" slice="PowerBar" >
+                    <Size>
+                        <AbsPoint  x="247" y="7" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentBackgroundImage">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="247" y="7" />
+                </DynamicImage>                
+                <DynamicImage name="$parentGroundTargetImage" texture="EA_Siege01" slice="GroundTargetforHUD" >
+                    <Size>
+                        <AbsPoint x="97" y="97" />
+                    </Size>
+                     <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentCurrentForceBar" >
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="97" y="97" />
+                </DynamicImage>        
+            </Windows>      
+        </Window>
+        
+        
+        <Window name="WindMeterWindow" handleinput="false">
+            <Size>
+                <AbsPoint x="157" y="157" />
+            </Size>
+            <Windows>     
+               
+                <Label name="$parentTitle" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="246" y="30" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="top" relativePoint="top" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			         <Color r="235" g="235" b="235" />
+                </Label>    
+                
+                <DynamicImage name="$parentBackgroundImage" texture="EA_Siege01" slice="WindBackground" layer="background" >
+                    <Size>
+                        <AbsPoint x="157" y="157" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+					        <AbsPoint x="0" y="10" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="157" y="157" />
+                </DynamicImage>   
+
+                <DynamicImage name="$parentArrow1" texture="EA_Siege01" slice="Windarrow-height1" >
+                    <Size>
+                        <AbsPoint x="18" y="72" />
+                    </Size>
+                     <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentBackgroundImage">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="18" y="72" />
+                </DynamicImage>                
+                <DynamicImage name="$parentArrow2" texture="EA_Siege01" slice="Windarrow-height2" >
+                    <Size>
+                        <AbsPoint x="18" y="97" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentBackgroundImage">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="18" y="97" />
+                </DynamicImage>                
+                <DynamicImage name="$parentArrow3" texture="EA_Siege01" slice="Windarrow-height3" >
+                    <Size>
+                        <AbsPoint x="18" y="118" />
+                    </Size>
+                     <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentBackgroundImage">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="18" y="118" />
+                </DynamicImage>                
+                <DynamicImage name="$parentArrow4" texture="EA_Siege01" slice="Windarrow-height4" >
+                    <Size>
+                        <AbsPoint x="18" y="156" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parentBackgroundImage">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="18" y="156" />
+                </DynamicImage>           
+            </Windows>              
+        </Window>
+		              
+		<Window name="ScorchAimWindow" >
+		    <Size>
+                <AbsPoint x="270" y="270" />
+            </Size>
+            <Windows>			                                     
+                <MapDisplay name="$parentMapDisplay" pinTexture="map_markers01" shape="circle">
+                    <Size>
+                        <AbsPoint x="265" y="265" />                
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </MapDisplay>     
+            </Windows>           
+		</Window>
+		
+		              
+		<!-- Main Window -->
+		<Window name="SiegeWeaponScorchFireWindow" movable="false" layer="secondary" savesettings="false" >
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+				<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="SiegeWeaponScorchFireWindow.Initialize" />	
+				<EventHandler event="OnUpdate" function="SiegeWeaponScorchFireWindow.Update" />			
+			</EventHandlers>
+			<Windows>
+
+                <Window name="$parentPowerMeter" inherits="PowerMeterWindow" >
+                    <Anchors>
+                      <Anchor point="left" relativePoint="left" relativeTo="" >
+                        <AbsPoint x="25" y="0" />
+                      </Anchor>
+                    </Anchors>                
+                </Window>
+
+                <Window name="$parentWindMeter" inherits="WindMeterWindow" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="" >
+                            <AbsPoint x="-25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentAimWindow" inherits="ScorchAimWindow" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="" >
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+            </Windows>
+		</Window>
+        
+	</Windows>
+</Interface>

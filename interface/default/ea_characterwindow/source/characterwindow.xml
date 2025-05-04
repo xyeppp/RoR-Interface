@@ -1,0 +1,1310 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/CharacterWindow.lua" />
+	<Script file="Source/CharacterWindowDyes.lua" />
+	<Script file="Source/CharacterWindowStats.lua" />
+	<Script file="Source/CharacterWindowBrags.lua" />
+	<Script file="Source/CharacterWindowTrophies.lua" />
+    <Script file="Source/CharacterWindowItemAppearance.lua" />
+  </Scripts>
+  <Windows>
+
+    <Button name="TimeoutEntry" inherits="EA_Button_ResizeIconFrame_NoNormalImage" font="font_default_sub_heading">
+      <Size>
+        <AbsPoint x="490" y="29" />
+      </Size>
+      <Anchors>
+      </Anchors>
+      <Windows>
+        <!-- Row Label Background -->
+        <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+              <AbsPoint x="15" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+        <Label name="$parentText" wordwrap="false" font="font_clear_default" textAutoFitMinScale=".5" maxchars="150" inherits="DefaultWindowText" handleinput="false" textalign="left" >
+          <Size>
+            <AbsPoint x="450" y="19" /> <!-- If the TimeLeft label is also being used, the Lua code will shorten the width to 240 units -->
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parent">
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentTimeLeft" wordwrap="false" font="font_clear_default" textAutoFitMinScale=".5" maxchars="50" inherits="DefaultWindowText" handleinput="false" textalign="right" >
+          <Size>
+            <AbsPoint x="240" y="19" />
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" />
+        </Label>
+      </Windows>
+    </Button>
+
+    <Window name="BraggingRightTemplate">
+      <Size>
+        <AbsPoint x="480" y="50" />
+      </Size>
+      <Windows>
+        <Button name="$parentRemove" inherits="EA_Button_DefaultWindowClose">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.RemoveBrag" />
+          </EventHandlers>
+        </Button>
+        <Label name="$parentText" inherits="EA_Label_DefaultSubHeading" wordwrap="true" autoresize="true" textalign="left">
+          <Size>
+            <AbsPoint x="300" y="50" />
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentRemove">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="250" b="250" a="255"/>
+        </Label>
+        <Button name="$parentReward1" inherits="TomeRewardIconButton" id="1" >
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.OnClickReward"/>
+            <EventHandler event="OnMouseOver" function="CharacterWindow.OnMouseOverReward"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentReward2" inherits="TomeRewardIconButton" id="2" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+              <AbsPoint x="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.OnClickReward"/>
+            <EventHandler event="OnMouseOver" function="CharacterWindow.OnMouseOverReward"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentCard" inherits="TomeRewardIconButton">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+              <AbsPoint x="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.OnClickCard"/>
+            <EventHandler event="OnMouseOver" function="CharacterWindow.OnMouseOverCard"/>
+          </EventHandlers>
+        </Button>
+      </Windows>
+    </Window>
+
+    <Label name="CharacterWindowTopStatsLabelDefaultLeft" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="right" >
+      <Size>
+        <AbsPoint x="150" y="55" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+    <Label name="CharacterWindowTopStatsLabelDefaultRight" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="right" >
+      <Size>
+        <AbsPoint x="75" y="28" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+
+
+    <Window name="CharacterWindowStatsWindow">
+      <Size>
+        <AbsPoint x="185" y="22" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnMouseOver" function="CharacterWindow.StatsMouseOver" />
+      </EventHandlers>
+      <Windows>
+        <DynamicImage name="$parentIconBase" textureScale="1.0" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="16" y="16" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+        <Label name="$parentLeft" inherits="EA_Label_ChatText" layer="popup" handleinput="false" warnOnTextCropped="false" ellipsisOnCrop="true" autoresize="true" textalign="left" wordwrap="false" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="18" y="0" />
+            </Anchor>
+          </Anchors>
+          <Size>
+            <AbsPoint x="125" y="28" />
+          </Size>
+          <Color r="255" g="255" b="0" a="255"/>
+        </Label>
+        <Label name="$parentRight" inherits="EA_Label_ChatText" layer="popup" handleinput="false" warnOnTextCropped="false" ellipsisOnCrop="true" autoresize="true" textalign="left" wordwrap="false" >
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="8" y="0" />
+            </Anchor>
+          </Anchors>
+          <Size>
+            <AbsPoint x="50" y="28" />
+          </Size>
+          <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+      </Windows>
+    </Window>
+
+    <Label name="CharacterWindowStatsLabelDefaultLeft" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="leftt" >
+      <Size>
+        <AbsPoint x="150" y="55" />
+      </Size>
+      <Color r="255" g="255" b="0" a="255"/>
+    </Label>
+    <Label name="CharacterWindowStatsLabelDefaultRight" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="left" >
+      <Size>
+        <AbsPoint x="75" y="28" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+
+
+    <Button name="CharacterWindowDefaultButton" inherits="EA_Button_Default" texturescale="1.171" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" >
+      <Size>
+        <AbsPoint x="75" y="75" />
+      </Size>
+      <Windows>
+        <DynamicImage name="$parentIconBase" textureScale="1.171" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="75" y="75" />
+          </Size>
+        </DynamicImage>
+      </Windows>
+      <TexCoords>
+        <Normal texture="EA_SquareFrame" x="0" y="0" />
+        <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+        <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+        <Disabled texture="EA_SquareFrame" x="0" y="0" />
+      </TexCoords>
+      <TextOffset x="5" />
+    </Button>
+
+    <FullResizeImage name="CharacterWindowDefaultBG" handleinput="false" layer="background" texture="shared_01">
+      <Sizes>
+        <TopLeft x="16" y="15" />
+        <BottomRight x="16" y="15" />
+        <Middle x="78" y="25" />
+      </Sizes>
+      <TexCoords>
+        <TopLeft x="256" y="157" />
+        <TopCenter x="272" y="157" />
+        <TopRight x="350" y="157" />
+        <MiddleLeft x="256" y="172" />
+        <MiddleCenter x="272" y="172" />
+        <MiddleRight x="350" y="172" />
+        <BottomLeft x="256" y="197" />
+        <BottomCenter x="272" y="197" />
+        <BottomRight x="350" y="197" />
+      </TexCoords>
+    </FullResizeImage>
+
+    <Button name="CharacterWindowEquipmentButton" inherits="CharacterWindowDefaultButton" draganddrop="true" gameactionbutton="right" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonDown" function="CharacterWindow.EquipmentLButtonDown" />
+        <EventHandler event="OnLButtonUp" function="CharacterWindow.EquipmentLButtonUp" />
+        <EventHandler event="OnRButtonDown" function="CharacterWindow.EquipmentRButtonDown" />
+        <EventHandler event="OnMouseOver" function="CharacterWindow.EquipmentMouseOver" />
+        <EventHandler event="OnMouseOverEnd" function="CharacterWindow.EquipmentMouseOverEnd" />
+      </EventHandlers>
+    </Button>
+
+    <Button name="CharacterWindowMarketingButton" inherits="CharacterWindowDefaultButton" draganddrop="true" gameactionbutton="right" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonDown" function="CharacterWindow.MarketingLButtonDown" />
+        <EventHandler event="OnRButtonDown" function="CharacterWindow.MarketingRButtonDown" />
+        <EventHandler event="OnMouseOver" function="CharacterWindow.MarketingMouseOver" />
+      </EventHandlers>
+    </Button>
+
+    <Button name="CharacterWindowTrophyButton" inherits="CharacterWindowDefaultButton" draganddrop="true" gameactionbutton="right" >
+
+      <EventHandlers>
+        <EventHandler event="OnLButtonDown" function="CharacterWindow.TrophyLButtonDown" />
+        <EventHandler event="OnMouseDrag" function="CharacterWindow.TrophyDrag" />
+        <EventHandler event="OnLButtonUp" function="CharacterWindow.TrophyLButtonUp" />
+        <EventHandler event="OnRButtonDown" function="CharacterWindow.TrophyRButtonDown" />
+        <EventHandler event="OnMouseOver" function="CharacterWindow.TrophyMouseOver" />
+      </EventHandlers>
+      <Windows>
+        <DynamicImage name="$parentIconBase" textureScale="1.171" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="75" y="75" />
+          </Size>
+        </DynamicImage>
+
+        <!-- NOTE: OPTIMIZATION: Currently the lock icon is a separate icon file that is overlayed on top of the 
+					trophy icon. We could save adding this window by just making the locked icon include 
+					the trophy icon in the background so we can just use the IconBase Image -->
+        <DynamicImage name="$parentLockIcon" textureScale="1.171" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="75" y="75" />
+          </Size>
+        </DynamicImage>
+
+        <DynamicImage name="$parentMiniIcon" handleinput="true" layer="background">
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="CharacterWindow.TrophyMiniIconMouseOver" />
+          </EventHandlers>
+          <Size>
+            <AbsPoint x="22" y="22" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="2" y="2" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+      </Windows>
+    </Button>
+
+    <Button name="TrophyLeftArrowButton" inherits="DefaultButton" backgroundtexture="shared_01" highlighttexture="shared_01">
+      <Size>
+        <AbsPoint x="30" y="56" />
+      </Size>
+      <TexCoords>
+        <Normal x="482" y="0" />
+        <NormalHighlit x="482" y="56" />
+        <Pressed x="482" y="112" />
+      </TexCoords>
+    </Button>
+
+    <Button name="TrophyRightArrowButton" inherits="DefaultButton" backgroundtexture="shared_01" highlighttexture="shared_01">
+      <Size>
+        <AbsPoint x="30" y="56" />
+      </Size>
+      <TexCoords>
+        <Normal x="452" y="0" />
+        <NormalHighlit x="452" y="56" />
+        <Pressed x="452" y="112" />
+      </TexCoords>
+    </Button>
+
+    <Window name="CharacterWindow" inherits="EA_Window_Default" movable="false" layer="secondary" savesettings="false">
+      <Size>
+        <AbsPoint x="575" y="760" />
+      </Size>
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+          <AbsPoint x="35" y="0" />
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize"  function="CharacterWindow.Initialize" />
+        <EventHandler event="OnShown"       function="CharacterWindow.OnShown" />
+        <EventHandler event="OnHidden"      function="CharacterWindow.OnHidden" />
+        <EventHandler event="OnShutdown"    function="CharacterWindow.Shutdown" />
+      </EventHandlers>
+      <Windows>
+
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="0" y="31" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+              <AbsPoint x="-30" y="-40" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" layer="background" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        <DynamicImage name="$parentCornerImage" inherits="EA_Default_CharacterImage" sticky="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="-50" y="-60" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parentTitleBar">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.Hide" />
+          </EventHandlers>
+        </Button>
+
+        <Window name="$parentContents">
+          <Size>
+            <AbsPoint x="545" y="760" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="-72" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+
+            <FullResizeImage name="$parentBG" handleinput="false" layer="background" inherits="CharacterWindowDefaultBG">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="CharacterWindowBackground">
+                  <AbsPoint x="9" y="5" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="CharacterWindowBackground">
+                  <AbsPoint x="-9" y="-9" />
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+            <DynamicImage name="CharacterWindowImage" texture="EA_PaperDollChatBubbles" textureScale="1.2" layer="background" slice="PaperDollBackground">
+                <Size>
+                    <AbsPoint x="375" y="510" />
+                </Size>
+                <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentBackgroundImageLabel">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                </Anchors>
+            </DynamicImage>
+            <NifDisplay name="CharacterWindowScene" nif="PaperDollNif" scale="1.00" ortho="false" fov="0.58" autoprops="false" rotateaxis="3" handleinput="true" draganddrop="true">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CharacterWindow.PaperDollMouseUp" />
+              </EventHandlers>
+              <Size>
+                <AbsPoint x="380" y="700" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottom" relativePoint="bottom" relativeTo="CharacterWindowImage" />
+              </Anchors>
+              <Translation x="0.0" y="-170.0" z="40.0" />
+              <Rotation x="0.0" y="180.0" z="180.0" />
+            </NifDisplay>
+
+            <Window name="$parentBackgroundImageLabel" inherits="EA_Window_DefaultFrame" >
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEquipmentSlot8">
+                  <AbsPoint x="0" y="-30" />
+                </Anchor>
+                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentEquipmentSlot23">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <FullResizeImage name="$parentBGImageLabel" handleinput="false" layer="background" inherits="CharacterWindowDefaultBG">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="9" y="5" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="-9" y="-9" />
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+
+            <Window name="$parentStatsFrame" inherits="EA_Window_DefaultFrame" >
+              <Size>
+                <AbsPoint x="0" y="108" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="CharacterWindowImage">
+                  <AbsPoint x="-2" y="-15" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="CharacterWindowImage">
+                  <AbsPoint x="2" y="-15" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <FullResizeImage name="$parentStatsFrameBackgroundImage" handleinput="false" layer="background" inherits="CharacterWindowDefaultBG">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentStatsFrame">
+                  <AbsPoint x="8" y="5" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentStatsFrame">
+                  <AbsPoint x="-8" y="-9" />
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+
+              <VerticalResizeImage name="$parentBackgroundTopLeft" texture="shared_01" reverseFill="true" layer="background">
+                  <Size>
+                      <AbsPoint x="10" y="50" />
+                  </Size>
+                  <Sizes top="2" middle="75" bottom="2" />
+                  <TexCoords>
+                      <Top x="311" y="54" />
+                      <Middle x="311" y="54" />
+                      <Bottom x="311" y="54" />
+                  </TexCoords>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="CharacterWindowImage">
+                          <AbsPoint x="-5" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="CharacterWindowImage">
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </VerticalResizeImage>
+              <Label name="$parentImageNameLabel" inherits="EA_Label_DefaultSubHeading" layer="popup" handleinput="false">
+                  <Size>
+                      <AbsPoint x="255" y="30" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="top" relativePoint="bottom" relativeTo="$parentImageTitleLabel">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <Color r="255" g="250" b="250" a="255"/>
+              </Label>
+
+            <Label name="$parentImageTitleLabel" inherits="EA_Label_DefaultSubHeading" layer="popup" handleinput="false">
+              <Size>
+                <AbsPoint x="450" y="35" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="0" y="-28" />
+                </Anchor>
+              </Anchors>
+              <Color r="255" g="250" b="250" a="255"/>
+            </Label>
+
+            <FullResizeImage name="$parentComboboxBG" handleinput="false" layer="background" inherits="EA_FullResizeImage_BlackTransparent">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentStatCombobox">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentStatCombobox">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+            <ComboBox name="$parentStatCombobox" inherits="EA_ComboBox_DefaultResizableSmall" layer="popup">
+              <Anchors>
+                <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackgroundImageLabel" >
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="CharacterWindow.OnFilterSelChanged" />
+              </EventHandlers>
+            </ComboBox>
+
+            <Window name="$parentAppearanceMode" inherits="EA_LabelCheckButton" layer="popup" >
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackgroundImageLabel" >
+                        <AbsPoint x="10" y="10" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.OnLButtonUpAppearanceMode" />
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.MouseOverAppearanceCheckBox" />
+                </EventHandlers>
+            </Window>
+
+            <Window name="$parentStatsWindow1" inherits="CharacterWindowStatsWindow" id="1">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="15" y="10" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow2" inherits="CharacterWindowStatsWindow" id="2">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow1">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow3" inherits="CharacterWindowStatsWindow" id="3">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow2">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow4" inherits="CharacterWindowStatsWindow" id="4">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow3">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow5" inherits="CharacterWindowStatsWindow" id="5">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="5" y="10" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow6" inherits="CharacterWindowStatsWindow" id="6">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow5">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow7" inherits="CharacterWindowStatsWindow" id="7">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow6">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Window name="$parentStatsWindow8" inherits="CharacterWindowStatsWindow" id="8">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatsWindow7">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+
+            <Window name="$parentEquipment" draganddrop="true" layer="background">
+              <Size>
+                <AbsPoint x="540" y="675" />
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+
+                <!-- Right hand slot -->
+                <Button name="$parentSlot1" inherits="CharacterWindowEquipmentButton" id="1">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot12">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Left hand slot -->
+                <Button name="$parentSlot2" inherits="CharacterWindowEquipmentButton" id="2">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot5">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Ranged slot -->
+                <Button name="$parentSlot3" inherits="CharacterWindowEquipmentButton" id="3">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot2">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+                <!-- Pocket 2 slot -->
+                <Button name="$parentSlot12" inherits="CharacterWindowEquipmentButton" id="12">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot11">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Banner slot -->
+                <Button name="$parentSlot5" inherits="CharacterWindowEquipmentButton" id="5">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot1">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Left Column -->
+                <!-- Event slot -->
+                <Button name="$parentSlot15" inherits="CharacterWindowEquipmentButton" id="15">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot9">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Helm slot -->
+                <Button name="$parentSlot9" inherits="CharacterWindowEquipmentButton" id="9">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot10">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonDown" function="CharacterWindow.EquipmentLButtonDown" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.EquipmentLButtonUp" />
+                    <EventHandler event="OnRButtonDown" function="CharacterWindow.EquipmentRButtonDown" />
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.ShowShowHelm" />
+                    <EventHandler event="OnMouseOverEnd" function="CharacterWindow.HideShowHelm" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentShowHelm" inherits="EA_Button_DefaultCheckBox" layer="popup">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSlot9">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.ShowShowHelmOnly" />
+                    <EventHandler event="OnMouseOverEnd" function="CharacterWindow.HideShowHelm" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.ShowHelm" />
+                  </EventHandlers>
+                </Button>
+                <!-- Shoulders slot -->
+                <Button name="$parentSlot10" inherits="CharacterWindowEquipmentButton" id="10">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot13">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+                <!-- Back slot -->
+                <Button name="$parentSlot13" inherits="CharacterWindowEquipmentButton" id="13">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot6">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonDown" function="CharacterWindow.EquipmentLButtonDown" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.EquipmentLButtonUp" />
+                    <EventHandler event="OnRButtonDown" function="CharacterWindow.EquipmentRButtonDown" />
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.ShowCloakOptions" />
+                    <EventHandler event="OnMouseOverEnd" function="CharacterWindow.HideCloakOptions" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentShowCloak" inherits="EA_Button_DefaultCheckBox" layer="popup">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSlot13">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.ShowShowCloakOnly" />
+                    <EventHandler event="OnMouseOverEnd" function="CharacterWindow.HideCloakOptions" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.ShowCloak" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentShowCloakHeraldry" inherits="EA_Button_DefaultCheckBox" layer="popup">
+                  <Anchors>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parentSlot13">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnMouseOver" function="CharacterWindow.ShowShowCloakHeraldryOnly" />
+                    <EventHandler event="OnMouseOverEnd" function="CharacterWindow.HideCloakOptions" />
+                    <EventHandler event="OnLButtonUp" function="CharacterWindow.ShowCloakHeraldry" />
+                  </EventHandlers>
+                </Button>
+
+                <!-- Body slot -->
+                <Button name="$parentSlot6" inherits="CharacterWindowEquipmentButton" id="6">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot7">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Gloves slot -->
+                <Button name="$parentSlot7" inherits="CharacterWindowEquipmentButton" id="7">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot14">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Belt slot -->
+                <Button name="$parentSlot14" inherits="CharacterWindowEquipmentButton" id="14">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot8">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Boots slot -->
+                <Button name="$parentSlot8" inherits="CharacterWindowEquipmentButton" id="8">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot11">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Pocket 1 slot -->
+                <Button name="$parentSlot11" inherits="CharacterWindowEquipmentButton" id="11">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="CharacterWindowContents">
+                      <AbsPoint x="10" y="-10" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+                <!-- Right Column -->
+                <!-- Accessory 1 slot -->
+                <Button name="$parentSlot17" inherits="CharacterWindowEquipmentButton" id="17">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot18">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Accessory 2 slot -->
+                <Button name="$parentSlot18" inherits="CharacterWindowEquipmentButton" id="18">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot19">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Accessory 3 slot -->
+                <Button name="$parentSlot19" inherits="CharacterWindowEquipmentButton" id="19">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot20">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Accessory 4 slot -->
+                <Button name="$parentSlot20" inherits="CharacterWindowEquipmentButton" id="20">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot21">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+                <!-- Trophy 1 slot -->
+                <Button name="$parentSlot21" inherits="CharacterWindowTrophyButton" id="1">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot22">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Trophy 2 slot -->
+                <Button name="$parentSlot22" inherits="CharacterWindowTrophyButton" id="2">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot23">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Trophy 3 slot -->
+                <Button name="$parentSlot23" inherits="CharacterWindowTrophyButton" id="3">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot24">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Trophy 4 slot -->
+                <Button name="$parentSlot24" inherits="CharacterWindowTrophyButton" id="4">
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot25">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <!-- Trophy 5 slot -->
+                <Button name="$parentSlot25" inherits="CharacterWindowTrophyButton" id="5">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSlot3">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+              </Windows>
+            </Window>
+
+            <Window name="$parentInstruction" layer="popup" >
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImageLabel">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="topleft" relativePoint="bottomright" relativeTo="$parentEquipmentSlot25" >
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" layer="popup" handleinput="true">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" >
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill" layer="secondary" handleinput="false">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" />
+                    <Anchor point="bottomright" relativePoint="bottomright" />
+                  </Anchors>
+                </FullResizeImage>
+                <Label name="$parentText" inherits="EA_Label_DefaultText" textalign="center" layer="popup" >
+                  <Size>
+                    <AbsPoint x="360" y="105" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="center" relativePoint="center" >
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Label>
+              </Windows>
+            </Window>
+
+          </Windows>
+        </Window>
+        <!-- End Contents -->
+
+        <Window name="$parentBrags">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+            <Label name="$parentHeader" inherits="EA_Label_DefaultSubHeading" textalign="center">
+              <Size>
+                <AbsPoint x="500" y="50" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentFooter" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true">
+              <Size>
+                <AbsPoint x="500" y="50" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                  <AbsPoint x="0" y="-30" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Window name="$parentAnchor">
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parentHeader">
+                  <AbsPoint x="0" y="50" />
+                </Anchor>
+              </Anchors>
+            </Window>
+          </Windows>
+        </Window>
+
+        <Window name="$parentTimeouts">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnShown"       function="CharacterWindow.OnTimeoutShown" />
+          </EventHandlers>
+          <Windows>
+            <Label name="$parentTitleLabel" inherits="EA_Label_DefaultText" font="font_default_text_small" textAutoFitMinScale=".5" handleinput="false">
+              <Size>
+                <AbsPoint x="510" y="60" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                  <AbsPoint x="10" y="20" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="TimeoutEntry" visiblerows="20" rowcount="200" rowspacing="0" handleinput="false">
+              <Size>
+                <AbsPoint x="545" y="340" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleLabel" >
+                  <AbsPoint x="-10" y="30" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                  <AbsPoint x="0" y="-25" />
+                </Anchor>
+              </Anchors>
+              <ListData table="CharacterWindow.timeoutList" populationfunction="CharacterWindow.PopulateTimeoutList">
+                <ListColumns>
+                  <ListColumn windowname="Text" variable="textStr" format="wstring" />
+                  <ListColumn windowname="TimeLeft" variable="timeStr" format="wstring" />
+                </ListColumns>
+              </ListData>
+            </ListBox>
+          </Windows>
+        </Window>
+
+        <!-- TABS -->
+        <Window name="CharacterWindowTabs">
+          <Size>
+            <AbsPoint x="545" y="40" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="-8" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+              <AbsPoint x="-10" y="40" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+            <Button name="$parentCharTab" inherits="EA_Button_BottomTab">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CharacterWindow.OnTabSelectChar" />
+              </EventHandlers>
+              <TextOffset x="0" y="5" />
+            </Button>
+            <Button name="$parentBragsTab" inherits="EA_Button_BottomTab">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentCharTab">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CharacterWindow.OnTabSelectBrags" />
+              </EventHandlers>
+              <TextOffset x="0" y="5" />
+            </Button>
+            <Button name="$parentTimeoutTab" inherits="EA_Button_BottomTab">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentBragsTab">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CharacterWindow.OnTabSelectTimeouts" />
+              </EventHandlers>
+              <TextOffset x="0" y="5" />
+            </Button>
+          </Windows>
+        </Window>
+
+        <!--
+        The following windows doesn't follow the standard convention of naming the child 
+        window after the parent window, this is to not break lots of old dependent code
+        -->
+        <Window name="DyeMerchant" layer="popup" savesettings="false">
+          <Size>
+            <AbsPoint x="200" y="683" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="CharacterWindowTitleBar">
+              <AbsPoint x="-210" y="35" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnInitialize" function="CharacterWindow.InitDyeMerchant" />
+          </EventHandlers>
+          <Windows>
+            <VerticalResizeImage name="$parentDivider" inherits="EA_VerticalResizeImage_DefaultVerticalSeparatorMiddle" layer="secondary">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomleft" relativePoint="bottomleft">
+                  <AbsPoint x="-12" y="-6" />
+                </Anchor>
+              </Anchors>
+            </VerticalResizeImage>
+            <ColorPicker name="$parentColorPicker" texture="EA_HUD_01" columnsPerRow="5">
+              <Size>
+                <AbsPoint x="190" y="195" />
+              </Size>
+              <EventHandlers>
+                <Eventhandler event="OnLButtonUp" function="CharacterWindow.OnColorPickerLButtonUp" />
+                <Eventhandler event="OnRButtonUp" function="CharacterWindow.OnColorPickerRButtonUp" />
+                <EventHandler event="OnPointMouseOver" function="CharacterWindow.OnMouseOverColorPicker" />
+                <EventHandler event="OnMouseOverEnd" function="CharacterWindow.OnMouseOverColorPickerEnd" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright" >
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+              <ColorSpacing x="10" y="10" />
+              <ColorTexCoords x="304" y="450" />
+              <ColorTexDims x="24" y="24" />
+              <ColorSize x="24" y="24" />
+            </ColorPicker>
+            <DynamicImage name="$parentPrimary" texture="EA_HUD_01" layer="popup" handleinput="false" slice="Round-Swatch-Selection-Ring" >
+              <Size>
+                <AbsPoint x="38" y="38" />
+              </Size>
+              <TintColor r="229" g="195" b="36" />
+            </DynamicImage>
+            <DynamicImage name="$parentSecondary" texture="EA_HUD_01" layer="popup" handleinput="false" slice="Round-Swatch-Selection-Ring" >
+              <Size>
+                <AbsPoint x="38" y="38" />
+              </Size>
+              <TintColor r="74" g="164" b="226" />
+            </DynamicImage>
+            <Window name="$parentPrimarySecondary" handleinput="false" layer="popup">
+              <Size>
+                <AbsPoint x="38" y="38" />
+              </Size>
+              <Windows>
+                <DynamicImage name="$parentPrimaryHalf" texture="EA_HUD_01" layer="popup" handleinput="false" slice="Round-Swatch-Selection-Ring-Primary-Half" >
+                  <Size>
+                    <AbsPoint x="19" y="38" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" />
+                  </Anchors>
+                  <TintColor r="229" g="195" b="36" />
+                </DynamicImage>
+                <DynamicImage name="$parentSecondaryHalf" texture="EA_HUD_01" layer="popup" handleinput="false" slice="Round-Swatch-Selection-Ring-Secondary-Half" >
+                  <Size>
+                    <AbsPoint x="19" y="38" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topright" relativePoint="topright" />
+                  </Anchors>
+                  <TintColor r="74" g="164" b="226" />
+                </DynamicImage>
+              </Windows>
+            </Window>
+            <Window name="$parentBleachSwatch" layer="secondary" handleInput="false" >
+              <Size>
+                <AbsPoint x="30" y="30" />
+              </Size>
+              <Windows>
+                <DynamicImage name="$parentCrossedOut" texture="EA_Guild" slice="colorswatch-select-denied" >
+                  <Size>
+                    <AbsPoint x="30" y="30" />
+                  </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentSwatch" texture="EA_Guild" slice="colorswatch" layer="background">
+                  <Size>
+                    <AbsPoint x="30" y="30" />
+                  </Size>
+                </DynamicImage>
+              </Windows>
+            </Window>
+            <FullresizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" layer="background" handelinput="false" alpha="1.0">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentColorPicker" >
+                  <AbsPoint x="-10" y="-10" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                  <AbsPoint x="0" y="-6" />
+                </Anchor>
+              </Anchors>
+            </FullresizeImage>
+            <FullResizeImage name="$parentColorPickerBackground" inherits="EA_FullResizeImage_MetalFill" layer="background" handelinput="false">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentColorPicker"/>
+              </Anchors>
+            </FullResizeImage>
+            <Label name="$parentCostLabelTotal" inherits="EA_Label_DefaultText" handleinput="false">
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentColorPicker" >
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Window name="$parentTotalCost" inherits="MoneyFrame">
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentCostLabelTotal" >
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <Button name="$parentDyeAll" inherits="EA_Button_DefaultCheckBox" >
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentColorPicker" >
+                  <AbsPoint x="10" y="95" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <Eventhandler event="OnLButtonUp" function="CharacterWindow.OnDyeAll" />
+              </EventHandlers>
+            </Button>
+            <Label name="$parentDyeAllLabel" inherits="EA_Label_DefaultText" textalign="left" >
+              <Size>
+                <AbsPoint x="160" y="75" />
+              </Size>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDyeAll" >
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <Label name="$parentCurrentColorDescLabel" inherits="EA_Label_DefaultText" textalign="left" autoresize="true">
+              <Size>
+                <AbsPoint x="170" y="36" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentDyeAllLabel" >
+                  <AbsPoint x="-14" y="2" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <Label name="$parentCurrentColorLabel" inherits="EA_Label_DefaultText" textalign="center" autoresize="true">
+              <Size>
+                <AbsPoint x="170" y="36" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCurrentColorDescLabel" >
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <Button name="$parentMarketingSlot" inherits="CharacterWindowMarketingButton" id="1">
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentCurrentColorDescLabel">
+                  <AbsPoint x="0" y="85" />
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <Label name="$parentMarketingSlotDescLabel" inherits="EA_Label_DefaultText" textalign="left" autoresize="true">
+              <Size>
+                <AbsPoint x="170" y="36" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentMarketingSlot" >
+                  <AbsPoint x="0" y="15" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <Window name="$parentSingleCost" inherits="MoneyFrame">
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentCurrentColorLabel" >
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </Window>
+          </Windows>
+        </Window>
+
+        <Window name="DyeMerchantButtons" layer="popup" savesettings="false">
+          <Size>
+            <AbsPoint x="725" y="100" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="bottom" relativeTo="CharacterWindow">
+              <AbsPoint x="-15" y="-50" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnInitialize" function="CharacterWindow.InitDyeMerchantButtons" />
+          </EventHandlers>
+          <Windows>
+            <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill" layer="background" handleinput="false">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" />
+                <Anchor point="bottomright" relativePoint="bottomright" />
+              </Anchors>
+            </FullResizeImage>
+            <Window name="$parentPlayerMoney" inherits="MoneyFrame">
+              <Anchors>
+                <Anchor point="left" relativePoint="left" >
+                  <AbsPoint x="200" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <Label name="$parentCostLabelTotal" inherits="EA_Label_DefaultText" handleinput="false">
+              <Size>
+                <AbsPoint x="150" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="left" relativePoint="right" relativeTo="$parentPlayerMoney" >
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Button name="$parentAccept" inherits="EA_Button_DefaultResizeable">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentPlayerMoney" >
+                  <AbsPoint x="30" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <Eventhandler event="OnLButtonUp" function="CharacterWindow.OnAcceptDye" />
+              </EventHandlers>
+            </Button>
+            <Button name="$parentCancel" inherits="EA_Button_DefaultResizeable">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentAccept" >
+                  <AbsPoint x="20" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <Eventhandler event="OnLButtonUp" function="CharacterWindow.OnCancelDye" />
+              </EventHandlers>
+            </Button>
+          </Windows>
+        </Window>
+        <!-- Previous and Next button's appear for selected trophy slot in order to move it's attachment location -->
+        <Button name="CharacterWindowPreviousButton" inherits="TrophyLeftArrowButton" layer="popup" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.PreviousButtonPressed" />
+            <EventHandler event="OnMouseOver" function="CharacterWindow.PreviousButtonMouseOver" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="CharacterWindowNextButton" inherits="TrophyRightArrowButton" layer="popup" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="CharacterWindow.NextButtonPressed" />
+            <EventHandler event="OnMouseOver" function="CharacterWindow.NextButtonMouseOver" />
+          </EventHandlers>
+        </Button>        
+      </Windows>
+    </Window>
+  </Windows>
+</Interface>

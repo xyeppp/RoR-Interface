@@ -1,0 +1,110 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SummoningPrompt.lua" />
+    </Scripts>
+    <Windows>     
+        
+        <Window name="EA_SummoningAcceptPrompt" layer="popup">
+            <Size>
+                <AbsPoint x="450" y="430" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_SummoningAcceptPrompt.UpdateAutoDeclineTime" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="450" y="430" />
+                    </Size>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />     
+                        <Label name="$parentName" font="font_default_text_large" textalign="center" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="450" y="70" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="375" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+
+                       <DynamicImage name="$parentSymbol" inherits="WARSymbol" handleinput="false">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentText">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                       </DynamicImage>
+
+                       <Label name="$parentRespondTime" font="font_default_text" textalign="center" wordwrap="true" autoresize="true">
+                            <Size>
+                                <AbsPoint x="450" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSymbol">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Button name="$parentAcceptButton" inherits="EA_Button_DefaultResizeable" >
+                            <Size>
+                                <AbsPoint x="350" y="39" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentRespondTime">
+                                    <AbsPoint x="0" y="20" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_SummoningAcceptPrompt.OnAccept" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentDeclineButton" inherits="EA_Button_DefaultResizeable" >
+                            <Size>
+                                <AbsPoint x="350" y="39" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentAcceptButton">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_SummoningAcceptPrompt.OnDecline" />
+                            </EventHandlers>
+                         </Button>
+                         <Label name="$parentInCombatText" font="font_default_text" textalign="center" wordwrap="true" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="450" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

@@ -1,0 +1,172 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/GuildWindowTabRecruit.lua"/>
+        <Script file="Source/GuildWindowTabRecruitProfile.lua"/>
+        <Script file="Source/GuildWindowTabRecruitSearch.lua"/>
+    </Scripts>
+  <Windows>
+
+  <Button name="GuildWindowRecruitBottomTabTemplate" inherits="EA_Button_BottomTab" >
+      <Anchors>
+          <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTabSearch">
+              <AbsPoint x="0" y="0" />
+          </Anchor>
+      </Anchors>
+      <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.OnBottomTab" />
+      </EventHandlers>
+  </Button>
+
+
+
+
+      <Window name="GuildFormInstructionTemplate" >
+          <Size>
+              <AbsPoint x="580" y="50" />
+          </Size>
+          <Windows>
+              <FullResizeImage name="$parentBackground" handleinput="true" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+              <Label name="$parentText" font="font_chat_text" textalign="center" wordwrap="true" textAutoFitMinScale="0.5" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="20" y="-5"/>
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="-20" y="-5"/>
+                      </Anchor>
+                  </Anchors>
+                  <TextColor r="235" g="235" b="235" />
+              </Label>
+          </Windows>
+     </Window>
+
+
+      <!-- Edit Profile Template -->
+      <Window name="GuildWindowRecruitFormGuildTemplate" movable="false" layer="secondary">
+          <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="-50"/>
+              </Anchor>
+          </Anchors>
+          <Windows>
+
+              <Label name="$parentGuildDesc" font="font_chat_text" textalign="center" wordwrap="true" textAutoFitMinScale="0.5" maxchars="1024" >
+                  <Size>
+                      <AbsPoint x="0" y="200" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="50" y="-80"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                          <AbsPoint x="-50" y="-80"/>
+                      </Anchor>
+                  </Anchors>
+                  <TextColor r="235" g="235" b="235" />
+              </Label>
+
+              <FullResizeImage name="$parentInstructionsBackground" inherits="EA_FullResizeImage_DefaultFrame"  >
+                  <Size>
+                      <AbsPoint x="600" y="420" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                          <AbsPoint x="0" y="110" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+
+              <Label name="$parentInstructionsTitle" inherits="EA_Label_DefaultSubHeading"  textalign="center" popable="false" >
+                  <Size>
+                      <AbsPoint x="600" y="50" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="top" relativePoint="top" relativeTo="$parentInstructionsBackground">
+                          <AbsPoint x="10" y="20" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+              <Label name="$parentInstructionsText" font="font_chat_text" maxchars="400" textalign="left" autoresize="false" wordwrap="true" popable="false" >
+                  <Anchors>                 
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentInstructionsBackground">
+                          <AbsPoint x="10" y="10" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentInstructionsBackground">
+                          <AbsPoint x="-10" y="-10" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+          </Windows>
+      </Window>
+
+
+              <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabRecruitSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="50"/>
+        </Anchor>
+      </Anchors>
+      <Windows>
+
+
+          <!-- The Guild's Own Recruitment Profile -->
+          <Window name="$parentProfile" inherits="GuildWindowRecruitEditProfileTemplate" />
+
+          <!-- The Guild's Search Screen Profile -->
+          <Window name="$parentSearch" inherits="GuildWindowRecruitSearchTemplate" />
+          
+          <!-- The 'How to From a Guild' Instructions -->
+          <Window name="$parentForm" inherits="GuildWindowRecruitFormGuildTemplate" />
+
+          <!-- Buttons -->
+          <Button name="$parentTabProfile" inherits="GuildWindowRecruitBottomTabTemplate" id="1" >
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTabSearch">
+                      <AbsPoint x="0" y="0" />
+                  </Anchor>
+              </Anchors>
+          </Button>
+
+          <Button name="$parentTabForm" inherits="GuildWindowRecruitBottomTabTemplate" id="3" >
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTabSearch">
+                      <AbsPoint x="0" y="0" />
+                  </Anchor>
+              </Anchors>
+          </Button>
+
+          <Button name="$parentTabSearch" inherits="GuildWindowRecruitBottomTabTemplate" id="2" >
+              <Anchors>
+                  <Anchor point="bottomright" relativePoint="topright" relativeTo="GuildWindowSocket" >
+                      <AbsPoint x="-25" y="-8" />
+                  </Anchor>
+              </Anchors>
+          </Button>
+
+
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Profile -->
+</Interface>

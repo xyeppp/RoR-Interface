@@ -1,0 +1,29 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabSearch.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabSearchSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildWindowTabSearch.Initialize"/>
+        <EventHandler event="OnShutdown" function="GuildWindowTabSearch.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+        
+       
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Profile -->
+</Interface>

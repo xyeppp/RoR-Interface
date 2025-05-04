@@ -1,0 +1,160 @@
+<zone iname="Norsca">
+    <landmark iname="Tomb of Ravenborne" id="1" mapIcon="1063" x="18442" y="40286">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Unshackled Host" id="2" mapIcon="1041" x="28600" y="10543">
+        <race>Chaos</race>
+        <number>1</number>
+        <ranks realm="destruction" min="1" max="2" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Thorshafn Crypt" id="3" mapIcon="1061" x="30744" y="5881">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Tunnel" id="4" mapIcon="1062" x="31011" y="59536">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Skaldbjorn" id="5" mapIcon="1066" x="30980" y="41614">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Watchtower of Selthis Lysk" id="6" mapIcon="1032" x="34555" y="51751">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Sorcerer's Axiom" id="7" mapIcon="1065" x="36617" y="32591">
+        <race>Chaos</race>
+        <number>2</number>
+        <ranks realm="destruction" min="3" max="4" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Tradeskill Trainers</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Charred Lands" id="8" mapIcon="1064" x="40361" y="35193">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Thorshafn" id="9" mapIcon="1039" x="39260" y="15750">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Amund's Barrow" id="10" mapIcon="1060" x="48341" y="44645">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gotland" id="11" mapIcon="1030" x="51238" y="26241">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Gotland Advance" id="12" mapIcon="1033" x="54555" y="58115">
+        <race>Empire</race>
+        <number>4</number>
+        <ranks realm="order" min="8" max="9" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Gotland Forest" id="13" mapIcon="1064" x="59705" y="43920">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Spindekraken" id="14" mapIcon="1062" x="61232" y="36297">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="15" mapIcon="1259" x="42664" y="60112" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="16" mapIcon="1259" x="35002" y="55182" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Ruins of Holmsteinn" id="17" mapIcon="1066" x="13565" y="43452">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Suderholm Longships" id="18" mapIcon="1043" x="22467" y="53452">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Wulfsiege Forest" id="19" mapIcon="1064" x="27008" y="38202">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Jaarpen" id="20" mapIcon="1066" x="49634" y="55381">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Blackforest Camp" id="21" mapIcon="1065" x="61561" y="55477">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Holmstein Revisited" id="188" iconSet="1" x="11517" y="47654">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Suderholm" id="187" iconSet="1" x="27487" y="48608">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Destruction of the Weak" id="264" iconSet="1" x="32217" y="35295">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ruinous Powers" id="185" iconSet="1" x="39538" y="19945">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="1" max="2" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ulfenwyr" id="198" iconSet="1" x="50696" y="31626">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Pit of the Forsaken" id="191" iconSet="1" x="54923" y="23202">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Altar of the Bloodbane" id="195" iconSet="1" x="60086" y="49124">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <!-- BEGIN Nordland points -->
+    <battlefieldObjective iname="The Harvest Shrine: Healing Boon" id="5096" iconSet="1" x="40253" y="13317" zone="106">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Festenplatz: Defensive Boon" id="5097" iconSet="1" x="35202" y="10148" zone="106">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Nordland XI: Artisan's Gift" id="228" iconSet="1" x="25362" y="4563" zone="106">
+    </battlefieldObjective>
+    <!-- END Nordland points -->
+    <zoneTransition iname="To Nordland" x="32000" y="65535">
+        <zone>106</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Troll Country" x="65535" y="32000">
+        <zone>101</zone>
+    </zoneTransition>
+</zone>

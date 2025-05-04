@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionBase.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_InteractionBase" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="512" y="600" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionBase.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionBase.Shutdown" />
+                <EventHandler event="OnUpdate"      function="EA_Window_InteractionBase.OnUpdate" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionBase.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionBase.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            </EventHandlers>
+            <Windows>
+                <!-- Background frame -->
+                <Window name="$parentBackground" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="512" y="600" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTargetName" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDone" >
+                            <AbsPoint x="157" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentTop" texture="EA_Interaction" slice="Default-Frame-Top">
+                            <Size>
+                                <AbsPoint x="512" y="52" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <DynamicImage name="$parentTail" texture="EA_Interaction" slice="Default-Side-Pointer">
+                            <Size>
+                                <AbsPoint x="146" y="95" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTop" >
+                                    <AbsPoint x="98" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <DynamicImage name="$parentTailFill" texture="EA_Interaction" slice="Default">
+                            <Size>
+                                <AbsPoint x="464" y="95" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTop" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <VerticalResizeImage name="$parentResize" texture="EA_Interaction">
+                            <Size>
+                                <AbsPoint x="512" y="92" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTailFill" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottom" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Sizes top="0" middle="92" bottom="0" />
+                            <TexSlices>
+                                <Middle id="Default-Frame-Center-Span" />
+                            </TexSlices>
+                        </VerticalResizeImage>
+
+                        <DynamicImage name="$parentBottom" texture="EA_Interaction" slice="Default-Frame-Bottom">
+                            <Size>
+                                <AbsPoint x="512" y="52" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+
+                </Window>
+
+                <!-- Idle Text -->
+                <Label name="$parentTargetName" handleinput="false" 
+                       font="font_journal_heading" maxchars="32" textalign="center" wordwrap="false" autoresize="false" >
+                    <Size>
+                        <AbsPoint x="512" y="36"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255" />
+                </Label>
+
+                <!-- Idle Text -->
+                <Label name="$parentText"
+                       font="font_journal_text" maxchars="1024" textalign="left" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="412" y="200"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTargetName">
+                            <AbsPoint x="50" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255" />
+                </Label>
+
+                <!-- Interaction Options List -->
+                <ListBox name="$parentOptionList" scrollbar="" rowdef="EA_Template_InteractionOptionLine"
+                         visiblerows="4" rowcount="10" rowspacing="15">
+                    <Size>
+                        <AbsPoint x="412" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionBase.optionListData" populationfunction="EA_Window_InteractionBase.PopulateOptions"/>
+                </ListBox>
+
+
+                <!-- Individual quest selections -->
+                <ListBox name="$parentQuestList" scrollbar="" rowdef="EA_Template_InteractionQuestLine"
+                         visiblerows="10" rowcount="10" rowspacing="15">
+                    <Size>
+                        <AbsPoint x="412" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOptionList" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionBase.questListData" populationfunction="EA_Window_InteractionBase.PopulateQuests"/>
+                </ListBox>
+
+                <!-- Window Buttons -->
+                <Button name="$parentDone" inherits="EA_Button_InteractionConversationImportant" layer="secondary" handleinput="true">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentQuestList" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionBase.Done" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

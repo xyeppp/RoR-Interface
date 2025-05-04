@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+	<Scripts>
+		<Script file="Source/ScreenFlashWindow.lua" />
+	</Scripts>
+	<Windows>
+	
+		<!-- Loading Window -->
+		<DynamicImage name="ScreenFlashWindow" texture="EA_ScreenFlash" layer="overlay" handleinput="false" popable="false">
+            <Size>
+				<AbsPoint x="70" y="100" />
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" />
+				<Anchor point="bottomright" relativePoint="bottomright" />
+			</Anchors>
+			<!--
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="ScreenFlashWindow.Initialize" />
+				<EventHandler event="OnUpdate" function="ScreenFlashWindow.OnUpdate" />
+			</EventHandlers>	
+			-->
+			<TexCoords x="0" y="0" />
+			<TexDims x="256" y="256" />
+		</DynamicImage>
+		
+	</Windows>
+</Interface>

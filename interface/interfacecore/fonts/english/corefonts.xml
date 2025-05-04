@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+
+        <!-- Heading Font -->
+        <Font name="font_heading_default"   face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_medium"    face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="40" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_large"     face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_huge"      face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="72" texsize="512" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_medium_noshadow"    face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="40" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_large_noshadow"     face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_big_noshadow"       face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="60" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_huge_noshadow"      face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="72" texsize="512" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+
+
+        <!-- Journal Fonts -->
+        <Font name="font_journal_body"              face="CronosPro-Regular" file="CronosPro-Regular.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text"              face="CronosPro-Regular" file="CronosPro-Regular.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_body_large"        face="CronosPro-Regular" file="CronosPro-Regular.ttf" height="21" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_large"        face="CronosPro-Regular" file="CronosPro-Regular.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_huge"         face="CronosPro-Regular" file="CronosPro-Regular.ttf" height="26" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_italic"       face="CronosPro-Italic" file="CronosPro-Italic.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_sub_heading"       face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_heading"           face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_heading_smaller"   face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_small_heading"     face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+
+        <!-- Default Window Fonts -->
+        <Font name="font_default_heading"           face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2" />
+        <Font name="font_default_medium_heading"    face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_sub_heading"       face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_sub_heading_no_outline" face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_default_war_heading"       face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_text"              face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_no_outline"   face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_default_text_small"        face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_large"        face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_huge"         face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="30" texsize="512" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+        <Font name="font_default_text_giant"        face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+
+        <!-- Chat Fonts -->
+        <Font name="font_chat_text" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_chat_text_no_outline" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_chat_text_bold" face="MyriadPro-Regular Bold" file="MyriadPro-Regular.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_default" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_tiny" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="14" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_small" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_medium" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_large" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_small_bold" face="MyriadPro-Bold" file="MyriadPro-Bold.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_medium_bold" face="MyriadPro-Bold" file="MyriadPro-Bold.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_large_bold" face="MyriadPro-Bold" file="MyriadPro-Bold.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <!-- Special Fonts -->
+        <Font name="font_default_text_gigantic" face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="48" texsize="256" antialias="true" hinting="true" autohinting="false" outline="false" shadow="true"/>
+        <Font name="font_heading_default_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_zone_name_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="26" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_tiny_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_20pt_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_22pt_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_small_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_huge_no_shadow" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="63" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_rank" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_heading_target_mouseover_name" face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" />
+        <Font name="font_heading_unitframe_large_name" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="true"/>
+        <Font name="font_heading_unitframe_con" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <!-- Center Messaging Alert Fonts -->
+        <Font name="font_alert_outline_tiny" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_small" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_medium" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_large" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="36" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_huge" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="42" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_giant" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_gigantic" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="60" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+
+        <!-- Half of the orginal font size for the Center Messaging Alerts -->
+        <Font name="font_alert_outline_half_tiny" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="9" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_small" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="12" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_medium" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="15" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_large" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_huge" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="21" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_giant" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_gigantic" face="CaslonAntiqueVL" file="CasloAntVL.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+
+        <!-- Guild Fonts -->
+        <Font name="font_guild_MP_R_17" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_guild_MP_R_19" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_guild_MP_R_23" face="MyriadPro-Regular" file="MyriadPro-Regular.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <Font name="font_name_plate_titles_old" face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="15" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_name_plate_names_old"  face="AgeOfReckoning" file="AgeOfReckoning.ttf" height="20" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+
+        <Font name="font_name_plate_titles" face="MyriadPro-Bold" file="MyriadPro-Bold.ttf" height="16" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_name_plate_names"  face="MyriadPro-Bold" file="MyriadPro-Bold.ttf" height="26" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+
+        <!-- Korean game rating font -->
+        <Font name="font_title_window_game_rating_text" face="2002L_NHN" file="2002L_NHN.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_chat_window_game_rating_text" face="2002L_NHN" file="2002L_NHN.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+
+    </Assets>
+</Interface>

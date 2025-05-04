@@ -1,0 +1,6 @@
+<zone iname="Khaine's Embrace">
+    <battlefieldObjective iname="Death's Charge" id="7023" iconSet="1" x="39631" y="33997">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Dance of Swords" id="7024" iconSet="1" x="33785" y="33980">
+    </battlefieldObjective>
+</zone>

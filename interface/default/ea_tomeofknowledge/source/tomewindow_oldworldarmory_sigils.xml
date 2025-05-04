@@ -1,0 +1,213 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <DynamicImage name="EA_DynamicImage_FragmentTemplate" >
+            <Size>
+		        <AbsPoint x="90" y="90"/>
+		    </Size>
+		    <Anchors>
+		        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+		            <AbsPoint x="0" y="0" />
+		        </Anchor>
+		    </Anchors>
+		    <TexDims x="64" y="64" />
+		</DynamicImage>
+
+        <Window name="TomeSigilItem" handleinput="true">
+            <Size>
+                <AbsPoint x="90" y="90" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectSigilEntry"/>
+            </EventHandlers>
+            <Windows>
+                <!-- Sigil Fragmemnts -->
+                <DynamicImage name="$parentFragment1" layer="background" inherits="EA_DynamicImage_FragmentTemplate" />
+                <DynamicImage name="$parentFragment2" layer="background" inherits="EA_DynamicImage_FragmentTemplate" />
+                <DynamicImage name="$parentFragment3" layer="background" inherits="EA_DynamicImage_FragmentTemplate" />
+                <DynamicImage name="$parentFragment4" layer="background" inherits="EA_DynamicImage_FragmentTemplate" />
+                <DynamicImage name="$parentFragment5" layer="background" inherits="EA_DynamicImage_FragmentTemplate" />
+                
+                <!-- Sigil Name -->
+		        <Label name="$parentName" inherits="TOKText"  maxchars="128" textalign="center" autoresize="true" >
+		            <Size>
+		                <AbsPoint x="100" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="40" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+	        </Windows>
+        </Window>
+
+        <Window name="TomeTierArmorSetsItem" handleinput="true" >
+            <Size>
+                <AbsPoint x="400" y="74"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="TomeWindow.SelectOldWorldArmoryTOC" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentImage" texture="EA_Tome"  slice="SectionSymbolArmory" >
+                    <Size>
+		                <AbsPoint x="71" y="74"/>
+		            </Size>
+		            <Anchors>
+		                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+		                    <AbsPoint x="30" y="0" />
+		                </Anchor>
+		            </Anchors>
+                </DynamicImage>
+                
+                <Label name="$parentName" inherits="TOKTextLarge" maxchars="128" textalign="left" wordwrap="true" autoresize="true" >
+					<Size>
+					   <AbsPoint x="200" y="55"/>
+					</Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentImage">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentProgress" inherits="EA_Window_DefaultFrameStatusBar" >
+                    <Size>
+                        <AbsPoint x="230" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        </Window>
+
+        <Window name="OldWorldArmorySigilsDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="OldWorldArmorySigilsPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <!-- Title -->
+                                <Label name="$parentArmoryTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Label name="$parentArmoryDesc" inherits="TOKText" >
+                                    <Size>
+                                        <AbsPoint x="400" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentArmoryTitle">
+                                            <AbsPoint x="0" y="15"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentTier1" inherits="TomeTierArmorSetsItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentArmoryDesc">
+                                            <AbsPoint x="0" y="50"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentTier2" inherits="TomeTierArmorSetsItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTier1">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentTier3" inherits="TomeTierArmorSetsItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTier2">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentTier4" inherits="TomeTierArmorSetsItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTier3">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                
+                                <Window name="$parentSigilPageAnchor" >
+                                    <Size>
+                                        <AbsPoint x="500" y="0" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTier4">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <!-- Page 2 -->
+                                <Label name="$parentSigilsTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" y="20"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSigilPageAnchor">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Label name="$parentSigilsDesc" inherits="TOKText" >
+                                    <Size>
+                                        <AbsPoint x="400" y="20"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSigilsTitle">
+                                            <AbsPoint x="0" y="15"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentSigilsAnchor" >
+                                    <Size>
+                                        <AbsPoint x="400" y="0" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSigilsDesc">
+                                            <AbsPoint x="0" y="30"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                
+                                <!-- Sigils Created Here Dynamically -->
+                                
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+		
+		
+	
+    </Windows>
+</Interface>

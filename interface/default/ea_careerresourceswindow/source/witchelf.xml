@@ -1,0 +1,62 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/WitchElf.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_WitchElfResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="200" y="128" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentSpike5" texture="EA_Career_WE_32b" handleinput="false" slice="WitchElfSpikeC" layer="secondary">
+                    <Size>
+                        <AbsPoint x="41" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike3" texture="EA_Career_WE_32b" handleinput="false" slice="WitchElfSpikeB">
+                    <Size>
+                        <AbsPoint x="39" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentSpike5" >
+                            <AbsPoint x="13" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike4" texture="EA_Career_WE_32b" handleinput="false" slice="WitchElfSpikeD">
+                    <Size>
+                        <AbsPoint x="39" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSpike5" >
+                            <AbsPoint x="-13" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike1" texture="EA_Career_WE_32b" handleinput="false" slice="WitchElfSpikeA">
+                    <Size>
+                        <AbsPoint x="45" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentSpike3" >
+                            <AbsPoint x="7" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike2" texture="EA_Career_WE_32b" handleinput="false" slice="WitchElfSpikeE">
+                    <Size>
+                        <AbsPoint x="45" y="128" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSpike4">
+                            <AbsPoint x="-7" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

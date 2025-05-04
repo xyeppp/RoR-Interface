@@ -1,0 +1,131 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/VersatileFrame.lua" />
+	</Scripts>
+	<Windows>
+
+        <!--# Button: DefaultRoundMinMaxToggle
+           This a combation window containing a round min and max button. By default this is achored to the top right corner
+           of the parent.
+        -->
+        <Window name="VersatileFrameMinMaxToggle" layer="popup">
+            <Size>
+                <!--AbsPoint x="18" y="18" / -->
+                <AbsPoint x="18" y="37" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                    <AbsPoint x="-5" y="5" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Button name="$parentMaxButton" inherits="EA_Button_DefaultPlus" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentMinButton" inherits="EA_Button_DefaultMinus" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Window name="VersatileFrame">
+            <Size>
+                <AbsPoint x="350" y="36"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="VersatileFrame.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBar" inherits="EA_TitleBar_Default" />
+                <!--
+                <Window name="$parentBar">
+                    <Size>
+                        <AbsPoint x="350" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                            <HorizontalResizeImage name="$parentBackground" textureScale="0.80" texture="shared_01" handleinput="false" layer="background" sticky="false">
+                                <Size>
+                                <AbsPoint x="350" y="22" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="topright" relativePoint="topright" />
+                            </Anchors>
+                            <Sizes left="74" middle="75" right="74" />
+                            <TexCoords>
+                                <Left x="66" y="5" />
+                                <Middle x="141" y="5" />
+                                <Right x="217" y="5" />
+                            </TexCoords>
+                        </HorizontalResizeImage>
+                        
+                        <Label name="$parentText" font="font_default_sub_heading" maxchars="128" textalign="center">
+                            <Size>
+                                <AbsPoint x="300" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="74" y="2" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                    <AbsPoint x="-74" y="2" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                    </Windows>
+                </Window>
+ -->
+ 
+
+                <!--
+                TODO: Whether or not each of these three buttons are shown should be configurable, 
+                    which requires dynamically anchoring the buttons when it's made.
+                -->
+                
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="VersatileFrame.OnCloseButtonPressed" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Window name="$parentMinMaxToggle" inherits="VersatileFrameMinMaxToggle">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="VersatileFrame.OnMinMaxTogglePressed" />
+                        <EventHandler event="OnMouseOver" function="VersatileFrame.OnMinMaxToggleMouseOver" />
+                    </EventHandlers>
+                </Window>
+
+                <Button name="$parentOptions" inherits="EA_Button_DefaultDown" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="VersatileFrame.OnOptionsButtonPressed" />
+                        <EventHandler event="OnMouseOver" function="VersatileFrame.OnOptionsButtonMouseOver" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+
+        </Window>
+
+        
+    </Windows>
+</Interface>

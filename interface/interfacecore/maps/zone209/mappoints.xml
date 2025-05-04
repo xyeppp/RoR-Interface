@@ -1,0 +1,245 @@
+<zone iname="Eataine">
+    <landmark iname="Vault of Serian" id="1" mapIcon="1211" x="14374" y="63983">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Steelwind Estate" id="2" mapIcon="1209" x="14580" y="53572">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Honor's Scourge" id="3" mapIcon="1206" x="1600" y="55800">
+        <race>DarkElf</race>
+        <number>20</number>
+        <ranks realm="destruction" min="38" max="38" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Haleril's Resolve" id="4" mapIcon="1208" x="20201" y="19412">
+        <race>HighElf</race>
+        <number>16</number>
+        <ranks realm="order" min="32" max="33" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+	</chapter>
+    <chapter iname="Lightslayer's Umbrage" id="5" mapIcon="1208" x="21000" y="45000">
+        <race>DarkElf</race>
+        <number>21</number>
+        <ranks realm="destruction" min="39" max="39" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Ebonhold Watch" id="6" mapIcon="1055" x="28000" y="43500">
+        <race>DarkElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <warcamp iname="Eataine Mustering" id="7" mapIcon="1054" x="36277" y="25790">
+        <race>HighElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Cloudbreaker Estate" id="8" mapIcon="1209" x="33684" y="23794">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Drakestorm Hall" id="9" mapIcon="1207" x="3876" y="51374">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Asuryan's End" id="10" mapIcon="1208" x="43000" y="45000">
+        <race>DarkElf</race>
+        <number>22</number>
+        <ranks realm="destruction" min="40" max="40" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Shrine of Lileath" id="11" mapIcon="1210" x="51211" y="59780">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lilithorn Estate" id="12" mapIcon="1209" x="53321" y="45236">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Goldenvale Manor" id="13" mapIcon="1206" x="61706" y="12111">
+        <race>HighElf</race>
+        <number>15</number>
+        <ranks realm="order" min="30" max="31" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="14" mapIcon="1259" x="44024" y="36641" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="15" mapIcon="1259" x="30776" y="29311" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="16" mapIcon="1259" x="5039" y="40207" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Wild Hunt: Curse of Kurnous" id="17" mapIcon="1072" x="42847" y="35365" liveevent="23">
+        <importance>minor</importance>
+        <specialType>10</specialType>
+    </landmark>
+    <publicQuest iname="The Well of Sar-Saroth" id="452" iconSet="1" x="10345" y="15307">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Tower of Lysean" id="451" iconSet="1" x="19201" y="5972">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Senthoi Pool" id="480" iconSet="1" x="19252" y="59813">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Blind Justice" id="476" iconSet="1" x="27116" y="55838">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Dawnbreak Manor" id="475" iconSet="1" x="35646" y="49366">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Spirit of Eataine" id="477" iconSet="1" x="35717" y="59788">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Last Stand" id="493" iconSet="1" x="44802" y="54291">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Siege of Anyerrial" id="444" iconSet="1" x="45096" y="5882">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ceylnath Vineyards" id="446" iconSet="1" x="49174" y="20534">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Da Orcwerks" id="445" iconSet="1" x="54822" y="6021">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Glittering Citadel" id="494" iconSet="1" x="58775" y="59224">
+        <difficulty>hard</difficulty>
+        <players min="24" />
+        <rewards>advanced</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Follow the Light" id="492" iconSet="1" x="62014" y="47089">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Woodsong Manor" id="478" iconSet="1" x="7601" y="63477">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Phoenix Eye" id="479" iconSet="1" x="8062" y="48384">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Neversong" id="453" iconSet="1" x="9652" y="23489">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Chillwind Manor: Artisan's Gift" id="632" iconSet="1" x="6351" y="34692">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Bel-Korhadris� Solitude: Healing Boon" id="633" iconSet="1" x="25181" y="35651">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Sanctuary of Dreams: Defensive Boon" id="634" iconSet="1" x="36018" y="34772">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Uthorin Siege Camp: Merchant's Gift" id="635" iconSet="1" x="63488" y="33170">
+    </battlefieldObjective>
+    <keep iname="Arbor of Light" id="25" iconSet="1" x="54574" y="34214">
+        <objectiveId>627</objectiveId>
+    </keep>
+    <keep iname="Pillars of Remembrence" id="26" iconSet="1" x="17222" y="38128">
+        <objectiveId>626</objectiveId>
+    </keep>
+    <zoneTransition iname="To Dragonwake" x="0" y="47900">
+        <zone>205</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Dragonwake" x="0" y="20000">
+        <zone>205</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Shining Way" x="65535" y="32000">
+        <zone>210</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Saphery" x="48000" y="0">
+        <zone>208</zone>
+    </zoneTransition>
+</zone>

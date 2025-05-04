@@ -1,0 +1,8 @@
+<zone iname="The Old Dwarf Road">
+    <battlefieldObjective iname="Shrine of Nurn Shieldbreaker" id="5120" iconSet="1" x="24693" y="46484">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Shrine of Kurgan Ironbeard" id="5121" iconSet="1" x="31888" y="47510">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Shrine of Alriksson" id="5122" iconSet="1" x="29165" y="40596">
+    </battlefieldObjective>
+</zone>

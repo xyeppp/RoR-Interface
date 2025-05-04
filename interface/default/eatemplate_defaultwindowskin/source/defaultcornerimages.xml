@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: DefaultCornerImages 
+
+    This file contains dynamic image definitions for the icons that appear in the upper left of certain windows.
+    They all anchor to their parent at a specified offset.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Windows>
+
+        <DynamicImage name="EA_Default_CornerImage" textureScale="1.0" handleinput="false" layer="secondary" sticky="false">
+            <Size>
+                <AbsPoint x="128" y="128" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="-56" y="-50" />
+                </Anchor>
+            </Anchors>
+        </DynamicImage>
+
+        <DynamicImage name="EA_Default_ApothecaryImage"     inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Apothecary" />
+        <DynamicImage name="EA_Default_AuctionImage"        inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Auction"    />
+        <DynamicImage name="EA_Default_BagImage"            inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Bag"        />
+        <DynamicImage name="EA_Default_BlacksmithImage"     inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Blacksmith" />
+        <DynamicImage name="EA_Default_CharacterImage"      inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Character"  />
+        <DynamicImage name="EA_Default_CultivatingImage"    inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Cultivating"/>
+        <DynamicImage name="EA_Default_CustomizeUIImage"    inherits="EA_Default_CornerImage" texture="EA_CornerIcon_CustomizeUI"/>
+        <DynamicImage name="EA_Default_GuildImage"          inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Guild"      />
+        <DynamicImage name="EA_Default_HelpImage"           inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Help"       />
+        <DynamicImage name="EA_Default_MailImage"           inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Mail"       />
+        <DynamicImage name="EA_Default_MerchantImage"       inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Merchant"    />
+        <DynamicImage name="EA_Default_QuestImage"          inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Quest"      />
+        <DynamicImage name="EA_Default_RvRImage"            inherits="EA_Default_CornerImage" texture="EA_CornerIcon_RvR"        />
+        <DynamicImage name="EA_Default_SettingsImage"       inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Settings"   />
+        <DynamicImage name="EA_Default_SpellbookImage"      inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Spellbook"  />
+        <DynamicImage name="EA_Default_TalismanImage"       inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Talisman"   />
+        <DynamicImage name="EA_Default_TrainingImage"       inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Training"   />
+        <DynamicImage name="EA_Default_SocialImage"         inherits="EA_Default_CornerImage" texture="EA_CornerIcon_Social"     />
+
+    </Windows>
+</Interface>

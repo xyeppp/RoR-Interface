@@ -1,0 +1,220 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionWindowAltCurrency.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Item Row -->
+        <Window name="EA_Window_InteractionAltCurrencyRowTemplate" draganddrop="true">
+            <Size>
+                <AbsPoint x="410" y="80" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_InteractionAltCurrency.OnItemLButtonDown" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionAltCurrency.MouseOverItem" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+                
+                <FullResizeImage name="$parentSelectionBorder" inherits="EA_Button_ResizeIconFramePressed" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Button name="$parentItemPic" inherits="EA_Button_DefaultIcon_Large" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Label name="$parentItemName" wordwrap="true" font="font_default_sub_heading" textalign="left" maxchars="80" inherits="EA_Label_DefaultText" handleinput="false">
+                    <Size>
+                        <AbsPoint x="310" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentItemType" inherits="EA_Label_DefaultText_Small" textalign="left" wordwrap="false"  maxchars="40"  handleinput="false">
+                    <Size>
+                        <AbsPoint x="310" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="6" />
+                        </Anchor>
+                    </Anchors>
+
+                    <Color r="166" g="171" b="179" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+        <!-- End Item Row -->
+
+
+        <!-- Store/Merchant Window -->
+        <Window name="EA_Window_InteractionAltCurrency" layer="popup" movable="true" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="450" y="500" /> 
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionAltCurrency.Initialize" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionAltCurrency.OnRButtonUp" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionAltCurrency.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionAltCurrency.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            </EventHandlers>
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltCurrency.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentInfo" inherits="EA_Label_DefaultText" textalign="left" autoresize="false" autoresizewidth="false">
+                    <Size>
+                        <AbsPoint x="393" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="20" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+               
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_InteractionAltCurrencyRowTemplate" visiblerows="3" rowcount="200" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="433" y="240" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo">
+                            <AbsPoint x="-10" y="5" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionAltCurrency.displayData" populationfunction="EA_Window_InteractionAltCurrency.PopulateItemData">
+                        <ListColumns>
+                            <ListColumn windowname="ItemPicIconBase" variable="iconNum" format="icon" />
+                            <ListColumn windowname="ItemType" variable="typeText" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <HorizontalResizeImage name="$parentMiddleDivider" inherits="EA_BrownHorizontalRule">
+                    <Size>
+                        <AbsPoint x="435" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- section separator -->
+                <Window name="$parentBottomDivider" inherits="EA_Window_DefaultSeparator" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!--Metal Background to Buttons-->
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="topleft" relativeTo="$parentBottomDivider">
+                            <AbsPoint x="10" y="5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-10" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                
+                <Window name="$parentWarning">
+                    <Size>
+                        <AbsPoint x="410" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentButton" inherits="EA_CheckButtonButton" />
+                        <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false">
+                            <Size>
+                                <AbsPoint x="385" y="60" />
+                            </Size>
+                        </Label>
+                    </Windows>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltCurrency.ToggleWarning" />
+                    </EventHandlers>
+                </Window>
+
+                <Button name="$parentPurchase" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="20" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltCurrency.Purchase" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancel" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-20" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltCurrency.Hide" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/MailWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="MailWindow" inherits="EA_Window_Default" layer="secondary" movable="true" savesettings="false">
+            <Size>
+                <AbsPoint x="525" y="705" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright">
+                    <AbsPoint x="-50" y="-100"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="MailWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="MailWindow.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Title Bar, Close button, and Corner Image -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindow.OnClose" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_MailImage"/>
+
+                <!-- Tabs and Filter toggle Block -->
+                <Window name="$parentTabs">
+                    <Size>
+                        <AbsPoint x="475" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar"/>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar"/>
+                    </Anchors>
+
+                    <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill">
+                        <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                        </Anchors>
+                    </FullResizeImage>
+                    <Windows>
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="background" popable="false">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentInbox">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Button name="$parentInbox" inherits="EA_Templates_MailWindowTabButton" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentSend" inherits="EA_Templates_MailWindowTabButton" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentInbox">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentAuction" inherits="EA_Templates_MailWindowTabButton" id="3">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentSend">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+
+		                <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+		                  <Anchors>
+		                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentAuction">
+		                      <AbsPoint x="0" y="-6" />
+		                    </Anchor>
+		                    <Anchor point="bottomright" relativePoint="bottomright" >
+		                      <AbsPoint x="0" y="-6" />
+		                    </Anchor>
+		                  </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+                <!-- TABS End -->
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!--***************************-->
+                <!--     Mail Window Socket    -->
+                <!--***************************-->
+
+                <Window name="MailWindowSocket" movable="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs"/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                    </Anchors>
+                </Window>
+
+                <Window name ="MailWindowTabInbox" inherits ="MailWindowTabInboxSocket"/>
+                <Window name ="MailWindowTabSend" inherits ="MailWindowTabSendSocket"/>
+                <Window name ="MailWindowTabAuction" inherits ="MailWindowTabAuctionSocket"/>
+
+            </Windows>
+            <!-- End of Windows for "MailWindow"-->
+        </Window>
+        <!-- End of "MailWindow" -->
+
+    </Windows>
+
+</Interface>

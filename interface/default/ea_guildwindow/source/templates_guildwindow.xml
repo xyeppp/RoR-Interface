@@ -1,0 +1,1402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+    
+      <Button name="EA_Templates_GuildComboBoxSelected" inherits="EA_Button_DefaultResizableMediumComboBoxSelected" font="font_guild_MP_R_19" />
+      <Button name="EA_Templates_GuildDefaultMenuButton" inherits="EA_Button_DefaultMenuButtonMedium" font="font_guild_MP_R_19" />
+
+      <ComboBox name="EA_Templates_GuildComboBox" selectedbutton="EA_Templates_GuildComboBoxSelected"
+                        menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Templates_GuildDefaultMenuButton"
+                        scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+        <Size>
+          <AbsPoint x="175" y="29" />
+        </Size>
+        <MenuButtonOffset x="5" y="5" />
+      </ComboBox>
+
+      <Label name="EA_Templates_GuildRosterRowText" wordwrap="false" textalign="leftcenter" maxchars="30" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" handleinput="false">
+        <Size>
+          <AbsPoint x="200" y="34" />
+        </Size>
+        <Color r="255" g="255" b="255" a="255"/>
+      </Label>
+
+      <Label name="EA_Templates_GuildTitleText" inherits="EA_Label_DefaultText" textalign="topleft" wordwrap="false" maxchars="18" font="font_guild_MP_R_17">
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpTitle" />
+        </EventHandlers>
+      </Label>
+
+      <!-- Heraldry Choice Header Templates -->
+      <Label name="EA_Templates_GuildHeraldryChoiceHeader" font="font_guild_MP_R_17" maxchars="32" textalign="leftcenter" autoresize="false" popable="false">
+        <Size>
+          <AbsPoint x="100" y="34" />
+        </Size>
+      </Label>
+      
+      <!-- Heraldry Choice Templates -->
+      <Label name="EA_Templates_GuildHeraldryChoice" font="font_guild_MP_R_19" maxchars="8" textalign="center" autoresize="false" popable="false">
+        <Size>
+          <AbsPoint x="80" y="34" />
+        </Size>
+      </Label>
+      
+      <!-- Tab button definition for the row of available subsections -->
+      <Button name="EA_Templates_GuildWindowTabButton" inherits="EA_Button_Tab">
+        <Size>
+          <AbsPoint x="124" y="35" /> <!-- <AbsPoint x="125" y="92" /> -->
+        </Size>
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindow.OnLButtonUpTab" />
+          <EventHandler event="OnMouseOver" function="GuildWindow.OnMouseOverTab" />
+        </EventHandlers>
+        <TextOffset x="0" y="0" />
+      </Button>
+
+      <!--*********************-->
+      <!-- Bottom Tab Template -->
+      <!--*********************-->
+      <HorizontalResizeImage name="EA_Button_Bottom_Tab_Normal" texture="EA_Guild" >
+        <Size>
+          <AbsPoint x="0" y="47" />
+        </Size>
+        <Sizes left="25" middle="84" right="21" />
+        <TexSlices>
+          <Left id="bottomtab-back-leftend"/>
+          <Middle id="bottomtab-back-center"/>
+          <Right id="bottomtab-back-rightend"/>
+        </TexSlices>
+      </HorizontalResizeImage>
+
+      <HorizontalResizeImage name="EA_Button_Bottom_Tab_Highlight" texture="EA_Guild" >
+        <Size>
+          <AbsPoint x="0" y="47" />
+        </Size>
+        <Sizes left="25" middle="84" right="21" />
+        <TexSlices>
+          <Left id="bottomtab-back-leftend-roll"/>
+          <Middle id="bottomtab-back-center-roll"/>
+          <Right id="bottomtab-back-rightend-roll"/>
+        </TexSlices>
+      </HorizontalResizeImage>
+
+      <HorizontalResizeImage name="EA_Button_Bottom_Tab_Pressed" texture="EA_Guild">
+        <Size>
+          <AbsPoint x="0" y="47" />
+        </Size>
+        <Sizes left="25" middle="84" right="21" />
+        <TexSlices>
+          <Left id="bottomtab-front-leftend"/>
+          <Middle id="bottomtab-front-center"/>
+          <Right id="bottomtab-front-rightend"/>
+        </TexSlices>
+      </HorizontalResizeImage>
+
+      <Button name="EA_Button_Bottom_Tab" inherits="EA_Button_Default" font="font_default_text"  textalign="center" sticky="false" layer="secondary">
+        <Size>
+          <AbsPoint x="134" y="47" />
+        </Size>
+        <ResizeImages>
+          <Normal def="EA_Button_Bottom_Tab_Normal" />
+          <NormalHighlit def="EA_Button_Bottom_Tab_Highlight" />
+          <Pressed def="EA_Button_Bottom_Tab_Pressed" />
+        </ResizeImages>
+        <TextColors>
+          <Normal             r="255" g="204" b="102" />
+          <NormalHighlit      r="255" g="85" b="0" />
+          <Pressed            r="255" g="85" b="0" />
+          <PressedHighlit     r="255" g="85" b="0"/>
+        </TextColors>
+        <TextOffset x="10" y="4" />
+      </Button>
+      
+      <Button name="EA_Templates_GuildWindowSortButton" inherits="EA_Button_ListSort" >
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabRoster.OnSortMemberList" />
+          <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverSortButton" />
+        </EventHandlers>
+      </Button>
+
+      <!-- Arrow Image Definitions -->
+      <DynamicImage name="TemplateSortButonUpArrow" texture="shared_01" slice="UP-arrow-depressed" handleinput="false" layer="secondary" >
+        <Size>
+          <AbsPoint x="9" y="12" />
+        </Size>
+        <Anchors>
+          <Anchor point="right" relativePoint="right">
+            <AbsPoint x="-12" y="-6"/>
+          </Anchor>
+        </Anchors>
+      </DynamicImage>
+
+      <DynamicImage name="TemplateSortButonDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" handleinput="false" layer="secondary" >
+        <Size>
+          <AbsPoint x="9" y="12" />
+        </Size>
+        <Anchors>
+          <Anchor point="right" relativePoint="right">
+            <AbsPoint x="-12" y="-6"/>
+          </Anchor>
+        </Anchors>
+      </DynamicImage>
+
+      <!-- Edit Box Edit Button-->
+      <Button name="EditBoxSectionEditButton" inherits="EA_Templates_Guild_Button_EditText" layer="overlay">
+        <!-- Inherited size is 17, 22 -->
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabProfile.OnLButtonUpEditTextIcon"/>
+          <EventHandler event="OnMouseOver" function="GuildWindowTabProfile.OnMouseOverEditTextIcon"/>
+        </EventHandlers>
+      </Button>
+      
+      <!-- Edit Box Section -->
+      <Window name="EditBoxSection" movable="false">
+        <Windows>
+
+          <!-- Edit Box Section Text -->
+          <Label name="$parentText" font="font_guild_MP_R_19" textalign="left" wordwrap="true">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="8" y="4" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+            <Color r="255" g="255" b="255" a="255"/>
+          </Label>
+
+          <!-- Edit Box EA_FullResizeImage_TintableFrame-->
+          <EditBox name="$parentEditBox" font="font_guild_MP_R_19" background="EA_FullResizeImage_TanBorder" scrolling="vert">
+            <TextOffset x="4" y="2" />
+            <Size>
+              <AbsPoint x="550" y="60"/>
+            </Size>
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnKeyEscape" function="GuildWindowTabProfile.OnKeyEscapeEditBox" />
+            </EventHandlers>
+          </EditBox>
+
+        </Windows>
+      </Window>      <!-- Section END -->
+
+      <!-- XP Bar Middle Image -->
+      <HorizontalResizeImage name="EA_StatusBar_GuildXPBackground" texture="EA_Guild" handleinput="false" popable="false">
+        <Size>
+          <AbsPoint x="79" y="21" />
+        </Size>
+        <Sizes left="0" middle="79" right="0" />
+        <TexSlices>
+          <Left id="" />
+          <Middle id="guildxp-bar-empty" />
+          <Right id="" />
+        </TexSlices>
+      </HorizontalResizeImage>
+
+      <HorizontalResizeImage name="EA_StatusBar_GuildXPForeground" texture="EA_Guild" handleinput="false" popable="false">
+        <Size>
+          <AbsPoint x="79" y="21" />
+        </Size>
+        <Sizes left="0" middle="79" right="0" />
+        <TexSlices>
+          <Left id="" />
+          <Middle id="guildxp-bar" />
+          <Right id="" />
+        </TexSlices>
+
+      </HorizontalResizeImage>
+
+      <!--# StatusBar: EA_StatusBar_GuildXP         
+            This is a default Guild XP status bar. This does not have a background image.
+        -->
+      <StatusBar name="EA_StatusBar_GuildXP" foreground="EA_StatusBar_GuildXPForeground" >
+        <Size>
+          <AbsPoint x="22" y="8" />
+        </Size>
+      </StatusBar>
+
+      <!--# StatusBar: EA_Window_HUDGuildXPBar         
+            This is a default HUD Experience Bar for the Guild
+        -->
+      <Window name="EA_Window_HUDGuildXPBar" >
+        <Size>
+          <AbsPoint x="600" y="20" />
+        </Size>
+        <Windows>
+
+          <!-- XP Bar Left and Right End Images -->
+          <DynamicImage name="$parentLeftCap" texture="EA_Guild" slice="guildxp-bar-frame-leftend" handleinput="false" layer="secondary">
+            <Size>
+              <AbsPoint x="11" y="22" />
+            </Size>
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          <DynamicImage name="$parentRightCap" texture="EA_Guild" slice="guildxp-bar-frame-rightend" handleinput="false" layer="secondary">
+            <Size>
+              <AbsPoint x="11" y="22" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+
+          <!-- Background Image -->
+          <HorizontalResizeImage name="$parentBackground" inherits="EA_StatusBar_GuildXPBackground" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="10" y="0" />
+              </Anchor>
+              <Anchor point="topright" relativePoint="topright" relativeTo="">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </HorizontalResizeImage>
+
+          <!-- Status Bar -->
+          <StatusBar name="$parentBar" inherits="EA_StatusBar_GuildXP" handleinput="false" popable="false" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="2" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="2" />
+              </Anchor>
+            </Anchors>
+          </StatusBar>
+        </Windows>
+      </Window>
+
+      <Button name="EA_Templates_Guild_Button_EditText" inherits="EA_Button_Default" backgroundtexture="EA_Guild" highlighttexture="EA_Guild">
+        <Size>
+          <AbsPoint x="29" y="29" />
+        </Size>
+        <TexSlices>
+          <Normal          id="editbutton-base"     />
+          <NormalHighlit   id="editbutton-roll"     />
+          <Pressed         id="editbutton-select"   />
+          <PressedHighlit  id="editbutton-select"   />
+          <!-- <Disabled        id="editbutton-roll"     /> -->
+        </TexSlices>
+      </Button>
+      
+      <Button name="EA_Button_Guild_Left_Arrow" inherits="EA_Button_Default" backgroundtexture="EA_Guild" highlighttexture="EA_Guild">
+        <Size>
+          <AbsPoint x="19" y="37" />
+        </Size>
+        <!--
+          <Slice id="smallarrow-left-base" left="150" top="0" width="19" height="34" /> 
+          <Slice id="smallarrow-left-roll" left="150" top="34" width="19" height="37" /> 
+          <Slice id="smallarrow-left-select" left="150" top="71" width="19" height="35" />
+        -->
+        <TexCoords>
+          <Normal x="150" y="0" />
+          <NormalHighlit x="150" y="34" />
+          <Pressed x="150" y="71" />
+          <PressedHighlit x="150" y="71" />
+        </TexCoords>
+      </Button>
+
+      <Button name="EA_Button_Guild_Right_Arrow" inherits="EA_Button_Default" backgroundtexture="EA_Guild" highlighttexture="EA_Guild">
+        <Size>
+          <AbsPoint x="20" y="37" />
+        </Size>
+        <!--
+          <Slice id="smallarrow-right-base" left="130" top="0" width="20" height="34" /> 
+          <Slice id="smallarrow-right-roll" left="130" top="34" width="20" height="37" /> 
+          <Slice id="smallarrow-right-select" left="130" top="71" width="20" height="35" />
+        -->
+        <TexCoords>
+          <Normal x="130" y="0" />
+          <NormalHighlit x="130" y="34" />
+          <Pressed x="130" y="71" />
+          <PressedHighlit x="130" y="71" />
+        </TexCoords>
+      </Button>
+
+      <!-- News Section -->
+      <Window name="NewsSection" movable="false">
+        <Windows>
+
+          <!-- News Text -->
+          <LogDisplay name="$parentText" font="font_chat_text" scrollbar="$parentScrollbar" scrollbarPosition="right" background="">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                <!-- This is a little fudge factor to make the scrollbar line up with the News Edit Settings button. -->
+                <AbsPoint x="-4" y="0" />
+              </Anchor>
+            </Anchors>
+            <Windows>
+              <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain">
+                <Anchors>
+                  <Anchor point="topright" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="-20" y="0" />
+                  </Anchor>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                </Anchors>
+              </VerticalScrollbar>
+            </Windows>
+          </LogDisplay>
+
+        </Windows>
+      </Window>   <!-- END of Guild News section -->
+
+      <!-- Entire Guild Roster Row Definition -->
+      <Button name="EA_Templates_GuildRosterRow" inherits="EA_Button_GuildRosterRow">
+        <EventHandlers>
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabRoster.OnRButtonUpMemberRow" />
+        </EventHandlers>
+      </Button>
+
+      <FullResizeImage name="EA_Button_GuildRosterRowHighlight" inherits="EA_FullResizeImage_TintableSolidBackground">
+        <Size>
+          <AbsPoint x="880" y="36"/>
+        </Size>
+        <TintColor r="60" g="30" b="30" />
+      </FullResizeImage>
+      
+      <FullResizeImage name="EA_Button_GuildAllianceRowHighlight" inherits="EA_FullResizeImage_TintableSolidBackground">
+        <Size>
+          <AbsPoint x="450" y="26"/>
+        </Size>
+        <TintColor r="60" g="30" b="30" />
+      </FullResizeImage>
+
+      <!--  Single row template for a Guild Member -->
+      <Button name="EA_Button_GuildRosterRow" inherits="EA_Button_Default">
+        <Size>
+          <AbsPoint x="880" y="36" />
+        </Size>
+
+        <ResizeImages>
+          <NormalHighlit def="EA_Button_GuildRosterRowHighlight" />
+          <Pressed       def="EA_Button_GuildRosterRowHighlight" />
+        </ResizeImages>
+
+        <Windows>
+          <FullResizeImage name="$parentRowBackground" handleinput="true" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+
+          <!-- Member Row-->
+          <Window name="$parentMember">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRowBackground">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRowBackground">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverMemberRow" />
+              <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRow" />
+            </EventHandlers>
+            <Windows>
+
+              <!-- MemberCareerIcon -->
+              <DynamicImage name="$parentCareerIcon" textureScale="0.75" handleinput="true" layer="background">
+                <Size>
+                  <AbsPoint x="24" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                    <AbsPoint x="10" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverCareerIcon" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRowChild" />
+                </EventHandlers>
+              </DynamicImage>
+
+              <!-- MemberNameRank -->
+              <Label name="$parentRankNumber" inherits="EA_Templates_GuildRosterRowText" maxchars="3" textalign="center">
+                <Size>
+                  <AbsPoint x="45" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentCareerIcon">
+                    <AbsPoint x="10" y="0" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+              
+              <!-- MemberName -->
+              <Label name="$parentName" inherits="EA_Templates_GuildRosterRowText" font="font_guild_MP_R_17">
+                <Size>
+                  <AbsPoint x="200" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentRankNumber">
+                    <AbsPoint x="5" y="0" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+
+              <DynamicImage name="$parentStandardIcon" textureScale="0.75" layer="background">
+                <Size>
+                  <AbsPoint x="24" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                    <AbsPoint x="15" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverStandardIcon" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRowChild" />
+                </EventHandlers>
+              </DynamicImage>
+
+              <DynamicImage name="$parentRecruiterIcon" textureScale="0.75" layer="background">
+                <Size>
+                  <AbsPoint x="24" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentStandardIcon">
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverRecruiterIcon" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRowChild" />
+                </EventHandlers>
+              </DynamicImage>
+              
+              <!-- MemberPartyIcon -->
+              <DynamicImage name="$parentPartyIcon" textureScale="0.75" handleinput="true" layer="background">
+                <Size>
+                  <AbsPoint x="24" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentRecruiterIcon">
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverPartyIcon" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRowChild" />
+                </EventHandlers>
+              </DynamicImage>
+              
+              <!-- RealmCaptainIcon -->
+              <DynamicImage name="$parentRealmCaptainIcon" textureScale="0.75" handleinput="true" layer="background">
+                <Size>
+                  <AbsPoint x="24" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentPartyIcon">
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="GuildWindowTabRoster.OnMouseOverRealmCaptainIcon" />
+                  <EventHandler event="OnMouseOverEnd" function="GuildWindowTabRoster.OnMouseOverEndMemberRowChild" />
+                </EventHandlers>
+              </DynamicImage>
+          
+              <!-- MemberTitleString -->
+              <Label name="$parentTitleString" inherits="EA_Templates_GuildRosterRowText" ellipsisOnCrop="true" warnOnTextCropped="false">
+                <Size>
+                  <AbsPoint x="196" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentRealmCaptainIcon">
+                    <AbsPoint x="25" y="0" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+
+              <!-- MemberStatusString -->
+              <Label name="$parentStatusString" inherits="EA_Templates_GuildRosterRowText" ellipsisOnCrop="true" warnOnTextCropped="false">
+                <Size>
+                  <AbsPoint x="240" y="24" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentTitleString">
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+            </Windows>
+          </Window>
+
+        </Windows>
+      </Button>
+
+      <Button name="GuildPermissionEnabledButton" inherits="EA_Button_DefaultCheckBox">
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpPermissionCheckBox" />
+        </EventHandlers>
+      </Button>
+
+      <!-- Guild Permission Row -->
+      <Window name="GuildPermissionRow">
+        <Size>
+          <AbsPoint x="578" y="32"/> <!-- y = 20 + ( name label offset * 2 ) -->
+        </Size>
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpPermissionRow" />
+        </EventHandlers>
+        <Windows>
+
+          <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+
+          <Button name="$parentPlusButton" inherits="PlusButton" handleinput="false">
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parentBackground">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentMinusButton" inherits="MinusButton" handleinput="false">
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parentBackground">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled0" inherits="GuildPermissionEnabledButton" id="0">
+            <Anchors>
+              <Anchor point="right" relativePoint="right" relativeTo="$parentBackground">
+                <AbsPoint x="-5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled1" inherits="GuildPermissionEnabledButton" id="1">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled0">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled2" inherits="GuildPermissionEnabledButton" id="2">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled1">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled3" inherits="GuildPermissionEnabledButton" id="3">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled2">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled4" inherits="GuildPermissionEnabledButton" id="4">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled3">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled5" inherits="GuildPermissionEnabledButton" id="5">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled4">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled6" inherits="GuildPermissionEnabledButton" id="6">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled5">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled7" inherits="GuildPermissionEnabledButton" id="7">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled6">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled8" inherits="GuildPermissionEnabledButton" id="8">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled7">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Button name="$parentEnabled9" inherits="GuildPermissionEnabledButton" id="9">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentEnabled8">
+                <AbsPoint x="-1" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Button>
+
+          <Label name="$parentName" font="font_guild_MP_R_19" textalign="leftcenter" textAutoFitMinScale="0.0" popable="false">
+            <EventHandlers>
+              <EventHandler event="OnMouseOver" function="GuildWindowTabAdmin.OnMouseOverPermissionRow" />
+            </EventHandlers>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlusButton">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentEnabled9">
+                <AbsPoint x="-5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+        </Windows>
+      </Window>
+
+      <!-- Guild Reward Row -->
+      <Window name="GuildRewardRow">
+        <Size>
+          <AbsPoint x="320" y="45"/>
+        </Size>
+
+        <Windows>
+          <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+          
+          <!-- Reward Rank -->
+          <Label name="$parentRank" maxchars="3" font="font_clear_medium" textalign="center" popable="false">
+            <Size>
+              <AbsPoint x="30" y="40"/>
+            </Size>
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Reward Tactic Name (SPECIAL USE: Reserve Heraldry and Choose Tactic Buttons) -->
+          <Button name="$parentTactic" inherits="DefaultTextButton" font="font_clear_tiny" handleinput="true" textalign="left">
+            <Anchors>
+              <Anchor point="right" relativePoint="topleft" relativeTo="$parentRank">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabRewards.OnLButtonUpChooseTacticButton" />
+              <EventHandler event="OnMouseOver" function="GuildWindowTabRewards.OnMouseOverTacticButton" />
+            </EventHandlers>
+          </Button>
+
+          <Label name="$parentName" maxchars="80" font="font_clear_tiny" popable="false" textAutoFitMinScale="0.5">
+            <Size>
+              <AbsPoint x="375" y="20"/>
+            </Size>
+            <EventHandlers>
+              <EventHandler event="OnMouseOver" function="GuildWindowTabRewards.OnMouseOverTacticName" />
+            </EventHandlers>
+            <Anchors>
+              <Anchor point="right" relativePoint="bottomleft" relativeTo="$parentRank">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <Label name="$parentNameNoTactic" maxchars="80" font="font_clear_tiny" popable="false" textAutoFitMinScale="0.5">
+            <Size>
+              <AbsPoint x="375" y="16"/>
+            </Size>
+            <EventHandlers>
+              <EventHandler event="OnMouseOver" function="GuildWindowTabRewards.OnMouseOverTacticName" />
+            </EventHandlers>
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentRank">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+        </Windows>
+      </Window>
+
+      <!-- Base Template for Trophy and Tactic Icons, Doesn't include event handlers -->
+      <Button name="GuildWindowIconButtonTemplate" inherits="EA_Button_Default" textureScale="1.0" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" >
+        <Size>
+          <AbsPoint x="64" y="64" /> <!-- Original Size is 64x64 -->
+        </Size>
+        <TextOffset x="5" />
+        <Windows>
+          <DynamicImage name="$parentIcon" textureScale="1.0" handleinput="false" layer="background">
+            <Size>
+              <AbsPoint x="64" y="64" />
+            </Size>
+          </DynamicImage>
+        </Windows>
+      </Button>
+
+      <!-- Derived Template for Trophy Slot, which includes event handlers -->
+      <Button name="GuildWindowAvailTrophyTemplate" inherits="EA_Button_DefaultIconFrame" >
+        <EventHandlers>
+          <EventHandler event="OnMouseDrag" function="GuildWindowTabBanner.OnMouseDragAvailTrophy" />
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabBanner.OnRButtonUpAvailTrophy" />
+          <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverAvailTrophy" />
+        </EventHandlers>
+      </Button>
+
+      <!-- Derived Template for Tactic Slots, which includes event handlers -->
+      <Button name="GuildWindowTacticSlotTemplate" inherits="GuildWindowIconButtonTemplate" >
+        <Size>
+          <AbsPoint x="64" y="64" />
+        </Size>
+        <EventHandlers>
+          <EventHandler event="OnMouseDrag" function="GuildWindowTabBanner.OnMouseDragTacticSlot" />
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabBanner.OnLButtonUpTacticSlot" />
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabBanner.OnRButtonUpTacticSlot" />
+          <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverTacticSlot" />
+        </EventHandlers>
+      </Button>
+      
+      <!-- Small Button Templates for use as Avail Guild Tactics -->
+      <Button name="GuildWindowIconHexSmallButtonTemplate" inherits="EA_Button_Default" textureScale="0.75" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" >
+        <Size>
+          <AbsPoint x="48" y="48" />
+          <!-- Original Size is 64x64 -->
+        </Size>
+        <TexCoords>
+          <Normal texture="EA_HexFrame" x="0" y="0" />
+          <NormalHighlit texture="EA_HexFrame_Highlight" x="0" y="0" />
+          <Pressed texture="EA_HexFrame_Pressed" x="0" y="0" />
+        </TexCoords>
+        <TextOffset x="5" />
+        <EventHandlers>
+          <EventHandler event="OnMouseDrag" function="GuildWindowTabBanner.OnMouseDragAvailTactic" />
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabBanner.OnRButtonUpAvailTactic" />
+          <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverAvailTactic" />
+          <EventHandler event="OnMouseOverEnd" function="GuildWindowTabBanner.OnMouseOverEndAvailTactic" />
+        </EventHandlers>
+        <Windows>
+          <DynamicImage name="$parentIcon" textureScale="0.75" handleinput="false" layer="background">
+            <Size>
+              <AbsPoint x="48" y="48" />
+            </Size>
+          </DynamicImage>
+        </Windows>
+      </Button>
+
+      <Button name="EA_Templates_Color_Picker_Button" inherits="EA_Button_Default" backgroundtexture="EA_Guild" handleinput="true" highlighttexture="EA_Guild">
+        <!-- This template is inherited dynamically within ColorPicker.lua-->
+        <Size>
+          <AbsPoint x="30" y="30" />
+        </Size>
+        <EventHandlers>
+          <EventHandler event="OnMouseOver" function="ColorPicker.OnMouseoverColorBox" />
+          <EventHandler event="OnMouseOverEnd" function="ColorPicker.OnMouseoverEndColorBox" />
+          <EventHandler event="OnLButtonUp" function="ColorPicker.OnLButtonUpColorBox" />
+        </EventHandlers>
+
+        <TexSlices>
+          <Normal          id="colorswatch"           />
+          <NormalHighlit   id="colorswatch" />
+          <Pressed         id="colorswatch" />
+          <PressedHighlit  id="colorswatch" />
+        </TexSlices>
+      </Button>
+
+      <!-- Tactic List Single Row Definition -->
+      <Button name="GuildTacticsListAbilityButtonTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage" >
+        <Size>
+          <AbsPoint x="448" y="55" />
+        </Size>
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildTacticsList.OnLButtonUpAbilityRow" />
+          <EventHandler event="OnMouseOver" function="GuildTacticsList.OnMouseOverAbilityRow" />
+        </EventHandlers>
+
+        <Windows>
+          <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+           <Button name="$parentAbility" inherits="GuildWindowIconHexSmallButtonTemplate" handleinput="false">
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                <AbsPoint x="10" y="0" />
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <!-- <EventHandler event="OnMouseOver" function="GuildTacticsList.OnMouseOverIcon" /> -->
+            </EventHandlers>
+          </Button>
+
+          <Label name="$parentName" wordwrap="false" font="font_journal_text" maxchars="128" inherits="DefaultWindowText" handleinput="false">
+            <Size>
+              <AbsPoint x="340" y="25" />
+            </Size>
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentAbility">
+                <AbsPoint x="15" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>          
+        </Windows>
+      </Button>
+      
+      <Label name="GuildSummaryDefaultLabelColored" maxchars="32" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" ellipsisOnCrop="true" warnOnTextCropped="false" autoresize="false">
+        <Size>
+          <AbsPoint x="100" y="24"/>
+        </Size>
+        <Color r="255" g="204" b="102" />
+      </Label>
+
+      <Label name="GuildSummaryDefaultLabel" maxchars="32" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" ellipsisOnCrop="true" warnOnTextCropped="false">
+        <Size>
+          <AbsPoint x="155" y="24"/>
+        </Size>
+        <Color r="255" g="255" b="255" />
+      </Label>
+      
+      <!-- Roster Tab Alliance Single Row Definition -->
+      <Button name="AllianceWindowRow" inherits="EA_Button_Default">
+        <Size>
+          <AbsPoint x="450" y="26"/>
+        </Size>
+        
+        <ResizeImages>
+          <NormalHighlit def="EA_Button_GuildAllianceRowHighlight" />
+          <Pressed       def="EA_Button_GuildAllianceRowHighlight" />
+        </ResizeImages>
+        
+        <EventHandlers>
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabAlliance.OnRButtonUpAllianceMemberName" />
+          <EventHandler event="OnMouseOver" function="GuildWindowTabAlliance.OnMouseOverAllianceMemberName" />
+          <EventHandler event="OnMouseOverEnd" function="GuildWindowTabAlliance.OnMouseOverEndAllianceMemberName" />
+        </EventHandlers>
+        
+        <Windows>
+          <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+
+          <!-- Guild Member Name -->
+          <Label name="$parentName" inherits="GuildSummaryDefaultLabel" textalign="leftcenter" handleinput="false">
+            <Size>
+              <AbsPoint x="145" y="26"/>
+            </Size>
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parentBackground">
+                <AbsPoint x="4" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Alliance Member Rank -->
+          <Label name="$parentAllianceMemberRankTitle" inherits="GuildSummaryDefaultLabel" wordwrap="false" textalign="center" handleinput="false">
+            <Size>
+              <AbsPoint x="150" y="26"/>
+            </Size>
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Guild -->
+          <Label name="$parentGuild" inherits="GuildSummaryDefaultLabel" wordwrap="false" textalign="leftcenter" handleinput="false">
+            <Size>
+              <AbsPoint x="145" y="26"/>
+            </Size>
+            <Anchors>
+              <Anchor point="right" relativePoint="right" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+        </Windows>
+      </Button>
+      
+      <!-- Alliance Guild Summary Template -->
+      <Window name="AlliedGuildSummary" handleinput="true">
+        <Size>
+          <AbsPoint x="400" y="230"/>
+        </Size>
+        <Windows>
+
+          <DynamicImage name="$parentHeraldry" handleinput="false" popable="false">
+              <Size>
+                  <AbsPoint x="100" y="200" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                      <AbsPoint x="15" y="5" />
+                  </Anchor>
+              </Anchors>
+          </DynamicImage>
+
+          <!-- Guild Name -->
+          <Label name="$parentName" maxchars="35" inherits="EA_Label_DefaultText" textalign="leftcenter" ellipsisOnCrop="true" warnOnTextCropped="false">
+            <Size>
+              <AbsPoint x="250" y="30"/>
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentHeraldry">
+                <AbsPoint x="15" y="5"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Leader Name -->
+          <Label name="$parentLeaderNameLabel" inherits="GuildSummaryDefaultLabelColored">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                <AbsPoint x="0" y="5"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Label name="$parentLeaderName" inherits="GuildSummaryDefaultLabel">
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentLeaderNameLabel">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Date Created -->
+          <Label name="$parentDateCreatedLabel" inherits="GuildSummaryDefaultLabelColored">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLeaderNameLabel">
+                <AbsPoint x="0" y="2"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Label name="$parentDateCreated" inherits="GuildSummaryDefaultLabel">
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentDateCreatedLabel">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Members -->
+          <Label name="$parentMembersLabel" inherits="GuildSummaryDefaultLabelColored">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDateCreatedLabel">
+                <AbsPoint x="0" y="2"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Label name="$parentMembers" inherits="GuildSummaryDefaultLabel">
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentMembersLabel">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Rank -->
+          <Label name="$parentRankLabel" inherits="GuildSummaryDefaultLabelColored">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMembersLabel">
+                <AbsPoint x="0" y="2"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Label name="$parentRank" inherits="GuildSummaryDefaultLabel">
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentRankLabel">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Keep -->
+          <Label name="$parentKeepLabel" inherits="GuildSummaryDefaultLabelColored">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRankLabel">
+                <AbsPoint x="0" y="2"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Label name="$parentKeep" inherits="GuildSummaryDefaultLabel">
+            <Anchors>
+              <Anchor point="right" relativePoint="left" relativeTo="$parentKeepLabel">
+                <AbsPoint x="5" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Submit Kick Vote Button -->
+          <Button name="$parentKickVoteButton" inherits="DefaultTextButton" font="font_chat_text" handleinput="true" textalign="center">
+            <Size>
+              <AbsPoint x="260" y="24" />
+            </Size>
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentKeepLabel">
+                <AbsPoint x="0" y="7"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpKickVoteButton" />
+            </EventHandlers>
+          </Button>
+
+        </Windows>
+      </Window>
+
+      
+      <!-- 
+        CALENDAR TEMPLATES 
+      -->
+
+      
+      <!-- Calendar Button Template -->
+      <Button name="GuildWindowTabCalendarButtonTemplate" inherits="EA_Button_DefaultResizeable"/>
+
+      <!-- Row Label Template -->
+      <Label name="GuildWindowTabCalendarRowLabelTemplate" maxchars="16" inherits="EA_Label_ChatText" textalign="leftcenter">
+        <EventHandlers>
+          <!--
+          <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverAppointmentRow" />
+          <EventHandler event="OnMouseOverEnd" function="GuildWindowTabCalendar.OnMouseOverAppointmentRowEnd" />
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpAppointmentRow" />
+          -->
+        </EventHandlers>
+      </Label>
+
+      <!-- Signup List Row Label Template -->
+      <Label name="GuildWindowTabCalendarSignupRowLabelTemplate" maxchars="25" inherits="DefaultWindowText" textalign="leftcenter">
+        <EventHandlers>
+          <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverSignupRow" />
+          <!-- <EventHandler event="OnMouseOverEnd" function="GuildWindowTabCalendar.OnMouseOverSignupRowEnd" /> -->
+          <EventHandler event="OnRButtonUp" function="GuildWindowTabCalendar.OnRButtonUpSignupRow" />
+        </EventHandlers>
+      </Label>
+
+      <!-- Summary Row Definition -->
+      <Window name="CalendarAppointmentSummaryRow">
+        <Size>
+          <AbsPoint x="350" y="26" />
+        </Size>
+
+        <Windows>
+
+          <!-- Data Labels -->
+          <!-- Row Label Background -->
+          <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="true">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpEventNameButton" />
+              <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverEventName" />
+            </EventHandlers>
+          </FullResizeImage>
+
+          <!-- Row Label Start Day -->
+          <Label name="$parentStartDay" inherits="GuildWindowTabCalendarRowLabelTemplate" handleinput="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="4" y="1"/>
+              </Anchor>
+              <Anchor point="topleft" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="105" y="24"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Row Label Start Time -->
+          <Label name="$parentStartTime" inherits="GuildWindowTabCalendarRowLabelTemplate" handleinput="false">
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentStartDay">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentStartDay">
+                <AbsPoint x="87" y="24"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Row Label Subject -->
+          <Label name="$parentSubject" inherits="GuildWindowTabCalendarRowLabelTemplate" maxchars="32" handleinput="false" wordwrap="false" ignoreFormattingTags="true" ellipsisOnCrop="true" warnOnTextCropped="false">
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentStartTime">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+                <AbsPoint x="-15" y="24"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Row Label Confirmed Icon -->
+          <DynamicImage name="$parentConfirmedIcon" texture="EA_Guild" slice="roster-status-yellow" textureScale="1.0" handleinput="false" layer="background">
+            <Size>
+              <AbsPoint x="17" y="14" />
+            </Size>
+            <Anchors>
+              <Anchor point="right" relativePoint="right" relativeTo="$parentRowBackground">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          
+        </Windows>
+      </Window>
+      <!-- End of Calendar Appointment Summary Row Def-->
+
+      <!-- Appointment Signup Row Definition -->
+      <Window name="CalendarSignupRow">
+        <Size>
+          <AbsPoint x="490" y="30" />
+        </Size>
+
+        <Windows>
+          <!-- Row Label Background -->
+          <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+
+          <!-- Row Label Signup Name -->
+          <Label name="$parentName" inherits="GuildWindowTabCalendarSignupRowLabelTemplate">
+            <Size>
+              <AbsPoint x="350" y="24" />
+            </Size>
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parentRowBackground">
+                <AbsPoint x="15" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Row Label Confirmed Icon -->
+          <DynamicImage name="$parentConfirmedIcon" texture="EA_Guild" slice="roster-status-yellow" textureScale="1.0" handleinput="true" layer="background">
+            <Size>
+              <AbsPoint x="17" y="14" />
+            </Size>
+            <Anchors>
+              <Anchor point="right" relativePoint="right" relativeTo="$parentRowBackground">
+                <AbsPoint x="-35" y="0" />
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverSelectedSignupsListConfirmedIcon" />
+              <EventHandler event="OnRButtonUp" function="GuildWindowTabCalendar.OnRButtonUpSignupRow" />
+            </EventHandlers>
+          </DynamicImage>
+          
+        </Windows>
+      </Window>
+      <!-- End of Appointment Signup Row Def-->
+
+      <!-- Appointment Day Frame Template -->
+      <FullResizeImage name="AppointmentDayFrameTemplate" inherits="DefaultWindowBackground">
+        <Size>
+          <AbsPoint x="80" y="50" />
+        </Size>
+      </FullResizeImage>
+
+      <!-- Appointment Day Background Template -->
+      <FullResizeImage name="AppointmentDayBackgroundTemplate" inherits="EA_FullResizeImage_TintableSolidBackground">
+        <Size>
+          <AbsPoint x="64" y="34" />
+        </Size>
+        <Anchors>
+          <Anchor point="center" relativePoint="center" relativeTo="$parent">
+            <AbsPoint x="0" y="0"/>
+          </Anchor>
+        </Anchors>
+      </FullResizeImage>
+
+      <!-- Appointment Day Label Template -->
+      <Label name="AppointmentDayLabelTemplate" maxchars="4" inherits="DefaultWindowText" font="font_default_text" textalign="center">
+        <Size>
+          <AbsPoint x="80" y="50" />
+        </Size>
+        <EventHandlers>
+          <!--
+        <EventHandler event="OnMouseOver" function="Calendar.OnMouseOverDay" />
+        <EventHandler event="OnMouseOverEnd" function="Calendar.OnMouseOverDayEnd" />
+        <EventHandler event="OnLButtonUp" function="Calendar.OnLButtonUpDay" />
+        -->
+          <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpStartMonthDayBox" />
+        </EventHandlers>
+      </Label>
+
+      <!-- Appointment Day Template -->
+      <Window name="AppointmentDayTemplate">
+        <Size>
+          <AbsPoint x="80" y="50" />
+        </Size>
+        <Windows>
+          <FullResizeImage name="$parentFrame" inherits="AppointmentDayFrameTemplate"/>
+          <FullResizeImage name="$parentBackground" inherits="AppointmentDayBackgroundTemplate"/>
+          <Label name="$parentText" inherits="AppointmentDayLabelTemplate" textalign="center">
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpStartMonthDayBox" />
+            </EventHandlers>
+          </Label>
+        </Windows>
+      </Window>
+
+      <!-- Appointment Time Frame Template -->
+      <FullResizeImage name="AppointmentTimeFrameTemplate" inherits="DefaultWindowBackground">
+        <Size>
+          <AbsPoint x="60" y="50" />
+        </Size>
+      </FullResizeImage>
+
+      <!-- Appointment Time Background Template -->
+      <FullResizeImage name="AppointmentTimeBackgroundTemplate" inherits="EA_FullResizeImage_TintableSolidBackground">
+        <Size>
+          <AbsPoint x="44" y="34" />
+        </Size>
+        <Anchors>
+          <Anchor point="center" relativePoint="center" relativeTo="$parent">
+            <AbsPoint x="0" y="0"/>
+          </Anchor>
+        </Anchors>
+      </FullResizeImage>
+
+      <!-- Appointment Time Label Template -->
+      <Label name="AppointmentTimeLabelTemplate" maxchars="2" inherits="DefaultWindowText" font="font_default_text" textalign="center">
+        <Size>
+          <AbsPoint x="60" y="50" />
+        </Size>
+        <EventHandlers>
+          <!--
+        <EventHandler event="OnMouseOver" function="Calendar.OnMouseOverDay" />
+        <EventHandler event="OnMouseOverEnd" function="Calendar.OnMouseOverDayEnd" />
+        <EventHandler event="OnLButtonUp" function="Calendar.OnLButtonUpDay" />
+        -->
+        </EventHandlers>
+      </Label>
+
+      <!-- Appointment Time Template -->
+      <Window name="AppointmentTimeTemplate">
+        <Size>
+          <AbsPoint x="60" y="50" />
+        </Size>
+        <Windows>
+          <FullResizeImage name="$parentFrame" inherits="AppointmentTimeFrameTemplate"/>
+          <FullResizeImage name="$parentBackground" inherits="AppointmentTimeBackgroundTemplate"/>
+          <Label name="$parentText" inherits="AppointmentTimeLabelTemplate" textalign="center"/>
+        </Windows>
+      </Window>
+
+      <Button name="TransFerGuildConfirmationButtonTemplate" inherits="EA_Button_DefaultPregameResizeable">
+        <Size>
+          <AbsPoint x="200" y="105" />
+        </Size>
+      </Button>
+
+    <!-- Guild Info Title -->
+    <Label name="GuildWindowSectionTitle" font="font_guild_MP_R_19"  textalign="left" autoresize="false" autoFitMinTextScale="0.5">
+        <Size>
+            <AbsPoint x="250" y="20" />
+        </Size>
+    </Label>
+
+    <Label name="GuildWindowRankText" font="font_guild_MP_R_19" textalign="center" autoresize="false" maxchars="3" popable="false" layer="overlay" >
+        <Size>
+            <AbsPoint x="300" y="20" />
+        </Size>
+        <Color r="115" g="160" b="0" />
+    </Label>
+
+    <Label name="GuildWindowYellowHeadingText" font="font_guild_MP_R_19"  >
+        <Color r="226" g="216" b="45" />
+    </Label>
+
+
+
+    <!-- Career Icon Button -->
+
+        <!-- Icon Template -->
+        <DynamicImage name="EA_Image_CareerIcon" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="1" y="1" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright">
+                    <AbsPoint x="-1" y="-1" />
+                </Anchor>
+            </Anchors>
+            <TexDims x="32" y="32" />
+        </DynamicImage>
+
+    </Windows>
+</Interface>
+    

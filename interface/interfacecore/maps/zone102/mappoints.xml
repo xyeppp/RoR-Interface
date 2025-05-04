@@ -1,0 +1,276 @@
+<zone iname="High Pass">
+    <landmark iname="Feiten's Cave" id="1" mapIcon="1062" x="13641" y="61756">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Feiten's Cave" id="2" mapIcon="1063" x="17056" y="60368">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Oathbearer Cave" id="3" mapIcon="1063" x="25308" y="21535">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="4" mapIcon="1062" x="2605" y="55511">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="5" mapIcon="1062" x="2662" y="60260">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Dogbite Ridge" id="6" mapIcon="1053" x="34040" y="55611">
+        <race>Empire</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Bloodmarr" id="7" mapIcon="1044" x="36300" y="31825">
+        <race>Chaos</race>
+        <number>13</number>
+        <ranks realm="destruction" min="26" max="27" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Nuhr's Crest" id="8" mapIcon="1065" x="4000" y="28500">
+        <race>Empire</race>
+        <number>10</number>
+        <ranks realm="order" min="20" max="21" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Bitter Woods" id="9" mapIcon="1065" x="42500" y="55430">
+        <race>Empire</race>
+        <number>12</number>
+        <ranks realm="order" min="24" max="25" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Hallenfurt Cave" id="10" mapIcon="1062" x="43683" y="63220">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Hallenfurt Cave" id="11" mapIcon="1062" x="46479" y="59556">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Prospector Cave" id="12" mapIcon="1062" x="47595" y="2934">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Jaggedspine Ridge" id="13" mapIcon="1065" x="48900" y="21080">
+        <race>Chaos</race>
+        <number>14</number>
+        <ranks realm="destruction" min="28" max="29" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Jaggedspine Cave" id="14" mapIcon="1062" x="49033" y="19011">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Luminous S. Cave" id="15" mapIcon="1063" x="55368" y="24307">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Bloodhewn Cave" id="16" mapIcon="1062" x="55415" y="2696">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="CW Cave" id="17" mapIcon="1062" x="58379" y="40967">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Luminous C. Cave" id="18" mapIcon="1063" x="58597" y="16125">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Luminous N. Cave" id="19" mapIcon="1063" x="58946" y="3597">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Raven's End" id="20" mapIcon="1065" x="9300" y="58400">
+        <race>Empire</race>
+        <number>11</number>
+        <ranks realm="order" min="22" max="23" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave" id="21" mapIcon="1063" x="11870" y="48750">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="38134" y="59359" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="20584" y="64307" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+   <landmark iname="Live Event: Cradle's Nest - Destruction" id="24" mapIcon="1095" x="9874" y="61853" liveevent="30">
+	    <importance>minor</importance>
+	    <specialType>17</specialType>
+    </landmark>
+    <landmark iname="Bonestomper Tribe" id="25" mapIcon="1076" x="5532" y="16365">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Tomb of the Traitor" id="26" mapIcon="1061" x="5173" y="39341">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lost Miner Camp" id="27" mapIcon="1065" x="44442" y="6548">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Brighthollow" id="28" mapIcon="1214" x="60410" y="5881">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="The Luminous Vale" id="29" mapIcon="1208" x="57000" y="35732">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Deathmire Forest" id="30" mapIcon="1064" x="45233" y="50434">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Temple of Heimkel" id="277" iconSet="1" x="11671" y="7526">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+		<ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Chaos Ruins" id="260" iconSet="1" x="14456" y="36500">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Cult of the Magus" id="257" iconSet="1" x="14509" y="49053">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Lake of the Damned" id="259" iconSet="1" x="20414" y="43014">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Guts Out" id="274" iconSet="1" x="21990" y="35416">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Temple of Change" id="258" iconSet="1" x="25703" y="48314">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Tomb of the Traitor" id="261" iconSet="1" x="2771" y="39281">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Beacon of Firengrom" id="276" iconSet="1" x="29806" y="7953">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Shrine of Tzeentch" id="268" iconSet="1" x="31847" y="42072">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Echoes of War" id="272" iconSet="1" x="36540" y="48236">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Keep of Asavar Kul" id="278" iconSet="1" x="36909" y="22133">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Grisly Herd" id="270" iconSet="1" x="40389" y="46325">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Tempest Horn" id="271" iconSet="1" x="49967" y="27785">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Tower of the Elves" id="275" iconSet="1" x="59875" y="33610">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Foetid Plains" id="262" iconSet="1" x="9603" y="21861">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+		<ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <!-- BEGIN Talabecland points -->
+    <battlefieldObjective iname="Verentane's Tower: Merchant's Gift" id="5094" iconSet="1" x="28931" y="8667" zone="108">
+    </battlefieldObjective>
+    <keep iname="Passwatch Castle" id="13" iconSet="1" x="37839" y="7275" zone="108">
+        <objectiveId>600</objectiveId>
+    </keep>
+    <!-- END Talabecland points -->
+    <battlefieldObjective iname="Hallenfurt Manor: Artisan's Gift" id="5090" iconSet="1" x="48339" y="56439">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Feiten's Lock: Defensive Boon" id="5091" iconSet="1" x="11336" y="64390">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Ogrund's Tavern: Healing Boon" id="5092" iconSet="1" x="27924" y="59947">
+    </battlefieldObjective>
+    <keep iname="Stoneclaw Castle" id="14" iconSet="1" x="4611" y="56000">
+        <objectiveId>601</objectiveId>
+    </keep>
+    <zoneTransition iname="To Ostland" x="0" y="32000">
+        <zone>107</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Talabecland" x="32000" y="65535">
+        <zone>108</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Chaos Wastes" x="65535" y="32000">
+        <zone>103</zone>
+    </zoneTransition>
+</zone>

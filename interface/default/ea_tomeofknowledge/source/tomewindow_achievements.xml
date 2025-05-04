@@ -1,0 +1,264 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <!-- Achievements Defs -->
+		
+		<Window name="AchievementsTypeHeading" handleinput="false">
+			<Size>
+				<AbsPoint x="425" y="20"/>
+			</Size>
+			<Windows>
+				<Label name="$parentText" inherits="TOKSubHeading" textalign="left" autoresize="true">
+					<Size>
+						<AbsPoint x="300" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Label name="$parentUnlocks" inherits="TOKTextItalic" textalign="right" autoresize="true">
+					<Size>
+						<AbsPoint x="100" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+
+		
+	    <Window name="AchievementsSubTypeTOCItem" inherits="TomeTOCItemWindowResizeNumber">
+			<Size>
+				<AbsPoint x="405" y="18"/>
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.OnSelectAchievementsSubType"/>
+			</EventHandlers>
+		</Window>
+
+		
+		<Window name="AchievementsSubTypeHeading" >
+			<Size>
+				<AbsPoint x="490" y="25"/>
+			</Size>
+			<Windows>
+				<Label name="$parentText" inherits="TOKHeadingSmall" textalign="left" autoresize="true">
+					<Size>
+						<AbsPoint x="350" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+
+		<Window name="AchievementsEntryItem" >
+			<Size>
+				<AbsPoint x="450" y="65"/>
+			</Size>
+			<Windows>
+			   <HorizontalResizeImage name="$parentDivider" inherits="TomeResizableHorizontalRule" >
+				    <Anchors>
+					    <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+						    <AbsPoint x="-25" y="0"/>
+					    </Anchor>
+					    <Anchor point="topright" relativePoint="topright" relativeTo="">
+						    <AbsPoint x="25" y="0"/>
+					    </Anchor>
+				    </Anchors>
+			    </HorizontalResizeImage>
+			    
+			    <Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="15" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Label name="$parentName" inherits="TOKText" textalign="left" autoresize="true" >
+					<Size>
+						<AbsPoint x="250" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="15" y="0"/>
+						</Anchor>
+					</Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnRButtonUp" function="TomeWindow.OnRightClickAchievementsTaskEntry"/>
+                    </EventHandlers>
+				</Label>
+				
+				<Button name="$parentReward1" inherits="TomeRewardIconButton" id="1" >
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="0" y="15" />
+						</Anchor>
+					</Anchors>
+		            <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverAchievementsEntryReward"/>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickAchievementsEntryReward"/>
+			        </EventHandlers>
+		        </Button>
+		        <Button name="$parentReward2" inherits="TomeRewardIconButton" id="2" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+							<AbsPoint x="0"/>
+						</Anchor>
+					</Anchors>
+		            <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverAchievementsEntryReward"/>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickAchievementsEntryReward"/>
+			        </EventHandlers>
+		        </Button>
+		        <Button name="$parentCard" inherits="TomeRewardIconButton">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+							<AbsPoint x="0"/>
+						</Anchor>
+					</Anchors>
+		            <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverAchievementsEntryCard"/>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickAchievementsEntryCard"/>
+			        </EventHandlers>
+		        </Button>
+				
+			</Windows>
+        </Window>
+        <Label name="AchievementsEntryItemDesc" inherits="TOKTextItalic" textalign="left" autoresize="true" handleinput="true">
+            <Size>
+                <AbsPoint x="400" y="16"/>
+            </Size>
+        </Label>
+		
+		
+         <!-- Achievements TOC Def -->
+		<Window name="AchievementsTOCDef" inherits="TomeSectionWindow" >
+
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="AchievementsTOCPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+	                            <!-- Title -->
+                                <Label name="AchievementsSectionTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+								<!-- The windows for the TOC elements are created dynamically as needed -->
+								<Window name="$parentTypesTOCAnchor" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="AchievementsSectionTitle">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+
+        <!-- Achievements Sub Type Def -->
+		<Window name="AchievementsSubTypeInfoDef" inherits="TomeSectionWindow" >
+
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="AchievementsSubTypeInfoPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Entry Name -->
+                                <Label name="AchievementsSubTypeInfoName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+								<!-- 1st Text Block -->
+								<Label name="AchievementsSubTypeInfoText1" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="AchievementsSubTypeInfoName">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+                                <DynamicImage name="$parentDivider" inherits="TomeDiamondDivider">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="AchievementsSubTypeInfoText1">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+								<!-- Rewards -->
+    							
+                                <Window name="AchievementsSubTypeInfoTaskAnchor" >
+                                    <Size>
+                                        <AbsPoint x="450" y="0" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+    							<Label name="AchievementsSubTypeInfoTaskLabel" inherits="TOKHeadingSmall" textalign="left">
+									<Size>
+										<AbsPoint x="200" y="0"/>
+									</Size>
+									<Anchors>
+										<Anchor point="bottomleft" relativePoint="topleft" relativeTo="AchievementsSubTypeInfoTaskAnchor">
+											<AbsPoint x="35" y="0"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								<Label name="AchievementsSubTypeInfoRewardsLabel" inherits="TOKHeadingSmall" textalign="right">
+									<Anchors>
+										<Anchor point="bottomright" relativePoint="topright" relativeTo="AchievementsSubTypeInfoTaskAnchor">
+											<AbsPoint x="-20" y="0"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+    							
+								
+								<!-- Reward Window are created dynamically as needed -->
+
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+    </Windows>
+</Interface>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Assets>
+	
+		<!--  *************** Examples ( These are defined in the InterfaceCore ) ***************  -->
+		<!-- <Font name="font_arial09" face="Arial" height="9" texsize="256" /> -->		
+		<!-- <Font name="font_chiller18" face="Chiller" file="fonts/chiller.ttf" height="18" texsize="256" /> -->
+		<!--  *********************************************************************************** -->
+		<!--
+		<Font name="font_arial12" face="Arial" height="12" texsize="256" antialias="false" />	
+		<Font name="font_arial16" face="Arial" height="16" texsize="256" antialias="false" />		
+		<Font name="font_arial36" face="Arial" height="36" texsize="512" antialias="false" />	
+		-->
+	</Assets>
+</Interface>

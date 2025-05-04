@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionRenownTraining.lua" />
+    </Scripts>
+
+    <Windows>
+        <!-- The main window -->
+        <Window name="EA_Window_InteractionRenownTraining" layer="secondary" movable="false" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="550" y="770" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionRenownTraining.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionRenownTraining.Shutdown" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionRenownTraining.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionRenownTraining.OnHidden" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionRenownTraining.ToggleContextMenu" />
+            </EventHandlers>
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_TrainingImage"/>
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Size>
+                        <AbsPoint x="550" y="710" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Help Hint Label -->
+                <Label name="$parentHint" wordwrap="false" font="font_clear_default" maxchars="80" inherits="DefaultWindowText" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="550" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Renown Points Available Display -->
+                <Label name="$parentPurseLabel" wordwrap="false" font="font_default_text" maxchars="30" inherits="DefaultWindowText" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="245" y="27" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentHint">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="EA_Templates_RenownTrainingSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="267" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentList">
+                            <AbsPoint x="4" y="-4" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="-4" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Advance List Block -->
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_RenownTrainingAdvanceItem" visiblerows="6" rowcount="80" rowspacing="8">
+                    <Size>
+                        <AbsPoint x="520" y="450" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="8" y="130" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="-8" y="-120" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionRenownTraining.advanceData" populationfunction="EA_Window_InteractionRenownTraining.Populate"/>
+                </ListBox>
+
+                <Label name="$parentNoAbiltitiesText" inherits="DefaultWindowText"  wordwrap="true" autoresize="true" font="font_clear_default" textalign="center" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentList">
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="200" g="200" b="200" />
+                </Label>
+
+                <!-- Horizontal rule at the end of the list -->
+                <HorizontalResizeImage name="$parentButtonSeparator" inherits="EA_BrownHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Bottom frame block -->
+                <Window name="$parentFooterSeparator" inherits="EA_Window_DefaultSeparator">
+                    <Size>
+                        <AbsPoint x="550" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentAvailabilityFilter" inherits="EA_LabelCheckButton" layer="secondary">
+                    <Size>
+                        <AbsPoint x="280" y="38" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnInitialize" function="EA_Window_InteractionRenownTraining.InitializeAvailabilityFilter" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.ToggleAvailabilityFilter" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentFooterSeparator">
+                            <AbsPoint x="10" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!--Respec -->
+                <Button name="$parentRespecializeButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="20" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.Respecialize" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Buy the advance button -->
+                <Button name="$parentPurchaseButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.PurchaseAdvance" />
+                    </EventHandlers>
+                    <AnimatedImages>
+                        <Normal          def="EA_AnimatedImage_DefaultChoiceOverlay"  />
+                        <NormalHighlit   def="EA_AnimatedImage_DefaultChoiceOverlay" />
+                    </AnimatedImages>
+                </Button>
+
+                <!-- Close the window redundantly -->
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-20" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

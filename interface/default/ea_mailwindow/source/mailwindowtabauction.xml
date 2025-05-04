@@ -1,0 +1,154 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/MailWindowTabAuction.lua" />
+    </Scripts>
+    <Windows>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="MailWindowTabAuctionSocket" layer="secondary" movable="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="MailWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="MailWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="MailWindowTabAuction.Initialize" />
+                <EventHandler event="OnShutdown" function="MailWindowTabAuction.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentSpaceAboveList" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="50"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <Label name="$parentMessageNumberText" font="font_default_text" maxchars="100" textalign="leftcenter" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="250" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentSpaceAboveList">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_MailRow" visiblerows="4" rowcount="150" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="515" y="450" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpaceAboveList" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDisplaySeperator" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="MailWindowTabAuction.listData" populationfunction="MailWindowTabAuction.Populate">
+
+                        <ListColumns>
+                            <ListColumn windowname="HeaderFromText"     variable="from"     format="wstring"/>
+                            <ListColumn windowname="HeaderSubjectText"  variable="subject"  format="wstring"/>
+                            <ListColumn windowname="HeaderSentText"     variable="sent"     format="wstring"/>
+                            <ListColumn windowname="HeaderExpiresText"  variable="expires"  format="wstring"/>
+                            <ListColumn windowname="HeaderMoney"        variable="money"    format="wstring"/>
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+
+                <Window name="$parentDisplaySeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBarBackground" >
+                            <AbsPoint x="0" y="-45" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground" >
+                            <AbsPoint x="0" y="-45" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Result Header -->
+                <Label name="$parentResultText" inherits="MailRowTextTemplate" maxchars="256" wordwrap="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="300" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDisplaySeperator">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground">
+                            <AbsPoint x="-10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!--************-->
+                <!-- Button Bar -->
+                <!--************-->
+                <Window name="$parentBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="60" />
+                    </Size>
+                </Window>
+
+                <Button name="$parentOpenMessageButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentBarBackground">
+                            <AbsPoint x="25" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabAuction.OnLButtonOpenMessage" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentDeleteMessageButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentBarBackground">
+                            <AbsPoint x="0" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabAuction.OnLButtonDeleteMessage" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentReturnMessageButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentBarBackground">
+                            <AbsPoint x="-25" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabAuction.OnLButtonReturnMessage" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

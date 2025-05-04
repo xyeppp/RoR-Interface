@@ -1,0 +1,252 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/OpenPartyWindow.lua" />
+    </Scripts>
+    <Windows>
+    
+        <Window name="EA_Window_OpenPartyFlyOutAnchor" layer="default" handleinput="false" savesettings="true">
+            <Size>
+                <AbsPoint x="300" y="200" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="PlayerWindowPortraitFrame">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <Window name="EA_Window_OpenPartyFlyOut" layer="default" savesettings="false" handleinput="false">
+            <Size>
+                <AbsPoint x="43" y="43" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_OpenParty.OnUpdateForFlyOut"/>
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="EA_Window_OpenPartyFlyOutAnchor" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Label name="$parentHeader" maxchars="225" wordwrap="false" inherits="EA_Label_DefaultSubHeading" textalign="left" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="500" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader1Text" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>                            
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader1RatioText" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLeader1Text">
+                            <AbsPoint x="8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader2Text" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLeader1Text">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader2RatioText" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLeader2Text">
+                            <AbsPoint x="8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader3Text" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLeader2Text">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLeader3RatioText" inherits="EA_Label_DefaultText_Small" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLeader3Text">
+                            <AbsPoint x="8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_OpenParty" movable="true" layer="default" savesettings="true" >
+            <Size>
+                <AbsPoint x="1050" y="670" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="50" y="150" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_OpenParty.Initialize"/>
+                <EventHandler event="OnUpdate" function="EA_Window_OpenParty.OnUpdate"/>
+                <EventHandler event="OnShown" function="EA_Window_OpenParty.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_OpenParty.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Title Bar -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenParty.ToggleFullWindow"/>
+                    </EventHandlers>
+                </Button>
+
+                <!-- Settings gear image -->
+                <DynamicImage name="$parentSocialImage" inherits="EA_Default_SocialImage" layer="popup" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-50" y="-60" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- TABS Begin -->
+                <Window name="$parentTab" >
+                    <Size>
+                        <AbsPoint x="500" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar"/>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar"/>
+                    </Anchors>
+
+                    <Windows>
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" handleinput="true" layer="popup">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo ="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentNearby">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Button name="$parentNearby" inherits="EA_Button_OpenPartyTab" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        
+                        <Button name="$parentWorld" inherits="EA_Button_OpenPartyTab" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentNearby" />
+                            </Anchors>
+                        </Button>
+                        
+                        <HorizontalResizeImage name="$parentSeparatorMiddle" inherits="EA_HorizontalResizeImage_TabSeparatorMiddle" layer="background">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentWorld">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentLootRollOptions">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </HorizontalResizeImage>
+                        
+                        <Button name="$parentLootRollOptions" inherits="EA_Button_OpenPartyTab" id="3">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentManage" />
+                            </Anchors>
+                        </Button>
+                        
+                        <Button name="$parentManage" inherits="EA_Button_OpenPartyTab" id="4">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="-25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentManage">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                    </Windows>
+                </Window>
+                <!-- TABS End -->
+                
+                <Window name="$parentSocket" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTab" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentNearby" inherits="EA_Window_OpenPartyNearbySocketDef" />
+                <Window name="$parentWorld" inherits="EA_Window_OpenPartyWorldSocketDef" />
+                <Window name="$parentLootRollOptions" inherits="EA_Window_OpenPartyLootRollOptionsSocketDef" />
+                <Window name="$parentManage" inherits="EA_Window_OpenPartyManageSocketDef" />
+                
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

@@ -1,0 +1,265 @@
+<Interface xmlns:xsi="http://www.w3.org/1001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+   
+
+        <!-- Ability Tooltip -->
+        <Window name="AbilityTooltip"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="0" y="0" />
+            </Size>
+            <Windows>
+
+                <!--                -->
+                <!-- Left Column    -->
+                <!--                -->
+
+                <Label name="$parentName" font="font_default_sub_heading" maxchars="256" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="300" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentSpecLine">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentType">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <Label name="$parentSpecLine" font="font_chat_text" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentCost">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCost" font="font_chat_text" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentCastTime">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCastTime" font="font_chat_text" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRequirements1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!--                -->
+                <!-- Right Column   -->
+                <!--                -->
+
+                <Label name="$parentType" font="font_default_sub_heading" textalign="right" autoresize="true">
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentLevel">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <Label name="$parentLevel" font="font_chat_text" textalign="right" autoresize="true">
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRange">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRange" font="font_chat_text" textalign="right" autoresize="true">
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentCooldown">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCooldown" font="font_chat_text" textalign="right" autoresize="true">
+                    <Size>
+                        <AbsPoint x="230" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRequirements1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!--                -->
+                <!-- Requirements   -->
+                <!--                -->
+
+                <Label name="$parentRequirements1" font="font_chat_text" wordwrap="true" autoresize="true" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRequirements2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRequirements2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="2" g="100" b="202" a="255"/>
+                </Label>
+
+                <Label name="$parentRequirements2" font="font_chat_text" wordwrap="true" autoresize="true" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRequirements3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRequirements3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="2" g="100" b="202" a="255"/>
+                </Label>
+
+                <Label name="$parentRequirements3" font="font_chat_text" wordwrap="true" autoresize="true" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRequirements4">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRequirements4">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="2" g="100" b="202" a="255"/>
+                </Label>
+                
+                <Label name="$parentRequirements4" font="font_chat_text" wordwrap="true" autoresize="true" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRequirements5">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRequirements5">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="2" g="100" b="202" a="255"/>
+                </Label>
+                
+                <Label name="$parentRequirements5" font="font_chat_text" wordwrap="true" autoresize="true" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentDesc">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDesc">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="2" g="100" b="202" a="255"/>
+                </Label>
+
+
+                <!--                -->
+                <!-- Description    -->
+                <!--                -->
+
+                <Label name="$parentDesc" font="font_chat_text" maxchars="512" wordwrap="true" autoresize="true"  sticky="true">
+                    <Size>
+                        <AbsPoint x="350" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" />
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+
+                <!-- Extra text, seperators, background -->
+
+                <Label name="$parentActionText" font="font_chat_text" maxchars="256" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="320" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDesc">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentDesc">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <FullResizeImage name="$parentLine" inherits="EA_FullResizeImage_TintableSolidBackground" >
+                            <Size>
+                                <AbsPoint x="380" y="3" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                            <TintColor r="130" g="130" b="130" a="255"/>
+                        </FullResizeImage>
+                    </Windows>
+                    <Color r="175" g="175" b="175"/>
+                </Label>
+
+                <FullResizeImage name="$parentHeaderSeperator" inherits="EA_FullResizeImage_TintableSolidBackground" layer="popup">
+                    <Size>
+                        <AbsPoint x="380" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpecLine">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLevel">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="130" g="130" b="130" a="255"/>
+                </FullResizeImage>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="-15" y="-15" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentActionText">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+            
+    </Windows>
+</Interface>
+

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+        <Texture name="login_frame" file="Textures/LoginFrame.DDS" />
+        <Texture name="loading_screen" file="Textures/LoadScrLoadScr_Def.dds" />
+
+        <Texture name="EA_Texture_MythicLogo" file="Textures/EA_MythicLogo_d5.dds" />
+        <Texture name="EA_Texture_ESRBLogo" file="Textures/ESRB-T.dds" />
+        <Texture name="EA_Texture_GOALogo" file="Textures/GOA.dds" />
+
+        <Texture name="EA_Texture_GameRatingIcon" file="Textures/EA_GameRatingIcon.dds" />
+
+        <Texture name="pregame_01" file="Textures/EA_Pregame01_32b.dds" >
+            <Slice id="Background-Metal-Fill-Bottom-Left" left="131" top="162" width="16" height="15" />
+            <Slice id="Background-Metal-Fill-Bottom-Middle" left="147" top="162" width="78" height="15" />
+            <Slice id="Background-Metal-Fill-Bottom-Right" left="225" top="162" width="16" height="15" />
+            <Slice id="Background-Metal-Fill-Left" left="131" top="137" width="16" height="25" />
+            <Slice id="Background-Metal-Fill-Middle" left="147" top="137" width="78" height="25" />
+            <Slice id="Background-Metal-Fill-Right" left="225" top="137" width="16" height="25" />
+            <Slice id="Background-Metal-Fill-Top-Left" left="131" top="122" width="16" height="15" />
+            <Slice id="Background-Metal-Fill-Top-Middle" left="147" top="122" width="78" height="15" />
+            <Slice id="Background-Metal-Fill-Top-Right" left="225" top="122" width="16" height="15" />
+            <Slice id="Bullet" left="400" top="68" width="12" height="12" />
+            <Slice id="Button-Left" left="0" top="84" width="27" height="39" />
+            <Slice id="Button-Left-depressed" left="0" top="162" width="27" height="39" />
+            <Slice id="Button-Left-inactive" left="0" top="201" width="27" height="39" />
+            <Slice id="Button-Left-rollover" left="0" top="123" width="27" height="39" />
+            <Slice id="Button-Middle" left="27" top="84" width="76" height="39" />
+            <Slice id="Button-Middle-depressed" left="27" top="162" width="76" height="39" />
+            <Slice id="Button-Middle-inactive" left="27" top="201" width="76" height="39" />
+            <Slice id="Button-Middle-rollover" left="27" top="123" width="76" height="39" />
+            <Slice id="Button-Right" left="103" top="84" width="27" height="39" />
+            <Slice id="Button-Right-depressed" left="103" top="162" width="27" height="39" />
+            <Slice id="Button-Right-inactive" left="103" top="201" width="27" height="39" />
+            <Slice id="Button-Right-rollover" left="103" top="123" width="27" height="39" />
+            <Slice id="Check" left="400" top="41" width="18" height="19" />
+            <Slice id="Check-Box" left="334" top="41" width="22" height="22" />
+            <Slice id="Check-Box-inactive" left="378" top="41" width="22" height="22" />
+            <Slice id="Check-Box-rollover" left="356" top="41" width="22" height="22" />
+            <Slice id="Close-Button" left="274" top="46" width="37" height="37" />
+            <Slice id="Close-Button-depressed" left="274" top="120" width="37" height="37" />
+            <Slice id="Close-Button-rollover" left="274" top="83" width="37" height="37" />
+            <Slice id="DOWN-arrow" left="203" top="43" width="9" height="12" />
+            <Slice id="DOWN-arrow-depressed" left="203" top="55" width="9" height="12" />
+            <Slice id="Dropdown-Box-Center-Span" left="7" top="0" width="52" height="28" />
+            <Slice id="Dropdown-Box-Left" left="0" top="0" width="7" height="28" />
+            <Slice id="Dropdown-Box-Right" left="59" top="0" width="7" height="28" />
+            <Slice id="Dropdownbutton" left="0" top="28" width="27" height="28" />
+            <Slice id="Dropdownbutton-depressed" left="0" top="56" width="27" height="28" />
+            <Slice id="Dropdownbutton-inactive" left="27" top="56" width="27" height="28" />
+            <Slice id="Dropdownbutton-rollover" left="27" top="28" width="27" height="28" />
+            <Slice id="HighlightBottomLeft" left="448" top="119" width="24" height="24" />
+            <Slice id="HighlightBottomMiddle" left="472" top="119" width="16" height="24" />
+            <Slice id="HighlightCenterFill" left="472" top="103" width="16" height="16" />
+            <Slice id="HighlightMiddleLeft" left="448" top="103" width="24" height="16" />
+            <Slice id="HighlightMiddleRight" left="488" top="103" width="24" height="16" />
+            <Slice id="HighlightMiddleRight095" left="488" top="119" width="24" height="24" />
+            <Slice id="HighLightUpperLeft" left="488" top="79" width="24" height="24" />
+            <Slice id="highlightUpperRight" left="448" top="79" width="24" height="24" />
+            <Slice id="HightlightUpperMiddle" left="472" top="79" width="16" height="24" />
+            <Slice id="Horiz-Scrollbar-Chain" left="194" top="99" width="32" height="22" />
+            <Slice id="LEFT-arrow" left="224" top="42" width="12" height="9" />
+            <Slice id="LEFT-arrow-depressed" left="224" top="51" width="12" height="9" />
+            <Slice id="LineRuleCenter" left="90" top="38" width="26" height="3" />
+            <Slice id="LineRuleLeftCap" left="73" top="38" width="17" height="3" />
+            <Slice id="LineRuleRightCap" left="116" top="38" width="23" height="3" />
+            <Slice id="Mini-Buttton" left="168" top="43" width="26" height="26" />
+            <Slice id="Mini-Buttton-depressed" left="168" top="95" width="26" height="26" />
+            <Slice id="Mini-Buttton-inactive" left="142" top="95" width="26" height="26" />
+            <Slice id="Mini-Buttton-rollover" left="168" top="69" width="26" height="26" />
+            <Slice id="Minus-Button" left="254" top="42" width="18" height="18" />
+            <Slice id="Minus-Button-depressed" left="254" top="78" width="18" height="18" />
+            <Slice id="Minus-Button-inactive" left="254" top="96" width="18" height="18" />
+            <Slice id="Minus-Button-rollover" left="254" top="60" width="18" height="18" />
+            <Slice id="NotificationCenter" left="275" top="200" width="20" height="56" />
+            <Slice id="NotificationLeft" left="130" top="200" width="144" height="56" />
+            <Slice id="NotificationRight" left="296" top="200" width="144" height="56" />
+            <Slice id="panelOrnament" left="325" top="117" width="116" height="56" />
+            <Slice id="Plus-Button" left="236" top="42" width="18" height="18" />
+            <Slice id="Plus-Button-depressed" left="236" top="78" width="18" height="18" />
+            <Slice id="Plus-Button-inactive" left="236" top="96" width="18" height="18" />
+            <Slice id="Plus-Button-rollover" left="236" top="60" width="18" height="18" />
+            <Slice id="Radio-Button" left="334" top="63" width="22" height="22" />
+            <Slice id="Radio-Button-inactive" left="378" top="63" width="22" height="22" />
+            <Slice id="Radio-Button-rollover" left="356" top="63" width="22" height="22" />
+            <Slice id="RIGHT-arrow" left="212" top="42" width="12" height="9" />
+            <Slice id="RIGHT-arrow-depressed" left="212" top="51" width="12" height="9" />
+            <Slice id="Scrollbar-Horiz-Left" left="134" top="48" width="9" height="14" />
+            <Slice id="Scrollbar-Horiz-Left-depressed" left="134" top="76" width="9" height="14" />
+            <Slice id="Scrollbar-Horiz-Left-rollover" left="134" top="62" width="9" height="14" />
+            <Slice id="Scrollbar-Horiz-Middle" left="143" top="48" width="16" height="14" />
+            <Slice id="Scrollbar-Horiz-Middle-depressed" left="143" top="76" width="16" height="14" />
+            <Slice id="Scrollbar-Horiz-Middle-rollover" left="143" top="62" width="16" height="14" />
+            <Slice id="Scrollbar-Horiz-Nubs" left="142" top="43" width="20" height="5" />
+            <Slice id="Scrollbar-Horiz-Right" left="159" top="48" width="9" height="14" />
+            <Slice id="Scrollbar-Horiz-Right-depressed" left="159" top="76" width="9" height="14" />
+            <Slice id="Scrollbar-Horiz-Right-rollover" left="159" top="62" width="9" height="14" />
+            <Slice id="Scrollbar-Vert-Bottom" left="92" top="68" width="14" height="9" />
+            <Slice id="Scrollbar-Vert-Bottom-depressed" left="120" top="68" width="14" height="9" />
+            <Slice id="Scrollbar-Vert-Bottom-rollover" left="106" top="68" width="14" height="9" />
+            <Slice id="Scrollbar-Vert-Middle" left="92" top="52" width="14" height="16" />
+            <Slice id="Scrollbar-Vert-Middle-depressed" left="120" top="52" width="14" height="16" />
+            <Slice id="Scrollbar-Vert-Middle-rollover" left="106" top="52" width="14" height="16" />
+            <Slice id="Scrollbar-Vert-Nubs" left="87" top="51" width="5" height="20" />
+            <Slice id="Scrollbar-Vert-Top" left="92" top="43" width="14" height="9" />
+            <Slice id="Scrollbar-Vert-Top-depressed" left="120" top="43" width="14" height="9" />
+            <Slice id="Scrollbar-Vert-Top-rollover" left="106" top="43" width="14" height="9" />
+            <Slice id="Text-Separator" left="346" top="26" width="55" height="15" />
+            <Slice id="UP-arrow" left="194" top="43" width="9" height="12" />
+            <Slice id="UP-arrow-depressed" left="194" top="55" width="9" height="12" />
+            <Slice id="vert-divider-Bottom" left="94" top="12" width="28" height="24" />
+            <Slice id="vert-divider-Top" left="66" top="12" width="28" height="24" />
+            <Slice id="Vert-Scrollbar-Chain" left="65" top="43" width="22" height="32" />
+            <Slice id="Window-Frame-Bot" left="313" top="90" width="27" height="27" />
+            <Slice id="Window-Frame-Bot-Left-Thin-no-Skull" left="465" top="63" width="14" height="9" />
+            <Slice id="Window-Frame-Bot-Right-Corner" left="415" top="90" width="26" height="27" />
+            <Slice id="Window-Frame-Bot-Right-Thin-no-Skull" left="490" top="63" width="14" height="9" />
+            <Slice id="Window-Frame-Bottom-Center-Thin-no-Skull" left="479" top="63" width="11" height="9" />
+            <Slice id="Window-Frame-Left" left="313" top="25" width="18" height="62" />
+            <Slice id="Window-Frame-Left-Thin-no-Skull" left="317" top="25" width="12" height="62" />
+            <Slice id="Window-Frame-Middle" left="336" top="23" width="79" height="69" />
+            <Slice id="Window-Frame-Middle-Thin-no-Skull" left="479" top="44" width="11" height="19" />
+            <Slice id="WindowFrameNotification-BottomBar" left="10" top="252" width="93" height="4" />
+            <Slice id="WindowFrameNotification-BottomLeftCorner" left="0" top="248" width="10" height="8" />
+            <Slice id="WindowFrameNotification-BottomRightCorner" left="103" top="248" width="10" height="8" />
+            <Slice id="WindowFrameNotification-TopBar" left="10" top="240" width="93" height="4" />
+            <Slice id="WindowFrameNotification-TopRightCorner" left="0" top="240" width="10" height="8" />
+            <Slice id="WindowFrameNotification-TopRightCorner120" left="103" top="240" width="10" height="8" />
+            <Slice id="Window-Frame-Right" left="415" top="25" width="23" height="62" />
+            <Slice id="Window-Frame-Right-Thin-no-Skull" left="420" top="25" width="14" height="62" />
+            <Slice id="Window-Frame-Right016" left="438" top="27" width="3" height="60" />
+            <Slice id="Window-Frame-Separator-Center" left="66" top="0" width="75" height="7" />
+            <Slice id="Window-Frame-Separator-Left" left="146" top="8" width="24" height="28" />
+            <Slice id="Window-Frame-Separator-Right" left="122" top="8" width="24" height="28" />
+            <Slice id="Window-Frame-Span" left="338" top="90" width="75" height="27" />
+            <Slice id="Window-Frame-Top-Center-Thin-no-Skull" left="479" top="34" width="11" height="9" />
+            <Slice id="Window-Frame-Top-Left-Corner" left="313" top="0" width="26" height="25" />
+            <Slice id="Window-Frame-Top-Left-Thin-no-Skull" left="465" top="34" width="14" height="9" />
+            <Slice id="Window-Frame-Top-Right-Corner" left="415" top="0" width="23" height="25" />
+            <Slice id="Window-Frame-Top-Right-Thin-no-Skull" left="490" top="34" width="14" height="9" />
+            <Slice id="Window-Frame-Top-Span" left="339" top="0" width="76" height="25" />
+        </Texture>
+
+        <Texture name="EA_Pregame01_d5" file="Textures/EA_Pregame01_d5.dds">
+            <Slice id="ArrowLeft" left="0" top="225" width="49" height="67" />
+            <Slice id="ArrowLeft-Rollover" left="0" top="292" width="49" height="67" />
+            <Slice id="ArrowLeft-Selected" left="0" top="359" width="49" height="67" />
+            <Slice id="ArrowRight" left="49" top="225" width="50" height="67" />
+            <Slice id="ArrowRight-Rollover" left="49" top="292" width="50" height="67" />
+            <Slice id="ArrowRight-Selected" left="49" top="359" width="50" height="67" />
+            <Slice id="Button-CenterSpan" left="197" top="296" width="141" height="105" />
+            <Slice id="Button-CenterSpan-Rollover" left="197" top="401" width="141" height="105" />
+            <Slice id="Button-CenterSpan-Selected" left="197" top="506" width="141" height="104" />
+            <Slice id="Button-LeftEnd" left="145" top="296" width="52" height="105" />
+            <Slice id="Button-LeftEnd-Rollover" left="145" top="401" width="52" height="105" />
+            <Slice id="Button-LeftEnd-Selected" left="145" top="506" width="52" height="104" />
+            <Slice id="Button-RightEnd" left="338" top="296" width="52" height="105" />
+            <Slice id="Button-RightEnd-Rollover" left="338" top="401" width="52" height="105" />
+            <Slice id="Button-RightEnd-Selected" left="338" top="506" width="52" height="104" />
+            <Slice id="EA-Mythic-Logo" left="0" top="85" width="124" height="140" />
+            <Slice id="ESRB-Rating" left="0" top="0" width="175" height="85" />
+            <Slice id="FemaleButton" left="505" top="296" width="115" height="105" />
+            <Slice id="FemaleButton-Disabled" left="794" top="401" width="115" height="105" />
+            <Slice id="FemaleButton-Rollover" left="505" top="401" width="115" height="105" />
+            <Slice id="FemaleButton-Selected" left="505" top="506" width="115" height="105" />
+            <Slice id="MaleButton" left="390" top="296" width="115" height="105" />
+            <Slice id="MaleButton-Disabled" left="794" top="296" width="115" height="105" />
+            <Slice id="MaleButton-Rollover" left="390" top="401" width="115" height="105" />
+            <Slice id="MaleButton-Selected" left="390" top="506" width="115" height="104" />
+            <Slice id="MaleButton-Selected047" left="497" top="610" width="8" height="1" />
+            <Slice id="Play-Button" left="0" top="610" width="497" height="147" />
+            <Slice id="Play-Button-Depressed" left="497" top="757" width="497" height="147" />
+            <Slice id="Play-Button-Rollover" left="0" top="757" width="497" height="147" />
+            <Slice id="RaceChaos" left="975" top="318" width="49" height="53" />
+            <Slice id="RaceChaos-Selected" left="975" top="477" width="49" height="53" />
+            <Slice id="RaceDarkElf" left="975" top="424" width="49" height="53" />
+            <Slice id="RaceDarkElf-Selected" left="975" top="583" width="49" height="53" />
+            <Slice id="RaceDwarf" left="958" top="53" width="49" height="53" />
+            <Slice id="RaceDwarf-Selected" left="958" top="212" width="49" height="53" />
+            <Slice id="RaceEmpire" left="958" top="0" width="49" height="53" />
+            <Slice id="RaceEmpire-Selected" left="958" top="159" width="49" height="53" />
+            <Slice id="RaceGreenskin" left="975" top="371" width="49" height="53" />
+            <Slice id="RaceGreenskin-Selected" left="975" top="530" width="49" height="53" />
+            <Slice id="RaceHighElf" left="958" top="106" width="49" height="53" />
+            <Slice id="RaceHighElf-Selected" left="958" top="265" width="49" height="53" />
+            <Slice id="Vignette" left="620" top="557" width="267" height="199" />
+            <Slice id="Warhammer-Online-Logo" left="176" top="0" width="782" height="296" />
+            <Slice id="ZoomInButton" left="620" top="296" width="87" height="87" />
+            <Slice id="ZoomInButton020" left="707" top="296" width="87" height="87" />
+            <Slice id="ZoomInButton-Rollover" left="620" top="383" width="87" height="87" />
+            <Slice id="ZoomInButton-Rollover027" left="707" top="383" width="87" height="87" />
+            <Slice id="ZoomInButton-Selected" left="620" top="470" width="87" height="87" />
+            <Slice id="ZoomInButton-Selected036" left="707" top="470" width="87" height="87" />
+        </Texture>
+    </Assets>
+</Interface>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+        <Texture name="EA_Texture_Menu01" file="Textures/EA_Menu01_d5.dds">
+      <Slice id="AccentGlow" left="408" top="0" width="73" height="71" />
+      <Slice id="Bag-Button" left="0" top="213" width="58" height="71" />
+      <Slice id="Bag-Button-Highlighted" left="131" top="213" width="73" height="71" />
+      <Slice id="Bag-Button-Selected" left="58" top="213" width="73" height="71" />
+      <Slice id="CustomizeInterface-Button" left="0" top="71" width="58" height="71" />
+      <Slice id="CustomizeInterface-Button-Highlighted" left="131" top="71" width="73" height="71" />
+      <Slice id="CustomizeInterface-Button-Selected" left="58" top="71" width="73" height="71" />
+      <Slice id="Grouping-Button" left="204" top="142" width="58" height="71" />
+      <Slice id="Grouping-Button-Highlighted" left="335" top="142" width="73" height="71" />
+      <Slice id="Grouping-Button-Selected" left="262" top="142" width="73" height="71" />
+      <Slice id="Guild-Button" left="0" top="284" width="58" height="71" />
+      <Slice id="Guild-Button-Highlighted" left="131" top="284" width="73" height="71" />
+      <Slice id="Guild-Button-Selected" left="58" top="284" width="73" height="71" />
+      <Slice id="Help-Button" left="0" top="355" width="58" height="70" />
+      <Slice id="Help-Button-Highlighted" left="131" top="355" width="73" height="70" />
+      <Slice id="Help-Button-Selected" left="58" top="355" width="73" height="70" />
+      <Slice id="MainMenu-Button" left="0" top="0" width="58" height="71" />
+      <Slice id="MainMenu-Button-Highlighted" left="131" top="0" width="73" height="71" />
+      <Slice id="MainMenu-Button-Selected" left="58" top="0" width="73" height="71" />
+      <Slice id="PaperDoll-Button" left="0" top="142" width="58" height="71" />
+      <Slice id="PaperDoll-Button-Selected-Highlighted" left="131" top="142" width="73" height="71" />
+      <Slice id="PaperDoll-Button-Selected-Selected" left="58" top="142" width="73" height="71" />
+      <Slice id="Scenario-Grouping-Button" left="204" top="71" width="58" height="71" />
+      <Slice id="Scenario-Grouping-Button-Highlighted" left="335" top="71" width="73" height="71" />
+      <Slice id="Scenario-Grouping-Button-Selected" left="262" top="71" width="73" height="71" />
+      <Slice id="Spellbook-Button" left="204" top="0" width="58" height="71" />
+      <Slice id="Spellbook-Button-Highlighted" left="335" top="0" width="73" height="71" />
+      <Slice id="Spellbook-Button-Selected" left="262" top="0" width="73" height="71" />
+      <Slice id="Tome-Button" left="0" top="425" width="58" height="71" />
+      <Slice id="Tome-Button-Highlighted" left="262" top="425" width="73" height="71" />
+      <Slice id="Tome-Button-NEW-ENTRIES" left="58" top="425" width="58" height="71" />
+      <Slice id="Tome-Button-Selected" left="116" top="425" width="73" height="71" />
+      <Slice id="Tome-Button-Selected-NEW-ENTRIES" left="189" top="425" width="73" height="71" />
+    </Texture>
+  </Assets>
+</Interface>

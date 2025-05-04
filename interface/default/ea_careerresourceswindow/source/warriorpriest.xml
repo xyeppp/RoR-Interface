@@ -1,0 +1,43 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/WarriorPriest.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_WarriorPriestResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="103" y="68" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackgroundImage" texture="EA_Career_WP_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="103" y="68" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFillImage" texture="EA_Career_WP_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="103" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                    <Size>
+                        <AbsPoint x="103" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="3" y="7" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

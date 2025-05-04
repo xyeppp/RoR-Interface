@@ -1,0 +1,214 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/MoraleWindow.lua" />
+    </Scripts>
+    <Windows>
+        <AnimatedImage name="EA_MoraleButtonAnimation" fps="10" layer="background" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="128" y="128"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <AnimFrames>
+                <AnimFrame id="1" x="0" y="0" />
+                <AnimFrame id="2" x="128" y="0" />
+                <AnimFrame id="3" x="256" y="0" />
+                <AnimFrame id="4" x="384" y="0" />
+                <AnimFrame id="5" x="0" y="128" />
+                <AnimFrame id="6" x="128" y="128" />
+                <AnimFrame id="7" x="256" y="128" />
+                <AnimFrame id="8" x="384" y="128" />
+                <AnimFrame id="9" x="0" y="256" />
+                <AnimFrame id="10" x="128" y="256" />
+                <AnimFrame id="11" x="256" y="256" />
+                <AnimFrame id="12" x="384" y="256" />
+                <AnimFrame id="13" x="0" y="384" />
+                <AnimFrame id="14" x="128" y="384" />
+                <AnimFrame id="15" x="256" y="384" />
+                <AnimFrame id="16" x="384" y="384" />
+            </AnimFrames>
+        </AnimatedImage>
+
+        <!--
+            This is a small "dot" indicator to show that a morale ability has been slotted at this
+            morale level, but that it is not active.
+
+            - When the character has not attained this amount of morale, but has an ability slotted
+            at this level, the dot is shown, and the fullsize morale icon is hidden.
+
+            - When the character attains the requisite amount, the dot is hidden and the fullsize morale
+            icon is shown.
+
+            - When the character mouses over the dot, the dot is hidden, and the fullsize morale icon
+            is shown and a tooltip is created.
+
+            - When the character opens their ability window/spellbook the dot is hidden and the fullsize
+            morale icon is shown
+        -->
+        <DynamicImage name="MoraleSlottedIndicator" texture="EA_HUD_01" layer="secondary" slice="Morale-Ability-Gold-Dot">
+            <Size>
+                <AbsPoint x="12" y="12" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver"       function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd"    function="FrameManager.OnMouseOverEnd" />
+            </EventHandlers>
+        </DynamicImage>
+
+        <Button name="EA_MoraleAbilityButton" texturescale="0.859" layer="default" drawchildrenfirst="true" >
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown"     function="FrameManager.OnLButtonDown" />
+                <EventHandler event="OnRButtonDown"     function="FrameManager.OnRButtonDown" />
+                <EventHandler event="OnMouseOver"       function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd"    function="FrameManager.OnMouseOverEnd" />
+            </EventHandlers>
+            <Windows>
+                <AnimatedImage name="$parentGlowAnim" inherits="EA_MoraleButtonAnimation" texture="anim_morale_glow" />
+                <AnimatedImage name="$parentFlashAnim" inherits="EA_MoraleButtonAnimation" texture="anim_morale_flash" />
+
+                <CircleImage name="$parentIcon" handleinput="false" layer="background" textureScale="0.859" numsegments="8">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </CircleImage>
+
+                <Label name="$parentText" font="font_default_text_large" maxchars="12" textalign="center" handleinput="false" autoresize="true" wordwrap="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="45" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <CooldownDisplay name="$parentCooldown" handleinput="false" cooldownshape="circle" segments="8">
+                    <Size>
+                        <AbsPoint x="52" y="52" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent"/>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentTimer" handleinput="false" font="font_chat_text" maxchars="10" text="" textalign="center">
+                            <Size>
+                                <AbsPoint x="55" y="22" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="243" g="243" b="16" a="255" />
+                        </Label>
+                    </Windows>
+                </CooldownDisplay>
+                <AnimatedImage name="$parentRechargeAnim" texture="EA_MoraleAnim_Recharged" fps="24" layer="overlay" handleinput="false" sticky="false" texturescale="0.859375">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="0" y="0" />
+                        <AnimFrame id="2" x="64" y="0" />
+                        <AnimFrame id="3" x="128" y="0" />
+                        <AnimFrame id="4" x="192" y="0" />>
+                    </AnimFrames>
+                </AnimatedImage>
+            </Windows>
+                <TexCoords>
+                <Normal texture="EA_RoundFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_RoundFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_RoundFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_RoundFrame" x="0" y="0" />
+            </TexCoords>
+        </Button>
+
+        <StatusBar name="EA_StatusBar_MoraleBar" foreground="EA_MoraleBarForeground" popable="false" handleinput="false">
+            <Size>
+                <AbsPoint x="259" y="20" />
+            </Size>
+        </StatusBar>
+        <HorizontalResizeImage name="EA_MoraleBarForeground" texture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="259" y="20" />
+            </Size>
+            <Sizes left="0" middle="259" right="0" />
+            <TexSlices>
+                <Left id="" />
+                <Middle id="Morale-Bar" />
+                <Right id="" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+
+        <!-- Morale Window Definition -->
+        <Window name="EA_MoraleWindow" movable="false" popable="false" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="295" y="72" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitializeCustomSettings"    function="FrameManager.OnInitializeCustomSettings" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- This child window contains all the visible contents -->
+                <Window name="$parentContents" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver"                   function="FrameManager.OnMouseOver" />
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentBackground" texture="EA_HUD_01" slice="Morale-Bar-BG" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="295" y="26" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" />
+                            </Anchors>
+                        </DynamicImage>
+
+                        <StatusBar name="$parentStatus" inherits="EA_StatusBar_MoraleBar" sticky="false">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="16" y="-4" />
+                                </Anchor>
+                            </Anchors>
+                        </StatusBar>
+
+                        <DynamicImage name="$parentOverlay" texture="EA_HUD_01" slice="Morale-Over-Frame" handleinput="false">
+                            <Size>
+                                <AbsPoint x="295" y="26" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" />
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            </Windows>
+
+        </Window>
+    </Windows>
+</Interface>

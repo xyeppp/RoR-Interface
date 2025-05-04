@@ -1,0 +1,244 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <!-- History and Lore Defs -->		
+        
+        
+		<Button name="NoteworthyPersonsZoneButton" inherits="TOKTextButton"  maxchars="128" textalign="left" autoresize="true" >
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.SelectNoteworthyPersonsZone"/>
+			</EventHandlers>
+		</Button>
+
+		
+
+		
+		<Window name="NoteworthyPersonsEntryWindow">
+			<Size>
+				<AbsPoint x="350" y="30"/>
+			</Size>
+			<Windows>								
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton" handleinput="false">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Button name="$parentText" inherits="TOKTextButton"  textalign="left" autoresize="true" >
+			        <Size>
+						<AbsPoint x="300" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectNoteworthyPersonsEntry"/>
+                        <EventHandler event="OnRButtonUp" function="TomeWindow.OnRightClickNoteworthyPersonsEntry"/>
+			        </EventHandlers>
+		        </Button>		
+			</Windows>
+		</Window>
+
+		<Label name="NoteworthyPersonsTierLabel" inherits="TOKText" textalign="left" />	    
+
+
+		<!-- History & Lore TOC Def -->
+		<Window name="NoteworthyPersonsTOCDef" inherits="TomeSectionWindow" >
+			<Windows>
+			
+                <Button name="NoteworthyPersonsPairing1" inherits="TomePairingGvD" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-10" y="90" />
+                        </Anchor>
+                    </Anchors>
+		            <EventHandlers>
+		                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveNoteworthyPersonsPairing"/>
+		            </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentDivider1" inherits="TomeDiamondDivider">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsPairing1">
+                            <AbsPoint x="0" y="20"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="NoteworthyPersonsPairing2" inherits="TomePairingEvC" id="2">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider1">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveNoteworthyPersonsPairing"/>
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentDivider2" inherits="TomeDiamondDivider">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsPairing2">
+                            <AbsPoint x="0" y="20"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="NoteworthyPersonsPairing3" inherits="TomePairingElves" id="3">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider2">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveNoteworthyPersonsPairing"/>
+                    </EventHandlers>
+                </Button>
+
+				<!-- Contents -->
+				<PageWindow name="NoteworthyPersonsTOCPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+
+
+                                <!-- Zones -->
+                                
+                                <Label name="NoteworthyPersonsZonesLabel" inherits="TOKSubHeading" >
+                                    <Size>
+                                        <AbsPoint x="425" />
+                                    </Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsPairing3">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>          
+
+								<Window name="$parentZonesTOCAnchor"  >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsZonesLabel">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+								
+														
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+		<!-- Noteworthy Persons Info Def -->
+		<Window name="NoteworthyPersonsZoneInfoDef" inherits="TomeSectionWindow" >
+		
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="NoteworthyPersonsZoneInfoPageWindow" inherits="TomePageWindow" >
+
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Zone Name -->
+                                <Label name="NoteworthyPersonsZoneInfoName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+							
+							    <!-- Zone Map -->
+							    <Window name="NoteworthyPersonsZoneInfoMapAnchor" inherits="TomeWindowMapAnchorSquare" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsZoneInfoName">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>   		
+
+								<!-- Main Text -->
+								<Label name="NoteworthyPersonsZoneInfoText" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsZoneInfoMapAnchor">
+											<AbsPoint x="0" y="5"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+
+								<!-- Entry List Anchor - Entry Window are created dynamically -->
+								<Label name="NoteworthyPersonsZoneInfoEntryLabel" inherits="TOKSubHeading" >
+								    <Size>
+								        <AbsPoint x="425" />
+								    </Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsZoneInfoText">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+						
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+			<!-- Noteworthy Persons Info Def -->
+		<Window name="NoteworthyPersonsEntryInfoDef" inherits="TomeSectionWindow" >
+		
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="NoteworthyPersonsEntryInfoPageWindow" inherits="TomePageWindow" >
+
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Entry Name -->
+                                <Label name="NoteworthyPersonsEntryInfoEntryName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+								
+								
+								<!-- Entry Text -->
+								<Label name="NoteworthyPersonsEntryInfoEntryText" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="NoteworthyPersonsEntryInfoEntryName">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+    </Windows>
+</Interface>

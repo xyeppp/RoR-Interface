@@ -1,0 +1,300 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/BarbershopWindow.lua" />
+    </Scripts>
+
+    <Windows>
+        <Button name="BarbershopComboBoxSelectedButton" font="font_default_text_small" textalign="center">
+            <Size>
+                <AbsPoint x="145" y="39" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <Windows>
+                <HorizontalResizeImage name="$parentBackground" texture="EA_BarbershopTexture" textureScale="1.5" handleinput="false">
+                    <Size>
+                        <AbsPoint x="93" y="39" />
+                    </Size>
+                    <Sizes left="8" middle="46" right="8" />
+                    <TexSlices>
+                        <Left   id="Button-Middle-Left" />
+                        <Middle id="Button-Middle" />
+                        <Right  id="Button-Middle-Right" />
+                    </TexSlices>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" />
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+            <TextOffset x="5" y="5" />
+        </Button>
+
+        <Button name="BarbershopComboBoxMenuItemButton" inherits="EA_Button_DefaultMenuButton" font="font_default_text_small" textalign="center" textAutoFitMinScale="0.6">
+            <Size>
+                <AbsPoint x="220" y="30" />
+            </Size>
+        </Button>
+
+        <ComboBox name="BarbershopComboBox" selectedbutton="BarbershopComboBoxSelectedButton" 
+                                            menubackground="EA_Window_ComboBoxMenuBackground" 
+                                            menuitembutton="BarbershopComboBoxMenuItemButton"
+                                            scrollbar="EA_ScrollBar_DefaultVerticalChain" 
+                                            maxvisibleitems="15" >
+            <Size>
+                <AbsPoint x="145" y="39" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+        
+        <Button name="BarbershopNextButtonTemplate" backgroundtexture="EA_BarbershopTexture" highlighttexture="EA_BarbershopTexture" textureScale="1.5">
+            <Size>
+                <AbsPoint x="30" y="39" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="Button-Right"  />
+                <NormalHighlit   texture="" id="Button-Right-rollover"   />
+                <Pressed         texture="" id="Button-Right-depressed"   />
+                <PressedHighlit  texture="" id="Button-Right-depressed"   />
+                <Disabled        texture="" id="Button-Right"   />
+                <DisabledPressed texture="" id="Button-Right-rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+        
+        <Button name="BarbershopPrevButtonTemplate" backgroundtexture="EA_BarbershopTexture" highlighttexture="EA_BarbershopTexture" textureScale="1.5">
+            <Size>
+                <AbsPoint x="30" y="39" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="Button-Left"  />
+                <NormalHighlit   texture="" id="Button-Left-rollover"   />
+                <Pressed         texture="" id="Button-Left-depressed"   />
+                <PressedHighlit  texture="" id="Button-Left-depressed"   />
+                <Disabled        texture="" id="Button-Left"   />
+                <DisabledPressed texture="" id="Button-Left-rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+        
+        <Window name="BarbershopFeatureWindow">
+            <Size>
+                <AbsPoint x="205" y="39" />
+            </Size>
+            <Windows>
+                <Button name="$parentNextButton" inherits="BarbershopNextButtonTemplate">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="BarbershopWindow.NextFeature"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <ComboBox name="$parentComboBox" inherits="BarbershopComboBox" layer="popup" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="BarbershopWindow.SelectFeature" />
+                        <EventHandler event="OnMouseOver" function="BarbershopWindow.MouseOverFeature" />
+                    </EventHandlers>
+                </ComboBox>
+                <Button name="$parentPrevButton" inherits="BarbershopPrevButtonTemplate">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="BarbershopWindow.PrevFeature"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_Barbershop" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false" skipinput="true">
+            <Size>
+                <AbsPoint x="1530" y="957" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="Root" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="Root" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="BarbershopWindow.Initialize" />
+                <EventHandler event="OnShown"       function="BarbershopWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+            
+                <FullResizeImage name="$parentAlphaBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="true" layer="background" alpha="0.5">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="WindowUtils.TrapClick"/>
+                    </EventHandlers>
+                </FullResizeImage>
+                
+                <Window name="$parentMain" layer="secondary">
+                    <Size>
+                        <AbsPoint x="1530" y="957" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+                    </Anchors>
+                    <Windows>
+                        <!-- Basic Window Elements -->
+                
+                        <FullResizeImage name="$parentMirrorBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" layer="background">
+                            <Anchors>
+                                <Anchor point="center" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="-175" y="-350" />
+                                </Anchor>
+                                <Anchor point="center" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="175" y="250" />
+                                </Anchor>
+                            </Anchors>
+                            <TintColor r="164" g="164" b="192" />
+                        </FullResizeImage>
+                        
+                        <NifDisplay name="$parentCharacterNif" nif="BarberShopNif" scale="1.00" ortho="false" fov="0.58" autoprops="false" rotateaxis="3" handleinput="true" draganddrop="false" layer="background">
+                            <Size>
+                                <AbsPoint x="380" y="700" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parentMirrorBackground">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Translation x="0.0" y="-80.0" z="62.0" />  <!-- overridden for short characters in Lua code -->
+                            <Rotation x="0.0" y="180.0" z="180.0" />
+                        </NifDisplay>
+                
+                        <DynamicImage name="$parentBackgroundImage" textureScale="1.5" handleinput="false" layer="default" sticky="false" texture="EA_BarbershopTexture" slice="background">
+                            <Size>
+                                <AbsPoint x="1530" y="957" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                            </Anchors>
+                        </DynamicImage>
+                
+                        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="BarbershopWindow.Hide" />
+                            </EventHandlers>
+                        </Button>
+                
+                        <!-- Main Buttons -->
+                
+                        <Button name="$parentResetButton" inherits="EA_Button_DefaultResizeable">
+                            <Size>
+                                <AbsPoint x="160" y="39" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentCheckOutButton">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="BarbershopWindow.Reset" />
+                            </EventHandlers>
+                        </Button>
+                
+                        <Button name="$parentCheckOutButton" inherits="EA_Button_DefaultResizeable">
+                            <Size>
+                                <AbsPoint x="160" y="39" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                                    <AbsPoint x="0" y="295" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="BarbershopWindow.CheckOut" />
+                            </EventHandlers>
+                        </Button>
+                
+                        <!-- Features -->
+                
+                        <Window name="$parentFeature1" inherits="BarbershopFeatureWindow" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="915" y="260" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature2" inherits="BarbershopFeatureWindow" id="2">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature1">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature3" inherits="BarbershopFeatureWindow" id="3">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature2">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature4" inherits="BarbershopFeatureWindow" id="4">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature3">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature5" inherits="BarbershopFeatureWindow" id="5">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature4">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature6" inherits="BarbershopFeatureWindow" id="6">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature5">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature7" inherits="BarbershopFeatureWindow" id="7">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature6">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentFeature8" inherits="BarbershopFeatureWindow" id="8">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFeature7">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
+

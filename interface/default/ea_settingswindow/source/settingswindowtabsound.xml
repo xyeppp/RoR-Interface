@@ -1,0 +1,222 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabSound.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabSound" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabSound.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabSoundContentsScrollChild" scrollbar="SWTabSoundContentsScrollbar" lineheight="18" autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+
+                        <!-- Sound -->
+                        <Window name="$parentSettingsSound">
+                            <Size>
+                                <AbsPoint x="500" y="490" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- Master Sound -->
+                                <Label name="$parentMasterSoundLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableMasterSound" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMasterSoundLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentMasterVolSilder" inherits="EA_Default_SliderBar" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnableMasterSound" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+
+                                <!-- Effects Sound -->
+                                <Label name="$parentEffectsSoundLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="130" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableEffectsSound" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEffectsSoundLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentEffectsVolSilder" inherits="EA_Default_SliderBar" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnableEffectsSound" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+
+
+                                <!-- Music Sound -->
+                                <Label name="$parentMusicSoundLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="220" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableMusicSound" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMusicSoundLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentMusicVolSilder" inherits="EA_Default_SliderBar" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnableMusicSound" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+
+                                <!-- EAX -->
+                                <Label name="$parentEAXLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="310" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableEAX" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEAXLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Label name="$parentNotificationLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="400" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentDisableCommunicationSounds" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNotificationLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="350" y="32" />
+                                    </Size>
+                                    <EventHandlers>
+                                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                                        <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                                        <Eventhandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" />
+                                    </EventHandlers>
+                                </Window>
+
+                            </Windows>
+                        </Window>
+                                
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Chat -->
+</Interface>

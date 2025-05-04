@@ -1,0 +1,230 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/BattlefieldObjectiveTracker.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Main Window Specification -->
+        <Window name="EA_Window_BattlefieldObjectiveTracker" sticky="false" skipinput="true" layer="background" savesettings="true">
+            <Size>
+                <AbsPoint x="600" y="125"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"                  function="EA_Window_BattlefieldObjectiveTracker.Initialize" />
+                <EventHandler event="OnInitializeCustomSettings"    function="EA_Window_BattlefieldObjectiveTracker.InitializeLayout" />
+                <EventHandler event="OnUpdate"                      function="EA_Window_BattlefieldObjectiveTracker.Update" />
+                <EventHandler event="OnShutdown"                    function="EA_Window_BattlefieldObjectiveTracker.Shutdown" />
+            </EventHandlers>
+
+            <Windows>
+                <Label name="$parentActionLabel" font="font_default_text_small" maxchars="16" autoresize="true"
+                       textalign="left" handleinput="true" wordwrap="false" textAutoFitMinScale="0.3">
+                    <Size>
+                        <AbsPoint x="230" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_BattlefieldObjectiveTracker.MouseOverQuest" />
+                    </EventHandlers>
+                </Label>
+
+                <DynamicImage name="$parentOwnerIcon" texture="map_markers01" slice="FlagNeutral" handleinput="true">
+                    <Size>
+                        <AbsPoint x="28" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentActionLabel" >
+                            <AbsPoint x="-5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_BattlefieldObjectiveTracker.MouseOverQuest" />
+                    </EventHandlers>
+                </DynamicImage>
+
+                <Label name="$parentLabel" font="font_default_text_small" maxchars="24" autoresize="true"
+                       textalign="right" handleinput="true" wordwrap="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="500" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentOwnerIcon" >
+                            <AbsPoint x="-5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_BattlefieldObjectiveTracker.MouseOverQuest" />
+                    </EventHandlers>
+                </Label>
+
+
+                <Label name="$parentTimerValue" font="font_default_sub_heading" maxchars="16" layer="overlay"
+                       textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="70" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="35"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+                <DynamicImage name="$parentClockImage" handleinput="false" layer="overlay"
+                              texture="EA_HUD_01" slice="Clock" >
+                    <Size>
+                        <AbsPoint x="22" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTimerValue">
+                            <AbsPoint x="-5" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <Window name="$parentMain" skipinput="true">
+                    <Size>
+                        <AbsPoint x="600" y="280"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTimerValue" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Objective Groups -->
+                        <Window name="$parentQuest1" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="1" handleinput="true">
+                            <Size>
+                                <AbsPoint x="600" y="280"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_BattlefieldObjectiveTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Windows>
+                                <Label name="$parentLabel" font="font_default_sub_heading" maxchars="64"
+                                       textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                                    <Size>
+                                        <AbsPoint x="530" y="16" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                            <AbsPoint x="-70" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="204" b="102" a="255"/>
+                                </Label>
+
+                                <!-- Quests -->
+                                <Window name="$parentData" inherits="EA_Window_PublicQuestTrackerQuestData" id="1">
+                                    <Anchors>
+                                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLabel">
+                                            <AbsPoint x="70" y="3"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="600" y="50" />
+                                    </Size>
+                                    <Windows>
+                                        <Window name="$parentCondition1" inherits="EA_Window_BattleFieldObjectiveTrackerCondition" id="1">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentCondition2" inherits="EA_Window_BattleFieldObjectiveTrackerCondition" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition1" >
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentCondition3" inherits="EA_Window_BattleFieldObjectiveTrackerCondition" id="3">
+                                            <Anchors>
+                                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentCondition4" inherits="EA_Window_BattleFieldObjectiveTrackerCondition" id="4">
+                                            <Anchors>
+                                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentCondition5" inherits="EA_Window_BattleFieldObjectiveTrackerCondition" id="5">
+                                            <Anchors>
+                                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition4">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                    </Windows>
+                                </Window>
+                            </Windows>
+                        </Window>
+
+                    </Windows>
+                </Window>
+
+                <Window name="$parentLocked">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTimerValue" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Label name="$parentLocation" font="font_chat_text" maxchars="64"
+                               textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="600" y="18"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+
+                        <Label name="$parentText" font="font_chat_text" maxchars="64"
+                               textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="600" y="18"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLocation">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

@@ -1,0 +1,81 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TomeAlertWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="TomeAlertWindow" savesettings="false">
+            <Size>
+                <AbsPoint x="1000" y="95"/>
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="80"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="TomeAlertWindow.Initialize" />
+                <EventHandler event="OnUpdate" function="TomeAlertWindow.Update" />
+                <EventHandler event="OnShutdown" function="TomeAlertWindow.Shutdown" />
+                <EventHandler event="OnMouseOver" function="TomeAlertWindow.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd" function="TomeAlertWindow.OnMouseOverEnd" />
+                <EventHandler event="OnLButtonUp" function="TomeAlertWindow.OnClickAlert" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+		        <Label name="$parentXPLabel" font="font_default_text_huge" maxchars="32" textalign="center" layer="background" autoresize="false" sticky="false" handleinput="false" wordwrap="false">
+		            <Size>
+		                <AbsPoint x="300" y="50" />
+		            </Size>
+		            <Color r="255" g="255" b="255" a="255" />
+                    <Anchors>
+                        <Anchor point="top" relativePoint="center" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+                <DynamicImage name="$parentSectionIcon" handleinput="false" texture="EA_Tome" slice="SectionSymbolAchievements">
+					<Size>
+						<AbsPoint x="71" y="74"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="center" relativeTo="$parentBackground">
+							<AbsPoint x="5" y="42"/>
+						</Anchor>
+					</Anchors>
+				</DynamicImage>
+                <Label name="$parentSectionName" inherits="TOKTextHuge" maxchars="64" textalign="left" autoresizewidth="true" autoresize="true" wordwrap="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="1000" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="topleft" relativeTo="$parentSectionIcon" >
+                            <AbsPoint x="0" y="-27"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText" inherits="TOKText" maxchars="256" textalign="left" autoresize="true" wordwrap="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="500" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionName"  >
+                            <AbsPoint x="0" y="3"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="155" g="0" b="0" a="255"/>
+                </Label>              
+            </Windows>
+        </Window> <!-- TomeAlertWindow -->
+
+    </Windows>
+</Interface>

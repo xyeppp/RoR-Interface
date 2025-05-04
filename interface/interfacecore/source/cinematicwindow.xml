@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/CinematicWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_Window_CinematicDisplay" layer="popup" movable="true">
+            <Size>
+                <AbsPoint x="1296" y="736" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="Root">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentBackgroundImage" inherits="EA_FullResizeImage_BlackTransparent" handleinput="false" layer="background" alpha="1.0">
+                    <Anchors>
+                        <Anchor point="topleft"     relativePoint="topleft"     relativeTo="$parentScreen" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentScreen" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentScreen" layer="default" texture="title_screen_video" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="-8" y="8" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="8" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                </DynamicImage>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" layer="popup"/>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="overlay">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CinematicDisplay.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_PregameBorder" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft"     relativePoint="topleft"     relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentTopIcon" inherits="EA_DynamicImage_PregameTopIcon" layer="overlay">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top"  >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

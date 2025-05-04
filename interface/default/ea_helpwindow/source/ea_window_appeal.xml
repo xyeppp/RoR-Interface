@@ -1,0 +1,138 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/EA_Window_Appeal.lua" />
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="EA_Window_Appeal" inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+      <Size>
+        <AbsPoint x="900" y="605" />
+      </Size>
+      <Anchors>
+        <Anchor point="center" relativePoint="center" relativeTo="EA_Window_Help">>
+          <AbsPoint x="0" y="0" />
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize"  function="EA_Window_Appeal.Initialize" />
+        <EventHandler event="OnShutdown"    function="EA_Window_Appeal.Shutdown" />
+        <EventHandler event="OnShown"       function="EA_Window_Appeal.OnShown" />
+        <EventHandler event="OnHidden"      function="EA_Window_Appeal.OnHidden" />
+      </EventHandlers>
+      <Windows>
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_Appeal.Hide" />
+          </EventHandlers>
+        </Button>
+        <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+        <!-- Main Window Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" >
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" />
+          </Anchors>
+        </Window>
+
+        <!-- Help Title Text-->
+        <Label name="$parentHeaderText" font="font_default_heading" maxchars="32" textalign="center" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="500" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="15" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Top Seperator -->
+        <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+              <AbsPoint x="0" y="64" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+              <AbsPoint x="0" y="64" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Topic List Box -->
+        <ListBox name="$parentTopicListBox" scrollbar="EA_Window_AppealVertScroll" rowdef="AppealTopicRow" visiblerows="17" rowcount="100" rowspacing="0">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeperator">
+              <AbsPoint x="10" y="-8"/>
+            </Anchor>
+            <Anchor point="topleft" relativePoint="bottomright" relativeTo="$parentButtonBackground">
+              <AbsPoint x="305" y="8"/>
+            </Anchor>
+          </Anchors>
+          <ListData table="EA_Window_Appeal.topicList" populationfunction="EA_Window_Appeal.populateTopicList">
+            <ListColumns>
+              <ListColumn windowname="Name" variable="name"  format="wstring" />
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+        <!-- Topic Window -->
+        <ScrollWindow name="$parentTopicWindow" childscrollwindow="EA_Window_AppealTopicWindowScrollChild" scrollbar="EA_Window_AppealTopicWindowScrollbar" lineheight="24">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTopicListBox" >
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+              <AbsPoint x="-15" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+            <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+              <Size>
+                <AbsPoint x="20" y="200"/>
+              </Size>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright">
+                  <AbsPoint x="4" y="0"/>
+                </Anchor>
+              </Anchors>
+            </VerticalScrollbar>
+            <Window name="$parentScrollChild">
+              <Size>
+                <AbsPoint x="320" y="0"/>
+              </Size>
+              <Windows>
+
+              </Windows>
+            </Window> <!-- End of parentScrollChild -->
+          </Windows>
+        </ScrollWindow>
+        
+        <!-- Button Bar Barground -->
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+          <Size>
+            <AbsPoint x="0" y="75" />
+          </Size>
+        </Window>
+
+        <Button name="$parentBack" inherits="EA_Button_DefaultResizeable" textalign="center">
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+              <AbsPoint x="-25" y="5" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_Appeal.Back"/>
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+    </Window>
+  </Windows>
+</Interface>

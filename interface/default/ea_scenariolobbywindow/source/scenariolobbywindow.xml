@@ -1,0 +1,590 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ScenarioLobbyWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_InScenarioQueue" >
+            <Size>
+                <AbsPoint x="600" y="75" />
+            </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="" >
+                    <AbsPoint x="0" y="120" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_ScenarioLobby.UpdateWaitTime" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentIcon"  textureScale="0.859" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentName" font="font_default_text_large" textalign="leftcenter" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="500" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="15" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+                <Label name="$parentTimer" font="font_default_text" maxchars="256" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="500" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentLeaveButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnLeaveActiveQueue" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Button_ScenarioJoin" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+                <AbsPoint x="350" y="39" />
+            </Size>
+        </Button>
+
+        <Window name="EA_Window_ScenarioStarting" movable="true" savesettings="false">
+            <Size>
+                <AbsPoint x="600" y="120" />
+            </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="" >
+                    <AbsPoint x="0" y="120" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_ScenarioLobby.UpdateStartTime" />
+                <EventHandler event="OnKeyEnter" function="EA_Window_ScenarioLobby.OnJoinInstanceNow" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentIcon"  textureScale="0.859" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentName" font="font_default_text_large" textalign="leftcenter" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="500" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="15" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+                <Label name="$parentTimer" font="font_default_text" maxchars="256" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="500" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInCombatText" font="font_default_text" maxchars="256" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="500" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTimer">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentJoinNowButton" inherits="EA_Button_DefaultResizeable" >
+                  <Anchors>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                      <AbsPoint x="-15" y="15" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinInstanceNow" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentJoinCancelButton" inherits="EA_Button_DefaultResizeable" >
+                  <Anchors>
+                    <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinNowButton">
+                      <AbsPoint x="0" y="10" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnLeaveActiveQueueFromLobby" />
+                  </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+         <Window name="EA_Window_ScenarioJoinPrompt" layer="popup">
+            <Size>
+                <AbsPoint x="450" y="430" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="EA_Window_ScenarioLobby.OnJoinInstanceNow" />
+                <EventHandler event="OnLButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnRButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnUpdate" function="EA_Window_ScenarioLobby.UpdateAutoCancelTime" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="450" y="430" />
+                    </Size>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />     
+                        <Label name="$parentName" font="font_default_text_large" textalign="center" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="450" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="375" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+
+                       <DynamicImage name="$parentSymbol" inherits="WARSymbol" handleinput="false">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentText">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                       </DynamicImage>
+
+                       <Label name="$parentRespondTime" font="font_default_text" textalign="center" wordwrap="true" autoresize="true">
+                            <Size>
+                                <AbsPoint x="450" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSymbol">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Button name="$parentJoinNowButton" inherits="EA_Button_ScenarioJoin" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentRespondTime">
+                                    <AbsPoint x="0" y="20" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinInstanceNow" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentJoinWaitButton" inherits="EA_Button_ScenarioJoin">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinNowButton">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinInstanceWait" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentJoinCancelButton" inherits="EA_Button_ScenarioJoin" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinWaitButton">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnLeaveActiveQueueFromLobby" />
+                            </EventHandlers>
+                         </Button>
+                         <Label name="$parentInCombatText" font="font_default_text" textalign="center" wordwrap="true" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="450" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_CityCaptureJoinPromptWindow" layer="popup" savesettings="false">
+            <Size>
+                <AbsPoint x="450" y="450" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>            
+            <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="EA_Window_ScenarioLobby.OnJoinCityCapture" />
+                <EventHandler event="OnLButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnRButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnUpdate" function="EA_Window_ScenarioLobby.UpdateCityAutoCancelTime" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="450" y="450" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright"  />
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />     
+                        <Label name="$parentName" font="font_default_text_large" textalign="center" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="450" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="375" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+
+                       <DynamicImage name="$parentSymbol" inherits="WARSymbol" handleinput="false">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentText">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                       </DynamicImage>
+
+                       <Label name="$parentRespondTime" font="font_default_text" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="450" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSymbol">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" />
+                        </Label>
+                        <Button name="$parentJoinNowButton" inherits="EA_Button_ScenarioJoin" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentRespondTime">
+                                    <AbsPoint x="0" y="20" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinCityCapture" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentJoinWaitButton" inherits="EA_Button_ScenarioJoin">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinNowButton">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnWaitCityCapture" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentJoinCancelButton" inherits="EA_Button_ScenarioJoin" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinWaitButton">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnLeaveCityCapture" />
+                            </EventHandlers>
+                        </Button>
+                        <Label name="$parentLowLevel" font="font_default_text" textalign="center" wordwrap="true" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="420" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                                    <AbsPoint x="0" y="-8" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_CityInstanceWait" layer="background"  savesettings="false" >
+            <Size>
+                <AbsPoint x="1" y="1" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" />                
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_ScenarioLobby.UpdateCityCaptureWaitTime" />
+            </EventHandlers>
+        </Window>        
+
+        <Window name="EA_Window_ScenarioLobby" movable="true" layer="secondary" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="400" y="820" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_ScenarioLobby.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_ScenarioLobby.Shutdown" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_ScenarioLobby.OnRButtonUp" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+				<EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />    
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <Label name="$parentScenarioName" font="font_default_text_large" textalign="center" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="200" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+
+
+                <!-- Previous Scenario Button -->
+                <Button name="$parentPreviousScenarioButton" inherits="EA_Button_DefaultBigLeftArrow" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScenarioName">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                   <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnPreviousScenario" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Next Scenario Button -->
+                <Button name="$parentNextScenarioButton" inherits="EA_Button_DefaultBigRightArrow" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentScenarioName">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnNextScenario" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentDivider1" inherits="EA_Window_DefaultSeparator"  layer="secondary" >
+                     <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentScenarioMap">
+                            <AbsPoint x="-8" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentScenarioMap">
+                            <AbsPoint x="8" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+
+                <!-- ScenarioMap -->
+                <MapDisplay name="$parentScenarioMap" loadingAnim="MapLoadingAnim" pinTexture="map_markers01" sticky="false" >
+                    <Size>
+                        <AbsPoint x="384" y="384" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="70" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnPointMouseOver" function="EA_Window_ScenarioLobby.OnMouseOverMapPoint" />
+                    </EventHandlers>
+                </MapDisplay>
+
+
+                <Window name="$parentDivider2" inherits="EA_Window_DefaultSeparator" layer="secondary" >
+                     <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScenarioMap">
+                            <AbsPoint x="-8" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentScenarioMap">
+                            <AbsPoint x="8" y="-510" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+
+
+                <Label name="$parentScenarioDesc" font="font_chat_text" maxchars="512" textalign="left" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="360" y="175"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider2" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+
+                <Window name="$parentDivider3" inherits="EA_Window_DefaultSeparator">
+                     <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentScenarioDesc">
+                            <AbsPoint x="-20" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentScenarioDesc">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+               <Window name="$parentJoinMode1" inherits="EA_Window_DefaultLabelToggleCircleSmall" id="1" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDivider3" >
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnSelectJoinMode"/>
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentJoinMode2" inherits="EA_Window_DefaultLabelToggleCircleSmall" id="2" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentJoinMode1" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnSelectJoinMode"/>
+                        <EventHandler event="OnMouseOver" function="EA_Window_ScenarioLobby.OnQueueAsPartyMouseOver" />
+                    </EventHandlers>
+                </Window>
+                
+                
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>
+
+
+                <Button name="$parentJoinButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentJoinAllButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinSingleQueue" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentJoinAllButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom"  >
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnJoinAllQueues" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentJoinAllButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_ScenarioLobby.OnCancel" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

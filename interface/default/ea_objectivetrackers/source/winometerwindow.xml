@@ -1,0 +1,55 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/WinOMeterWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_Window_WinOMeter" movable="false" popable="false" handleinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="300" y="79" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="Root">
+                    <AbsPoint x="0" y="120" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_WinOMeter.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentOrderTicker" texture="map_markers01" slice="FlagOrder" handleinput="false">
+                    <Size>
+                        <AbsPoint x="28" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-7"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Window name="$parentStatus" inherits="EA_Window_DefaultFrameStatusBar_Interpolate">
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WinOMeter.OnMouseOverStatus" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="25" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentDestructionTicker" texture="map_markers01" slice="FlagDestruction" handleinput="false">
+                    <Size>
+                        <AbsPoint x="28" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="47"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

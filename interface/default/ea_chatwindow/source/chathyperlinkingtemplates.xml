@@ -1,0 +1,687 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ChatHyperLinking.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Item Hyper Links -->
+        <Window name="EA_Window_ItemLinkTemplate" movable="true" savesettings="false" layer="popup">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownItemLinkWindow"/>
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_ChatWindow.OnHiddenItemLinkWindow" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentData" inherits="ItemTooltip" layer="default" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="popup" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="WindowUtils.HideParentWindow"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <!-- Item Hyper Links -->
+        <Window name="EA_Window_BrokenItemLinkTemplate" movable="true" savesettings="false" layer="popup">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownItemLinkWindow"/>
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_ChatWindow.OnHiddenItemLinkWindow" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentData" inherits="BrokenItemTooltip" layer="default" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="popup" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="WindowUtils.HideParentWindow"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!-- Quest Hyper Links -->
+        <Window name="EA_Window_HyperLinkGivenReward">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOverHyperLinkQuestGivenReward" />
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownHyperLinkQuestGivenReward" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentFrame" texture="icon_frame_square" textureScale="0.859"
+                              handleinput="false" layer="default">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Button_HyperLinkChoiceReward" inherits="EA_Button_DefaultIcon">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOverHyperLinkQuestChoiceReward" />
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownHyperLinkQuestChoiceReward" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="EA_Window_QuestLinkTemplate" layer="secondary" movable="true" inherits="EA_Window_Default" savesettings="false" >
+            <Size>
+                <AbsPoint x="512" y="700" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownQuestLinkWindow" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_ChatWindow.OnHiddenQuestLinkWindow" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentPendingBackground" layer="background" handleinput="true">
+                    <Size>
+                        <AbsPoint x="512" y="600" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentTop" texture="EA_Interaction" slice="Default-Frame-Top" handleinput="false">
+                            <Size>
+                                <AbsPoint x="512" y="52" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <VerticalResizeImage name="$parentResize" texture="EA_Interaction">
+                            <Size>
+                                <AbsPoint x="512" y="92" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTop" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottom" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Sizes top="0" middle="92" bottom="0" />
+                            <TexSlices>
+                                <Middle id="Default-Frame-Center-Span" />
+                            </TexSlices>
+                        </VerticalResizeImage>
+
+                        <DynamicImage name="$parentBottom" texture="EA_Interaction" slice="Default-Frame-Bottom">
+                            <Size>
+                                <AbsPoint x="512" y="52" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+              
+
+                <!-- Quest Title Label -->
+                <Label name="$parentTitleLabel" font="font_journal_heading"
+                       textalign="center" autoresize="false" wordwrap="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="512" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="40"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255"/>
+                </Label>
+
+                <!-- Name Label -->
+                <Label name="$parentNameLabel" font="font_journal_sub_heading"
+                       textalign="center" autoresize="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="512" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleLabel" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="158" g="127" b="117" a="255"/>
+                </Label>
+
+                <!-- Scrolling Quest Window -->
+                <ScrollWindow name="$parentInfo" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="18" autohidescrollbar="true">
+                    <Size>
+                        <AbsPoint x="512" y="400" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNameLabel">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <!-- Scroll Bar -->
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_VerticalConversation" layer="popup">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="-15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="512" y="365"/>
+                            </Size>
+                            <Windows>
+
+                                <!-- Description -->
+                                <Label name="$parentText" font="font_journal_body_large" maxchars="1024" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="422" y="0"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="45" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="100" g="62" b="50" a="255"/>
+                                </Label>
+
+                                <!-- Divider -->
+                                <DynamicImage name="$parentDivider" texture="EA_Interaction" slice="id3-dots-divider"
+                                              layer="popup" handleinput="true">
+                                    <Size>
+                                        <AbsPoint x="46" y="11"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText" >
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                                <!-- Journal Text -->
+                                <Label name="$parentJournalEntryText" font="font_journal_text_large" maxchars="2048" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="422" y="0"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                                            <AbsPoint x="0" y="21"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="0" g="0" b="0" a="255"/>
+                                </Label>
+
+                                <!-- Time -->
+                                <Window name="$parentTimer" >
+                                    <Size>
+                                        <AbsPoint x="275" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentJournalEntryText">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentText" font="font_journal_text" maxchars="64" textalign="left" autoresize="true" handleinput="true" wordwrap="true">
+                                            <Size>
+                                                <AbsPoint x="150" y="50" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                                    <AbsPoint x="15" y="4"/>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="100" g="62" b="50" a="255"/>
+                                        </Label>
+
+                                        <Label name="$parentValue" font="font_journal_sub_heading" maxchars="16" textalign="right" autoresizewidth="true" handleinput="true">
+                                            <Size>
+                                                <AbsPoint x="55" y="50" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topright" relativeTo="" >
+                                                    <AbsPoint x="4" y="4"/>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="100" g="62" b="50" a="255"/>
+                                        </Label>
+                                        <DynamicImage name="$parentClockImage"  texture="assorted_hud_pieces" handleinput="true" layer="background">
+                                            <Size>
+                                                <AbsPoint x="20" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentValue">
+                                                    <AbsPoint x="-5" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <TexCoords x="50" y="192" />
+                                        </DynamicImage>
+                                    </Windows>
+                                </Window>
+
+                                <Window name="$parentConditions" >
+                                    <Size>
+                                        <AbsPoint x="422" y="32"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTimer">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Window name="$parent1" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" >
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent2" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent1">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent3" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent2">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent4" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent3">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent5" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent4">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent6" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent5">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent7" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent6">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent8" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent7">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent9" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent8">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent10" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent9">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent11" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent10">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent12" inherits="EA_Window_QuestCondition">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parent11">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                    </Windows>
+                                </Window>
+
+                                <DynamicImage name="$parentConditionsDivider" texture="EA_Interaction" slice="id3-dots-divider"
+                                              layer="popup" handleinput="true">
+                                    <Size>
+                                        <AbsPoint x="46" y="11"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentConditions" >
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                                <Window name="$parentGivenRewards">
+                                    <Size>
+                                        <AbsPoint x="422" y="55"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentConditionsDivider">
+                                            <AbsPoint x="0" y="21"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentLabel" font="font_journal_body_large" textalign="left" autoresize="true" wordwrap="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="23"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                                    <AbsPoint x="0" y="8"/>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="100" g="62" b="50" a="255"/>
+                                        </Label>
+
+                                        <!-- Given Rewards -->
+                                        <Window name="$parent1" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parentLabel">
+                                                    <AbsPoint x="0" y="2"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent2" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent3" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent4" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent5" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent4">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <!-- Second Row -->
+                                        <Window name="$parent6" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel">
+                                                    <AbsPoint x="0" y="19"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent7" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent6">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent8" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent7">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent9" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent8">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent10" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent9">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent11" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent10">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent12" inherits="EA_Window_HyperLinkGivenReward">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent11">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                    </Windows>
+                                </Window>
+                                <!-- Rewards -->
+
+                                <Window name="$parentChoiceRewards">
+                                    <Size>
+                                        <AbsPoint x="422" y="55"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGivenRewards">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <!-- Choice Rewards -->
+                                        <Label name="$parentLabel" font="font_journal_body_large" maxchars="32" textalign="left" autoresize="true" wordwrap="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="23"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                                    <AbsPoint x="0" y="8"/>
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="100" g="62" b="50" a="255"/>
+                                        </Label>
+                                        <Button name="$parent1" inherits="EA_Button_HyperLinkChoiceReward" id="1">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parentLabel">
+                                                    <AbsPoint x="0" y="2"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent2" inherits="EA_Button_HyperLinkChoiceReward" id="2">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent3" inherits="EA_Button_HyperLinkChoiceReward" id="3">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent4" inherits="EA_Button_HyperLinkChoiceReward" id="4">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent5" inherits="EA_Button_HyperLinkChoiceReward" id="5">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel">
+                                                    <AbsPoint x="0" y="19"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent6" inherits="EA_Button_HyperLinkChoiceReward" id="6">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent5">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent7" inherits="EA_Button_HyperLinkChoiceReward" id="7">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent6">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent8" inherits="EA_Button_HyperLinkChoiceReward" id="8">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent7">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent9" inherits="EA_Button_HyperLinkChoiceReward" id="9">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent8">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="$parent10" inherits="EA_Button_HyperLinkChoiceReward" id="10">
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parent9">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                    </Windows>
+                                </Window>
+
+                            </Windows>
+                        </Window>
+                        <!-- Child Scroll Window -->
+                    </Windows>
+                </ScrollWindow>
+                <!-- Scrolling Quest Window -->
+
+                <Button name="$parentDone" inherits="EA_Button_InteractionConversation" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="WindowUtils.HideParentWindow" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+
+        </Window>
+
+
+        <!-- Guild Hyper Links -->
+        <Window name="EA_Window_GuildLinkTemplate" movable="true" savesettings="false" layer="popup">
+            <Size>
+                <AbsPoint x="500" y="450" />
+            </Size>            
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnLButtonDownGuildLinkWindow"/>
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData" inherits="GuildRecruitProfileTemplate" layer="default" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="popup" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.DestroyGuildLinkWindow"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

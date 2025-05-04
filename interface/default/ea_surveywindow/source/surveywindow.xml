@@ -1,0 +1,378 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/SurveyWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Label name="EA_Label_SurveySectionTitle" inherits="EA_Label_DefaultSubHeading" maxchars="999" textalign="left" wordwrap="true" autoresize="true" />
+
+
+        <Window name="EA_Window_SurveyLabeledCheckButton">
+            <Size>
+                <AbsPoint x="160" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Survey.OnSelectButton" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultToggleCircle" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentLabel" inherits="EA_Label_ChatText" handleinput="false" wordwrap="true" autoresize="true" textalign="leftcenter" >
+                    <Size>
+                        <AbsPoint x="115" y="40" />
+                    </Size>
+                    <Anchors>
+                        <!--<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentButton">-->
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_SurveyMultiChoice">
+            <Size>
+                <AbsPoint x="1000" y="150" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentFrame" inherits="EA_Button_ResizeIconFrameNormal" layer="background" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+					</Anchors>
+				</FullResizeImage>	
+                <Label name="$parentTitle" inherits="EA_Label_SurveySectionTitle">
+                    <Size>
+                        <AbsPoint x="980" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentOption1" inherits="EA_Window_SurveyLabeledCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle" >
+                            <AbsPoint x="20" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption2" inherits="EA_Window_SurveyLabeledCheckButton" id="2">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption3" inherits="EA_Window_SurveyLabeledCheckButton" id="3">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption2" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption4" inherits="EA_Window_SurveyLabeledCheckButton" id="4">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption3" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption5" inherits="EA_Window_SurveyLabeledCheckButton" id="5">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption4" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption6" inherits="EA_Window_SurveyLabeledCheckButton" id="6">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption5" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption7" inherits="EA_Window_SurveyLabeledCheckButton" id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOption1" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption8" inherits="EA_Window_SurveyLabeledCheckButton" id="8">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption7" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption9" inherits="EA_Window_SurveyLabeledCheckButton" id="9">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption8" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption10" inherits="EA_Window_SurveyLabeledCheckButton" id="10">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption9" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOption11" inherits="EA_Window_SurveyLabeledCheckButton" id="11">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentOption10" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_Survey" movable="true" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="1050" y="700" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="center" relativeTo="" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_Survey.Initialize" />
+                <EventHandler event="OnShown" function="EA_Window_Survey.OnOpen" />
+                <EventHandler event="OnHidden" function="EA_Window_Survey.OnDecline" />
+            </EventHandlers>
+            <Windows>
+            
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Survey.Hide" />
+					</EventHandlers>
+				</Button>
+
+                <Label name="$parentDescription" inherits="EA_Label_SurveySectionTitle">
+                    <Size>
+                        <AbsPoint x="1000" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="15" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+					
+									
+                 <Window name="$parentTextSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="60" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="60" />
+                        </Anchor>
+                    </Anchors>
+                </Window>   
+					
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>   					
+
+                <Button name="$parentSubmitButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Survey.OnSubmit" />
+                    </EventHandlers>
+                </Button>
+                
+                <ScrollWindow name="$parentContents" childscrollwindow="EA_Window_SurveyContentsScrollChild" scrollbar="EA_Window_SurveyContentsScrollbar" lineheight="18">
+                    <Size>
+                        <AbsPoint x="1030" y="700" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTextSeperator">
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="15" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="20" y="700"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="-6" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="1000" y="0"/>
+                            </Size>
+                            <Windows>
+
+                                <Window name="EA_Window_SurveyQuestion1" inherits="EA_Window_SurveyMultiChoice" id="1">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion2" inherits="EA_Window_SurveyMultiChoice" id="2">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion1" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion3" inherits="EA_Window_SurveyMultiChoice" id="3">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion2" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion4" inherits="EA_Window_SurveyMultiChoice" id="4">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion3" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion5" inherits="EA_Window_SurveyMultiChoice" id="5">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion4" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion6" inherits="EA_Window_SurveyMultiChoice" id="6">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion5" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion7" inherits="EA_Window_SurveyMultiChoice" id="7">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion6" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion8" inherits="EA_Window_SurveyMultiChoice" id="8">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion7" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion9" inherits="EA_Window_SurveyMultiChoice" id="9">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion8" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyQuestion10" inherits="EA_Window_SurveyMultiChoice" id="10">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion9" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="EA_Window_SurveyComment">
+                                    <Size>
+                                        <AbsPoint x="1000" y="215" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_SurveyQuestion10">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+		                                <FullResizeImage name="$parentBorder" inherits="EA_Button_ResizeIconFrameNormal" layer="background" popable="false">
+			                                <Anchors>
+				                                <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+				                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+			                                </Anchors>
+		                                </FullResizeImage>
+                                        <Label name="$parentTitle" inherits="EA_Label_SurveySectionTitle">
+                                            <Size>
+                                                <AbsPoint x="1000" y="30" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft">
+                                                    <AbsPoint x="10" y="10" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+                                        <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame_Multiline" maxchars="999" taborder="2">
+                                            <Size>
+                                                <AbsPoint x="970" y="150" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle" >
+                                                    <AbsPoint x="5" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <EventHandlers>
+                                                <EventHandler event="OnKeyEnter" function="" />
+                                                <EventHandler event="OnKeyEscape" function="" />
+                                            </EventHandlers>
+                                        </EditBox>
+                                    </Windows>
+                                </Window>
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </ScrollWindow>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

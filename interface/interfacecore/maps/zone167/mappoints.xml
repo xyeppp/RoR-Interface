@@ -1,0 +1,14 @@
+<zone iname="The Inevitable City">
+    <battlefieldObjective iname="Slaanesh Chambers" id="901" iconSet="1" x="22558" y="53208">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Khorne War Quarters" id="902" iconSet="1" x="37988" y="53068">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Emissary of the Changer" id="903" iconSet="1" x="30609" y="42701">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Temple of the Damned" id="904" iconSet="1" x="35631" y="40691">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Outcrop" id="905" iconSet="1" x="36641" y="33138">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Lyceum" id="906" iconSet="1" x="19959" y="35690">
+    </battlefieldObjective>
+</zone>

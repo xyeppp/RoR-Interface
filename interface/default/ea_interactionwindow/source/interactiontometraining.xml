@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionTomeTraining.lua" />
+    </Scripts>
+
+    <Windows>
+        <!-- The main window -->
+        <Window name="EA_Window_InteractionTomeTraining" layer="secondary" movable="false" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="550" y="770" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionTomeTraining.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionTomeTraining.Shutdown" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionTomeTraining.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionTomeTraining.OnHidden" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionTomeTraining.ToggleContextMenu" />
+            </EventHandlers>
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_TrainingImage"/>
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Size>
+                        <AbsPoint x="550" y="710" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Help Hint Label -->
+                <Label name="$parentHint" wordwrap="false" font="font_clear_default" maxchars="80" inherits="DefaultWindowText" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="550" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="EA_Templates_TomeTrainingSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="267" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentList">
+                            <AbsPoint x="4" y="-4" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="-4" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Advance List Block -->
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_TomeTrainingAdvanceItem" visiblerows="6" rowcount="80" rowspacing="8">
+                    <Size>
+                        <AbsPoint x="520" y="450" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="8" y="130" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="-8" y="-120" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_InteractionTomeTraining.advanceData" populationfunction="EA_Window_InteractionTomeTraining.Populate"/>
+                </ListBox>
+
+                <Label name="$parentNoAbiltitiesText" inherits="DefaultWindowText"  wordwrap="true" autoresize="true" font="font_clear_default" textalign="center" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentList">
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="200" g="200" b="200" />
+                </Label>
+
+                <!-- Horizontal rule at the end of the list -->
+                <HorizontalResizeImage name="$parentButtonSeparator" inherits="EA_BrownHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Bottom frame block -->
+                <Window name="$parentFooterSeparator" inherits="EA_Window_DefaultSeparator">
+                    <Size>
+                        <AbsPoint x="550" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentAvailabilityFilter" inherits="EA_LabelCheckButton" layer="secondary">
+                    <Size>
+                        <AbsPoint x="280" y="38" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnInitialize" function="EA_Window_InteractionTomeTraining.InitializeAvailabilityFilter" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.ToggleAvailabilityFilter" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentFooterSeparator">
+                            <AbsPoint x="10" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- This doesn't quite work right.
+                <FullResizeImage name="$parentFooterBackground" inherits="EA_FullResizeImage_MetalFill" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="0" y="-67" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                -->
+
+                <!-- Buy the advance button -->
+                <Button name="$parentPurchaseButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="135" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.PurchaseAdvance" />
+                    </EventHandlers>
+                    <AnimatedImages>
+                        <Normal          def="EA_AnimatedImage_DefaultChoiceOverlay"  />
+                        <NormalHighlit   def="EA_AnimatedImage_DefaultChoiceOverlay" />
+                    </AnimatedImages>
+                </Button>
+
+                <!-- Close the window redundantly -->
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-135" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

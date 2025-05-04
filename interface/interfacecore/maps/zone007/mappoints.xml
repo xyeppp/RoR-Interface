@@ -1,0 +1,286 @@
+<zone iname="Barak Varr">
+    <landmark iname="The Sea's Anvil" id="1" mapIcon="1008" x="10818" y="45598">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Thunder Ridge Tower" id="2" mapIcon="1002" x="16759" y="49017">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Fair Fregar II" id="3" mapIcon="1007" x="21545" y="3139">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Goldpeak's Warcamp" id="4" mapIcon="1051" x="21881" y="44810">
+        <race>Dwarf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Grudgebearer's Fury" id="5" mapIcon="1008" x="22955" y="20712">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Firebeard Duk" id="6" mapIcon="1061" x="2377" y="52538">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Mingol Ironside" id="7" mapIcon="1002" x="24659" y="12987">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Crazy Stunty Hole" id="8" mapIcon="1062" x="25182" y="3408">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="9" mapIcon="1063" x="27784" y="55442">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Mobash's Place" id="10" mapIcon="1020" x="28134" y="18343">
+        <race>Greenskin</race>
+        <number>9</number>
+        <ranks realm="destruction" min="18" max="19" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Gnol Garak Throng" id="11" mapIcon="1062" x="29230" y="50525">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Thane's Defense" id="12" mapIcon="1003" x="31284" y="49720">
+        <race>Dwarf</race>
+        <number>7</number>
+        <ranks realm="order" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Rottoof's Mugz" id="13" mapIcon="1020" x="32816" y="60495">
+        <race>Greenskin</race>
+        <number>7</number>
+        <ranks realm="destruction" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Rikkit Duk" id="14" mapIcon="1062" x="37182" y="63500">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Rikkit Duk" id="15" mapIcon="1063" x="40885" y="57096">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Foultooth's Warcamp" id="16" mapIcon="1050" x="41231" y="43057">
+        <race>Greenskin</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Port of Barak Varr" id="17" mapIcon="1008" x="43036" y="24500">
+        <race>Greenskin</race>
+        <number>8</number>
+        <ranks realm="destruction" min="16" max="17" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Longbeard's Strand" id="18" mapIcon="1060" x="46945" y="33480">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Wetfang Cave" id="19" mapIcon="1063" x="5456" y="28409">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Khaz Kol Bar" id="20" mapIcon="1060" x="54894" y="12491">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Grundadrakk's Mine" id="21" mapIcon="1060" x="58384" y="7796">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Khaz Kol Bar" id="22" mapIcon="1060" x="59809" y="30385">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Steelanvil Mine" id="23" mapIcon="1060" x="59895" y="46219">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="One-Tusk Cave" id="24" mapIcon="1062" x="63304" y="59121">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ironrock Point Lighthouse" id="25" mapIcon="1002" x="7830" y="6039">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Nogaz's Boyz" id="26" mapIcon="1023" x="9404" y="30880">
+        <race>Greenskin</race>
+        <number>5</number>
+        <ranks realm="destruction" min="10" max="11" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="27" mapIcon="1259" x="21378" y="31898" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1259" x="43145" y="34980" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="30" mapIcon="1180" x="23910" y="34249" liveevent="9">
+        <importance>minor</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <landmark iname="Withered Skaven Tunnel" id="31" mapIcon="1063" x="24340" y="32319">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Mossy Skaven Tunnel" id="32" mapIcon="1063" x="31989" y="41972">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Damp Skaven Tunnel" id="33" mapIcon="1063" x="45664" y="36509">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Magrak Herdstone" id="34" mapIcon="1026" x="48280" y="49095">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Stonebeard's Forge" id="35" mapIcon="1003" x="52357" y="11695">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Jordsson's Camp" id="36" mapIcon="1065" x="49688" y="57053">
+    	<importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Up the Creek Without a Battle" id="28" iconSet="1" x="14405" y="62440">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Long Drong and the Slayer Cove" id="51" iconSet="1" x="22395" y="4093">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="When the Ship Hits the Sand" id="52" iconSet="1" x="25030" y="20128">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Danurgi's Rangers" id="27" iconSet="1" x="3058" y="38308">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Bar Dawazbak - Conflict" id="33" iconSet="1" x="36709" y="56579">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="14" max="15" />
+        <realm>Both</realm>
+    </publicQuest>
+    <publicQuest iname="Firebeard's Slayers" id="29" iconSet="1" x="4128" y="52808">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Burn Rock Tower" id="32" iconSet="1" x="46625" y="41471">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Grundadrakk's Wharf" id="42" iconSet="1" x="48487" y="20118">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Boarding the Seahammer" id="43" iconSet="1" x="54121" y="22754">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Fall of Firebrew" id="44" iconSet="1" x="54848" y="18859">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Gudrim's Veterans - Conflict" id="38" iconSet="1" x="58460" y="45057">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="14" max="15" />
+        <realm>Both</realm>
+    </publicQuest>
+    <publicQuest iname="Korgoth's Raiders" id="45" iconSet="1" x="59070" y="61571">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ironrock Point" id="50" iconSet="1" x="9977" y="8034">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <battlefieldObjective iname="The Ironclad: Healing Boon" id="135" iconSet="1" x="36310" y="29781">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Lighthouse: Artisan's Gift" id="57" iconSet="1" x="15429" y="33714">
+    </battlefieldObjective>
+    <keep iname="Dok Karaz" id="1" iconSet="1" x="31373" y="36034">
+        <objectiveId>616</objectiveId>
+    </keep>
+    <!-- BEGIN Marshes of Madness points (no direct link) -->
+    <battlefieldObjective iname="Goblin Armory: Merchant's Gift" id="61" iconSet="1" x="19079" y="46371" zone="1" allowGutter="false">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Alcadizaar's Tomb: Defensive Boon" id="62" iconSet="1" x="26462" y="38440" zone="1" allowGutter="false">
+    </battlefieldObjective>
+    <keep iname="Fangbreaka Swamp" id="2" iconSet="1" x="32705" y="32236" zone="1" allowGutter="false">
+        <objectiveId>617</objectiveId>
+    </keep>
+    <!-- END Marshes of Madness points -->
+    <zoneTransition iname="To Black Fire Pass" x="53750" y="0">
+        <zone>008</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="16000" y="65535">
+        <zone>001</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="48000" y="65535">
+        <zone>001</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ekrund" x="1600" y="29800">
+        <zone>006</zone>
+    </zoneTransition>
+</zone>

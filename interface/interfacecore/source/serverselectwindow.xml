@@ -1,0 +1,394 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/ServerSelectWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Label name="ServerSelectEntryTextLabel" wordwrap="false" font="font_clear_default" maxchars="20" inherits="DefaultWindowText" handleinput="false" textalign="center" />
+
+      <Button name="ServerSelect_Button_DefaultListSort" inherits="EA_Button_ListSort" >
+        <Size>
+          <AbsPoint x="150" y="30" />
+        </Size>
+        <Windows>
+          <DynamicImage name="$parentUpArrow" inherits="EA_ListSortUpArrow">
+            <Anchors>
+              <Anchor point="right" relativePoint="right">
+                <AbsPoint x="-12" y="-6"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          <DynamicImage name="$parentDownArrow" inherits="EA_ListSortDownArrow">
+            <Anchors>
+              <Anchor point="center" relativePoint="center" relativeTo="$parentUpArrow">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          <DynamicImage name="$parentIconBase" textureScale="1.0" handleinput="false" layer="background" texture="EA_HUD_01">
+            <Size>
+              <AbsPoint x="16" y="16" />
+            </Size>
+            <Anchors>
+              <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+        </Windows>
+      </Button>
+
+      <Button name="ServerSelectEntry" inherits="EA_Button_ResizeIconFrame_NoNormalImage" font="font_default_sub_heading">
+            <Size>
+                <AbsPoint x="800" y="28" />
+            </Size>
+            <Anchors>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ClickServerButton" />
+            </EventHandlers>
+            <Windows>
+              <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="4" y="1" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                          <AbsPoint x="-4" y="-1" />
+                      </Anchor>
+                  </Anchors>
+                  <TintColor  r="20" g="20" b="20" />
+              </FullResizeImage>
+              <Label name="$parentName" wordwrap="false" font="font_default_text" maxchars="40" inherits="DefaultWindowText" handleinput="false">
+                  <Size>
+                      <AbsPoint x="180" y="24" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                          <AbsPoint x="20" y="2" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentCharacterCount" inherits="ServerSelectEntryTextLabel" >
+                  <Size>
+                      <AbsPoint x="95" y="18" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentType" inherits="ServerSelectEntryTextLabel" handleinput="true" textAutoFitMinScale=".1">
+                  <Size>
+                      <AbsPoint x="110" y="18" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentCharacterCount">
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowRuleSetTooltip" />
+                  </EventHandlers>
+              </Label>
+              <Label name="$parentLocation" inherits="ServerSelectEntryTextLabel" handleinput="true" >
+                  <Size>
+                      <AbsPoint x="155" y="18" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentType">
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowLocationTooltip" />
+                  </EventHandlers>
+              </Label>
+              <Label name="$parentLanguage" inherits="ServerSelectEntryTextLabel" handleinput="true" textAutoFitMinScale=".5">
+                <Size>
+                  <AbsPoint x="155" y="18" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentLocation">
+                    <AbsPoint x="5" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowLanguageTooltip" />
+                </EventHandlers>
+              </Label>
+              <DynamicImage name="$parentOrderIconBase" textureScale="1.0" handleinput="true" layer="background" texture="EA_HUD_01" slice="RealmBonus-Order">
+                <Size>
+                  <AbsPoint x="16" y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentLanguage">
+                    <AbsPoint x="7" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowOrderIconTooltip" />
+                </EventHandlers>
+              </DynamicImage>
+              <DynamicImage name="$parentDestructionIconBase" textureScale="1.0" handleinput="true" layer="background" texture="EA_HUD_01" slice="RealmBonus-Destruction">
+                <Size>
+                  <AbsPoint x="16" y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="left" relativeTo="$parentOrderIconBase">
+                    <AbsPoint x="7" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowDestructionIconTooltip" />
+                </EventHandlers>
+              </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Window name="ServerSelectWindow" movable="false" layer="secondary">
+            <Size>
+                <AbsPoint x="830" y="480" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="60" y="350" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="ServerSelectWindow.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="false" sticky="false" poppable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="12" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="$parentLoadingLabel" font="font_default_heading" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="640" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                            <AbsPoint x="0" y="150" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="ServerSelect_Button_DefaultListSort" id="1">
+                    <Size>
+                        <AbsPoint x="200" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentList">
+                            <AbsPoint x="00" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton2" inherits="ServerSelect_Button_DefaultListSort" id="2" textalign="center">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton3" inherits="ServerSelect_Button_DefaultListSort" id="3" textalign="center">
+                    <Size>
+                        <AbsPoint x="115" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton4" inherits="ServerSelect_Button_DefaultListSort" id="4" textalign="center">
+                    <Size>
+                        <AbsPoint x="160" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton5" inherits="ServerSelect_Button_DefaultListSort" id="5" textalign="center">
+                  <Size>
+                    <AbsPoint x="160" y="30" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton4">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton6" inherits="ServerSelect_Button_DefaultListSort" id="6" textalign="center">
+                  <Size>
+                    <AbsPoint x="30" y="30" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton5">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowOrderIconButtonTooltip" />
+                  </EventHandlers>
+                </Button>
+                <Button name="$parentSortButton7" inherits="ServerSelect_Button_DefaultListSort" id="7" textalign="center">
+                  <Size>
+                    <AbsPoint x="30" y="30" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSortButton6">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ServerSelectWindow.ChangeSorting" />
+                    <EventHandler event="OnMouseOver" function="ServerSelectWindow.ShowDestructionIconButtonTooltip" />
+                  </EventHandlers>
+                </Button>
+
+              <ListBox name="$parentList" rowdef="ServerSelectEntry" scrollbar="EA_ScrollBar_DefaultVerticalChain"
+                         visiblerows="10" rowcount="200" rowspacing="4" layer="secondary">
+                  <Size>
+                      <AbsPoint x="630" y="340" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                          <AbsPoint x="10" y="30" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                          <AbsPoint x="0" y="-126" />
+                      </Anchor>
+                  </Anchors>
+                  <ListData table="ServerSelectWindow.serverList" populationfunction="ServerSelectWindow.PopulateList"/>
+              </ListBox>
+
+              <Window name="$parentLogDisplaySeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                <Anchors>
+                  <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                    <AbsPoint x="0" y="-128"/>
+                  </Anchor>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                    <AbsPoint x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+              </Window>
+
+              <Button name="$parentSelectButton" inherits="EA_Button_DefaultPregameResizeable">
+                  <Anchors>
+                      <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                          <AbsPoint x="0" y="-5" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="ServerSelectWindow.SelectServerButton" />
+                  </EventHandlers>
+                  <TextColors>
+                      <Disabled r="75"  g="75"  b="75" a="255"/>
+                  </TextColors>
+              </Button>
+
+              <Button name="$parentShowLegacy" inherits="EA_Button_ListSort" textalign="center">
+                <Anchors>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="ServerSelectWindow.OnToggleLegacy" />
+                </EventHandlers>
+              </Button>
+
+              <Window name="$parentPreSelectedWindow" movable="false" layer="secondary">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                    <AbsPoint x="0" y="0" />
+                  </Anchor>
+                </Anchors>
+                <Windows>
+                  <FullResizeImage name="$parentBackgroundImage" inherits="EA_FullResizeImage_BlackTransparent" handleinput="false" layer="background" alpha="1.0">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                    </Anchors>
+                  </FullResizeImage>
+                  <Label name="$parentLabel" font="font_default_heading" maxchars="1024" textalign="center" autoresize="true" wordwrap="true" >
+                    <Size>
+                      <AbsPoint x="600" y="100" />
+                    </Size>
+                    <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parent" >
+                        <AbsPoint x="0" y="-50" />
+                      </Anchor>
+                    </Anchors>
+                  </Label>
+                  <Window name="$parentAnchor" movable="false" layer="secondary">
+                    <Anchors>
+                      <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                        <AbsPoint x="0" y="-50" />
+                      </Anchor>
+                    </Anchors>
+                  </Window>
+                  <Button name="$parentAcceptButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Anchors>
+                      <Anchor point="left" relativePoint="right" relativeTo="$parentAnchor" >
+                        <AbsPoint x="-20" y="0" />
+                      </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="ServerSelectWindow.SelectPreSelectedServer" />
+                    </EventHandlers>
+                  </Button>
+                  <Button name="$parentDeclineButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentAnchor" >
+                        <AbsPoint x="20" y="0" />
+                      </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="ServerSelectWindow.CancelPreSelect" />
+                    </EventHandlers>
+                  </Button>
+                </Windows>
+              </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

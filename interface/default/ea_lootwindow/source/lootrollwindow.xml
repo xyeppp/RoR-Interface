@@ -1,0 +1,172 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/LootRollWindow.lua" />
+	</Scripts>
+	<Windows>
+	
+		<Window name="EA_Window_LootRollItemRowTemplate" >
+			<Size>
+				<AbsPoint x="400" y="115" />
+			</Size>			
+			<EventHandlers>
+			    <EventHandler event="OnInitialize" function="EA_Window_LootRoll.InitializeListRow" />
+				<EventHandler event="OnMouseOver" function="EA_Window_LootRoll.OnMouseOverItem" />
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+					</Anchors>
+				</FullResizeImage>
+				<FullResizeImage name="$parentBorder" inherits="EA_Button_ResizeIconFrameNormal" layer="background" handleinput="false" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+					</Anchors>
+				</FullResizeImage>				
+				
+                <DynamicImage name="$parentIcon" inherits="EA_Image_DefaultIcon"  handleinput="false" >
+			    	<Size>
+				        <AbsPoint x="55" y="55" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="10" y="10" />
+				        </Anchor>
+			        </Anchors>
+			        <Windows>
+			        	<DynamicImage name="$parentFrame" inherits="EA_Image_DefaultIconFrame"  handleinput="false" layer="background" >
+					        <Size>
+						    <AbsPoint x="55" y="55" />
+					        </Size>
+				        </DynamicImage>
+			        </Windows>
+			    </DynamicImage>
+				<Label name="$parentName" inherits="EA_Label_DefaultText_Small" textalign="left" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="300" y="40" />
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+							<AbsPoint x="5" y=""/>
+						</Anchor>
+					</Anchors>
+				</Label>
+                <Label name="$parentStackCount" inherits="EA_Label_DefaultText_Small" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="200" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+                            <AbsPoint x="-12" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+				<Button name="$parentNeedButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" >
+							<AbsPoint x="5" y="-5" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_LootRoll.SelectRollNeed" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_LootRoll.OnNeedMouseOver" />
+					</EventHandlers>
+				</Button>
+				<Button name="$parentGreedButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentNeedButton" >
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_LootRoll.SelectRollGreed" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_LootRoll.OnGreedMouseOver" />
+					</EventHandlers>
+				</Button>
+				<Button name="$parentPassButton" inherits="EA_Button_DefaultResizeable">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentGreedButton" >
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_LootRoll.SelectRollPass" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_LootRoll.OnPassMouseOver" />
+					</EventHandlers>
+				</Button>
+				<Window name="$parentTimer" inherits="EA_Window_DefaultFrameStatusBar" >
+					<Size>
+						<AbsPoint x="320" y="23" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentIcon" >
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>
+				</Window>
+			</Windows>
+		</Window>
+
+		<Window name="EA_Window_LootRoll" movable="true" layer="secondary" savesettings="false" >
+			<Size>
+				<AbsPoint x="440" y="395" />
+			</Size>
+			<Anchors>
+				<Anchor point="topright" relativePoint="topleft" relativeTo="GroupWindow">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_LootRoll.Initialize" />
+				<EventHandler event="OnUpdate" function="EA_Window_LootRoll.Update" />
+				<EventHandler event="OnShutdown" function="EA_Window_LootRoll.Shutdown" />
+				<EventHandler event="OnHidden" function="EA_Window_LootRoll.OnHidden" />
+			</EventHandlers>
+			<Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_LootRoll.Hide" />
+					</EventHandlers>
+				</Button>
+				
+              
+              <!-- List Box of Items  -->
+				<ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_LootRollItemRowTemplate"  visiblerows="3" rowcount="200" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="425" y="345" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="10" y="2" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_LootRoll.lootData" populationfunction="EA_Window_LootRoll.PopulateLootData">
+                        <ListColumns>
+                            <ListColumn windowname="Icon" variable="itemData.iconNum" format="icon" />
+                            <ListColumn windowname="Name" variable="itemData.name" format="wstring" />  
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <Label name="$parentHelpText" inherits="EA_Label_DefaultText" >
+                    <Size>
+                        <AbsPoint x="425" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentList" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

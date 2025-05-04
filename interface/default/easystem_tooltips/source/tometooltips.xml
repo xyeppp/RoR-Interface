@@ -1,0 +1,134 @@
+<Interface xmlns:xsi="http://www.w3.org/1001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <Label name="GlyphTooltipInfo" font="font_chat_text" maxchars="128"  textalign="left" wordwrap="true" autoresize="true" autoresizewidth="true" >
+            <Size>
+                <AbsPoint x="300" y="32" />
+            </Size>
+        </Label>
+
+
+        <Window name="GlyphTooltip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="350" y="400" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <DynamicImage name="$parentIcon" handleinput="false"  layer="background" >
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <Label name="$parentName" font="font_clear_large_bold" maxchars="128"  wordwrap="true" autoresize="true" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="300" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="226" g="216" b="45" a="255"/>
+                </Label>
+                <HorizontalResizeImage name="$parentDivLine" inherits="DefaultWindowRule" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="10" y="50" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="-10" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <Label name="$parentText" font="font_chat_text" maxchars="128"  wordwrap="true" autoresize="true" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDivLine">
+                            <AbsPoint x="5" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo1" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="15" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo2" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo3" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo2">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo4" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo3">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo5" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo4">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo6" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo5">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo7" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo6">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo8" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo7">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo9" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo8">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentInfo10" inherits="GlyphTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo9">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+            
+    </Windows>
+</Interface>
+

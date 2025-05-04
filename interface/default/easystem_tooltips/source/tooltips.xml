@@ -1,0 +1,520 @@
+<Interface xmlns:xsi="http://www.w3.org/1001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <Window name="TooltipBase" handleinput="false" layer="overlay" localscriptvars="true" savesettings="false" />
+           
+        <Window name="TooltipTopRow" inherits="TooltipBase" >
+            <Windows>
+                <Label name="$parentCol1Text" sticky="false" font="font_default_text" maxchars="1024" text="" textalign="left"  autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentCol2Text" sticky="false" font="font_default_text" maxchars="1024" text="" textalign="right" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentCol3Text" sticky="false" font="font_default_text" maxchars="1024" text="" textalign="left" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="TooltipRow"  inherits="TooltipBase" >
+            <Windows>
+                <Label name="$parentCol1Text" sticky="false" font="font_chat_text" maxchars="1024" text="" textalign="left"  autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentCol2Text" sticky="false" font="font_chat_text" maxchars="1024" text="" textalign="center" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentCol3Text" sticky="false" font="font_chat_text" maxchars="1024" text="" textalign="right" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="DefaultTooltip"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="400" y="67" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow1" inherits="TooltipTopRow">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="8" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-10" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow2" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow1" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow3" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow2" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow2" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow4" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow3" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow3" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow5" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow4" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow4" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow6" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow5" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow5" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow7" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow6" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow6" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow8" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow7" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow7" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow9" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow8" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow8" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow10" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow9" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow9" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow11" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow10" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow10" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow12" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow11" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow11" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow13" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow12" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow12" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow14" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow13" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow13" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow15" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow14" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow14" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow16" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow15" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow15" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="DefaultTooltipRow17" inherits="TooltipRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="DefaultTooltipRow16" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="DefaultTooltipRow16" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="DefaultTooltipActionText" font="font_chat_text" maxchars="128" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="280" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <FullResizeImage name="$parentLine" inherits="EA_FullResizeImage_TintableSolidBackground" >
+                            <Size>
+                                <AbsPoint x="380" y="3" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                            <TintColor r="255" g="204" b="102" a="255"/>
+                        </FullResizeImage>
+                    </Windows>
+                    <Color r="175" g="175" b="175"/>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <Window name="TwoLineActionTooltip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="400" y="400" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <Label name="$parentLine1" font="font_default_text" maxchars="128" wordwrap="true" autoresize="true">
+                    <Size>
+                        <AbsPoint x="280" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="15" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <!--<Color r="255" g="204" b="102" a="255"/>-->
+                </Label>
+                <Label name="$parentLine2" font="font_default_text_small" maxchars="128" wordwrap="true" autoresize="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="280" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLine1">
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <HorizontalResizeImage name="$parentLine" inherits="YellowHorizRule" >
+                            <Size>
+                                <AbsPoint x="250" y="3" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="5" y="-5" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="-5" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                        </HorizontalResizeImage>
+                    </Windows>
+                    <Color r="255" g="255" b="0"/>
+                </Label>
+            </Windows>
+        </Window>
+
+
+
+        <!-- Used to display money rewards in the tome.  -->
+        <Window name="MoneyTooltip" inherits="TooltipBase">
+            <Size>
+                <AbsPoint x="200" y="85" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <Label name="$parentTitle" sticky="false" font="font_default_sub_heading" maxchars="128"  wordwrap="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="230" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <Window name="$parentMoney" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle" />
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        
+
+        <Window name="EA_Window_DefaultTooltipListItem" handleinput="false">
+            <Size>
+                <AbsPoint x="390" y="16"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBulletImage"  texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="6" y="6" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="31" y="158" />
+                </DynamicImage>
+                <Label name="$parentText" font="font_chat_text" maxchars="256" textalign="left" autoresize="true" autoresizewidth="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="370" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="15" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="DefaultListTooltip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="400" y="67" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentTitle" sticky="false" font="font_default_text" maxchars="1024" text="" textalign="left" autoresize="true" autoresizewidth="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="390" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <Label name="$parentText" sticky="false" font="font_default_text" maxchars="1024" text="" textalign="left"  autoresize="true" autoresizewidth="true"  wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="390" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Window name="$parentItem1" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText" >
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem2" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem3" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" elativePoint="topleft" relativeTo="$parentItem2" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem4" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem3" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem5" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem4" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem6" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem5" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem7" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem6" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem8" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem7" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem9" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem8" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentItem10" inherits="EA_Window_DefaultTooltipListItem" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItem9" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>                
+                
+            </Windows>
+        </Window>
+               
+    </Windows>
+</Interface>
+

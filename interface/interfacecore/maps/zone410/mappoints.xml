@@ -1,0 +1,8 @@
+<zone iname="Thanquol's Incursion">
+    <publicQuest iname="Thanquol's Incursion" id="911" iconSet="1" x="18409" y="19036">
+        <difficulty>hard</difficulty>
+        <players min="48"/>
+        <ranks min="1" />
+        <realm>Both</realm>
+    </publicQuest>
+</zone>

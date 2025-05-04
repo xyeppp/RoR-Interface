@@ -1,0 +1,194 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/CreditsWindow.lua" />
+	</Scripts>
+	<Windows>
+
+		
+        <Label name="EA_Credits_SectionTitleTemplate" inherits="EA_Label_DefaultHeading" autoresize="true" textalign="center"  wordwrap="true" >
+            <Size>
+                <AbsPoint x="600" y="35" />
+            </Size>
+            <Color r="235" g="235" b="235" a="235" />
+        </Label>
+
+
+        <Label name="EA_Credits_SubSectionTitleTemplate" font="font_clear_large_bold" autoresize="true" textalign="center" wordwrap="true" >
+            <Color r="235" g="235" b="235" a="235" />
+        </Label>
+
+        <Label name="EA_Credits_TextTemplate" font="font_clear_medium" autoresize="true" wordwrap="true"  maxchars="4096" >
+            <Color r="235" g="235" b="235" a="235" />
+        </Label>
+
+
+        <Window name="EA_Credits_SubSectionWithTitlesTemplate" >
+            <Size>
+                <AbsPoint x="780" y="0" />
+            </Size>
+            <Windows>
+                <Label name="$parentName" inherits="EA_Credits_SubSectionTitleTemplate" textalign="center" >
+                	<Size>
+				        <AbsPoint x="700" y="0" />
+			        </Size>                	
+                	<Anchors>
+				        <Anchor point="top" relativePoint="top" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>
+                <Label name="$parentDesc" inherits="EA_Credits_SubSectionTitleTemplate" textalign="center" >
+                	<Size>
+				        <AbsPoint x="700" y="0" />
+			        </Size>                	
+                	<Anchors>
+				        <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>
+                <Label name="$parentPeopleNames" inherits="EA_Credits_TextTemplate" textalign="right" >
+                	<Size>
+                        <AbsPoint x="380" y="0" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDesc">
+					        <AbsPoint x="-40" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>
+                <Label name="$parentPeopleTitles" inherits="EA_Credits_TextTemplate" textalign="left" >
+                	<Size>
+                        <AbsPoint x="380" y="0" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentDesc">
+					        <AbsPoint x="40" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>           
+            </Windows>      
+        </Window>
+
+        <Window name="EA_Credits_SubSectionWithoutTitlesTemplate" >
+            <Size>
+                <AbsPoint x="780" y="0" />
+            </Size>
+            <Windows>
+                <Label name="$parentName" inherits="EA_Credits_SubSectionTitleTemplate" textalign="center" >
+                	<Size>
+				        <AbsPoint x="650" y="0" />
+			        </Size>                	
+                	<Anchors>
+				        <Anchor point="top" relativePoint="top" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>
+                <Label name="$parentDesc" inherits="EA_Credits_TextTemplate" textalign="center" >
+                    <Size>
+                        <AbsPoint x="650" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentPeopleNames" inherits="EA_Credits_TextTemplate" textalign="center" >
+                	<Size>
+                        <AbsPoint x="380" y="0" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDesc">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                </Label>
+            </Windows>      
+        </Window>
+        
+        
+		<!-- Bug Report Window -->
+		<Window name="EA_Window_Credits" movable="true" layer="secondary" savesettings="false" >
+			<Size>
+				<AbsPoint x="800" y="900" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_Credits.Initialize" />
+				<EventHandler event="OnShown" function="WindowUtils.OnShown" />
+				<EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+			</EventHandlers>
+			<Windows>
+			    <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />                             
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Credits.Hide" />
+                    </EventHandlers>
+                </Button>
+               
+			
+			  <ScrollWindow name="$parentScrollWindow" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="18" autohidescrollbar="false" >
+                <Size>
+                    <AbsPoint x="790" y="410" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                        <AbsPoint x="5" y="5" />
+                    </Anchor>
+                     <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                        <AbsPoint x="-5" y="-10" />
+                    </Anchor>
+                </Anchors>
+                <Windows>
+                    <!-- Scroll Bar -->
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                        <Anchors>
+                            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                <AbsPoint x="0" y="0" />
+                            </Anchor>
+                        </Anchors>
+                    </VerticalScrollbar>
+
+                    <Window name="$parentScrollChild">
+                        <Size>
+                            <AbsPoint x="750" y="490"/>
+                        </Size>
+                        <Windows>                        
+                         
+                            <Label name="$parentThankYouText" inherits="EA_Credits_TextTemplate" > 
+                                <Size>
+                                    <AbsPoint x="570" y="35" /> 
+                                </Size>
+                                <!-- Anchored in Lua at the End -->
+                                <Color r="255" g="255" b="255" a="255" />
+                            </Label>
+                            <Window name="$parentSpacer" >
+                               <Size>
+                                    <AbsPoint x="570" y="50" />
+                                </Size>
+                               <Anchors>
+                                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentThankYouText">
+                                        <AbsPoint x="0" y="0" />
+                                    </Anchor>
+                                </Anchors>
+                            </Window>
+                                                                                            
+                        </Windows>
+                    </Window>
+                
+                </Windows>
+                
+            </ScrollWindow>      
+			
+
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

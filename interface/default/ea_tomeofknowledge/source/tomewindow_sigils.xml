@@ -1,0 +1,342 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+        
+        <Window name="TomeFragmentTask" handleinput="true">
+            <Size>
+                <AbsPoint x="400" y="23" />
+            </Size>
+            <Windows>
+                <Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+		        <Label name="$parentText" inherits="TOKTextLarge"  maxchars="128" textalign="left" autoresize="true" wordwrap="true" >
+		            <Size>
+		                <AbsPoint x="400" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+                            <AbsPoint x="7" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+	        </Windows>
+        </Window>
+        
+        <Window name="TomeSigilFragments" handleinput="true" >
+            <Size>
+                <AbsPoint x="500" y="210"/>
+            </Size>
+            <Windows>
+                <Window name="$parentFragment1" handleinput="true" >
+	                <Anchors>
+		                <Anchor point="center" relativePoint="bottomright" >
+		                    <AbsPoint x="-15" y="-15" />
+		                </Anchor>
+	                </Anchors>
+                    <Size>
+                        <AbsPoint x="170" y="40"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="TomeWindow.SelectFragment" />
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_FragmentTemplate" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+		                </DynamicImage>
+		                <Label name="$parentName" inherits="TOKText" maxchars="128" textalign="left" wordwrap="true" autoresize="true" >
+					        <Size>
+					        <AbsPoint x="120" y="22"/>
+					        </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentIcon">
+                                    <AbsPoint x="0" y="-20" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+                <Window name="$parentFragment2" handleinput="true" >
+	                <Anchors>
+		                <Anchor point="center" relativePoint="right" >
+		                    <AbsPoint x="-22" y="22" />
+		                </Anchor>
+	                </Anchors>
+                    <Size>
+                        <AbsPoint x="170" y="40"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="TomeWindow.SelectFragment" />
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_FragmentTemplate" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-25" />
+                                </Anchor>
+                            </Anchors>
+		                </DynamicImage>
+		                <Label name="$parentName" inherits="TOKText" maxchars="128" textalign="left" wordwrap="true" autoresize="true" >
+					        <Size>
+					        <AbsPoint x="120" y="22"/>
+					        </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentIcon">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+	            <Window name="$parentFragment5" handleinput="true" >
+		            <Anchors>
+		                <Anchor point="center" relativePoint="bottomleft" >
+		                    <AbsPoint x="15" y="-15" />
+		                </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="170" y="40"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="TomeWindow.SelectFragment" />
+                    </EventHandlers>
+                    <Windows>
+		                <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_FragmentTemplate" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+		                </DynamicImage>
+                        <Label name="$parentName" inherits="TOKText" textAlign="right" maxchars="128" wordwrap="true" autoresize="true" >
+					        <Size>
+					        <AbsPoint x="120" y="22"/>
+					        </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+                                    <AbsPoint x="0" y="-20" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+	            </Window>
+            		        	
+                <Window name="$parentFragment4" handleinput="true" >
+		            <Anchors>
+		                <Anchor point="center" relativePoint="left" >
+		                    <AbsPoint x="22" y="22" />
+		                </Anchor>
+		            </Anchors>
+                    <Size>
+                        <AbsPoint x="170" y="40"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="TomeWindow.SelectFragment" />
+                    </EventHandlers>
+                    <Windows>
+		                <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_FragmentTemplate" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-25" />
+                                </Anchor>
+                            </Anchors>
+		                </DynamicImage>
+                        <Label name="$parentName" inherits="TOKText" textAlign="right" maxchars="128" wordwrap="true" autoresize="true" >
+					        <Size>
+					        <AbsPoint x="120" y="55"/>
+					        </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentFragment3" handleinput="true" >
+                    <Size>
+                        <AbsPoint x="125" y="65"/>
+                    </Size>
+	                <Anchors>
+		                <Anchor point="center" relativePoint="top" >
+		                    <AbsPoint x="0" y="40" />
+		                </Anchor>
+	                </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="TomeWindow.SelectFragment" />
+                    </EventHandlers>
+                    <Windows>
+		                <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_FragmentTemplate">
+		                    <Anchors>
+		                        <Anchor point="top" relativePoint="center" >
+		                            <AbsPoint x="0" y="0" />
+		                        </Anchor>
+		                    </Anchors>
+		                </DynamicImage>
+                        <Label name="$parentName" inherits="TOKText" maxchars="128" textalign="center" wordwrap="true" autoresize="true" >
+					        <Size>
+					        <AbsPoint x="120" y="22"/>
+					        </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentIcon">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <DynamicImage name="EA_DynamicImage_FragmentTemplateLarge" >
+            <Size>
+		        <AbsPoint x="80" y="80"/>
+		    </Size>
+		    <Anchors>
+		        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+		            <AbsPoint x="0" y="0" />
+		        </Anchor>
+		    </Anchors>
+		    <TexDims x="64" y="64" />
+		</DynamicImage>
+        
+        <Window name="TomeSigilIcon" handleinput="true">
+            <Size>
+                <AbsPoint x="90" y="90" />
+            </Size>
+            <Windows>
+                <!-- Sigil Fragmemnts -->
+                <DynamicImage name="$parentFragment1" layer="background" inherits="EA_DynamicImage_FragmentTemplateLarge" />
+                <DynamicImage name="$parentFragment2" layer="background" inherits="EA_DynamicImage_FragmentTemplateLarge" />
+                <DynamicImage name="$parentFragment3" layer="background" inherits="EA_DynamicImage_FragmentTemplateLarge" />
+                <DynamicImage name="$parentFragment4" layer="background" inherits="EA_DynamicImage_FragmentTemplateLarge" />
+                <DynamicImage name="$parentFragment5" layer="background" inherits="EA_DynamicImage_FragmentTemplateLarge" />
+	        </Windows>
+        </Window>
+
+        <Window name="SigilDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="SigilPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+                                <Window name="$parentSigilIcon" inherits="TomeSigilIcon" >
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <!-- Title -->
+                                <Label name="$parentSigilTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" >
+                                            <AbsPoint x="0" y="50"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="$parentSigilDesc" inherits="TOKText" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSigilTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Label name="$parentFragmentsTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSigilDesc">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="$parentFragmentsDesc" inherits="TOKText" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentFragmentsTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+		                        <Window name="$parentFragments" inherits="TomeSigilFragments" handleinput="true" >
+		                            <Anchors>
+		                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFragmentsDesc">
+		                                    <AbsPoint x="0" y="20" />
+		                                </Anchor>
+		                            </Anchors>
+		                        </Window>
+		                        
+                                <Window name="$parentFragmentsAnchor" >
+		                            <Anchors>
+		                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentFragments">
+		                                    <AbsPoint x="0" y="20" />
+		                                </Anchor>
+		                            </Anchors>
+		                        </Window>
+		                       
+		                       
+		                       
+		                       <!-- Second Page -->
+                                <Label name="$parentFragmentTaskTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentFragmentsAnchor">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="$parentFragmentTaskDesc" inherits="TOKText" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentFragmentTaskTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <!-- Tasks are created dynamically -->
+		                       
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+		
+		
+	
+    </Windows>
+</Interface>

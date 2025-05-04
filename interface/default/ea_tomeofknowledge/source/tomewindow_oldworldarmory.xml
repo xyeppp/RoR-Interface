@@ -1,0 +1,171 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Window name="TomeOWASetButton" handleinput="true">
+            <Size>
+                <AbsPoint x="400" y="23" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectArmorSet"/>
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                  
+                </Button>
+		        <Button name="$parentText" inherits="TOKTextButtonLarge"  maxchars="128" textalign="left" autoresize="true" >
+		            <Size>
+		                <AbsPoint x="400" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCompletedBtn">
+                            <AbsPoint x="7" y="0" />
+                        </Anchor>
+                    </Anchors>  
+		        </Button>
+	        </Windows>
+        </Window>
+
+        <Window name="TomeOWAItem" handleinput="true" >
+            <Size>
+                <AbsPoint x="230" y="50"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverArmorSetItem" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentCompletedBtn" inherits="TomeCheckButton" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                  
+                </Button>
+                <Label name="$parentName" inherits="TOKTextLarge" maxchars="128" textalign="left" wordwrap="true" autoresize="true" >
+					<Size>
+					   <AbsPoint x="200" y="55"/>
+					</Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCompletedBtn">
+                            <AbsPoint x="7" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="OldWorldArmoryDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="OldWorldArmoryPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <!-- Title -->
+                                <Label name="$parentTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="$parentLinkDescText" inherits="TOKLinkDescText" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentGuyAnchor" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLinkDescText">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+		                        <DynamicImage name="$parentGuy" inherits="TomeArmoryGuy" handleinput="true" >
+		                            <Anchors>
+		                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGuyAnchor">
+		                                    <AbsPoint x="0" y="10" />
+		                                </Anchor>
+		                            </Anchors>
+		                        </DynamicImage>
+		                       
+		                        <!--  static slots -->
+		                        <Window name="$parentStaticSlotHelm" inherits="TomeOWAItem">
+                                     <Anchors>
+                                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                             <AbsPoint x="0" y="26"/>
+                                         </Anchor>
+                                     </Anchors>
+		                        </Window>
+		                       
+                                <Window name="$parentStaticSlotShoulders" inherits="TomeOWAItem">
+                                     <Anchors>
+                                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                             <AbsPoint x="0" y="91"/>
+                                         </Anchor>
+                                     </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStaticSlotBody" inherits="TomeOWAItem">
+                                     <Anchors>
+                                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                             <AbsPoint x="0" y="163"/>
+                                         </Anchor>
+                                     </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStaticSlotGloves" inherits="TomeOWAItem">
+                                     <Anchors>
+                                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                             <AbsPoint x="0" y="241"/>
+                                         </Anchor>
+                                     </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStaticSlotBoots" inherits="TomeOWAItem">
+                                     <Anchors>
+                                         <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                             <AbsPoint x="0" y="319"/>
+                                         </Anchor>
+                                     </Anchors>
+                                </Window>
+		                       
+                                <Window name="$parentItemsAnchor" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuy">
+                                            <AbsPoint x="0" y="400"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+		
+		
+	
+    </Windows>
+</Interface>

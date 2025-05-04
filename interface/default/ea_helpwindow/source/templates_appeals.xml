@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Windows>
+
+    <Label name="AppealHeaderTemplate" inherits="DefaultWindowSubTitle" textalign="leftcenter" popable="false">
+      <Size>
+        <AbsPoint x="525" y="32" />
+      </Size>
+      <Color r="226" g="216" b="45" a="255"/>
+      <!-- Yellow r=226, g=216, b=45-->
+    </Label>
+
+    <Label name="AppealLabelTemplate64" inherits="DefaultWindowSubTitle" font="font_default_text_small" maxchars="64" textalign="leftcenter" popable="false">
+      <Size>
+        <AbsPoint x="525" y="25" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+    <Label name="AppealLabelMultilineTemplate100" inherits="DefaultWindowSubTitle" autoresize="true" font="font_default_text_small" wordwrap="true" maxchars="350" textalign="leftcenter" popable="false">
+      <Size>
+        <AbsPoint x="525" y="72" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+    <!-- Edit Box-->
+    <ComboBox name="AppealComboBoxTemplate" inherits="EA_ComboBox_DefaultResizable" >
+      <EventHandlers>
+        <EventHandler event="OnSelChanged" function="EA_Window_Appeal.OnSelChanged" />
+        <EventHandler event="OnMouseOver" function="EA_Window_Appeal.OnMouseOverComboBox" />
+      </EventHandlers>
+    </ComboBox>
+    
+    <!-- Edit Box-->
+    <EditBox name="AppealEditBoxTemplate1024" inherits="EA_EditBox_DefaultFrame_Multiline" maxchars="1024" linecount="13">
+      <Size>
+        <AbsPoint x="525" y="250"/>
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnKeyEscape" function="EA_Window_Appeal.OnKeyEscapeEditBox" />
+      </EventHandlers>
+    </EditBox>
+
+    <!-- Edit Box-->
+    <EditBox name="AppealEditBoxTemplate64" inherits="EA_EditBox_DefaultFrame" maxchars="64">
+      <Size>
+        <AbsPoint x="525" y="32"/>
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnKeyEscape" function="EA_Window_Appeal.OnKeyEscapeEditBox" />
+      </EventHandlers>
+    </EditBox>
+    
+    <!-- Edit Box-->
+    <EditBox name="AppealEditBoxTemplateNumbers" inherits="EA_EditBox_DefaultFrame" input="numbers">
+      <Size>
+        <AbsPoint x="125" y="32"/>
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnKeyEscape" function="EA_Window_Appeal.OnKeyEscapeEditBox" />
+      </EventHandlers>
+    </EditBox>
+    
+    <!-- Button -->
+    <Button name="AppealButtonTemplate" inherits="EA_Button_DefaultResizeable" textalign="center">
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="EA_Window_Appeal.SubmitAppeal"/>
+      </EventHandlers>
+    </Button>
+
+  </Windows>
+</Interface>
+

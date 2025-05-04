@@ -1,0 +1,71 @@
+<zone iname="Cinderfall">
+    <landmark iname="Palik Tunnels" id="1" mapIcon="1061" x="47707" y="6922">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gutbash's Gnaw" id="2" mapIcon="1065" x="49235" y="56224">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cave" id="3" mapIcon="1063" x="57006" y="58512">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Gutbash's Gnaw" id="4" mapIcon="1065" x="58730" y="14706">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cave" id="5" mapIcon="1061" x="62007" y="49673">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="6" mapIcon="1063" x="59800" y="11182">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Flamerock Mine" id="516" iconSet="1" x="37055" y="47626">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Da Drakk Cult" id="177" iconSet="1" x="42005" y="32956">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Cult of Drakk" id="139" iconSet="1" x="47338" y="25438">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ashreaver Tribe Stronghold" id="518" iconSet="1" x="50000" y="7370">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Gutbash Tribe Stronghold" id="523" iconSet="1" x="50852" y="53220">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Emberlight Mine" id="517" iconSet="1" x="64117" y="5532">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <zoneTransition iname="To Thunder Mountain" x="65535" y="25800">
+        <zone>005</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Thunder Mountain" x="65535" y="44000">
+        <zone>005</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Thunder Mountain" x="65535" y="18000">
+        <zone>005</zone>
+    </zoneTransition>
+</zone>

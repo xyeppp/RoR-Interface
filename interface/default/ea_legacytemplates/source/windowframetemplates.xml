@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+
+<!--# Title: Window Templates
+
+    This file contains all of the standard window templates that are used to create most of the Default UI Windows.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <DynamicImage name="DefaultIconFrame" texture="icon_frame_square" handleinput="false">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <TexDims x="64" y="64" />
+        </DynamicImage>
+
+        <Window name="CursorWindow" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentFrame" inherits="DefaultIconFrame" >
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <Label name="$parentText" font="font_default_text" textalign="center" maxchars="64" >
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!--# Section: Window Background & Frame Components -->
+
+        <!-- FullReiszeImage Defs *********************************************************-->
+
+
+        <!--# FullResizeImage: DefaultWindowBackground
+            This is the default window background image.
+
+            Code:
+            (include code nospaces)
+        -->
+        <FullResizeImage name="DefaultWindowBackground" handleinput="false" layer="background" texture="window_frame1">
+            <Sizes>
+                <TopLeft x="15" y="15" />
+                <BottomRight x="15" y="15" />
+                <Middle x="68" y="36" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="15" y="0" />
+                <TopRight x="83" y="0" />
+                <MiddleLeft x="0" y="15" />
+                <MiddleCenter x="15" y="15" />
+                <MiddleRight x="83" y="15" />
+                <BottomLeft x="0" y="52" />
+                <BottomCenter x="15" y="52" />
+                <BottomRight x="83" y="52" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!--# FullResizeImage: YellowFrame
+            This a yellow frame with rounded edge. The middle of the image is alphaed out.
+
+            Code:
+            (begin code)
+             <FullResizeImage name="YellowFrame" handleinput="false" layer="background" texture="assorted_hud_pieces">
+             ...
+             </FullResizeImage>
+            (end)
+        -->
+        <FullResizeImage name="YellowFrame" handleinput="false" layer="background" texture="assorted_hud_pieces" frameonly="true">
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="9" />
+                <Middle x="50" y="23" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="1" y="212" />
+                <TopCenter x="11" y="212" />
+                <TopRight x="61" y="212" />
+                <MiddleLeft x="1" y="222" />
+                <MiddleCenter x="11" y="222" />
+                <MiddleRight x="61" y="222" />
+                <BottomLeft x="1" y="246" />
+                <BottomCenter x="11" y="245" />
+                <BottomRight x="61" y="245" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <FullResizeImage name="YellowFrameSize" inherits="YellowFrame" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+            </Anchors>
+        </FullResizeImage>
+
+
+        <!-- HorizontalResizeImage Defs ************************************************************-->
+
+
+
+        <!--# HorizontalResizeImage: YellowFrame
+            This a yellow horizontal line that matches <YellowFrame>
+
+            Code:
+            (begin code)
+             <HorizontalResizeImage name="YellowHorizRule" handleinput="false" layer="background" texture="assorted_hud_pieces">
+             ...
+             </HorizontalResizeImage>
+            (end)
+        -->
+        <HorizontalResizeImage name="YellowHorizRule" handleinput="false" layer="background" texture="assorted_hud_pieces">
+            <Size>
+                <AbsPoint x="176" y="2" />
+            </Size>
+            <Sizes left="0" middle="50" right="0" />
+            <TexCoords>
+                <Middle x="11" y="212" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <!--# FullResizeImage: DefaultWindowRule
+            This is the default horizontal rule to be used for seperating text and sections of a window.
+
+            Code:
+            (begin code)
+             <HorizontalResizeImage name="DefaultWindowRule" texture="window_frame1" handleinput="false" layer="background">
+             ...
+             </HorizontalResizeImage>
+            (end)
+        -->
+        <HorizontalResizeImage name="DefaultWindowRule" texture="window_frame1" handleinput="false" layer="background">
+            <Size>
+                <AbsPoint x="256" y="2" />
+            </Size>
+            <Sizes left="0" middle="256" right="0" />
+            <TexCoords>
+                <Middle x="0" y="254" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+
+        <!-- Button Defs ************************************************************-->
+
+
+
+        <!--# Button: DefaultButton
+            This is the default button definion that ONLY provides the mouseover and click sounds. The provides no artwork
+            or text. This should be the base for all other button definitions.
+
+            Code:
+            (begin code)
+             <Button name="DefaultButton">
+             ...
+             </Button>
+            (end)
+        -->
+        <Button name="DefaultButton">
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( Sound.BUTTON_CLICK )" />
+                <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+            </Sounds>
+        </Button>
+
+
+        <!--# Button: DefaultWindowCloseButton
+            This is the default close button used for all windows. This only provides the artwork - each window is
+            responsible for adding a click callback.
+        -->
+        <Button name="DefaultWindowCloseButton" inherits="DefaultButton" backgroundtexture="window_frame1" highlighttexture="window_frame1" layer="popup">
+            <Size>
+                <AbsPoint x="31" y="32" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                    <AbsPoint x="-5" y="5" />
+                </Anchor>
+            </Anchors>
+            <TexCoords>
+                <Normal x="99" y="21" />
+                <NormalHighlit x="131" y="21" />
+                <Pressed x="131" y="21"  />
+                <PressedHighlit x="131" y="21"  />
+                <Disabled x="99" y="21" />
+            </TexCoords>
+        </Button>
+
+        <!-- Small +/- Buttons -->
+
+        <Button name="PlusButton" backgroundtexture="assorted_hud_pieces" >
+            <Size>
+                <AbsPoint x="16" y="16" />
+            </Size>
+            <TexCoords>
+                <Normal x="34" y="196" />
+                <Pressed x="34" y="196" />
+            </TexCoords>
+        </Button>
+
+        <Button name="MinusButton" backgroundtexture="assorted_hud_pieces" >
+            <Size>
+                <AbsPoint x="16" y="16" />
+            </Size>
+            <TexCoords>
+                <Normal x="18" y="196" />
+                <Pressed x="18" y="196" />
+            </TexCoords>
+        </Button>
+
+       
+
+        <Label name="DefaultWindowSubTitle" font="font_default_sub_heading" maxchars="64" textalign="center">
+            <Size>
+                <AbsPoint x="350" y="30" />
+            </Size>
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <Label name="DefaultWindowSmallText" font="font_clear_default" maxchars="64" textalign="center">
+            <Size>
+                <AbsPoint x="350" y="30" />
+            </Size>
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <Label name="DefaultWindowText" font="font_default_text" maxchars="64" textalign="left">
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+
+        <Button name="DefaultIconButton" inherits="DefaultButton" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+            <TexCoords>
+                <Normal texture="icon_frame_square" x="0" y="0" />
+                <NormalHighlit texture="icon_frame_square_highlight" x="0" y="0" />
+                <Pressed texture="icon_frame_square_pressed" x="0" y="0" />
+                <Disabled texture="icon_frame_square" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+       
+      
+        <Button name="DefaultTextButton" inherits="DefaultButton" font="font_default_sub_heading">
+            <Size>
+                <AbsPoint x="200" y="32" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="85" b="0" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+        <Button name="DefaultSmallBoldTextButton" inherits="DefaultButton" font="font_clear_small_bold">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="85" b="0" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+        <HorizontalResizeImage name="DefaultHorizResizeButtonNormal" texture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="32" />
+            </Size>
+            <Sizes left="10" middle="88" right="10" />
+            <TexCoords>
+                <Left x="0" y="85" />
+                <Middle x="10" y="85" />
+                <Right x="118" y="85" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="DefaultHorizResizeButtonPressed" texture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="41" />
+            </Size>
+            <Sizes left="10" middle="88" right="10" />
+            <TexCoords>
+                <Left x="0" y="106" />
+                <Middle x="10" y="106" />
+                <Right x="118" y="106" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="DefaultHorizResizeButtonDisabled" texture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="41" />
+            </Size>
+            <Sizes left="10" middle="88" right="10" />
+            <TexCoords>
+                <Left x="0" y="125" />
+                <Middle x="10" y="125" />
+                <Right x="118" y="125" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="DefaultHorizResizeButtonHightlite" texture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="41" />
+            </Size>
+            <Sizes left="10" middle="88" right="10" />
+            <TexCoords>
+                <Left x="0" y="167" />
+                <Middle x="10" y="167" />
+                <Right x="118" y="167" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="DefaultHorizResizeButtonPressed" texture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="41" />
+            </Size>
+            <Sizes left="10" middle="88" right="10" />
+            <TexCoords>
+                <Left x="0" y="207" />
+                <Middle x="10" y="207" />
+                <Right x="118" y="207" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <Button name="DefaultHorizResizeButton" inherits="DefaultButton" font="font_default_text" backgroundtexture="window_frame1" highlighttexture="window_frame1">
+            <Size>
+                <AbsPoint x="128" y="41" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <Normal def="DefaultHorizResizeButtonNormal"  />
+                <NormalHighlit def="DefaultHorizResizeButtonHightlite" />
+                <Pressed def="DefaultHorizResizeButtonPressed" />
+                <PressedHighlit def="DefaultHorizResizeButtonHightlite"  />
+                <Disabled def="DefaultHorizResizeButtonDisabled"  />
+            </ResizeImages>
+            <TextOffset x="4" y="4" />
+        </Button>
+        
+        <!-- Default Marquee Animations -->
+        <AnimatedImage name="SquareMarqueeAnim" texture="anim_marquee_square" fps="10" layer="overlay" handleinput="false" sticky="false"  textureScale="0.75" >
+            <Size>
+                <AbsPoint x="64" y="64"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <AnimFrames>
+                <AnimFrame id="1" x="0" y="0" />
+                <AnimFrame id="2" x="85" y="0" />
+                <AnimFrame id="3" x="170" y="0" />
+                <AnimFrame id="4" x="0" y="85" />
+                <AnimFrame id="5" x="85" y="85" />
+                <AnimFrame id="6" x="170" y="85" />
+            </AnimFrames>
+        </AnimatedImage>      
+
+        <DynamicImage name="DefaultClockImage"  texture="assorted_hud_pieces" handleinput="false">
+            <Size>
+                <AbsPoint x="20" y="20" />
+            </Size>
+            <TexCoords x="50" y="192" />
+            <TexDims x="20" y="20" />
+        </DynamicImage>
+
+        <DynamicImage name="WARSymbol" texture="ui_main" >
+            <Size>
+                <AbsPoint x="59" y="79" />
+            </Size>
+            <TexCoords x="50" y="527" />
+        </DynamicImage>
+
+        <FullResizeImage name="DefaultWindowInnerBackground" handleinput="false" layer="background" texture="ui_main">
+            <Size>
+                <AbsPoint x="100" y="100" />
+            </Size>
+            <Sizes>
+                <TopLeft x="10" y="10" />
+                <BottomRight x="10" y="10" />
+                <Middle x="312" y="36" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="359" y="92" />
+                <TopCenter x="369" y="92" />
+                <TopRight x="681" y="92" />
+                <MiddleLeft x="359" y="102" />
+                <MiddleCenter x="369" y="102" />
+                <MiddleRight x="681" y="102" />
+                <BottomLeft x="359" y="138" />
+                <BottomCenter x="369" y="138" />
+                <BottomRight x="681" y="138" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!-- Map Defs -->
+
+        <AnimatedImage  name="MapLoadingAnim"  inherits="SquareMarqueeAnim" >
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TintColor r="82" g="52" b="33" a="255"/>
+        </AnimatedImage>
+
+    </Windows>
+</Interface>

@@ -1,0 +1,19 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/Swordmaster.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_SwordmasterResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="128" y="80" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" texture="EA_Career_SM_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="128" y="80" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

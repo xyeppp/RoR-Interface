@@ -1,0 +1,190 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/GuildRespecTacticsList.lua"/>
+    </Scripts>
+    <Windows>
+
+        <Button name="EA_Button_GuildRespecTacticsTab" inherits="EA_Templates_GuildWindowTabButton">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildRespecTacticsList.OnLButtonUpTab" />
+            </EventHandlers>
+        </Button>
+
+
+        <Button name="GuildRespecTacticsListAbilityButtonTemplate" inherits="GuildTacticsListAbilityButtonTemplate" >
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="GuildTacticsList.OnMouseOverAbilityRow" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="GuildRespecTacticsList" inherits="EA_Window_Default" movable="true" layer="secondary">
+            <Size>
+                <AbsPoint x="482" y="533"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="top" relativeTo="GuildWindow">
+                    <AbsPoint x="25" y="-25"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="GuildRespecTacticsList.Initialize" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="GuildRespecTacticsList.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" layer="background" handleinput="true" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentTab" >
+                    <Size>
+                        <AbsPoint x="0" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+
+                    <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_MetalFill">
+                        <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                        </Anchors>
+                    </FullResizeImage>
+
+                    <Windows>
+                        <Window name="$parentTabSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" handleinput="true" layer="popup">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo ="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentPurchased">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Button name="$parentPurchased" inherits="EA_Button_GuildRespecTacticsTab" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentAvailable" inherits="EA_Button_GuildRespecTacticsTab" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentPurchased"/>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentTabSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentAvailable">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="14" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentButtonBar" >
+                    <Size>
+                        <AbsPoint x="0" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                            <Size>
+                                <AbsPoint x="0" y="60" />
+                            </Size>
+                        </Window>
+
+                        <Button name="$parentRespecButton" inherits="EA_Button_DefaultResizeable">
+                            <Size>
+                                <AbsPoint x="160" y="39"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="right" relativeTo="$parentBackground">
+                                    <AbsPoint x="-25" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="GuildRespecTacticsList.OnLButtonUpRespecButton" />
+                            </EventHandlers>
+                        </Button>
+
+                        <!-- Cancel Button -->
+                        <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                            <Size>
+                                <AbsPoint x="140" y="39"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="left" relativeTo="$parentBackground">
+                                    <AbsPoint x="25" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="GuildRespecTacticsList.OnLButtonUpCancelButton" />
+                            </EventHandlers>
+                        </Button>
+                    </Windows>
+                </Window>
+                
+                <!-- List Box -->
+                <ListBox name="$parentAbilityList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="GuildRespecTacticsListAbilityButtonTemplate" visiblerows="8" rowcount="100" rowspacing="0">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTab">
+                            <AbsPoint x="10" y="4"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBarBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="GuildTacticsList.abilityListData" populationfunction="GuildRespecTacticsList.UpdateList">
+                        <ListColumns>
+                            <ListColumn windowname="Name" variable="name" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <!-- Purchase Button -->
+
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

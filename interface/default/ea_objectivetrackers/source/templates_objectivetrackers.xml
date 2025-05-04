@@ -1,0 +1,499 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <!-- Tracker Checkbox Button Template -->
+        <Button name="TrackerContextMenuItemCheckBox" inherits="EA_Button_DefaultMenuButton" textalign="left" autoresize="false">
+            <Size>
+                <AbsPoint x="245" y="28" />
+            </Size>
+            <Windows>
+                <Button name="$parentCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentCheckBoxLabel" font="font_default_text" maxchars="256" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="245" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="30" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+        <Button name="TrackerContextMenuItemFontSelection" inherits="EA_Button_DefaultMenuButton" id="1">
+            <Size>
+                <AbsPoint x="350" y="25" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentCheck" texture="shared_01" layer="popup" popable="false" sticky="false" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="18" y="19" />
+                    </Size>
+                    <TexCoords x="390" y="78" />
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel" font="font_default_text" maxchars="256" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+        <!-- Influence Bar -->
+        <StatusBar name="EA_StatusBar_Influence" foreground="EA_StatusBar_InfluenceForeground" >
+            <Size>
+                <AbsPoint x="22" y="8" />
+            </Size>
+        </StatusBar>
+
+        <HorizontalResizeImage name="EA_StatusBar_InfluenceForeground" texture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="84" y="8" />
+            </Size>
+            <Sizes left="0" middle="84" right="0" />
+            <TexSlices>
+                <Left   id="" />
+                <Middle id="Influence-Fill" />
+                <Right  id="" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <Window name="EA_Window_InfluenceBar" layer="secondary">
+            <Size>
+                <AbsPoint x="300" y="14" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.OnMouseOverInfluenceBar" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_PublicQuestTracker.OnClickInfluenceBar" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- End Images -->
+                <DynamicImage name="$parentLeftCap" inherits="EA_DynamicImage_HUDStatusBar_SquareEndCap_Left" handleinput="false" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRightCap" inherits="EA_DynamicImage_HUDStatusBar_SquareEndCap_Right" handleinput="false" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFillReward1" inherits="EA_DynamicImage_InfluenceMarker" handleinput="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="-200" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFillReward2" inherits="EA_DynamicImage_InfluenceMarker" handleinput="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="-100" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFillReward3" inherits="EA_DynamicImage_InfluenceMarker" handleinput="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="-003" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <!-- Background Image -->
+                <HorizontalResizeImage name="$parentBackground" inherits="EA_HorizontalResizeImage_HUDStatusBarBackgroundWide" handleinput="false"  popable="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Status Bar -->
+                <StatusBar name="$parentFill" inherits="EA_StatusBar_Influence" handleinput="false" popable="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+
+            </Windows>
+        </Window>
+
+        <!-- Control Status -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ControlBarBackground" texture="EA_TintableImage" alpha="0.5">
+            <Size>
+                <AbsPoint x="150" y="15" />
+            </Size>
+            <Sizes left="0" middle="150" right="5" />
+            <TexCoords>
+                <Middle x="0" y="0" />
+            </TexCoords>
+            <TintColor r="0" g="0" b="0" />
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ControlBarForeground" texture="EA_TintableImage">
+            <Size>
+                <AbsPoint x="150" y="15" />
+            </Size>
+            <Sizes left="0" middle="150" right="0" />
+            <TexCoords>
+                <Middle x="0" y="0" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+
+        <!-- Public Quest Display -->
+        <Window name="EA_Window_PublicQuestTrackerCondition" handleinput="false">
+            <Size>
+                <AbsPoint x="600" y="18"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentType" texture="EA_HUD_01" slice="PQ-Success-Condition">
+                    <Size>
+                        <AbsPoint x="15" y="15"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentCounter" font="font_chat_text" maxchars="64"
+                       textalign="right" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="80" y="18"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentType">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+                <Label name="$parentName" font="font_chat_text" maxchars="64"
+                       textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="515" y="18"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-25" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_BattleFieldObjectiveTrackerCondition" handleinput="false">
+            <Size>
+                <AbsPoint x="600" y="18"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentType" texture="EA_HUD_01" slice="PQ-Success-Condition">
+                    <Size>
+                        <AbsPoint x="15" y="15"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentCounter" font="font_chat_text" maxchars="64"
+                       textalign="right" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="65" y="18"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentType">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+                <Label name="$parentName" font="font_chat_text" maxchars="64"
+                       textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="515" y="18"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_PublicQuestTrackerQuestData" handleinput="false">
+            <Size>
+                <AbsPoint x="600" y="50" />
+            </Size>
+            <Windows>
+                <Window name="$parentCondition1" inherits="EA_Window_PublicQuestTrackerCondition" id="1">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition2" inherits="EA_Window_PublicQuestTrackerCondition" id="2">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition1" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition3" inherits="EA_Window_PublicQuestTrackerCondition" id="3">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition4" inherits="EA_Window_PublicQuestTrackerCondition" id="4">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition5" inherits="EA_Window_PublicQuestTrackerCondition" id="5">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition4">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_PublicQuestTrackerQuestCluster">
+            <Size>
+                <AbsPoint x="600" y="280" />
+            </Size>
+            <Windows>
+                <Label name="$parentLabel" font="font_default_sub_heading" maxchars="64"
+                       textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="530" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-70" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+
+                <Label name="$parentTimerValue" font="font_clear_small" maxchars="16" layer="overlay"
+                       textalign="left" autoresize="false" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="45" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+                <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTimerValue">
+                            <AbsPoint x="-2" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Quests -->
+                <Window name="$parentData" inherits="EA_Window_PublicQuestTrackerQuestData" id="1">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLabel">
+                            <AbsPoint x="70" y="1"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+
+        <!-- Scenario Objective Display -->
+        <Window name="EA_Window_ObjectiveOwnershipDisplay">
+            <Size>
+                <AbsPoint x="150" y="53" />
+            </Size>
+            <Windows>
+                <Label name="$parentName" font="font_default_text_small" maxchars="32" autoresize="false"
+                       textalign="center" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="150" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                            <AbsPoint x="2" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" a="255"/>
+                </Label>
+                <DynamicImage name="$parentOwner" texture="map_markers01" slice="FlagNeutral" handleinput="false">
+                    <Size>
+                        <AbsPoint x="28" y="33"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentName" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <StatusBar name="$parentControlBar" handleinput="false" layer="background"
+                           background="EA_HorizontalResizeImage_ControlBarBackground"
+                           foreground="EA_HorizontalResizeImage_ControlBarForeground" >
+                    <Size>
+                        <AbsPoint x="120" y="15" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentOwner" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+                <Label name="$parentTime" font="font_default_text_small" maxchars="6" autoresize="false" layer="overlay"
+                       textalign="center" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="60" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentOwner" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!-- PQ Looting Buttons -->
+        <Button name="EA_Button_PublicQuestLootWin" inherits="EA_Button_Default"
+                backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="default">
+            <Size>
+                <AbsPoint x="74" y="71" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexSlices>
+                <Normal          id="PQChest-Win"           />
+                <NormalHighlit   id="PQChest-Win-ROLLOVER"  />
+                <Pressed         id="PQChest-Win"           />
+                <PressedHighlit  id="PQChest-Win-ROLLOVER"  />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Button_PublicQuestLootPending" inherits="EA_Button_Default"
+                backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="default">
+            <Size>
+                <AbsPoint x="74" y="71" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexSlices>
+                <Normal          id="PQChest"           />
+                <NormalHighlit   id="PQChest-ROLLOVER"  />
+                <Pressed         id="PQChest"           />
+                <PressedHighlit  id="PQChest-ROLLOVER"  />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Button_PublicQuestLootLose" inherits="EA_Button_Default"
+                backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="default">
+            <Size>
+                <AbsPoint x="74" y="71" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexSlices>
+                <Normal          id="PQChest-Fail"           />
+                <NormalHighlit   id="PQChest-Fail-ROLLOVER"  />
+                <Pressed         id="PQChest-Fail"           />
+                <PressedHighlit  id="PQChest-Fail-ROLLOVER"  />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_ObjectiveTracker_OptOutButton" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" overlaytexture="EA_HUD_01" handleinput="true" autoGrayscale="true">
+            <Size>
+                <AbsPoint x="45" y="43" />
+            </Size>
+            <TexDims x="74" y="71"/>
+            <TexSlices>
+                <Normal id="PQChest"  />
+                <NormalHighlit id="PQChest-ROLLOVER" />
+                <Pressed id="PQChest" />
+                <PressedHighlit id="PQChest-ROLLOVER"  />
+                <Disabled id="PQChest"  />
+                <DisabledPressed id="PQChest" />
+            </TexSlices>
+            <!--<OverlayTexSlices>
+                <Pressed id="LootOptOut-X" />
+                <PressedHighlit id="LootOptOut-X" />
+                <DisabledPressed id="LootOptOut-X" />
+            </OverlayTexSlices>
+            <OverlaySize x="22" y="22"/>
+            <OverlayOffset x="12" y="13"/>-->
+        </Button>
+    </Windows>
+</Interface>

@@ -1,0 +1,133 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/InteractionWindowGuildRename.lua" />
+  </Scripts>
+
+  <Windows>
+    <!-- Main dialog -->
+    <Window name="InteractionWindowGuildRename" inherits="EA_Window_Default" layer="secondary" movable="false" savesettings="false">
+      <Size>
+        <AbsPoint x="450" y="275" />
+      </Size>
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft">
+          <AbsPoint x="100" y="100" />
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="InteractionWindowGuildRename.Initialize" />
+        <EventHandler event="OnShutdown" function="InteractionWindowGuildRename.Shutdown" />
+        <EventHandler event="OnShown" function="InteractionWindowGuildRename.OnShown" />
+        <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+      </EventHandlers>
+
+      <Windows>
+        <!-- Title bar, close button -->
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="InteractionWindowGuildRename.Hide" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Whole window background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="0" y="-5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Dialog text -->
+        <Label name="$parentDialogText" font="font_chat_text" textalign="center" wordwrap="true" handleinput="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="15" y="5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitleBar">
+              <AbsPoint x="-15" y="55" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <!-- Middle separator -->
+        <Window name="$parentMiddleSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDialogText">
+              <AbsPoint x="-15" y="0" />  <!-- x adjusts to left to be flush with border -->
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentDialogText">
+              <AbsPoint x="15" y="0" />  <!-- x adjusts to right to be flush with border -->
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Guild Name label -->
+        <Label name="$parentNamePrompt" wordwrap="false" font="font_default_text" handleinput="false" textalign="center">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMiddleSeperator">
+              <AbsPoint x="15" y="0" /> <!-- y offset not necessary here since the separator's middle point is below the graphic -->
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentMiddleSeperator">
+              <AbsPoint x="-15" y="25" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Name editbox -->
+        <EditBox name="$parentGuildNameEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="24" taborder="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNamePrompt">
+              <AbsPoint x="10" y="5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentNamePrompt">
+              <AbsPoint x="-10" y="37" />
+            </Anchor>
+          </Anchors>
+          <TextOffset x="4" y="4" />
+        </EditBox>
+
+        <!-- Error text -->
+        <Label name="$parentError" font="font_clear_default" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildNameEditBox">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentGuildNameEditBox">
+              <AbsPoint x="0" y="5" />  <!-- autoresize is true, so no need to give a height -->
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="0" b="0" a="255" />
+        </Label>
+
+        <!-- Button background -->
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background">
+          <Size>
+            <AbsPoint x="0" y="75" />
+          </Size>
+        </Window>
+
+        <!-- Rename Guild button -->
+        <Button name="$parentRenameGuildButton" inherits="EA_Button_DefaultResizeable">
+          <Size>
+            <AbsPoint x="175" y="39"/>
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentButtonBackground">
+              <AbsPoint x="0" y="7"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="InteractionWindowGuildRename.OnLButtonUpAcceptButton" />
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+    </Window>
+  </Windows>
+</Interface>

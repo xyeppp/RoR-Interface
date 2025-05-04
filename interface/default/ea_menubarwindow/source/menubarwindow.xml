@@ -1,0 +1,193 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/MenuBarWindow.lua" />
+    </Scripts>
+    <Windows>
+
+
+        <!-- Menu Bar Window -->
+        <Window name="MenuBarWindow" movable="false" layer="default" savesettings="true">
+            <Size>
+                <AbsPoint x="468" y="71" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="XpBarWindow">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="MenuBarWindow.Initialize" />
+                <EventHandler event="OnShutdown" function="MenuBarWindow.Shutdown" />
+                <EventHandler event="OnUpdate"     function="MenuBarWindow.Update" />
+            </EventHandlers>
+            <Windows>
+            
+               <!-- Abilities Window -->
+                <Window name="$parentToggleAbilitiesWindow" inherits="EA_Window_HUDSpellbook">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleAbilitiesWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverAbilitiesBtn" />
+                    </EventHandlers>                 
+                </Window>
+                
+                <!-- Backpack Window -->
+                <Window name="$parentToggleBackpackWindow" inherits="EA_Window_HUDBag" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleAbilitiesWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleBackpackWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverBackpackBtn" />
+                        <EventHandler event="OnMouseOverEnd" function="MenuBarWindow.OnMouseoverBackpackBtnEnd" />
+                    </EventHandlers>                    
+                </Window>
+                
+
+                <!-- Character Window -->
+                <Window name="$parentToggleCharacterWindow" inherits="EA_Window_HUDPaperDoll" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleBackpackWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleCharacterWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverCharacterBtn" />
+                    </EventHandlers>                   
+                </Window>
+                
+                
+                
+                <!-- Tome Window -->
+                <Window name="$parentToggleTomeWindow"  inherits="EA_Window_HUDTome" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleCharacterWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleTomeWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverTomeBtn" />
+                    </EventHandlers>
+                </Window>
+                
+                <!-- Tome Window -->
+                <Window name="$parentToggleTomeWindowNewEntries"  inherits="EA_Window_HUDTomeNewEntries" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentToggleTomeWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleTomeWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverTomeBtn" />
+                    </EventHandlers>
+                </Window>
+
+
+                <!-- Main Menu Window -->
+                <Window name="$parentToggleMenuWindow" inherits="EA_Window_HUDMainMenu" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleTomeWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleMenuWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverMenuBtn" />
+                    </EventHandlers>
+                </Window>
+                
+                
+                <!-- Open Parties Window -->
+                <Window name="$parentToggleOpenPartyWindow" inherits="EA_Window_HUDOpenParties" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleMenuWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleOpenPartyWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverOpenPartyBtn" />
+                    </EventHandlers>
+                </Window>
+                
+                
+                <!-- Main Menu Window -->
+                <Window name="$parentToggleSettingsWindow" inherits="EA_Window_HUDSettings" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleOpenPartyWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleSettingsWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverSettingsBtn" />
+                    </EventHandlers>
+                </Window>                
+                
+
+
+                <!-- Guild Window  -->
+                <Window name="$parentToggleGuildWindow" inherits="EA_Window_HUDGuild" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleSettingsWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleGuildWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverGuildBtn" />
+                    </EventHandlers>                 
+                </Window>
+     
+
+                <!-- Help Window -->
+                <Window name="$parentToggleHelpWindow" inherits="EA_Window_HUDHelp" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentToggleGuildWindow">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MenuBarWindow.ToggleHelpWindow" />
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverHelpBtn" />
+                    </EventHandlers>
+                </Window>              
+
+            </Windows>
+        </Window>
+        
+        <Window name="StreamingIndicator" movable="false" layer="background" savesettings="false" skipinput="true">
+            <Size>
+                <AbsPoint x="65" y="65"/>
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="MenuBarWindow">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="MenuBarWindow.InitializeStreamingIndicator" />
+            </EventHandlers>
+            <Windows>
+                <AnimatedImage name="$parentAnim" inherits="LoadingScreenWarSymbolAnimation" handleinput="true" >
+                    <Size>
+                        <AbsPoint x="65" y="65" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="MenuBarWindow.OnMouseoverStreamingIndicator" />
+                    </EventHandlers>
+                    <TintColor r="255" g="10" b="50" />
+                </AnimatedImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

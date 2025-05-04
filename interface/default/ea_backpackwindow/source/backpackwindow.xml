@@ -1,0 +1,428 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/BackpackWindow.lua" />
+        <Script file="Source/BackpackFilters.lua" />
+        <Script file="Source/BackpackIconView.lua" />
+        <Script file="Source/BackpackListView.lua" />
+        <Script file="Source/BackpackQuestView.lua" />
+        <Script file="Source/BackpackUtils.lua" />
+    </Scripts>
+    <Windows>
+
+        <Button name="BackpackWindowQuestItemsTab" inherits="EA_Button_Default" sticky="false" backgroundtexture="EA_Backpack01_d5" highlighttexture="EA_Backpack01_d5" layer="overlay">
+            <Size>
+                <AbsPoint x="85" y="47" />
+            </Size>
+            <TexSlices>
+                <Normal          id="QuestItemTab"     />
+                <NormalHighlit   id="QuestItemTab-Rollover" />
+                <Pressed         id="QuestItemTab-Selected"   />
+                <PressedHighlit  id="QuestItemTab-Selected"   />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnTabSelected" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverQuestItemsTab" />
+            </EventHandlers>
+            <TexDims x="85" y="47" />
+        </Button>
+
+        <Button name="BackpackWindowInventoryItemsTab" inherits="EA_Button_Default" sticky="false" backgroundtexture="EA_Backpack01_d5" highlighttexture="EA_Backpack01_d5" layer="overlay">
+            <Size>
+                <AbsPoint x="85" y="47" />
+            </Size>
+            <TexSlices>
+                <Normal          id="BackpackItemTab"     />
+                <NormalHighlit   id="BackpackItemTab-Rollover" />
+                <Pressed         id="BackpackItemTab-Selected"   />
+                <PressedHighlit  id="BackpackItemTab-Selected"   />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnTabSelected" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverInventoryItemsTab" />
+            </EventHandlers>
+            <TexDims x="85" y="47" />
+        </Button>
+        
+        <Button name="BackpackWindowCurrencyItemsTab" inherits="EA_Button_Default" sticky="false" backgroundtexture="EA_Backpack01_d5" highlighttexture="EA_Backpack01_d5" layer="overlay">
+            <Size>
+                <AbsPoint x="85" y="47" />
+            </Size>
+            <TexSlices>
+                <Normal          id="CurrencyItemTab"     />
+                <NormalHighlit   id="CurrencyItemTab-Rollover" />
+                <Pressed         id="CurrencyItemTab-Selected"   />
+                <PressedHighlit  id="CurrencyItemTab-Selected"   />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnTabSelected" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverCurrencyItemsTab" />
+            </EventHandlers>
+            <TexDims x="85" y="47" />
+        </Button>
+        
+        <Button name="BackpackWindowCraftingItemsTab" inherits="EA_Button_Default" sticky="false" backgroundtexture="EA_Backpack01_d5" highlighttexture="EA_Backpack01_d5" layer="overlay">
+            <Size>
+                <AbsPoint x="85" y="47" />
+            </Size>
+            <TexSlices>
+                <Normal          id="CraftItemTab"     />
+                <NormalHighlit   id="CraftItemTab-Rollover" />
+                <Pressed         id="CraftItemTab-Selected"   />
+                <PressedHighlit  id="CraftItemTab-Selected"   />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnTabSelected" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverCraftingItemsTab" />
+            </EventHandlers>
+            <TexDims x="85" y="47" />
+        </Button>
+        
+        <!-- MAIN WINDOW -->
+        <Window name="EA_Window_Backpack" inherits="EA_Window_Default" handleinput="true" movable="false" sticky="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="464" y="720" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_Backpack.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_Backpack.Shutdown" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_Backpack.OnRButtonUp" />
+                <EventHandler event="OnShown"       function="EA_Window_Backpack.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_Backpack.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            </EventHandlers>
+
+            <Windows>
+
+            <!-- Basic Frame, Background, and Bottom Bar -->
+                
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="27" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-13" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_BagImage">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-56" y="-50" />
+                        </Anchor>
+                    </Anchors>>
+                </DynamicImage>
+                
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.Hide" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentTitleBar" />
+                    </Anchors>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="true" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-13" y="-35" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                    <!-- Money!!! -->
+                <Window name="$parentMoney" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Button name="$parentCheckBox" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="186" y="7" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ToggleViewStyle" />
+                    </EventHandlers>
+                </Button>
+
+                <Label name="$parentCheckBoxLabel" font="font_default_text_small" maxchars="64" textalign="center" autoresizewidth = "true">
+                    <Size>
+                        <AbsPoint x="200" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCheckBox">
+                            <AbsPoint x="-65" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <!-- Tabs Block -->
+                <Window name="$parentTabs" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="40" />
+                        </Anchor>
+                        <Anchor point="bottomright"  relativePoint="bottomright"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="90" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Button name="$parentIconView" inherits="BackpackWindowInventoryItemsTab" id="2">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="37" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentCurrencyView" inherits="BackpackWindowCurrencyItemsTab" id="3">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentIconView">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentCraftingView" inherits="BackpackWindowCraftingItemsTab" id="4">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentCurrencyView">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentQuestView" inherits="BackpackWindowQuestItemsTab" id="1">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentCraftingView">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentIconView">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <HorizontalResizeImage name="$parentSeparator" inherits="EA_HorizontalResizeImage_TabSeparatorMiddle" layer="background">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft"  relativeTo="$parentCurrencyView">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright"  relativeTo="$parentCraftingView">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </HorizontalResizeImage>
+                        <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentQuestView">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" >
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                    </Windows>
+                </Window>
+                   
+                <Window name="$parentPocketsAnchor" handleinput="false">
+                    <Size>
+                        <AbsPoint x="0" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="120" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentIconView" skipinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPocketsAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCurrencyView" skipinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPocketsAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCraftingView">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPocketsAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentQuestView">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Window name="$parentSection1" handleinput="true" sticky="true">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+
+                        </Window>
+
+                    </Windows>
+                </Window>
+
+
+               <Window name="$parentListView" inherits="EA_Window_BackpackListTemplate">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs">
+                            <AbsPoint x="6" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-6" y="-5"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOverflow" handleinput="true" draganddrop="true" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="-75"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+
+                    <Windows>
+                        
+                        <Window name="$parentDivider" inherits="EA_Window_DefaultSeparator" layer="background">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-12"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-12"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        
+                        <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false" layer="background">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="10" y="10"/>
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="-10" y="-10"/>
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <Label name="$parentLabel" inherits="EA_Label_DefaultSubHeading" autoresize="false" autoresizewidth="false" wordwrap="true" maxchars="40" textalign="right" handleinput="false">
+                            <Size>
+                                <AbsPoint x="250" y="32" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parentButtonBackground">
+                                    <AbsPoint x="-40" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="71" b="71" />
+                        </Label>
+                        
+                        <Button name="$parentIcon" inherits="EA_Button_DefaultTimerFrame" handleinput="true" texturescale=".75">
+                            <Size>
+                                <AbsPoint x="48" y="48" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentLabel">
+                                    <AbsPoint x="20" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonDown" function="EA_Window_Backpack.OverflowLButtonDown" />
+                                <EventHandler event="OnRButtonUp" function="EA_Window_Backpack.OverflowRButtonUp" />
+                                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.MouseOverOverflowSlot" />
+                                <EventHandler event="OnMouseOverEnd" function="EA_Window_Backpack.MouseOverEquipmentSlotEnd" />
+                            </EventHandlers>
+                            <Windows>
+                                <DynamicImage name="$parentIcon" handleinput="false" >
+                                    <Size>
+                                        <AbsPoint x="46" y="46" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="1" y="1" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TexDims x="64" y="64" />
+                                </DynamicImage>
+                                <Label name="$parentText" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                                    <Size>
+                                        <AbsPoint x="40" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topright">
+                                            <AbsPoint x="-5" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                            </Windows>
+                        </Button>
+                        
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

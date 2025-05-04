@@ -1,0 +1,20 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+	    <AnimatedImage name="BookAnimDef" fps="10" texture="anim_book" layer="overlay" handleinput="false" sticky="false">
+	    	<Size>
+				<AbsPoint x="342" y="328"/>
+			</Size>
+			<AnimFrames>
+			    <AnimFrame id="1" x="0" y="0" />
+			    <AnimFrame id="2" x="342" y="0" />
+			    <AnimFrame id="3" x="684" y="0" />
+			    <AnimFrame id="4" x="0" y="328" />
+			    <AnimFrame id="5" x="342" y="328" />
+			    <AnimFrame id="6" x="684" y="328" />
+			</AnimFrames>
+			<TexDims x="342" y="328"/>
+	    </AnimatedImage>
+	    
+    </Windows>
+</Interface>

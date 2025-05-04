@@ -1,0 +1,443 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/OverheadMapWindow.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <Button name="EA_Button_RallyCallTemplate" inherits="DefaultButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="popup">
+            <Size>
+                <AbsPoint x="44" y="44" />
+            </Size>
+            <TexDims x="37" y="37" />
+            <Windows>
+                <AnimatedImage name="$parentGlowAnim" fps="6" texture="EA_HUD_01" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="44" y="44"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="64" y="796" />
+                        <AnimFrame id="2" x="101" y="796" />
+                        <AnimFrame id="3" x="138" y="796" />
+                        <AnimFrame id="4" x="175" y="796" />
+                        <AnimFrame id="5" x="212" y="796" />
+                        <AnimFrame id="6" x="249" y="796" />
+                    </AnimFrames>
+                    <TexDims x="37" y="37" />
+                </AnimatedImage>
+            </Windows>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="" />
+                <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+            </Sounds>
+            <TexSlices>
+                <Normal         id="Map-Scenario-Button-Blue" />
+                <NormalHighlit  id="Map-Scenario-Button-ROLLOVER" />
+                <Pressed        id="Map-Scenario-Button-Blue-Queue-Frame-1" />
+                <PressedHighlit id="Map-Scenario-Button-ROLLOVER" />
+            </TexSlices>
+        </Button>
+   
+        <!-- Main Window -->
+        <Window name="EA_Window_OverheadMap" movable="false" layer="background" savesettings="true">
+            <Size>
+                <AbsPoint x="260" y="255" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="EA_Window_ZoneControl" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_OverheadMap.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_OverheadMap.Shutdown" />
+                <EventHandler event="OnLButtonDown" function="EA_Window_OverheadMap.OnLButtonDown" />
+                <EventHandler event="OnUpdate"      function="EA_Window_OverheadMap.UpdateRallyTimer"/>
+            </EventHandlers>
+            <Windows>
+
+                <!-- Area Pane -->
+                <DynamicImage name="$parentAreaNameBackground" layer="background" texture="EA_HUD_01" slice="Area-Nameplate">
+                    <Size>
+                        <AbsPoint x="260" y="48" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentAreaNameText" inherits="EA_Label_DefaultSubHeading" textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="235" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentAreaNameBackground" >
+                            <AbsPoint x="0" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="225" g="225" b="225" />
+                </Label>
+                               
+                <!-- City Rating Stars -->
+                <Window name="$parentCityRating" inherits="EA_Window_CityRating" layer="popup" >
+                     <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentMapDisplayFrame"  >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseOverCityRating"/>			
+			        </EventHandlers>
+                </Window>  
+
+                <!-- Map Display -->
+                <MapDisplay name="$parentMapDisplay" pinTexture="map_markers01" shape="circle" gutterIcon="39">
+                    <Size>
+                        <AbsPoint x="206" y="206" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentAreaNameBackground">
+                            <AbsPoint x="-17" y="-6" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnPointMouseOver" function="EA_Window_OverheadMap.OnMouseOverPoint" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.OnClickMap" />
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_HUD_01" slice="Minimap-Frame" layer="secondary" handleinput="false">
+                            <Size>
+                                <AbsPoint x="226" y="228" />
+                            </Size>
+                            <TexDims x="226" y="228"/>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </MapDisplay>
+
+                <Window name="$parentZoomSlider" inherits="EA_Template_OverheadMapZoomSlider" layer="overlay">
+                    <Size>
+                        <AbsPoint x="28" y="130" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentZoomSliderBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentZoomSliderBackground" handleinput="true" inherits="EA_DynamicImage_OverheadZoomSliderBackground" layer="background">
+                    <Size>
+                        <AbsPoint x="28" y="95" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-63" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Button name="$parentMapWorldMapButton" inherits="DefaultButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="popup">
+                    <Size>
+                        <AbsPoint x="48" y="48" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="87" y="-91" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleWorldMapWindow" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverWorldMapBtn" />
+                    </EventHandlers>
+                    <Sounds>
+                        <Sound event="OnLButtonDown" script="" />
+                        <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+                    </Sounds>
+                    <TexSlices>
+                        <Normal          id="Big-Map-Button"            />
+                        <NormalHighlit   id="Big-Map-Button-ROLLOVER"   />
+                        <Pressed         id="Big-Map-Button-ROLLOVER"   />
+                        <PressedHighlit  id="Big-Map-Button-ROLLOVER"   />
+                    </TexSlices>
+                </Button>
+
+                <!-- Scenario Queue Button -->
+                <Button name="EA_Window_OverheadMapMapScenarioQueue" inherits="DefaultButton" textureScale="1.19" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="popup">
+                    <Size>
+                        <AbsPoint x="44" y="44" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="-88" y="-84"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.OnScenarioQueueLButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverScenarioQueue" />
+                        <EventHandler event="OnRButtonUp" function="EA_Window_OverheadMap.OnScenarioQueueRButtonUp" />
+                    </EventHandlers>
+                    <Windows>
+                        <AnimatedImage name="$parentGlowAnim" fps="6" texture="EA_HUD_01" layer="background" handleinput="false">
+                            <Size>
+                                <AbsPoint x="44" y="44"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <AnimFrames>
+                                <AnimFrame id="1" x="115" y="705" />
+                                <AnimFrame id="2" x="152" y="705" />
+                                <AnimFrame id="3" x="189" y="705" />
+                                <AnimFrame id="4" x="226" y="705" />
+                                <AnimFrame id="5" x="263" y="705" />
+                                <AnimFrame id="6" x="300" y="705" />
+                            </AnimFrames>
+                            <TexDims x="37" y="37" />
+                        </AnimatedImage>
+                    </Windows>    
+                    <Sounds>
+                        <Sound event="OnLButtonDown" script="" />
+                        <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+                    </Sounds>
+                    <TexSlices>
+                        <Normal         id="Map-Scenario-Button" />
+                        <NormalHighlit  id="Map-Scenario-Button-ROLLOVER" />
+                        <Pressed        id="Map-Scenario-Button-Queue-Frame1" />
+                        <PressedHighlit id="Map-Scenario-Button-ROLLOVER" />
+                        <Disabled         id="Map-Scenario-Disabled" />
+                        <DisabledPressed  id="Map-Scenario-Disabled" />
+                    </TexSlices>
+                </Button>
+
+                <!-- Rally Call Button -->
+                <Window name="EA_Window_OverheadMapRallyCall" skipinput="true">
+                    <Size>
+                        <AbsPoint x="44" y="44" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="-88" y="84"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentButton" inherits="EA_Button_RallyCallTemplate" >
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.OnRallyCallLButtonUp" />
+                                <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverRallyCall" />
+                            </EventHandlers>
+                        </Button>
+                    </Windows>
+                </Window>
+
+                <Button name="EA_Window_OverheadMapScenarioSummaryButton" inherits="DefaultButton" backgroundtexture="EA_HUD_01"  highlighttexture="EA_HUD_01" layer="popup">
+                    <Size>
+                        <AbsPoint x="44" y="44" />
+                    </Size>
+                    <TexDims x="37" y="37" />
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="-88" y="-84" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleScenarioSummaryWindow" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverScenarioSummaryBtn" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal         id="Map-Scenario-Button" />
+                        <NormalHighlit  id="Map-Scenario-Button-ROLLOVER" />
+                        <Pressed        id="Map-Scenario-Button-Queue-Frame1" />
+                        <PressedHighlit id="Map-Scenario-Button-ROLLOVER" />
+                    </TexSlices>
+                </Button>
+
+                <Button name="EA_Window_OverheadMapScenarioGroupButton" inherits="DefaultButton" backgroundtexture="EA_Scenario01_32b"  highlighttexture="EA_Scenario01_32b" layer="popup">
+                    <Size>
+                        <AbsPoint x="45" y="46" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="-114" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleScenarioGroupWindow" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverScenarioGroupBtn" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal         id="banner-base" />
+                        <NormalHighlit  id="banner-hover" />
+                        <Pressed        id="banner-press" />
+                        <PressedHighlit id="banner-hover" />
+                    </TexSlices>
+                </Button>
+
+                <DynamicImage name="EA_Window_OverheadMapMailNotificationIcon" texture="EA_HUD_01" slice="You-Have-Mail" layer="popup" >
+                    <Size>
+                        <AbsPoint x="29" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="52" y="98" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverMailNotification" />
+                    </EventHandlers>
+                </DynamicImage>
+
+                <Button name="EA_Window_OverheadMapAdvWarButton" inherits="DefaultButton" backgroundtexture="EA_ScenarioSummary01_d5"  highlighttexture="EA_ScenarioSummary01_d5" layer="popup">
+                    <Size>
+                        <AbsPoint x="17" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="2" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleAdvancedWarWindow" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverAdvancedWarBtn" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal         id="rank" />
+                        <NormalHighlit  id="rank-highlighted" />
+                        <Pressed        id="rank-highlighted" />
+                        <PressedHighlit id="rank-highlighted" />
+                    </TexSlices>
+                </Button>
+
+                <Window name="EA_Window_OverheadCurrentEvents" skipinput="false">
+                    <Size>
+                        <AbsPoint x="37" y="37" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="23" y="45" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentButton" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                            <Size>
+                                <AbsPoint x="37" y="37" />
+                            </Size>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseOverCurrentEvents" />
+                                <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleCurrentEvents" />
+                            </EventHandlers>
+                            <TexSlices>
+                                <Normal         id="Current-Event-Button" />
+                                <NormalHighlit  id="Current-Event-Button-Rollover" />
+                                <Pressed        id="Current-Event-Button" />
+                                <PressedHighlit id="Current-Event-Button-Rollover" />
+                            </TexSlices>
+                        </Button>
+                    </Windows>
+                </Window>
+
+                <Button name="$parentFilterMenuButton" inherits="EA_Button_Default" layer="popup" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                    <Size>
+                        <AbsPoint x="21" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMapDisplayFrame">
+                            <AbsPoint x="-48" y="98" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleFilterMenu" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseOverFilterMenuButton" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal         id="Map-Filters-Button" />
+                        <NormalHighlit  id="Map-Filters-Button-ROLLOVER" />
+                        <Pressed        id="Map-Filters-Button-Depressed" />
+                        <PressedHighlit id="Map-Filters-Button-ROLLOVER" />
+                    </TexSlices>
+                </Button>
+
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_OverheadMapPinFilterMenu" movable="false" layer="secondary" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="558" y="434" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMapFilterMenuButton" >
+                    <AbsPoint x="-3" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_OverheadMap.RefreshMapPointFilterMenu" />
+                <EventHandler event="OnShutdown"    function="EA_Window_ContextMenu.Shutdown" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Label name="$parentFiltersHeading" font="font_default_sub_heading" maxchars="64" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="500" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentFiltersList">
+                            <AbsPoint x="32" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <ListBox name="$parentFiltersList" rowdef="EA_MapPinFilterEntry" visiblerows="7" rowcount="7" rowspacing="6">
+                    <Size>
+                        <AbsPoint x="550" y="266" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="4" y="38"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="EA_Window_OverheadMap.mapPinFilters" populationfunction="EA_Window_OverheadMap.PopulateFilters"/>
+                </ListBox>
+                <Label name="$parentGuttersHeading" font="font_default_sub_heading" maxchars="64" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="500" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentGuttersList">
+                            <AbsPoint x="32" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+                <ListBox name="$parentGuttersList" rowdef="EA_MapPinGutterEntry" visiblerows="2" rowcount="2" rowspacing="6">
+                    <Size>
+                        <AbsPoint x="550" y="76" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="4" y="-16"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="EA_Window_OverheadMap.mapPinGutters" populationfunction="EA_Window_OverheadMap.PopulateGutters"/>
+                </ListBox>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

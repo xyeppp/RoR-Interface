@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Guild_BannerBGOrder" file="Textures/EA_Guild_BannerBGOrder.dds">
+      <Slice id="order-background" left="0" top="0" width="512" height="484" />
+    </Texture>
+    <Texture name="EA_Guild_BannerBGDestruction" file="Textures/EA_Guild_BannerBGDestruction.dds">
+      <Slice id="destruction-background" left="0" top="0" width="512" height="484" />
+    </Texture>
+    <Texture name="EA_Guild" file="Textures/EA_Guild01_d5.dds">
+      <Slice id="adminbutton-base" left="0" top="207" width="64" height="61" />
+      <Slice id="adminbutton-rollover" left="64" top="207" width="64" height="61" />
+      <Slice id="adminbutton-select" left="128" top="207" width="64" height="61" />
+      <Slice id="admintab-bottom-span" left="150" top="106" width="20" height="76" />
+      <Slice id="admintab-bottom-span-end" left="150" top="182" width="20" height="25" />
+      <Slice id="admintab-center" left="25" top="139" width="84" height="68" />
+      <Slice id="admintab-leftend" left="0" top="140" width="25" height="67" />
+      <Slice id="admintab-rightend" left="109" top="140" width="21" height="67" />
+      <Slice id="admintab-top-span" left="130" top="132" width="20" height="75" />
+      <Slice id="admintab-top-span-end" left="130" top="106" width="20" height="26" />
+      <Slice id="boot" left="79" top="268" width="29" height="25" />
+      <Slice id="bottomtab-back-center" left="25" top="46" width="84" height="47" />
+      <Slice id="bottomtab-back-center-roll" left="25" top="0" width="84" height="46" />
+      <Slice id="bottomtab-back-leftend" left="0" top="46" width="25" height="47" />
+      <Slice id="bottomtab-back-leftend-roll" left="0" top="0" width="25" height="46" />
+      <Slice id="bottomtab-back-rightend" left="109" top="46" width="21" height="47" />
+      <Slice id="bottomtab-back-rightend-roll" left="109" top="0" width="21" height="46" />
+      <Slice id="bottomtab-front-center" left="25" top="93" width="84" height="46" />
+      <Slice id="bottomtab-front-leftend" left="0" top="93" width="25" height="47" />
+      <Slice id="bottomtab-front-rightend" left="109" top="93" width="21" height="47" />
+      <Slice id="color-picker" left="175" top="151" width="30" height="30" />
+      <Slice id="colorswatch" left="175" top="91" width="30" height="30" />
+      <Slice id="colorswatch-background" left="286" top="0" width="157" height="336" />
+      <Slice id="colorswatch-select-denied" left="175" top="61" width="30" height="30" />
+      <Slice id="colorswatch-select-primary" left="175" top="121" width="15" height="30" />
+      <Slice id="colorswatch-select-secondary" left="190" top="121" width="15" height="30" />
+      <Slice id="editbutton-base" left="207" top="148" width="29" height="29" />
+      <Slice id="editbutton-roll" left="207" top="177" width="29" height="29" />
+      <Slice id="editbutton-select" left="207" top="206" width="29" height="29" />
+      <Slice id="guildeditbutton-base" left="236" top="148" width="29" height="29" />
+      <Slice id="guildeditbutton-roll" left="236" top="177" width="29" height="29" />
+      <Slice id="guildeditbutton-select" left="236" top="206" width="29" height="29" />
+      <Slice id="guildxp-bar" left="0" top="291" width="79" height="21" />
+      <Slice id="guildxp-bar-empty" left="0" top="313" width="79" height="21" />
+      <Slice id="guildxp-bar-frame-center" left="11" top="268" width="57" height="22" />
+      <Slice id="guildxp-bar-frame-leftend" left="0" top="268" width="11" height="22" />
+      <Slice id="guildxp-bar-frame-rightend" left="68" top="268" width="11" height="22" />
+      <Slice id="guildxp-symbol" left="169" top="0" width="42" height="40" />
+      <Slice id="lock" left="214" top="0" width="71" height="96" />
+      <Slice id="roster-status-green" left="173" top="40" width="17" height="14" />
+      <Slice id="roster-status-yellow" left="190" top="40" width="17" height="14" />
+      <Slice id="smallarrow-left-base" left="150" top="0" width="19" height="34" />
+      <Slice id="smallarrow-left-roll" left="150" top="34" width="19" height="37" />
+      <Slice id="smallarrow-left-select" left="150" top="71" width="19" height="35" />
+      <Slice id="smallarrow-right-base" left="130" top="0" width="20" height="34" />
+      <Slice id="smallarrow-right-roll" left="130" top="34" width="20" height="37" />
+      <Slice id="smallarrow-right-select" left="130" top="71" width="20" height="35" />
+      <Slice id="tactic-highlight" left="207" top="96" width="52" height="52" />
+    </Texture>
+  </Assets>
+</Interface>

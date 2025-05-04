@@ -1,0 +1,184 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <DynamicImage name="EA_Window_BackpackPocketOpenIcon" texture="EA_Backpack01_d5" slice="Bag1-Open" handleinput="true" layer="popup">
+            <Size>
+                <AbsPoint x="46" y="50" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnPocketClosed" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverOpenPocketIcon" />
+            </EventHandlers>
+        </DynamicImage>
+
+        <DynamicImage name="EA_Window_BackpackPocketClosedIcon" texture="EA_Backpack01_d5" slice="Bag1-Closed" handleinput="true" layer="popup">
+            <Size>
+                <AbsPoint x="46" y="50" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnPocketOpened" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverMinimizedIcon" />
+            </EventHandlers>
+        </DynamicImage>
+        
+        
+        
+        <Button name="EA_Window_BackpackPocketFiltersButtonTemplate" inherits="EA_Button_Default" backgroundtexture="EA_Backpack01_d5" highlighttexture="EA_Backpack01_d5" handleinput="true" layer="popup">
+            <Size>
+                <AbsPoint x="31" y="28" />
+            </Size>
+            <TexSlices>
+                <Normal          id="LootSortButton"     />
+                <NormalHighlit   id="LootSortButton-Rollover" />
+                <Pressed         id="LootSortButton-Depressed"   />
+                <PressedHighlit  id="LootSortButton-Depressed"   />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ToggleFiltersMainMenu" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverFiltersButton" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Button Group Definitions -->
+   
+        <ActionButtonGroup name="BackpackWindowEquipmentButtonGroup" inherits="EA_ActionButtonGroup_DefaultSmall" draganddrop="true"  gameactionbutton="right" >
+            <EventHandlers>
+              <EventHandler event="OnActionButtonLButtonDown" function="EA_Window_Backpack.InventoryLButtonDown" />
+              <EventHandler event="OnActionButtonLButtonUp" function="EA_Window_Backpack.InventoryLButtonUp" />
+              <EventHandler event="OnActionButtonRButtonUp" function="EA_Window_Backpack.InventoryRButtonUp" />
+              <EventHandler event="OnActionButtonMouseOver" function="EA_Window_Backpack.InventoryMouseOver" />
+              <EventHandler event="OnActionButtonMouseOverEnd" function="EA_Window_Backpack.MouseOverEquipmentSlotEnd" />
+            </EventHandlers>
+        </ActionButtonGroup>
+
+
+        <ActionButtonGroup name="BackpackWindowQuestButtonGroup" inherits="EA_ActionButtonGroup_DefaultSmall" >
+          <EventHandlers>
+            <EventHandler event="OnActionButtonLButtonDown" function="EA_Window_Backpack.QuestItemLButtonDown" />
+            <EventHandler event="OnActionButtonLButtonUp" function="EA_Window_Backpack.QuestItemLButtonUp" />
+            <EventHandler event="OnActionButtonRButtonUp" function="EA_Window_Backpack.QuestItemRButtonUp" />
+            <EventHandler event="OnActionButtonMouseOver" function="EA_Window_Backpack.QuestItemMouseOver" />
+            <EventHandler event="OnActionButtonMouseOverEnd" function="EA_Window_Backpack.QuestItemMouseOver" />
+          </EventHandlers>
+        </ActionButtonGroup>
+
+        <Window name="BackpackWindowLockedPocket" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="34" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="-20" y="-8" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" alpha="0.5" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+                
+                <!-- Lock Icon -->
+                <DynamicImage name="$parentLock" texture="EA_HUD_01" slice="Icon-Lock">
+                    <Size>
+                        <AbsPoint x="22" y="37" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentBuyButton"/>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- purchase button -->
+                <Button name="$parentBuyButton" inherits="EA_Button_DefaultText" textAlign="top">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" />
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="250" y="92" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.OnBuyPocket" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_Backpack.OnMouseOverBuyPocket" />
+                    </EventHandlers>
+                    <TextOffset x="0" y="37" />
+                </Button>
+            </Windows>
+        </Window>
+
+        <!--  create each frame dynamically
+        <Window name="EA_Window_BackpackPocketTitle" inherits="VersatileFrame" sticky="false">
+            <Size>
+                <AbsPoint x="480" y="22" />
+            </Size>
+        </Window>
+         -->
+        <!--  create each pouch dynamically -->
+        <Window name="EA_Window_BackpackPocket" skipinput="true"  movable="false" sticky="true" layer="secondary">
+            <Size>
+                <AbsPoint x="414" y="110" />
+            </Size>
+
+            <Windows>
+
+                <!-- background  -->
+                <DynamicImage name="$parentBackground" texture="EA_Backpack01_d5" slice="BackpackBackground" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="34" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="412" y="120" />
+                </DynamicImage>
+                
+                
+
+                <ActionButtonGroup name="$parentButtons" inherits="BackpackWindowEquipmentButtonGroup" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="47" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </ActionButtonGroup>
+
+                <Window name="$parentLockButton" inherits="BackpackWindowLockedPocket" />
+                
+                <!-- Minimize Icon/Button -->
+                <DynamicImage name="$parentIcon" inherits="EA_Window_BackpackPocketOpenIcon">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Filters Button -->          
+                <Button name="$parentFiltersButton" inherits="EA_Window_BackpackPocketFiltersButtonTemplate">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+               
+                <HorizontalResizeImage name="$parentBottomDivider" inherits="EA_HorizontalResizeImage_DefaultSeparatorMiddle">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="34" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                
+            </Windows>
+        </Window>
+
+
+
+    </Windows>
+</Interface>

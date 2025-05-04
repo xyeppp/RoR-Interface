@@ -1,0 +1,440 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_TrialAlertWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Templates -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_UpgradeButtonNormal" texture="EA_Upgrade01_d5">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="32" middle="55" right="32" />
+            <TexSlices>
+                <Left id="red-b-left" />
+                <Middle id="red-b-tile" />
+                <Right id="red-b-rt" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_UpgradeButtonNormalHighlit" texture="EA_Upgrade01_d5">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="32" middle="55" right="32" />
+            <TexSlices>
+                <Left id="red-b-left-h" />
+                <Middle id="red-b-tile-h" />
+                <Right id="red-b-rt-h" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_UpgradeButtonPressed" texture="EA_Upgrade01_d5">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="32" middle="55" right="32" />
+            <TexSlices>
+                <Left id="red-b-left-d" />
+                <Middle id="red-b-tile-d" />
+                <Right id="red-b-rt-d" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        
+        <FullResizeImage name="EA_FullResizeImage_SimpleFrame" texture="shared_01" frameonly="true">
+            <Size>
+                <AbsPoint x="200" y="200" />
+            </Size>
+            <Sizes>
+                <TopLeft x="5" y="5" />
+                <Middle x="56" y="18" />
+                <BottomRight x="5" y="5" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft id="Simple-Frame-Top-Left" />
+                <TopCenter id="Simple-Frame-Top" />
+                <TopRight id="Simple-Frame-Top-Right" />
+                <MiddleLeft id="Simple-Frame-Left" />
+                <MiddleCenter id="Simple-Frame-Middle" />
+                <MiddleRight id="Simple-Frame-Right" />
+                <BottomLeft id="Simple-Frame-Bot-Left" />
+                <BottomCenter id="Simple-Frame-Bot" />
+                <BottomRight id="Simple-Frame-Bot-Right" />
+            </TexSlices>
+        </FullResizeImage>
+        
+        <Window name="TintedSimpleFrame" handleinput="false">
+            <Windows>
+                <FullResizeImage name="$parentInner" inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="2" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-2" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0"/>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBorder" inherits="EA_FullResizeImage_SimpleFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+        
+        <Window name="TrialFeaturesRow" handleinput="false">
+			<Size>
+				<AbsPoint x="413" y="20"/>
+			</Size>
+			<Windows>										
+				<Label name="$parentName" maxchars="80" font="font_clear_small" textAutoFitMinScale="0.9">
+					<Size>
+						<AbsPoint x="280" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+					</Anchors>
+				</Label>
+                <DynamicImage name="$parentTrial" texture="shared_01" slice="Check">
+                    <Size>
+						<AbsPoint x="18" y="19"/>
+					</Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentSubscriber">
+                            <AbsPoint x="-50" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSubscriber" texture="shared_01" slice="Check">
+                    <Size>
+						<AbsPoint x="18" y="19"/>
+					</Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="-45" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+			</Windows>
+		</Window>
+    
+        <!-- Trial Alert Window -->
+        <Window name="EA_TrialAlertWindow" movable="false" layer="popup" popable="false" savesettings="false" >
+            <Size>
+                <AbsPoint x="612" y="416" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_TrialAlertWindow.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_TrialAlertWindow.Shutdown" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentImageBackground" handleinput="false" layer="background" texture="EA_Upgrade01_d5" slice="trial-bkgd-image">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="32"/>
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="607" y="366"/>
+                    </Size>
+                    <TexDims x="506" y="305" />
+                </DynamicImage>
+                
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+        
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_TrialAlertWindow.Close" />
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentCornerImage" texture="EA_Upgrade01_d5" slice="red-seal" handleinput="false" sticky="false">
+                    <Size>
+                        <AbsPoint x="103" y="199" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-50" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Window name="$parentAlertLabelFrame" inherits="TintedSimpleFrame"> 
+                    <Size>
+                        <AbsPoint x="420" y="120" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLabel">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLabel">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentLabel" font="font_chat_text" autoresize="true" wordwrap="true" maxchars="512" textalign="left" handleinput="false">
+                    <Color r="255" g="255" b="255" a="255" />
+                    <Size>
+                        <AbsPoint x="580" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentFeatureListFrame" inherits="TintedSimpleFrame"> 
+                    <Size>
+                        <AbsPoint x="100" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentFeatureList">
+                            <AbsPoint x="-10" y="-40" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFeatureList">
+                            <AbsPoint x="10" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentLabelFeature" font="font_clear_small" maxchars="512" textalign="left" handleinput="false">
+                    <Color r="226" g="216" b="45"/>
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentFeatureList">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentLabelTrial" font="font_clear_small" textAutoFitMinScale="0.9" maxchars="512" textalign="center" handleinput="false">
+                    <Color r="226" g="216" b="45"/>
+                    <Size>
+                        <AbsPoint x="80" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLabelFeature"/>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentLabelSubscriber" font="font_clear_small" textAutoFitMinScale="0.9" maxchars="512" textalign="center" handleinput="false">
+                    <Color r="226" g="216" b="45"/>
+                    <Size>
+                        <AbsPoint x="83" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLabelTrial"/>
+                    </Anchors>
+                </Label>
+                
+                <HorizontalResizeImage name="$parentLine" texture="shared_01" handleinput="false">
+                    <Size>
+                        <AbsPoint x="270" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabelFeature"/>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLabelSubscriber"/>
+                    </Anchors>
+                    <Sizes left="17" middle="26" right="23" />
+                    <TexSlices>
+                        <Left id="LineRuleLeftCap" />
+                        <Middle id="LineRuleCenter" />
+                        <Right id="LineRuleRightCap" />
+                    </TexSlices>
+                </HorizontalResizeImage>
+            
+                <ListBox name="$parentFeatureList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="TrialFeaturesRow" visiblerows="7">
+					<Size>
+						<AbsPoint x="413" y="140" />
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottom">
+							<AbsPoint x="0" y="-90"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="EA_TrialAlertWindow.featureList" populationfunction="EA_TrialAlertWindow.PopulateFeatureList" />
+				</ListBox>	
+                
+                <Label name="$parentLabelAndMore" font="font_clear_small" maxchars="512" textalign="left" handleinput="false">
+                    <Color r="255" g="100" b="0"/>
+                    <Size>
+                        <AbsPoint x="280" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFeatureList">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- Upgrade Button -->
+                <Button name="$parentUpgradeButton" inherits="EA_Button_DefaultResizeable" backgroundtexture="EA_Upgrade01_d5" highlighttexture="EA_Upgrade01_d5">
+                    <Size>
+                      <AbsPoint x="290" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_TrialAlertWindow.OnUpgrade" />
+                    </EventHandlers>
+                    <ResizeImages>
+                        <Normal def="EA_HorizontalResizeImage_UpgradeButtonNormal" />
+                        <NormalHighlit def="EA_HorizontalResizeImage_UpgradeButtonNormalHighlit" />
+                        <Pressed def="EA_HorizontalResizeImage_UpgradeButtonPressed"  />
+                    </ResizeImages>
+                </Button>
+
+                <HorizontalResizeImage name="$parentBottomTab" texture="EA_Upgrade01_d5" handleinput="false">
+                    <Size>
+                        <AbsPoint x="270" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentUpgradeButton"/>
+                    </Anchors>
+                    <Sizes left="19" middle="55" right="20" />
+                    <TexSlices>
+                        <Left id="gray-b-left" />
+                        <Middle id="gray-b-tile" />
+                        <Right id="gray-b-rt" />
+                    </TexSlices>
+                </HorizontalResizeImage>
+        
+                <Label name="$parentLabelBottomTab" font="font_clear_tiny" maxchars="512" textalign="center" handleinput="false">
+                    <Color r="255" g="255" b="255" a="255" />
+                    <Size>
+                        <AbsPoint x="240" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentBottomTab">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <FullResizeImage name="$parentButtonFrame" inherits="EA_FullResizeImage_DefaultFrame" layer="default" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentUpgradeButton">
+                            <AbsPoint x="-8" y="-4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentUpgradeButton">
+                            <AbsPoint x="8" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                    <Sizes>
+                        <BottomRight x="11" y="8" />
+                    </Sizes>
+                    <TexCoords>
+                        <BottomLeft x="0" y="248" />
+                        <BottomCenter x="11" y="248" />
+                        <BottomRight x="102" y="248" />
+                    </TexCoords>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentButtonFrameLeft" handleinput="false" texture="shared_01" slice="Window-Frame-Separator-Right">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentButtonFrame">
+                            <AbsPoint x="8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="24" y="28"/>
+                    </Size>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentButtonFrameRight" handleinput="false" texture="shared_01" slice="Window-Frame-Separator-Left">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButtonFrame">
+                            <AbsPoint x="-8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="24" y="28"/>
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+
+        <!-- Trial Account Info Template Window -->
+        <Window name="EA_TrialAccountInfoTemplate" layer="popup" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="550" y="50" />
+            </Size>
+            <Windows>
+                <!-- Trial Account Info Header -->
+                <Label name="$parentHeader" font="font_default_war_heading" wordwrap="true" autoresize="true" maxchars="50" sticky="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="243" g="243" b="0" a="255"/>
+                </Label>
+
+                <!-- Trial Account Info Text -->
+                <Label name="$parentText" font="font_default_text_large" wordwrap="true" autoresize="true" maxchars="512" sticky="true">
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="243" g="243" b="0" a="255"/>
+                </Label>
+
+                <!-- Trial Account Info Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultContextMenuFrame" alpha="0.5">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentText">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

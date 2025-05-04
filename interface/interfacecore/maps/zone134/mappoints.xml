@@ -1,0 +1,8 @@
+<zone iname="Reikland Hills">
+    <battlefieldObjective iname="Fallen Bridge" id="7019" iconSet="1" x="31144" y="37236">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Factory" id="7020" iconSet="1" x="36052" y="39587">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Mill" id="7021" iconSet="1" x="26123" y="34957">
+    </battlefieldObjective>
+</zone>

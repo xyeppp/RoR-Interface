@@ -1,0 +1,438 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponControlWindow.lua" />
+	</Scripts>
+	<Windows>
+		       
+		       
+        <!-- Reuse Timer Window -->
+        <Window name="SiegeWeaponStatusWindow" savesettings="false">
+            <Size>
+			    <AbsPoint x="192" y="50" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="400" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnUpdate" function="SiegeWeaponControlWindow.UpdateStatusWindow" />
+			</EventHandlers>
+			<Windows>
+			
+				<Label name="$parentText" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="top" relativePoint="top" relativeTo="" >
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverName"/>
+			        </EventHandlers>   
+			         <Color r="235" g="235" b="235" />
+                </Label>      
+                            
+                <Window name="$parentTimer" inherits="EA_Window_DefaultFrameStatusBar" >
+                    <Size>
+                        <AbsPoint x="450" y="22" />
+                    </Size>
+                	<Anchors>
+				        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText" >
+					        <AbsPoint x="0" y="3" />
+				        </Anchor>
+			        </Anchors>
+                    <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverReuseTimer"/>
+			        </EventHandlers>             
+                </Window>
+                
+           </Windows>              
+        </Window>
+
+            
+
+		<!-- Name & Health Bar -->
+		<Window name="SiegeWeaponInfoWindow" movable="false" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="450" y="75" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="150" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="SiegeWeaponControlWindow.UpdateInfoWindow" />
+            </EventHandlers>
+            <Windows>
+                <Label name="$parentStateText" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentName">
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverName"/>
+                    </EventHandlers>
+                </Label>
+
+                <Label name="$parentName" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentHealthPercent">
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverName"/>
+                    </EventHandlers>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+                <Window name="$parentHealthPercent" inherits="EA_Window_DefaultFrameStatusBar_Interpolate" >
+                    <Size>
+                        <AbsPoint x="192" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom"  >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverHealthPercent"/>
+                    </EventHandlers>
+                </Window>
+
+                <Window name="$parentControlTimer" >
+                    <Size>
+                        <AbsPoint x="125" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentHealthPercent">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverControlTimer"/>
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" handleinput="false">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentText" inherits="EA_Label_DefaultSubHeading" textalign="left" autoresize="true" handleinput="false" >
+                            <Size>
+                                <AbsPoint x="75" y="0" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentClockImage">
+                                    <AbsPoint x="5" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+
+        <!-- Main Control Window -->
+        <Window name="SiegeWeaponControlWindow" movable="false" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="192" y="64" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="SiegeWeaponInfoWindow">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="SiegeWeaponControlWindow.Initialize" />
+                <EventHandler event="OnShown" function="SiegeWeaponControlWindow.OnShown" />
+                <EventHandler event="OnHidden" function="SiegeWeaponControlWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentRepairButton" inherits="EA_Button_DefaultIconFrame_Large" id="2" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentAimButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverRepairButton"/>
+                        <EventHandler event="OnLButtonUp" function="SiegeWeaponControlWindow.RepairWeapon"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentAimButton" inherits="EA_Button_DefaultIconFrame_Large" id="1" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverAimButton"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentReleaseButton" inherits="EA_Button_DefaultIconFrame_Large" id="1" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAimButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverReleaseButton"/>
+                        <EventHandler event="OnLButtonUp" function="SiegeWeaponControlWindow.ReleaseWeapon"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+
+
+        <!-- User Button -->
+        <Button name="SiegeUserButton" backgroundtexture="EA_Siege01" highlighttexture="EA_Siege01" savesettings="false" >
+            <Size>
+                <AbsPoint x="49" y="54" />
+            </Size>
+            <TexSlices>
+                <Normal id="Ram-Guy-Empty" />
+                <Pressed id="Ram-Guy" />
+                <Disabled id="Ram-Guy-Empty" />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="SiegeWeaponControlWindow.OnMouseOverSiegeWeaponUser"/>
+            </EventHandlers>
+            <Windows>
+                <Label name="$parentResultText" inherits="EA_Label_DefaultText" textalign="center" autoresize="true" handlinput="false" >
+                    <Size>
+                        <AbsPoint x="47" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+
+        <!-- Tooltip Style Labels for identifying players while in Fire Mode -->
+        <Window name="SiegeUserName">
+            <Size>
+                <AbsPoint x="250" y="30" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground" alpha="0.75" />
+                <Label name="$parentText" inherits="EA_Label_DefaultText" font="font_chat_text" textalign="center" autoresize="true" handlinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <FullResizeImage name="SiegeNameConnector" inherits="EA_FullResizeImage_BlackTransparent" alpha="0.75" />
+
+
+        <!-- # Users Window -->
+        <Window name="SiegeWeaponUsersWindow"  savesettings="false">
+			<Size>
+				<AbsPoint x="192" y="64" />
+			</Size>
+			<Anchors>
+				<Anchor point="bottom" relativePoint="top" relativeTo="SiegeWeaponControlWindow">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<Windows>
+			    <DynamicImage name="$parentBackground" layer="background" texture="EA_Siege01" slice="Ram" >
+			    	<Size>
+				        <AbsPoint x="194" y="32" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			    </DynamicImage>
+
+                            <!-- User Icons -->
+			    <Button name="$parentUser1" inherits="SiegeUserButton" id="1" >
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+					        <AbsPoint x="10" y="0" />
+				        </Anchor>
+			        </Anchors>
+			    </Button>
+			    <Button name="$parentUser2" inherits="SiegeUserButton" id="2" >
+			        <Anchors>
+				        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUser1">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			    </Button>
+			    <Button name="$parentUser3" inherits="SiegeUserButton" id="3" >
+			        <Anchors>
+				        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUser2">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			    </Button>
+			    <Button name="$parentUser4" inherits="SiegeUserButton" id="4" >
+			        <Anchors>
+				        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUser3">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			    </Button>
+
+                <!-- User Names, to be displayed while in FIRE mode -->
+                <Window name="$parentNames" layer="background">
+                    <Size>
+                        <AbsPoint x="700" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentUser1" inherits="SiegeUserName" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentUser1HorizConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="32" y="5" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentUser1">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <FullResizeImage name="$parentUser1VertConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="5" y="60" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUser1HorizConnector">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <Window name="$parentUser2" inherits="SiegeUserName" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentUser2HorizConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="80" y="5" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentUser2">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <FullResizeImage name="$parentUser2VertConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="5" y="80" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUser2HorizConnector">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <Window name="$parentUser3" inherits="SiegeUserName" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentUser3HorizConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="80" y="5" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentUser3">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <FullResizeImage name="$parentUser3VertConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="5" y="80" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentUser3HorizConnector">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <Window name="$parentUser4" inherits="SiegeUserName" >
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentUser4HorizConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="32" y="5" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentUser4">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <FullResizeImage name="$parentUser4VertConnector" inherits="SiegeNameConnector" >
+                            <Size>
+                                <AbsPoint x="5" y="60" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentUser1HorizConnector">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                    </Windows>
+                </Window>
+			</Windows>
+		</Window>
+			
+	</Windows>
+</Interface>

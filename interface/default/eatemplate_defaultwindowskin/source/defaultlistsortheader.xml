@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_ListSortHeader
+
+    This file contains the definition for a list sort button header and sort arrows.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+        <!--# Window: EA_Button_ListSort                  
+            This the default window which contains the sound definitions that are used by most
+            windows when opening and closing.
+            
+            Code:
+            (begin code)
+             <Window name="EA_Window_Default">
+             ...
+             </Window>
+            (end)
+        -->
+       <!--# Button: EA_Button_PlainResize
+            This is a ListSort button, used in a row to create a ListSortbed window.  Place on top of a EA_Window_ListSortSeparator for best results.
+        -->
+      <HorizontalResizeImage name="EA_Button_ListSortNormal" texture="shared_01" >
+        <Size>
+          <AbsPoint x="0" y="31" />
+        </Size>
+        <Sizes left="14" middle="42" right="14" />
+        <TexSlices>
+                <Left id="ColumnHeader-base-LeftEnd"/>
+                <Middle id="ColumnHeader-base-Center"/>
+                <Right id="ColumnHeader-base-RightEnd"/>
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_Button_ListSortHighlight" texture="shared_01" >
+          <Size>
+            <AbsPoint x="0" y="31" />
+          </Size>
+          <Sizes left="14" middle="42" right="14" />
+          <TexSlices>
+            <Left id="ColumnHeader-Roll-LeftEnd"/>
+            <Middle id="ColumnHeader-Roll-Center"/>
+            <Right id="ColumnHeader-Roll-RightEnd"/>
+          </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_Button_ListSortPressed" texture="shared_01">
+          <Size>
+            <AbsPoint x="0" y="31" />
+          </Size>
+          <Sizes left="14" middle="42" right="14" />
+          <TexSlices>
+            <Left id="ColumnHeader-Sel-LeftEnd"/>
+            <Middle id="ColumnHeader-Sel-Center"/>
+            <Right id="ColumnHeader-Sel-RightEnd"/>
+          </TexSlices>
+        </HorizontalResizeImage>
+
+        <Button name="EA_Button_ListSort" font="font_default_text"  textalign="left">
+          <Size>
+            <AbsPoint x="125" y="31" />
+          </Size>
+          <ResizeImages>
+                <Normal def="EA_Button_ListSortNormal" />
+                <NormalHighlit def="EA_Button_ListSortHighlight" />
+                <Pressed def="EA_Button_ListSortPressed" />
+                <Disabled def="EA_Button_ListSortNormal" />
+            </ResizeImages>
+            <TextColors>
+                <Normal             r="255" g="204" b="102" />
+                <NormalHighlit      r="255" g="85" b="0" />
+                <Pressed            r="255" g="85" b="0" />
+                <PressedHighlit     r="255" g="85" b="0"/>
+                <Disabled           r="255" g="204" b="102" />
+            </TextColors>
+            <TextOffset x="10" y="5" />
+        </Button>
+
+        <DynamicImage name="EA_ListSortUpArrow" texture="shared_01" slice="UP-arrow-depressed" handleinput="false" layer="secondary" id="1" >
+            <Size>
+                <AbsPoint x="9" y="12" />
+            </Size>
+            <TexDims x="9" y="12" />
+        </DynamicImage>
+
+        <DynamicImage name="EA_ListSortDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" handleinput="false" layer="secondary" id="2" >
+           <Size>
+                <AbsPoint x="9" y="12" />
+            </Size>
+            <TexDims x="9" y="12" />
+        </DynamicImage>
+
+ 
+        <!--# Button: EA_Button_DefaultListSort
+            This is the default button for a ListBox column header, with up and down sort arrows.
+            Note that you'll need to implement your own OnLButtonUp EventHandler to handle sorting and hide/showing the arrows.
+            
+            Sample Usage:
+            (begin code)
+             <Button name="MyListColumnHeaderTemplate" inherits="EA_Button_DefaultListSort">
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="MyListWindow.ChangeSorting" />
+                    <EventHandler event="OnMouseOver" function="MyListWindow.ShowColumnTooltip" />
+                </EventHandlers>
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultListSort" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="150" y="30" />
+            </Size>
+            <Windows>
+              <DynamicImage name="$parentUpArrow" inherits="EA_ListSortUpArrow">
+                  <Anchors>
+                      <Anchor point="right" relativePoint="right">
+                          <AbsPoint x="-12" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </DynamicImage>
+              <DynamicImage name="$parentDownArrow" inherits="EA_ListSortDownArrow">
+                  <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parentUpArrow">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </DynamicImage>
+            </Windows>
+        </Button>
+
+
+
+        <FullResizeImage name="EA_Button_DefaultListRowHighlight" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <TintColor r="60" g="30" b="30" />
+        </FullResizeImage>
+
+        <Button name="EA_Button_DefaultListRow" inherits="EA_Button_Default">
+            <ResizeImages>
+                <NormalHighlit def="EA_Button_DefaultListRowHighlight" />
+            </ResizeImages>
+        </Button>
+
+    </Windows>
+</Interface>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 rel. 3 (http://www.altova.com) by Chrstopher Weakley (EA Mythic) -->
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Assets>
+		<!-- Heading Font -->
+		<Font name="font_heading_default" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+		<Font name="font_heading_medium" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="40" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+		<Font name="font_heading_large" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+		<Font name="font_heading_huge" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="72" texsize="512" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+		<!-- Journal Fonts -->
+		<Font name="font_journal_body" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_text" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_text_italic" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_sub_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_heading_smaller" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_journal_small_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<!-- Default Window Fonts -->
+		<Font name="font_default_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2"/>
+		<Font name="font_default_medium_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2"/>
+		<Font name="font_default_sub_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+		<Font name="font_default_war_heading" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+		<Font name="font_default_text" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_default_text_small" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_default_text_large" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_default_text_huge" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="512" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+		<Font name="font_default_text_giant" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+		<!-- Chat Fonts -->
+		<Font name="font_chat_text" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_chat_text_bold" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_default" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_tiny" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="14" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_small" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_medium" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_large" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_small_bold" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_medium_bold" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<Font name="font_clear_large_bold" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<!-- Special Fonts -->
+		<Font name="font_default_text_gigantic" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="48" texsize="256" antialias="true" hinting="true" autohinting="false" outline="false" shadow="true"/>
+		<Font name="font_heading_default_no_shadow" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false"/>
+		<Font name="font_heading_zone_name_no_shadow" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="26" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false"/>
+		<Font name="font_heading_tiny_no_shadow" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false"/>
+		<Font name="font_heading_small_no_shadow" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false"/>
+		<Font name="font_heading_huge_no_shadow" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="63" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false"/>
+		<Font name="font_heading_rank" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+		<Font name="font_heading_target_mouseover_name" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" />
+        <Font name="font_heading_unitframe_large_name" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="true"/>
+		<Font name="font_heading_unitframe_con" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+		<!-- Center Messaging Alert Fonts -->
+		<Font name="font_alert_outline_tiny" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_small" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_medium" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_large" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="36" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_huge" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="42" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_giant" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_gigantic" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="60" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<!-- Half of the orginal font size for the Center Messaging Alerts -->
+		<Font name="font_alert_outline_half_tiny" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="9" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_small" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="12" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_medium" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="15" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_large" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_huge" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="21" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_giant" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+		<Font name="font_alert_outline_half_gigantic" face="DF_heiseigosikutai_W5" file="DF_heiseigosikutai_W5.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1"/>
+	</Assets>
+</Interface>

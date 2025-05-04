@@ -1,0 +1,63 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_InternalBuffs.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="InternalBuffIcon" movable="false">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" filtering="true" handleinput="false" layer="background">
+                    <TexDims x="64" y="64" />
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentFrame" texture="EA_SquareFrame" handleinput="false" layer="background" >
+                    <TexDims x="64" y="64" />
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_InternalBuffs" handleinput="false">
+            <Size>
+                <AbsPoint x="34" y="100" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_InternalBuffs.Initialize" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="PlayerWindowPortrait">
+                    <AbsPoint x="0" y="10" />
+                </Anchor>
+            </Anchors>
+
+            <Windows>
+                <Window name="$parentIcon1" inherits="InternalBuffIcon">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentIcon2" inherits="InternalBuffIcon">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon1" >
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentIcon3" inherits="InternalBuffIcon">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon2" >
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

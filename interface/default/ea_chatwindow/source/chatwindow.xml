@@ -1,0 +1,732 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ChatWindow.lua" />
+
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_ChatDockingWindow" handleinput="false" sticky="true" movable="true">
+            <Windows>
+                <FullResizeImage name="$parentTabBox" inherits="ResizingWindowFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="52" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomright">
+                            <AbsPoint x="175" y="33" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentWindowBox" inherits="ResizingWindowFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="33" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+
+        <!--
+            Chat Log Template
+            A template that traps the OnLButtonDown event in order to allow the chat window to remain
+            stationary when the user clicks on the log display.  The ChatWindow may be moved by
+            dragging in the open areas next to the chat tabs.
+            Why does the siege weapon window need this template?
+        -->
+        <LogDisplay name="ChatLogDisplay" font="font_clear_medium" scrollbar="$parentScrollbar" scrollbarPosition="left" textFadeTime="2" background="" maxchars="4092" >
+            <Size>
+                <AbsPoint x="550" y="260" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentChatTab">
+                    <AbsPoint x="-24" y="-9" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                    <AbsPoint x="0" y="9" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_ChatVertical" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="-1" y="7"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomleft">
+                            <AbsPoint x="22" y="-38"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+            </Windows>
+            <TextOffset x="0" y="10" />
+        </LogDisplay>
+        
+
+        <Window name="ChatWindowSetOpacityWindow" movable="false" layer="popup" >
+            <Size>
+                <AbsPoint x="300" y="90" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.CloseSetOpacityWindow" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <SliderBar name="$parentSlider" inherits="EA_Default_SliderBar" >
+                    <Size>
+                        <AbsPoint x="140" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="75" y="13" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSlide" function="EA_ChatWindow.OnSlideWindowOptionsAlpha" />
+                    </EventHandlers>
+                </SliderBar>
+            </Windows>
+        </Window>
+        
+
+        <Button name="ChannelMenuButton" font="font_default_sub_heading" textalign="left">
+            <Size>
+                <AbsPoint x="109" y="20" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_ChatWindow.SwitchToSelectedChannel" />
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.UpdateMenuSelection" />
+            </EventHandlers>
+        </Button>
+        <!-- Channel Selection Menu -->
+        <Window name="ChatChannelSelectionWindow" movable="false" layer="secondary" savesettings="false" >
+            <Size>
+                <AbsPoint x="120" y="140" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnKeyEscape" function="EA_ChatWindow.HideChannelSelectionMenu" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultContextMenuFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <FullResizeImage name="$parentSelection" inherits="EA_FullResizeImage_WhiteTransparent">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="topright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="85" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <!-- Shout -->
+                <Button name="$parentShoutButton" inherits="ChannelMenuButton">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="12" y="12" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <!-- Guild -->
+                <Button name="$parentGuildButton" inherits="ChannelMenuButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShoutButton">
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <!-- Warband -->
+                <Button name="$parentWarbandButton" inherits="ChannelMenuButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildButton">
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <!-- Party -->
+                <Button name="$parentPartyButton" inherits="ChannelMenuButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentWarbandButton">
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <!-- Say -->
+                <Button name="$parentSayButton" inherits="ChannelMenuButton" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPartyButton">
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+        
+        <!-- Chat Checkbox Button Template -->
+        <Button name="ChatContextMenuItemCheckBox" inherits="EA_Button_DefaultMenuButton" textalign="left" autoresize="false">
+            <Size>
+                <AbsPoint x="245" y="28" />
+            </Size>
+            <Windows>
+                <Button name="$parentCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentCheckBoxLabel" font="font_default_text" maxchars="256" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="245" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="30" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+        <Button name="ChatContextMenuItemFontSelection" inherits="EA_Button_DefaultMenuButton" id="1">
+            <Size>
+                <AbsPoint x="350" y="25" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentCheck" texture="shared_01" layer="popup" popable="false" sticky="false" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="18" y="19" />
+                    </Size>
+                    <TexCoords x="390" y="78" />
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel" font="font_default_text" maxchars="256" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+        <!-- Rename Window -->
+        <Window name="ChatWindowRenameWindow" movable="false" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="400" y="150" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>  
+
+                <Label name="$parentLabel" inherits="DefaultWindowSubTitle" maxchars="256" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1" >
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="EA_ChatWindow.OnRename" />
+                        <EventHandler event="OnKeyEscape" function="EA_ChatWindow.OnCancelRename" />
+                    </EventHandlers>
+                </EditBox>
+
+                <Button name="$parentRenameButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="15" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.OnRename"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRenameButton">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.OnCancelRename"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--
+                This is the resizing label/edit box window...
+                ____________________________________________________________
+                |1_________  ______________________________________________ | Main window with background image
+                | |        | |                                             ||
+                | | Chat   | |  EditBox....neither of these have bg images ||
+                | | Channel|2|                                             || The numbers are the anchor points (not for bg image)
+                | | Label  | |                                             || FullResizeImage is anchored to main window
+                | |________| |_____________________________________________|| ChatWindowChannelLabel should resize automatically
+                |__________________________________________________________3| and the EditBox should adjust...right anchor should
+                                                                              never move on the EditBox.
+                -->
+        <Window name="EA_TextEntryTemplate" layer="default" sticky="false">
+            <Windows>
+                <FullResizeImage name="$parentBG" inherits="EA_FullResizeImage_ChatInputDefaultFrame" handleinput="false" layer="background" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentChannelLabel" font="font_clear_medium" wordwrap="false" autoresizewidth="true" maxchars="50" textalign="left" sticky="false">
+                    <Size>
+                        <AbsPoint x="250" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="12" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <EditBox name="$parentTextInput" maxchars="1040" scrolling="horz" font="font_clear_medium" history="15" layer="popup" sticky="false" autoselect="false" >
+                    <TextOffset x="0" y="3" />
+                    <Size>
+                        <AbsPoint x="300" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentChannelLabel" >
+                            <AbsPoint x="2" y="-6" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-4" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="EA_ChatWindow.OnKeyEnter" />
+                        <EventHandler event="OnKeyEscape" function="EA_ChatWindow.OnKeyEscape" />
+                        <EventHandler event="OnKeyTab" function="EA_ChatWindow.OnKeyTab" />
+                    </EventHandlers>
+                </EditBox>
+                <Button name="$parentLanguageButton" inherits="EA_Button_DefaultText" textalign="center" sticky="false" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01">
+                    <Size>
+                        <AbsPoint x="38" y="32" />
+                    </Size>
+                    <TexDims x="29" y="29" />
+                    <TexCoords>
+                        <Normal x="304" y="421" />
+                        <NormalHighlit x="304" y="421" />
+                        <Pressed x="333" y="410"  />
+                        <PressedHighlit x="333" y="410"  />
+                    </TexCoords>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-38" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.ToggleInputLanguage" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <!-- Social Window Toggle -->
+        <Button name="EA_SocialWindowButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="50" y="77" />
+            </Size>
+            <TexCoords>
+                <Normal x="118" y="492" />
+                <NormalHighlit x="168" y="492" />
+                <Pressed x="118" y="492" />
+                <PressedHighlit x="168" y="492" />
+            </TexCoords>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_ChatWindow.OnClickSocialBtn" />
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseoverSocialBtn" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Chat Window Game Rating Group -->
+        <Window name="EA_GameRatingGroup" layer="popup">
+            <Size>
+                <AbsPoint x="550" y="50" />
+            </Size>
+            <Windows>
+                <!-- Game Rating Window Text -->
+                <Label name="$parentText" font="font_chat_window_game_rating_text" wordwrap="true" autoresize="true" maxchars="512" sticky="true">
+                    <Size>
+                        <AbsPoint x="320" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+
+                <!-- Game Rating Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultContextMenuFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentText">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="EA_TextEntryGroup" layer="popup">
+            <Size>
+                <AbsPoint x="550" y="34" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnShutdown" function="EA_ChatWindow.Shutdown"/>
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentChannelButton" inherits="EA_Button_DefaultChatCursorButton" handleinput="true" layer="default" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="34" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.OnOpenChannelMenu" />
+                    </EventHandlers>
+                </Button>
+                <Window name="$parentEntryBox" inherits="EA_TextEntryTemplate" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo ="$parentChannelButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+
+        <HorizontalResizeImage name="EA_ChatBackground" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="168" y="214" />
+            </Size>
+            <Sizes left="0" middle="98" right="70" />
+            <TexSlices>
+                <Middle id="ChatGradientBackground" />
+                <Right id="ChatGradientBackground-RightEndCap" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_ChatTabBackground" texture="EA_HUD_01" handleinput="false">
+            <Size>
+                <AbsPoint x="40" y="33" />
+            </Size>
+            <Sizes left="18" middle="50" right="35" />
+            <TexSlices>
+                <Left id="Chat-Tab-Left" />
+                <Middle id="Chat-Tab-MIddle" />
+                <Right id="Chat-Tab-Right" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <Button name="EA_ChatTabButton" font="font_default_text" inherits="EA_Button_Default" layer="secondary" autoresizewidth="true" textalign="leftcenter" handleinput="true">
+            <Size>
+                <AbsPoint x="300" y="33" />
+            </Size>
+            <TextColors>
+                <Normal             r="255" g="204" b="102" />
+                <NormalHighlit      r="255" g="85" b="0" />
+                <Pressed            r="255" g="255" b="255" />
+                <PressedHighlit     r="255" g="85" b="0" />
+            </TextColors>
+            <TextOffset x="10" y="0" />
+        </Button>
+
+        <Window name="EA_ChatTab" handleinput="true">
+            <Size>
+                <AbsPoint x="300" y="33" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_ChatTabButton">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnTabLButtonDown" />
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.OnTabLButtonUp" />
+                        <EventHandler event="OnRButtonUp" function="EA_ChatWindow.OnTabRButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnTabMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnTabMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+                <HorizontalResizeImage name="$parentBackground" inherits="EA_ChatTabBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+        </Window>
+
+        <DynamicImage name="EA_TabInsertionMarker" texture="EA_HUD_01" layer="popup" sticky="false" handleinput="false">
+            <Size>
+                <AbsPoint x="15" y="20" />
+            </Size>
+            <TexCoords x="476" y="464" />
+        </DynamicImage>
+
+        <ScrollWindow name="EA_TabWindowGroup" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="18" autohidescrollbar="false">
+            <Size>
+                <AbsPoint x="0" y="33" />
+            </Size>
+            <Windows>
+                <Window name="$parentScrollChild">
+                    <Size>
+                        <AbsPoint x="2000" y="33" />
+                    </Size>
+                    <Anchor point="topleft" relativePoint="topleft">
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright">
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                    <Windows>
+                        <DynamicImage name="$parentTabInsert" inherits ="EA_TabInsertionMarker"/>    
+                    </Windows>
+                </Window>
+            </Windows>
+        </ScrollWindow>
+
+
+        <DynamicImage name="EA_ChatWindowToBottomButtonAlert" texture="EA_HUD_01" layer="secondary" sticky="false" handleinput="false">
+            <Size>
+                <AbsPoint x="19" y="15" />
+            </Size>
+            <TexCoords x="474" y="447" />
+        </DynamicImage>
+        
+        <LogDisplay name="EA_ChatLogDisplay" font="font_chat_text_bold" scrollbar="$parentScrollbar" scrollbarPosition="left"
+                    autoHideScrollBar="true" textFadeTime="2" background="" maxchars="4092" >
+            <Size>
+                <AbsPoint x="550" y="260" />
+            </Size>
+            <TextOffset x="0" y="10" />
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUpChatWindowOnly" />
+            </EventHandlers>
+
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_ChatVertical" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="7"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomleft">
+                            <AbsPoint x="22" y="-29"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                        <EventHandler event="OnScrollPosChanged" function="EA_ChatWindow.OnScrollPosChanged" />
+                    </EventHandlers>
+                </VerticalScrollbar>
+
+                <Button name="$parentToBottomButton" inherits="EA_Button_DefaultChatScrollToBottom" sticky="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScrollbar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.ScrollToBottom" />
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnTabMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnTabMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentToBottomButtonAlert" inherits="EA_ChatWindowToBottomButtonAlert">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentToBottomButton">
+                            <AbsPoint x="5" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+            </Windows>
+        </LogDisplay>
+
+        <Window name="EA_ChatWindowSocialButtonAnchor" handleinput="false">
+            <Size>
+                <AbsPoint x="50" y="77" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="bottomleft" >
+                    <AbsPoint x="0" y="33" />
+                </Anchor>
+            </Anchors>
+        </Window>
+        
+        <!-- The main chat window container.  Each will have 1-n tabs.  Every undocked tab 
+             becomes a new ChatWindowGroup, unless docked to another group.  -->
+        <Window name="EA_ChatWindowGroup" movable="true" sticky="true" savesettings="false" handleinput="true">
+            <Size>
+                <AbsPoint x="485" y="205" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_ChatWindow.WindowGroupInitialize"/>
+                <EventHandler event="OnInitializeCustomSettings" function="EA_ChatWindow.WindowGroupInitializeCustomSettings"/>
+                <EventHandler event="OnShutdown" function="EA_ChatWindow.WindowGroupShutdown"/>
+                <EventHandler event="OnRButtonUp" function="EA_ChatWindow.OnWindowGroupRButtonUp" />
+                <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                <EventHandler event="OnUpdate" function="EA_ChatWindow.OnUpdate"/>
+                <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnRButtonDown" />
+                <EventHandler event="OnSetMoving" function="EA_ChatWindow.OnSetMoving" />
+                <EventHandler event="OnShown" function="EA_ChatWindow.OnWindowGroupShown" />
+                <EventHandler event="OnHidden" function="EA_ChatWindow.OnWindowGroupHidden" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentCycleRightButton" inherits="EA_Button_DefaultRightArrow">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="7" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.CycleTabRight"/>
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCycleLeftButton" inherits="EA_Button_DefaultLeftArrow">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCycleRightButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_ChatWindow.CycleTabLeft"/>
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+
+                <ScrollWindow name ="$parentTabWindow" inherits="EA_TabWindowGroup">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentCycleLeftButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="50" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ScrollWindow>
+
+                <HorizontalResizeImage name="$parentBackground" inherits="EA_ChatBackground" handleinput="false">
+                </HorizontalResizeImage>
+
+                <FullResizeImage name="$parentForeground" inherits="EA_FullResizeImage_BlackTransparent" handleinput="false">
+                </FullResizeImage>
+
+                <Button name="$parentResizeButton" inherits="EA_Button_DefaultChatResizeButton" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentForeground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="EA_ChatWindow.OnResizeBegin" />
+                        <EventHandler event="OnMouseOver" function="EA_ChatWindow.OnMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_ChatWindow.OnMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>        
+        </Window>
+   
+
+    </Windows>
+</Interface>

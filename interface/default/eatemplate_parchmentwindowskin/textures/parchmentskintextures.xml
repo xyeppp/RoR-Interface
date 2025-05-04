@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+
+        <Texture name="tome_2" file="Textures/Tome2.dds" />
+        
+        <Texture name="EA_TomeRVR" file="Textures/EA_TomeRVR_d5.dds" />
+
+        <Texture name="EA_PairingMapToolTip" file="Textures/EA_MapToolTip01_d5.dds" >
+            <Slice id="tooltip-top"    left="7" top="0"  width="283" height="50" />
+            <Slice id="tooltip-middle" left="7" top="50" width="283" height="30" />
+            <Slice id="tooltip-bottom" left="7" top="80" width="283" height="45" />
+            <Slice id="lock" left="292" top="56" width="30" height="39" />
+            <Slice id="star-destruction" left="292" top="1" width="22" height="20" />
+            <Slice id="star-order" left="292" top="24" width="22" height="20" />
+        </Texture>
+
+        <Texture name="EA_BigMap01_d5" file="Textures/EA_BigMap01_d5.dds">
+            <Slice id="Checkbox" left="772" top="433" width="35" height="25" />
+            <Slice id="Checkbox-CHECK" left="842" top="433" width="35" height="25" />
+            <Slice id="Checkbox-ROLLOVER" left="807" top="433" width="35" height="25" />
+            <Slice id="Horizontal-Rule" left="319" top="736" width="266" height="19" />
+            <Slice id="MapBorder-BottomLeft" left="826" top="148" width="88" height="129" />
+            <Slice id="MapBorder-BottomLeft012" left="914" top="158" width="28" height="119" />
+            <Slice id="MapBorder-BottomRight" left="942" top="177" width="81" height="128" />
+            <Slice id="MapBorder-HorizontalSpan" left="914" top="1" width="91" height="29" />
+            <Slice id="MapBorder-TopLeft" left="798" top="1" width="116" height="129" />
+            <Slice id="MapBorder-TopRight" left="914" top="30" width="80" height="128" />
+            <Slice id="MapBorder-VerticalSpan" left="798" top="130" width="28" height="91" />
+            <Slice id="Map-Name-Scroll-Center" left="169" top="636" width="294" height="85" />
+            <Slice id="Map-Name-Scroll-LeftEnd" left="7" top="636" width="162" height="85" />
+            <Slice id="Map-Name-Scroll-RightEnd" left="463" top="636" width="162" height="85" />
+            <Slice id="NextZoneArrow-East" left="772" top="312" width="57" height="57" />
+            <Slice id="NextZoneArrow-East-ROLLOVER" left="829" top="312" width="57" height="57" />
+            <Slice id="NextZoneArrow-North" left="886" top="369" width="57" height="57" />
+            <Slice id="NextZoneArrow-North-ROLLOVER" left="886" top="312" width="57" height="57" />
+            <Slice id="NextZoneArrow-South" left="943" top="312" width="57" height="57" />
+            <Slice id="NextZoneArrow-South-ROLLOVER" left="943" top="369" width="57" height="57" />
+            <Slice id="NextZoneArrow-West" left="829" top="369" width="57" height="57" />
+            <Slice id="NextZoneArrow-West-ROLLOVER" left="772" top="369" width="57" height="57" />
+            <Slice id="Parchment-Bottom-Center" left="223" top="507" width="328" height="126" />
+            <Slice id="Parchment-Bottom-Left" left="0" top="507" width="223" height="126" />
+            <Slice id="Parchment-Bottom-Right" left="551" top="507" width="216" height="126" />
+            <Slice id="Parchment-Middle-Center" left="223" top="123" width="328" height="384" />
+            <Slice id="Parchment-Middle-Left" left="0" top="123" width="223" height="384" />
+            <Slice id="Parchment-Middle-Right" left="551" top="123" width="216" height="384" />
+            <Slice id="Parchment-Top-Center" left="223" top="0" width="328" height="123" />
+            <Slice id="Parchment-Top-Left" left="0" top="0" width="223" height="123" />
+            <Slice id="Parchment-Top-Right" left="551" top="0" width="216" height="123" />
+            <Slice id="WarReport-ActivePQ" left="772" top="526" width="68" height="68" />
+            <Slice id="WarReport-BOHotspot" left="840" top="525" width="68" height="69" />
+            <Slice id="WarReport-CityATTACKS" left="840" top="594" width="68" height="68" />
+            <Slice id="WarReport-KeepATTACKS" left="772" top="594" width="68" height="68" />
+            <Slice id="WarReport-MostPopulatedRVR" left="840" top="662" width="68" height="68" />
+            <Slice id="WarReport-MostPopulatedZone" left="840" top="458" width="68" height="67" />
+            <Slice id="WarReport-OpenParty" left="772" top="458" width="68" height="68" />
+            <Slice id="WarReport-RVRHotspot" left="772" top="662" width="68" height="68" />
+            <Slice id="WarReport-NoEventBlank" left="908" top="458" width="68" height="68" />
+            <Slice id="WorldmapHighlight" left="771" top="771" width="253" height="253" />
+            <Slice id="ZoomLevel-Pairing" left="120" top="786" width="63" height="61" />
+            <Slice id="ZoomLevel-Pairing-ROLLOVER" left="120" top="847" width="63" height="61" />
+            <Slice id="ZoomLevel-Pairing-Selected" left="120" top="725" width="63" height="61" />
+            <Slice id="ZoomLevel-Selected-Arrow" left="5" top="911" width="34" height="20" />
+            <Slice id="ZoomLevel-World" left="7" top="786" width="113" height="61" />
+            <Slice id="ZoomLevel-World-ROLLOVER" left="7" top="847" width="113" height="61" />
+            <Slice id="ZoomLevel-World-Selected" left="7" top="725" width="113" height="61" />
+            <Slice id="ZoomLevel-Zone" left="183" top="786" width="114" height="61" />
+            <Slice id="ZoomLevel-Zone-ROLLOVER" left="183" top="847" width="114" height="61" />
+            <Slice id="ZoomLevel-Zone-Selected" left="183" top="725" width="114" height="61" />
+        </Texture>
+
+		<Texture name="EA_Tome" file="Textures/EA_Tome01_d5.dds">
+            <Slice id="ArmoryGuy" left="673" top="957" width="210" height="473" />
+            <Slice id="BookmarkAchievements" left="0" top="977" width="86" height="65" />
+            <Slice id="BookmarkAchievements-ROLLOVER" left="86" top="977" width="86" height="65" />
+            <Slice id="BookmarkArmory" left="0" top="1242" width="86" height="65" />
+            <Slice id="BookmarkArmory-ROLLOVER" left="86" top="1242" width="86" height="65" />
+            <Slice id="BookmarkBestiary" left="0" top="1177" width="86" height="65" />
+            <Slice id="BookmarkBestiary-ROLLOVER" left="86" top="1177" width="86" height="65" />
+            <Slice id="BookmarkChapters" left="0" top="911" width="86" height="65" />
+            <Slice id="BookmarkChapters-ROLLOVER" left="86" top="911" width="86" height="65" />
+            <Slice id="BookmarkHome" left="0" top="750" width="111" height="96" />
+            <Slice id="BookmarkHome-ROLLOVER" left="111" top="750" width="111" height="96" />
+            <Slice id="BookmarkLore" left="0" top="1110" width="86" height="65" />
+            <Slice id="BookmarkLore-ROLLOVER" left="86" top="1110" width="86" height="65" />
+            <Slice id="BookmarkQuests" left="0" top="846" width="86" height="65" />
+            <Slice id="BookmarkQuests-ROLLOVER" left="86" top="846" width="86" height="65" />
+            <Slice id="BookmarkRewards" left="0" top="1042" width="86" height="65" />
+            <Slice id="BookmarkRewards-ROLLOVER" left="86" top="1042" width="86" height="65" />
+            <Slice id="BookmarkSpecialEvents" left="883" top="957" width="99" height="92" />
+            <Slice id="BookmarkSpecialEvents-ROLLOVER" left="883" top="1049" width="99" height="92" />
+            <Slice id="Check" left="902" top="750" width="34" height="25" />
+            <Slice id="Checkbox" left="834" top="750" width="34" height="25" />
+            <Slice id="Checkbox-Rollover" left="868" top="750" width="34" height="25" />
+            <Slice id="CircleDone" left="811" top="766" width="21" height="23" />
+            <Slice id="CircleNotDone" left="790" top="766" width="21" height="23" />
+            <Slice id="HorizontalLineTiling" left="743" top="825" width="252" height="3" />
+            <Slice id="IconFrame" left="930" top="829" width="64" height="64" />
+            <Slice id="id3Diamonds" left="790" top="750" width="42" height="14" />
+            <Slice id="InfluenceBarColor" left="836" top="910" width="128" height="14" />
+            <Slice id="InfluenceBarFrame" left="668" top="930" width="317" height="25" />
+            <Slice id="InfluenceBarRewardDiamond" left="967" top="904" width="26" height="26" />
+            <Slice id="InfluenceBarRewardDiamond-Available" left="803" top="904" width="26" height="26" />
+            <Slice id="MiniSection-Achievements" left="999" top="854" width="25" height="26" />
+            <Slice id="MiniSection-Armory" left="999" top="932" width="25" height="26" />
+            <Slice id="MiniSection-Bestiary" left="999" top="776" width="25" height="26" />
+            <Slice id="MiniSection-Chapters" left="999" top="906" width="25" height="26" />
+            <Slice id="MiniSection-Lore" left="999" top="802" width="25" height="26" />
+            <Slice id="MiniSection-Map" left="999" top="750" width="25" height="26" />
+            <Slice id="MiniSection-Quests" left="999" top="880" width="25" height="26" />
+            <Slice id="MiniSection-Rewards" left="999" top="828" width="25" height="26" />
+            <Slice id="NewEventsAlertSymbol" left="667" top="824" width="71" height="74" />
+            <Slice id="PageTurnLeft" left="0" top="1325" width="96" height="75" />
+            <Slice id="PageTurnLeft-ROLLOVER" left="0" top="1400" width="96" height="75" />
+            <Slice id="PageTurnRight" left="98" top="1325" width="96" height="75" />
+            <Slice id="PageTurnRight-ROLLOVER" left="98" top="1400" width="96" height="75" />
+            <Slice id="PairingElves" left="450" top="1888" width="450" height="158" />
+            <Slice id="PairingElvesSelected" left="0" top="1888" width="450" height="158" />
+            <Slice id="PairingEvC" left="450" top="1731" width="450" height="157" />
+            <Slice id="PairingEvCSelected" left="0" top="1731" width="450" height="157" />
+            <Slice id="PairingGvD" left="450" top="1573" width="450" height="158" />
+            <Slice id="PairingGvDSelected" left="0" top="1573" width="450" height="158" />
+            <Slice id="ScrollBottom" left="224" top="1299" width="401" height="63" />
+            <Slice id="ScrollCollapsed" left="308" top="1412" width="102" height="50" />
+            <Slice id="ScrollMiddle" left="224" top="1240" width="401" height="59" />
+            <Slice id="ScrollTop" left="224" top="1191" width="401" height="49" />
+            <Slice id="SectionSymbolQuest" left="222" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolChapters" left="293" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolAchievements" left="364" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolRewards" left="435" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolLore" left="506" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolBestiary" left="577" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolArmory" left="648" top="750" width="71" height="74" />
+            <Slice id="SectionSymbolMap" left="719" top="750" width="71" height="74" />
+            <Slice id="TomeBook" left="0" top="0" width="1024" height="750" />
+            <Slice id="TomeTitleImage" left="223" top="824" width="443" height="357" />
+            <Slice id="VerticalLineTiling" left="995" top="750" width="4" height="181" />
+        </Texture>
+
+    </Assets>
+</Interface>

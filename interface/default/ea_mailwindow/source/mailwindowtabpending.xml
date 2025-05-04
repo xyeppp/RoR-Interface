@@ -1,0 +1,81 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Scripts>
+    <Script file="Source/MailWindowTabPending.lua" />
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="MailWindowTabPendingSocket" layer="secondary" movable="false">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="MailWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="MailWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="MailWindowTabPending.Initialize" />
+        <EventHandler event="OnShutdown" function="MailWindowTabPending.Shutdown" />
+      </EventHandlers>
+      <Windows>
+
+        <!-- Advance List Block -->
+        <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_MailRow" visiblerows="8" rowcount="150" rowspacing="0">
+          <Size>
+            <AbsPoint x="840" y="450" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+              <AbsPoint x="0" y="2" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+              <AbsPoint x="0" y="-60" />
+            </Anchor>
+          </Anchors>
+
+          <ListData table="MailWindowTabPending.listData" populationfunction="MailWindowTabPending.Populate">
+            <ListColumns>
+              <ListColumn windowname="Name" variable="abilityInfo.name" format="wstring"/>
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+        <!-- Bottom frame block -->
+        <Window name="$parentBottomFrameSeparator" inherits="EA_Window_DefaultSeparator">
+          <Size>
+            <AbsPoint x="860" y="28" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+              <AbsPoint x="-10" y="-34"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+              <AbsPoint x="10" y="-34"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Button name="$parentOpenMessageButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+              <AbsPoint x="10" y="-2"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <!-- <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTraining.PurchaseAdvance" /> -->
+          </EventHandlers>
+        </Button>
+        
+      </Windows>
+    </Window>
+
+  </Windows>
+
+</Interface>

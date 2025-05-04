@@ -1,0 +1,140 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_ThreePartBar.lua" />
+    </Scripts>
+
+    <Windows>
+        <HorizontalResizeImage name="VictoryPointsFilledBarOrder" texture="EA_VictoryPoints01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="13" y="28" />
+            </Size>
+            <Sizes left="0" middle="21" right="13" />
+            <TexSlices>
+                <Middle id="Order-VP-Bar-horiz" />
+                <Right id="Order-VP-Bar-horiz-End-Cap" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="VictoryPointsFilledBarDestruction" texture="EA_VictoryPoints01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="13" y="28" />
+            </Size>
+            <Sizes left="13" middle="21" right="0" />
+            <TexSlices>
+                <Left id="Dest-VP-Bar-horiz-End-Cap" />
+                <Middle id="Dest-VP-Bar-horiz" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        
+        <HorizontalResizeImage name="RewardPoolFilledBarVictor" texture="EA_VictoryPoints01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="13" y="28" />
+            </Size>
+            <Sizes left="0" middle="21" right="13" />
+            <TexSlices>
+                <Middle id="Victor-Bar-horiz" />
+                <Right id="Victor-Bar-horiz-End-Cap" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="RewardPoolFilledBarLoser" texture="EA_VictoryPoints01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="13" y="28" />
+            </Size>
+            <Sizes left="13" middle="21" right="0" />
+            <TexSlices>
+                <Left id="Loser-Bar-horiz-End-Cap" />
+                <Middle id="Loser-Bar-horiz" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        
+        <DynamicImage name="GenericEndCap" texture="EA_VictoryPoints01_32b" handleinput="true" slice="Generic-Symbol-horiz" layer="popup">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+        </DynamicImage>
+
+        <Window name="ThreePartProgressBar" handleinput="false" savesettings="false">
+            <Size>
+                <AbsPoint x="300" y="35" />
+            </Size>
+            <Windows>
+               <HorizontalResizeImage name="$parentBackground" texture="EA_VictoryPoints01_32b" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="2" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="30" y="35" />
+                    </Size>
+                    <Sizes left="0" middle="30" right="0" />
+                    <TexSlices>
+                        <Middle id="Horiz-Background" />
+                    </TexSlices>
+                </HorizontalResizeImage>
+                <HorizontalResizeImage name="$parentOrder" inherits="VictoryPointsFilledBarOrder">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" /> 
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <HorizontalResizeImage name="$parentDestruction" inherits="VictoryPointsFilledBarDestruction">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" /> 
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <HorizontalResizeImage name="$parentWinnerPool" inherits="RewardPoolFilledBarVictor">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" /> 
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <HorizontalResizeImage name="$parentLoserPool" inherits="RewardPoolFilledBarLoser">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" /> 
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <DynamicImage name="$parentLeftEndCap" inherits="GenericEndCap">
+                   <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRightEndCap" inherits="GenericEndCap">
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="-4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock" texture="EA_VictoryPoints01_32b" handleinput="false" popable="false" layer="secondary" slice="Lock">
+                    <Size>
+                        <AbsPoint x="31" y="41" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>        
+        
+        <Window name="EA_Window_ZoneControlContainerHorizontalTemplate"  >
+            <Size>
+                <AbsPoint x="150" y="35" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="ThreePartBar.OnMouseoverCallback" />
+            </EventHandlers>
+        </Window>
+
+    </Windows>
+</Interface>

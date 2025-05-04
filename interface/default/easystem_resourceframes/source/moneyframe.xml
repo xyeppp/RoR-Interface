@@ -1,0 +1,787 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/MoneyFrame.lua" />
+    </Scripts>
+    <Windows>
+        <Label name="MoneyLabel" autoresizewidth="true" font="font_default_text_no_outline" inherits="DefaultWindowText" maxChars="5" id="1">
+            <Size>
+                <AbsPoint x="30" y="20" />
+            </Size>
+        </Label>
+        
+        <Label name="MoneyLabelLarge" font="font_default_text_large" inherits="MoneyLabel" />
+        
+        <Label name="MoneyLabelLargeYellow" inherits="MoneyLabelLarge">
+            <Color r="226" g="216" b="45" a="255"/>
+        </Label>
+        
+        <Label name="MoneyLabelBlack" inherits="MoneyLabel">
+            <Color r="0" b="0" g="0" />
+        </Label>
+
+        <!-- TODO: Fix this so we are not relying on the ID. For now we're using an ID on this to tell the diff between EditBox and Labels -->
+        <EditBox name="MoneyEditBox" scrolling="none" input="numbers" font="font_default_text" background="DefaultWindowInnerBackground" maxChars="2" id="99999">
+            <Size>
+                <AbsPoint x="34" y="27" />
+            </Size>
+
+            <EventHandlers>
+                <EventHandler event="OnTextChanged" function="MoneyFrame.ValueChanged" />
+            </EventHandlers>
+            <TextOffset x="2" y="4" />
+        </EditBox>
+   
+        <DynamicImage name="MoneyFrameAltCurrencyCoinTemplate" handleinput="true" layer="background">
+            <Size>
+                <AbsPoint x="16" y="16" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="MoneyFrame.DisplayTooltip" />
+            </EventHandlers>
+        </DynamicImage>
+
+        <DynamicImage name="LibrarianMoneyFrameAltCurrencyCoinTemplate" handleinput="true" layer="background">
+          <Size>
+            <AbsPoint x="16" y="16" />
+          </Size>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="EA_Window_InteractionLibrarianStore.MouseOverAltCost" />
+          </EventHandlers>
+        </DynamicImage>
+
+        <DynamicImage name="MoneyFrameCoinTemplate" handleinput="false" layer="background">
+            <Size>
+                <AbsPoint x="16" y="16" />
+            </Size>
+        </DynamicImage>
+
+        <DynamicImage name="EA_Templates_GoldCoin" texture="assorted_hud_pieces" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="19" y="19" />
+          </Size>
+          <TexCoords x="197" y="82" />
+        </DynamicImage>
+
+        <DynamicImage name="EA_Templates_SilverCoin" texture="assorted_hud_pieces" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="19" y="19" />
+          </Size>
+          <TexCoords x="217" y="82" />
+        </DynamicImage>
+
+        <DynamicImage name="EA_Templates_BrassCoin" texture="assorted_hud_pieces" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="19" y="19" />
+          </Size>
+          <TexCoords x="237" y="82" />
+        </DynamicImage>
+
+        <DynamicImage name="GoldCoin" inherits="MoneyFrameCoinTemplate" />
+        <DynamicImage name="SilverCoin" inherits="MoneyFrameCoinTemplate" />
+        <DynamicImage name="BrassCoin" inherits="MoneyFrameCoinTemplate" />
+
+
+        <Window name="MoneyFrame" skipinput="true">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <Label name="$parentGoldText" inherits="MoneyLabel">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentGoldFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="GoldCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <Label name="$parentSilverText" inherits="MoneyLabel">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSilverFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="SilverCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <Label name="$parentBrassText" inherits="MoneyLabel">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBrassFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="BrassCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="LargeTextMoneyFrame" skipinput="true">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <Label name="$parentGoldText" inherits="MoneyLabelLarge">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentGoldFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="GoldCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <Label name="$parentSilverText" inherits="MoneyLabelLarge">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSilverFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="SilverCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <Label name="$parentBrassText" inherits="MoneyLabelLarge">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBrassFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="BrassCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="LargeYellowTextMoneyFrame" skipinput="true">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <Label name="$parentGoldText" inherits="MoneyLabelLargeYellow">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentGoldFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="GoldCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <Label name="$parentSilverText" inherits="MoneyLabelLargeYellow">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSilverFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="SilverCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <Label name="$parentBrassText" inherits="MoneyLabelLargeYellow">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBrassFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="BrassCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="BlackTextMoneyFrame" skipinput="true">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <Label name="$parentGoldText" inherits="MoneyLabelBlack">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentGoldFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="GoldCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <Label name="$parentSilverText" inherits="MoneyLabelBlack">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSilverFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="SilverCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <Label name="$parentBrassText" inherits="MoneyLabelBlack">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBrassFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="BrassCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+
+        <!-- NOTE that currently we just reuse the current frame and think of Gold, Siliver, Brass
+		     to mean 1st alt currency, 2nd alt currency, and 3rd alt currency.
+		     It works the same, except MoneyFrame.FormatAltCurrency takes in a table of data instead
+		     of just the int for cost. 
+		-->
+        <Window name="AltCurrencyFrame" skipinput="true">
+            <Size>
+                <AbsPoint x="200" y="20" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <Label name="$parentGoldText" inherits="MoneyLabel">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentGoldFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="MoneyFrameAltCurrencyCoinTemplate">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-2" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <Label name="$parentSilverText" inherits="MoneyLabel">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSilverFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="MoneyFrameAltCurrencyCoinTemplate">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-2" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <Label name="$parentBrassText" inherits="MoneyLabel">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBrassFrame" skipinput="true">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="MoneyFrameAltCurrencyCoinTemplate">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-2" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+
+
+      <!-- NOTE that currently we just reuse the current frame and think of Gold, Siliver, Brass
+		     to mean 1st alt currency, 2nd alt currency, and 3rd alt currency.
+		     It works the same, except MoneyFrame.FormatAltCurrency takes in a table of data instead
+		     of just the int for cost.
+
+             The Librarian alt currency needs a different tooltip so I need to have a seperate frame / coin template for it
+		-->
+      <Window name="LibrarianAltCurrencyFrame" skipinput="true">
+        <Size>
+          <AbsPoint x="200" y="20" />
+        </Size>
+
+        <Windows>
+          <!-- GOLD! -->
+          <Label name="$parentGoldText" inherits="MoneyLabel">
+            <Size>
+              <AbsPoint x="60" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                <AbsPoint x="0" y="0"/>
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Window name="$parentGoldFrame" skipinput="true">
+            <Size>
+              <AbsPoint x="20" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                <AbsPoint x="2" y="0" />
+              </Anchor>
+            </Anchors>
+            <Windows>
+              <DynamicImage name="$parentImage" inherits="LibrarianMoneyFrameAltCurrencyCoinTemplate">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="-2" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+            </Windows>
+          </Window>
+
+          <!-- SILVER! -->
+          <Label name="$parentSilverText" inherits="MoneyLabel">
+            <Size>
+              <AbsPoint x="60" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                <AbsPoint x="5" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Window name="$parentSilverFrame" skipinput="true">
+            <Size>
+              <AbsPoint x="20" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                <AbsPoint x="2" y="0" />
+              </Anchor>
+            </Anchors>
+            <Windows>
+              <DynamicImage name="$parentImage" inherits="LibrarianMoneyFrameAltCurrencyCoinTemplate">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="-2" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+            </Windows>
+          </Window>
+
+          <!-- BRASS! -->
+          <Label name="$parentBrassText" inherits="MoneyLabel">
+            <Size>
+              <AbsPoint x="60" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                <AbsPoint x="5" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+          <Window name="$parentBrassFrame" skipinput="true">
+            <Size>
+              <AbsPoint x="20" y="20" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                <AbsPoint x="2" y="0" />
+              </Anchor>
+            </Anchors>
+            <Windows>
+              <DynamicImage name="$parentImage" inherits="LibrarianMoneyFrameAltCurrencyCoinTemplate">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="-2" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+            </Windows>
+          </Window>
+        </Windows>
+      </Window>
+
+
+      <!-- provides edit boxes to change money -->
+        <Window name="EditableMoneyFrame">
+            <Size>
+                <AbsPoint x="190" y="24" />
+            </Size>
+
+            <Windows>
+                <!-- GOLD! -->
+                <EditBox name="$parentGoldText" inherits="MoneyEditBox" maxChars="4" taborder="1">
+                    <Size>
+                        <AbsPoint x="55" y="27" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+                <Window name="$parentGoldFrame">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="GoldCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- SILVER! -->
+                <EditBox name="$parentSilverText" inherits="MoneyEditBox" taborder="2">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGoldFrame">
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+                <Window name="$parentSilverFrame">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" inherits="SilverCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- BRASS! -->
+                <EditBox name="$parentBrassText" inherits="MoneyEditBox" taborder="3">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSilverFrame">
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+                <Window name="$parentBrassFrame">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBrassText">
+                            <AbsPoint x="2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <DynamicImage name="$parentImage" inherits="BrassCoin">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,1293 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+
+    <Windows>       
+                             
+        <DynamicImage name="EA_DynamicImage_CurrentZone" texture="EA_Campaign01_d5" slice="You-Are-Here-arrows" handleinput="false" layer="background" id="0">
+             <Size>
+                <AbsPoint x="109" y="114" />
+            </Size>
+        </DynamicImage>
+
+        <Label name="EA_Label_PairingSubHeading" inherits="EA_Label_Parchment_Text" font="font_journal_text_huge" maxchars="256" wordwrap="false"  textAutoFitMinScale="0.5" autoresize="true" />
+        
+        <Window name="WorldMapPairing">
+            <Size>
+                <AbsPoint x="400" y="1069" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Label name="$parentName" inherits="TOKHeading" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="14" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentUnderlineImage" inherits="ParchmentDividerLine" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+
+        <!-- Dwarf / Greenskin Pairing Custom Window -->
+        <Window name="WorldMapPairing1Window">
+            <Size>
+                <AbsPoint x="1024" y="1024"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_PairingMap_GvD1_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentPaths" texture="EA_PairingMap_GvD1_paths" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+                <!-- Tier 1 -->
+                <Window name="$parentTier1" inherits="EA_Window_TierNameTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="88" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone6" inherits="WorldMapZoneButtonTopRightText" id="6"> <!-- Ekrund -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="8" y="461" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone11" inherits="WorldMapZoneButtonBottomLeftText" id="11"> <!-- Bloodhorn -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="167" y="460" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 2 -->
+                <Window name="$parentTier2" inherits="EA_Window_TierNameTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone7" inherits="WorldMapZoneButtonTopText" id="7"> <!-- BarakVarr -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="346" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone1" inherits="WorldMapZoneButtonBottomText" id="1"> <!-- MarshesMadness -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="505" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 3 -->
+                <Window name="$parentTier3" inherits="EA_Window_TierNameTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone8" inherits="WorldMapZoneButtonTopText" id="8"> <!-- BlackFire -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="385" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                            <Size>
+                                <AbsPoint x="239" y="120" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentZone2" inherits="WorldMapZoneButtonBottomText" id="2"> <!-- Badlands -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="544" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 4 -->        
+                <Window name="$parentTier4" inherits="EA_Window_TierNameTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone62" >
+                            <AbsPoint x="0" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone9" inherits="WorldMapLockZoneButton" id="9"> <!-- KarakKadrin -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="285" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone26" inherits="WorldMapZoneButtonSmall" id="26"> <!-- Cinderfall -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="803" y="469" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone27" inherits="WorldMapZoneButtonSmall" id="27"> <!-- Deathpeak -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="894" y="469" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone5" inherits="WorldMapLockZoneButton" id="5"> <!-- ThunderMountain -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="458" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                 <Window name="$parentZone3" inherits="WorldMapLockZoneButton" id="3"> <!-- BlackCrag -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="639" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Cities -->
+				<Window name="$parentZone62" inherits="WorldMapCityButtonUp" id="62">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="833" y="100" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone61" inherits="WorldMapCityButtonDown" id="61">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="833" y="809" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallDown" id="162">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="754" y="51" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallUp" id="161">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="755" y="888" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Forts -->
+                <Window name="$parentZone104" inherits="WorldMapFortButtonSmall" id="104"> <!-- Chaos -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="768" y="833" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone4" inherits="WorldMapFortButtonSmall" id="4"><!-- GreenSkin -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="859" y="772" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone204" inherits="WorldMapFortButtonSmall" id="204"><!-- DarkElf -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="958" y="830" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentZone110" inherits="WorldMapFortButtonSmall" id="110"><!-- Empire -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="768" y="129" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone10" inherits="WorldMapFortButtonSmall" id="10"><!-- Dwarf -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="860" y="189" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone210" inherits="WorldMapFortButtonSmall" id="210"><!-- HighElf -->
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="958" y="126" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- City/Fortress timers -->
+                <Label name="$parentCityTimerOrder" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone62">
+                            <AbsPoint x="15" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCityTimerDest" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone61">
+                            <AbsPoint x="15" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentFortTimerOrder" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone10">
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentFortTimerDest" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone4">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>                
+            </Windows>
+        </Window>
+
+        <!-- Empire / Chaos Pairing Custom Window -->
+        <Window name="WorldMapPairing2Window">
+            <Size>
+                <AbsPoint x="1000" y="1000"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+               <DynamicImage name="$parentBackground" texture="EA_PairingMap_EvC1_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentPaths" texture="EA_PairingMap_EvC1_paths" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                
+                <!-- Tier 1 -->
+                <Window name="$parentTier1" inherits="EA_Window_TierNameTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="88" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone100" inherits="WorldMapZoneButtonTopText" id="100"> <!-- Norsca -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="88" y="366" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone106" inherits="WorldMapZoneButtonBottomText" id="106"> <!-- Nordland -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="88" y="525" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 2 -->
+                <Window name="$parentTier2" inherits="EA_Window_TierNameTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone101" inherits="WorldMapZoneButtonTopText" id="101"> <!-- TrollCountry -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="395" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone107" inherits="WorldMapZoneButtonBottomText" id="107"> <!-- Ostland -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="340" y="555" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 3 -->
+                <Window name="$parentTier3" inherits="EA_Window_TierNameTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="200" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone102" inherits="WorldMapZoneButtonTopText" id="102"> <!-- HighPass -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="351" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone108" inherits="WorldMapZoneButtonBottomText" id="108"> <!-- Talabec -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="510" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                
+                <!-- Tier 4 -->
+                <Window name="$parentTier4" inherits="EA_Window_TierNameTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone161" >
+                            <AbsPoint x="0" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone109" inherits="WorldMapLockZoneButton" id="109"> <!-- Reikland -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="639" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone120" inherits="WorldMapZoneButtonSmall" id="120"> <!-- WestPraag -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="803" y="469" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone105" inherits="WorldMapLockZoneButton" id="105"> <!-- Praag -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="458" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone103" inherits="WorldMapLockZoneButton" id="103"> <!-- Wastes -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="285" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                
+                <!-- Cities -->
+                <Window name="$parentZone62" inherits="WorldMapCityButtonSmallDown" id="62">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="750" y="888" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone61" inherits="WorldMapCityButtonSmallUp" id="61">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="754" y="51" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone162" inherits="WorldMapCityButtonDown" id="162">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="833" y="809" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone161" inherits="WorldMapCityButtonUp" id="161">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="833" y="100" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Forts -->
+                <Window name="$parentZone104" inherits="WorldMapFortButtonSmall" id="104">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="860" y="189" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone4" inherits="WorldMapFortButtonSmall" id="4">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="765" y="126" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone204" inherits="WorldMapFortButtonSmall" id="204">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="958" y="126" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentZone110" inherits="WorldMapFortButtonSmall" id="110">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="859" y="772" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone10" inherits="WorldMapFortButtonSmall" id="10">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="762" y="830" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone210" inherits="WorldMapFortButtonSmall" id="210">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="960" y="830" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- City/Fortress timers -->
+                <Label name="$parentCityTimerOrder" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone162">
+                            <AbsPoint x="15" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCityTimerDest" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone161">
+                            <AbsPoint x="15" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentFortTimerOrder" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone110">
+                            <AbsPoint x="12" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentFortTimerDest" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone104">
+                            <AbsPoint x="12" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <!-- Elf / Elf Pairing Custom Window -->
+        <Window name="WorldMapPairing3Window">
+            <Size>
+                <AbsPoint x="1000" y="1000"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_PairingMap_Elves1_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentPaths" texture="EA_PairingMap_Elves1_paths" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Size>
+                        <AbsPoint x="250" y="126" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" >
+                            <AbsPoint x="0" y="55" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Size>
+                        <AbsPoint x="265" y="126" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="0" y="-105" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+                <!-- Tier 1 -->
+                <Window name="$parentTier1" inherits="EA_Window_TierNameTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="255" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>            
+                <Window name="$parentZone200" inherits="WorldMapZoneButtonBottomText" id="200"> <!-- Blighted Isles -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="625" y="17" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone206" inherits="WorldMapZoneButtonBottomText" id="206"> <!-- Chrace -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="625" y="176" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 2 -->
+                <Window name="$parentTier2" inherits="EA_Window_TierNameTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="530" y="335" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                
+                <!-- Special Case cause of long name -->
+                <Window name="$parentZone201" inherits="WorldMapZoneButtonBottomText" id="201"> <!-- Shadowlands -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="310" y="261" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top">
+                                    <AbsPoint x="0" y="35" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentZone207" inherits="WorldMapZoneButtonBottomText" id="207"> <!-- Ellyrion -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="310" y="420" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 3 -->
+                <Window name="$parentTier3" inherits="EA_Window_TierNameTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="290" y="640" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone202" inherits="WorldMapZoneButtonBottomText" id="202"> <!-- Avelorn -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="616" y="450" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone208" inherits="WorldMapZoneButtonBottomText" id="208"> <!-- Saphery -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="616" y="609" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Tier 4 -->
+                <Window name="$parentTier4" inherits="EA_Window_TierNameTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentZone204" >
+                            <AbsPoint x="-15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnPairingTierMouseOver" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentZone209" inherits="WorldMapLockZoneButton" id="209"> <!-- Eataine -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="663" y="841" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone220" inherits="WorldMapZoneButtonSmall" id="220"> <!-- DeadIsle -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="491" y="802" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Special case cause of long name -->
+                <Window name="$parentZone205" inherits="WorldMapLockZoneButton" id="205"> <!-- Dragonwake -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="484" y="842" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background" wordwrap="false" textAutoFitMinScale="0.5" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top">
+                                    <AbsPoint x="0" y="35" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentZone203" inherits="WorldMapLockZoneButton" id="203"> <!-- Caledor -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="309" y="840" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Cities -->
+                <Window name="$parentZone62" inherits="WorldMapCityButtonSmallDown" id="62">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="902" y="766" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone61" inherits="WorldMapCityButtonSmallDown" id="61">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="43" y="766" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallUp" id="162">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="902" y="705" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallUp" id="161">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="43" y="705" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Forts -->
+                <Window name="$parentZone104" inherits="WorldMapFortButtonSmall" id="104">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="116" y="720" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone4" inherits="WorldMapFortButtonSmall" id="4">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="116" y="773" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone204" inherits="WorldMapFortButton" id="204">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="107" y="848" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentZone110" inherits="WorldMapFortButtonSmall" id="110">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="857" y="721" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone10" inherits="WorldMapFortButtonSmall" id="10">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="857" y="774" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone210" inherits="WorldMapFortButton" id="210">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="850" y="848" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- City/Fortress timers -->
+                <Label name="$parentFortTimerOrder" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone210">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentFortTimerDest" inherits="ObjectiveMapTimer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone204">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <!-- Tomb Kings "Pairing" Custom Window -->
+        <Window name="WorldMapPairing100Window">
+            <Size>
+                <AbsPoint x="1000" y="1000"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_PairingMap_TK1_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentPaths" texture="EA_PairingMap_TK1_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+                <Window name="$parentZone191" inherits="WorldMapLockZoneButton" id="191"> <!-- Necropolis of Zandri -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="113" y="218" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentZone413" inherits="WorldMapLockZoneButton" id="413"> <!-- Garden of Qu'aph -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="564" y="275" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        </Window>
+
+
+        <Window name="PairingViewToggleButton" inherits="WorldMapCheckButton" id="2">
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPathToggle">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>            
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.ToggleOverlays" />
+            </EventHandlers>
+        </Window>
+        
+        
+        <Window name="PairingStatusWindow" >
+            <Size>
+                <AbsPoint x="400" y="100" />
+            </Size>
+            <Windows>                        
+                <Label name="$parentTitle" inherits="MapSideBarSectionHeader" layer="background" textalign="left" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="50" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>                
+                <Window name="$parentZone1" inherits="WorldMapFortButtonSmall" handleinput="false" >
+                   <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+               <Window name="$parentZone2" inherits="WorldMapZoneButtonTiny" handleinput="false"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone3" inherits="WorldMapZoneButtonTiny" handleinput="false"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone2" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone4" inherits="WorldMapZoneButtonTiny" handleinput="false"  >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone3" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentZone5" inherits="WorldMapFortButtonSmall" handleinput="false" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone4" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+               <Label name="$parentText" inherits="EA_Label_Parchment_Text" layer="background" textalign="left" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle" >
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </Label> 
+            </Windows>
+        
+        </Window>
+
+         
+        <!-- Template that Always exists in the MapWindow for the Pairing View -->
+        <Window name="WorldMapPairingViewTemplate" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>                            
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_WorldMap.CountdownPairingTimers" />
+                <EventHandler event="OnShown" function="EA_Window_WorldMap.OnShownPairingMap" />
+            </EventHandlers>
+            <Windows>
+            
+                <!-- Map Border -->
+                <Window name="$parentBorder" inherits="WorldMapScrollworkBorder" >
+                    <Size>
+                        <AbsPoint x="1075" y="1110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="40" y="11" />
+                        </Anchor>
+                    </Anchors>
+                </Window>     
+                
+                
+
+                <!-- Container for the three custom pairing windows -->
+                <Window name="EA_Window_WorldMapRegionMap">
+                    <Size>
+                        <AbsPoint x="1000" y="1000" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="75" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseWheel" function="EA_Window_WorldMap.HandleMouseWheel" />
+                    </EventHandlers>
+                </Window>           
+                
+                <!-- SIDE BAR **************************************************************-->
+                
+               <!--Pairing Buttons -->
+                <Label name="$parentRealmWarsHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="10" y="55" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                                
+                <Button name="$parentPairingButton1" inherits="EA_WorldMapSelectPairingButton" id="1">                
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRealmWarsHeader">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+               <Button name="$parentPairingButton2" inherits="EA_WorldMapSelectPairingButton" id="2">                
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPairingButton1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentPairingButton3" inherits="EA_WorldMapSelectPairingButton" id="3">                
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPairingButton2">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentPairingButton100" inherits="EA_WorldMapSelectPairingButton" id="100">                
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPairingButton3">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+             
+                
+                <!-- Overlay toggles -->                
+                <Window name="$parentSectionBreak1" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPairingButton100">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentOverlayHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentHotspotToggle" inherits="PairingViewToggleButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOverlayHeader">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentPathToggle" inherits="PairingViewToggleButton" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHotspotToggle">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                
+                <Label name="$parentOptionsText" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPathToggle">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>           
+           
+                
+                <!-- RvR Details -->                
+                
+                <Window name="$parentSectionBreak2" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOptionsText">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentRvRHeader" inherits="MapSideBarSectionHeader">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak2">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRvRText" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRvRHeader">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>           
+                  
+                <!-- GvD -->
+                <Label name="$parentTitle1" inherits="EA_Label_PairingSubHeading" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRvRText">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                <Label name="$parentText1" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                
+                <!-- EvC -->
+                <Label name="$parentTitle2" inherits="EA_Label_PairingSubHeading" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                <Label name="$parentText2" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                
+                <!-- HEvDE -->
+                <Label name="$parentTitle3" inherits="EA_Label_PairingSubHeading" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText2">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                <Label name="$parentText3" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>  
+                
+                
+              
+<!-- Campaign Status -->                
+                <Window name="$parentSectionBreak3" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSectionBreak2">
+                            <AbsPoint x="0" y="280" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentCampaignStatusHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSectionBreak3">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                
+                <Label name="$parentCampaignStatusText1" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCampaignStatusHeader">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>
+                
+                <Label name="$parentCampaignStatusText2" inherits="EA_Label_Parchment_Text" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCampaignStatusText1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>                
+                </Label>    
+                
+                <Window name="$parentCampaignTracker" inherits="CampaignTrackerTemplate" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCampaignStatusHeader">
+                            <AbsPoint x="0" y="105" />
+                        </Anchor>
+                    </Anchors>                
+                </Window>                
+           
+                 <Window name="$parentCampaignTrackerToggle" inherits="PairingViewToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCampaignTracker">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>      
+                    </Anchors>                                    
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.ToggleHUDCampaignTracker" />
+                    </EventHandlers>
+                </Window>
+                
+            </Windows>
+        </Window>
+         
+    </Windows>
+
+</Interface>

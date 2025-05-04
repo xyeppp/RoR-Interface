@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Window_DefaultFrame
+
+    This file contains the standard window frame which is used to make most of our windows.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!--# FullResizeImage: EA_FullResizeImage_TintableSolidBackground
+            This is a solid white image, intended to be tinted with the <TintColor> paramater.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_TintableSolidBackground"  handleinput="false" layer="background" texture="EA_TintableImage">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <FullResizeImage name="EA_FullResizeImage_TintableSolidBackground"  handleinput="false" layer="background" texture="EA_TintableImage">
+            <Sizes>
+                <TopLeft x="0" y="0" />
+                <BottomRight x="0" y="0" />
+                <Middle x="250" y="30" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="424" y="762" />
+                <TopCenter x="424" y="762" />
+                <TopRight x="424" y="762" />
+                <MiddleLeft x="424" y="762" />
+                <MiddleCenter x="424" y="762" />
+                <MiddleRight x="424" y="762" />
+                <BottomLeft x="424" y="762" />
+                <BottomCenter x="424" y="762" />
+                <BottomRight x="424" y="762" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!--# FullResizeImage: EA_FullResizeImage_WhiteTransparent
+            This is a transparent white image with an alpha of 5%.
+            The alpha value may be changed in lua by using the WindowSetAlpha function.
+                        
+            Code:
+            (begin code)
+            <FullResizeImage name="EA_FullResizeImage_WhiteTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.05">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <FullResizeImage name="EA_FullResizeImage_WhiteTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.05">
+            <TintColor r="255" g="255" b="255" />
+        </FullResizeImage>
+
+        <!--# FullResizeImage: EA_FullResizeImage_RedTransparent
+            This is a transparent red image with an alpha of 30%.
+            The alpha value may be changed in lua by using the WindowSetAlpha function.
+                        
+            Code:
+            (begin code)
+            <FullResizeImage name="EA_FullResizeImage_RedTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.3">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <FullResizeImage name="EA_FullResizeImage_RedTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.3">
+            <TintColor r="255" g="0" b="0" />
+        </FullResizeImage>
+
+        <!--# FullResizeImage: EA_FullResizeImage_BlackTransparent
+            This is a transparent Black image with an alpha of 80%.
+            The alpha value may be changed in lua by using the WindowSetAlpha function.
+                        
+            Code:
+            (begin code)
+            <FullResizeImage name="EA_FullResizeImage_BlackTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.8">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <FullResizeImage name="EA_FullResizeImage_BlackTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.9">
+            <TintColor r="0" g="0" b="0" />
+        </FullResizeImage>
+
+
+
+        <!--# FullResizeImage: EA_FullResizeImage_TanBorder
+            This is a FullResizeImage with a tan border.
+                        
+            Code:
+            (begin code)
+            <FullResizeImage name="EA_FullResizeImage_TanBorder"  handleinput="false" layer="background" texture="shared_01" frameonly="true">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <FullResizeImage name="EA_FullResizeImage_TanBorder" handleinput="false" layer="background" texture="shared_01" frameonly="true">
+            <Sizes>
+                <TopLeft x="4" y="4" />
+                <BottomRight x="4" y="4" />
+                <Middle x="58" y="20" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="4" y="0" />
+                <TopRight x="62" y="0" />
+                <MiddleLeft x="0" y="4" />
+                <MiddleCenter x="4" y="4" />
+                <MiddleRight x="62" y="4" />
+                <BottomLeft x="0" y="24" />
+                <BottomCenter x="4" y="24" />
+                <BottomRight x="62" y="24" />
+            </TexCoords>
+        </FullResizeImage>
+
+
+
+        <!--# FullResizeImage: EA_FullResizeImage_TintableFrame                   
+            This a tintable frame rounded edge. The middle of the image is alphaed out.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_TintableFrame" handleinput="false" layer="background" texture="assorted_hud_pieces">
+             ...
+             </FullResizeImage>
+			 (end)
+			 
+			 Example:
+            (begin code)
+				<FullResizeImage name="$parentHighlightBox" inherits="EA_FullResizeImage_TintableFrame">
+					<Size>
+						<AbsPoint x="550" y="34" />
+					</Size>
+				</FullResizeImage>
+			 (end)
+		-->
+        <FullResizeImage name="EA_FullResizeImage_TintableFrame" handleinput="false" layer="background" texture="EA_HUD_01" frameonly="true">
+            <Sizes>
+                <TopLeft x="4" y="4" />
+                <BottomRight x="4" y="4" />
+                <Middle x="98" y="34" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="39" y="574" />
+                <TopCenter x="43" y="574" />
+                <TopRight x="140" y="574" />
+                <MiddleLeft x="39" y="578" />
+                <MiddleCenter x="43" y="578" />
+                <MiddleRight x="140" y="578" />
+                <BottomLeft x="39" y="611" />
+                <BottomCenter x="43" y="611" />
+                <BottomRight x="140" y="611" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <!--# FullResizeImage: EA_FullResizeImage_MetalFill                   
+            This a metal fill fullresize image, used mainly for the backgrounds of buttons.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_MetalFill" handleinput="false" layer="background" texture="shared_01" >
+             ...
+             </FullResizeImage>
+			 (end)
+			 
+			 Example:
+            (begin code)
+				<FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill">
+					<Size>
+						<AbsPoint x="550" y="34" />
+					</Size>
+				</FullResizeImage>
+			 (end)
+		-->
+        <FullResizeImage name="EA_FullResizeImage_MetalFill" handleinput="false" layer="background" texture="shared_01" >
+            <Sizes>
+                <TopLeft x="16" y="15" />
+                <BottomRight x="16" y="15" />
+                <Middle x="78" y="25" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft        id="Background-Metal-Fill-Top-Left" />
+                <TopCenter      id="Background-Metal-Fill-Top-Middle" />
+                <TopRight       id="Background-Metal-Fill-Top-Right" />
+                <MiddleLeft     id="Background-Metal-Fill-Left" />
+                <MiddleCenter   id="Background-Metal-Fill-Middle" />
+                <MiddleRight    id="Background-Metal-Fill-Right" />
+                <BottomLeft     id="Background-Metal-Fill-Bottom-Left" />
+                <BottomCenter   id="Background-Metal-Fill-Bottom-Middle" />
+                <BottomRight    id="Background-Metal-Fill-Bottom-Right" />
+            </TexSlices>
+        </FullResizeImage>
+
+
+        <!-- Chat Bubbles-->
+        <!--# FullResizeImage: EA_FullResizeImage_DefaultBubbleBackground                   
+            This is a word balloon looking window background, used for better readability for text-dense areas.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_DefaultBubbleBackground" handleinput="false" layer="background" texture="shared_01" >
+             ...
+             </FullResizeImage>
+			 (end)
+			 
+			 Example:
+            (begin code)
+				<FullResizeImage name="$parentChatBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground">
+					<Size>
+						<AbsPoint x="550" y="34" />
+					</Size>
+				</FullResizeImage>
+			 (end)
+		-->
+        <FullResizeImage name="EA_FullResizeImage_DefaultBubbleBackground" handleinput="false" layer="background"
+                         texture="EA_PaperDollChatBubbles">
+            <Sizes>
+                <TopLeft x="24" y="27" />
+                <BottomRight x="30" y="33" />
+                <Middle x="54" y="21" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft        id="ChatBubble-TopLeft" />
+                <TopCenter      id="ChatBubble-TopCenter" />
+                <TopRight       id="ChatBubble-TopRight" />
+                <MiddleLeft     id="ChatBubble-MiddleLeft" />
+                <MiddleCenter   id="ChatBubble-MiddleCenter" />
+                <MiddleRight    id="ChatBubble-MiddleRight" />
+                <BottomLeft     id="ChatBubble-BottomLeft" />
+                <BottomCenter   id="ChatBubble-BottomCenter" />
+                <BottomRight    id="ChatBubble-BottomRight" />
+            </TexSlices>
+        </FullResizeImage>
+
+        <!--# FullResizeImage: EA_FullResizeImage_AlertBubbleBackground                   
+            This is another word balloon looking window background, used for better readability for text-dense areas.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_AlertBubbleBackground" handleinput="false" layer="background" texture="shared_01" >
+             ...
+             </FullResizeImage>
+			 (end)
+			 
+			 Example:
+            (begin code)
+				<FullResizeImage name="$parentChatBackground" inherits="EA_FullResizeImage_AlertBubbleBackground">
+					<Size>
+						<AbsPoint x="550" y="34" />
+					</Size>
+				</FullResizeImage>
+			 (end)
+		-->
+        <FullResizeImage name="EA_FullResizeImage_AlertBubbleBackground" handleinput="false" layer="background"
+                         texture="EA_PaperDollChatBubbles">
+            <Sizes>
+                <TopLeft x="24" y="27" />
+                <BottomRight x="30" y="33" />
+                <Middle x="54" y="21" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft        id="ChatBubble-TopLeft-HIGHLIGHTED" />
+                <TopCenter      id="ChatBubble-TopCenter-HIGHLIGHTED" />
+                <TopRight       id="ChatBubble-TopRight-HIGHLIGHTED" />
+                <MiddleLeft     id="ChatBubble-MiddleLeft-HIGHLIGHTED" />
+                <MiddleCenter   id="ChatBubble-MiddleCenter" />
+                <MiddleRight    id="ChatBubble-MiddleRight-HIGHLIGHTED" />
+                <BottomLeft     id="ChatBubble-BottomLeft-HIGHLIGHTED" />
+                <BottomCenter   id="ChatBubble-BottomCenter-HIGHLIGHTED" />
+                <BottomRight    id="ChatBubble-BottomRight-HIGHLIGHTED" />
+            </TexSlices>
+        </FullResizeImage>
+
+
+    </Windows>
+</Interface>

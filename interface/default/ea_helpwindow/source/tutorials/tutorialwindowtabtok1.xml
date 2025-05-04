@@ -1,0 +1,110 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/Tutorials/TutorialWindowTabTOK1.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="TutorialWindowTabTOK1Template" inherits="EA_Window_TutorialTabTemplate" >
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="TutorialWindowTabTOK1.Initialize"/>
+        <EventHandler event="OnShown" function="TutorialWindowTabTOK1.OnShown"/>
+      </EventHandlers>
+      <Windows>
+          <DynamicImage name="$parentBGImage1" texture="EA_Help_Tutorial_Background1" handleinput="false" layer="background">
+              <Size>
+                  <AbsPoint x="950" y="700" />
+              </Size>
+              <Anchors>
+                  <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                      <AbsPoint x="0" y="0" />
+                  </Anchor>
+              </Anchors>
+          </DynamicImage>
+
+          <!-- Labels -->
+          <Label name="$parentLabel1" inherits="EA_Label_TutorialLabelTemplate" textalign="left" >
+              <Size>
+                  <AbsPoint x="265" y="223" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="30" y="35" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel2" inherits="EA_Label_TutorialLabelTemplate" textalign="right" >
+              <Size>
+                  <AbsPoint x="175" y="75" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="30" y="253" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel3" inherits="EA_Label_TutorialLabelTemplate" textalign="left" >
+              <Size>
+                  <AbsPoint x="250" y="100" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="372" y="35" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel4" inherits="EA_Label_TutorialLabelTemplate" textalign="left" >
+              <Size>
+                  <AbsPoint x="230" y="75" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="675" y="35" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel5" inherits="EA_Label_TutorialLabelTemplate" textalign="left" >
+              <Size>
+                  <AbsPoint x="400" y="57" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="500" y="450" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel6" inherits="EA_Label_TutorialLabelTemplate" textalign="center" >
+              <Size>
+                  <AbsPoint x="450" y="60" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="400" y="600" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <Label name="$parentLabel7" inherits="EA_Label_TutorialLabelTemplate" textalign="left" >
+              <Size>
+                  <AbsPoint x="267" y="195" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBGImage1">
+                      <AbsPoint x="37" y="405" />
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Tutorial Window Tab General -->
+</Interface>

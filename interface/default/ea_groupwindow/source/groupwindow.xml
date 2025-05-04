@@ -1,0 +1,23 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/GroupWindow.lua" />
+    </Scripts>
+    <Windows>
+        
+        <Window name="GroupWindow" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="240" y="600" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnHidden" function="GroupWindow.OnContainerWindowHidden" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="PlayerWindowPortraitFrame">
+                    <AbsPoint x="0" y="48" />
+                </Anchor>
+            </Anchors>
+        </Window>
+        
+        
+    </Windows>
+</Interface>

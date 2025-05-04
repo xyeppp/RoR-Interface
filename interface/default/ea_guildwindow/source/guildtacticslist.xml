@@ -1,0 +1,112 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildTacticsList.lua"/>
+  </Scripts>
+  <Windows>
+
+    <Label name="GuildTacticsListAbilityListSubTextTemplate" wordwrap="false" font="font_journal_body" maxchars="32" inherits="DefaultWindowText" textalign="leftcenter" handleinput="false">
+      <Size>
+        <AbsPoint x="250" y="25" />
+      </Size>
+    </Label>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildTacticsList" inherits="EA_Window_Default" movable="true" layer="secondary">
+      <Size>
+        <AbsPoint x="482" y="533"/>
+      </Size>
+      <Anchors>
+        <Anchor point="topright" relativePoint="top" relativeTo="GuildWindow">
+          <AbsPoint x="25" y="-25"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildTacticsList.Initialize" />
+      </EventHandlers>
+      <Windows>
+
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildTacticsList.OnHidden" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Main Window Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" >
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" />
+          </Anchors>
+        </Window>
+        
+        <!--************-->
+        <!-- Button Bar -->
+        <!--************-->
+        <!-- Button Bar Background -->
+        <Window name="$parentAbilityListCommandBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+          <Size>
+            <AbsPoint x="0" y="60" />
+          </Size>
+        </Window>
+
+        <!--**************-->
+        <!-- Ability List -->
+        <!--**************-->
+
+        <!-- List Box -->
+        <ListBox name="$parentAbilityList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="GuildTacticsListAbilityButtonTemplate" visiblerows="8" rowcount="100" rowspacing="0">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+              <AbsPoint x="10" y="4"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentAbilityListCommandBarBackground">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+          <ListData table="GuildTacticsList.abilityListData" populationfunction="GuildTacticsList.UpdateAbilityRow">
+            <ListColumns>
+              <ListColumn windowname="Name" variable="name" format="wstring" />
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+        <!-- Purchase Button -->
+        <Button name="$parentPurchaseButton" inherits="EA_Button_DefaultResizeable">
+          <Size>
+            <AbsPoint x="140" y="39"/>
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="right" relativeTo="$parentAbilityListCommandBarBackgroundButtonBackgroundFill">
+              <AbsPoint x="-25" y="5"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="GuildTacticsList.OnMouseOverPurchaseButton" />
+            <EventHandler event="OnLButtonUp" function="GuildTacticsList.OnLButtonUpPurchaseButton" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Cancel Button -->
+        <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+          <Size>
+            <AbsPoint x="140" y="39"/>
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="left" relativeTo="$parentAbilityListCommandBarBackgroundButtonBackgroundFill">
+              <AbsPoint x="25" y="5"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildTacticsList.OnLButtonUpCancelButton" />
+          </EventHandlers>
+        </Button>
+
+      </Windows> <!-- End of Whole Window Definition Parts -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Roster -->
+</Interface>

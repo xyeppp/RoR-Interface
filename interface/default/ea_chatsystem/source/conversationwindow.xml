@@ -1,0 +1,141 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <Scripts></Scripts>
+    <Windows>
+
+        <!-- Chat Bubble Window Template -->
+        <DynamicImage name="ChatBubbleDefaultDownArrow" handleinput="false" layer="background" slice="ChatBubble-Arrow" texture="EA_PaperDollChatBubbles">
+            <Size>
+                <AbsPoint x="54" y="89" />
+            </Size>
+        </DynamicImage>
+
+        <DynamicImage name="ChatBubbleAlertDownArrow" handleinput="false" layer="background" slice="ChatBubble-Arrow-HIGHLIGHTED" texture="EA_PaperDollChatBubbles">
+            <Size>
+                <AbsPoint x="54" y="89" />
+            </Size>
+        </DynamicImage>
+        
+        <Window name="ChatBubble" sticky="false" handleinput="false" layer="background" savesettings="false">
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="-25" y="-25" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentText">
+                            <AbsPoint x="25" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <DynamicImage name="$parentDownArrow" inherits="ChatBubbleDefaultDownArrow">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="-33" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_journal_text" textalign="left" layer="background" sticky="false" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="320" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" />
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255"/>
+                    <EventHandlers>
+                        <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                        <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+                    </EventHandlers>
+                </Label>
+            </Windows>
+        </Window>
+        <Window name="ChatBubbleGroup" sticky="false" handleinput="false" layer="background" savesettings="false">
+            <Windows>
+                <Window name="$parentBubble1" inherits="ChatBubble">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentBubble2" inherits="ChatBubble">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentBubble1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentBubble3" inherits="ChatBubble">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentBubble2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        <!-- Chat Bubble Group Instances -->
+        <Window name="ChatBubbleWindow1" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow2" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow3" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow4" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow5" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow6" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow7" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow8" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow9" inherits="ChatBubbleGroup" />
+        <Window name="ChatBubbleWindow10" inherits="ChatBubbleGroup" />
+
+
+
+        <!-- World Event Text Window Template -->
+        <Window name="WorldEventTextWindow" sticky="false" handleinput="false" layer="background" savesettings="false" >
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentText" font="font_journal_text" textalign="left"
+                    handleinput="false" layer="background" sticky="false" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="520" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+        <!-- World Event Text Window Instances -->
+        <Window name="WorldEventTextWindow1" inherits="WorldEventTextWindow">
+            <Anchors>
+                <Anchor point="center" relativePoint="bottom" relativeTo="Root">
+                    <AbsPoint x="0" y="-10" />
+                </Anchor>
+            </Anchors>
+        </Window>
+        <Window name="WorldEventTextWindow2" inherits="WorldEventTextWindow">
+            <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="WorldEventTextWindow1">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+        <Window name="WorldEventTextWindow3" inherits="WorldEventTextWindow">
+            <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="WorldEventTextWindow2">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,208 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/PublicQuestTrackerWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Main Window Specification -->
+        <Window name="EA_Window_PublicQuestTracker" sticky="false" layer="background" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="600" y="300"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="0" y="-48"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"                  function="EA_Window_PublicQuestTracker.Initialize" />
+                <EventHandler event="OnInitializeCustomSettings"    function="EA_Window_PublicQuestTracker.InitializeLayout" />
+                <EventHandler event="OnUpdate"                      function="EA_Window_PublicQuestTracker.Update" />
+                <EventHandler event="OnShutdown"                    function="EA_Window_PublicQuestTracker.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentInfluence" skipinput="true">  <!-- Container window shown/hidden by AdvancedWindowManager -->
+                    <Size>
+                        <AbsPoint x="300" y="14" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBar" inherits="EA_Window_InfluenceBar" />
+                    </Windows>
+                </Window>
+
+                <Window name="$parentLocation">
+                    <Size>
+                        <AbsPoint x="300" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentInfluenceBar" layer="overlay">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentPublicQuestIcon" texture="map_markers01" slice="Influence-Teal">
+                            <Size>
+                                <AbsPoint x="32" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <Label name="$parentPairingLabel" font="font_default_text_small" maxchars="16" autoresize="true"
+                               textalign="right" handleinput="false" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="429" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentPublicQuestIcon" >
+                                    <AbsPoint x="-5" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="11" g="192" b="185" a="255"/>
+                        </Label>
+
+                        <Label name="$parentChapterLabel" font="font_default_text_small" maxchars="16" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.3">
+                            <Size>
+                                <AbsPoint x="50" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentPublicQuestIcon" >
+                                    <AbsPoint x="5" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="11" g="192" b="185" a="255"/>
+                        </Label>
+
+                    </Windows>
+                </Window>
+
+                <Window name="$parentObjective1" id="1" skipinput="true">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLocation" >
+                            <AbsPoint x="0" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Objective Groups -->
+                        <Window name="$parentQuest1" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="1">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentQuest2" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="2">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest1">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentQuest3" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="3">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest2">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <!-- Opt out for loot button -->                       
+                        <Button name="$parentOptOutButton" id="1" inherits="EA_ObjectiveTracker_OptOutButton">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest3">
+                                    <AbsPoint x="0" y="8"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnInitialize" function="TrackerUtils.InitializeOptOutButton" />
+                                <EventHandler event="OnMouseOver" function="TrackerUtils.OnMouseOverOptOut" />
+                                <EventHandler event="OnLButtonUp" function="EA_Window_PublicQuestTracker.OnLButtonUpOptOut" />
+                            </EventHandlers>
+                        </Button>
+                        
+                    </Windows>
+                </Window>
+
+                <Window name="$parentObjective2" id="2" skipinput="true">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentObjective1" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Objective Groups -->
+                        <Window name="$parentQuest1" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="1">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentQuest2" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="2">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest1">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentQuest3" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="3">
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_PublicQuestTracker.MouseOverQuest" />
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest2">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        
+                        <!-- Opt out for loot button -->
+                        <Button name="$parentOptOutButton" id="2" inherits="EA_ObjectiveTracker_OptOutButton">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest3">
+                                    <AbsPoint x="0" y="8"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnInitialize" function="TrackerUtils.InitializeOptOutButton" />
+                                <EventHandler event="OnMouseOver" function="TrackerUtils.OnMouseOverOptOut" />
+                                <EventHandler event="OnLButtonUp" function="EA_Window_PublicQuestTracker.OnLButtonUpOptOut" />
+                            </EventHandlers>
+                        </Button>
+                        
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

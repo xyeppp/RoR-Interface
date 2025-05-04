@@ -1,0 +1,571 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabVideo.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabVideo" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabVideo.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabVideoContentsScrollChild" scrollbar="SWTabVideoContentsScrollbar" lineheight="18" autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+
+                        <!-- Resolution -->
+                        <Window name="$parentSettingsResolution">
+                            <Size>
+                                <AbsPoint x="0" y="130" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="200" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- Windowed Resolution -->
+                                <Label name="$parentWindowedResLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentWindowedResCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentWindowedResLabel">
+                                            <AbsPoint x="10" y="-5" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <!-- Full Screen Resolution -->
+                                <Label name="$parentFullScreenResLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="90" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentFullScreenResCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentFullScreenResLabel">
+                                            <AbsPoint x="10" y="-5" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <!-- Window Frame -->
+                                <Window name="$parentShowFrame" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentWindowedResCombo" >
+                                            <AbsPoint x="50" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!-- Use Fullscreen -->
+                                <Window name="$parentUseFullscreen" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFullScreenResCombo" >
+                                            <AbsPoint x="50" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                            </Windows>
+                        </Window>
+                        
+                        <!-- Global UI Scale -->
+                        <Window name="$parentSettingsGlobalUIScale">
+                            <Size>
+                                <AbsPoint x="0" y="120" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsResolution">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsResolution" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="250" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <SliderBar name="$parentUiScaleSlider" inherits="EA_Default_SliderBar" numticks="9" >
+                                   <Size>
+                                        <AbsPoint x="400" y="33" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                                            <AbsPoint x="20" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnSlide" function="SettingsWindowTabVideo.OnCustomUiScaleSliderChanged" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+                                    </EventHandlers>
+                                </SliderBar>
+                                <Label name="$parentUiScaleSliderMinLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="50" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUiScaleSlider" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Label name="$parentUiScaleSliderMaxLabel" inherits="EA_Settings_ItemTitle" textalign="right">
+                                    <Size>
+                                        <AbsPoint x="50" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentUiScaleSlider" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Label name="$parentUiScaleSliderMidLabel" inherits="EA_Settings_ItemTitle" textalign="center">
+                                    <Size>
+                                        <AbsPoint x="50" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentUiScaleSlider" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                                <Button name="$parentPreviewUiScaleButton" inherits="EA_Button_DefaultResizeable" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentUiScaleSlider" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabVideo.OnPreviewUiScaleButton" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <Button name="$parentRestoreDefaultUiScaleButton" inherits="EA_Button_DefaultResizeable" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentPreviewUiScaleButton" >
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabVideo.OnRestoreDefaultUiScaleButton" />
+                                    </EventHandlers>
+                                </Button>
+
+                            </Windows>
+                        </Window>
+                        <!-- end Global UI Scale -->
+
+                        <!-- Performance -->
+                        <Window name="$parentSettingsPerformance">
+                            <Size>
+                                <AbsPoint x="0" y="140" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsGlobalUIScale">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsGlobalUIScale" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="200" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- PVE Performance Level -->
+                                <Label name="$parentPerformanceLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="100" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentPerformanceCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPerformanceLabel">
+                                            <AbsPoint x="10" y="-5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnSelChanged" function="SettingsWindowTabVideo.OnPerfLevelChanged" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+                                    </EventHandlers>
+                                </ComboBox>
+                                <Button name="$parentCustomizeButton" inherits="SettingsWindowTabbedButton" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentPerformanceCombo">
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabVideo.OnCustomizeButton" />
+                                    </EventHandlers>
+                                </Button>
+                                <Window name="$parentShaderCaching" inherits="EA_LabelCheckButtonWide">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPerformanceLabel" >
+                                            <AbsPoint x="0" y="20" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                                        <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabVideo.OnMouseOverShaderPerformanceCheckBox" />
+                                    </EventHandlers>
+                                </Window>
+
+                            </Windows>
+                        </Window>
+
+                        <!-- Color -->
+                        <Window name="$parentSettingsColor">
+                            <Size>
+                                <AbsPoint x="0" y="300" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsPerformance">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsPerformance" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="200" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- Brightness Boost -->
+                                <Label name="$parentBrightnessLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="355" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <SliderBar name="$parentBrightnessSlider" inherits="EA_Default_SliderBar" >
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBrightnessLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnSlide" function="SettingsWindowTabVideo.OnGammaChanged" />
+                                    </EventHandlers>
+                                </SliderBar>
+
+                                <FullResizeImage name="$parentBrightnessBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBrightnessSlider" >
+                                            <AbsPoint x="0" y="20" />
+                                        </Anchor>
+                                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBrightnessSlider" >
+                                            <AbsPoint x="0" y="80" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="16" g="16" b="16" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch1" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBrightnessBackground" >
+                                            <AbsPoint x="0" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="0" g="0" b="0" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch2" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBrightnessBackground" >
+                                            <AbsPoint x="40" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="0" g="0" b="0" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch3" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBrightnessBackground" >
+                                            <AbsPoint x="80" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="0" g="0" b="0" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch4" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBrightnessBackground" >
+                                            <AbsPoint x="120" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="0" g="0" b="0" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch5" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBrightnessBackground" >
+                                            <AbsPoint x="160" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="0" g="0" b="0" />
+                                </FullResizeImage>
+
+
+                                <!-- Monitor Gamma -->
+                                <Label name="$parentGammaLabel" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <SliderBar name="$parentGammaSlider" inherits="EA_Default_SliderBar" >
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGammaLabel" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnSlide" function="SettingsWindowTabVideo.OnGammaChanged" />
+                                    </EventHandlers>
+                                </SliderBar>
+
+
+                                <DynamicImage name="$parentGammaBackground"  handleinput="false" layer="background" texture="EA_Gamma_ColorCheckerboard" filtering="false" oneToOnePixels="true">
+                                    <Size>
+                                        <AbsPoint x="200" y="60"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGammaSlider" >
+                                            <AbsPoint x="0" y="20" />
+                                        </Anchor>
+                                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentGammaSlider" >
+                                            <AbsPoint x="0" y="80" />
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                                <FullResizeImage name="$parentSwatch6" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGammaBackground" >
+                                            <AbsPoint x="0" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="186" g="186" b="186" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch7" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGammaBackground" >
+                                            <AbsPoint x="40" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="186" g="186" b="186" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch8" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGammaBackground" >
+                                            <AbsPoint x="80" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="186" g="186" b="186" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch9" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGammaBackground" >
+                                            <AbsPoint x="120" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="186" g="186" b="186" />
+                                </FullResizeImage>
+
+                                <FullResizeImage name="$parentSwatch10" inherits="EA_FullResizeImage_TintableSolidBackground">
+                                    <Size>
+                                        <AbsPoint x="40" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGammaBackground" >
+                                            <AbsPoint x="160" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <TintColor r="186" g="186" b="186" />
+                                </FullResizeImage>
+
+
+                                <Label name="$parentInstructionsLabel" inherits="EA_Settings_ItemTitle" wordwrap="true" autoresize="true"  maxchars="255" textAutoFitMinScale="0.5">
+                                    <Size>
+                                        <AbsPoint x="580" y="80"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                                            <AbsPoint x="35" y="-35" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                                <Label name="$parentDisabledLabel" inherits="EA_Settings_ItemTitle" wordwrap="true" autoresize="true"  maxchars="255" textAutoFitMinScale="0.5">
+                                    <Size>
+                                        <AbsPoint x="580" y="80"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                                            <AbsPoint x="35" y="-35" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Video -->
+</Interface>

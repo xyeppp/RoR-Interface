@@ -1,0 +1,229 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabChat.lua"/>
+  </Scripts>
+  <Windows>
+
+  
+    <Window name="EA_Window_SettingsTabbedScrollLimit" inherits="EA_Window_DefaultLabelToggleCircle">
+        <Size>
+            <AbsPoint x="160" y="32" />
+        </Size>
+        <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SettingsWindowTabChat.OnScrollLimitSelect" />
+            <EventHandler event="OnMouseOver" function="SettingsWindowTabChat.OnMouseOverScrollLimit" /> 
+        </EventHandlers>
+    </Window>  
+  
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabChat" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabChat.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabChatContentsScrollChild" scrollbar="SWTabChatContentsScrollbar" lineheight="18" autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+
+                        <!-- Chat -->
+                        <Window name="$parentSettingsChat">
+                            <Size>
+                                <AbsPoint x="500" y="210" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- Fade Text -->
+                                <Window name="$parentFadeText" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!-- Profanity Filter -->
+                                <Window name="$parentProfanityFilter" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFadeText" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!-- Visible Time -->
+                                <Label name="$parentVisTimeLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="90" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentVisTimeCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentVisTimeLabel">
+                                            <AbsPoint x="10" y="-5" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <!-- Scrollback Limits -->
+                                <Label name="$parentLimitLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentVisTimeLabel">
+                                            <AbsPoint x="0" y="25" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentLimitLow" inherits="EA_Window_SettingsTabbedScrollLimit" id="120">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLimitLabel">
+                                            <AbsPoint x="10" y="7" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentLimitMedium" inherits="EA_Window_SettingsTabbedScrollLimit" id="500">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentLimitLow">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentLimitHigh" inherits="EA_Window_SettingsTabbedScrollLimit" id="2000">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentLimitMedium">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentLimitVeryHigh" inherits="EA_Window_SettingsTabbedScrollLimit" id="8000">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentLimitHigh">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+
+
+                            </Windows>
+                        </Window> <!-- end Chat -->
+                        
+                        <!-- Chat Bubbles -->
+                        <Window name="$parentSettingsChatBubbles">
+                            <Size>
+                                <AbsPoint x="500" y="150" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsChat">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsChat" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                
+                                
+                                <Window name="$parentShowPlayerChatBubbles" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentShowNPCChatBubbles" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentShowPlayerChatBubbles" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentShowPartyChatBubbles" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowPlayerChatBubbles" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                            </Windows>
+                        </Window> <!-- end Chat Bubbles -->
+                        
+                        
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Chat -->
+</Interface>

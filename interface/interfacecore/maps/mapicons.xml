@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+
+        <!-- Map icon textures -->
+        <Texture name="map_markers01" file="Maps/MapMarkers01.dds">
+            <Slice id="AltdorfBrightWizCollege" left="128" top="590" width="74" height="102" />
+            <Slice id="AltdorfEmperorsPalace" left="13" top="708" width="80" height="160" />
+            <Slice id="AltdorfMassTransit" left="281" top="647" width="46" height="36" />
+            <Slice id="AltdorfTempleOfSigmar" left="4" top="583" width="111" height="124" />
+            <Slice id="Arrow1" left="951" top="875" width="49" height="88" />
+            <Slice id="Arrow2" left="968" top="973" width="22" height="38" />
+            <Slice id="Auctioneer" left="576" top="227" width="30" height="34" />
+            <Slice id="BIG-RVR-Hot-Spot" left="636" top="227" width="39" height="38" />
+            <Slice id="Blimp-Dwarf" left="877" top="0" width="53" height="44" />
+            <Slice id="Blimp-Greenskin" left="930" top="0" width="45" height="44" />
+            <Slice id="BombDestruction" left="697" top="74" width="30" height="34" />
+            <Slice id="BombNeutral" left="727" top="74" width="30" height="34" />
+            <Slice id="BombOrder" left="667" top="74" width="30" height="34" />
+            <Slice id="CaveEntrance-Large-Left" left="5" top="148" width="30" height="33" />
+            <Slice id="CaveEntrance-Large-Right" left="8" top="115" width="30" height="33" />
+            <Slice id="CaveEntrance-Small-Left" left="37" top="150" width="26" height="29" />
+            <Slice id="CaveEntrance-Small-Right" left="37" top="118" width="26" height="29" />
+            <Slice id="ChaosNorseShip-Left" left="270" top="167" width="53" height="60" />
+            <Slice id="ChaosNorseShip-Right" left="214" top="167" width="53" height="60" />
+            <Slice id="ChaosNorseTown" left="92" top="175" width="63" height="62" />
+            <Slice id="ChaosPortal" left="160" top="167" width="51" height="50" />
+            <Slice id="ChaosSymbol" left="430" top="50" width="48" height="34" />
+            <Slice id="Circle1" left="646" top="707" width="77" height="84" />
+            <Slice id="Circle2" left="737" top="758" width="91" height="88" />
+            <Slice id="Circle3" left="516" top="692" width="112" height="96" />
+            <Slice id="Circle4" left="743" top="853" width="159" height="144" />
+            <Slice id="Circle5" left="512" top="801" width="217" height="194" />
+            <Slice id="CircleMarkerBlue" left="538" top="28" width="17" height="17" />
+            <Slice id="CircleMarkerYellow" left="536" top="1" width="21" height="21" />
+            <Slice id="Convoys-Destruction-01" left="768" top="391" width="32" height="34" />
+            <Slice id="Convoys-Destruction-02" left="800" top="391" width="32" height="34" />
+            <Slice id="Convoys-Order-01" left="704" top="391" width="32" height="34" />
+            <Slice id="Convoys-Order-02" left="736" top="391" width="32" height="34" />
+            <Slice id="Crafting" left="675" top="255" width="27" height="27" />
+            <Slice id="DarkElfShip-Right" left="352" top="363" width="62" height="71" />
+            <Slice id="DarkElfBlackArk2" left="25"  top="524" width="202" height="226" />
+            <Slice id="DarkElfCapturedManor" left="47" top="341" width="53" height="75" />
+            <Slice id="DarkElfFortification" left="100" top="290" width="55" height="48" />
+            <Slice id="DarkElfLargeCamp" left="154" top="332" width="50" height="47" />
+            <Slice id="DarkElfCapturedVillage" left="105" top="342" width="48" height="78" />
+            <Slice id="DarkElfShip-Left" left="283" top="362" width="62" height="71" />
+            <Slice id="DarkElfSmallCamp" left="51" top="296" width="46" height="38" />
+            <Slice id="DarkElfSymbol" left="155" top="381" width="37" height="39" />
+	        <Slice id="DestroyedTower" left="57" top="185" width="27" height="31" />
+            <Slice id="DestructionKeep" left="667" top="0" width="42" height="43" />
+            <Slice id="DestructionKeep-UnderAttack" left="751" top="0" width="42" height="43" />
+            <Slice id="DestructionPlayer" left="563" top="36" width="17" height="17" />
+            <Slice id="DiamondMarkerSilver-Small" left="558" top="23" width="12" height="11" />
+            <Slice id="DoomfistCrator" left="120" top="443" width="78" height="68" />
+            <Slice id="Dungeon" left="9" top="335" width="32" height="36" />
+			<Slice id="DungeonBastionStair" left="346" top="638" width="61" height="69" />
+			<Slice id="DungeonDragonbackPass" left="330" top="710" width="37" height="54" />
+			<Slice id="DungeonGunbad" left="340" top="505" width="67" height="75" />
+			<Slice id="DungeonHuntersVale" left="308" top="450" width="83" height="49" />
+            <Slice id="DwarfHouse" left="129" top="3" width="37" height="37" />
+            <Slice id="DwarfIronclad-Left" left="331" top="5" width="67" height="47" />
+            <Slice id="DwarfIronclad-Right" left="256" top="5" width="67" height="47" />
+            <Slice id="DwarfStatue" left="173" top="5" width="30" height="49" />
+            <Slice id="DwarfTavern" left="212" top="8" width="37" height="36" />
+            <Slice id="DwarfTower" left="92" top="4" width="32" height="36" />
+            <Slice id="DwarfTrainStation" left="409" top="5" width="44" height="44" />
+            <Slice id="DyeMerchant" left="778" top="43" width="21" height="22" />
+            <Slice id="EmpireBuilding" left="158" top="104" width="39" height="48" />
+            <Slice id="EmpireCastle" left="347" top="98" width="61" height="65" />
+            <Slice id="EmpireDock-Left" left="445" top="185" width="57" height="45" />
+            <Slice id="EmpireDock-Right" left="445" top="235" width="57" height="45" />
+			<Slice id="EmpireHamlet" left="200" top="374" width="48" height="65" />
+            <Slice id="EmpireMonastary" left="296" top="101" width="47" height="60" />
+            <Slice id="EmpireSigmarStatue" left="466" top="134" width="30" height="43" />
+            <Slice id="EmpireTower" left="209" top="102" width="32" height="60" />
+            <Slice id="EmpireTown" left="93" top="91" width="56" height="83" />
+            <Slice id="EmpireWindmill" left="249" top="102" width="43" height="55" />
+            <Slice id="EquipmentUpgrade" left="512" top="181" width="32" height="32" />
+            <Slice id="FlagDestruction" left="639" top="0" width="28" height="33" />
+            <Slice id="FlagDestruction-Burning" left="639" top="33" width="28" height="33" />
+            <Slice id="FlagDestruction-Glowing" left="906" top="91" width="30" height="35" />
+            <Slice id="FlagDestruction-Locked" left="639" top="66" width="28" height="33" />
+            <Slice id="FlagDestruction-LockedAndGlowing" left="966" top="91" width="30" height="35" />
+            <Slice id="FlagDestruction-Disabled" left="965" top="138" width="28" height="33" />
+            <Slice id="FlagNeutral" left="583" top="0" width="28" height="33" />
+            <Slice id="FlagNeutral-Burning" left="583" top="33" width="28" height="33" />
+            <Slice id="FlagNeutral-Locked" left="674" top="290" width="28" height="33" />
+            <Slice id="FlagOrder" left="611" top="0" width="28" height="33" />
+            <Slice id="FlagOrder-Burning" left="611" top="33" width="28" height="33" />
+            <Slice id="FlagOrder-Glowing" left="877" top="91" width="29" height="35" />
+            <Slice id="FlagOrder-Locked" left="611" top="66" width="28" height="33" />
+            <Slice id="FlagOrder-LockedAndGlowing" left="937" top="91" width="29" height="35" />
+            <Slice id="FlagOrder-Disabled" left="938" top="138" width="28" height="33" />
+            <Slice id="FlagOverlay" left="937" top="292" width="20" height="27" />
+            <Slice id="FlagTK" left="907" top="130" width="30" height="42" />
+            <Slice id="FlagTK-Burning" left="878" top="130" width="30" height="42" />
+            <Slice id="Forest" left="4" top="184" width="37" height="40" />
+            <Slice id="GardenField" left="452" top="89" width="55" height="32" />
+            <Slice id="GatesOfEkrund" left="199" top="437" width="92" height="74" />
+            <Slice id="GenericPlayer" left="512" top="36" width="17" height="17" />
+            <Slice id="GoblinSiegeFactory" left="71" top="428" width="47" height="81" />
+            <Slice id="Graveyard" left="412" top="112" width="37" height="39" />
+            <Slice id="Groupmate" left="529" top="36" width="17" height="17" />
+            <Slice id="GuildHall" left="458" top="505" width="50" height="50" />
+            <Slice id="GuildStandard" left="799" top="43" width="29" height="34" />
+            <Slice id="GutterArrow" left="572" top="0" width="11" height="9" />
+            <Slice id="HighElfCity" left="200" top="287" width="52" height="90" />
+            <Slice id="HighElfDock-Left" left="152" top="221" width="71" height="66" />
+            <Slice id="HighElfDock-Right" left="225" top="221" width="71" height="66" />
+            <Slice id="HighElfFortification" left="448" top="285" width="55" height="55" />
+            <Slice id="HighElfLargeCamp" left="154" top="291" width="47" height="42" />
+            <Slice id="HighElfManor" left="312" top="285" width="52" height="75" />
+			<Slice id="HighElfMenhir" left="64" top="122" width="25" height="51" />
+            <Slice id="HighElfShips-Left" left="301" top="228" width="69" height="54" />
+            <Slice id="HighElfShips-Right" left="375" top="232" width="69" height="54" />
+			<Slice id="HighElfShrine" left="10" top="376" width="27" height="36" />
+            <Slice id="HighElfSmallCamp" left="52" top="265" width="40" height="31" />
+            <Slice id="HighElfRuins" left="379" top="295" width="60" height="44" />
+			<Slice id="HighElfTower" left="295" top="500" width="35" height="72" />
+            <Slice id="HighElfVillage" left="259" top="291" width="44" height="75" />
+            <Slice id="InevitableCityBreakingGrounds" left="185"  top="524" width="84" height="41" />
+            <Slice id="InevitableCityEternalCitadel" left="281" top="580" width="68" height="52" />
+            <Slice id="InevitableCityMonolith" left="212" top="575" width="57" height="65" />
+            <Slice id="InevitableCitySacellum" left="102" top="709" width="163" height="152" />
+            <Slice id="InevitableCitySoulForge" left="208" top="639" width="66" height="66" />
+            <Slice id="InevitableCityViperPit" left="9" top="512" width="78" height="68" />
+            <Slice id="InevitableCityWyvernsRoost" left="98" top="513" width="80" height="69" />
+            <Slice id="Influence-Teal" left="512" top="85" width="32" height="32" />
+            <Slice id="Influence-Teal-ROLLOVER" left="544" top="85" width="32" height="32" />
+            <Slice id="KeepDefended-Orange" left="919" top="44" width="42" height="47" />
+	        <Slice id="KeepDefended-Red" left="961" top="44" width="42" height="47" />
+	        <Slice id="KeepDefended-Yellow" left="877" top="44" width="42" height="47" />
+	        <Slice id="KeepDifficulty-1-star" left="785" top="120" width="46" height="9" />
+	        <Slice id="KeepDifficulty-2-star" left="785" top="129" width="46" height="9" />
+	        <Slice id="KeepDifficulty-3-star" left="785" top="138" width="46" height="9" />
+	        <Slice id="KeepDifficulty-4-star" left="785" top="147" width="46" height="9" />
+	        <Slice id="KeepDifficulty-5-star" left="785" top="156" width="46" height="9" />
+            <Slice id="KeepDoor" left="770" top="293" width="28" height="28" />
+            <Slice id="Keep-Dominated" left="831" top="43" width="46" height="47" />
+            <Slice id="Keep-Grayed" left="835" top="0" width="42" height="43" />
+            <Slice id="KillCollector" left="512" top="245" width="26" height="31" />
+            <Slice id="LastNames" left="757" top="96" width="30" height="19" />
+            <Slice id="LastNames-Large" left="544" top="308" width="32" height="32" />
+            <Slice id="Librarian" left="538" top="245" width="30" height="31" />
+            <Slice id="Mail" left="757" top="71" width="29" height="25" />
+            <Slice id="Mail-Large" left="512" top="308" width="32" height="32" />
+            <Slice id="MurderballDestruction" left="695" top="43" width="28" height="31" />
+            <Slice id="MurderballNeutral" left="723" top="43" width="28" height="31" />
+            <Slice id="MurderballOrder" left="667" top="43" width="28" height="31" />
+            <Slice id="NextZoneArrowDown" left="580" top="48" width="24" height="32" />
+            <Slice id="NextZoneArrowLeft" left="576" top="0" width="32" height="24" />
+            <Slice id="NextZoneArrowRight" left="576" top="24" width="32" height="24" />
+            <Slice id="NextZoneArrowUp" left="580" top="80" width="24" height="32" />
+            <Slice id="Note" left="536" top="45" width="18" height="20" />
+            <Slice id="NPC-AuctionHouse" left="576" top="227" width="30" height="34" />
+            <Slice id="NPC-Binder" left="644" top="150" width="28" height="29" />
+            <Slice id="NPC-CraftingTrainer" left="675" top="255" width="27" height="27" />
+            <Slice id="NPC-GuildRegistrar" left="645" top="100" width="21" height="24" />
+            <Slice id="NPC-GuildRegistrar-Large" left="512" top="276" width="32" height="32" />
+            <Slice id="NPC-Healer" left="644" top="124" width="24" height="25" />
+            <Slice id="NPC-Healer-Large" left="544" top="276" width="32" height="32" />
+            <Slice id="NPC-Merchant" left="576" top="132" width="30" height="31" />
+            <Slice id="NPC-RvR" left="704" top="148" width="26" height="34" />
+            <Slice id="NPC-Scenario" left="577" top="164" width="30" height="30" />
+            <Slice id="NPC-TrainerActive" left="576" top="100" width="34" height="32" />
+            <Slice id="NPC-TrainerInactive" left="610" top="100" width="34" height="32" />
+            <Slice id="NPC-Travel" left="607" top="132" width="35" height="36" />
+            <Slice id="Objective-OLD" left="152" top="8" width="24" height="24" />
+			<Slice id="OgreMarker" left="426" top="560" width="60" height="44" />
+            <Slice id="OrcBarge-Left" left="298" top="53" width="61" height="41" />
+            <Slice id="OrcBarge-Right" left="230" top="53" width="61" height="41" />
+            <Slice id="OrcBuilding" left="383" top="168" width="52" height="52" />
+            <Slice id="OrcDragonSkeleton" left="368" top="53" width="57" height="38" />
+            <Slice id="OrcGateway" left="178" top="59" width="47" height="37" />
+            <Slice id="OrcHut" left="95" top="47" width="41" height="34" />
+            <Slice id="OrcHut-Small" left="140" top="47" width="34" height="35" />
+            <Slice id="BeastmenHerdstone" left="99" top="242" width="43" height="46" />
+      	    <Slice id="OrderKeep" left="709" top="0" width="42" height="43" />
+            <Slice id="OrderKeep-UnderAttack" left="793" top="0" width="42" height="43" />
+            <Slice id="OrderPlayer" left="546" top="36" width="17" height="17" />
+            <Slice id="Oval1" left="752" top="658" width="53" height="84" />
+            <Slice id="Oval2" left="517" top="514" width="119" height="72" />
+            <Slice id="Oval3" left="514" top="591" width="141" height="97" />
+            <Slice id="Oval4" left="658" top="525" width="185" height="107" />
+            <Slice id="Oval5" left="839" top="599" width="157" height="258" />
+            <Slice id="PeasantHouse" left="50" top="228" width="43" height="34" />
+            <Slice id="PlayerArrow" left="512" top="0" width="30" height="36" />
+            <Slice id="PlayerArrow-BigMapPulse" left="542" top="0" width="30" height="36" />
+            <Slice id="Player-LFG" left="607" top="168" width="30" height="24" />
+            <Slice id="PlayerCircleDestruction" left="563" top="372" width="17" height="17" />
+            <Slice id="PlayerCircleDestructionLite" left="563" top="389" width="17" height="17" />
+            <Slice id="PlayerCircleGeneric" left="512" top="372" width="17" height="17" />
+            <Slice id="PlayerCircleGenericLite" left="512" top="389" width="17" height="17" />
+            <Slice id="PlayerCircleGroupmate" left="529" top="372" width="17" height="17" />
+            <Slice id="PlayerCircleGroupmateLite" left="529" top="389" width="17" height="17" />
+            <Slice id="PlayerCircleOrder" left="546" top="372" width="17" height="17" />
+            <Slice id="PlayerCircleOrderLite" left="546" top="389" width="17" height="17" />
+            <Slice id="Portal" left="7" top="297" width="38" height="38" />
+            <Slice id="ProgressBarAlpha" left="886" top="247" width="41" height="7" />
+            <Slice id="ProgressBarTintable" left="886" top="265" width="41" height="7" />
+            <Slice id="PQ" left="746" top="145" width="37" height="29" />
+            <Slice id="PQ-Active" left="831" top="90" width="35" height="28" />
+            <Slice id="PQ-Large" left="544" top="340" width="32" height="32" />
+            <Slice id="PQLoot" left="788" top="77" width="42" height="43" />
+            <Slice id="PQLoot-Large" left="576" top="340" width="32" height="32" />
+            <Slice id="PQResetting" left="746" top="116" width="37" height="29" />
+            <Slice id="QuestActive" left="704" top="195" width="32" height="32" />
+            <Slice id="QuestActive-ROLLOVER" left="736" top="195" width="32" height="32" />
+            <Slice id="QuestAvailable-Green" left="512" top="53" width="32" height="32" />
+            <Slice id="QuestAvailable-LiveEvent" left="636" top="297" width="32" height="32" />
+            <Slice id="QuestAvailable-Repeatable" left="636" top="265" width="32" height="32" />
+            <Slice id="QuestCompleted-Gold" left="512" top="149" width="32" height="32" />
+            <Slice id="QuestCompleted-Gold-ROLLOVER" left="544" top="149" width="32" height="32" />
+            <Slice id="QuestEpic" left="512" top="117" width="32" height="32" />
+            <Slice id="QuestEpic-ROLLOVER" left="544" top="117" width="32" height="32" />
+            <Slice id="QuestGroup" left="640" top="195" width="32" height="32" />
+            <Slice id="QuestGroup-ROLLOVER" left="672" top="195" width="32" height="32" />
+            <Slice id="QuestPending-Grey" left="544" top="53" width="32" height="32" />
+            <Slice id="QuestLocal-White" left="512" top="213" width="32" height="32" />
+            <Slice id="QuestLocal-White-ROLLOVER" left="544" top="213" width="32" height="32" />
+            <Slice id="QuestMovement" left="512" top="181" width="32" height="32" />
+            <Slice id="QuestMovement-ROLLOVER" left="544" top="181" width="32" height="32" />
+            <Slice id="QuestRVR" left="704" top="227" width="32" height="32" />
+            <Slice id="QuestRVRGroup" left="768" top="195" width="32" height="32" />
+            <Slice id="QuestRVRGroup-ROLLOVER" left="800" top="195" width="32" height="32" />
+            <Slice id="QuestRVRkill" left="704" top="259" width="32" height="32" />
+            <Slice id="QuestRVRkill-ROLLOVER" left="736" top="259" width="32" height="32" />
+            <Slice id="QuestRVR-ROLLOVER" left="736" top="227" width="32" height="32" />
+            <Slice id="QuestTome" left="576" top="195" width="32" height="32" />
+            <Slice id="QuestTome-ROLLOVER" left="608" top="195" width="32" height="32" />
+            <Slice id="RamOrder" left="832" top="388" width="39" height="37" />
+            <Slice id="RamDestruction" left="871" top="388" width="39" height="37" />
+            <Slice id="RvR-Hotspot" left="576" top="66" width="31" height="33" />
+            <Slice id="RvR-GenericBanner" left="413" top="507" width="39" height="49" />
+            <Slice id="Shout-Attack" left="673" top="158" width="31" height="29" />
+            <Slice id="Shout-DefendMe" left="691" top="109" width="17" height="21" />
+            <Slice id="Shout-HealMe" left="669" top="109" width="22" height="22" />
+            <Slice id="Shout-Healme-Large" left="576" top="276" width="32" height="32" />
+            <Slice id="Shout-Incoming" left="674" top="131" width="23" height="27" />
+            <Slice id="SiegeTarget-BombTarget" left="708" top="109" width="38" height="38" />
+			<Slice id="SkavenMarker" left="354" top="584" width="49" height="47" />
+            <Slice id="Small-RVR-Hot-Spot" left="675" top="227" width="28" height="28" />
+            <Slice id="SunDial" left="457" top="10" width="33" height="24" />
+            <Slice id="SymbolBalance" left="413" top="349" width="44" height="47" />
+            <Slice id="SymbolBeerMug" left="413" top="404" width="44" height="47" />
+            <Slice id="SymbolBird" left="413" top="457" width="44" height="47" />
+            <Slice id="SymbolHorseshoe" left="461" top="349" width="44" height="47" />
+            <Slice id="SymbolShip" left="461" top="404" width="44" height="47" />
+            <Slice id="SymbolV" left="461" top="457" width="44" height="47" />
+            <Slice id="Tent" left="7" top="228" width="40" height="29" />
+            <Slice id="TreasureChest" left="2" top="260" width="50" height="37" />
+            <Slice id="Tree" left="333" top="166" width="38" height="49" />
+            <Slice id="VampireTower" left="5" top="417" width="65" height="93" />
+            <Slice id="Vault" left="606" top="227" width="30" height="30" />
+            <Slice id="Waypoint" left="751" top="43" width="27" height="27" />
+            <Slice id="Waypoint-Large" left="576" top="308" width="32" height="32" />
+            <Slice id="WarcampOrc" left="2" top="2" width="41" height="36" />
+            <Slice id="WarcampChaos" left="3" top="40" width="41" height="34" />
+            <Slice id="WarcampDarkElf" left="47" top="78" width="47" height="37" />
+            <Slice id="WarcampDwarf" left="46" top="2" width="44" height="36" />
+            <Slice id="WarcampEmpire" left="47" top="40" width="45" height="34" />
+            <Slice id="WarcampHighElf" left="2" top="80" width="39" height="35" />
+            <Slice id="KarazAKarakFeastHall" left="428" top="918" width="72" height="46" />
+            <Slice id="KarazAKarakBank" left="332" top="782" width="36" height="32" />
+            <Slice id="KarazAKarakLift" left="377" top="738" width="54" height="50" />
+            <Slice id="KarazAKarakFlightMaster" left="322" top="820" width="46" height="50" />
+            <Slice id="KarazAKarakThrone" left="377" top="789" width="58" height="40" />
+            <Slice id="KarazAKarakAuctionHouse" left="250" top="877" width="54" height="40" />
+			<Slice id="KarazAKarakForge" left="304" top="873" width="56" height="44" />
+			<Slice id="KarazAKarakWarRoom" left="457" top="859" width="40" height="50" />
+			<Slice id="KarazAKarakTavern" left="250" top="921" width="68" height="52" />
+			<Slice id="KarazAKarakTrainStation" left="433" top="684" width="78" height="58" />
+			<Slice id="KarazAKarakEngineers" left="368" top="836" width="68" height="68" />
+			<Slice id="KarazAKarakMineJunction" left="435" top="623" width="76" height="58" />
+			<Slice id="KarazAKarakCrypts" left="378" top="908" width="48" height="62" />
+			<Slice id="KarazAKarakCannonFoundry" left="141" top="871" width="96" height="44" />
+			<Slice id="KarazAKarakWarriorsStand" left="449" top="799" width="58" height="60" />
+			<Slice id="KarazAKarakLibrary" left="448" top="573" width="60" height="40" />
+			<Slice id="KarazAKarakTrainers" left="322" top="931" width="52" height="38" />
+			<Slice id="KarakEightPeaksTempleOfGork" left="0" top="920" width="36" height="56" />
+			<Slice id="KarakEightPeaksPortalDown" left="37" top="916" width="32" height="62" />
+			<Slice id="KarakEightPeaksArena" left="73" top="922" width="58" height="58" />
+			<Slice id="KarakEightPeaksThroneRoom" left="137" top="915" width="60" height="60" />
+			<Slice id="KarakEightPeaksMine" left="198" top="923" width="44" height="44" />
+			<Slice id="KarakEightPeaksPenz" left="0" top="979" width="52" height="45" />
+			<Slice id="KarakEightPeaksWeaponzHall" left="69" top="984" width="66" height="38" />
+			<Slice id="KarakEightPeaksHammerinHall" left="146" top="979" width="60" height="44" />
+			<Slice id="KarakEightPeaksShiniesHall" left="208" top="979" width="52" height="42" />
+			<Slice id="KarakEightPeaksPortalUp" left="264" top="979" width="32" height="42" />
+			<Slice id="KarakEightPeaksRatbreakerStand" left="306" top="975" width="64" height="46" />
+			<Slice id="KarakEightPeaksTrainers" left="374" top="977" width="46" height="46" />
+			<Slice id="KarakEightPeaksBank" left="424" top="978" width="50" height="46" />
+        </Texture>
+
+        <!-- General Icons -->
+
+        <!-- NOTE! All Icons under 50 correspond to Map Pin Types enum! Do not change this order! -->
+
+        <!-- PIN_TYPE_DEFAULT -->
+        <MapIcon id="00000" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_PLAYER -->
+        <MapIcon id="00001" texture="map_markers01" slice="PlayerArrow" pointX="14" pointY="21" />
+
+        <!-- PIN_TYPE_GROUP -->
+        <MapIcon id="00002" texture="map_markers01" slice="PlayerCircleGroupmate" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_QUEST_OFFER_NPC -->
+        <MapIcon id="00003" texture="map_markers01" slice="QuestAvailable-Green" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_QUEST_PENDING_NPC -->
+        <MapIcon id="00004" texture="map_markers01" slice="QuestPending-Grey" pointX="15" pointY="15"	/>
+
+        <!-- PIN_TYPE_QUEST_COMPLETE_NPC -->
+        <MapIcon id="00005" texture="map_markers01" slice="QuestCompleted-Gold" pointX="15" pointY="15"	/>
+
+        <!-- PIN_TYPE_INFLUENCE_NPC -->
+        <MapIcon id="00006" texture="map_markers01" slice="Influence-Teal" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_INFLUENCE_NPC_PENDING -->
+        <MapIcon id="00007" texture="map_markers01" slice="QuestPending-Grey" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_WORLD  -->
+        <MapIcon id="00008" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_OBJECTIVE-->
+        <MapIcon id="00009" texture="map_markers01" slice="Objective-OLD" pointX="12" pointY="12" />
+
+        <!-- PIN_ORDER_ARMY -->
+        <MapIcon id="00010" texture="map_markers01" slice="PlayerCircleOrder" pointX="8" pointY="8" name="Order Army Icon"/>
+
+        <!-- PIN_DESTRUCTION_ARMY -->
+        <MapIcon id="00011" texture="map_markers01" slice="PlayerCircleDestruction" pointX="8" pointY="8" name="Destruction Army Icon"/>
+
+        <!-- PIN_TYPE_QUEST_AREA -->
+        <MapIcon id="00012" texture="map_markers01" slice="Objective-OLD" pointX="12" pointY="12" />
+
+        <!-- PIN_TYPE_FLAG -->
+        <MapIcon id="00013" texture="map_markers01" slice="Objective-OLD" pointX="12" pointY="12" />
+
+        <!-- PIN_TYPE_BOUNTY_HUNTER_QUEST_OFFER_NPC -->
+        <MapIcon id="00014"  texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_BOUNTY_HUNTER_QUEST_PENDING_NPC -->
+        <MapIcon id="00015"  texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_BOUNTY_HUNTER_QUEST_COMPLETE_NPC -->
+        <MapIcon id="00016"  texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_KILL_COLLECTOR_QUEST_PENDING_NPC -->
+        <MapIcon id="00017"  texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_KILL_COLLECTOR_QUEST_COMPLETE_NPC -->
+        <MapIcon id="00018"  texture="map_markers01" slice="KillCollector" pointX="14" pointY="15" />
+
+        <!-- PIN_TYPE_STORE_NPC -->
+        <MapIcon id="00019"  texture="map_markers01" slice="NPC-Merchant" pointX="16" pointY="15" />
+
+        <!-- PIN_TYPE_TRAINER_NPC -->
+        <MapIcon id="00020"  texture="map_markers01" slice="NPC-TrainerActive" pointX="16" pointY="15" />
+
+        <!-- PIN_TYPE_SCENARIO_GATEKEEPER_NPC -->
+        <MapIcon id="00021"  texture="map_markers01" slice="NPC-Scenario" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_AUCTION_HOUSE_NPC -->
+        <MapIcon id="00022"  texture="map_markers01" slice="NPC-AuctionHouse" pointX="23" pointY="16" />
+
+        <!-- PIN_TYPE_TRAVEL_NPC -->
+        <MapIcon id="00023"  texture="map_markers01" slice="NPC-Travel" pointX="17" pointY="17" />
+
+        <!-- PIN_TYPE_VAULT_KEEPER_NPC -->
+        <MapIcon id="00024"  texture="map_markers01" slice="Vault" pointX="14" pointY="14" />
+
+        <!-- PIN_TYPE_LIBRARIAN_NPC -->
+        <MapIcon id="00025"  texture="map_markers01" slice="Librarian" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_GUILD_REGISTRAR_NPC -->
+        <MapIcon id="00026"  texture="map_markers01" slice="NPC-GuildRegistrar" pointX="10" pointY="12" />
+
+        <!-- PIN_TYPE_HEALER_NPC -->
+        <MapIcon id="00027"  texture="map_markers01" slice="NPC-Healer" pointX="11" pointY="12" />
+
+        <!-- PIN_TYPE_PUBLIC -->
+        <MapIcon id="00028"  texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" />
+
+        <!-- PIN_TYPE_LOCAL_QUEST -->
+        <MapIcon id="00029"  texture="map_markers01" slice="QuestLocal-White" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_GROUP_QUEST -->
+        <MapIcon id="00030"  texture="map_markers01" slice="QuestGroup" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_MOVEMENT_QUEST -->
+        <MapIcon id="00031"  texture="map_markers01" slice="QuestMovement" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_EPIC_QUEST -->
+        <MapIcon id="00032"  texture="map_markers01" slice="QuestEpic" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_TOME_QUEST -->
+        <MapIcon id="00033"  texture="map_markers01" slice="QuestTome" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_BINDER -->
+        <MapIcon id="00034"  texture="map_markers01" slice="NPC-Binder" pointX="13" pointY="14" />
+
+        <!-- PIN_TYPE_RVR_NPC -->
+        <MapIcon id="00035"  texture="map_markers01" slice="NPC-RvR" pointX="12" pointY="15" />
+
+        <!-- PIN_TYPE_RVR_HOTSPOT -->
+        <MapIcon id="00036"  texture="map_markers01" slice="RvR-Hotspot" pointX="15" pointY="16" />
+
+        <!-- PIN_TYPE_SEIGE_AND_BOMB_TARGET -->
+        <MapIcon id="00037"  texture="map_markers01" slice="SiegeTarget-BombTarget" pointX="18" pointY="18" />
+
+        <!-- PIN_TYPE_PLAYER_LFG_FLAGGED -->
+        <MapIcon id="00038"  texture="map_markers01" slice="Player-LFG" pointX="14" pointY="11" />
+
+        <!-- PIN_TYPE_GUTTER_ARROW -->
+        <MapIcon id="00039"  texture="map_markers01" slice="GutterArrow" pointX="5" pointY="5" />
+
+        <!-- PIN_TYPE_BIG_RVR_HOTSPOT-->
+        <MapIcon id="00040"  texture="map_markers01" slice="BIG-RVR-Hot-Spot" pointX="19" pointY="17" />
+
+        <!-- PIN_TYPE_SMALL_RVR_HOTSPOT-->
+        <MapIcon id="00041"  texture="map_markers01" slice="Small-RVR-Hot-Spot" pointX="13" pointY="13" />
+
+        <!-- PIN_TYPE_GUILD_REGISTRAR_LARGE-->
+        <MapIcon id="00042"  texture="map_markers01" slice="NPC-GuildRegistrar-Large" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_HEALER_LARGE-->
+        <MapIcon id="00043"  texture="map_markers01" slice="NPC-Healer-Large" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_SHOUT_HEALME_LARGE-->
+        <MapIcon id="00044"  texture="map_markers01" slice="Shout-Healme-Large" pointX="15" pointY="15" />
+
+        <!-- PIN_TYPE_WAYPOINT-->
+        <MapIcon id="00045"  texture="map_markers01" slice="Waypoint" pointX="13" pointY="13" />
+
+        <!-- PIN_TYPE_DYEMERCHANT-->
+        <MapIcon id="00046"  texture="map_markers01" slice="DyeMerchant" pointX="10" pointY="11" />
+
+        <!-- PIN_TYPE_GUILDSTANDARD-->
+        <MapIcon id="00047"  texture="map_markers01" slice="GuildStandard" pointX="17" pointY="17" />
+
+        <!-- PIN_TYPE_MAIL-->
+        <MapIcon id="00048"  texture="map_markers01" slice="Mail" pointX="14" pointY="12" />
+
+        <!-- PIN_TYPE_LASTNAMES-->
+        <MapIcon id="00049"  texture="map_markers01" slice="LastNames" pointX="15" pointY="9" />
+
+        <!-- RvR Player Icons -->
+        <MapIcon id="00050" texture="map_markers01" slice="PlayerCircleOrder" pointX="8" pointY="8" name="Order Player Icon"/>
+        <MapIcon id="00051" texture="map_markers01" slice="PlayerCircleDestruction" pointX="8" pointY="8" name="Destruction Player Icon"/>
+
+        <!--  Circular Player Pips --> 
+        <MapIcon id="00055" texture="map_markers01" slice="PlayerCircleDestruction" pointX="8" pointY="8" name="DestuctionPlayerCircle" /> 
+        <MapIcon id="00056" texture="map_markers01" slice="PlayerCircleDestuctionLite" pointX="8" pointY="8" name="DestuctionPlayerCircle-Lite" /> 
+        <MapIcon id="00057" texture="map_markers01" slice="PlayerCircleOrder" pointX="8" pointY="8" name="OrderPlayerCircle" /> 
+        <MapIcon id="00058" texture="map_markers01" slice="PlayerCircleOrderLite" pointX="8" pointY="8" name="OrderPlayerCircle-Lite" /> 
+        <MapIcon id="00059" texture="map_markers01" slice="PlayerCircleGroupmate" pointX="8" pointY="8" name="GroupmateCircle" /> 
+        <MapIcon id="00060" texture="map_markers01" slice="PlayerCircleGroupmateLite" pointX="8" pointY="8" name="GroupmateCircle-Lite" /> 
+        <MapIcon id="00061" texture="map_markers01" slice="PlayerCircleGeneric" pointX="8" pointY="8" name="GenericPlayerCircle" /> 
+        <MapIcon id="00062" texture="map_markers01" slice="PlayerCircleGenericLite" pointX="8" pointY="8" name="GenericPlayerCircle-Lite" />
+
+        <!-- PIN_TYPE_REPEATABLE_QUEST_OFFER_NPC -->
+        <MapIcon id="00063" texture="map_markers01" slice="QuestAvailable-Repeatable" pointX="15" pointY="15"/>
+
+        <!--  Misc Pin --> 
+        <MapIcon id="00064" texture="map_markers01" slice="NPC-CraftingTrainer" pointX="13" pointY="13" name="Crafting" />
+        <MapIcon id="00065" texture="map_markers01" slice="Blimp-Dwarf" pointX="25" pointY="22" name="Blimp_Dwarf" />
+        <MapIcon id="00066" texture="map_markers01" slice="Blimp-Greenskin" pointX="22" pointY="25" name="Blimp_Greenskin" />
+        
+        <!-- PIN_TYPE_LIVE_EVENT_QUEST_OFFER_NPC -->
+        <MapIcon id="00067" texture="map_markers01" slice="QuestAvailable-LiveEvent" pointX="15" pointY="15" name="QuestAvailable-LiveEvent" />
+        
+        <!-- PIN_TYPE_EQUIPMENT_UPGRADE_NPC -->
+        <MapIcon id="00068" texture="map_markers01" slice="EquipmentUpgrade" pointX="15" pointY="15" name="EquipmentUpgrade" />
+
+        <!-- Scenario Flag Markers 90-99 -->
+        <MapIcon id="00090" texture="map_markers01" slice="FlagNeutral" pointX="13" pointY="16" name="Neutral Icon"/>
+        <MapIcon id="00091" texture="map_markers01" slice="FlagOrder" pointX="13" pointY="16" name="Order Icon"/>
+        <MapIcon id="00092" texture="map_markers01" slice="FlagDestruction" pointX="13" pointY="16" name="Destruction Icon"/>
+        <MapIcon id="00093" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Pending"/>
+        <MapIcon id="00094" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Destruction to Order"/>
+        <MapIcon id="00095" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Neutral to Order"/>
+        <MapIcon id="00096" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Order to Chaos"/>
+        <MapIcon id="00097" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Neutral to Destruction"/>
+        <MapIcon id="00098" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Scenario Open"/>
+        <MapIcon id="00099" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Scenario Closed"/>
+
+        <!-- RvR WayStone/Herdstone Markers -->
+        <MapIcon id="00100" texture="map_markers01" slice="FlagNeutral" pointX="13" pointY="16" name="Neutral Icon"/>
+        <MapIcon id="00101" texture="map_markers01" slice="FlagOrder" pointX="13" pointY="16" name="Order Icon"/>
+        <MapIcon id="00102" texture="map_markers01" slice="FlagDestruction" pointX="13" pointY="16" name="Destruction Icon"/>
+        <MapIcon id="00103" texture="map_markers01" slice="OrderKeep" pointX="20" pointY="21" name="Chaos Keep Icon"/>
+        <MapIcon id="00104" texture="map_markers01" slice="DestructionKeep" pointX="20" pointY="21" name="Empire Keep Icon"/>
+        <MapIcon id="00105" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Empire Spawn Icon"/>
+        <MapIcon id="00106" texture="map_markers01" slice="GenericPlayer" pointX="8" pointY="8" name="Chaos Spawn Icon"/>
+        <MapIcon id="00108" texture="map_markers01" slice="DestructionKeep-UnderAttack" pointX="20" pointY="21" name="Chaos Keep UnderAttack"/>
+        <MapIcon id="00107" texture="map_markers01" slice="OrderKeep-UnderAttack" pointX="20" pointY="21" name="Order Keep UnderAttack"/>
+
+        <!-- RvR Flag Markers -->
+        <MapIcon id="00110" texture="map_markers01" slice="FlagNeutral-Burning" pointX="13" pointY="16" name="Neutral Contested Icon"/>
+        <MapIcon id="00111" texture="map_markers01" slice="FlagOrder-Burning" pointX="13" pointY="16" name="Order Contested Icon"/>
+        <MapIcon id="00112" texture="map_markers01" slice="FlagDestruction-Burning" pointX="13" pointY="16" name="Destruction Contested Icon"/>
+        <MapIcon id="00113" texture="map_markers01" slice="FlagOrder-Locked" pointX="13" pointY="16" name="Destruction Contested Icon"/>
+        <MapIcon id="00114" texture="map_markers01" slice="FlagDestruction-Locked" pointX="13" pointY="16" name="Destruction Contested Icon"/>
+        <MapIcon id="00115" texture="map_markers01" slice="RvR-GenericBanner" pointX="19" pointY="23" name="RVR Generic Banner"/>
+        <MapIcon id="00116" texture="map_markers01" slice="FlagOverlay" pointX="9" pointY="12" name="Flag White Overlay Texture"/>
+        <MapIcon id="00117" texture="map_markers01" slice="FlagOrder-Glowing" pointX="14" pointY="17" name="FlagOrder-Glowing"/>
+        <MapIcon id="00118" texture="map_markers01" slice="FlagDestruction-Glowing" pointX="14" pointY="16" name="FlagDestruction-Glowing"/>
+        <MapIcon id="00119" texture="map_markers01" slice="FlagOrder-LockedAndGlowing" pointX="14" pointY="16" name="FlagOrder-LockedAndGlowing"/>
+        <MapIcon id="00120" texture="map_markers01" slice="FlagDestruction-LockedAndGlowing" pointX="14" pointY="16" name="FlagDestruction-LockedAndGlowing"/>
+        <MapIcon id="00121" texture="map_markers01" slice="FlagNeutral-Locked" pointX="13" pointY="16" name="Destruction Contested Icon"/>
+        <MapIcon id="00122" texture="map_markers01" slice="FlagOrder-Disabled" pointX="13" pointY="16" name="Order Disabled Icon"/>
+        <MapIcon id="00123" texture="map_markers01" slice="FlagDestruction-Disabled" pointX="13" pointY="16" name="Destruction Disabled Icon"/>
+        <MapIcon id="00124" texture="map_markers01" slice="FlagTK" pointX="14" pointY="21" name="Tomb Kings Flag Icon"/>
+        <MapIcon id="00125" texture="map_markers01" slice="FlagTK-Burning" pointX="14" pointY="21" name="Tomb Kings Flag Burning Icon"/>
+
+        <!-- Dwarf Markers 1000-1019 -->
+        <MapIcon id="01002" texture="map_markers01" slice="DwarfTower" pointX="15" pointY="22" name="Dwarf Tower"/>
+        <MapIcon id="01003" texture="map_markers01" slice="DwarfHouse" pointX="18" pointY="24" name="Dwarf House"/>
+        <MapIcon id="01005" texture="map_markers01" slice="DwarfStatue" pointX="14" pointY="35" name="Dwarf Statue"/>
+        <MapIcon id="01006" texture="map_markers01" slice="DwarfTavern" pointX="18" pointY="20" name="Dwarf Tavern"/>
+        <MapIcon id="01007" texture="map_markers01" slice="DwarfIronclad-Right" pointX="33" pointY="25" name="Dwarf Ironclad (Right)"/>
+        <MapIcon id="01008" texture="map_markers01" slice="DwarfIronclad-Left" pointX="33" pointY="25" name="Dwarf Ironclad (Left)"/>
+        <MapIcon id="01009" texture="map_markers01" slice="DwarfTrainStation" pointX="22" pointY="22" name="Dwarf Train Station"/>
+
+        <!-- Orc Markers 1020-1029 -->
+        <MapIcon id="01020" texture="map_markers01" slice="OrcHut" pointX="19" pointY="17" name="Orc Hut/Town"/>
+        <MapIcon id="01021" texture="map_markers01" slice="OrcHut-Small" pointX="17" pointY="18" name="Orc Small Hut"/>
+        <MapIcon id="01022" texture="map_markers01" slice="OrcGateway" pointX="23" pointY="26" name="Orc Gateway"/>
+        <MapIcon id="01023" texture="map_markers01" slice="OrcBarge-Right" pointX="30" pointY="26" name="Orc Barge (Right)"/>
+        <MapIcon id="01024" texture="map_markers01" slice="OrcBarge-Left" pointX="32" pointY="28" name="Orc Barge (Left)"/>
+        <MapIcon id="01025" texture="map_markers01" slice="OrcDragonSkeleton" pointX="28" pointY="22" name="Orc Dragon Skeleton"/>
+        <MapIcon id="01026" texture="map_markers01" slice="BeastmenHerdstone" pointX="21" pointY="22" name="Beastmen Herdstone"/>
+        <MapIcon id="01027" texture="map_markers01" slice="OrcBuilding" pointX="26" pointY="29" name="Orc Building"/>
+
+        <!-- Empire Markers 1030-1039 -->
+        <MapIcon id="01030" texture="map_markers01" slice="EmpireTown" pointX="29" pointY="64" name="Empire Town"/>
+        <MapIcon id="01031" texture="map_markers01" slice="EmpireBuilding" pointX="19" pointY="33" name="Empire Building"/>
+        <MapIcon id="01032" texture="map_markers01" slice="EmpireTower" pointX="16" pointY="47" name="Empire Tower"/>
+        <MapIcon id="01033" texture="map_markers01" slice="EmpireWindmill" pointX="21" pointY="41" name="Empire Windmill"/>
+        <MapIcon id="01034" texture="map_markers01" slice="EmpireMonastary" pointX="23" pointY="43" name="Empire Monastary"/>
+        <MapIcon id="01035" texture="map_markers01" slice="EmpireCastle" pointX="29" pointY="43" name="Empire Castle"/>
+        <MapIcon id="01036" texture="map_markers01" slice="EmpireSigmarStatue" pointX="16" pointY="20" name="Empire Sigmar Statue"/>
+        <MapIcon id="01037" texture="map_markers01" slice="EmpireDock-Left" pointX="31" pointY="22" name="Empire Dock (Left)"/>
+        <MapIcon id="01038" texture="map_markers01" slice="EmpireDock-Right" pointX="28" pointY="20" name="Empire Dock (Right)"/>
+		<MapIcon id="01039" texture="map_markers01" slice="EmpireHamlet" pointX="24" pointY="50" name="Empire Hamlet"/>
+
+        <!-- Chaos Markers 1040-1049 -->
+        <MapIcon id="01040" texture="map_markers01" slice="ChaosNorseTown" pointX="33" pointY="41" name="Norse Town"/>
+        <MapIcon id="01041" texture="map_markers01" slice="ChaosPortal" pointX="22" pointY="25" name="Chaos Portal"/>
+        <MapIcon id="01042" texture="map_markers01" slice="ChaosNorseShip-Right" pointX="24" pointY="36" name="Norse Ship (Right)"/>
+        <MapIcon id="01043" texture="map_markers01" slice="ChaosNorseShip-Left" pointX="28" pointY="36" name="Norse Ship (Left)"/>
+        <MapIcon id="01044" texture="map_markers01" slice="ChaosSymbol" pointX="23" pointY="16" name="Chaos Symbol"/>
+
+        <!-- Warcamp Markers 1050-1059 -->
+        <MapIcon id="01050" texture="map_markers01" slice="WarcampOrc" pointX="21" pointY="21" name="Orc Warcamp"/>
+        <MapIcon id="01051" texture="map_markers01" slice="WarcampDwarf" pointX="20" pointY="23" name="Dwarf Warcamp"/>
+        <MapIcon id="01052" texture="map_markers01" slice="WarcampChaos" pointX="20" pointY="19" name="Chaos Warcamp"/>
+        <MapIcon id="01053" texture="map_markers01" slice="WarcampEmpire" pointX="21" pointY="20" name="Empire Warcamp"/>
+        <MapIcon id="01054" texture="map_markers01" slice="WarcampHighElf" pointX="21" pointY="20" name="High Elf Warcamp"/>
+        <MapIcon id="01055" texture="map_markers01" slice="WarcampDarkElf" pointX="20" pointY="20" name="Dark Elf Warcamp"/>
+
+        <!-- Misc Map Markers 1060-1079 -->
+        <MapIcon id="01060" texture="map_markers01" slice="CaveEntrance-Large-Right" pointX="12" pointY="17" name="Large Cave Entrance (Right)"/>
+        <MapIcon id="01061" texture="map_markers01" slice="CaveEntrance-Large-Left" pointX="15" pointY="16" name="Large Cave Entrance (Left)"/>
+        <MapIcon id="01062" texture="map_markers01" slice="CaveEntrance-Small-Right" pointX="11" pointY="15" name="Small Cave Entrance (Right)"/>
+        <MapIcon id="01063" texture="map_markers01" slice="CaveEntrance-Small-Left" pointX="11" pointY="16" name="Small Cave Entrance (Left)"/>
+        <MapIcon id="01064" texture="map_markers01" slice="Forest" pointX="17" pointY="22" name="Forest/Woods"/>
+        <MapIcon id="01065" texture="map_markers01" slice="Tent" pointX="20" pointY="15" name="Tent"/>
+        <MapIcon id="01066" texture="map_markers01" slice="PeasantHouse" pointX="20" pointY="17" name="Peasant House"/>
+        <MapIcon id="01067" texture="map_markers01" slice="DestroyedTower" pointX="13" pointY="16" name="Destroyed Tower"/>
+        <MapIcon id="01068" texture="map_markers01" slice="SunDial" pointX="15" pointY="12" name="Sun Dial"/>
+        <MapIcon id="01069" texture="map_markers01" slice="GardenField" pointX="23" pointY="16" name="Garden Field"/>
+        <MapIcon id="01070" texture="map_markers01" slice="Graveyard" pointX="18" pointY="19" name="Graveyard"/>
+        <MapIcon id="01071" texture="map_markers01" slice="Tree" pointX="19" pointY="25" name="Tree"/>
+        <MapIcon id="01072" texture="map_markers01" slice="TreasureChest" pointX="23" pointY="17" name="Treasure Chest"/>
+        <MapIcon id="01073" texture="map_markers01" slice="Portal" pointX="18" pointY="19" name="Portal"/>
+        <MapIcon id="01074" texture="map_markers01" slice="Dungeon" pointX="15" pointY="18" name="Dungeon"/>
+        <MapIcon id="01075" texture="map_markers01" slice="GuildHall" pointX="24" pointY="24" name="Guild Hall"/>
+		<MapIcon id="01076" texture="map_markers01" slice="OgreMarker" pointX="30" pointY="22" name="Ogre Marker"/>
+		<MapIcon id="01077" texture="map_markers01" slice="SkavenMarker" pointX="25" pointY="24" name="Skaven Marker"/>
+
+        <!--Major Map Marker Landmarks 1080-1089 -->
+        <MapIcon id="01080" texture="map_markers01" slice="VampireTower" pointX="8" pointY="10" name="Vampire Tower"/>
+        <MapIcon id="01081" texture="map_markers01" slice="GoblinSiegeFactory" pointX="10" pointY="8" name="Goblin Siege Factory"/>
+        <MapIcon id="01082" texture="map_markers01" slice="DoomfistCrator" pointX="10" pointY="8" name="Doomfist Crator"/>
+        <MapIcon id="01083" texture="map_markers01" slice="GatesOfEkrund" pointX="10" pointY="8" name="Gates of Ekrund"/>
+
+        <!--Map Arrow Markers 1090-1094 -->
+        <MapIcon id="01090" texture="map_markers01" slice="NextZoneArrowLeft" pointX="15" pointY="12" name="Next Zone Left Arrow"/>
+        <MapIcon id="01091" texture="map_markers01" slice="NextZoneArrowRight" pointX="15" pointY="12" name="Next Zone Right Arrow"/>
+        <MapIcon id="01092" texture="map_markers01" slice="NextZoneArrowDown" pointX="12" pointY="17" name="Next Zone Down Arrow"/>
+        <MapIcon id="01093" texture="map_markers01" slice="NextZoneArrowUp" pointX="12" pointY="17" name="Next Zone Up Arrow"/>
+
+        <!-- Scenario Markers 1095-1115 -->
+        <MapIcon id="01095" texture="map_markers01" slice="MurderballDestruction" pointX="13" pointY="15" name="Destruction Murderball"/>
+        <MapIcon id="01096" texture="map_markers01" slice="MurderballOrder" pointX="13" pointY="15" name="Order Murderball"/>
+        <MapIcon id="01097" texture="map_markers01" slice="MurderballNeutral" pointX="13" pointY="15" name="Home Murderball"/>
+        <MapIcon id="01098" texture="map_markers01" slice="MurderballNeutral" pointX="13" pointY="15" name="Dropped Murderball"/>
+        <MapIcon id="01099" texture="map_markers01" slice="BombDestruction" pointX="14" pointY="19" name="Destruction Bomb"/>
+        <MapIcon id="01100" texture="map_markers01" slice="BombOrder" pointX="14" pointY="19" name="Order Bomb"/>
+        <MapIcon id="01101" texture="map_markers01" slice="BombNeutral" pointX="14" pointY="19" name="Home Bomb"/>
+        <MapIcon id="01102" texture="map_markers01" slice="BombNeutral" pointX="14" pointY="19" name="Dropped Bomb"/>
+        <MapIcon id="01103" texture="map_markers01" slice="BombDestruction" pointX="14" pointY="19" name="Destruction Generic"/>
+        <MapIcon id="01104" texture="map_markers01" slice="BombOrder" pointX="14" pointY="19" name="Order Generic"/>
+        <MapIcon id="01105" texture="map_markers01" slice="BombNeutral" pointX="14" pointY="19" name="Home Generic"/>
+        <MapIcon id="01106" texture="map_markers01" slice="BombNeutral" pointX="14" pointY="19" name="Dropped Generic"/>
+
+        <!-- General Misc Icons 1116-1129 -->
+        <MapIcon id="01116" texture="map_markers01" slice="CircleMarkerYellow" pointX="10" pointY="10" name="Yellow Circle Marker"/>
+        <MapIcon id="01117" texture="map_markers01" slice="CircleMarkerBlue" pointX="8" pointY="8" name="Blue Circle Marker"/>
+        <MapIcon id="01118" texture="map_markers01" slice="Note" pointX="8" pointY="9" name="Note"/>
+        <MapIcon id="01119" texture="map_markers01" slice="DiamondMarkerSilver-Small" pointX="6" pointY="6" name="Small Silver Diamond Marker"/>
+
+        <!--Quest Outlines 1130-1149 -->
+        <MapIcon id="01130" texture="map_markers01" slice="Circle1" pointX="42" pointY="43" name="Circle 1"/>
+        <MapIcon id="01131" texture="map_markers01" slice="Circle2" pointX="46" pointY="45" name="Circle 2"/>
+        <MapIcon id="01132" texture="map_markers01" slice="Circle3" pointX="52" pointY="48" name="Circle 3"/>
+        <MapIcon id="01133" texture="map_markers01" slice="Circle4" pointX="82" pointY="73" name="Circle 4"/>
+        <MapIcon id="01134" texture="map_markers01" slice="Circle5" pointX="109" pointY="93" name="Circle 5"/>
+        <MapIcon id="01135" texture="map_markers01" slice="Oval1" pointX="25" pointY="41" name="Oval 1"/>
+        <MapIcon id="01136" texture="map_markers01" slice="Oval2" pointX="60" pointY="34" name="Oval 2"/>
+        <MapIcon id="01137" texture="map_markers01" slice="Oval3" pointX="69" pointY="51" name="Oval 3"/>
+        <MapIcon id="01138" texture="map_markers01" slice="Oval4" pointX="94" pointY="52" name="Oval 4"/>
+        <MapIcon id="01139" texture="map_markers01" slice="Oval5" pointX="82" pointY="134" name="Oval 5"/>
+        <MapIcon id="01140" texture="map_markers01" slice="Arrow1" pointX="25" pointY="42" name="Arrow"/>
+        <MapIcon id="01141" texture="map_markers01" slice="Arrow2" pointX="11" pointY="18" name="Small Arrow"/>
+
+        <!--Symbols 1180-1200 -->
+        <MapIcon id="01180" texture="map_markers01" slice="SymbolBalance" pointX="22" pointY="24" name="Symbol Balance"/>
+        <MapIcon id="01181" texture="map_markers01" slice="SymbolHorseshoe" pointX="22" pointY="22" name="Symbol Horseshoe"/>
+        <MapIcon id="01182" texture="map_markers01" slice="SymbolBeerMug" pointX="23" pointY="23" name="Symbol Beer Mug"/>
+        <MapIcon id="01183" texture="map_markers01" slice="SymbolShip" pointX="22" pointY="25" name="Symbol Ship"/>
+        <MapIcon id="01184" texture="map_markers01" slice="SymbolBird" pointX="21" pointY="24" name="Symbol Bird"/>
+        <MapIcon id="01185" texture="map_markers01" slice="SymbolV" pointX="23" pointY="24" name="Symbol V"/>
+
+        <!--High Elf Markers 1201-1250 -->
+        <MapIcon id="01201" texture="map_markers01" slice="HighElfDock-Left" pointX="38" pointY="33" name="High Elf Dock (left)"/>
+        <MapIcon id="01202" texture="map_markers01" slice="HighElfDock-Right" pointX="33" pointY="33" name="High Elf Dock (right)"/>
+        <MapIcon id="01203" texture="map_markers01" slice="HighElfShips-Left" pointX="35" pointY="29" name="High Elf Ships (left)"/>
+        <MapIcon id="01204" texture="map_markers01" slice="HighElfShips-Right" pointX="35" pointY="29" name="High Elf Ships (right)"/>
+        <MapIcon id="01205" texture="map_markers01" slice="HighElfSmallCamp" pointX="18" pointY="13" name="High Elf Small Camp"/>
+        <MapIcon id="01206" texture="map_markers01" slice="HighElfLargeCamp" pointX="24" pointY="22" name="High Elf Large Camp"/>
+        <MapIcon id="01207" texture="map_markers01" slice="HighElfCity" pointX="27" pointY="64" name="High Elf City"/>
+        <MapIcon id="01208" texture="map_markers01" slice="HighElfVillage" pointX="20" pointY="52" name="High Elf Village"/>
+        <MapIcon id="01209" texture="map_markers01" slice="HighElfManor" pointX="23" pointY="50" name="High Elf Manor"/>
+        <MapIcon id="01210" texture="map_markers01" slice="HighElfRuins" pointX="28" pointY="26" name="High Elf Ruins"/>
+        <MapIcon id="01211" texture="map_markers01" slice="HighElfFortification" pointX="29" pointY="36" name="High Elf Fortification"/>
+		<MapIcon id="01212" texture="map_markers01" slice="HighElfMenhir" pointX="13" pointY="26" name="High Elf Menhir"/>
+		<MapIcon id="01213" texture="map_markers01" slice="HighElfShrine" pointX="14" pointY="18" name="High Elf Shrine"/>
+		<MapIcon id="01214" texture="map_markers01" slice="HighElfTower" pointX="18" pointY="70" name="High Elf Tower"/>
+
+        <!--Dark Elf Markers 1251-1300 -->
+        <MapIcon id="01251" texture="map_markers01" slice="DarkElfSmallCamp" pointX="20" pointY="23" name="Dark Elf Small Camp"/>
+        <MapIcon id="01252" texture="map_markers01" slice="DarkElfFortification" pointX="26" pointY="30" name="Dark Elf Fortification"/>
+        <MapIcon id="01253" texture="map_markers01" slice="DarkElfLargeCamp" pointX="22" pointY="28" name="Dark Elf Large Camp"/>
+        <MapIcon id="01254" texture="map_markers01" slice="DarkElfCapturedManor" pointX="25" pointY="54" name="Dark Elf Captured Manor"/>
+        <MapIcon id="01255" texture="map_markers01" slice="DarkElfCapturedVillage" pointX="20" pointY="54" name="Dark Elf Ship Captured Village)"/>
+        <MapIcon id="01256" texture="map_markers01" slice="DarkElfShip-Left" pointX="32" pointY="45" name="Dark Elf Ship (Left)"/>
+        <MapIcon id="01257" texture="map_markers01" slice="DarkElfShip-Right" pointX="29" pointY="47" name="Dark Elf Ship (Right)"/>
+        <MapIcon id="01258" texture="map_markers01" slice="DarkElfBlackArk2" pointX="94" pointY="133" name="Broken"/>
+        <MapIcon id="01259" texture="map_markers01" slice="DarkElfSymbol" pointX="18" pointY="19" name="Dark Elf Landmark"/>
+
+        <!--QuestRVR Markers 1301-1310 -->
+        <MapIcon id="01301" texture="map_markers01" slice="QuestRVRGroup" pointX="15" pointY="15" name="QuestRVRGroup"/>
+        <MapIcon id="01302" texture="map_markers01" slice="QuestRVRGroup-ROLLOVER" pointX="15" pointY="15" name="QuestRVRGroup ROLLOVER"/>
+        <MapIcon id="01303" texture="map_markers01" slice="QuestRVR" pointX="15" pointY="15" name="QuestRVR"/>
+        <MapIcon id="01304" texture="map_markers01" slice="QuestRVR-ROLLOVER" pointX="15" pointY="15" name="QuestRVR ROLLOVER"/>
+        <MapIcon id="01305" texture="map_markers01" slice="QuestRVRkill" pointX="15" pointY="15" name="QuestRVRkill"/>
+        <MapIcon id="01306" texture="map_markers01" slice="QuestRVRkill-ROLLOVER" pointX="15" pointY="15" name="QuestRVRkill ROLLOVER"/>
+
+        <!--PQ LOOT  1311-1320-->
+        <MapIcon id="01311" texture="map_markers01" slice="PQLoot" pointX="20" pointY="21" name="PQLOOT"/>
+        <MapIcon id="01312" texture="map_markers01" slice="PQResetting"  pointX="18" pointY="14" name="PQRESETTING"/>
+        <MapIcon id="01313" texture="map_markers01" slice="PQ" pointX="18" pointY="14" name="PQ"/>
+        <MapIcon id="01314" texture="map_markers01" slice="PQ-Active" pointX="17" pointY="14" name="PQ-Active"/>
+
+        <!--Altdorf City 1400-1425-->
+        <MapIcon id="01400" texture="map_markers01" slice="AltdorfTempleOfSigmar" pointX="52" pointY="67" name="Temple of Sigmar"/>
+        <MapIcon id="01401" texture="map_markers01" slice="AltdorfMassTransit" pointX="23" pointY="19" name="Mass Transit"/>
+        <MapIcon id="01402" texture="map_markers01" slice="AltdorfEmperorsPalace" pointX="40" pointY="83" name="The Emperor's Palace"/>
+        <MapIcon id="01403" texture="map_markers01" slice="AltdorfBrightWizCollege" pointX="38" pointY="62" name="Bright Wizard College"/>
+
+        <!--Inevitable City 1426-1451-->
+        <MapIcon id="01426" texture="map_markers01" slice="InevitableCityMonolith" pointX="27" pointY="38" name="The Monolith"/>
+        <MapIcon id="01427" texture="map_markers01" slice="InevitableCitySoulForge" pointX="32" pointY="29" name="The Soul Forge"/>
+        <MapIcon id="01428" texture="map_markers01" slice="InevitableCitySacellum" pointX="75" pointY="76" name="The Sacellum"/>
+        <MapIcon id="01429" texture="map_markers01" slice="InevitableCityBreakingGrounds" pointX="42" pointY="20" name="The Breaking Grounds"/>
+        <MapIcon id="01430" texture="map_markers01" slice="InevitableCityWyvernsRoost" pointX="40" pointY="34" name="Wyverns Roost"/>
+        <MapIcon id="01431" texture="map_markers01" slice="InevitableCityViperPit" pointX="39" pointY="34" name="The Viper Pit"/>
+        <MapIcon id="01432" texture="map_markers01" slice="InevitableCityEternalCitadel" pointX="31" pointY="30" name="Eternal Citadel"/>
+        
+        <!--Convoy Icons (bags) 1452-1459-->
+        <MapIcon id="01452" texture="map_markers01" slice="Convoys-Order-01" pointX="16" pointY="17" name="Order Convoy"/>
+        <MapIcon id="01453" texture="map_markers01" slice="Convoys-Destruction-01" pointX="16" pointY="17" name="Destruction Convoy"/>
+        <MapIcon id="01454" texture="map_markers01" slice="Convoys-Order-02" pointX="16" pointY="17" name="Order Convoy (Attacked)"/>
+        <MapIcon id="01455" texture="map_markers01" slice="Convoys-Destruction-02" pointX="16" pointY="17" name="Destruction Convoy (Attacked)"/>
+
+        <!--RVR Keep Information 1500-1600-->
+        <MapIcon id="01500" texture="map_markers01" slice="Keep-Dominated" pointX="22" pointY="23" name="Keep-Dominated"/>
+        <MapIcon id="01501" texture="map_markers01" slice="KeepDoor" pointX="14" pointY="14" name="KeepDoor"/>
+        <MapIcon id="01502" texture="map_markers01" slice="KeepDefended-Yellow" pointX="19" pointY="26" name="KeepDefended-Yellow"/>
+        <MapIcon id="01503" texture="map_markers01" slice="KeepDefended-Orange" pointX="19" pointY="26" name="KeepDefended-Orange"/>
+        <MapIcon id="01504" texture="map_markers01" slice="KeepDefended-Red" pointX="19" pointY="26" name="KeepDefended-Red"/>
+        <MapIcon id="01505" texture="map_markers01" slice="ProgressBarAlpha" pointX="20" pointY="4" name="Progress Bar Unfilled"/>
+        <MapIcon id="01506" texture="map_markers01" slice="ProgressBarTintable" pointX="20" pointY="4" name="Progress Bar Filled"/>
+        <MapIcon id="01507" texture="map_markers01" slice="KeepDifficulty-1-star" pointX="22" pointY="4" name="KeepDifficulty-1-star"/>
+        <MapIcon id="01508" texture="map_markers01" slice="KeepDifficulty-2-star" pointX="22" pointY="4" name="KeepDifficulty-2-star"/>
+        <MapIcon id="01509" texture="map_markers01" slice="KeepDifficulty-3-star" pointX="22" pointY="4" name="KeepDifficulty-3-star"/>
+        <MapIcon id="01510" texture="map_markers01" slice="KeepDifficulty-4-star" pointX="22" pointY="4" name="KeepDifficulty-4-star"/>
+        <MapIcon id="01511" texture="map_markers01" slice="KeepDifficulty-5-star" pointX="22" pointY="4" name="KeepDifficulty-5-star"/>
+        
+        <!-- Numbered Circles 1700-1800 -->
+        <MapIcon id="01700" texture="map_markers01" slice="OrderNumberedCircle01" pointX="15" pointY="15" name="OrderNumberedCircle01"/>
+        <MapIcon id="01701" texture="map_markers01" slice="OrderNumberedCircle02" pointX="15" pointY="15" name="OrderNumberedCircle02"/>
+        <MapIcon id="01702" texture="map_markers01" slice="OrderNumberedCircle03" pointX="15" pointY="15" name="OrderNumberedCircle03"/>
+        <MapIcon id="01703" texture="map_markers01" slice="OrderNumberedCircle04" pointX="15" pointY="15" name="OrderNumberedCircle04"/>
+        <MapIcon id="01704" texture="map_markers01" slice="OrderNumberedCircle05" pointX="15" pointY="15" name="OrderNumberedCircle05"/>
+        <MapIcon id="01705" texture="map_markers01" slice="OrderNumberedCircle06" pointX="15" pointY="15" name="OrderNumberedCircle06"/>
+        <MapIcon id="01706" texture="map_markers01" slice="OrderNumberedCircle07" pointX="15" pointY="15" name="OrderNumberedCircle07"/>
+        <MapIcon id="01707" texture="map_markers01" slice="OrderNumberedCircle08" pointX="15" pointY="15" name="OrderNumberedCircle08"/>
+        <MapIcon id="01708" texture="map_markers01" slice="OrderNumberedCircle09" pointX="15" pointY="15" name="OrderNumberedCircle09"/>
+
+        <MapIcon id="01709" texture="map_markers01" slice="DestructionNumberedCircle01" pointX="15" pointY="15" name="DestructionNumberedCircle01"/>
+        <MapIcon id="01710" texture="map_markers01" slice="DestructionNumberedCircle02" pointX="15" pointY="15" name="DestructionNumberedCircle02"/>
+        <MapIcon id="01711" texture="map_markers01" slice="DestructionNumberedCircle03" pointX="15" pointY="15" name="DestructionNumberedCircle03"/>
+        <MapIcon id="01712" texture="map_markers01" slice="DestructionNumberedCircle04" pointX="15" pointY="15" name="DestructionNumberedCircle04"/>
+        <MapIcon id="01713" texture="map_markers01" slice="DestructionNumberedCircle05" pointX="15" pointY="15" name="DestructionNumberedCircle05"/>
+        <MapIcon id="01714" texture="map_markers01" slice="DestructionNumberedCircle06" pointX="15" pointY="15" name="DestructionNumberedCircle06"/>
+        <MapIcon id="01715" texture="map_markers01" slice="DestructionNumberedCircle07" pointX="15" pointY="15" name="DestructionNumberedCircle07"/>
+        <MapIcon id="01716" texture="map_markers01" slice="DestructionNumberedCircle08" pointX="15" pointY="15" name="DestructionNumberedCircle08"/>
+        <MapIcon id="01717" texture="map_markers01" slice="DestructionNumberedCircle09" pointX="15" pointY="15" name="DestructionNumberedCircle09"/>
+
+        <!-- RoR RvR Icons 1800-1900 -->
+        <MapIcon id="01800" texture="map_markers01" slice="RamOrder" pointX="19" pointY="17" name="RamOrder"/>
+        <MapIcon id="01801" texture="map_markers01" slice="RamDestruction" pointX="19" pointY="17" name="RamDestruction"/>
+		
+		<!-- RoR Dungeon Icons 2000-2099 -->
+        <MapIcon id="02001" texture="map_markers01" slice="DungeonHuntersVale" pointX="41" pointY="25" name="DungeonHuntersVale"/>
+		<MapIcon id="02002" texture="map_markers01" slice="DungeonGunbad" pointX="34" pointY="38" name="DungeonGunbad"/>
+		<MapIcon id="02003" texture="map_markers01" slice="DungeonBastionStair" pointX="30" pointY="35" name="DungeonBastionStair"/>
+		<MapIcon id="02004" texture="map_markers01" slice="DungeonDragonbackPass" pointX="18" pointY="27" name="DungeonDragonbackPass"/>
+		
+		<!-- RoR City Icons 2100-2199 -->
+        <MapIcon id="02100" texture="map_markers01" slice="KarazAKarakFeastHall" pointX="36" pointY="26" name="KarazAKarakFeastHall"/>
+		<MapIcon id="02101" texture="map_markers01" slice="KarazAKarakBank" pointX="18" pointY="16" name="KarazAKarakBank"/>
+		<MapIcon id="02102" texture="map_markers01" slice="KarazAKarakLift" pointX="27" pointY="25" name="KarazAKarakLift"/>
+		<MapIcon id="02103" texture="map_markers01" slice="KarazAKarakFlightMaster" pointX="0" pointY="50" name="KarazAKarakFlightMaster"/>
+		<MapIcon id="02104" texture="map_markers01" slice="KarazAKarakThrone" pointX="29" pointY="20" name="KarazAKarakThrone"/>
+		<MapIcon id="02105" texture="map_markers01" slice="KarazAKarakAuctionHouse" pointX="27" pointY="20" name="KarazAKarakAuctionHouse"/>
+		<MapIcon id="02106" texture="map_markers01" slice="KarazAKarakForge" pointX="28" pointY="22" name="KarazAKarakAuctionHouse"/>
+		<MapIcon id="02107" texture="map_markers01" slice="KarazAKarakWarRoom" pointX="20" pointY="25" name="KarazAKarakWarRoom"/>
+		<MapIcon id="02108" texture="map_markers01" slice="KarazAKarakTavern" pointX="34" pointY="26" name="KarazAKarakTavern"/>
+		<MapIcon id="02109" texture="map_markers01" slice="KarazAKarakTrainStation" pointX="39" pointY="29" name="KarazAKarakTrainStation"/>
+		<MapIcon id="02110" texture="map_markers01" slice="KarazAKarakEngineers" pointX="34" pointY="34" name="KarazAKarakEngineers"/>
+		<MapIcon id="02111" texture="map_markers01" slice="KarazAKarakMineJunction" pointX="38" pointY="29" name="KarazAKarakMineJunction"/>
+		<MapIcon id="02112" texture="map_markers01" slice="KarazAKarakCrypts" pointX="24" pointY="31" name="KarazAKarakCrypts"/>
+		<MapIcon id="02113" texture="map_markers01" slice="KarazAKarakCannonFoundry" pointX="48" pointY="22" name="KarazAKarakCannonFoundry"/>
+		<MapIcon id="02114" texture="map_markers01" slice="KarazAKarakWarriorsStand" pointX="29" pointY="30" name="KarazAKarakWarriorsStand"/>
+		<MapIcon id="02115" texture="map_markers01" slice="KarazAKarakLibrary" pointX="30" pointY="20" name="KarazAKarakLibrary"/>
+		<MapIcon id="02116" texture="map_markers01" slice="KarazAKarakTrainers" pointX="26" pointY="19" name="KarazAKarakTrainers"/>
+		<MapIcon id="02117" texture="map_markers01" slice="KarakEightPeaksTempleOfGork" pointX="18" pointY="28" name="KarakEightPeaksTempleOfGork"/>
+		<MapIcon id="02118" texture="map_markers01" slice="KarakEightPeaksPortalDown" pointX="16" pointY="31" name="KarakEightPeaksPortalDown"/>
+		<MapIcon id="02119" texture="map_markers01" slice="KarakEightPeaksArena" pointX="29" pointY="29" name="KarakEightPeaksArena"/>
+		<MapIcon id="02120" texture="map_markers01" slice="KarakEightPeaksThroneRoom" pointX="30" pointY="30" name="KarakEightPeaksThroneRoom"/>
+		<MapIcon id="02121" texture="map_markers01" slice="KarakEightPeaksMine" pointX="22" pointY="22" name="KarakEightPeaksMine"/>
+		<MapIcon id="02122" texture="map_markers01" slice="KarakEightPeaksPenz" pointX="26" pointY="22" name="KarakEightPeaksPenz"/>
+		<MapIcon id="02123" texture="map_markers01" slice="KarakEightPeaksWeaponzHall" pointX="33" pointY="19" name="KarakEightPeaksWeaponzHall"/>
+		<MapIcon id="02124" texture="map_markers01" slice="KarakEightPeaksHammerinHall" pointX="30" pointY="22" name="KarakEightPeaksHammerinHall"/>
+		<MapIcon id="02125" texture="map_markers01" slice="KarakEightPeaksShiniesHall" pointX="26" pointY="21" name="KarakEightPeaksShiniesHall"/>
+		<MapIcon id="02126" texture="map_markers01" slice="KarakEightPeaksPortalUp" pointX="16" pointY="21" name="KarakEightPeaksPortalUp"/>
+		<MapIcon id="02127" texture="map_markers01" slice="KarakEightPeaksRatbreakerStand" pointX="32" pointY="23" name="KarakEightPeaksRatbreakerStand"/>
+		<MapIcon id="02128" texture="map_markers01" slice="KarakEightPeaksTrainers" pointX="23" pointY="23" name="KarakEightPeaksTrainers"/>
+		<MapIcon id="02129" texture="map_markers01" slice="KarakEightPeaksBank" pointX="25" pointY="23" name="KarakEightPeaksBank"/>
+		
+    </Assets>
+</Interface>

@@ -1,0 +1,137 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/AuctionWindowSellControls.lua" />
+    </Scripts>
+	<Windows>
+
+        <Window name="AuctionSellControls" >
+            <Windows>
+                
+                <Window name="$parentItem">
+                    <Size>
+                        <AbsPoint x="265" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentImage" inherits="EA_Button_DefaultIconFrame" handleinput="true" draganddrop="true">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonDown" function="AuctionWindowSellControls.ItemSlotLButtonDown" />
+                                <EventHandler event="OnLButtonUp" function="AuctionWindowSellControls.ItemSlotLButtonUp" />
+                                <EventHandler event="OnRButtonUp" function="AuctionWindowSellControls.ItemSlotRButtonUp" />
+                                <EventHandler event="OnMouseOver" function="AuctionWindowSellControls.ItemSlotMouseOver" />
+                            </EventHandlers>
+                        </Button>
+                        <Label name="$parentName" inherits="EA_Label_DefaultText" textalign="leftcenter" maxchars="80" autoresize="false" handleinput="false">
+                            <Size>
+                                <AbsPoint x="200" y="55" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentImage">
+                                    <AbsPoint x="10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+                <!-- Buy Out Price -->
+                <Label name="$parentBuyOutPriceHeader" inherits="EA_Label_DefaultText" textalign="center">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemName">
+                            <AbsPoint x="5" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentBuyOutPrice" inherits="EditableMoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentBuyOutPriceHeader">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Vendor Price -->
+                <Label name="$parentVendorPriceHeader" inherits="EA_Label_DefaultText" textalign="center" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="125" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomleft" relativeTo="$parentBuyOutPriceHeader">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentVendorPrice" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentVendorPriceHeader">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Deposit -->
+                <Label name="$parentDepositHeader" inherits="EA_Label_DefaultText" textalign="center" autoresize="true" autoresizewidth="false">
+                    <Size>
+                        <AbsPoint x="125" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentVendorPrice">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentDepositPrice" inherits="MoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDepositHeader">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Restriction Type -->
+                <ComboBox name="$parentRestrictionComboBox" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentVendorPriceHeader">
+                            <AbsPoint x="25" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+
+                <Button name="$parentCreateButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindowSellControls.Create"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentClearButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCreateButton" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindowSellControls.Clear"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+        
+	</Windows>
+</Interface>

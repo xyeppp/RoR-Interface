@@ -1,0 +1,80 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+   <Scripts>
+      <Script file="guildlog.lua" />
+   </Scripts>
+   
+   
+   <Windows>
+    <!-- Main Window Stuff here -->
+        <Window name="GuildLogWindow" sticky="false" layer="default" movable="true" popable="true" handleinput="true" warnOnTextCropped="false">
+            <Size>
+                <AbsPoint x="700" y="300" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="Root">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+			
+						<Window name="$parentTitleBar" inherits="EA_TitleBar_Default" autoresize="false" textalign="right"/>
+
+				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+					<EventHandlers><EventHandler event="OnLButtonUp" function="GuildLog.OnLButtonUpClose" /></EventHandlers>
+				</Button> 	
+	   	
+				<DynamicImage name="$parentCornerImage" inherits="EA_Default_GuildImage"/>
+		
+				<FullResizeImage name="$parentWindowBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background">	
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="2" y="30" /></Anchor>
+					<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="-2" y="0" /></Anchor></Anchors>
+					<TintColor r="0" g="0" b="0" a="255"/>
+                </FullResizeImage>					
+
+				<Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" sticky="false" >
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="28" /></Anchor><Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+				</Window>	
+
+		           <LogDisplay name="$parentLogDisplay" font="font_clear_small_bold" scrollbar="$parentScrollbar" autoHideScrollBar="true" scrollbarPosition="right" background="EA_Window_DefaultFrame" textFadeTime="0" maxchars="16384">
+			            <EventHandlers>
+											 
+								<EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+				                <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+			 
+				        </EventHandlers>			
+				   <Size>
+                    <AbsPoint x="700" y="300" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="12" y="28" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                      <AbsPoint x="-6" y="-8" />
+                    </Anchor>
+                  </Anchors>
+                  <Windows>
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain">
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topleft">
+                          <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                      </Anchors>
+                    </VerticalScrollbar>
+                  </Windows>
+                </LogDisplay>
+								
+            </Windows>
+
+        </Window>
+
+   </Windows>
+   
+</Interface>
+
+
+
+
+
+

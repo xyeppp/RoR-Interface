@@ -1,0 +1,19 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/BlackOrc.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_BlackOrcResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="76" y="75" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" texture="EA_Career_BO_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="118" y="85" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

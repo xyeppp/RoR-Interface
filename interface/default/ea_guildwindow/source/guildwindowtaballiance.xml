@@ -1,0 +1,484 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabAlliance.lua"/>
+  </Scripts>
+  
+  <Windows>
+  
+    <Button name="EA_Template_AllianceSortButton" inherits="EA_Button_DefaultListSort">
+        <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpSortButton" />
+        </EventHandlers>
+    </Button>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabAllianceSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket"/>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket"/>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildWindowTabAlliance.Initialize"/>
+        <EventHandler event="OnShutdown" function="GuildWindowTabAlliance.Shutdown"/>
+      </EventHandlers>
+
+      
+      <Windows>
+
+        <!-- This Window is a parent for all the windows that appear if the Guild is in an Alliance. -->
+        <Window name="$parentInAlliance">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+          </Anchors>
+          <Windows>
+            <!-- Alliance Name -->
+            <Label name="$parentName" font="font_guild_MP_R_23" maxchars="35" textalign="center" autoresize="false" popable="false">
+              <Size>
+                <AbsPoint x="350" y="40" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Color r="226" g="216" b="45" a="255"/>
+              <!-- DefaultColor.YELLOW = { r=226, g=216, b=45  } -->
+            </Label>
+            
+			<Label name="$parentTotalOnline" maxchars="32" inherits="EA_Label_ChatText" textalign="rightcenter" >
+                <Size>
+                    <AbsPoint x="350" y="40"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                        <AbsPoint x="-10" y="0" />
+                    </Anchor>
+                </Anchors>
+                <Color r="255" g="255" b="255" />
+            </Label>
+            
+            <Button name="$parentShowGuildCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                        <AbsPoint x="15" y="10"/>
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpShowGuildCheckBox" />
+                </EventHandlers>
+            </Button>
+            
+            <Label name="$parentShowGuildHeader" font="font_guild_MP_R_17" maxchars="32" textalign="leftcenter" autoresize="false" popable="false">
+                <Size>
+                    <AbsPoint x="150" y="32" />
+                </Size>
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentShowGuildCheckBox">
+                        <AbsPoint x="5" y="0" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+            
+            <Button name="$parentMemberNameSortButton" inherits="EA_Template_AllianceSortButton" textalign="leftcenter" id="1">
+                <Size>
+                    <AbsPoint x="145" y="30" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                        <AbsPoint x="10" y="40" />
+                    </Anchor>
+                </Anchors>
+            </Button>
+
+            <Button name="$parentRankSortButton" inherits="EA_Template_AllianceSortButton" textalign="center" textAutoFitMinScale=".5" id="2">
+                <Size>
+                    <AbsPoint x="150" y="30" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="topleft" relativeTo="$parentMemberNameSortButton">
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpSortButton" />
+                    <EventHandler event="OnMouseOver" function="GuildWindowTabAlliance.OnMouseOverColumnHeaderAllianceMemberRank" />
+                </EventHandlers>
+            </Button>
+
+            <Button name="$parentGuildSortButton" inherits="EA_Template_AllianceSortButton" textalign="center" textAutoFitMinScale=".5" id="3">
+                <Size>
+                    <AbsPoint x="180" y="30" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankSortButton">
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                </Anchors>
+            </Button>
+            
+            <!-- Members ListBox -->
+            <ListBox name="$parentListboxMembers" rowdef="AllianceWindowRow" scrollbar="EA_ScrollBar_DefaultVerticalChain" visiblerows="18" rowcount="100" rowspacing="0">
+              <Size>
+                <AbsPoint x="475" y="470" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMemberNameSortButton" >
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <ListData table="GuildWindowTabAlliance.guildsListbox">
+                <ListColumns>
+                  <ListColumn windowname="Name"               variable="name"               format="wstring"/>
+                  <ListColumn windowname="Guild"              variable="guildName"          format="wstring"/>
+                  <ListColumn windowname="AllianceMemberRankTitle" variable="allianceMemberRankTitle" format="wstring"/>
+                </ListColumns>
+              </ListData>
+            </ListBox>
+            
+            <!-- Kick Poll Overview Info -->
+            <DynamicImage name="$parentKickPollIcon" texture="EA_Guild" slice="boot" textureScale="1.0" handleinput="false" layer="background">
+                <Size>
+                    <AbsPoint x="29" y="25" />
+                </Size>
+                <Anchors>
+                    <Anchor point="left" relativePoint="right" relativeTo="$parentKickPollCount">
+                        <AbsPoint x="-7" y="0" />
+                    </Anchor>
+                </Anchors>
+            </DynamicImage>
+            
+            <Label name="$parentKickPollCount" maxchars="256" inherits="EA_Label_ChatText" textalign="leftcenter" handleinput="false">
+                <Size>
+                    <AbsPoint x="350" y="24"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentAlliedGuilds">
+                        <AbsPoint x="0" y="-5" />
+                    </Anchor>
+                </Anchors>
+                <Color r="255" g="255" b="255" />
+            </Label>
+            
+            <!-- Allied Guilds -->
+            <ScrollWindow name="$parentAlliedGuilds" childscrollwindow="GWAllianceInAllianceAlliedGuildsScrollChild" scrollbar="GWAllianceInAllianceAlliedGuildsScrollbar" lineheight="18">
+                <Size>
+                    <AbsPoint x="419" y="470" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="topleft" relativeTo="$parentListboxMembers">
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                </Anchors>
+                <Windows>
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                        <Size>
+                            <AbsPoint x="20" y="400"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="topright" relativePoint="topright">
+                                <AbsPoint x="4" y="0"/>
+                            </Anchor>
+                        </Anchors>
+                    </VerticalScrollbar>
+                    <Window name="$parentScrollChild">
+                        <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" >
+                                <AbsPoint x="0" y="0" />
+                            </Anchor>
+                            <Anchor point="topright" relativePoint="topright" >
+                                <AbsPoint x="-15" y="0" />
+                            </Anchor>
+                        </Anchors>
+                        <Windows>
+                        
+                        </Windows>
+                    </Window>
+                </Windows>
+            </ScrollWindow>
+
+
+            <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                <Size>
+                    <AbsPoint x="0" y="75" />
+                </Size>
+            </Window>
+
+            <Button name="$parentLeaveAllianceButton" inherits="EA_Button_DefaultResizeable" >
+              <Size>
+                <AbsPoint x="175" y="39" />
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+                  <AbsPoint x="-20" y="7"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpLeaveAllianceButton" />
+              </EventHandlers>
+            </Button>
+
+            <Button name="$parentJoinAllianceButton" inherits="EA_Button_DefaultResizeable" >
+              <Size>
+                <AbsPoint x="175" y="39" />
+              </Size>
+              <Anchors>
+                <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+                  <AbsPoint x="20" y="7"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpJoinAllianceButton" />
+              </EventHandlers>
+            </Button>
+
+            <!-- Join Alliance With Guild Leader Header-->
+            <Label name="$parentJoinAllianceWithGuildLeaderHeader" font="font_guild_MP_R_19" maxchars="128" textalign="leftcenter" autoresizewidth="true" autoresize="false" popable="false">
+              <Size>
+                <AbsPoint x="550" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="left" relativePoint="left" relativeTo="$parentJoinAllianceButton">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <!-- <Color r="226" g="216" b="45" a="255"/> DefaultColor.YELLOW = { r=226, g=216, b=45  } -->
+            </Label>
+
+            <!-- Join Alliance With Guild Leader Edit Box-->
+            <FullResizeImage name="$parentJoinAllianceWithGuildLeaderBackground" inherits="EA_FullResizeImage_BlackTransparent" layer="background">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentJoinAllianceWithGuildLeaderEditBox"/>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentJoinAllianceWithGuildLeaderEditBox"/>
+              </Anchors>
+            </FullResizeImage>
+            <EditBox name="$parentJoinAllianceWithGuildLeaderEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="24" taborder="1" textalign="leftcenter">
+              <Size>
+                <AbsPoint x="350" y="34"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentJoinAllianceWithGuildLeaderHeader">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="GuildWindowTabAlliance.OnKeyEnterJoinAllianceEditBox" />
+                <EventHandler event="OnKeyEscape" function="GuildWindowTabAlliance.OnKeyEscapeJoinAllianceEditBox" />
+              </EventHandlers>
+            </EditBox>
+            
+          </Windows>
+        </Window>
+        <!-- End of InAlliance -->
+
+        <!-- This Window is a parent for all the windows that appear if the Guild is NOT in an Alliance. -->
+        <Window name="$parentNotInAlliance">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+          </Anchors>
+          <Windows>
+            <!-- How to Form An Alliance -->
+            <Label name="$parentFormAllianceInstructions" font="font_guild_MP_R_23" maxchars="256" textalign="left" autoresize="false" wordwrap="true" popable="false">
+              <Size>
+                <AbsPoint x="550" y="128" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                  <AbsPoint x="0" y="50" />
+                </Anchor>
+              </Anchors>
+              <Color r="226" g="216" b="45" a="255"/>
+              <!-- DefaultColor.YELLOW = { r=226, g=216, b=45  } -->
+            </Label>
+
+            <!-- Alliance Name Header-->
+            <Label name="$parentAllianceNameHeader" font="font_guild_MP_R_19" maxchars="128" textalign="leftcenter" autoresize="false" popable="false">
+              <Size>
+                <AbsPoint x="550" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFormAllianceInstructions">
+                  <AbsPoint x="0" y="25" />
+                </Anchor>
+              </Anchors>
+              <!-- <Color r="226" g="216" b="45" a="255"/> DefaultColor.YELLOW = { r=226, g=216, b=45  } -->
+            </Label>
+            
+            <!-- Alliance Name Edit Box-->
+            <EditBox name="$parentAllianceNameEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="24" taborder="1" textalign="leftcenter">
+              <Size>
+                <AbsPoint x="400" y="34"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAllianceNameHeader">
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </EditBox>
+
+            <!-- Guild Leader Name Header-->
+            <Label name="$parentGuildLeaderNameHeader" font="font_guild_MP_R_19" maxchars="256" textalign="leftcenter" autoresize="false" popable="false" wordwrap="true">
+              <Size>
+                <AbsPoint x="550" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAllianceNameEditBox">
+                  <AbsPoint x="0" y="25" />
+                </Anchor>
+              </Anchors>
+              <!-- <Color r="226" g="216" b="45" a="255"/> DefaultColor.YELLOW = { r=226, g=216, b=45  } -->
+            </Label>
+
+            <!-- Alliance Guild Leader Edit Box-->
+            <EditBox name="$parentAllianceGuildLeaderEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="24" taborder="2" textalign="leftcenter">
+              <Size>
+                <AbsPoint x="400" y="34"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildLeaderNameHeader">
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+            </EditBox>
+            
+            <!-- Form Alliance Button -->
+            <Button name="$parentFormAllianceButton" inherits="EA_Button_DefaultResizeable" >
+              <Size>
+                <AbsPoint x="200" y="39" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAllianceGuildLeaderEditBox">
+                  <AbsPoint x="0" y="35"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnLButtonUpFormAllianceButton" />
+              </EventHandlers>
+            </Button>
+            
+          </Windows>
+        </Window> <!-- End of NotInAlliance-->
+        
+      </Windows>
+    </Window>    <!-- end GuildWindowTabAllianceSocket Window -->
+    
+    <Window name="EA_AllianceKickPollWindow" movable="true" layer="default" savesettings="false">
+        <Size>
+            <AbsPoint x="510" y="320" />
+        </Size>
+        <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="" />
+        </Anchors>
+        <Windows>
+            <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+            <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+            <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnCloseKickPollWindow" />
+                </EventHandlers>
+            </Button>
+            
+            <Label name="$parentSubjectName" maxchars="35" inherits="EA_Label_DefaultText" textalign="leftcenter" ellipsisOnCrop="true" warnOnTextCropped="false" handleinput="false">
+                <Size>
+                    <AbsPoint x="300" y="30"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                        <AbsPoint x="45" y="50"/>
+                    </Anchor>
+                </Anchors>
+            </Label>
+            
+            <Label name="$parentInfoText" maxchars="256" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" handleinput="false">
+                <Size>
+                    <AbsPoint x="420" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubjectName">
+                        <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Label>
+            
+            <Button name="$parentVoteYesButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                    <AbsPoint x="180" y="39" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfoText">
+                        <AbsPoint x="-10" y="20"/>
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnKickPollVoteYesButton" />
+                </EventHandlers>
+            </Button>
+            
+            <Label name="$parentYesTally" maxchars="64" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" handleinput="false">
+                <Size>
+                    <AbsPoint x="240" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVoteYesButton">
+                        <AbsPoint x="25" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Label>
+            
+            <Button name="$parentVoteNoButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                    <AbsPoint x="180" y="39" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentVoteYesButton">
+                        <AbsPoint x="0" y="5"/>
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnKickPollVoteNoButton" />
+                </EventHandlers>
+            </Button>
+            
+            <Label name="$parentNoTally" maxchars="64" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" handleinput="false">
+                <Size>
+                    <AbsPoint x="240" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVoteNoButton">
+                        <AbsPoint x="25" y="0"/>
+                    </Anchor>
+                </Anchors>
+            </Label>
+            
+            <Button name="$parentCancelPollButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                    <AbsPoint x="180" y="39" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentVoteNoButton">
+                        <AbsPoint x="0" y="5"/>
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="GuildWindowTabAlliance.OnKickPollCancelPollButton" />
+                </EventHandlers>
+            </Button>
+            
+            <Label name="$parentYourVoteText" maxchars="256" inherits="EA_Label_ChatText" textalign="leftcenter" wordwrap="false" handleinput="false">
+                <Size>
+                    <AbsPoint x="420" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCancelPollButton">
+                        <AbsPoint x="10" y="10"/>
+                    </Anchor>
+                </Anchors>
+            </Label>
+        </Windows>
+    </Window>
+  </Windows>
+  
+</Interface>

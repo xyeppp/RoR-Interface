@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+    <Windows>
+
+        <Window name="OneButtonDlg" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="1024" y="768" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="DialogManager.OnOneButtonDlgButton1" />
+                <EventHandler event="OnLButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnRButtonDown" function="DialogManager.OnClickError" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBox">
+                    <Size>
+                        <AbsPoint x="400" y="164" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true" autoresize="true">
+                            <Size>
+                                <AbsPoint x="380" y="100" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                        <Button name="$parentButton1" inherits="EA_Button_DefaultResizeable">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentText">
+                                    <AbsPoint x="0" y="10"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnOneButtonDlgButton1" />
+                            </EventHandlers>
+                        </Button>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="OneButtonDlg1" inherits="OneButtonDlg" id="1"/>
+        <Window name="OneButtonDlg2" inherits="OneButtonDlg" id="2"/>
+        <Window name="OneButtonDlg3" inherits="OneButtonDlg" id="3"/>
+        <Window name="OneButtonDlg4" inherits="OneButtonDlg" id="4"/>
+        <Window name="OneButtonDlg5" inherits="OneButtonDlg" id="5"/>
+
+    </Windows>
+</Interface>

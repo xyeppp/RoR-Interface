@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/IntroDialogUiProfileWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_UiProfileIntroDialog" movable="true" layer="popup" savesettings="false" >
+            <Size>
+                <AbsPoint x="600" y="400" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_UiProfileIntroDialog.Initialize" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileIntroDialog.OnCancelButton" />
+                    </EventHandlers>
+                </Button>>
+
+                <Label name="$parentInstructions" font="font_chat_text"  wordwrap="true" autoresize="false" textAutoFitMinScale="0.75"  textalign="center"  >
+                    <Size>
+                        <AbsPoint x="550" y="150" />
+                    </Size> 
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+
+                <FullResizeImage name="$parentManageWindowBackground" inherits="EA_FullResizeImage_TanBorder"  >
+                    <Size>
+                        <AbsPoint x="550" y="110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentManageWindowGearImage" inherits="EA_Default_CustomizeUIImage" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentManageWindowBackground">
+                            <AbsPoint x="-10" y="-14" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentInstructions2" font="font_chat_text"  wordwrap="true" autoresize="false" textAutoFitMinScale="0.75"  textalign="leftcenter"  >
+                    <Size>
+                        <AbsPoint x="570" y="150" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentManageWindowBackground">
+                            <AbsPoint x="120" y="10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentManageWindowBackground">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+                <!--Buttons-->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable" >                 
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="-75" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileIntroDialog.OnOkayButton"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="75" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileIntroDialog.OnCancelButton"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

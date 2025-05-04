@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/KeyMappingWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <VerticalScrollbar name="KeyMappingVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnVertScrollLButtonUp" />
+            </EventHandlers>
+        </VerticalScrollbar>
+
+        <Button name="EA_Button_Binding" inherits="EA_Button_DefaultResizeable" font="font_chat_text">
+            <Size>
+                <AbsPoint x="220" y="39" />
+            </Size>
+            <TextColors>
+                <Normal         r="255" g="255" b="255" a="255" />
+                <NormalHighlit  r="255" g="255" b="255" a="255" />
+                <Pressed        r="255" g="255" b="255" a="255" />
+                <PressedHighlit r="255" g="255" b="255" a="255" />
+                <Disabled       r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+        <Button name="KeyMappingCategoryTabButtonTemplate" inherits="EA_Button_Tab">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnTabSelected" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+        <Window name="KeyMappingActionRow">
+            <Size>
+                <AbsPoint x="830" y="39"/>
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Size>
+                        <AbsPoint x="830" y="39"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentName" maxchars="80" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="260" y="39"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="9"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentBinding1" inherits="EA_Button_Binding" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5" y="-9" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnLButtonBinding1" />
+                        <EventHandler event="OnEscapeProcessed" function="KeyMappingWindow.OnExitBindingMode" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentBinding2" inherits="EA_Button_Binding" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentBinding1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnLButtonBinding2" />
+                        <EventHandler event="OnEscapeProcessed" function="KeyMappingWindow.OnExitBindingMode" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentClear" inherits="EA_Button_Binding" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentBinding2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="100" y="39" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnClearBindings" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Window name="KeyMappingBoundKeyRow">
+            <Size>
+                <AbsPoint x="230" y="26"/>
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Size>
+                        <AbsPoint x="230" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentName" maxchars="80" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="180" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnLButtonUpBoundKeyRow" />
+                    </EventHandlers>
+                </Label>
+            </Windows>
+        </Window>
+
+        <!-- Key Mapping Window -->
+        <Window name="KeyMappingWindow" movable="false" layer="popup" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="900" y="660" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="KeyMappingWindow.Initialize" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Category tabs -->
+                <Button name="$parentCategoryTab1" inherits="KeyMappingCategoryTabButtonTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentActionsListBackground">
+                            <AbsPoint x="5" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentCategoryTab2" inherits="KeyMappingCategoryTabButtonTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoryTab1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentCategoryTab3" inherits="KeyMappingCategoryTabButtonTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoryTab2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentCategoryTab4" inherits="KeyMappingCategoryTabButtonTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoryTab3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentCategoryTab5" inherits="KeyMappingCategoryTabButtonTemplate" id="5">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoryTab4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentCategoryTab6" inherits="KeyMappingCategoryTabButtonTemplate" id="6">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoryTab5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <HorizontalResizeImage name="$parentTabSeparator" inherits="EA_HorizontalResizeImage_TabSeparatorMiddle">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentCategoryTab6">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentActionsListBackground">
+                            <AbsPoint x="-9" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Actions label -->
+                <Label name="$parentActionListLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="200" y="5" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="25" y="60" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <!-- Bound Keys Label -->
+                <Label name="$parentActionListBoundKeysLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="200" y="5" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentActionListLabel">
+                            <AbsPoint x="240" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <!-- Actions list -->
+                <ListBox name="$parentActionsList" scrollbar="KeyMappingVertScroll" rowdef="KeyMappingActionRow" visiblerows="10" rowcount="100" rowspacing="2">
+                    <Size>
+                        <AbsPoint x="850" y="419"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentActionListLabel">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="KeyMappingWindow.actionsData" populationfunction="KeyMappingWindow.UpdateActionRow">
+                        <ListColumns>
+                            <ListColumn windowname="Name" variable="name"  format="wstring" />
+                            <ListColumn windowname="Key"  variable="keys"  format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <!-- Actions list background -->
+                <FullResizeImage name="$parentActionsListBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <!-- <Size>
+						<AbsPoint x="250" y="200" />
+					</Size> -->
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentActionListLabel">
+                            <AbsPoint x="-9" y="-7" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentActionsList">
+                            <AbsPoint x="7" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Button name="$parentDefaultsButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottomright" >
+                            <AbsPoint x="-20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.OnDefaultsButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottomleft" >
+                            <AbsPoint x="20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="KeyMappingWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Help Text -->
+                <Label name="$parentHelpText" font="font_chat_text" maxchars="100" textalign="center">
+                    <Size>
+                        <AbsPoint x="900" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActionsListBackground">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

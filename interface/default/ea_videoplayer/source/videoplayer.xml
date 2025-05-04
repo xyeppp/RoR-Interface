@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+	<Scripts>
+		<Script file="Source/VideoPlayer.lua" />
+	</Scripts>
+	
+	<Windows>	
+	
+		<Window name="EA_Window_VideoPlayer" layer="overlay" savesettings="false" popable="false" > 
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" />
+				<Anchor point="bottomright" relativePoint="bottomright" />
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_VideoPlayer.Initialize" />
+				<EventHandler event="OnLButtonDown" function="EA_Window_VideoPlayer.OnLButtonDown" />
+			</EventHandlers>
+		    <Windows>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" > 
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+
+                <DynamicImage name="$parentImage" layer="default" texture="video_player_image">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                </DynamicImage>
+                
+            </Windows>
+		</Window>	
+		
+		
+	</Windows>
+</Interface>

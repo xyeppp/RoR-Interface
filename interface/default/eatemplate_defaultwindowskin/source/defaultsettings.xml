@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_DefaultSettings 
+
+    This file contains all of the standard definitions for Settings Window components on the Default UI.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Scripts>
+        <Script file="Source/DefaultSettings.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <!--# Label: EA_Settings_SectionTitle                   
+            This is the default Label for a major section on the Settings Screens.
+            
+            Code:
+            (begin code)
+             <Label name="EA_Settings_SectionTitle">
+             ...
+             </Label>
+            (end) 
+        -->
+        <Label name="EA_Settings_SectionTitle" font="font_default_sub_heading" maxchars="64" textalign="left">
+             <Color r="255" g="204" b="102" a="255"/>
+        </Label>
+
+        <!--# Label: EA_Settings_SectionTitle                   
+            This is the default Label for a major section on the Settings Screens.
+            
+            Code:
+            (begin code)
+             <Label name="EA_Settings_ItemTitle">
+             ...
+             </Label>
+            (end) 
+        -->
+        <Label name="EA_Settings_ItemTitle" font="font_default_text" autoresize="true" wordwrap="true" maxchars="64" textalign="left" handleinput="false" layer="background">
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+
+
+        <!--# Window: EA_LabelCheckButton                   
+            This is the combination window element that combindes a Check Button and a Label.
+            
+            Code:
+            (begin code)
+             <Window name="EA_LabelCheckButton">
+             ...
+             </Window>
+            (end) 
+        -->
+        <Window name="EA_LabelCheckButton">
+            <Size>
+                <AbsPoint x="280" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_CheckButtonButton" />
+                <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="255" y="16" />
+                    </Size>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <!--# Window: EA_GenericCheckButton                   
+            This is the generic Check Button used in the settings window.
+            
+            Code:
+            (begin code)
+             <Button name="EA_GenericCheckButton">
+             ...
+             </Button>
+            (end) 
+        -->
+        <Button name="EA_GenericCheckButton" inherits="EA_Button_DefaultCheckBox">
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_GenericCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_GenericCheckButton.Toggle" />
+            </EventHandlers>
+        </Button>
+
+
+        <!--# Window: EA_LabelCheckButtonSmall                   
+            This is the combination window element that combindes a Check Button and a Label with small text.
+            
+            Code:
+            (begin code)
+             <Window name="EA_LabelCheckButtonSmall">
+             ...
+             </Window>
+            (end) 
+        -->
+        <Window name="EA_LabelCheckButtonSmall" inherits="EA_LabelCheckButton">
+            <Size>
+                <AbsPoint x="280" y="32" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_CheckButtonButton" />
+                <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false" textAutoFitMinScale="0.5" font="font_chat_text">
+                    <Size>
+                        <AbsPoint x="255" y="16" />
+                    </Size>
+                </Label>
+            </Windows>
+        </Window>
+        
+        
+       <!--# Window: EA_LabelCheckButtonWide                   
+            This is a wider version of the combination window element that combindes a Check Button and a Label.
+            
+            Code:
+            (begin code)
+             <Window name="EA_LabelCheckButtonWide">
+             ...
+             </Window>
+            (end) 
+        -->
+        <Window name="EA_LabelCheckButtonWide" inherits="EA_LabelCheckButton" >
+            <Size>
+                <AbsPoint x="450" y="32" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_CheckButtonButton" />
+                <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false">
+                    <Size>
+                        <AbsPoint x="425" y="16" />
+                    </Size>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Label name="EA_CheckButtonLabel" font="font_default_text" autoresize="true" wordwrap="true" maxchars="128" textalign="left" handleinput="false" layer="background">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="35" y="3" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>        
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <Button name="EA_CheckButtonButton" inherits="EA_Button_DefaultCheckBox" handleinput="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+        </Button>
+
+    </Windows>
+</Interface>

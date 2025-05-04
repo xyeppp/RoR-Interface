@@ -1,0 +1,109 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+
+    <Windows>        
+                     
+            
+        <Label name="MapSideBarSectionHeader" inherits="TOKHeading" textalign="center">
+            <Size>
+                <AbsPoint x="400" y="34" />
+            </Size>
+       </Label>
+
+        <Button name="WorldViewButton" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="114" y="62" />
+            </Size>
+            <TexSlices>
+                <Normal id="ZoomLevel-World"  />
+                <NormalHighlit id="ZoomLevel-World-ROLLOVER" />
+                <Pressed  id="ZoomLevel-World-Selected" />
+                <PressedHighlit  id="ZoomLevel-World-Selected"  />
+            </TexSlices>
+            <TexDims x="114" y="62" />
+        </Button>
+        
+         <Button name="PairingViewButton" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5"  >
+            <Size>
+                <AbsPoint x="63" y="62" />
+            </Size>
+            <TexSlices>
+                <Normal id="ZoomLevel-Pairing" />
+                <NormalHighlit id="ZoomLevel-Pairing-ROLLOVER" />
+                <Pressed id="ZoomLevel-Pairing-Selected" />
+                <PressedHighlit  id="ZoomLevel-Pairing-Selected" />
+            </TexSlices>
+            <TexDims x="63" y="62" />
+        </Button>
+        
+                
+         <Button name="ZoneViewButton" inherits="EA_Button_Default" backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5"  >
+            <Size>
+                <AbsPoint x="114" y="62" />
+            </Size>
+            <TexSlices>
+                <Normal id="ZoomLevel-Zone" />
+                <NormalHighlit id="ZoomLevel-Zone-ROLLOVER" />
+                <Pressed  id="ZoomLevel-Zone-Selected" />
+                <PressedHighlit  id="ZoomLevel-Zone-Selected" />
+            </TexSlices>
+            <TexDims x="114" y="62" />
+        </Button>
+       
+        <Window name="WorldMapViewModeButtons" >
+            <Size>
+                <AbsPoint x="300" y="61" />
+            </Size>
+            <Windows>             
+                <Button name="$parentWorldButton" inherits="WorldViewButton" >
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentOutButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnClickViewWorldMapButton" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverViewWorldMapButton" />
+                    </EventHandlers>                  
+                </Button>
+                
+                <Button name="$parentPairingButton" inherits="PairingViewButton" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentWorldButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnClickViewPairingMapButton" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverViewPairingMapButton" />
+                    </EventHandlers>                  
+                </Button>
+                
+               <Button name="$parentZoneButton" inherits="ZoneViewButton" >
+                   <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentPairingButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnClickViewZoneMapButton" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverViewZoneMapButton" />
+                    </EventHandlers>                  
+                </Button>
+            </Windows>
+        </Window>
+
+
+            
+        <Button name="EA_WorldMapSelectPairingButton" inherits="EA_Button_Parchment_MapText" >
+            <Size>
+                <AbsPoint x="350" y="32"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.SelectPairing" />
+            </EventHandlers>
+        </Button>
+
+
+    </Windows>
+
+</Interface>

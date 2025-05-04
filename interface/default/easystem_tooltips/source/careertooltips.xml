@@ -1,0 +1,18 @@
+<Interface xmlns:xsi="http://www.w3.org/1001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <ActionButtonGroup name="EA_ActionButtonGroup_CareerIconsWithTooltip" >
+            <EventHandlers>
+                <EventHandler event="OnActionButtonMouseOver" function="Tooltips.OnMouseOverActionButtonGroupCareerIcon" />
+            </EventHandlers>
+            <ActionButtonDefs>
+                <ButtonDef templateName="EA_ActionButtonGroup_DefaultTiny_RoundButtonTemplate" />
+                <IconDef templateName="EA_Image_CareerIcon" />
+            </ActionButtonDefs>
+            <ButtonSpacing x="0" y="0" />
+        </ActionButtonGroup>
+
+
+    </Windows>
+</Interface>
+

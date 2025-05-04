@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Label name="ModDetailsLabelDef" font="font_chat_text" autoresize="true" textalign="left" handleinput="false" wordwrap="true" >
+            <Size>
+                <AbsPoint x="200" y="16" />
+            </Size>
+            <Color r="255" g="204" b="102" />
+        </Label>
+
+        <Label name="ModDetailsTextDef" font="font_chat_text" autoresize="true" textalign="left" handleinput="false" wordwrap="true" >
+            <Size>
+                <AbsPoint x="200" y="16" />
+            </Size>
+            <Color r="235" g="235" b="235" />
+        </Label>
+
+        <Window name="ModDetailsSectionDef" >
+            <Size>
+                <AbsPoint x="450" y="16" />
+            </Size>
+            <Windows>
+                <Label name="$parentLabel" inherits="ModDetailsLabelDef" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="200" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText" inherits="ModDetailsTextDef" >
+                    <Size>
+                        <AbsPoint x="250" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLabel">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <!-- Scrolling Mod Details Window -->
+        <ScrollWindow name="EA_ScrollWindow_ModInfoTemplate" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="18">
+            <Size>
+                <AbsPoint x="450" y="425" />
+            </Size>
+            <Windows>
+                <!-- Scroll Bar -->
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+
+                <Window name="$parentScrollChild">
+                    <Size>
+                        <AbsPoint x="430" y="365"/>
+                    </Size>
+                    <Windows>
+
+
+                        <!-- Mod Name -->
+                        <FullResizeImage name="$parentNameBackground" handleinput="true" inherits="EA_FullResizeImage_TintableSolidBackground" >
+                            <Size>
+                                <AbsPoint x="0" y="50" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <Label name="$parentName" font="font_default_heading"  textalign="left" handleinput="false" layer="background" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="500" y="35" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentNameBackground">
+                                    <AbsPoint x="10" y="10" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parentNameBackground">
+                                    <AbsPoint x="-10" y="-10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+
+                        <Window name="$parentStatus" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNameBackground">
+                                    <AbsPoint x="10" y="5" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parentNameBackground">
+                                    <AbsPoint x="-10" y="5" />
+                                </Anchor>
+                            </Anchors>                           
+                            <Windows>
+                                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TanBorder"  >
+
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </FullResizeImage>
+                                <Label name="$parentText" inherits="ModDetailsTextDef" autoresize="true" >
+                                    <Size>
+                                        <AbsPoint x="390" y="365"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="10" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                            </Windows>
+                        </Window>
+
+
+                        <!-- Author -->
+                        <Label name="$parentAuthorLabel" inherits="ModDetailsLabelDef" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatus">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentAuthorText" inherits="ModDetailsTextDef" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAuthorLabel">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <!-- Version -->
+                        <Label name="$parentVersionLabel" inherits="ModDetailsLabelDef" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAuthorText">
+                                    <AbsPoint x="-210" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentVersionText" inherits="ModDetailsTextDef" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentVersionLabel">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <!-- Game Version -->
+                        <Label name="$parentGameVersionLabel" inherits="ModDetailsLabelDef" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentVersionText">
+                                    <AbsPoint x="-210" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentGameVersionText" inherits="ModDetailsTextDef" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGameVersionLabel">
+                                    <AbsPoint x="10" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+
+                        <!-- Categories Needed -->
+                        <Label name="$parentCategoriesLabel" inherits="ModDetailsLabelDef" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGameVersionText">
+                                    <AbsPoint x="-210" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentCategoriesText" inherits="ModDetailsTextDef" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCategoriesLabel">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <!-- Careers Needed -->
+                        <Label name="$parentCareersLabel" inherits="ModDetailsLabelDef" >                          
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCategoriesText">
+                                    <AbsPoint x="-210" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentCareersText" inherits="ModDetailsTextDef" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareersLabel">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <ActionButtonGroup name="$parentCareers" inherits="EA_ActionButtonGroup_CareerIconsWithTooltip" hideButtonWhenIconBlank="true" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCareersLabel" >
+                                    <AbsPoint x="5" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </ActionButtonGroup>
+
+
+                        <!-- Description -->
+                        <Label name="$parentDescriptionLabel" inherits="ModDetailsLabelDef" >
+                            <Size>
+                                <AbsPoint x="410" y="35" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCareers">
+                                    <AbsPoint x="-5"  y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" a="255"/>
+                        </Label>
+                        <Label name="$parentDescriptionText" inherits="ModDetailsTextDef" maxchars="1024">
+                            <Size>
+                                <AbsPoint x="410" y="35" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDescriptionLabel">
+                                    <AbsPoint x="0"  y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+
+                    </Windows>
+                </Window>
+                <!-- Scroll Child -->
+
+            </Windows>
+        </ScrollWindow>
+
+    </Windows>
+</Interface>

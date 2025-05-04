@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/LoginWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="LoginWindow" layer="secondary" >
+            <Size>
+                <AbsPoint x="385" y="358" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="100" y="175" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="LoginWindow.Initialize" />
+                <EventHandler event="OnKeyEnter"   function="LoginWindow.Login" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentLoginBox">
+                    <Size>
+                        <AbsPoint x="365" y="328" />
+                    </Size>
+                    <Anchors>
+                        <Anchor>
+                            <AbsPoint x="20" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="LoginWindowBoxBackground" layer="background" texture="login_frame">
+                            <Size>
+                                <AbsPoint x="365" y="328" />
+                            </Size>
+                            <TexCoords x="75" y="125" />
+                        </DynamicImage>
+                        <EditBox name="LoginWindowUsername" inherits="EA_EditBox_NoFrame" taborder="1" maxchars="20" input="nospaces">
+                            <Size>
+                                <AbsPoint x="200" y="21" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="LoginWindowBoxBackground">
+                                    <AbsPoint x="135" y="168" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnKeyEnter" function="LoginWindow.Login" />
+                            </EventHandlers>
+                            <TextColor r="255" g="255" b="255" a="255" />
+                        </EditBox>
+                        <EditBox name="LoginWindowPassword" inherits="EA_EditBox_NoFrame"  taborder="2" maxchars="20" password="true" scrolling="horz" input="nospaces">
+                            <Size>
+                                <AbsPoint x="200" y="21" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="LoginWindowUsername">
+                                    <AbsPoint x="0" y="35" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnKeyEnter" function="LoginWindow.Login" />
+                            </EventHandlers>
+                            <TextColor r="255" g="255" b="255" a="255" />
+                        </EditBox>
+                        <Label name="LoginWindowUsernameLabel" font="font_default_sub_heading" handleinput="false" maxchars="64" textalign="right">
+                            <Size>
+                                <AbsPoint x="125" y="24" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="LoginWindowUsername">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="250" g="213" b="63" a="255" />
+                        </Label>
+                        <Label name="LoginWindowPasswordLabel" font="font_default_sub_heading" handleinput="false" maxchars="64" textalign="right">
+                            <Size>
+                                <AbsPoint x="125" y="24" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="LoginWindowPassword">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="250" g="213" b="63" a="255" />
+                        </Label>
+                        <Button name="LoginWindowLoginButton" inherits="DefaultCoreButton" font="font_default_sub_heading">
+                            <Size>
+                                <AbsPoint x="115" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="LoginWindowBoxBackground">
+                                    <AbsPoint x="-50" y="-17" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="LoginWindow.Login" />
+                            </EventHandlers>
+                            <TextColors>
+                                <Normal r="255" g="255" b="255" a="255" />
+                                <NormalHighlit r="250" g="213" b="63" a="255" />
+                                <Pressed r="250" g="213" b="63" a="255" />
+                                <PressedHighlit r="250" g="213" b="63" a="255" />
+                                <Disabled r="92" g="92" b="92" a="255" />
+                            </TextColors>
+                        </Button>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

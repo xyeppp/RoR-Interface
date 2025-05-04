@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_PQLoot" file="Textures/EA_PQLoot.dds">
+      <Slice id="PQHeaderIcon-dice" left="0" top="0" width="30" height="30" />
+      <Slice id="PQHeaderIcon-die" left="31" top="0" width="28" height="30" />
+      <Slice id="PQHeaderIconLoot" left="89" top="0" width="28" height="30" />
+      <Slice id="PQHeaderIconMedals" left="60" top="0" width="28" height="30" />
+      <Slice id="PQMedalBronze" left="32" top="53" width="16" height="19" />
+      <Slice id="PQMedalGold" left="0" top="53" width="16" height="19" />
+      <Slice id="PQMedalSilver" left="16" top="53" width="16" height="19" />
+      <Slice id="PQSackBlue" left="75" top="30" width="25" height="23" />
+      <Slice id="PQSackGold" left="0" top="30" width="25" height="23" />
+      <Slice id="PQSackGreen" left="100" top="30" width="25" height="23" />
+      <Slice id="PQSackPurple" left="50" top="30" width="25" height="23" />
+      <Slice id="PQSackSilver" left="25" top="30" width="25" height="23" />
+    </Texture>
+  </Assets>
+</Interface>

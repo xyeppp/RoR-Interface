@@ -1,0 +1,10 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+        <Window name="EA_Window_EventTextContainer" handleinput="false" layer="default">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" />
+                <Anchor point="bottomright" relativePoint="bottomright" />
+            </Anchors>
+        </Window>
+    </Windows>
+</Interface>

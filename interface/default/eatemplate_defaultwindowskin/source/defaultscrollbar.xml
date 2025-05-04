@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_ScrollBar_DefaultVerticalChain
+
+    This file contains the templates to construct and use the standard vertical scrollbar. It has a chain motif.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <!--# VerticalScrollbar: EA_ScrollBar_DefaultVerticalChain                   
+            This the default vertical scrollbar.
+            
+            Code:
+            (begin code)
+            <VerticalScrollbar name="EA_ScrollBar_DefaultVerticalChain" up="EA_ScrollBar_DefaultUpArrowButton" down="EA_ScrollBar_DefaultDownArrowButton" thumb="EA_ScrollBar_DefaultThumb" gutter="EA_ScrollBar_DefaultChainGutter" >
+                ...
+            </VerticalScrollbar>
+            (end)
+        -->
+        <VerticalScrollbar name="EA_ScrollBar_DefaultVerticalChain"
+                           up="EA_ScrollBar_DefaultUpArrowButton"
+                           down="EA_ScrollBar_DefaultDownArrowButton"
+                           thumb="EA_ScrollBar_DefaultThumb"
+                           gutter="EA_ScrollBar_DefaultChainGutter" >
+            <Size>
+                <AbsPoint x="22" y="0" />
+            </Size>
+            <ThumbOffset x="5" y="0" />
+            <UpOffset x="-2" y="0" />
+            <DownOffset x="-2" y="0" />
+            <ActiveZoneOffset x="100" y="0" />
+        </VerticalScrollbar>
+
+        <Button name="EA_ScrollBar_DefaultUpArrowButton" backgroundtexture="shared_01" highlighttexture="shared_01"
+                                                         overlaytexture="shared_01" overlayhighlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <TexCoords>
+                <Normal x="168" y="43" />
+                <NormalHighlit x="168" y="69" />
+                <Pressed x="168" y="95" />
+                <PressedHighlit x="168" y="95" />
+                <Disabled x="142" y="95" />
+            </TexCoords>
+            <OverlaySize x="9" y="12" />
+            <OverlayOffset x="9" y="7" />
+            <OverlayTexCoords>
+                <Normal x="194" y="43" />
+                <NormalHighlit x="194" y="55" />
+                <Pressed x="194" y="43" />
+                <PressedHighlit x="194" y="55" />
+            </OverlayTexCoords>
+        </Button>
+        
+        <Button name="EA_ScrollBar_DefaultDownArrowButton" backgroundtexture="shared_01" highlighttexture="shared_01"
+                                                           overlaytexture="shared_01" overlayhighlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <TexCoords>
+                <Normal x="168" y="43" />
+                <NormalHighlit x="168" y="69" />
+                <Pressed x="168" y="95" />
+                <PressedHighlit x="168" y="95" />
+                <Disabled x="142" y="95" />
+            </TexCoords>
+            <OverlaySize x="9" y="12" />
+            <OverlayOffset x="9" y="7" />
+            <OverlayTexCoords>
+                <Normal x="203" y="43" />
+                <NormalHighlit x="203" y="55" />
+                <Pressed x="203" y="43" />
+                <PressedHighlit x="203" y="55" />
+            </OverlayTexCoords>
+        </Button>
+        
+        <VerticalResizeImage name="EA_ScrollBar_DefaultThumb" texture="shared_01" >
+            <Size>
+                <AbsPoint x="14" y="0" />
+            </Size>
+            <Sizes top="9" middle="16" bottom="9" />
+            <TexCoords>
+                <Top x="92" y="43" />
+                <Middle x="92" y="52" />
+                <Bottom x="92" y="67" />
+            </TexCoords>
+            <Windows>
+                <VerticalResizeImage name="$parentNubs" texture="shared_01" >
+                    <Size>
+                        <AbsPoint x="5" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sizes top="0" middle="20" bottom="0" />
+                    <TexCoords>
+                        <Middle x="87" y="51" />
+                    </TexCoords>
+                </VerticalResizeImage>
+            </Windows>
+        </VerticalResizeImage>
+        
+        <VerticalResizeImage name="EA_ScrollBar_DefaultChainGutter" texture="shared_01" >
+            <Size>
+                <AbsPoint x="22" y="0" />
+            </Size>
+            <Sizes top="0" middle="30" bottom="0" />
+            <TexCoords>
+                <Middle x="65" y="44" />
+            </TexCoords>
+        </VerticalResizeImage>
+        
+    </Windows>
+</Interface>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+
+        <Texture name="EA_Upgrade01_d5" file="Textures/EA_Upgrade01_d5.dds">
+            <Slice id="gray-b-left" left="107" top="432" width="19" height="25" />
+            <Slice id="gray-b-rt" left="181" top="432" width="20" height="25" />
+            <Slice id="gray-b-tile" left="126" top="432" width="55" height="25" />
+            <Slice id="red-b-left" left="107" top="309" width="32" height="39" />
+            <Slice id="red-b-left-d" left="107" top="391" width="32" height="39" />
+            <Slice id="red-b-left-h" left="107" top="350" width="32" height="39" />
+            <Slice id="red-b-rt" left="194" top="309" width="32" height="39" />
+            <Slice id="red-b-rt-d" left="194" top="391" width="32" height="39" />
+            <Slice id="red-b-rt-h" left="194" top="350" width="32" height="39" />
+            <Slice id="red-b-tile" left="139" top="309" width="55" height="39" />
+            <Slice id="red-b-tile-d" left="139" top="391" width="55" height="39" />
+            <Slice id="red-b-tile-h" left="139" top="350" width="55" height="39" />
+            <Slice id="red-seal" left="2" top="309" width="103" height="199" />
+            <Slice id="trial-bkgd-image" left="2" top="2" width="506" height="305" />
+        </Texture>
+
+    </Assets>
+</Interface>

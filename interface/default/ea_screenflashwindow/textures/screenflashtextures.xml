@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_ScreenFlash" file="Textures/Vignette1.dds" />
+  </Assets>
+</Interface>

@@ -1,0 +1,208 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+        <Window name="EA_Window_InteractionGivenReward">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionQuest.OnMouseOverGivenReward" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentFrame" texture="icon_frame_square" textureScale="0.859"
+                              handleinput="false" layer="default">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <Label name="$parentTextBase" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+					<Color r="255" g="255" b="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Button_InteractionChoiceReward" inherits="EA_Button_DefaultIconStack">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionQuest.OnMouseOverChoiceReward" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionQuest.SelectRewardChoice" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Influence "quest" rewards -->
+        <Button name="EA_Button_InfluenceReward" inherits="EA_Button_DefaultIconStack">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionInfluenceRewards.OnMouseOverInfluenceReward" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionInfluenceRewards.OnSelectInfluenceReward" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="EA_Window_InfluenceRewardRow">
+            <Size>
+                <AbsPoint x="422" y="100"/>
+            </Size>
+            <Windows>
+                <Label name="$parentLabel" font="font_journal_heading"
+                       textalign="center" autoresize="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" a="255" />
+                </Label>
+                <Button name="$parentReward1" inherits="EA_Button_InfluenceReward">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel">
+                            <AbsPoint x="67" y="8"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward2" inherits="EA_Button_InfluenceReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward1">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward3" inherits="EA_Button_InfluenceReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward4" inherits="EA_Button_InfluenceReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentDisabledLabel" font="font_clear_medium" textalign="center"
+                       autoresize="false" wordwrap="false" layer="popup" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel">
+                            <AbsPoint x="0" y="22"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <!-- Live Event Rewards -->
+        <Button name="EA_Button_EventReward" inherits="EA_Button_DefaultIconStack">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionEventRewards.OnMouseOverEventReward" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionEventRewards.OnSelectEventReward" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="EA_Window_EventRewardRow">
+            <Size>
+                <AbsPoint x="422" y="100"/>
+            </Size>
+            <Windows>
+                <Label name="$parentLabel" font="font_journal_heading"
+                       textalign="center" autoresize="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" a="255" />
+                </Label>
+				<Button name="$parentReward1" inherits="EA_Button_EventReward">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel">
+                            <AbsPoint x="67" y="8"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward2" inherits="EA_Button_EventReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward1">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward3" inherits="EA_Button_EventReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentReward4" inherits="EA_Button_EventReward">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentReward3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentDisabledLabel" font="font_clear_medium" textalign="center"
+                       autoresize="false" wordwrap="false" layer="popup" handleinput="false">
+                    <Size>
+                        <AbsPoint x="350" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel">
+                            <AbsPoint x="0" y="22"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+       <Window name="EA_Window_QuestCondition">
+            <Size>
+                <AbsPoint x="422" y="32" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" texture="map_markers01" handleinput="false" layer="default">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel" font="font_journal_body_large" maxchars="128"
+                        textalign="left" autoresize="true" handleinput="true" wordwrap="true"
+                        linespacing="25">
+                    <Size>
+                        <AbsPoint x="385" y="23"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

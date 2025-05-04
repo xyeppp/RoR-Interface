@@ -1,0 +1,777 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabAdmin.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabAdminSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <Windows>
+
+        <!-- Header Frame -->
+        <FullResizeImage name="$parentHeaderFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="44"/> <!-- 24 + ( header text y offset * 2 ) -->
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Header Text -->
+        <Label name="$parentHeaderText" inherits="" font="font_guild_MP_R_23" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHeaderFrame">
+              <AbsPoint x="15" y="10" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHeaderFrame">
+              <AbsPoint x="-15" y="-10" />
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <!-- Titles Frame -->
+        <FullResizeImage name="$parentTitlesFrame" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" popable="false">
+          <Size>
+            <AbsPoint x="285" y="318"/>
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeaderFrame">
+              <AbsPoint x="10" y="0"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Titles "ID" Frame -->
+        <FullResizeImage name="$parentTitlesIDFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitlesFrame">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentTitlesFrame">
+              <AbsPoint x="50" y="0"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Titles "ID" Header -->
+        <Label name="$parentTitlesIDHeader" inherits="" font="font_guild_MP_R_19" textalign="top" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitlesIDFrame">
+              <AbsPoint x="5" y="10" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentTitlesIDFrame">
+              <AbsPoint x="-5" y="30" />
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <!-- Title ID 9 -->
+        <Label name="$parentID9" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitlesIDHeader">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesIDHeader">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 8 -->
+        <Label name="$parentID8" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID9">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID9">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 7 -->
+        <Label name="$parentID7" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID8">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID8">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 6 -->
+        <Label name="$parentID6" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID7">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID7">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 5 -->
+        <Label name="$parentID5" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID6">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID6">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 4 -->
+        <Label name="$parentID4" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID5">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID5">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 3 -->
+        <Label name="$parentID3" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID4">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID4">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 2 -->
+        <Label name="$parentID2" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID3">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID3">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 1 -->
+        <Label name="$parentID1" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID2">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID2">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Title ID 0 -->
+        <Label name="$parentID0" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top" maxchars="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentID1">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentID1">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Titles "Title" Frame -->
+        <FullResizeImage name="$parentTitlesTitleFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTitlesIDFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesIDFrame">
+              <AbsPoint x="180" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Titles "Title" Header -->
+        <Label name="$parentTitlesTitleHeader" font="font_guild_MP_R_19" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitlesTitleFrame">
+              <AbsPoint x="5" y="10" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentTitlesTitleFrame">
+              <AbsPoint x="-5" y="30" />
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <!-- Guild Title 9 -->
+        <Label name="$parentTitle9" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitlesTitleHeader">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesTitleHeader">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 8 -->
+        <Label name="$parentTitle8" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle9">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle9">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 7 -->
+        <Label name="$parentTitle7" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle8">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle8">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 6 -->
+        <Label name="$parentTitle6" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle7">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle7">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 5 -->
+        <Label name="$parentTitle5" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle6">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle6">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 4 -->
+        <Label name="$parentTitle4" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle5">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle5">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 3 -->
+        <Label name="$parentTitle3" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle4">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle4">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 2 -->
+        <Label name="$parentTitle2" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle3">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle3">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 1 -->
+        <Label name="$parentTitle1" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle2">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle2">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title 0 -->
+        <Label name="$parentTitle0" inherits="EA_Templates_GuildTitleText">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle1">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitle1">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Title Edit Box -->
+        <!-- NOTE: This one edit box is used forf all the titles.. its dynamically re-anchored in lua -->
+        <EditBox name="GWAdminTitleEditBox" inherits="EA_EditBox_DefaultFrame" font="font_guild_MP_R_17" maxchars="18" taborder="1">
+          <EventHandlers>
+            <EventHandler event="OnKeyEnter" function="GuildWindowTabAdmin.OnKeyEnterTitleEditBox" />
+            <EventHandler event="OnKeyEscape" function="GuildWindowTabAdmin.OnKeyEscapeTitleEditBox" />
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Titles "Qty" Frame -->
+        <FullResizeImage name="$parentTitlesQtyFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTitlesTitleFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesTitleFrame">
+              <AbsPoint x="50" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Titles "Qty" Header -->
+        <Label name="$parentTitlesQtyHeader" font="font_guild_MP_R_19" textalign="top" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitlesQtyFrame">
+              <AbsPoint x="5" y="10" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentTitlesQtyFrame">
+              <AbsPoint x="-5" y="30" />
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <!-- Guild Qty 9 -->
+        <Label name="$parentQty9" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitlesQtyHeader">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesQtyHeader">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 8 -->
+        <Label name="$parentQty8" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty9">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty9">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 7 -->
+        <Label name="$parentQty7" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty8">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty8">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 6 -->
+        <Label name="$parentQty6" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty7">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty7">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 5 -->
+        <Label name="$parentQty5" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty6">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty6">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 4 -->
+        <Label name="$parentQty4" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty5">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty5">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 3 -->
+        <Label name="$parentQty3" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty4">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty4">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 2 -->
+        <Label name="$parentQty2" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty3">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty3">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 1 -->
+        <Label name="$parentQty1" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty2">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty2">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Guild Qty 0 -->
+        <Label name="$parentQty0" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="top">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQty1">
+              <AbsPoint x="0" y="6" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentQty1">
+              <AbsPoint x="0" y="28" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Edit Titles Frame -->
+        <FullResizeImage name="$parentEditTitlesFrame" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitlesFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitlesFrame">
+              <AbsPoint x="0" y="64" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEditTitlesFrame">
+              <AbsPoint x="4" y="4"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentEditTitlesFrame">
+              <AbsPoint x="-9" y="-9"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Admin Command Edit Title Button -->
+        <Button name="$parentCommandEditTitleButton" inherits="EA_Button_DefaultResizeable">
+          <Size>
+            <AbsPoint x="128" y="39" />
+          </Size>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpEditTitleButton" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabAdmin.OnMouseOverEditTitleButton"/>
+          </EventHandlers>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+              <AbsPoint x="5" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Admin Command Add/Remove Title Button -->
+        <Button name="$parentCommandAddRemoveTitleButton" inherits="EA_Button_DefaultResizeable">
+          <Size>
+            <AbsPoint x="128" y="39" />
+          </Size>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpAddRemoveTitleButton" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabAdmin.OnMouseOverAddRemoveTitleButton"/>
+          </EventHandlers>
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+              <AbsPoint x="-5" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- "Other" Frame -->
+        <FullResizeImage name="$parentOtherFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEditTitlesFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="285" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Tax Rate -->
+        <Label name="$parentTaxRate" inherits="EA_Label_DefaultText" font="font_guild_MP_R_19" textalign="center">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentOtherFrame">
+              <AbsPoint x="10" y="55"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentOtherFrame">
+              <AbsPoint x="-10" y="75"/>  <!-- y = topleft y + height -->
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpTaxRate"/>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabAdmin.OnMouseOverTaxRate"/>
+            <EventHandler event="OnMouseOverEnd" function="GuildWindowTabAdmin.OnMouseOverEndTaxRate"/>
+          </EventHandlers>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <!-- Tithe Rate -->
+        <Label name="$parentTitheRate" inherits="EA_Label_DefaultText" font="font_guild_MP_R_19" textalign="center">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTaxRate">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTaxRate">
+              <AbsPoint x="0" y="20"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabAdmin.OnLButtonUpTitheRate"/>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabAdmin.OnMouseOverTitheRate"/>
+            <EventHandler event="OnMouseOverEnd" function="GuildWindowTabAdmin.OnMouseOverEndTitheRate"/>
+          </EventHandlers>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <FullResizeImage name="$parentPermissionsFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTitlesFrame">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <FullResizeImage name="$parentPermissionsHeaderFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPermissionsFrame">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentPermissionsFrame">
+              <AbsPoint x="0" y="20"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <Label name="$parentIDHeader0" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentPermissionsHeaderFrame">
+              <AbsPoint x="-43" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <Label name="$parentIDHeader1" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader0">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader2" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader1">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader3" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader2">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader4" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader3">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader5" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader4">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader6" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader5">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader7" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader6">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader8" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader7">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+        
+        <Label name="$parentIDHeader9" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottom" maxchars="1">
+          <Size>
+            <AbsPoint x="22" y="20"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentIDHeader8">
+              <AbsPoint x="-1" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <Label name="$parentPermissionsHeader" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="bottomleft">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPermissionsHeaderFrame">
+              <AbsPoint x="12" y="0"/>
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentIDHeader9">
+              <AbsPoint x="-12" y="0"/>
+            </Anchor>
+          </Anchors>
+          <Color r="226" g="216" b="45" a="255"/> <!-- DefaultColor.YELLOW -->
+        </Label>
+
+        <ListBox name="$parentPermissionsList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="GuildPermissionRow" visiblerows="16" rowspacing="0">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermissionsHeaderFrame">
+              <AbsPoint x="5" y="10"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentPermissionsFrame">
+              <AbsPoint x="-12" y="-10"/>   <!-- x = -5 + fudge room for the scrollbar -->
+            </Anchor>
+          </Anchors>
+          <ListData table="GuildWindowTabAdmin.permissionListData" populationfunction="GuildWindowTabAdmin.PopulatePermissions"/>
+        </ListBox>
+
+      </Windows>
+      <!-- End of Whole Window Definition Parts -->
+    </Window>
+    <!-- End of Whole Window Definition  -->
+  </Windows>
+  <!-- End of Guild Window Tab Admin -->
+</Interface>

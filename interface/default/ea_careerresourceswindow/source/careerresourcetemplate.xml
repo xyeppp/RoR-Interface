@@ -1,0 +1,10 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+        <Window name="EA_CareerResourceTemplate" savesettings="false" layer="default" popable="false">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver"                   function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnInitializeCustomSettings"    function="FrameManager.OnInitializeCustomSettings" />
+            </EventHandlers>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <!--# VerticalScrollbar: EA_ScrollBar_VerticalConversation                   
+            This the default vertical scrollbar.
+            
+            Code:
+            (begin code)
+            <VerticalScrollbar name="EA_ScrollBar_VerticalConversation" up="EA_ScrollBar_ConversationUpArrowButton" down="EA_ScrollBar_ConversationDownArrowButton" thumb="EA_ScrollBar_ConversationThumb" gutter="EA_ScrollBar_ConversationGutter" >
+                ...
+            </VerticalScrollbar>
+            (end)
+        -->
+        <VerticalScrollBar name="EA_ScrollBar_VerticalConversation"
+                           up="EA_ScrollBar_ConversationUpArrowButton"
+                           down="EA_ScrollBar_ConversationDownArrowButton"
+                           thumb="EA_ScrollBar_ConversationThumb"
+                           gutter="EA_ScrollBar_ConversationGutter" >
+            <Size>
+                <AbsPoint x="30" y="0" />
+            </Size>
+            <ThumbOffset x="0" y="0" />
+            <UpOffset x="0" y="0" />
+            <DownOffset x="0" y="0" />
+            <ActiveZoneOffset x="100" y="0" />
+        </VerticalScrollBar>
+
+        <Button name="EA_ScrollBar_ConversationUpArrowButton" backgroundtexture="EA_Interaction" highlighttexture="EA_Interaction"
+                                                              overlaytexture="EA_Interaction" overlayhighlighttexture="EA_Interaction">
+            <Size>
+                <AbsPoint x="30" y="31" />
+            </Size>
+            <TexSlices>
+                <Normal         id="Scrollbar-Button" />
+                <NormalHighlit  id="Scrollbar-Button-ROLLOVER" />
+                <Pressed        id="Scrollbar-Button-Depressed" />
+                <PressedHighlit id="Scrollbar-Button-Depressed" />
+            </TexSlices>
+            <OverlaySize x="9" y="12" />
+            <OverlayOffset x="11" y="12" />
+            <OverlayTexSlices>
+                <Normal         id="Up-Arrow" />
+                <NormalHighlit  id="Up-Arrow-ROLLOVER"  />
+                <Pressed        id="Up-Arrow-ROLLOVER"  />
+            </OverlayTexSlices>
+        </Button>
+
+        <Button name="EA_ScrollBar_ConversationDownArrowButton" backgroundtexture="EA_Interaction" highlighttexture="EA_Interaction"
+                                                                overlaytexture="EA_Interaction" overlayhighlighttexture="EA_Interaction">
+            <Size>
+                <AbsPoint x="30" y="31" />
+            </Size>
+            <TexSlices>
+                <Normal         id="Scrollbar-Button" />
+                <NormalHighlit  id="Scrollbar-Button-ROLLOVER" />
+                <Pressed        id="Scrollbar-Button-Depressed" />
+                <PressedHighlit id="Scrollbar-Button-Depressed" />
+            </TexSlices>
+            <OverlaySize x="9" y="12" />
+            <OverlayOffset x="11" y="12" />
+            <OverlayTexSlices>
+                <Normal         id="Down-Arrow" />
+                <NormalHighlit  id="Down-Arrow-ROLLOVER"  />
+                <Pressed        id="Down-Arrow-ROLLOVER"  />
+            </OverlayTexSlices>
+        </Button>
+        
+        <VerticalResizeImage name="EA_ScrollBar_ConversationThumb" texture="EA_Interaction">
+            <Size>
+                <AbsPoint x="30" y="0" />
+            </Size>
+            <Sizes top="6" middle="52" bottom="6" />
+            <TexSlices>
+                <Top    id="Scrollbar-Top"/>
+                <Middle id="Scrollbar-Center" />
+                <Bottom id="Scrollbar-Bottom" />
+            </TexSlices>
+        </VerticalResizeImage>
+        
+        <VerticalResizeImage name="EA_ScrollBar_ConversationGutter" texture="EA_Interaction" reverseFill="true">
+            <Size>
+                <AbsPoint x="30" y="0" />
+            </Size>
+            <Sizes top="12" middle="73" bottom="12" />
+            <TexSlices>
+                <Top    id="Scrollbar-Background-Top"/>
+                <Middle id="Scrollbar-Background-Center" />
+                <Bottom id="Scrollbar-Background-Bottom" />
+            </TexSlices>
+        </VerticalResizeImage>
+    </Windows>
+</Interface>

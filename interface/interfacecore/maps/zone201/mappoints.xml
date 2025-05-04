@@ -1,0 +1,307 @@
+<zone iname="The Shadowlands">
+    <landmark iname="Sea Cavern" id="1" mapIcon="1062" x="12736" y="32817">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Ralkuth's Return" id="2" mapIcon="1252" x="17508" y="38237">
+        <race>DarkElf</race>
+        <number>7</number>
+        <ranks realm="destruction" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Oath's End" id="3" mapIcon="1055" x="24147" y="51296">
+        <race>DarkElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Laurilion Caves" id="4" mapIcon="1062" x="35801" y="14127">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Ruins of Anlec" id="5" mapIcon="1251" x="36218" y="8929">
+        <race>DarkElf</race>
+        <number>5</number>
+        <ranks realm="destruction" min="10" max="11" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Sundered Strand" id="6" mapIcon="1251" x="3626" y="11076">
+        <race>DarkElf</race>
+        <number>6</number>
+        <ranks realm="destruction" min="12" max="13" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Sorrowstrand" id="7" mapIcon="1206" x="38482" y="14144">
+        <race>HighElf</race>
+        <number>6</number>
+        <ranks realm="order" min="12" max="13" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Laurilion Caves" id="8" mapIcon="1062" x="40689" y="9275">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Serynal" id="9" mapIcon="1210" x="4347" y="20230">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Dread Lake" id="10" mapIcon="1037" x="46614" y="24103">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Bladewatch" id="11" mapIcon="1054" x="46640" y="42126">
+        <race>HighElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Elbisar" id="12" mapIcon="1208" x="50519" y="34184">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Skyblade's Hold" id="13" mapIcon="1206" x="52019" y="41459">
+        <race>HighElf</race>
+        <number>7</number>
+        <ranks realm="order" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Mathrin's Watch" id="14" mapIcon="1206" x="58995" y="9282">
+        <race>HighElf</race>
+        <number>5</number>
+        <ranks realm="order" min="10" max="11" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Shrine of Remembrance" id="15" mapIcon="1213" x="5081" y="46282">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Death's Wind Cavern" id="16" mapIcon="1062" x="62584" y="22150">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="17" mapIcon="1259" x="36434" y="53713" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="18" mapIcon="1259" x="34540" y="42118" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="35510" y="58842" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Wild Hunt: Curse of Kurnous" id="20" mapIcon="1072" x="37897" y="55483" liveevent="23">
+        <importance>minor</importance>
+        <specialType>10</specialType>
+    </landmark>
+    <landmark iname="Shadowhall Cavern" id="21" mapIcon="1062" x="62403" y="36465">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Anlec" id="22" mapIcon="1210" x="33114" y="6275">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Shadowmarch Camp" id="23" mapIcon="1205" x="7357" y="36932">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Shattered Basin Camp" id="24" mapIcon="1205" x="22634" y="17367">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Spitesteel Garrison" id="25" mapIcon="1252" x="42869" y="11190">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Miralen" id="26" mapIcon="1210" x="52578" y="7518">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Undershade Dale" id="27" mapIcon="1064" x="54965" y="17025">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="The Gloomridge Copse" id="379" iconSet="1" x="14596" y="19474">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Stone of Ecelsion" id="377" iconSet="1" x="19423" y="53980">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Rock of Galirian" id="361" iconSet="1" x="19927" y="5174">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Out of the Shadows" id="368" iconSet="1" x="24110" y="15049">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ruins of Anlec" id="369" iconSet="1" x="30143" y="5951">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Broken Spirits" id="382" iconSet="1" x="32882" y="28839">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Laurilion Caves" id="384" iconSet="1" x="34728" y="18446">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Dawn's Early Fight" id="378" iconSet="1" x="3878" y="32395">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Broken Dunes" id="367" iconSet="1" x="45394" y="3335">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Forgotten Future" id="383" iconSet="1" x="50964" y="29979">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Mirelen" id="365" iconSet="1" x="53865" y="8382">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ruins of Nagarythe" id="381" iconSet="1" x="5452" y="21119">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Jagged Coast" id="380" iconSet="1" x="5518" y="4486">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Cold Hearted Predators" id="366" iconSet="1" x="55203" y="18955">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Dragon Gate" id="376" iconSet="1" x="58281" y="61690">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Lair of the Dead" id="374" iconSet="1" x="63759" y="31740">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Preemptive Strike" id="375" iconSet="1" x="63529" y="49696">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Griffon Gate" id="385" iconSet="1" x="7578" y="61742">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="14" max="15" />
+	    <realm>Destruction</realm>
+    </publicQuest>
+    <!-- BEGIN Ellyrion points -->
+    <battlefieldObjective iname="The Needle of Ellyrion: Healing Boon" id="5069" iconSet="1" x="26741" y="8694" zone="207">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Reaver Stables: Defensive Boon" id="5068" iconSet="1" x="39060" y="14212" zone="207">
+    </battlefieldObjective>
+    <keep iname="Cascades of Thunder" id="21" iconSet="1" x="34484" y="34101" zone="207">
+        <objectiveId>610</objectiveId>
+    </keep>
+    <!-- END Ellyrion points -->
+    <battlefieldObjective iname="The Shadow Spire: Artisan's Gift" id="5070" iconSet="1" x="28604" y="52510">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Unicorn Siege Camp: Merchant's Gift" id="5071" iconSet="1" x="40940" y="48262">
+    </battlefieldObjective>
+    <keep iname="Spite's Reach" id="22" iconSet="1" x="33057" y="48576">
+        <objectiveId>611</objectiveId>
+    </keep>
+    <zoneTransition iname="To Chrace" x="43000" y="0">
+        <zone>206</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Chrace" x="65535" y="3000">
+        <zone>206</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ellyrion" x="58000" y="65535">
+        <zone>207</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ellyrion" x="7000" y="65535">
+        <zone>207</zone>
+    </zoneTransition>
+</zone>

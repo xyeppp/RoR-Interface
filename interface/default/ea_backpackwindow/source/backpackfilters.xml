@@ -1,0 +1,57 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- Backpack Checkbox Button Template -->
+        <Button name="BackpackContextMenuChoice" inherits="EA_Button_DefaultMenuButton" textalign="left" autoresize="false">
+            <Size>
+                <AbsPoint x="245" y="28" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.ToggleFiltersSubMenu" />
+            </EventHandlers>
+
+            <Windows>
+                <Button name="$parentCheckBox" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ToggleFilterChoice" />
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentText" font="font_default_text" maxchars="256" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="210" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="30" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <DynamicImage name="$parentSubMenuButton" texture="EA_HUD_01" layer="popup" popable="false" sticky="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="16" y="21" />
+                    </Size>
+                    <TexCoords x="457" y="463" />
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Button name="BackpackContextSubMenuChoice" inherits="BackpackContextMenuChoice" >
+            <Eventhandlers>
+                <EventHandler event="OnMouseOver" function="" />
+            </Eventhandlers>
+        </Button>
+    </Windows>
+</Interface>

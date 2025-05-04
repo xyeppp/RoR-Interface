@@ -1,0 +1,217 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+        <DynamicImage name="EA_DynamicImage_DisabledIconSlotTemplate" texture="EA_Apothecary01_d5" slice="Disabled-Icon-Slot" handleinput="false" >
+            <Size>
+                <AbsPoint x="59" y="59" />
+            </Size>
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_OrangeOrbTemplate" texture="EA_Apothecary01_d5" slice="Orange-Orb" handleinput="false" >
+            <Size>
+                <AbsPoint x="21" y="20" />
+            </Size>
+        </DynamicImage>
+        
+        <Button name="ApothecaryWindowSlotTemplate" inherits="EA_Button_Default" draganddrop="true"
+            gameactionbutton="right" drawchildrenfirst="true" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ApothecaryWindow.OnSlotLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="ApothecaryWindow.OnSlotRButtonUp" />
+                <EventHandler event="OnMouseOver" function="ApothecaryWindow.OnSlotMouseOver" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentDisabled" inherits="EA_DynamicImage_DisabledIconSlotTemplate" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentOrb" inherits="EA_DynamicImage_OrangeOrbTemplate" layer="secondary">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+        
+        <Button name="ApothecaryWindowContainerSlotTemplate" inherits="ApothecaryWindowSlotTemplate" >
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_Apothecary01_d5" x="429" y="195" />
+                <NormalHighlit texture="EA_Apothecary01_d5" x="429" y="195" />
+                <Pressed texture="EA_Apothecary01_d5" x="429" y="195" />
+                <Disabled texture="EA_Apothecary01_d5" x="429" y="195" />
+            </TexCoords>
+        </Button>
+        
+        <Button name="ApothecaryWindowDeterminentSlotTemplate" inherits="ApothecaryWindowSlotTemplate" >
+            <Size>
+                <AbsPoint x="71" y="71" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_Apothecary01_d5" x="425" y="192" />
+                <NormalHighlit texture="EA_Apothecary01_d5" x="425" y="192" />
+                <Pressed texture="EA_Apothecary01_d5" x="425" y="192" />
+                <Disabled texture="EA_Apothecary01_d5" x="425" y="192" />
+            </TexCoords>
+        </Button>
+        
+        <Button name="ApothecaryWindowBottleSlotTemplate" inherits="ApothecaryWindowSlotTemplate" >
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_Apothecary01_d5" x="425" y="263" />
+                <NormalHighlit texture="EA_Apothecary01_d5" x="425" y="263" />
+                <Pressed texture="EA_Apothecary01_d5" x="425" y="263" />
+                <Disabled texture="EA_Apothecary01_d5" x="425" y="263" />
+            </TexCoords>
+        </Button>
+        
+        <DynamicImage name="EA_DynamicImage_BottleTemplate" texture="EA_Apothecary01_d5" slice="Bottle" handleinput="false" >
+            <Size>
+                <AbsPoint x="71" y="102" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentTop" texture="EA_Apothecary01_d5" slice="BottleTop" handleinput="false">
+                    <Size>
+                        <AbsPoint x="34" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="-12" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_StabilityMeterTemplate" texture="EA_Apothecary01_d5" slice="Stability-Meter" >
+            <Size>
+                <AbsPoint x="47" y="133" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentSlider" texture="EA_Apothecary01_d5" slice="Stability-Meter-Arrow" handleinput="false" layer="overlay" >
+                    <Size>
+                        <AbsPoint x="16" y="11" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </DynamicImage>
+		
+		<Button name="EA_Button_TalismanMakingSlotTemplate" inherits="EA_Button_Default" draganddrop="true"
+            gameactionbutton="right" drawchildrenfirst="true" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TalismanMakingWindow.OnSlotLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="TalismanMakingWindow.OnSlotRButtonUp" />
+                <EventHandler event="OnMouseOver" function="TalismanMakingWindow.OnSlotMouseOver" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="68" y="68" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_Talisman01_d5" x="424" y="100" />
+                <NormalHighlit texture="EA_Talisman01_d5" x="424" y="100" />
+                <Pressed texture="EA_Talisman01_d5" x="424" y="100" />
+                <Disabled texture="EA_Talisman01_d5" x="424" y="100" />
+            </TexCoords>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+        
+        <DynamicImage name="EA_DynamicImage_TalismanOrb" texture="EA_Talisman01_d5" slice="orb-orange" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="20" y="20" />
+            </Size>
+        </DynamicImage>
+        
+        <Button name="EA_Button_TalismanMakingContainerSlotTemplate" inherits="EA_Button_Default" draganddrop="true"
+            gameactionbutton="right" drawchildrenfirst="true" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TalismanMakingWindow.OnSlotLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="TalismanMakingWindow.OnSlotRButtonUp" />
+                <EventHandler event="OnMouseOver" function="TalismanMakingWindow.OnSlotMouseOver" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_Talisman01_d5" x="424" y="168" />
+                <NormalHighlit texture="EA_Talisman01_d5" x="424" y="168" />
+                <Pressed texture="EA_Talisman01_d5" x="424" y="168" />
+                <Disabled texture="EA_Talisman01_d5" x="424" y="168" />
+            </TexCoords>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+		
+		
+		<Window name="EA_Window_SalvagingRadioButtonTemplate" handleinput="true">
+		    <Size>
+		        <AbsPoint x="200" y="32" />
+		    </Size>
+		    <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultToggleCircle" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="SalvagingWindow.OnStatLButtonUp" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentLabel" font="font_default_text" textalign="left" handleinput="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="300" y="32" />
+                    </Size>
+                    <Color r="255" g="255" b="255" a="255" />
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton" />
+                    </Anchors>
+                </Label>
+		    </Windows>
+		</Window>
+        
+    </Windows>
+</Interface>

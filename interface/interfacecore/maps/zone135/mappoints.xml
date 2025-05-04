@@ -1,0 +1,19 @@
+<zone iname="Twisting Tower">
+    <landmark iname="Oculus of Change" id="1" mapIcon="1097" x="25135" y="29394">
+        <importance>major</importance>
+    </landmark>
+    <battlefieldObjective iname="The Atrium" id="7003" iconSet="1" x="25128" y="31682" allowGutter="false">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Loft" id="7004" iconSet="1" x="25128" y="30756" allowGutter="false">
+    </battlefieldObjective>
+    <textPoint iname="TOP VIEW" id="1" x="32287" y="26143">
+        <font>font_default_text_giant</font>
+        <anchor>left</anchor>
+        <color r="220" g="193" b="131" />
+    </textPoint>
+    <textPoint iname="SIDE VIEW" id="2" x="23415" y="33946">
+        <font>font_default_text_giant</font>
+        <anchor>left</anchor>
+        <color r="220" g="193" b="131" />
+    </textPoint>
+</zone>

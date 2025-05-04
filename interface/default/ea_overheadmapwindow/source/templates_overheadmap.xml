@@ -1,0 +1,248 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+        <!-- Map Point Filter Menu Window -->
+        <Window name="EA_MapPinFilterEntry">
+            <Size>
+                <AbsPoint x="550" y="32" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton1" inherits="EA_Button_DefaultCheckBox" textalign="left" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleMapPinFilter" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentIcon1" handleinput="false" layer="background" texture="map_markers01">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel1" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="195" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentButton2" inherits="EA_Button_DefaultCheckBox" textalign="left" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLabel1">
+                            <AbsPoint x="11" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleMapPinFilter" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentIcon2" handleinput="false" layer="background" texture="map_markers01">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel2" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="195" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_MapPinGutterEntry">
+            <Size>
+                <AbsPoint x="550" y="32" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton1" inherits="EA_Button_DefaultCheckBox" textalign="left" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleMapPinGutter" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentIcon1" handleinput="false" layer="background" texture="map_markers01">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel1" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="195" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentButton2" inherits="EA_Button_DefaultCheckBox" textalign="left" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLabel1">
+                            <AbsPoint x="11" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ToggleMapPinGutter" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentIcon2" handleinput="false" layer="background" texture="map_markers01">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLabel2" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="195" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!-- Zoom Slider for Overhead Map -->
+        <DynamicImage name="EA_DynamicImage_OverheadZoomSliderBackground" texture="EA_HUD_01" slice="Map-Zoom-Slider-Background">
+            <Size>
+                <AbsPoint x="28" y="95" />
+            </Size>
+        </DynamicImage>
+
+        <Button name="EA_Button_VerticalZoomSlider" inherits="DefaultButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="20" y="14" />
+            </Size>
+            <TexSlices>
+                <Normal          id="Map-Zoom-Slider"            />
+                <NormalHighlit   id="Map-Zoom-Slider-ROLLOVER"   />
+                <Pressed         id="Map-Zoom-Slider-Depressed"  />
+                <PressedHighlit  id="Map-Zoom-Slider-ROLLOVER"   />
+            </TexSlices>
+        </Button>
+
+        <Window name="EA_Template_OverheadMapZoomSlider">
+            <Size>
+                <AbsPoint x="28" y="125" />
+            </Size>
+            <Windows>
+                <Button name="$parentInButton" inherits="DefaultButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                    <Size>
+                        <AbsPoint x="25" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ZoomIn" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverZoomInBtn" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal          id="Map-Plus-Button"            />
+                        <NormalHighlit   id="Map-Plus-Button-ROLLOVER"   />
+                        <Pressed         id="Map-Plus-Button-Depressed"  />
+                        <PressedHighlit  id="Map-Plus-Button-Depressed"  />
+                        <Disabled        id="Map-Plus-Button-Disabled"   />
+                        <DisabledPressed id="Map-Plus-Button-Disabled"   />
+                    </TexSlices>
+                    <Sounds>
+                        <Sound event="OnLButtonDown" script="Sound.Play( Sound.MINI_MAP_ZOOM_IN  )" />
+                    </Sounds>
+                </Button>
+
+                <SliderBar name="$parentBar" layer="background"
+                           background="" tickmark=""
+                           sliderbutton="EA_Button_VerticalZoomSlider" numticks="3" orientation="vertical" locktoticks="true">
+                    <Size>
+                        <AbsPoint x="28" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentInButton">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSlide" function="EA_Window_OverheadMap.SlideZoom" />
+                    </EventHandlers>
+                </SliderBar>
+
+                <Button name="$parentOutButton" inherits="DefaultButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                    <Size>
+                        <AbsPoint x="25" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OverheadMap.ZoomOut" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OverheadMap.OnMouseoverZoomOutBtn" />
+                    </EventHandlers>
+                    <TexSlices>
+                        <Normal          id="Map-Minus-Button"            />
+                        <NormalHighlit   id="Map-Minus-Button-ROLLOVER"   />
+                        <Pressed         id="Map-Minus-Button-Depressed"  />
+                        <PressedHighlit  id="Map-Minus-Button-Depressed"  />
+                        <Disabled        id="Map-Minus-Button-Disabled"   />
+                        <DisabledPressed id="Map-Minus-Button-Disabled"   />
+                    </TexSlices>
+                    <Sounds>
+                        <Sound event="OnLButtonDown" script="Sound.Play( Sound.MINI_MAP_ZOOM_OUT  )" />
+                    </Sounds>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

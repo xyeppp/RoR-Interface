@@ -1,0 +1,234 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <!-- LIST VIEW TEMPLATES -->
+
+        <!-- Checkbox button/label for the store filters -->
+        <Window name="EA_Window_BackpackFilterTemplate" inherits="EA_LabelCheckButton">
+            <Size>
+                <AbsPoint x="115" y="30" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ToggleListViewFilter" />
+            </EventHandlers>
+        </Window>
+
+        <!-- Sort Button Template -->
+        <Button name="EA_Window_BackpackSortingHeaderTemplate" inherits="EA_Button_DefaultListSort">
+            <Size>
+                <AbsPoint x="100" y="30" />
+                <!-- size if we change back to 4 sort headers
+                <AbsPoint x="135" y="30" />
+                -->
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ChangeSorting" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Item Row -->
+        <Window name="EA_Window_BackpackRowTemplate" draganddrop="true" handleinput="true">
+            <Size>
+                <AbsPoint x="384" y="80" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ListViewInventoryLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_Backpack.ListViewInventoryRButtonUp" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <Button name="$parentItemPic" inherits="EA_Button_DefaultIcon_Large" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="EA_Window_Backpack.ListViewInventoryLButtonDown" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Backpack.ListViewInventoryLButtonUp" />
+                        <EventHandler event="OnRButtonUp" function="EA_Window_Backpack.ListViewInventoryRButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_Backpack.ListViewInventoryMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_Window_Backpack.MouseOverEquipmentSlotEnd" />
+                    </EventHandlers>
+                </Button>
+                <!-- font_default_text -->
+                <Label name="$parentItemName" wordwrap="true" font="font_default_sub_heading" textalign="left" maxchars="80" inherits="EA_Label_DefaultText" handleinput="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="310" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentItemLocked" wordwrap="true" font="font_default_sub_heading" textalign="left" maxchars="10" inherits="EA_Label_DefaultText" handleinput="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="120" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItemName">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentItemType" inherits="EA_Label_DefaultText_Small" textalign="left" wordwrap="false"  maxchars="40"  handleinput="false">
+                    <Size>
+                        <AbsPoint x="310" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentItemRank" inherits="EA_Label_DefaultText_Small" textalign="left" wordwrap="false"  maxchars="40"  handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentItemPic">
+                            <AbsPoint x="10" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        <!-- End Item Row -->
+
+
+ <!-- END LIST VIEW TEMPLATES -->
+
+
+        <!-- LIST VIEW MAIN WINDOW -->
+
+        <Window name="EA_Window_BackpackListTemplate">
+            <Windows>
+
+                <Window name="$parentFilter">
+                    <Size>
+                        <AbsPoint x="390" y="70" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="topright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="70"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentArmor" inherits="EA_Window_BackpackFilterTemplate">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentWeapons" inherits="EA_Window_BackpackFilterTemplate">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentMisc" inherits="EA_Window_BackpackFilterTemplate">
+                            <Anchors>
+
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="-15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentByUsable" inherits="EA_Window_BackpackFilterTemplate">
+                            <Size>
+                                <AbsPoint x="200" y="30" />
+                            </Size>
+                            <Anchors>
+
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="33" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+
+                <!-- Header Names for Sorting  -->
+                <Window name="$parentHeader">
+
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilter">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFilter">
+                            <AbsPoint x="0" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Button name="$parentRarity" inherits="EA_Window_BackpackSortingHeaderTemplate" id="1">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+
+                        <Button name="$parentName" inherits="EA_Window_BackpackSortingHeaderTemplate" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentRarity">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentType" inherits="EA_Window_BackpackSortingHeaderTemplate" id="3">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentRank" inherits="EA_Window_BackpackSortingHeaderTemplate" id="4">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentType">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                    </Windows>
+                </Window>
+
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_BackpackRowTemplate"  visiblerows="6" rowcount="120" rowspacing="0">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHeader">
+                            <AbsPoint x="0" y="480"/>
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_Backpack.displayData" populationfunction="EA_Window_Backpack.PopulateListDisplayData">
+                        <ListColumns>
+                            <ListColumn windowname="ItemPicIconBase" variable="iconNum" format="icon" />
+                            <ListColumn windowname="ItemName" variable="name" format="wstring" />
+                            <ListColumn windowname="ItemLocked" variable="lockedText" format="wstring" />
+                            <ListColumn windowname="ItemType" variable="typeText" format="wstring" />
+                            <ListColumn windowname="ItemRank" variable="rank" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

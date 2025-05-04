@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Window_DefaultTooltipBackground 
+
+    This file contains the template for the tooltip background.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+      <Window name="EA_Window_DefaultTooltipBackground" layer="background" alpha="1.0">
+        <Anchors>
+          <Anchor point="topleft" relativePoint="topleft" />
+          <Anchor point="bottomright" relativePoint="bottomright" />
+        </Anchors>
+        <Windows>
+          <FullResizeImage name="$parentInner" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft">
+                <AbsPoint x="3" y="3" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright">
+                <AbsPoint x="-3" y="-3" />
+              </Anchor>
+            </Anchors>
+            <TintColor r="0" g="0" b="0" />
+          </FullResizeImage>
+          <FullResizeImage name="$parentBorder" inherits="EA_Button_ResizeIconFrameNormal">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </FullResizeImage>
+        </Windows>
+      </Window>
+      
+    </Windows>
+</Interface>

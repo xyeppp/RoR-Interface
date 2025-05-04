@@ -1,0 +1,82 @@
+<zone iname="Isle of the Dead">
+    <landmark iname="Aqshy Ruin" id="1" mapIcon="1210" x="17725" y="35609">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Shadowfall Ruin" id="2" mapIcon="1210" x="28073" y="19483">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Watch of Althanis" id="3" mapIcon="1210" x="39664" y="20926">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Pool of the Winds" id="4" mapIcon="1210" x="40332" y="40761">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Drakecaller's Rest" id="5" mapIcon="1210" x="42063" y="30760">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Urithair Portal" id="6" mapIcon="1210" x="50711" y="35460">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Saruthil's Stand" id="7" mapIcon="1201" x="52769" y="38989">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Cynath Portal" id="8" mapIcon="1210" x="7403" y="33148">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Ritual of Metal" id="490" iconSet="1" x="13672" y="26744">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Shadows" id="491" iconSet="1" x="25670" y="15094">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Light" id="488" iconSet="1" x="30770" y="52225">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Life" id="486" iconSet="1" x="39889" y="54910">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Beasts" id="481" iconSet="1" x="43740" y="14635">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Fire" id="489" iconSet="1" x="4629" y="44627">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="35" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Death" id="487" iconSet="1" x="49126" y="48068">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ritual of Heavens" id="485" iconSet="1" x="49165" y="29199">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+</zone>

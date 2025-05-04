@@ -1,0 +1,226 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <Button name="PlayerTitlesTypeButton" inherits="TOKTextButtonMedium" autoresizewidth="true" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActivePlayerTitlesType"/>
+            </EventHandlers>
+        </Button>
+        
+        <Window name="RewardEntryWindowDef" >
+            <Size>
+                <AbsPoint x="400" y="55"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.GotToUnlockingTomeEntry"/>
+                <EventHandler event="OnRButtonUp" function="TomeWindow.SelectRewardEntry"/>
+                <EventHandler event="OnMouseOver" function="TomeWindow.MouseOverRewardEntry"/>
+            </EventHandlers>
+            <Windows>
+                <Label name="$parentNumber" inherits="TOKText"  maxchars="16" textalign="right" handleinput="false">
+                    <Size>
+                        <AbsPoint x="40" y="30"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentIcon" inherits="TomeRewardIconButton" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNumber">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentText" inherits="TOKTextButton" maxchars="256" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="300" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+   
+        <Window name="RewardTypeButtonDef">
+            <Size>
+                <AbsPoint x="480" y="50"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="TomeScrollClosed">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Button name="$parentText" inherits="TOKHeadingButton"  maxchars="128" textalign="left" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="350" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentImage">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+		
+        <!-- Rewards Info Def -->
+        <Window name="TomeRewardsInfoDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="TomeRewardsInfoPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild"  >
+							<Windows>
+															
+                                <Window name="TomeRewardsInfoRewardTypeButton1" inherits="RewardTypeButtonDef">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnViewTitleRewards"/>
+                                    </EventHandlers>
+                                </Window>
+                                <Window name="TomeRewardsInfoRewardTypeButton2" inherits="RewardTypeButtonDef">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeRewardsInfoRewardTypeButton1">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnViewTacticRewards"/>
+                                    </EventHandlers>
+                                </Window>
+                                <Window name="TomeRewardsInfoRewardTypeButton3" inherits="RewardTypeButtonDef">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeRewardsInfoRewardTypeButton2">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnViewItemRewards"/>
+                                    </EventHandlers>
+                                </Window>
+                                <Window name="TomeRewardsInfoRewardTypeButton4" inherits="RewardTypeButtonDef">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeRewardsInfoRewardTypeButton3">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnViewCardRewards"/>
+                                    </EventHandlers>
+                                </Window>
+                                
+                                <VerticalResizeImage name="$parentVertScroll" inherits="TomeScrollOpen">
+                                    <Size>
+                                        <AbsPoint x="401" y="490" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeRewardsInfoRewardTypeButton4">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </VerticalResizeImage>
+                                
+                                <Label name="TomeRewardsInfoSelectedTypeName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentVertScroll">
+                                            <AbsPoint x="50" y="30"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <Label name="TomeRewardsInfoSelectedTypeStat" inherits="TOKText" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeRewardsInfoSelectedTypeName">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <DynamicImage name="TomeRewardsInfoDivider" inherits="TomeDiamondDivider">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeRewardsInfoSelectedTypeStat">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+                                
+                                <Window name="TomeRewardsInfoCurrentTitle">
+                                    <Size>
+                                        <AbsPoint x="400" y="120" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeRewardsInfoDivider">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentName" inherits="TOKSubHeading" textalign="center">
+		                                    <Anchors>
+		                                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+		                                            <AbsPoint x="0" y="0"/>
+		                                        </Anchor>
+		                                    </Anchors>
+                                        </Label>
+                                        <Button name="$parentClearButton" inherits="TOKTextButton" autoresizewidth="true">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentName">
+                                                    <AbsPoint x="0" y="5"/>
+                                                </Anchor>
+                                            </Anchors>
+						                    <EventHandlers>
+						                        <EventHandler event="OnLButtonUp" function="TomeWindow.ClearActivePlayerTitle"/>
+						                    </EventHandlers>
+                                        </Button>
+                                        <Label name="$parentDesc" inherits="TOKText" autoresizewidth="true">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentClearButton">
+                                                    <AbsPoint x="0" y="10"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+		                                <DynamicImage name="$parentDivider" inherits="TomeDiamondDivider">
+		                                    <Anchors>
+		                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDesc">
+		                                            <AbsPoint x="0" y="10"/>
+		                                        </Anchor>
+		                                    </Anchors>
+		                                </DynamicImage>
+                                    </Windows>
+                                </Window>
+                                
+                                <Window name="TomeRewardsInfoEntryAnchor">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeRewardsInfoDivider">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+
+    </Windows>
+</Interface>

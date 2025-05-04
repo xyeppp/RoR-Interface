@@ -1,0 +1,220 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+        <Script file="Source/AuctionWindowListDataManager.lua" />
+		<Script file="Source/AuctionWindow.lua" />
+	</Scripts>
+	<Windows>
+        
+		<Window name="AuctionWindow" layer="secondary" movable="true" savesettings="false">
+			<Size>
+				<AbsPoint x="1100" y="752" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" >
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="AuctionWindow.Initialize" />
+                <EventHandler event="OnShown"       function="AuctionWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+			<Windows>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_AuctionImage" layer="secondary" />
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Button Bar Barground -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+
+                <Window name="$parentTabs">
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright"  relativePoint="bottomright"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="-10" y="50" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Buy Tab -->
+                        <Button name="$parent1" inherits="AuctionWindowTabButton" id="1">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="50" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <!-- Sell Tab -->
+                        <Button name="$parent2" inherits="AuctionWindowTabButton" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parent1">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parent1">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parent2">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+
+                                <Anchor point="bottomright" relativePoint="bottomright" >
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+
+                <Window name="$parentResultsSeparator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs" >
+                            <AbsPoint x="-10" y="85" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTabs" >
+                            <AbsPoint x="10" y="85" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentSearchControls" inherits="AuctionSearchControls">
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTabs">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright"  relativePoint="bottomright"  relativeTo="$parentResultsSeparator">
+                            <AbsPoint x="-20" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentSellControls" inherits="AuctionSellControls" >
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTabs">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright"  relativePoint="bottomright"  relativeTo="$parentResultsSeparator">
+                            <AbsPoint x="-20" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Button name="$parentItemListHeader" inherits="AuctionWindowSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="550" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentResultsSeparator" >
+                            <AbsPoint x="10" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentLvLListHeader" inherits="AuctionWindowSortButton" id="2">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentItemListHeader" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentPriceListHeader" inherits="AuctionWindowSortButton" id="3">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLvLListHeader" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="AuctionWindowResultsRow" visiblerows="7" rowcount="500" rowspacing="0" useDoubleAnchoringForRows="true">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentItemListHeader" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="AuctionWindow.searchResultsData" populationfunction="AuctionWindow.PopulateSearchResults"/>
+                </ListBox>
+
+                <Button name="$parentBuyButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom"  >
+                            <AbsPoint x="160" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindow.OnLButtonUpBuy"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom"  >
+                            <AbsPoint x="160" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindow.OnLButtonUpCancel"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentRefreshButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-35" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindow.OnLButtonUpRefresh"/>
+                    </EventHandlers>
+                </Button>
+
+                <Label name="$parentErrorText" maxchars="512" inherits="EA_Label_DefaultText" textalign="left" handleinput="false" layer="popup" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="680" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="10" y="12" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+            </Windows>
+		</Window>
+
+	</Windows>
+</Interface>

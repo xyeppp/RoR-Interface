@@ -1,0 +1,8 @@
+<zone iname="Reikland Factory">
+    <battlefieldObjective iname="The Warehouse" id="7007" iconSet="1" x="34863" y="30161">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Machine Shop" id="7008" iconSet="1" x="30444" y="30357">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Steamtank Plant" id="7009" iconSet="1" x="32729" y="33217">
+    </battlefieldObjective>
+</zone>

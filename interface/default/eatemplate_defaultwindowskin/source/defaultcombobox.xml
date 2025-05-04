@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_ComboBox_Default
+
+    This file contains all of the standard combo box templates that are used to create most of the Default UI Combo Boxes.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- Combo Box Defs ***********************************************************************************************-->
+        <Window name="EA_Window_ComboBoxMenuBackground" handleinput="false" >
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""  />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+               <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TanBorder" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""  />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+
+        <!-- Combo Box (Horizontally Resizable) -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_DefaultComboBox" texture="shared_01">
+            <Size>
+                <AbsPoint x="68" y="28" />
+            </Size>
+            <Sizes left="7" middle="52" right="7" />
+            <TexCoords>
+                <Left x="0" y="0" />
+                <Middle x="7" y="0" />
+                <Right x="59" y="0" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <FullResizeImage name="EA_FullResizeImage_DefaultComboBox" texture="shared_01">
+            <Size>
+                <AbsPoint x="68" y="28" />
+            </Size>
+            <Sizes>
+                <TopLeft x="7" y="5" />
+                <Middle x="52" y="18" />
+                <BottomRight x="7" y="5" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="0" y="0" />
+                <TopCenter x="7" y="0" />
+                <TopRight x="59" y="0" />
+                <MiddleLeft x="0" y="5" />
+                <MiddleCenter x="7" y="5" />
+                <MiddleRight x="59" y="5" />
+                <BottomLeft x="0" y="23" />
+                <BottomCenter x="7" y="23" />
+                <BottomRight x="79" y="23" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <Button name="EA_Button_DefaultResizableComboBoxSelected" backgroundtexture="shared_01" highlighttexture="shared_01" font="font_default_text" textalign="left"
+                overlaytexture="shared_01" overlayhighlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="250" y="29" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <Normal def="EA_HorizontalResizeImage_DefaultComboBox"  />
+                <NormalHighlit def="EA_HorizontalResizeImage_DefaultComboBox" />
+                <Pressed def="EA_HorizontalResizeImage_DefaultComboBox" />
+                <PressedHighlit def="EA_HorizontalResizeImage_DefaultComboBox" />
+                <Disabled def="EA_HorizontalResizeImage_DefaultComboBox" />
+            </ResizeImages>
+            <OverlaySize x="27" y="28" />
+            <OverlayOffset x="223" y="0" />
+            <OverlayTexCoords>
+                <Normal x="0" y="28" />
+                <NormalHighlit x="27" y="28" />
+                <Pressed x="0" y="56" />
+                <PressedHighlit x="0" y="56" />
+                <Disabled x="27" y="56" />
+            </OverlayTexCoords>
+            <TextOffset x="5" y="5" />
+        </Button>
+
+        <ComboBox name="EA_ComboBox_DefaultResizable" selectedbutton="EA_Button_DefaultResizableComboBoxSelected" 
+                            menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButton" 
+                            scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+            <Size>
+                <AbsPoint x="250" y="29" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+        
+        <!-- MediumLarge Combo (bigger than Medium, smaller than Large) -->
+        <Button name="EA_Button_DefaultResizableMediumLargeComboBoxSelected" inherits="EA_Button_DefaultResizableComboBoxSelected" >
+            <Size>
+                <AbsPoint x="210" y="28" />
+            </Size>                    
+            <OverlayOffset x="183" y="0" />           
+        </Button>
+
+        <ComboBox name="EA_ComboBox_DefaultResizableMediumLarge" selectedbutton="EA_Button_DefaultResizableMediumLargeComboBoxSelected"
+                    menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonMediumLarge"
+                    scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+            <Size>
+                <AbsPoint x="210" y="28" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+
+        <!-- Medium Combo -->
+        <Button name="EA_Button_DefaultResizableMediumComboBoxSelected" inherits="EA_Button_DefaultResizableComboBoxSelected" >
+            <Size>
+                <AbsPoint x="175" y="28" />
+            </Size>                    
+            <OverlayOffset x="148" y="0" />           
+        </Button>
+
+        <ComboBox name="EA_ComboBox_DefaultResizableMedium" selectedbutton="EA_Button_DefaultResizableMediumComboBoxSelected"
+                    menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonMedium"
+                    scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+            <Size>
+                <AbsPoint x="175" y="28" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+
+
+        <!-- Small Combo -->
+        <Button name="EA_Button_DefaultResizableSmallComboBoxSelected" inherits="EA_Button_DefaultResizableComboBoxSelected" >
+            <Size>
+                <AbsPoint x="125" y="28" />
+            </Size>           
+            <OverlayOffset x="98" y="0" />
+        </Button>
+
+        <ComboBox name="EA_ComboBox_DefaultResizableSmall" selectedbutton="EA_Button_DefaultResizableSmallComboBoxSelected" 
+                    menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonSmall"
+                    scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+            <Size>
+                <AbsPoint x="125" y="28" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+
+      <!-- Tiny Combo -->
+      <Button name="EA_Button_DefaultResizableTinyComboBoxSelected"  inherits="EA_Button_DefaultResizableComboBoxSelected" >
+        <Size>
+          <AbsPoint x="75" y="28" />
+        </Size>
+        <OverlayOffset x="48" y="0" />
+      </Button>
+
+      <ComboBox name="EA_ComboBox_DefaultResizableTiny" selectedbutton="EA_Button_DefaultResizableTinyComboBoxSelected" 
+                     menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonTiny"
+                     scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+        <Size>
+          <AbsPoint x="75" y="28" />
+        </Size>
+        <MenuButtonOffset x="5" y="5" />
+      </ComboBox>
+
+
+        <!-- Large Combo -->
+        <Button name="EA_Button_DefaultResizableLargeComboBoxSelected" inherits="EA_Button_DefaultResizableComboBoxSelected" >
+            <Size>
+                <AbsPoint x="375" y="28" />
+            </Size>
+            <OverlayOffset x="348" y="0" />            
+        </Button>
+
+        <ComboBox name="EA_ComboBox_DefaultResizableLarge" selectedbutton="EA_Button_DefaultResizableLargeComboBoxSelected"
+                       menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonLarge"
+                       scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+            <Size>
+                <AbsPoint x="375" y="28" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+
+    </Windows>
+</Interface>

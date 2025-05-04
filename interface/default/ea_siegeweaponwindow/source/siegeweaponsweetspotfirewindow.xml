@@ -1,0 +1,135 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponSweetSpotFireWindow.lua" />
+	</Scripts>
+	<Windows>
+	                       
+	   <DynamicImage name="SweetSpotSlider" texture="EA_Siege01" slice="Golf-Swing-Slider" popable="false"  >
+            <Size>
+                <AbsPoint x="32" y="65" />
+            </Size>
+            <Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="3" y="-20" />
+				</Anchor>
+			</Anchors>
+            <TexDims x="32" y="65" />
+        </DynamicImage>
+
+        <FullResizeImage name="SweetSpotIndicator" inherits="EA_FullResizeImage_TintableSolidBackground" popable="false"  >
+            <Size>
+                <AbsPoint x="4" y="32" />
+            </Size>
+            <TintColor r="0" g="255" b="0" />
+        </FullResizeImage>
+
+        <Window name="SweetSpotSwingMeter" >
+            <Size>
+                <AbsPoint x="400" y="20" />
+            </Size>
+            <Windows>
+            
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" popable="false" >
+                    <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="" />
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+			        </Anchors>
+                </FullResizeImage>
+
+                <FullResizeImage name="$parentSweetSpotImage" inherits="SweetSpotIndicator" layer="secondary" />
+
+                <DynamicImage name="$parentSlider" inherits="SweetSpotSlider" >
+                   <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="3" y="-10" />
+				        </Anchor>
+			        </Anchors>
+                </DynamicImage>
+                
+                
+                <FullResizeImage name="$parentFrame" inherits="EA_Button_ResizeIconFrameNormal" layer="secondary" popable="false" >
+                    <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="" />
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+			        </Anchors>
+                </FullResizeImage>           
+        
+            </Windows>
+        </Window>
+        
+        <Window name="GolfSwingSucessWindow" >
+            <Size>
+                <AbsPoint x="0" y="65" />
+            </Size>
+            <Windows>
+                 <Label name="$parentText" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                     <Anchors>
+				        <Anchor point="top" relativePoint="bottom" relativeTo="">
+					        <AbsPoint x="0" y="-5" />
+				        </Anchor>
+			        </Anchors>
+                </Label> 
+                 <DynamicImage name="$parentSlider" inherits="SweetSpotSlider" >
+                    <Size>
+                        <AbsPoint x="32" y="35" />
+                    </Size>
+                   <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+                    <TexDims x="32" y="35" />
+                </DynamicImage>                
+           </Windows>
+        </Window>
+        
+
+		<!-- Bug Report Window -->
+		<Window name="SiegeWeaponSweetSpotFireWindow" movable="false" layer="secondary"  savesettings="false" > 
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+				<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="SiegeWeaponSweetSpotFireWindow.Initialize" />	
+				<EventHandler event="OnUpdate" function="SiegeWeaponSweetSpotFireWindow.Update" />			
+			</EventHandlers>
+			<Windows>                                                         
+                
+                <!-- Golf Meter -->
+                <Window name="$parentSwingMeter" inherits="SweetSpotSwingMeter" >
+                   <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="">
+					        <AbsPoint x="0" y="100" />
+				        </Anchor>
+			        </Anchors>			      
+                </Window>
+                
+                <Label name="$parentClickInstructionText" inherits="EA_Label_DefaultSubHeading" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                	<Anchors>
+		                <Anchor point="top" relativePoint="bottom" relativeTo="$parentSwingMeter">
+					        <AbsPoint x="0" y="-3" />
+				        </Anchor>
+			        </Anchors>		        
+			         <Color r="235" g="235" b="235" />
+               </Label>      
+                        
+                
+                <!-- Sucess Indicator -->
+                <Window name="$parentSucess" inherits= "GolfSwingSucessWindow" />
+                             
+			</Windows>
+		</Window>
+	
+</Windows>
+</Interface>

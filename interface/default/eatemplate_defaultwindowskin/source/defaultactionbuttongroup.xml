@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_DefaultActionButtonGroup
+
+    This file contains for the templates for the Default Action Button Group
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+    
+        <ActionButtonGroup name="EA_ActionButtonGroup_DefaultSmall" numrows="0" numcols="0" >
+            <ActionButtonDefs>
+                <ButtonDef templateName="EA_ActionButtonGroup_DefaultSmall_ButtonTemplate" />
+                <TextDef templateName="EA_ActionButtonGroup_DefaultSmall_TextTemplate" />
+                <TimerDef templateName="EA_ActionButtonGroup_DefaultSmall_TimerTemplate" />
+                <IconDef templateName="EA_ActionButtonGroup_DefaultSmall_IconTemplate" />
+                <CooldownDef templateName="EA_ActionButtonGroup_DefaultSmall_CooldownTemplate" />       
+            </ActionButtonDefs> 
+            <ButtonSpacing x="0" y="0" />          
+        </ActionButtonGroup>
+
+        <ActionButtonGroup name="EA_ActionButtonGroup_Default" numrows="0" numcols="0" >
+          <ActionButtonDefs>
+            <ButtonDef templateName="EA_ActionButtonGroup_Default_ButtonTemplate" />
+            <TextDef templateName="EA_ActionButtonGroup_Default_TextTemplate" />
+            <TimerDef templateName="EA_ActionButtonGroup_Default_TimerTemplate" />
+            <IconDef templateName="EA_ActionButtonGroup_Default_IconTemplate" />
+            <CooldownDef templateName="EA_ActionButtonGroup_Default_CooldownTemplate" />
+          </ActionButtonDefs>
+          <ButtonSpacing x="0" y="0" />
+        </ActionButtonGroup>
+            
+        <Button name="EA_ActionButtonGroup_DefaultSmall_ButtonTemplate" inherits="EA_Button_Default" texturescale=".75" font="font_clear_tiny" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="48" y="48" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_SquareFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_SquareFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+        
+        <Button name="EA_ActionButtonGroup_Default_ButtonTemplate" inherits="EA_Button_Default" texturescale="1.0" font="font_clear" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_SquareFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_SquareFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+        
+        <!-- Round Buttons -->
+        <Button name="EA_ActionButtonGroup_DefaultTiny_RoundButtonTemplate" inherits="EA_Button_Default" texturescale=".5" font="font_clear_tiny" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_RoundFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_RoundFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_RoundFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_RoundFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <Button name="EA_ActionButtonGroup_DefaultSmall_RoundButtonTemplate" inherits="EA_Button_Default" texturescale=".75" font="font_clear_tiny" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="48" y="48" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_RoundFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_RoundFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_RoundFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_RoundFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <Button name="EA_ActionButtonGroup_Default_RoundButtonTemplate" inherits="EA_Button_Default" texturescale="1.0" font="font_clear" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_RoundFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_RoundFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_RoundFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_RoundFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+        
+         <!-- Icon Template -->
+        <DynamicImage name="EA_ActionButtonGroup_DefaultSmall_IconTemplate" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="1" y="1" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright">
+                    <AbsPoint x="-1" y="-1" />
+                </Anchor>
+            </Anchors>
+            <TexDims x="64" y="64" />
+        </DynamicImage>
+
+      <!-- Icon Template -->
+      <DynamicImage name="EA_ActionButtonGroup_Default_IconTemplate" >
+        <Anchors>
+          <Anchor point="topleft" relativePoint="topleft" >
+            <AbsPoint x="1" y="1" />
+          </Anchor>
+          <Anchor point="bottomright" relativePoint="bottomright">
+            <AbsPoint x="-1" y="-1" />
+          </Anchor>
+        </Anchors>
+        <TexDims x="64" y="64" />
+      </DynamicImage>
+      
+      <!-- Cooldown Template -->
+      <DynamicImage name="EA_ActionButtonGroup_DefaultSmall_CooldownTemplate" texture="EA_TintableImage">
+          <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" />
+              <Anchor point="bottomright" relativePoint="bottomright" />
+          </Anchors>
+          <TintColor r="150" g="150" b="150" />
+          <TexDims x="10" y="10" />
+      </DynamicImage>
+
+      <!-- Cooldown Template -->
+      <DynamicImage name="EA_ActionButtonGroup_Default_CooldownTemplate" texture="EA_TintableImage">
+        <Anchors>
+          <Anchor point="topleft" relativePoint="topleft" />
+          <Anchor point="bottomright" relativePoint="bottomright" />
+        </Anchors>
+        <TintColor r="150" g="150" b="150" />
+        <TexDims x="10" y="10" />
+      </DynamicImage>
+
+      <!-- Text Template -->
+       <Label name="EA_ActionButtonGroup_DefaultSmall_TextTemplate" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+            <Size>
+                <AbsPoint x="40" y="20" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright">
+                    <AbsPoint x="-5" y="5" />
+                </Anchor>
+            </Anchors>
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+      <!-- Text Template -->
+      <Label name="EA_ActionButtonGroup_Default_TextTemplate" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+        <Size>
+          <AbsPoint x="60" y="30" />
+        </Size>
+        <Anchors>
+          <Anchor point="topright" relativePoint="topright">
+            <AbsPoint x="-5" y="5" />
+          </Anchor>
+        </Anchors>
+        <Color r="255" g="255" b="255" a="255" />
+      </Label>
+      
+        <!-- Timer Template -->        
+        <Label name="EA_ActionButtonGroup_DefaultSmall_TimerTemplate" handleinput="false" font="font_clear_tiny" maxchars="10" textalign="center" >
+            <Size>
+                <AbsPoint x="40" y="20" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="bottom">
+                    <AbsPoint x="0" y="-3" />
+                </Anchor>
+            </Anchors>
+            <Color r="243" g="243" b="16" a="255" />
+        </Label>
+
+      <!-- Timer Template -->
+      <Label name="EA_ActionButtonGroup_Default_TimerTemplate" handleinput="false" font="font_clear_tiny" maxchars="10" textalign="center" >
+        <Size>
+          <AbsPoint x="60" y="30" />
+        </Size>
+        <Anchors>
+          <Anchor point="bottom" relativePoint="bottom">
+            <AbsPoint x="0" y="-3" />
+          </Anchor>
+        </Anchors>
+        <Color r="243" g="243" b="16" a="255" />
+      </Label>
+      
+    </Windows>
+</Interface>

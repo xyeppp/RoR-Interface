@@ -1,0 +1,350 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/OpenPartyWindowTabNearby.lua" />
+    </Scripts>
+    <Windows>
+
+        <Button name="EA_Template_OpenPartyGroupLine" inherits="EA_Button_ResizeIconFrame_NoNormalImage">
+            <Size>
+                <AbsPoint x="661" y="50" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentLeaderNameText" inherits="EA_Label_DefaultText_Small" textalign="leftcenter" handleinput="false" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="220" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentFriendIcon" textureScale="1.0" handleinput="false">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLeaderNameText">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentRatioText" inherits="EA_Label_ChatText" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentTimedDistanceText" />
+                    </Anchors>
+                </Label>
+                <Label name="$parentTimedDistanceText" inherits="EA_Label_ChatText" wordwrap="true" textalign="center" textAutoFitMinScale=".5" warnOnTextCropped="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="161" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentLocationTypeText" />
+                    </Anchors>
+                </Label>
+                <Label name="$parentLocationTypeText" inherits="EA_Label_DefaultSubHeading" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="70" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentJoinPartyButton" />
+                    </Anchors>
+                </Label>
+                <Button name="$parentJoinPartyButton" inherits="EA_Button_ListSort" font="font_chat_text" textalign="center" textAutoFitMinScale=".5" handleinput="true">
+                    <Size>
+                        <AbsPoint x="90" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyNearby.UpdatePartyTooltipFromButton" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyNearby.JoinPartySpecified" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyNearby.UpdatePartyTooltipFromWindow" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_OpenPartyNearby.OnRButtonUpGroupLeaderLine" />
+            </EventHandlers>
+        </Button>
+        
+
+        <Button name="EA_Template_OpenPartyNearbySortButton" inherits="EA_Button_DefaultListSort">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyNearby.OnLButtonUpSortButton" />
+            </EventHandlers>
+        </Button>
+
+
+        <Window name="EA_Window_OpenPartyNearbySocketDef" movable="false" layer="default" savesettings="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSocket" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSocket" />
+            </Anchors>
+            
+            <EventHandlers>
+                <EventHandler event="OnShown" function="EA_Window_OpenPartyNearby.RequestUpdateFullList"/>
+                <EventHandler event="OnUpdate" function="EA_Window_OpenPartyNearby.OnUpdate"/>
+            </EventHandlers>
+            
+            <Windows>
+
+                <Button name="$parentPartyLeaderSortButton" inherits="EA_Template_OpenPartyNearbySortButton" textalign="leftcenter" id="1">
+                    <Size>
+                        <AbsPoint x="230" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="358" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentNumPlayersSortButton" inherits="EA_Template_OpenPartyNearbySortButton" textalign="center" textAutoFitMinScale=".5" id="2">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDistanceSortButton" inherits="EA_Template_OpenPartyNearbySortButton" textalign="center" textAutoFitMinScale=".5" id="3">
+                    <Size>
+                        <AbsPoint x="161" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNumPlayersSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentInterestSortButton" inherits="EA_Template_OpenPartyNearbySortButton" textalign="center" id="4">
+                    <Size>
+                        <AbsPoint x="192" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDistanceSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <ListBox name="$parentList" rowdef="EA_Template_OpenPartyGroupLine" scrollbar="EA_ScrollBar_DefaultVerticalChain" visiblerows="10" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="683" y="500" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="EA_Window_OpenPartyNearby.OpenPartyTable" populationfunction="EA_Window_OpenPartyNearby.PopulateOpenParties">
+                        <ListColumns>
+                            <ListColumn windowname="LeaderNameText" variable="leaderName" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <Label name="$parentNoOpenPartiesHeader" maxchars="220" wordwrap="true" inherits="EA_Label_DefaultSubHeading" textalign="left">
+                    <Size>
+                        <AbsPoint x="375" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="50" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                
+                
+                <Label name="$parentHelpText" inherits="EA_Template_OpenParty_Label_Small" autoresize="true">
+                    <Size>
+                        <AbsPoint x="300" y="300" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="20" y="10" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentSeparator" />
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentOpenPartyFlag" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHelpText">
+                            <AbsPoint x="20" y="80" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyNearby.ToggleOpenPartyInterestFlag"/>
+                    </EventHandlers>
+                </Window>
+                
+                <Window name="$parentLegend">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentButtonBackground" />
+                        <Anchor point="bottom" relativePoint="topright" relativeTo="$parentSeparator">
+                            <AbsPoint x="4" y="-150" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentLegendSeparator" inherits="EA_Window_DefaultSeparator">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" />
+                            </Anchors>
+                        </Window>
+                        
+                        <DynamicImage name="$parentGuildIcon" textureScale="1.0">
+                            <Size>
+                                <AbsPoint x="20" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="40" y="40" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentGuildText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="true">
+                            <Size>
+                                <AbsPoint x="100" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentGuildIcon">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        
+                        <DynamicImage name="$parentAllianceIcon" textureScale="1.0">
+                            <Size>
+                                <AbsPoint x="20" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parentGuildIcon">
+                                    <AbsPoint x="145" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentAllianceText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="true">
+                            <Size>
+                                <AbsPoint x="100" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentAllianceIcon">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        
+                        <DynamicImage name="$parentFriendIcon" textureScale="1.0">
+                            <Size>
+                                <AbsPoint x="20" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentGuildIcon">
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentFriendText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="true">
+                            <Size>
+                                <AbsPoint x="100" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentFriendIcon">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        
+                        <DynamicImage name="$parentIgnoredIcon" textureScale="1.0">
+                            <Size>
+                                <AbsPoint x="20" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentAllianceIcon">
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentIgnoredText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="true">
+                            <Size>
+                                <AbsPoint x="100" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentIgnoredIcon">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        
+                    </Windows>
+                </Window>
+                
+                
+
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+
+                <!-- Buttons -->
+                <Button name="$parentDoneButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="-50" y="25" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenParty.ToggleFullWindow"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentRefreshButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentDoneButton">
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyNearby.RequestUpdateFullList" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentSeparator" inherits="EA_Window_DefaultVerticalSeparatorWithoutTop">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="10" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        
+        </Window>
+
+
+    </Windows>
+</Interface>

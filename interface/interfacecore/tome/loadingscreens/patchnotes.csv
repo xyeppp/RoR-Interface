@@ -1,0 +1,6 @@
+"patch timestamp (seconds since unix epoch, GMT)",string file name,string id main bullet begin,main bullet end,string id lesser item begin,lesser item end
+1288688400,patch140.txt,1,3,4,6
+1282035600,patch136.txt,1,3,4,6
+1274184000,patch135.txt,1,3,4,6
+1266912000,patch134.txt,1,3,4,6
+1260345600,patch133.txt,1,3,4,6

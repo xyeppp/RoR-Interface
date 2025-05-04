@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../Interface.xsd">
+
+    <!-- Assets -->
+    <Include file="Textures/CoreTextures.xml" />
+    <Include file="Maps/MapIcons.xml" />
+
+    <!-- Scripts -->
+    <Scripts>
+        <script file="Source/WindowState.lua" />
+        <Script file="Source/PregameUtils.lua" />
+    </Scripts>
+
+    <!-- Templates -->
+    <Include file="Source/CoreWindowTemplates.xml" />
+
+</Interface>

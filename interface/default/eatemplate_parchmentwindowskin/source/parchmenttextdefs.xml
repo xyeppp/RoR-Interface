@@ -1,0 +1,228 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Label name="TomeHyperLinkText">
+            <EventHandlers>
+                <EventHandler event="OnHyperLinkClicked" function="TomeWindow.OnHyperLinkClicked" />
+            </EventHandlers>
+        </Label>
+        
+		<Label name="TOKTitleSmall" font="font_heading_default_no_shadow" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+    
+		<Label name="TOKTitleMedium" font="font_heading_medium_noshadow" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+    
+		<Label name="TOKTitleLarge" font="font_heading_large_noshadow" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+		
+		<Label name="TOKTitleHuge" font="font_heading_big_noshadow" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+          
+		<Label name="TOKHeading" font="font_heading_default_no_shadow" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+
+		<Label name="TOKHeadingSmaller" font="font_journal_heading_smaller" maxchars="64" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+		<Label name="TOKSubHeading" font="font_journal_sub_heading" maxchars="64" textalign="left" wordwrap="true" autoresize="true" >			
+			<Size>
+				<AbsPoint x="425" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+		<Label name="TOKHeadingSmall" font="font_journal_small_heading" maxchars="64" textalign="left" wordwrap="true" autoresize="true" >			
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+		</Label>
+
+		<Label name="TOKText" inherits="TomeHyperLinkText" font="font_journal_text" maxchars="4096" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+			<LinkColor r="155" g="0" b="0" a="255"/>
+			<LinkHighlightColor r="255" g="85" b="0" a="255"/>
+		</Label>
+		
+		
+		<Label name="TOKTextSmall" font="font_journal_body"  textalign="left" handleinput="false">
+            <Size>
+                <AbsPoint x="207" y="32" />
+            </Size>
+            <Color r="95" g="57" b="36" />
+        </Label>
+        
+        <Label name="TOKTextLarge" font="font_journal_text_large"  textalign="left" handleinput="false">
+            <Size>
+                <AbsPoint x="207" y="32" />
+            </Size>
+            <Color r="95" g="57" b="36" />
+        </Label>
+        
+        <Label name="TOKTextHuge" font="font_journal_text_huge"  textalign="left" handleinput="false">
+            <Size>
+                <AbsPoint x="207" y="32" />
+            </Size>
+            <Color r="95" g="57" b="36" />
+        </Label>
+        
+        <Label name="TOKTextHeaders" font="font_journal_text_huge"  textalign="left" handleinput="false">
+            <Size>
+                <AbsPoint x="400" y="32" />
+            </Size>
+            <Color r="153" g="111" b="88" />
+        </Label>
+		
+		<Label name="TOKTextItalic" inherits="TomeHyperLinkText" font="font_journal_text_italic" maxchars="2048" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<Color r="95" g="57" b="36" a="255"/>
+			<LinkColor r="155" g="0" b="0" a="255"/>
+			<LinkHighlightColor r="255" g="85" b="0" a="255"/>
+		</Label>
+
+
+		<Button name="TOKTextButton"  font="font_journal_text" maxchars="256" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<TextColors>
+				<Normal r="155" g="0" b="0" a="255"/>
+				<NormalHighlit r="255" g="85" b="0" a="255"/>
+				<Pressed r="255" g="85" b="0" a="255"/>
+				<PressedHighlit r="255" g="85" b="0" a="255"/>
+				<!--
+				<Disabled r="150" g="150" b="150" a="255" />
+				<DisabledPressed r="150" g="150" b="150" a="255" />
+				-->				
+				<Disabled r="95" g="57" b="36" a="255"/>
+				<DisabledPressed r="95" g="57" b="36" a="255"/>
+			</TextColors>
+		</Button>
+		
+        <Button name="TOKTextButtonLarge"  font="font_journal_text_large" maxchars="256" textalign="left" wordwrap="true" autoresize="true">
+            <Size>
+                <AbsPoint x="400" y="0"/>
+            </Size>
+            <TextColors>
+                <Normal r="155" g="0" b="0" a="255"/>
+                <NormalHighlit r="255" g="85" b="0" a="255"/>
+                <Pressed r="255" g="85" b="0" a="255"/>
+                <PressedHighlit r="255" g="85" b="0" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+                <DisabledPressed r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+		
+		<Button name="TOKTextButtonMedium"  font="font_journal_small_heading" maxchars="256" textalign="left" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>
+			<TextColors>
+				<Normal r="155" g="0" b="0" a="255"/>
+				<NormalHighlit r="255" g="85" b="0" a="255"/>
+				<Pressed r="255" g="85" b="0" a="255"/>
+				<PressedHighlit r="255" g="85" b="0" a="255"/>
+				<Disabled r="95" g="57" b="36" a="255" />
+			</TextColors>
+		</Button>
+		
+        <Button name="TOKHeadingButton" font="font_heading_zone_name_no_shadow" maxchars="256" textalign="left" wordwrap="true" autoresize="true">
+            <Size>
+                <AbsPoint x="400" y="0"/>
+            </Size>
+            <TextColors>
+                <Normal r="155" g="0" b="0" a="255"/>
+                <NormalHighlit r="255" g="85" b="0" a="255"/>
+                <Pressed r="255" g="85" b="0" a="255"/>
+                <PressedHighlit r="255" g="85" b="0" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+		
+        <Button name="TOKQuestTextButton"  font="font_journal_small_heading" maxchars="256" textalign="center" wordwrap="false" autoresize="false">
+            <Size>
+                <AbsPoint x="400" y="0"/>
+            </Size>
+            <TextColors>
+                <Normal r="95" g="57" b="36" a="255"/>
+                <NormalHighlit r="95" g="57" b="36" a="255"/>
+                <Pressed r="95" g="57" b="36" a="255"/>
+                <PressedHighlit r="95" g="57" b="36" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+		
+        <Label name="TOKSectionTitle" inherits="TOKHeading" textalign="left" >
+        	<Size>
+				<AbsPoint x="375" y="0"/>
+			</Size>
+        </Label>
+
+	    <Label name="TOKEntryTitle" inherits="TOKSubHeading" textalign="left" >
+        	<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>  
+	        <Windows>
+		    	<HorizontalResizeImage name="$parentTitleRule" inherits="TomeResizableHorizontalRule" >
+		            <Anchors>
+			            <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+				            <AbsPoint x="0" y="4"/>
+			            </Anchor>
+		            </Anchors>
+	            </HorizontalResizeImage>		    
+		    </Windows>
+	    </Label>
+	    
+	    <Label name="TOKSubSectionTitle" inherits="TOKHeadingSmall" textalign="left" >
+        	<Size>
+				<AbsPoint x="400" y="0"/>
+			</Size>  
+	        <Windows>
+		    	<HorizontalResizeImage name="$parentTitleRule" inherits="TomeResizableHorizontalRule" >
+		            <Anchors>
+			            <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+				            <AbsPoint x="0" y="4"/>
+			            </Anchor>
+		            </Anchors>
+	            </HorizontalResizeImage>		    
+		    </Windows>
+	    </Label>
+	    
+	    
+	   <Label name="TOKLinkDescText" inherits="TOKTextItalic" textalign="center" >
+            <Size>
+	            <AbsPoint x="400" y="0"/>
+            </Size>
+       </Label>         
+   
+        
+    </Windows>
+</Interface>

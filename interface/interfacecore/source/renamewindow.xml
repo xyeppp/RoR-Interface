@@ -1,0 +1,119 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/RenameWindow.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <Window name="EA_Window_Rename_Container" movable="false" layer="overlay" savesettings="false">
+            <Anchors>
+			    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">							
+				    <AbsPoint x="0" y="0" />
+			    </Anchor>
+			    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">							
+				    <AbsPoint x="0" y="0" />
+			    </Anchor>
+		    </Anchors>
+		    <Windows>
+		    
+		        <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" layer="background" alpha="0.5" >
+                    <Anchors>
+			            <Anchor point="topleft" relativePoint="topleft" />
+			            <Anchor point="bottomright" relativePoint="bottomright" />
+		            </Anchors>
+		            <TintColor r="0" g="0" b="0" />
+		        </FullResizeImage>
+		        
+                <Window name="EA_Window_Rename" layer="overlay" movable="false" inherits="EA_Window_Default"  savesettings="false">
+                    <Size>
+                        <AbsPoint x="400" y="275" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnInitialize"  function="EA_Window_Rename.Initialize" />
+                    </EventHandlers>
+                    <Windows>
+
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="0" y="32" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        
+                        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        				
+				        			
+				        <EditBox name="$parentTextInput" font="font_default_text" background="EA_FullResizeImage_BlackTransparent" taborder="1" maxchars="23" scrolling="horz" input="text" caserestriction="firstupperrestlower">
+					        <Size>
+						        <AbsPoint x="250" y="30" />
+					        </Size>
+					        <Anchors>
+						        <Anchor point="center" relativePoint="center" >
+							        <AbsPoint x="0" y="37" />
+						        </Anchor>
+					        </Anchors>
+					        <TextOffset x="10" y="4" />
+				        </EditBox>
+				        
+                        
+				        <Label name="$parentKeyInputLabel" inherits="EA_Label_DefaultText" textAlign="left" >
+                            <Size>
+						        <AbsPoint x="250" y="30" />
+					        </Size>
+					        <Anchors>
+						        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentTextInput">
+							        <AbsPoint x="0" y="-3" />
+						        </Anchor>
+					        </Anchors>
+				        </Label>
+				        
+				        
+                        <Label name="$parentMessageText" inherits="EA_Label_DefaultText" maxchars="256" autoresize="true">
+                            <Size>
+						        <AbsPoint x="380" y="30" />
+					        </Size>
+					        <Anchors>
+						        <Anchor point="top" relativePoint="top" >
+							        <AbsPoint x="0" y="60" />
+						        </Anchor>
+					        </Anchors>
+				        </Label>
+        				
+				        <FullResizeImage name="$parentTextInputBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+					        <Anchors>
+						        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTextInput">							
+							        <AbsPoint x="-5" y="-5" />
+						        </Anchor>
+						        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTextInput">							
+							        <AbsPoint x="5" y="5" />
+						        </Anchor>
+					        </Anchors>
+				        </FullResizeImage>
+                        
+                        <Button name="$parentAccept" inherits="EA_Button_DefaultResizeable">
+					        <Anchors>
+						        <Anchor point="bottom" relativePoint="bottom" >
+							        <AbsPoint x="0" y="-15" />
+						        </Anchor>
+					        </Anchors>
+					        <EventHandlers>
+						        <EventHandler event="OnLButtonUp" function="EA_Window_Rename.OnAcceptButton" />
+					        </EventHandlers>
+				        </Button>
+
+                    </Windows>
+                </Window>
+                
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>
+

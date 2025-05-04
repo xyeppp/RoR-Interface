@@ -1,0 +1,8 @@
+<zone iname="Talabec Dam">
+    <bombTarget iname="Destruction bomb Target" id="1" mapIcon="37" x="37082" y="26721">
+        <realm>destruction</realm>
+    </bombTarget>
+    <bombTarget iname="Order bomb Target" id="2" mapIcon="37" x="24701" y="38339">
+        <realm>order</realm>
+    </bombTarget>
+</zone>

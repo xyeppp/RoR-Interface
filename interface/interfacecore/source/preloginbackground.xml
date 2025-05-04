@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/PreloginBackground.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="PreloginBackground" layer="default" movable="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft"/>
+                <Anchor point="bottomright" relativePoint="bottomright"/>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="PreloginBackground.Initialize" />
+            </EventHandlers>
+
+            <Windows>
+                <DynamicImage name="$parentWARBanner" layer="secondary" handleinput="false" texture="EA_Pregame01_d5" slice="Warhammer-Online-Logo">
+                    <Size>
+                        <AbsPoint x="782" y="296" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="120" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- Bottom Options prior to connecting to the server lobby -->
+                <Button name="$parentCinematicButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Size>
+                        <AbsPoint x="284" y="105" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCreditsButton">
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CinematicDisplay.ToggleShowing"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCreditsButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Size>
+                        <AbsPoint x="224" y="105" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-10" y="-25" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Credits.ToggleShowing"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSettingsButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCreditsButton">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PreloginBackground.ToggleSettings"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentQuitButton" inherits="EA_Button_DefaultPregameResizeable">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSettingsButton">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PreloginBackground.QuitGame"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentUpgradeButton" inherits="EA_Button_DefaultPregameResizeable">
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentQuitButton">
+                          <AbsPoint x="20" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="PreloginBackground.UpgradeAccount"/>
+                  </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

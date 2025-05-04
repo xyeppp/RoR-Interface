@@ -1,0 +1,170 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <Label name="EA_Template_QuestTrackerCondition" font="font_chat_text" textalign="right"
+               autoresize="true" handleinput="false" wordwrap="true" >
+            <Size>
+                <AbsPoint x="332" y="16"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+
+
+        <Window name="EA_Template_QuestTrackerEntry" >
+            <Size>
+                <AbsPoint x="332" y="50" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver"       function="EA_Window_QuestTracker.OnMouseOverQuest" />
+                <EventHandler event="OnMouseOverEnd"    function="EA_Window_QuestTracker.OnMouseOverEndQuest" />
+            </EventHandlers>
+            <Windows>
+
+                <Button name="$parentType" inherits="EA_Button_Default">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp"       function="EA_Window_QuestTracker.OnLButtonUpQuestName" />
+                        <EventHandler event="OnMouseOver"       function="EA_Window_QuestTracker.OnMouseOverQuestName" />
+                        <EventHandler event="OnMouseOverEnd"    function="EA_Window_QuestTracker.OnMouseOverEndQuestName" />
+                    </EventHandlers>
+                    <Windows>
+                        <DynamicImage name="$parentIcon" texture="map_markers01" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="32" y="32" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+
+                <Button name="$parentName" inherits="EA_Button_DefaultText"
+                        textalign="right" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="300" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTypeIcon" >
+                            <AbsPoint x="-4" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp"       function="EA_Window_QuestTracker.OnLButtonUpQuestName" />
+                        <EventHandler event="OnMouseOver"       function="EA_Window_QuestTracker.OnMouseOverQuestName" />
+                        <EventHandler event="OnMouseOverEnd"    function="EA_Window_QuestTracker.OnMouseOverEndQuestName" />
+                    </EventHandlers>
+                </Button>
+
+                <DynamicImage name="$parentClockImage"  texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentName" >
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="50" y="192" />
+                </DynamicImage>
+                <Label name="$parentTimerValue" font="font_default_sub_heading" maxchars="16" textalign="right" autoresize="true" autoresizewidth="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentClockImage" >
+                            <AbsPoint x="-4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+
+                <Label name="$parentCondition1" inherits="EA_Template_QuestTrackerCondition" id="1" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentClockImage" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition2" inherits="EA_Template_QuestTrackerCondition" id="2" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition1" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition3" inherits="EA_Template_QuestTrackerCondition" id="3" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition4" inherits="EA_Template_QuestTrackerCondition" id="4" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition5" inherits="EA_Template_QuestTrackerCondition" id="5" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition4">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition6" inherits="EA_Template_QuestTrackerCondition" id="6" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition5">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition7" inherits="EA_Template_QuestTrackerCondition" id="7" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition6">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition8" inherits="EA_Template_QuestTrackerCondition" id="8" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition7">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition9" inherits="EA_Template_QuestTrackerCondition" id="9" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition8">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCondition10" inherits="EA_Template_QuestTrackerCondition" id="10" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition9">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

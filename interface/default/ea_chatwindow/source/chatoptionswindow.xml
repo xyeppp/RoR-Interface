@@ -1,0 +1,276 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ChatOptionsWindow.lua" />
+    </Scripts>
+    <Windows>
+
+      <!--*******************************************************************-->
+      <!--                              Templates                            -->
+      <!--*******************************************************************-->
+        <!-- Row Label Template -->
+        <Label name="ChatOptionsChannelLabelTemplate" maxchars="64" wordwrap="false" inherits="DefaultWindowText" textalign="leftcenter">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ChatOptionsWindow.OnLButtonUpChannelLabel" />
+            </EventHandlers>
+        </Label>
+
+        <Button name="ChatOptionsRowTemplate" inherits="DefaultButton" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="230" y="28" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+
+            <Windows>
+
+                <Label name="$parentChannelName" inherits="ChatOptionsChannelLabelTemplate">
+                    <Size>
+                        <AbsPoint x="200" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnabled">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+      
+      <!--*******************************************************************-->
+      <!--                      Whole Window Definition                      -->
+      <!--*******************************************************************-->
+      <Window name="ChatOptionsWindow" movable="true" layer="secondary">
+        <Size>
+          <AbsPoint x="450" y="750" />
+        </Size>
+        <Anchors>
+          <Anchor point="topright" relativePoint="topleft" relativeTo="ChatMenuWindowOptionsButton">
+            <AbsPoint x="-30" y="0" />
+          </Anchor>
+        </Anchors>
+        <EventHandlers>
+          <EventHandler event="OnInitialize" function="ChatOptionsWindow.Initialize"/>
+          <EventHandler event="OnShown" function="ChatOptionsWindow.OnShown" />
+          <EventHandler event="OnHidden" function="ChatOptionsWindow.OnHidden" />
+        </EventHandlers>
+        <Windows>
+
+          <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" >
+                <AbsPoint x="0" y="32" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" />
+            </Anchors>
+          </Window>
+
+          <!-- Title Bar -->
+          <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+          <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="ChatOptionsWindow.Hide"/>
+            </EventHandlers>
+          </Button>
+          
+          <!-- Settings gear image -->
+          <DynamicImage name="$parentSettingsGearImage" inherits="EA_Default_SettingsImage" layer="popup" sticky="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                    <AbsPoint x="-50" y="-60" />
+                </Anchor>
+            </Anchors>
+          </DynamicImage>
+            <Label name="$parentHelpHeaderText" inherits="EA_Label_DefaultText_Small" autoresize="true">
+                <Size>
+                    <AbsPoint x="400" y="50" />
+                </Size>
+                <Color r="253" g="253" b="253" />
+                <Anchors>
+                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentSettingsGearImage">
+                        <AbsPoint x="-20" y="-25" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+
+            <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                <Size>
+                    <AbsPoint x="0" y="75" />
+                </Size>
+            </Window>
+
+            <Button name="$parentAcceptButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                <Anchors>
+                    <Anchor point="top" relativePoint="topleft" relativeTo="$parentButtonBackground">
+                        <AbsPoint x="-70" y="25" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ChatOptionsWindow.SetAllColorChanges"/>
+                </EventHandlers>
+            </Button>
+            <Window name="$parentDescriptionSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentTitleBar" >
+                        <AbsPoint x="0" y="45" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitleBar" >
+                        <AbsPoint x="0" y="45" />
+                    </Anchor>
+                </Anchors>
+            </Window>
+            <!-- Color Box Picker -->
+            <ColorPicker name="$parentColorPicker" texture="EA_HUD_01" columnsPerRow="4">
+                <ColorTexCoords x="304" y="450" />
+                <ColorTexDims x="24" y="24" />
+                <ColorSize x="28" y="28" />
+                <ColorSpacing x="5" y="5" />
+                <Size>
+                    <AbsPoint x="250" y="300" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topright" relativePoint="topleft" relativeTo="$parentList" >
+                        <AbsPoint x="30" y="25" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ChatOptionsWindow.OnLButtonUpColorPicker" />
+                </EventHandlers>
+            </ColorPicker>
+            
+            <!-- Color Selection Circle -->
+            <DynamicImage name="$parentColorSelectionRing" slice="Round-Swatch-Selection-Ring" texture="EA_HUD_01" layer="popup" popable="false" sticky="false" >
+                <Size>
+                    <AbsPoint x="38" y="38" />
+                </Size>
+            </DynamicImage>
+
+            <!-- Custom Color Swatch -->
+            <Label name="$parentCustomColorText" inherits="EA_Label_DefaultText_Small" autoresize="true">
+                <Size>
+                    <AbsPoint x="400" y="50" />
+                </Size>
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentColorPicker">
+                        <AbsPoint x="0" y="300" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+            <FullResizeImage name="$parentCustomColorSwatch" inherits="EA_FullResizeImage_WhiteTransparent" alpha="1.0">
+                <Size>
+                    <AbsPoint x="50" y="50" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorText">
+                        <AbsPoint x="25" y="10" />
+                    </Anchor>
+                </Anchors>
+            </FullResizeImage>
+            
+            <FullResizeImage name="$parentChannelSelection" inherits="EA_FullResizeImage_WhiteTransparent" alpha="0.25">
+            </FullResizeImage>
+            
+            <!-- Custom Color Slider (Red) -->
+            <!-- Custom Color Swatch -->
+            <Label name="$parentCustomColorRedText" inherits="EA_Label_DefaultText_Small" autoresize="true">
+                <Size>
+                    <AbsPoint x="400" y="50" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorSwatch">
+                        <AbsPoint x="-25" y="10" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+            <SliderBar name="$parentCustomColorRedSlider" inherits="EA_Default_SliderBar" >
+                <Size>
+                    <AbsPoint x="140" y="33" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorRedText">
+                        <AbsPoint x="0" y="10" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSlide" function="ChatOptionsWindow.OnSetCustomColor" />
+                </EventHandlers>
+            </SliderBar>
+            <!-- Custom Color Slider (Green) -->
+            <!-- Custom Color Swatch -->
+            <Label name="$parentCustomColorGreenText" inherits="EA_Label_DefaultText_Small" autoresize="true">
+                <Size>
+                    <AbsPoint x="400" y="50" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorRedSlider">
+                        <AbsPoint x="0" y="10" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+            <SliderBar name="$parentCustomColorGreenSlider" inherits="EA_Default_SliderBar" >
+                <Size>
+                    <AbsPoint x="140" y="33" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorGreenText">
+                        <AbsPoint x="0" y="10" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSlide" function="ChatOptionsWindow.OnSetCustomColor" />
+                </EventHandlers>
+            </SliderBar>
+            <!-- Custom Color Slider (Blue) -->
+            <!-- Custom Color Swatch -->
+            <Label name="$parentCustomColorBlueText" inherits="EA_Label_DefaultText_Small" autoresize="true">
+                <Size>
+                    <AbsPoint x="400" y="50" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorGreenSlider">
+                        <AbsPoint x="0" y="10" />
+                    </Anchor>
+                </Anchors>
+            </Label>
+            <SliderBar name="$parentCustomColorBlueSlider" inherits="EA_Default_SliderBar" >
+                <Size>
+                    <AbsPoint x="140" y="33" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomColorBlueText">
+                        <AbsPoint x="0" y="10" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSlide" function="ChatOptionsWindow.OnSetCustomColor" />
+                </EventHandlers>
+            </SliderBar>
+            
+            <!-- List Box -->
+            <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="ChatOptionsRowTemplate" visiblerows="22" rowcount="50" rowspacing="0">
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                        <AbsPoint x="20" y="70"/>
+                    </Anchor>
+                    <Anchor point="bottom" relativePoint="bottomright" relativeTo="">
+                        <AbsPoint x="10" y="-64"/>
+                    </Anchor>
+                </Anchors>
+                <ListData table="ChatOptionsWindow.channelListData" populationfunction="ChatOptionsWindow.UpdateChatOptionRow">
+                    <ListColumns>
+                        <ListColumn windowname="ChannelName" variable="channelName" format="wstring" />
+                    </ListColumns>
+                </ListData>
+                <EventHandlers>
+                    <EventHandler event="OnMouseWheel" function="ChatOptionsWindow.ClearSelectionImage"/>
+                </EventHandlers>
+            </ListBox>
+        </Windows>
+      </Window>
+      
+    </Windows>
+</Interface>

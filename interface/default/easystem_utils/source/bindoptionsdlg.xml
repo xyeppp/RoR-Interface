@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+    <Windows>
+        <Window name="BindOptionsDlg" layer="popup" savesettings="false" >
+            <Size>
+                <AbsPoint x="600" y="160" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="600" y="93" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <Windows>
+                      <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                          <EventHandlers>
+                            <EventHandler event="OnLButtonUp" function="ItemUtils.HideUseOptions" />
+                          </EventHandlers>
+                        </Button>
+                        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background"  textAutoFitMinScale=".5"/>
+                        <Button name="$parentButton1" inherits="EA_Button_DefaultResizeable" id="1">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentButton2">
+                                    <AbsPoint x="-15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="ItemUtils.UseOption" />
+                                <EventHandler event="OnMouseOver" function="ItemUtils.OnMouseOver" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentButton2" inherits="EA_Button_DefaultResizeable" id="2">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                                    <AbsPoint x="0" y="-10" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="ItemUtils.UseOption" />
+                                <EventHandler event="OnMouseOver" function="ItemUtils.OnMouseOver" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentButton3" inherits="EA_Button_DefaultResizeable" id="3">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentButton2">
+                                  <AbsPoint x="15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="ItemUtils.UseOption" />
+                                <EventHandler event="OnMouseOver" function="ItemUtils.OnMouseOver" />
+                            </EventHandlers>
+                        </Button>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
+
+

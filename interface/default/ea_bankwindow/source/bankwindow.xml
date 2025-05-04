@@ -1,0 +1,300 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/BankWindow.lua" />
+    </Scripts>
+    <Windows>
+
+
+
+    <!-- TEMPLATES -->
+
+        <Button name="BankWindowItemButtonTemplate" inherits="EA_Button_DefaultTimerFrame_Small" draganddrop="true" textalign="bottomright" gameactionbutton="right" >
+
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="BankWindow.EquipmentLButtonDown" />
+                <EventHandler event="OnLButtonUp" function="BankWindow.EquipmentLButtonUp" />
+                <EventHandler event="OnRButtonDown" function="BankWindow.EquipmentRButtonDown" />
+                <EventHandler event="OnMouseOver" function="BankWindow.EquipmentMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="BankWindowTabButtonTemplate" inherits="EA_Button_Tab">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="BankWindow.OnLButtonUpTab" />
+                <EventHandler event="OnMouseOver" function="BankWindow.OnMouseOverTab" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+
+        <Window name="BankWindowLockedRowBuyButton" >
+            <Size>
+                <AbsPoint x="0" y="48" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" alpha="0.5" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Lock Icon -->
+                <DynamicImage name="$parentLock" texture="EA_HUD_01" slice="Icon-Lock">
+                    <Size>
+                        <AbsPoint x="22" y="37" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="right" />
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- purchase button -->
+                <Button name="$parentBuyButton" inherits="EA_Button_DefaultText" textAlign="leftcenter">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="left" >
+                            <AbsPoint x="-27" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="250" y="37" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="BankWindow.OnBuyRow" />
+                        <EventHandler event="OnMouseOver" function="BankWindow.OnMouseOverBuyRow" />
+                    </EventHandlers>
+                    <TextOffset x="32" y="0" />
+                </Button>
+            </Windows>
+        </Window>
+
+
+    <!-- MAIN WINDOW -->
+        <Window name="BankWindow" inherits="EA_Window_Default" handleinput="true" movable="false" sticky="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="425" y="625" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="BankWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="BankWindow.Shutdown" />
+                <EventHandler event="OnRButtonDown" function="BankWindow.OnRButtonDown" />
+                <EventHandler event="OnShown"       function="BankWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="BankWindow.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            </EventHandlers>
+
+            <Windows>
+
+                <!-- Basic Frame -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_MerchantImage"/>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="BankWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="true" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentTabs">
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                        <Anchor point="bottomright"  relativePoint="bottomright"  relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="60" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Button name="$parentVault1" inherits="BankWindowTabButtonTemplate" id="1">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="20" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentVault2" inherits="BankWindowTabButtonTemplate" id="2">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentVault1">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        
+                        <Button name="$parentVault3" inherits="BankWindowTabButtonTemplate" id="3">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentVault2">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentVault1">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentVault3">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+
+                                <Anchor point="bottomright" relativePoint="bottomright" >
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+
+                <ActionButtonGroup name="$parentSlots" inherits="EA_ActionButtonGroup_DefaultSmall" draganddrop="true"  gameactionbutton="right"  >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTabs">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnActionButtonLButtonDown" function="BankWindow.EquipmentLButtonDown" />
+                        <EventHandler event="OnActionButtonLButtonUp" function="BankWindow.EquipmentLButtonUp" />
+                        <EventHandler event="OnRButtonDown" function="BankWindow.EquipmentRButtonDown" />
+                        <EventHandler event="OnActionButtonMouseOver" function="BankWindow.EquipmentMouseOver" />
+                    </EventHandlers>
+                </ActionButtonGroup>
+
+                <Window name="$parentLock1" inherits="BankWindowLockedRowBuyButton" layer="popup" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock2" inherits="BankWindowLockedRowBuyButton" layer="popup" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock3" inherits="BankWindowLockedRowBuyButton" layer="popup" id="3">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock4" inherits="BankWindowLockedRowBuyButton" layer="popup" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock5" inherits="BankWindowLockedRowBuyButton" layer="popup" id="5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock6" inherits="BankWindowLockedRowBuyButton" layer="popup" id="6">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock7" inherits="BankWindowLockedRowBuyButton" layer="popup" id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock6">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock6">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock8" inherits="BankWindowLockedRowBuyButton" layer="popup" id="8">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock7">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock7">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock9" inherits="BankWindowLockedRowBuyButton" layer="popup" id="9">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock8">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock8">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentLock10" inherits="BankWindowLockedRowBuyButton" layer="popup" id="10">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLock9">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLock9">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

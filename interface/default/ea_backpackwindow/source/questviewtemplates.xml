@@ -1,0 +1,43 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+     
+        <!-- background chains -->
+        <Window name="EA_Window_BackpackQuestBackgroundTemplate" handleinput="false" layer="background">
+            <Windows>
+                <DynamicImage name="$parentBackgroundChain1" texture="EA_Backpack01_d5" slice="Quest-Background-Chain" layer="default">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="6" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright">
+                            <AbsPoint x="-6" y="18" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="412" y="13" />
+                </DynamicImage>
+                <DynamicImage name="$parentBackgroundChain2" texture="EA_Backpack01_d5" slice="Quest-Background-Chain" layer="default">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft">
+                            <AbsPoint x="6" y="-18" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-6" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="412" y="13" />
+                </DynamicImage>
+            </Windows>
+        </Window>
+    
+    
+        <Button name="BackpackWindowQuestButton" inherits="EA_Button_DefaultTimerFrame_Small" draganddrop="true" textalign="bottomright" gameactionbutton="right" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_Backpack.QuestItemLButtonDown" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_Backpack.QuestItemRButtonUp" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Backpack.QuestItemMouseOver" />
+            </EventHandlers>
+        </Button>
+    
+    </Windows>
+</Interface>

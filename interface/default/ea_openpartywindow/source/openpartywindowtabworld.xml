@@ -1,0 +1,486 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/OpenPartyWindowTabWorld.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Tooltip_OpenPartyWorld"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="0" y="0" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <Label name="$parentPartyTypeText" inherits="EA_Label_DefaultSubHeading" maxchars="128" wordwrap="false" autoresize="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="350" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="8" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253" />
+                </Label>
+                <Label name="$parentLocationText" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPartyTypeText">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentLocationTypeText" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLocationText">
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentSpecificInterest1" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLocationText">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentSpecificInterest2" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpecificInterest1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentSpecificInterest3" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpecificInterest2">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentSpecificInterest4" inherits="EA_Label_DefaultText_Small" maxchars="128" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpecificInterest3">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="253" g="253" b="253"/>
+                </Label>
+                <Label name="$parentNoteText" inherits="EA_Label_DefaultText_Small" maxchars="75" wordwrap="true" autoresize="true" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="320" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpecificInterest4">
+                            <AbsPoint x="-20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="200" g="200" b="200"/>
+                </Label>
+                <DynamicImage name="$parentGroupLeaderCrownImage" texture="EA_HUD_01" slice="Group-Leader-Crown" popable="false" handleinput="false" layer="overlay">
+                    <Size>
+                        <AbsPoint x="25" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNoteText">
+                            <AbsPoint x="0" y="12" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Window name="$parentGroupLeader" inherits="EA_Template_OpenPartyTooltipMember">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroupLeaderCrownImage">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <FullResizeImage name="$parentDivLine" inherits="EA_FullResizeImage_TintableSolidBackground" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNoteText">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentNoteText">
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="130" g="130" b="130" a="255"/>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Template_OpenPartyWorldGroupLine" inherits="EA_Button_ResizeIconFrame_NoNormalImage">
+            <Size>
+                <AbsPoint x="661" y="50" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentLeaderNameText" inherits="EA_Label_DefaultText_Small" textalign="leftcenter" handleinput="false" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="220" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentFriendIcon" textureScale="1.0" handleinput="false">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLeaderNameText">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentRatioText" inherits="EA_Label_ChatText" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentLocationText" />
+                    </Anchors>
+                </Label>
+                <Label name="$parentLocationText" inherits="EA_Label_ChatText" wordwrap="true" textalign="center" textAutoFitMinScale=".5" warnOnTextCropped="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="161" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentInterestText" />
+                    </Anchors>
+                </Label>
+                <Label name="$parentInterestText" inherits="EA_Label_DefaultSubHeading" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="70" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentJoinPartyButton" />
+                    </Anchors>
+                </Label>
+                <Button name="$parentJoinPartyButton" inherits="EA_Button_ListSort" font="font_chat_text" textalign="center" textAutoFitMinScale=".5" handleinput="true">
+                    <Size>
+                        <AbsPoint x="90" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyWorld.UpdatePartyTooltipFromButton" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.JoinPartySpecified" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyWorld.UpdatePartyTooltipFromWindow" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_OpenPartyWorld.OnRButtonUpGroupLeaderLine" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="EA_Window_OpenPartyWorldSocketDef" movable="false" layer="default" savesettings="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSocket" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSocket" />
+            </Anchors>
+            
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="EA_Window_OpenPartyWorld.OnUpdate"/>
+            </EventHandlers>
+            
+            <Windows>
+
+                <Button name="$parentPartyLeaderSortButton" inherits="EA_Button_DefaultListSort" textalign="leftcenter" id="1">
+                    <Size>
+                        <AbsPoint x="230" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="358" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.OnLButtonUpSortButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentNumPlayersSortButton" inherits="EA_Button_DefaultListSort" textalign="center" textAutoFitMinScale=".5" id="2">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.OnLButtonUpSortButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentLocationSortButton" inherits="EA_Button_DefaultListSort" textalign="center" textAutoFitMinScale=".5" id="3">
+                    <Size>
+                        <AbsPoint x="161" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNumPlayersSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.OnLButtonUpSortButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentInterestSortButton" inherits="EA_Button_DefaultListSort" textalign="center" id="4">
+                    <Size>
+                        <AbsPoint x="192" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLocationSortButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.OnLButtonUpSortButton" />
+                    </EventHandlers>
+                </Button>
+                
+                <ListBox name="$parentList" rowdef="EA_Template_OpenPartyWorldGroupLine" scrollbar="EA_ScrollBar_DefaultVerticalChain" visiblerows="10" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="683" y="500" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="EA_Window_OpenPartyWorld.PartyTable" populationfunction="EA_Window_OpenPartyWorld.PopulateParties">
+                        <ListColumns>
+                            <ListColumn windowname="LeaderNameText" variable="leaderName" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+                
+                <Label name="$parentNoResultsHeader" maxchars="220" wordwrap="true" inherits="EA_Label_DefaultSubHeading" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="550" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentList">
+                            <AbsPoint x="50" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                
+                <!-- Party interest drop downs, etc -->
+                <Label name="$parentHelpText" inherits="EA_Template_OpenParty_Label_Small" autoresize="true">
+                    <Size>
+                        <AbsPoint x="300" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="20" y="10" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentSeparator" />
+                    </Anchors>
+                </Label>
+
+
+                <Label name="$parentLocationSelectLabel" inherits="EA_Template_OpenParty_Label" autoresize="true">
+                    <Size>
+                        <AbsPoint x="300" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="35" y="125" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentTierComboBox" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLocationSelectLabel">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.PopulateSpecificComboBoxes" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <Label name="$parentInterestSelectLabel" inherits="EA_Template_OpenParty_Label" autoresize="true">
+                    <Size>
+                        <AbsPoint x="300" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTierComboBox">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentInterestComboBox" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestSelectLabel">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.PopulateSpecificComboBoxes" />
+                    </EventHandlers>
+                </ComboBox>
+                <ComboBox name="$parentInterestSpecificComboBox1" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestComboBox">
+                            <AbsPoint x="30" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.UpdateComboBoxDisable" />
+                    </EventHandlers>
+                </ComboBox>
+                <ComboBox name="$parentInterestSpecificComboBox2" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestSpecificComboBox1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.UpdateComboBoxDisable" />
+                    </EventHandlers>
+                </ComboBox>
+                <ComboBox name="$parentInterestSpecificComboBox3" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestSpecificComboBox2">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.UpdateComboBoxDisable" />
+                    </EventHandlers>
+                </ComboBox>
+                <ComboBox name="$parentInterestSpecificComboBox4" inherits="EA_Template_OpenParty_ComboBox">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestSpecificComboBox3">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyWorld.UpdateComboBoxDisable" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <Button name="$parentSetInterestsButton" inherits="EA_Button_ListSort" textalign="center" textAutoFitMinScale=".5" handleinput="true">
+                    <Size>
+                        <AbsPoint x="280" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestSpecificComboBox4">
+                            <AbsPoint x="-30" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.SetInterests" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentSearchButton" inherits="EA_Button_ListSort" textalign="center" textAutoFitMinScale=".5" handleinput="true">
+                    <Size>
+                        <AbsPoint x="280" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSetInterestsButton">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.Search" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentSearchableCheck" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSearchButton">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.SetSearchable" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyWorld.MouseOverSearchable" />
+                    </EventHandlers>
+                </Window>
+
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+                
+                <Window name="$parentHideFullPartiesCheck" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="topleft" relativeTo="$parentSeparator">
+                            <AbsPoint x="10" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyWorld.OnHideFullParties" />
+                    </EventHandlers>
+                </Window>
+
+                <Button name="$parentDoneButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="-50" y="25" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenParty.ToggleFullWindow"/>
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentSeparator" inherits="EA_Window_DefaultVerticalSeparatorWithoutTop">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentPartyLeaderSortButton">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="10" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                
+            </Windows>
+        
+        </Window>
+
+
+    </Windows>
+</Interface>

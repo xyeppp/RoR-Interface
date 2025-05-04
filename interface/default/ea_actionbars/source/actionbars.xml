@@ -1,0 +1,261 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+        <!-- Action Button Base -->
+        <Button name="ActionButtonInput" inherits="EA_Button_DefaultTimerFrame" draganddrop="true" localscriptvars="true" gameactionauto="false" gameactionbutton="left">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown"     function="FrameManager.OnLButtonDown" />
+                <EventHandler event="OnLButtonUp"       function="FrameManager.OnLButtonUp" />
+                <EventHandler event="OnRButtonDown"     function="FrameManager.OnRButtonDown" />
+                <EventHandler event="OnMouseOver"       function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd"    function="FrameManager.OnMouseOverEnd" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="ActionButtonOverlay" handleinput="false" layer="overlay" localscriptvars="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <AnimatedImage name="$parentGlow" texture="anim_waaagh_1" fps="10" sticky="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="-8" y="-26" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="80" y="110"/>
+                    </Size>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="0" y="0" />
+                        <AnimFrame id="2" x="93" y="0" />
+                        <AnimFrame id="3" x="186" y="0" />
+                        <AnimFrame id="4" x="279" y="0" />
+                        <AnimFrame id="5" x="372" y="0" />
+                        <AnimFrame id="6" x="0" y="128" />
+                        <AnimFrame id="7" x="93" y="128" />
+                        <AnimFrame id="8" x="186" y="128" />
+                        <AnimFrame id="9" x="279" y="128" />
+                        <AnimFrame id="10" x="372" y="128" />
+                        <AnimFrame id="11" x="0" y="256" />
+                        <AnimFrame id="12" x="93" y="256" />
+                        <AnimFrame id="13" x="186" y="256" />
+                        <AnimFrame id="14" x="279" y="256" />
+                        <AnimFrame id="15" x="372" y="256" />
+                        <AnimFrame id="16" x="0" y="384" />
+                        <AnimFrame id="17" x="93" y="384" />
+                        <AnimFrame id="18" x="186" y="384" />
+                        <AnimFrame id="19" x="279" y="384" />
+                        <AnimFrame id="20" x="372" y="384" />
+                    </AnimFrames>
+                </AnimatedImage>
+                <AnimatedImage name="$parentActive" texture="EA_ActionBarAnim_Casting" fps="10" layer="overlay" handleinput="false" sticky="false" textureScale="1.0">
+                    <Size>
+                        <AbsPoint x="72" y="72"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="0" y="0" />
+                        <AnimFrame id="2" x="72" y="0" />
+                        <AnimFrame id="3" x="144" y="0" />
+                        <AnimFrame id="4" x="216" y="0" />
+                        <AnimFrame id="5" x="288" y="0" />
+                        <AnimFrame id="6" x="360" y="0" />
+                    </AnimFrames>
+                </AnimatedImage>
+                <AnimatedImage name="$parentFlash" texture="EA_ActionBarAnim_Recharged" fps="24" layer="overlay" handleinput="false" sticky="false" texturescale="1.0">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="0" y="0" />
+                        <AnimFrame id="2" x="64" y="0" />
+                        <AnimFrame id="3" x="128" y="0" />
+                        <AnimFrame id="4" x="192" y="0" />>
+                    </AnimFrames>
+                </AnimatedImage>
+            </Windows>
+        </Window>
+
+        <!-- The input and animation overlay grouped into one container for dynamic creation -->
+        <Window name="ActionButton">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <Button name="$parentAction" inherits="ActionButtonInput" />
+                <Window name="$parentOverlay" inherits="ActionButtonOverlay" />
+            </Windows>
+        </Window>
+
+        <Button name="StanceTabButton" popable="false">
+            <Size>
+                <AbsPoint x="78" y="52" />
+            </Size>
+            <TexCoords>
+                <Normal texture="EA_HUD_01" x="375" y="78" />
+                <NormalHighlit texture="EA_HUD_01" x="317" y="78" />
+                <Pressed texture="EA_HUD_01" x="436" y="78" />
+                <Disabled texture="EA_HUD_01" x="375" y="78" />
+            </TexCoords>
+        </Button>
+
+        <!-- ActionButton with an additional background layer for tabbed appearance. Does not inherit from ActionButton -->
+        <!-- Currently this is identical to the ActionButton, I ran out of time to implement the tabs, they're coming soon! -->
+        <Window name="StanceButton" localscriptvars="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <Button name="$parentAction" inherits="ActionButtonInput" />
+                <Window name="$parentOverlay" inherits="ActionButtonOverlay" />
+            </Windows>
+        </Window>
+
+        <!-- End Cap Art -->
+        <DynamicImage name="EA_ActionBarLeftCap" layer="background" popable="false" texture="EA_ActionBarCap_EM" slice="left-cap" handleinput="false" sticky="false" savesettings="false">
+            <Size>
+                <AbsPoint x="256" y="128" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomright" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitializeCustomSettings" function="FrameManager.OnInitializeCustomSettings" />
+            </EventHandlers>
+        </DynamicImage>
+
+        <DynamicImage name="EA_ActionBarRightCap" inherits="EA_ActionBarLeftCap" slice="right-cap" sticky="false">
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomleft" />
+            </Anchors>
+        </DynamicImage>
+
+        <!-- Actions Bar Window -->
+        <Window name="ActionBar" layer="default" movable="false" localscriptvars="true" popable="false" savesettings="false">
+            <EventHandlers>
+                <EventHandler event="OnInitializeCustomSettings" function="FrameManager.OnInitializeCustomSettings" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="802" y="72"/>
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" texture="EA_HUD_01" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Sizes>
+                        <TopLeft x="16" y="16" />
+                        <BottomRight x="16" y="16" />
+                        <Middle x="88" y="40" />
+                    </Sizes>
+                    <TexSlices>
+                        <TopLeft      id="Action-Bar-Frame-Top-Left" />
+                        <TopCenter    id="Action-Bar-Frame-Top-Center" />
+                        <TopRight     id="Action-Bar-Frame-Top-Right" />
+                        <MiddleLeft   id="Action-Bar-Frame-Middle-Left" />
+                        <MiddleCenter id="Action-Bar-Frame-Middle-Center" />
+                        <MiddleRight  id="Action-Bar-Frame-Middle-Right" />
+                        <BottomLeft   id="Action-Bar-Frame-Bottom-Left" />
+                        <BottomCenter id="Action-Bar-Frame-Bottom-Center" />
+                        <BottomRight  id="Action-Bar-Frame-Bottom-Right" />
+                    </TexSlices>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+
+
+        <!-- Action Bar Scroll Buttons -->
+        <Window name="ActionBarPageSelector">
+            <Size>
+                <AbsPoint x="26" y="66" />
+            </Size>
+            <Windows>
+                <Button name="$parentUp" inherits="EA_Button_DefaultUp">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ActionBars.HotbarPageUpProxy" />
+                        <EventHandler event="OnMouseOver" function="ActionBars.OnMouseoverHotbarPageUp" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentDown" inherits="EA_Button_DefaultDown">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCurrentPage" >
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ActionBars.HotbarPageDownProxy" />
+                        <EventHandler event="OnMouseOver" function="ActionBars.OnMouseoverHotbarPageDown" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCurrentPage" handleinput="false" layer="overlay" texture="shared_01" slice="Radio-Button">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentUp">
+                            <AbsPoint x="0" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentText" handleinput="false" font="font_clear_tiny" maxchars="10" textalign="center">
+                            <Size>
+                                <AbsPoint x="22" y="22" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                    </Windows>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <!-- Utility button for ActionBar1 which allows quick access to the global setting "Lock Action Bars" -->
+        <!-- This isn't a check box because it uses the custom lock graphic -->
+        <DynamicImage name="QuickAccessLockActionBars" texture="EA_HUD_01" slice="Icon-Lock" layer="default">
+            <Size>
+                <AbsPoint x="22" y="37" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnLButtonUp" function="FrameManager.OnLButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentCheck" texture="shared_01" slice="Check" handleinput="false">
+                    <Size>
+                        <AbsPoint x="18" y="19" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </DynamicImage>
+    </Windows>
+</Interface>

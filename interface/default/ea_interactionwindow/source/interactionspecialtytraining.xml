@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionSpecialtyTraining.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <!-- The main window -->
+        <Window name="EA_Window_InteractionSpecialtyTraining" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="550" y="770" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="180" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionSpecialtyTraining.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionSpecialtyTraining.Shutdown" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionSpecialtyTraining.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionSpecialtyTraining.OnHidden" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionSpecialtyTraining.ToggleContextMenu" />
+            </EventHandlers>
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_TrainingImage"/>
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Size>
+                        <AbsPoint x="550" y="710" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Tabs Block -->
+                <Window name="$parentTabs">
+                    <Size>
+                        <AbsPoint x="550" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar"/>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar"/>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentSpecialization1Tab" inherits="EA_Templates_PathTabButton" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="35" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentSpecialization2Tab" inherits="EA_Templates_PathTabButton" id="2">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentSpecialization1Tab">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Button name="$parentSpecialization3Tab" inherits="EA_Templates_PathTabButton" id="3">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentSpecialization2Tab">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Window name="$parentTabSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                            <Size>
+                                <AbsPoint x="14" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentSpecialization1Tab">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentTabSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                            <Size>
+                                <AbsPoint x="27" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentSpecialization3Tab">
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" >
+                                    <AbsPoint x="0" y="-6" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                    </Windows>
+                </Window>
+
+                <!-- Middle section background -->
+                <DynamicImage name="$parentPicture" texture="EA_Training_Specialization_Background" slice="Background" layer="background" handleinput="false" popable="false" >
+                    <Size>
+                        <AbsPoint x="486" y="512" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabs">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFooterSeparator" >
+                            <AbsPoint x="-9" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Container for the left hand interactive elements -->
+                <Window name="$parentInteractivePane" layer="background" popable="false" >
+                    <Size>
+                        <AbsPoint x="200" y="600" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <!-- <FullResizeImage name="$parentOutline" inherits="YellowFrameSize" layer="secondary" /> -->
+
+                        <!-- Vertical path indicator -->
+                        <Window name="$parentSpecializationStep15" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="40" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep14" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep15" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep13" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep14" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep12" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep13" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep11" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep12" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep10" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep11" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep9" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep10" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep8" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep9" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep7" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep8" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep6" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep7" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep5" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep6" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep4" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep5" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep3" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep4" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep2" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep3" />
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentSpecializationStep1" inherits="EA_Templates_SpecializationStep">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep2" />
+                            </Anchors>
+                        </Window>
+
+                        <!-- Path level modifier buttons -->
+                        <Button name="$parentPathIncrement" inherits="EA_Templates_SpecializationChange">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentSpecializationStep1">
+                                    <AbsPoint x="25" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.IncrementSpecialization" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentPathDecrement" inherits="EA_Templates_SpecializationChange">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentPathIncrement">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.DecrementSpecialization" />
+                            </EventHandlers>
+                        </Button>
+
+                    </Windows>
+                </Window>
+
+                <!-- Contrainer for the right hand display elements -->
+                <Window name="$parentDisplayPane">
+                    <Size>
+                        <AbsPoint x="350" y="600" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+
+                    </Anchors>
+                    <Windows>
+                        <!-- <FullResizeImage name="$parentOutline" inherits="YellowFrameSize" layer="secondary" /> -->
+                        <Label name="$parentMasteryPointText" wordwrap="true" font="font_clear_default" maxchars="300" inherits="DefaultWindowText" handleinput="false" textalign="left" autoresize="true">
+                            <Size>
+                                <AbsPoint x="300" y="200" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="15" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <Label name="$parentMasteryPointPurse" wordwrap="true" font="font_default_text_large" maxchars="50" inherits="DefaultWindowText" handleinput="false" textalign="center" autoresize="true">
+                            <Size>
+                                <AbsPoint x="300" y="40" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentMasteryPointText">
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="166" b="0" a="255" />
+                        </Label>
+
+                        <Label name="$parentLinkedAbilityText" wordwrap="true" font="font_clear_default" maxchars="200" inherits="DefaultWindowText" handleinput="false" textalign="left" autoresize="true">
+                            <Size>
+                                <AbsPoint x="300" y="150" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentMasteryPointPurse">
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <!-- Abilities related to this mastery path -->
+                        <Window name="$parentAbility">
+                            <Size>
+                                <AbsPoint x="300" y="300" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLinkedAbilityText">
+                                    <AbsPoint x="0" y="15" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <Window name="$parent1" inherits="EA_Templates_SpecializationAbilityDisplay" id="1">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="right" relativeTo="$parent2">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent2" inherits="EA_Templates_SpecializationAbilityDisplay" id="2">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="top" relativeTo="">
+                                            <AbsPoint x="0" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent3" inherits="EA_Templates_SpecializationAbilityDisplay" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parent2">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent4" inherits="EA_Templates_SpecializationAbilityDisplay" id="4">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="right" relativeTo="$parent5">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent5" inherits="EA_Templates_SpecializationAbilityDisplay" id="5">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parent2">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent6" inherits="EA_Templates_SpecializationAbilityDisplay" id="6">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parent5">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent7" inherits="EA_Templates_SpecializationAbilityDisplay" id="7">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="right" relativeTo="$parent8">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent8" inherits="EA_Templates_SpecializationAbilityDisplay" id="8">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parent5">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parent9" inherits="EA_Templates_SpecializationAbilityDisplay" id="9">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parent8">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                            </Windows>
+                        </Window>
+
+                        <Label name="$parentPathDescriptionText" wordwrap="true" font="font_clear_default" maxchars="300" inherits="DefaultWindowText" handleinput="false" textalign="left" autoresize="true">
+                            <Size>
+                                <AbsPoint x="300" y="150" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+
+                    </Windows>
+                </Window>
+
+                <!-- Bottom frame block -->
+                <Window name="$parentFooterSeparator" inherits="EA_Window_DefaultSeparator">
+                    <Size>
+                        <AbsPoint x="550" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-50"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!--Respec -->
+                <Button name="$parentRespecializeButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="20" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.Respecialize" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Buy the advance button -->
+                <Button name="$parentPurchaseButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.PurchaseAdvances" />
+                    </EventHandlers>
+                    <AnimatedImages>
+                        <Normal          def="EA_AnimatedImage_DefaultChoiceOverlay"  />
+                        <NormalHighlit   def="EA_AnimatedImage_DefaultChoiceOverlay" />
+                    </AnimatedImages>
+                </Button>
+
+                <!-- Close the window redundantly -->
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-20" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.Hide" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

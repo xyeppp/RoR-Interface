@@ -1,0 +1,8 @@
+<zone iname="Dragon's Bane">
+    <battlefieldObjective iname="The Academy" id="7063" iconSet="1" x="32982" y="36779">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Summoning Tower" id="7065" iconSet="1" x="32772" y="42440">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Commorancy" id="7066" iconSet="1" x="32791" y="31205">
+    </battlefieldObjective>
+</zone>

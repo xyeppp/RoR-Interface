@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+        <Texture name="EA_ActionBarAnim_Casting"    file="Textures/EA_sqframe_Casting_d5.dds" />
+        <Texture name="EA_ActionBarAnim_Recharged"  file="Textures/EA_iconRecharged_d5.dds" />
+    </Assets>
+</Interface>

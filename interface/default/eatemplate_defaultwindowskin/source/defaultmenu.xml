@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Text_Default 
+
+    This file contains all of the standard definitions for a right click context menu.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+         <!--# Button: EA_Button_DefaultMenuButton                   
+            This is the default menu button for all windows. It provides backgrounds for each of the states and a font.
+        -->
+        <Button name="EA_Button_DefaultMenuButton" font="font_default_text"  textalign="left" >
+            <Size>
+                <AbsPoint x="245" y="29" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <NormalHighlit def="EA_FullResizeImage_RedTransparent" />
+                <PressedHighlit def="EA_FullResizeImage_RedTransparent" />
+            </ResizeImages>
+            <TextOffset x="5" y="5" />
+        </Button>
+        
+        <Button name="EA_Button_DefaultMenuButtonMediumLarge" inherits="EA_Button_DefaultMenuButton" >
+            <Size>
+                <AbsPoint x="205" y="28" />
+            </Size>     
+        </Button>
+        
+        <Button name="EA_Button_DefaultMenuButtonMedium" inherits="EA_Button_DefaultMenuButton" >
+            <Size>
+                <AbsPoint x="170" y="28" />
+            </Size>     
+        </Button>
+
+
+        <Button name="EA_Button_DefaultMenuButtonSmall" inherits="EA_Button_DefaultMenuButton" >
+            <Size>
+                <AbsPoint x="120" y="28" />
+            </Size>            
+        </Button>
+
+        <Button name="EA_Button_DefaultMenuButtonTiny" inherits="EA_Button_DefaultMenuButton" >
+            <Size>
+                <AbsPoint x="70" y="28" />
+            </Size>
+        </Button>
+
+        <Button name="EA_Button_DefaultMenuButtonLarge" inherits="EA_Button_DefaultMenuButton" >
+            <Size>
+                <AbsPoint x="365" y="28" />
+            </Size>
+        </Button>
+      
+        <HorizontalResizeImage name="EA_Menu_DefaultDivider" inherits="EA_BrownHorizontalRule">
+            <Size>
+                <AbsPoint x="245" y="3" />
+            </Size>
+        </HorizontalResizeImage>
+
+    </Windows>
+</Interface>

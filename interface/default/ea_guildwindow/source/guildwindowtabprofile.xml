@@ -1,0 +1,500 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabProfile.lua"/>
+  </Scripts>
+  <Windows>
+
+    <Button name="NewsFilterButtonTemplate" inherits="EA_Button_ListSort" font="font_chat_text" handleinput="true" layer="background" textalign="center">
+      <Size>
+        <AbsPoint x="120" y="30" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="GuildWindowTabProfile.OnSelectNewsFilter" />
+      </EventHandlers>
+    </Button>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabProfileSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildWindowTabProfile.Initialize"/>
+        <EventHandler event="OnShutdown" function="GuildWindowTabProfile.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+        <!-- MOTD Frame -->
+        <FullResizeImage name="$parentMOTDFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="85"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- MOTD Section -->
+        <Window name="$parentMOTD" inherits="EditBoxSection" id="1">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentMOTDFrame">
+              <AbsPoint x="15" y="10"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentMOTDFrame">
+              <AbsPoint x="-40" y="-10"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Button name="$parentMOTDEditButton" inherits="EditBoxSectionEditButton" id="1">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="-8" y="2" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- MOTD Separator -->
+        <Window name="$parentMOTDSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" layer="default">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentMOTDFrame">
+              <AbsPoint x="0" y="17" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentMOTDFrame">
+              <AbsPoint x="0" y="17" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Overview Frame -->
+        <FullResizeImage name="$parentOverviewFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMOTDSeperator">
+              <!-- The separator is large vertically so offsetting slightly on top of it looks better. -->
+              <AbsPoint x="0" y="-10"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentMOTDSeperator">
+              <AbsPoint x="0" y="295"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Statistics Frame -->
+        <FullResizeImage name="$parentStatisticsFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+           <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentOverviewFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <!-- The "About Us" frame is to the right of and slightly smaller than this one. -->
+            <Anchor point="bottom" relativePoint="bottomright" relativeTo="$parentOverviewFrame">
+              <AbsPoint x="85" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- "Guild Information" Title -->
+        <Button name="$parentGuildStatisticsTitle" inherits="EA_Button_ListSort" handleinput="false" layer="background">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentStatisticsFrame">
+              <AbsPoint x="8" y="0" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentStatisticsFrame">
+              <AbsPoint x="-20" y="30" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        
+        <!-- Guild Standard" -->
+        <NifDisplay name="$parentGuildStandardScene" nif="GuildStandardNif" handleinput="false" layer="background" scale="1.00" ortho="false" fov="0.45" autoprops="false" rotateaxis="3">
+          <Size>
+            <AbsPoint x="120" y="276" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsTitle">
+              <AbsPoint x="10" y="2"/>
+            </Anchor>
+          </Anchors>
+          <Translation x="0.0" y="-240.0" z="60.0" />
+          <Rotation x="0.0" y="180.0" z="-30.0" />
+        </NifDisplay>
+
+        <!-- "Founded" Title -->
+        <Label name="$parentGuildStatisticsFoundedTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsTitle">
+              <AbsPoint x="140" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Founded" Text -->
+        <Label name="$parentGuildStatisticsFoundedText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="180" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildStatisticsFoundedTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Members" Title -->
+        <Label name="$parentGuildStatisticsMembersTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsFoundedTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Members" Text -->
+        <Label name="$parentGuildStatisticsMembersText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="180" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildStatisticsMembersTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Renown" Title -->
+        <Label name="$parentGuildStatisticsRenownTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsMembersTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Renown" Text -->
+        <Label name="$parentGuildStatisticsRenownText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="180" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildStatisticsRenownTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Tax Rate" Title -->
+        <Label name="$parentGuildStatisticsTaxRateTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsRenownTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Tax Rate" Text -->
+        <Label name="$parentGuildStatisticsTaxRateText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="180" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildStatisticsTaxRateTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Keep" Title -->
+        <Label name="$parentGuildStatisticsKeepTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsTaxRateTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Keep" Text -->
+        <Label name="$parentGuildStatisticsKeepText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="180" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildStatisticsKeepTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Upkeep" Title -->
+        <Label name="$parentGuildStatisticsUpkeepTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="110" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsKeepTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Upkeep" Money Frame -->
+        <Window name="$parentGuildStatisticsUpkeepMoney" inherits="MoneyFrame">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsKeepText">
+              <!-- Offset a little to the left to align with the labels above. -->
+              <AbsPoint x="-5" y="6" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- "Personal Stats" Title -->
+        <Label name="$parentPersonalStatisticsTitle" inherits="EA_Label_DefaultText" autoresize="false" popable="false" textalign="left">
+          <Size>
+            <AbsPoint x="250" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildStatisticsUpkeepTitle">
+              <AbsPoint x="-20" y="15" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Date Joined" Title -->
+        <Label name="$parentPersonalStatisticsDateJoinedTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="215" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsTitle">
+              <AbsPoint x="20" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Date Joined" Text -->
+        <Label name="$parentPersonalStatisticsDateJoinedText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="150" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPersonalStatisticsDateJoinedTitle">
+              <AbsPoint x="5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Title" Title (hahah... ok, I'm easily amused) -->
+        <Label name="$parentPersonalStatisticsTitleTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="215" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsDateJoinedTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Title" Text -->
+        <Label name="$parentPersonalStatisticsTitleText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="150" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsDateJoinedText">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Renown Contributed" Title -->
+        <Label name="$parentPersonalStatisticsRenownContributedTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="215" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsTitleTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Renown Contributed" Text -->
+        <Label name="$parentPersonalStatisticsRenownContributedText" inherits="GuildSummaryDefaultLabel" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="150" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsTitleText">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Tithe Contributed" Title -->
+        <Label name="$parentPersonalStatisticsTitheContributedTitle" inherits="GuildSummaryDefaultLabelColored" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="215" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsRenownContributedTitle">
+              <AbsPoint x="0" y="3" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- "Tithe Contributed" Money Frame -->
+        <Window name="$parentPersonalStatisticsTitheContributedMoney" inherits="MoneyFrame">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPersonalStatisticsRenownContributedText">
+              <!-- Offset a little to the left to align with the labels above. -->
+              <AbsPoint x="-5" y="6" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- "About Us" Frame -->
+        <FullResizeImage name="$parentDetailsFrame" inherits="" handleinput="false" popable="false">
+          <Anchors>
+            <!-- Anchor to the right of the statistics frame. -->
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentStatisticsFrame">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentOverviewFrame">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- "About Us" Title -->
+        <Button name="$parentInfoTitleText" inherits="EA_Button_ListSort" handleinput="false" layer="background">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDetailsFrame">
+              <AbsPoint x="-10" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDetailsFrame">
+              <AbsPoint x="-10" y="30"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Details Section -->
+        <Window name="$parentDetails" inherits="EditBoxSection" id="2">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfoTitleText">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDetailsFrame">
+              <AbsPoint x="-10" y="-2"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Button name="$parentDetailsEditButton" inherits="EditBoxSectionEditButton" id="2">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parentInfoTitleText">
+              <AbsPoint x="2" y="2" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        
+        <!-- Overview Separator -->
+        <Window name="$parentOverviewSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" layer="default">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentOverviewFrame">
+              <AbsPoint x="0" y="17" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentOverviewFrame">
+              <AbsPoint x="0" y="17" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        
+        <!-- About Us Vert Separator -->
+        <Window name="$parentAboutUsVertSeperator" inherits="EA_Window_DefaultVerticalSeparator" handleinput="false" layer="default">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parentStatisticsFrame">
+              <AbsPoint x="0" y="-8" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentStatisticsFrame">
+              <AbsPoint x="0" y="7" />
+            </Anchor>
+          </Anchors>
+        </Window>
+        
+        <!-- News Header -->
+        <Button name="$parentNewsHeader" inherits="EA_Button_ListSort" handleinput="false" layer="background">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOverviewSeperator">
+              <AbsPoint x="8" y="-10" />
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentNewsFilterAll">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        <Button name="$parentNewsFilterAll" inherits="NewsFilterButtonTemplate" id="1">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentNewsFilterRvR">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        <Button name="$parentNewsFilterRvR" inherits="NewsFilterButtonTemplate" id="2">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentNewsFilterEvents">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        <Button name="$parentNewsFilterEvents" inherits="NewsFilterButtonTemplate" id="3">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentNewsFilterRanks">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        <Button name="$parentNewsFilterRanks" inherits="NewsFilterButtonTemplate" id="4">
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentOverviewSeperator">
+              <AbsPoint x="-10" y="-10" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        
+        <!-- News Log -->
+        <Window name="$parentNews" inherits="NewsSection">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOverviewSeperator">
+              <AbsPoint x="10" y="20"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-8" y="-10"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Profile -->
+</Interface>

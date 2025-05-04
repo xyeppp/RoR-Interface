@@ -1,0 +1,295 @@
+<zone iname="Chaos Wastes">
+    <chapter iname="Awakened Tempest" id="1" mapIcon="1065" x="12198" y="46484">
+        <race>Chaos</race>
+        <number>16</number>
+        <ranks realm="destruction" min="32" max="33" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave" id="2" mapIcon="1063" x="12560" y="60307">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Malevolent Warband" id="3" mapIcon="1065" x="15626" y="27001">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Kaltenbach Expedition" id="4" mapIcon="1065" x="19768" y="62783">
+        <race>Empire</race>
+        <number>20</number>
+        <ranks realm="order" min="38" max="38" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Crusader's Camp" id="5" mapIcon="1065" x="21527" y="38752">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Seven Shades Creep" id="6" mapIcon="1052" x="23879" y="29978">
+        <race>Chaos</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Deathchill" id="7" mapIcon="1065" x="3042" y="6266">
+        <race>Chaos</race>
+        <number>15</number>
+        <ranks realm="destruction" min="30" max="31" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Twisted Caves" id="8" mapIcon="1062" x="39662" y="61689">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Caverns of Terror" id="9" mapIcon="1062" x="41677" y="4920">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="10" mapIcon="1062" x="4598" y="42926">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Tannebach's Doom" id="11" mapIcon="1053" x="48077" y="37065">
+        <race>Empire</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Marauder Camp" id="12" mapIcon="1065" x="49078" y="41968">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Caves of Despair" id="13" mapIcon="1063" x="52576" y="60679">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="14" mapIcon="1062" x="5277" y="50323">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Camp of the Faithful" id="15" mapIcon="1065" x="54179" y="45965">
+        <race>Empire</race>
+        <number>21</number>
+        <ranks realm="order" min="39" max="39" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Fires of Sigmar" id="16" mapIcon="1065" x="61131" y="4417">
+        <race>Empire</race>
+        <number>22</number>
+        <ranks realm="order" min="40" max="40" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave" id="17" mapIcon="1063" x="61848" y="9950">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Bastion Stair" id="18" mapIcon="2003" x="63533" y="59915">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cave" id="19" mapIcon="1062" x="8179" y="42414">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Cave" id="20" mapIcon="1062" x="9081" y="53727">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="31675" y="27565" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="39555" y="54753" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="28589" y="6428" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: The Murderball Rally" id="24" mapIcon="1097" x="33018" y="32472" liveevent="30">
+        <importance>minor</importance>
+        <specialType>12</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Order" id="25" mapIcon="1096" x="26502" y="7458" liveevent="30">
+        <importance>minor</importance>
+        <specialType>16</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Destruction" id="26" mapIcon="1095" x="39808" y="53909" liveevent="30">
+        <importance>minor</importance>
+        <specialType>17</specialType>
+    </landmark>
+    <landmark iname="Live Event: Goreslake the Bloodthirster" id="27" mapIcon="32" x="33986" y="39449" liveevent="36">
+        <importance>major</importance>
+        <specialType>18</specialType>
+    </landmark>
+	<publicQuest iname="Daemonic Gifts of Khorne" id="907" iconSet="1" x="44665" y="53422" liveevent="36">
+        <difficulty>hard</difficulty>
+        <players min="9"/>
+        <rewards>advanced</rewards>
+        <ranks min="36" max="40" />
+        <realm>Order</realm>
+    </publicQuest>
+	<publicQuest iname="Daemonic Gifts of Khorne" id="908" iconSet="1" x="21135" y="15997" liveevent="36">
+        <difficulty>hard</difficulty>
+        <players min="9"/>
+        <rewards>advanced</rewards>
+        <ranks min="36" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Lonely Tower" id="324" iconSet="1" x="2028" y="22357">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="30" max="31" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Sands of Time" id="308" iconSet="1" x="13805" y="35579">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="32" max="33" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Storm is Coming" id="328" iconSet="1" x="14050" y="12287">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="30" max="31" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Tower of Awakening" id="310" iconSet="1" x="18611" y="51942">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="32" max="33" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Reaping Pain" id="327" iconSet="1" x="22147" y="21483">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="30" max="31" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Razing an Army" id="322" iconSet="1" x="24133" y="58914">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="38" max="38" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Lost Artifacts" id="321" iconSet="1" x="26862" y="55072">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="38" max="38" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Dance of Bones" id="320" iconSet="1" x="33453" y="57356">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="38" max="38" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Fall of Grimclan" id="309" iconSet="1" x="3907" y="56629">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="32" max="33" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ebon Keep" id="332" iconSet="1" x="42226" y="25431">
+        <difficulty>hard</difficulty>
+        <players min="24" />
+        <rewards>advanced</rewards>
+        <ranks min="40" max="40" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Altar of Madness" id="331" iconSet="1" x="47737" y="18084">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="40" max="40" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Reaping Field" id="326" iconSet="1" x="54604" y="36188">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="39" max="39" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Fall of Night" id="330" iconSet="1" x="56303" y="20400">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="40" max="40" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Siren Sea" id="323" iconSet="1" x="58053" y="55395">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="39" max="39" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Madness" id="325" iconSet="1" x="60293" y="41801">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="39" max="39" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="The Statue of Everchosen: Defensive Boon" id="5076" iconSet="1" x="27505" y="44265">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Thaugamond Massif: Artisan's Gift" id="5077" iconSet="1" x="22308" y="9789">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Chokethorn Bramble: Merchant's Gift" id="5078" iconSet="1" x="32971" y="5118">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Shrine of Time: Healing Boon" id="5079" iconSet="1" x="45246" y="45829">
+    </battlefieldObjective>
+    <keep iname="Charon's Keep" id="20" iconSet="1" x="38481" y="42999">
+        <objectiveId>609</objectiveId>
+    </keep>
+    <keep iname="Zimmeron's Hold" id="19" iconSet="1" x="31638" y="9410">
+        <objectiveId>608</objectiveId>
+    </keep>
+    <zoneTransition iname="To High Pass" x="0" y="12000">
+        <zone>102</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Praag" x="16000" y="65535">
+        <zone>105</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Praag" x="48000" y="65535">
+        <zone>105</zone>
+    </zoneTransition>
+    <zoneTransition iname="To The Maw" x="16000" y="0">
+        <zone>104</zone>
+    </zoneTransition>
+    <zoneTransition iname="To The Maw" x="48000" y="0">
+        <zone>104</zone>
+    </zoneTransition>
+</zone>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+
+	<Windows>	
+	
+		
+		<Window name="EA_Window_NoDataLoadingScreenDef" layer="default" sticky="false"> 	
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="0"/>
+				</Anchor>
+				<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					<AbsPoint x="0" y="-30"/>
+				</Anchor>
+            </Anchors>
+			<Windows>
+			
+				<Label name="$parentText" font="font_heading_huge" textalign="center" autoresize="true" wordwrap="true" >
+					<Size>
+						<AbsPoint x="800" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="">
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>
+					<Color r="235" g="235" b="235" a="255"/>
+				</Label>			
+		        
+                <DynamicImage name="$parentShield" inherits="LoadingScreenShieldImage" layer="overlay" sticky="false" >
+                	<Size>
+				        <AbsPoint x="200" y="200"/>
+			        </Size>
+                	<Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				
+            </Windows>	
+		</Window>
+		
+	</Windows>
+</Interface>

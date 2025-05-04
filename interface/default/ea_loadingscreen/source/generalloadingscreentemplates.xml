@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+
+	<Windows>	
+	
+		<DynamicImage name="LoadingScreenBookImage" texture="EA_Texture_LoadingScreen_BlankBook" sticky="false" >
+			<Size>
+				<AbsPoint x="1490" y="1024" />  
+			</Size>
+            <TexCoords x="284" y="0" />
+            <TexDims x="1490" y="1024" />                    
+		</DynamicImage>
+		
+		
+		<DynamicImage name="LoadingScreenDividerImage" texture="EA_Texture_Racial_Filigree_Rules">
+			<Size>
+				<AbsPoint x="256" y="42" />  
+			</Size>
+            <TexDims x="256" y="42" />                     
+		</DynamicImage>
+        
+	
+		<DynamicImage name="LoadingScreenShieldImage" texture="EA_Texture_LoadingShield1" >
+			<Size>
+				<AbsPoint x="256" y="256" />  
+			</Size>
+            <TexCoords x="0" y="0" />
+            <TexDims x="256" y="256" />   
+            <Windows>
+                <DynamicImage name="$parentGlow" texture="EA_Texture_LoadingShield1"  >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                        </Anchors>    
+                    <TexCoords x="0" y="256" />
+                    <TexDims x="256" y="256" />  
+                </DynamicImage>
+            </Windows>                 
+		</DynamicImage>
+        
+        <AnimatedImage name="LoadingScreenWarSymbolAnimation" fps="10" texture="EA_Texture_LoadingAnimationParchmentSymbol" >
+	    	<Size>
+				<AbsPoint x="102" y="102"/>
+			</Size>
+			<AnimFrames>
+			    <AnimFrame id="1"  x="0"   y="0"   />
+			    <AnimFrame id="2"  x="102" y="0"   />
+			    <AnimFrame id="3"  x="204" y="0"   />
+			    <AnimFrame id="4"  x="306" y="0"   />
+			    <AnimFrame id="5"  x="408" y="0"   />
+			    <AnimFrame id="6"  x="0"   y="102" />
+			    <AnimFrame id="7"  x="102" y="102" />
+			    <AnimFrame id="8"  x="204" y="102" />
+			    <AnimFrame id="9"  x="306" y="102" />
+			    <AnimFrame id="10" x="408" y="102" />
+			    <AnimFrame id="11" x="0"   y="204" />
+			    <AnimFrame id="12" x="102" y="204" />
+			    <AnimFrame id="13" x="204" y="204" />
+			    <AnimFrame id="14" x="306" y="204" />
+			    <AnimFrame id="15" x="408" y="204" />
+			    <AnimFrame id="16" x="0"   y="306" />
+			    <AnimFrame id="17" x="102" y="306" />
+			    <AnimFrame id="18" x="204" y="306" />
+			    <AnimFrame id="19" x="306" y="306" />
+			    <AnimFrame id="20" x="408" y="306" />
+                <AnimFrame id="21" x="0"   y="408" />
+			    <AnimFrame id="22" x="102" y="408" />
+			    <AnimFrame id="23" x="204" y="408" />
+			    <AnimFrame id="24" x="306" y="408" />
+			    <AnimFrame id="25" x="408" y="408" />			    
+			</AnimFrames>
+			<TexDims x="102" y="102"/>
+	    </AnimatedImage>
+        
+       <Window name="LoadingScreenMapDef" layer="secondary"> 
+            <Size>
+                <AbsPoint x="384" y="384" />                
+            </Size>
+            <Windows>
+        	    <MapDisplay name="$parentDisplay" loadingAnim="MapLoadingAnim" pinTexture="map_markers01" sticky="false" popable="false" iconScale="0.70">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnPointMouseOver" function="Tooltips.OnMouseOverMapPoint" />
+                    </EventHandlers>
+                </MapDisplay>                 
+                <Window name="$parentFrame" inherits="WorldMapScrollWorkFrame" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>        
+        </Window>
+		
+	</Windows>
+</Interface>

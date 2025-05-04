@@ -1,0 +1,266 @@
+<zone iname="Ostland">
+    <landmark iname="Ferlangen Crypt" id="1" mapIcon="1060" x="11224" y="29632">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Felde Farms" id="2" mapIcon="1069" x="11600" y="3100">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lonely Farm" id="3" mapIcon="1069" x="17601" y="44992">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Raven's Edge" id="4" mapIcon="1052" x="28055" y="5304">
+        <race>Chaos</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Gerstmann Crypt" id="5" mapIcon="1061" x="30713" y="18617">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Bohsenfels" id="6" mapIcon="1039" x="30842" y="28294">
+        <race>Empire</race>
+        <number>8</number>
+        <ranks realm="order" min="16" max="17" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Lost Cavern" id="7" mapIcon="1061" x="3150" y="20286">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="The Forest of Shadows" id="8" mapIcon="1064" x="32494" y="52559">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Wolfenburg Inn" id="9" mapIcon="1031" x="48803" y="50775">
+        <race>Empire</race>
+        <number>9</number>
+        <ranks realm="order" min="18" max="19" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Kraussner 's Garrison" id="10" mapIcon="1065" x="52899" y="1095">
+        <race>Empire</race>
+        <number>7</number>
+        <ranks realm="order" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Kournar's Encampment" id="11" mapIcon="1065" x="53714" y="13171">
+        <race>Chaos</race>
+        <number>7</number>
+        <ranks realm="destruction" min="14" max="15" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Tomb of the Last Rites" id="12" mapIcon="1062" x="53765" y="6709">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Tomb of the Last Rites" id="13" mapIcon="1062" x="57096" y="7508">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Grimwood Monastery" id="14" mapIcon="1034" x="59363" y="50704">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lissariel's Tower" id="15" mapIcon="1214" x="60356" y="3665">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Catacombs" id="16" mapIcon="1060" x="61905" y="60571">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Catacombs" id="17" mapIcon="1060" x="61951" y="44737">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Ferlangen" id="18" mapIcon="1039" x="7387" y="28692">
+        <race>Chaos</race>
+        <number>5</number>
+        <ranks realm="destruction" min="10" max="11" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Black Mire Bell Tower" id="19" mapIcon="1032" x="9047" y="35441">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="35250" y="558" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="44816" y="6542" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Destruction" id="22" mapIcon="1095" x="47876" y="6423" liveevent="30">
+        <importance>minor</importance>
+        <specialType>15</specialType>
+    </landmark>
+    <landmark iname="Hochnar" id="23" mapIcon="1039" x="42650" y="17068">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Wolfenburg" id="24" mapIcon="1030" x="45418" y="57972">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gashthorn Herdstone" id="25" mapIcon="1026" x="20706" y="37791">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Krul'Gor Herdstone" id="26" mapIcon="1026" x="18674" y="20054">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ostland Mustering Camp" id="27" mapIcon="1065" x="9205" y="8525">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Gore Wood" id="227" iconSet="1" x="10519" y="55894">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="18" max="19" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Silkens" id="208" iconSet="1" x="11573" y="1660">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Spirits of the Shadow" id="203" iconSet="1" x="13528" y="13856">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Krul'Gor Herd" id="207" iconSet="1" x="17584" y="21257">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Black Mire" id="218" iconSet="1" x="23460" y="42761">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="16" max="17" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Reaper's Circle" id="200" iconSet="1" x="27348" y="16930">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Siege of Bohsenfels" id="223" iconSet="1" x="28373" y="34238">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="16" max="17" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Bells of War" id="205" iconSet="1" x="3205" y="11159">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="10" max="11" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Wayshrine of Sigmar" id="206" iconSet="1" x="32626" y="13493">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="12" max="13" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Howling Vale" id="231" iconSet="1" x="32942" y="54332">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="18" max="19" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Hochnar" id="211" iconSet="1" x="41511" y="18444">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Wolfenburg" id="230" iconSet="1" x="42050" y="58254">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="18" max="19" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ragash's Last Stand" id="215" iconSet="1" x="48812" y="9860">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Nurenmir's Lancers" id="225" iconSet="1" x="7746" y="46825">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="16" max="17" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Crypt of Weapons: Artisan's Gift" id="241" iconSet="1" x="25973" y="9516">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Kinschel's Stronghold: Healing Boon" id="242" iconSet="1" x="56365" y="5827">
+    </battlefieldObjective>
+    <keep iname="Mandred's Hold" id="11" iconSet="1" x="39452" y="3851">
+        <objectiveId>603</objectiveId>
+    </keep>
+    <!-- BEGIN Troll Country points -->
+    <battlefieldObjective iname="Ruins of Greystone Keep: Merchant's Gift" id="239" iconSet="1" x="3059" y="50968" zone="101">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Monastery of Morr: Defensive Boon" id="240" iconSet="1" x="33897" y="59849" zone="101">
+    </battlefieldObjective>
+    <keep iname="Stonetroll Keep" id="12" iconSet="1" x="2485" y="56602" zone="101">
+        <objectiveId>602</objectiveId>
+    </keep>
+    <!-- END Troll Country points -->
+    <zoneTransition iname="To Troll Country" x="63688" y="0">
+    <zone>101</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Troll Country" x="28827" y="0">
+    <zone>101</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Troll Country" x="14810" y="0">
+    <zone>101</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Nordland" x="0" y="27740">
+    <zone>106</zone>
+    </zoneTransition>
+    <zoneTransition iname="To High Pass" x="55091" y="65535">
+    <zone>102</zone>
+    </zoneTransition>
+</zone>

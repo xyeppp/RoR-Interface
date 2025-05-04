@@ -1,0 +1,161 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_Window_Feedback.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Feedback Window -->
+        <Window name="EA_Window_Feedback" inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="900" y="605" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="EA_Window_Help">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_Feedback.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_Feedback.Shutdown" />
+                <EventHandler event="OnShown"       function="EA_Window_Feedback.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_Feedback.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Feedback.Hide" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                      <AbsPoint x="0" y="32" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" />
+                  </Anchors>
+                </Window>
+
+                <!-- Help Title Text-->
+                <Label name="$parentHeaderText" font="font_default_heading" maxchars="32" textalign="center" autoresize="false" popable="false">
+                  <Size>
+                    <AbsPoint x="500" y="32" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                  </Anchors>
+                </Label>
+
+                <!-- Top Seperator -->
+                <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+
+                <!-- Feedback Topic Header -->
+                <Label name="$parentTopicHeader" inherits="BugReportTypesHeaderTemplate" wordwrap="false">
+                  <Size>
+                    <AbsPoint x="800" y="24" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentCategory" >
+                      <AbsPoint x="0" y="-10" />
+                    </Anchor>
+                   </Anchors>
+                </Label>
+              
+                <!-- Post Combo Box -->
+                <ComboBox name="$parentCategory" inherits="EA_ComboBox_DefaultResizable" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentDescriptionHeader">
+                      <AbsPoint x="0" y="-15" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnSelChanged" function="EA_Window_Feedback.OnSelChangedCategory" />
+                  </EventHandlers>
+                </ComboBox>
+
+                <!-- Feedback Description Header -->
+                <Label name="$parentDescriptionHeader" inherits="BugReportTypesHeaderTemplate" wordwrap="false">
+                  <Size>
+                    <AbsPoint x="800" y="32" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentText" >
+                      <AbsPoint x="0" y="-10" />
+                    </Anchor>
+                  </Anchors>
+                </Label>
+              
+                <!-- Feedback Text -->
+                <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame_Multiline" taborder="1" linecount="13">
+                    <Size>
+                        <AbsPoint x="845" y="250" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="0" y="-75" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="" />
+                        <EventHandler event="OnKeyEscape" function="" />
+                    </EventHandlers>
+                </EditBox>
+
+                <!-- Button Bar Barground -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                  <Size>
+                    <AbsPoint x="0" y="65" />
+                  </Size>
+                </Window>
+                
+                <Button name="$parentSubmit" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EA_Window_Feedback.Submit"/>
+                  </EventHandlers>
+                </Button>
+                
+                <Button name="$parentClear" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentText">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EA_Window_Feedback.Clear"/>
+                  </EventHandlers>
+                </Button>
+                
+                <Button name="$parentBack" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="-25" y="5" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EA_Window_Feedback.Back"/>
+                  </EventHandlers>
+                </Button>
+              
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

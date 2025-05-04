@@ -1,0 +1,8 @@
+<zone iname="Stonetroll Crossing">
+    <battlefieldObjective iname="Chuck Rock Trolls" id="7069" iconSet="1" x="29910" y="36433">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Gravel Bottom Trolls" id="7070" iconSet="1" x="27687" y="30552">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Boulder Fist Trolls" id="7071" iconSet="1" x="31698" y="29883">
+    </battlefieldObjective>
+</zone>

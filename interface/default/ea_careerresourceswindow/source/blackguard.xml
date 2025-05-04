@@ -1,0 +1,44 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/BlackGuard.lua" />
+    </Scripts>
+    <Windows>
+        <!-- Placeholder resource window for testing the career out (making sure the mechanic works!)  Remove this comment when completed. -->
+        <Window name="EA_BlackGuardResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="86" y="76" />
+            </Size>
+            <Windows>
+                 <DynamicImage name="$parentBackgroundImage" texture="EA_Career_BG_32b" slice="BlackGuardNormal" handleinput="false">
+                    <Size>
+                        <AbsPoint x="118" y="104" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentGlowImage" texture="EA_Career_BG_32b" slice="BlackGuardGlowingEyes" handleinput="false">
+                    <Size>
+                        <AbsPoint x="118" y="104" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                    <Size>
+                        <AbsPoint x="86" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="2" y="47" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="0" b="0" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

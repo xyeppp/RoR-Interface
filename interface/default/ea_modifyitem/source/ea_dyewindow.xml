@@ -1,0 +1,126 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_DyeWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_Window_DyeRadioButtonTemplate" handleinput="true">
+		    <Size>
+		        <AbsPoint x="200" y="32" />
+		    </Size>
+		    <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultToggleCircle" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_DyeWindow.OnSelectTintLButtonUp" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentLabel" font="font_default_text" textalign="left" handleinput="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="200" y="32" />
+                    </Size>
+                    <Color r="255" g="255" b="255" a="255" />
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton" />
+                    </Anchors>
+                </Label>
+		    </Windows>
+		</Window>
+    
+        <Window name="EA_DyeWindow" movable="true" layer="popup" handleinput="true">
+            <Size>
+                <AbsPoint x="350" y="225" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="480" y="620" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_DyeWindow.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_DyeWindow.Shutdown" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <!-- STANDARD WINDOW FRAME -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                
+                <!-- Close Button -->
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_DyeWindow.OnCancelLButtonUp" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentChoiceText" font="font_default_text" textalign="center" handleinput="true" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="300" y="32" />
+                    </Size>
+                    <Color r="255" g="255" b="255" a="255" />
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentTintA" inherits="EA_Window_DyeRadioButtonTemplate" id="1" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="20" y="100" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentTintB" inherits="EA_Window_DyeRadioButtonTemplate" id="2" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentTintA" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Button name="$parentAccept" inherits="EA_Button_DefaultResizeable" >
+                    <Size>
+                        <AbsPoint x="150" y="39" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_DyeWindow.OnAcceptLButtonUp" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="10" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentCancel" inherits="EA_Button_DefaultResizeable" >
+                    <Size>
+                        <AbsPoint x="150" y="39" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_DyeWindow.OnCancelLButtonUp" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-10" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

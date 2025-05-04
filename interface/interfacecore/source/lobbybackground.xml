@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/LobbyBackground.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="LobbyBackground" layer="background" movable="false" handleinput="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft"/>
+                <Anchor point="bottomright" relativePoint="bottomright"/>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="LobbyBackground.Initialize" />
+            </EventHandlers>
+
+            <Windows>
+
+                <Label name="$parentServerName" layer="popup" handleinput="false" font="font_default_war_heading" autoresize="false" autoresizewidth="false" textalign="left" wordwrap="false" linespacing="15" >
+                    <Size>
+                        <AbsPoint x="500" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentGameVersion">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="225" g="225" b="225" />
+                </Label>
+                
+                <Label name="$parentGameVersion" layer="popup" handleinput="false" font="font_default_war_heading" autoresize="false" autoresizewidth="false" textalign="left" wordwrap="false" linespacing="15" >
+                    <Size>
+                        <AbsPoint x="500" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="-740" y="-160" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="225" g="225" b="225" />
+                </Label>
+
+                <NifDisplay name="PregameScene" nif="pregame_nif" scale="1" layer="background" ortho="false" fov="0.75" autoprops="false" rotateaxis="3">
+                    <Size>
+                        <AbsPoint x="1600" y="1200" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="Root" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="Root" />
+                    </Anchors>
+                    <Translation x="0.0" y="0.0" z="0.0" />
+                    <Rotation x="0.0" y="0.0" z="0.0" />
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.LButtonUp" />
+                        <EventHandler event="OnLButtonDown" function="CharacterSelectWindow.LButtonDown" />
+                    </EventHandlers>
+                </NifDisplay>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

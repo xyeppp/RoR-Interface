@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_Apothecary01_d5" file="Textures/EA_Apothecary01_d5.dds">
+            <Slice id="BottleTop" left="443" top="327" width="34" height="12" />
+            <Slice id="Bottle" left="425" top="338" width="71" height="102" />
+            <Slice id="Container-Background" left="654" top="0" width="158" height="225" />
+            <Slice id="Determinant-Icon-Frame" left="425" top="192" width="71" height="71" />
+            <Slice id="Disabled-Icon-Slot" left="425" top="133" width="59" height="59" />
+            <Slice id="Filled-Container-Background" left="496" top="0" width="158" height="225" />
+            <Slice id="Green-Orb" left="472" top="71" width="21" height="20" />
+            <Slice id="Icon-Frame" left="425" top="263" width="64" height="64" />
+            <Slice id="Magenta-Orb" left="472" top="91" width="21" height="20" />
+            <Slice id="Main-Background" left="0" top="0" width="419" height="448" />
+            <Slice id="Orange-Orb" left="472" top="11" width="21" height="20" />
+            <Slice id="Red-Orb" left="472" top="31" width="21" height="20" />
+            <Slice id="Stability-Meter" left="425" top="0" width="47" height="133" />
+            <Slice id="Stability-Meter-Arrow" left="472" top="0" width="16" height="11" />
+            <Slice id="White-Orb" left="472" top="51" width="21" height="20" />
+            <Slice id="Purple-Filled-Container-Background" left="812" top="0" width="158" height="225" />
+        </Texture>
+        
+        <Texture name="EA_Talisman01_d5" file="Textures/EA_Talisman01_d5.dds">
+            <Slice id="Gold-Icon-Frame" left="424" top="168" width="64" height="64" />
+            <Slice id="orb-blue" left="424" top="40" width="20" height="20" />
+            <Slice id="orb-green" left="424" top="60" width="20" height="20" />
+            <Slice id="orb-grey" left="424" top="80" width="20" height="20" />
+            <Slice id="orb-orange" left="424" top="0" width="20" height="20" />
+            <Slice id="orb-red" left="424" top="20" width="20" height="20" />
+            <Slice id="Power-Meter" left="452" top="232" width="28" height="164" />
+            <Slice id="Power-Meter-Background" left="424" top="232" width="28" height="164" />
+            <Slice id="Silver-Icon-Frame" left="424" top="100" width="68" height="68" />
+        </Texture>
+    </Assets>
+</Interface>

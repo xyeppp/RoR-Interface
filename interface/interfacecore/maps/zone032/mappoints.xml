@@ -1,0 +1,8 @@
+<zone iname="The Blockade">
+    <battlefieldObjective iname="The Upper Deck" id="5050" iconSet="1" x="15165" y="22615">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Central Gangway" id="5052" iconSet="1" x="14111" y="21862">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Engine Room" id="5053" iconSet="1" x="13087" y="21139">
+    </battlefieldObjective>
+</zone>

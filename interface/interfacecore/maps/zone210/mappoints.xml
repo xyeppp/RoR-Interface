@@ -1,0 +1,21 @@
+<zone iname="Shining Way">
+    <landmark iname="Portal to Stonewatch" id="1" mapIcon="1073" x="29799" y="34521">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to Reikwald" id="2" mapIcon="1073" x="29332" y="29415">
+        <importance>major</importance>
+    </landmark>
+	<battlefieldObjective iname="Bayside Battlements" id="8010" iconSet="1" x="8019" y="34920">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Enduring Spire" id="8011" iconSet="1" x="12946" y="24450">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Pillar of Hope" id="8012" iconSet="1" x="15370" y="38865">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Seaside Battlements" id="8013" iconSet="1" x="8074" y="30236">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Waterways" id="8014" iconSet="1" x="19468" y="31019">
+    </battlefieldObjective>
+    <zoneTransition iname="To Eataine" x="0" y="32000">
+        <zone>209</zone>
+    </zoneTransition>
+</zone>

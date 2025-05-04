@@ -1,0 +1,18 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+        <Label name="EA_Window_EventTextLabel" font="font_default_text_large" maxchars="32" textalign="center" layer="default" 
+                autoresize="false" sticky="false" handleinput="false" wordwrap="false" ignoreFormattingTags="true" >
+            <Size>
+                <AbsPoint x="400" y="100" />
+            </Size>
+            <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <Window name="EA_Window_EventTextAnchor">
+            <Size>
+                <AbsPoint x="0" y="0" />
+            </Size>
+        </Window>
+
+    </Windows>
+</Interface>

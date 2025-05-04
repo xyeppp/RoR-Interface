@@ -1,0 +1,689 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+
+	    <Button name="TomeInfluenceRewardLevel1" inherits="TomeIconButton">
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverInfluenceRewardLevel1" />
+                <EventHandler event="OnLButtonDown" function="TomeWindow.OnLButtonDownInfluenceRewardLevel1" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="TomeInfluenceRewardLevel2" inherits="TomeIconButton">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverInfluenceRewardLevel2" />
+                <EventHandler event="OnLButtonDown" function="TomeWindow.OnLButtonDownInfluenceRewardLevel2" />
+			</EventHandlers>
+		</Button>
+
+		<Button name="TomeInfluenceRewardLevel3" inherits="TomeIconButton">
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverInfluenceRewardLevel3" />
+                <EventHandler event="OnLButtonDown" function="TomeWindow.OnLButtonDownInfluenceRewardLevel3" />
+			</EventHandlers>
+		</Button>
+
+    
+        <!-- Influence Bars -->
+		<HorizontalResizeImage name="TomeGreenStatusFg" texture="EA_Tome" texturescale="1.18">
+			<Size>
+				<AbsPoint x="374" y="17" />
+			</Size>
+			<Sizes left="0" middle="128" right="0" />
+			<TexSlices>
+				<Middle id="InfluenceBarColor" />
+			</TexSlices>
+		</HorizontalResizeImage>
+		
+		<Window name="TomeInfluenceDisplay" >
+			<Size>
+				<AbsPoint x="374" y="40"/>
+			</Size>			
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverInfluenceDisplay" />
+			</EventHandlers>
+			<Windows>
+				<StatusBar name="$parentStatus" background="" foreground="TomeGreenStatusFg" handleinput="false" >
+			        <Size>
+				        <AbsPoint x="374" y="15"/>
+			        </Size>
+			        <Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentFrame">
+							<AbsPoint x="7" y="0"/>
+						</Anchor>
+					</Anchors>
+			    </StatusBar>
+				<DynamicImage name="$parentFrame" texture="EA_Tome" handleinput="false" slice="InfluenceBarFrame" texturescale="1.18" >
+					<Size>
+						<AbsPoint x="374" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="top" relativePoint="top" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</DynamicImage>
+				<Button name="$parentCheck1" inherits="TomeInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentCheck2">
+							<AbsPoint x="-125" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+				<Button name="$parentCheck2" inherits="TomeInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentCheck3">
+							<AbsPoint x="-125" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+				<Button name="$parentCheck3" inherits="TomeInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="right" relativePoint="center" relativeTo="$parentFrame">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+			</Windows>
+		</Window>
+	
+
+        <Window name="WarJournalStorylineButtonDef">
+            <Size>
+                <AbsPoint x="480" y="50"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="TomeScrollClosed">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+		        <Button name="$parentText" inherits="TOKHeadingButton"  maxchars="128" textalign="left" autoresize="true" >
+		            <Size>
+		                <AbsPoint x="350" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentImage">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+		        </Button>
+            </Windows>
+        </Window>
+        
+        <Window name="WarJournalActivityButton" inherits="WarJournalStorylineButtonDef">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveWarJournalEntryActivity"/>
+            </EventHandlers>
+        </Window>
+        
+        <Window name="WarJournalGlyphActivityButton" inherits="WarJournalStorylineButtonDef">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveGlyphActivityEntry"/>
+            </EventHandlers>
+        </Window>
+
+        <Window name="WarJournalStorylineButton">
+            <Size>
+                <AbsPoint x="400" y="30"/>
+            </Size>
+	        <EventHandlers>
+	            <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveWarJournalStoryline"/>
+	        </EventHandlers>
+            <Windows>
+                <Button name="$parentText" inherits="TOKTextButtonMedium"  maxchars="128" textalign="center" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="400" y="30"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+
+		<Window name="WarJournalEntry"  >
+			<Size>
+				<AbsPoint x="425" y="200"/>
+			</Size>
+			<Windows>
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton" handleinput="false">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Label name="$parentTitle" inherits="TOKHeadingSmall" maxchars="64" autoresize="true" wordwrap="true">
+					<Size>
+						<AbsPoint x="400" y="25"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Button name="$parentName" inherits="TOKTextButtonMedium"  maxchars="128" autoresize="true" wordwrap="true">
+					<Size>
+						<AbsPoint x="400" y="25"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+							<AbsPoint x="0" y="5"/>
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="TomeWindow.SelectWarJournalEntry"/>
+					</EventHandlers>
+				</Button>
+				<!--- Influence -->
+				<Window name="$parentInfluenceDisplay"  inherits="TomeInfluenceDisplay" >
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+							<AbsPoint x="-20" y="0"/>
+						</Anchor>
+					</Anchors>
+            	</Window>
+			</Windows>
+		</Window>
+
+		
+		<Window name="WarJournalActivityTask">
+			<Size>
+				<AbsPoint x="400" y="20"/>
+			</Size>
+			<Windows>
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Label name="$parentTask" inherits="TOKText" textalign="left" autoresize="true" >
+					<Size>
+						<AbsPoint x="400" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Label name="$parentDesc" inherits="TOKText" textalign="left" autoresize="true" >
+					<Size>
+						<AbsPoint x="400" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTask">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+		
+        <Window name="WarJournalGlyphLine">
+			<Size>
+				<AbsPoint x="400" y="110"/>
+			</Size>
+			<Windows>
+				<Label name="$parentName" inherits="TOKHeadingSmall" textalign="left" autoresize="true" >
+					<Size>
+						<AbsPoint x="400" y="25"/>
+					</Size>
+				</Label>
+                <!-- The Glyphs are created dynamically -->
+                
+			</Windows>
+		</Window>
+		
+        <DynamicImage name="WarJournalGlyph" texture="EA_DiamondFrame" handleinput="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexDims x="64" y="64" />
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverGlyph" />
+            </EventHandlers>
+        </DynamicImage>
+
+        <Window name="WarJournalTOCSectionDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="WarJournalStorylineTOCPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Anchors>
+								<Anchor point="topleft" relativePoint="topleft">
+									<AbsPoint x="25" y="0"/>
+								</Anchor>
+							</Anchors>
+							<Windows>                   
+							
+                                <!-- Title -->
+                                <Label name="WarJournalTOCSectionTitle" inherits="TOKSectionTitle" font="font_heading_medium_noshadow" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+				                <HorizontalResizeImage name="$parentTitleUnderline" inherits="TomeResizableHorizontalRule" >
+				                    <Anchors>
+				                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalTOCSectionTitle">
+				                            <AbsPoint x="20" y="10"/>
+				                        </Anchor>
+				                        <Anchor point="bottomright" relativePoint="topright" relativeTo="WarJournalTOCSectionTitle">
+				                            <AbsPoint x="-20" y="10"/>
+				                        </Anchor>
+				                    </Anchors>
+				                </HorizontalResizeImage>
+                                
+								<!-- Avail War Storyline buttons are created dynamically -->
+								<Window name="$parentStorylinesTOCAnchor" >
+								    <Size>
+								        <AbsPoint x="500" />
+								    </Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleUnderline">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+								
+                                <!-- Divider -->
+                                <DynamicImage name="$parentDivider" inherits="TomeDiamondDivider">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentStorylinesTOCAnchor">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                                <Label name="$parentStoryText" inherits="TOKText">
+                                    <Size>
+                                        <AbsPoint x="450" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+								
+								<Window name="$parentVertScrollAnchor" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentStoryText">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+								</Window>
+								
+								<VerticalResizeImage name="$parentVertScroll" inherits="TomeScrollOpen">
+								    <Size>
+								        <AbsPoint x="401" y="500" />
+								    </Size>
+								    <Anchors>
+								        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentVertScrollAnchor">
+								            <AbsPoint x="5" y="0"/>
+								        </Anchor>
+								    </Anchors>
+								</VerticalResizeImage>
+
+                                <Label name="WarJournalTOCActiveEntryTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="445" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="top" relativeTo="$parentVertScrollAnchor">
+                                            <AbsPoint x="30" y="30"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+				                <Window name="WarJournalTOCEntryAnchor" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+				                    <Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="WarJournalTOCActiveEntryTitle">
+											<AbsPoint x="-20" y="20"/>
+										</Anchor>
+									</Anchors>
+				                </Window>
+
+                                <!-- Entry Buttons are created dynamically -->									
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+		
+		
+        <!-- Entry Info Def -->
+        <Window name="WarJournalEntryInfoDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="WarJournalEntryInfoPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild"  >
+							<Windows>
+							
+                                <Label name="WarJournalEntryTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <Label name="WarJournalEntryChapterName" inherits="TOKHeadingSmall" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryTitle">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+								
+							    <Window name="WarJournalEntryMapAnchor" inherits="TomeWindowMapAnchorRectangle" >
+                                    <Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryChapterName">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+                                    </Anchors>
+                                </Window>   		
+                                
+        		                <DynamicImage name="WarJournalEntryRvRImage" texture="EA_TomeRVR" handleinput="false" layer="background" texturescale="1.18">
+        		                    <Size>
+        		                        <AbsPoint x="450" y="204"/>
+        		                    </Size>
+        		                    <Anchors>
+        		                        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryChapterName">
+        		                            <AbsPoint x="0" y="10"/>
+        		                        </Anchor>
+        		                    </Anchors>
+        		                </DynamicImage>
+
+								
+                                 <Label name="WarJournalEntryRallyMasterText" inherits="TOKText" textalign="center" autoresize="true">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryMapAnchor">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                 </Label>
+                                 <Label name="WarJournalEntryLocationText" inherits="TOKText" textalign="center" autoresize="true">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryRallyMasterText">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                 </Label>
+
+								
+								<!--- Influence -->
+            			        <Window name="WarJournalEntryInfluenceInfo"  >
+            			        	<Size>
+										<AbsPoint x="425" y="280"/>
+									</Size>
+									 <Anchors>
+									    <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryLocationText">
+										    <AbsPoint x="0" y="10"/>
+									    </Anchor>
+								    </Anchors>
+								    <Windows>							
+    								
+								        <Window name="WarJournalEntryInfluenceDisplay" inherits="TomeInfluenceDisplay" >
+            			                    <Anchors>
+									            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+										            <AbsPoint x="0" y="0"/>
+									            </Anchor>
+								            </Anchors>
+            			                </Window>
+            			                
+                                        <Label name="WarJournalEntryLevel1RewardsLabel" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryInfluenceDisplayCheck1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>        
+                                        
+                                        <Label name="WarJournalEntryLevel2RewardsLabel" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryInfluenceDisplayCheck2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>                                        
+                                        
+                                        <Label name="WarJournalEntryLevel3RewardsLabel" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="125" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryInfluenceDisplayCheck3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+            			                
+								  
+                			            
+            			                <!-- Rewards -->
+
+								        <!-- Level 1 Rewards -->
+								        <Button name="WarJournalEntryLevel1Reward1" inherits="TomeInfluenceRewardLevel1" id="1">
+									        <Anchors>
+										        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryLevel1RewardsLabel">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+								        </Button>
+								        <Button name="WarJournalEntryLevel1Reward2" inherits="TomeInfluenceRewardLevel1" id="2">
+									        <Anchors>
+										        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalEntryLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+								        </Button>
+								        <Button name="WarJournalEntryLevel1Reward3" inherits="TomeInfluenceRewardLevel1" id="3">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+								        </Button>
+								        <Button name="WarJournalEntryLevel1Reward4" inherits="TomeInfluenceRewardLevel1" id="4">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel1Reward2">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+								        </Button>
+
+								        <!-- Level 2 Rewards -->
+                                        <Button name="WarJournalEntryLevel2Reward1" inherits="TomeInfluenceRewardLevel2" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryLevel2RewardsLabel">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel2Reward2" inherits="TomeInfluenceRewardLevel2" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalEntryLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel2Reward3" inherits="TomeInfluenceRewardLevel2" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel2Reward4" inherits="TomeInfluenceRewardLevel2" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel2Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+
+								        <!-- Level 3 Rewards -->
+                                        <Button name="WarJournalEntryLevel3Reward1" inherits="TomeInfluenceRewardLevel3" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryLevel3RewardsLabel">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel3Reward2" inherits="TomeInfluenceRewardLevel3" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalEntryLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel3Reward3" inherits="TomeInfluenceRewardLevel3" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        <Button name="WarJournalEntryLevel3Reward4" inherits="TomeInfluenceRewardLevel3" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="WarJournalEntryLevel3Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Button>
+                                        
+                                        <Label name="WarJournalEntryInfluenceHelpText" inherits="TOKText">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalEntryInfluenceDisplay">
+                                                    <AbsPoint x="20" y="150"/>
+                                                </Anchor>
+                                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+            								
+								    </Windows>
+            			        </Window>
+            			        
+								
+								<!-- Activity Links -->
+								<Window name="WarJournalEntryTextButton" inherits="WarJournalActivityButton"  >
+								    <Size>
+								        <AbsPoint x="480" y="50" />
+								    </Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryInfluenceInfo" >
+											<AbsPoint x="0" y="0"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+								
+								<!-- Links for the Activities and Glyph Activities are dynamically created here -->
+            			        		                    
+
+                                
+                                <!-- Second Page -->
+                                
+                                
+                                <Window name="$parentVertScrollAnchor" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="WarJournalEntryTextButton">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <VerticalResizeImage name="$parentVertScroll" inherits="TomeScrollOpen">
+                                    <Size>
+                                        <AbsPoint x="401" y="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentVertScrollAnchor">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </VerticalResizeImage>
+
+                                <Label name="WarJournalEntryName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="top" relativeTo="$parentVertScrollAnchor">
+                                            <AbsPoint x="10" y="30"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="WarJournalEntryTasksAnchor">
+                                    <Size>
+                                        <AbsPoint x="400" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryName">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+								<Label name="WarJournalEntryText" inherits="TOKText" maxchars="8192">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="WarJournalEntryTasksText">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+
+    </Windows>
+</Interface>

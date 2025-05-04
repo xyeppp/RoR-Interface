@@ -1,0 +1,679 @@
+<Interface xmlns:xsi="http://www.w3.org/1001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Label name="MapPointTooltipInfoText" font="font_chat_text" maxchars="256"  wordwrap="true" autoresize="true" autoresizewidth="true">
+            <Size>
+                <AbsPoint x="450" y="20" />
+            </Size>
+        </Label>
+
+        <Window name="MapPointQuestCondition" handleinput="false">
+            <Size>
+                <AbsPoint x="455" y="16"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBulletImage"  texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="6" y="6" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="5" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="31" y="158" />
+                </DynamicImage>
+                <Label name="$parentCounter" font="font_chat_text" maxchars="64" textalign="right" autoresize="true" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="50" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="-10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentName" font="font_chat_text" maxchars="64" textalign="left" autoresize="true" autoresizewidth="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="400" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBulletImage">
+                            <AbsPoint x="15" y="-10"/>
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentCounter">
+                            <AbsPoint x="0" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="MapPointQuestData" >
+            <Size>
+                <AbsPoint x="480" y="50" />
+            </Size>
+            <Windows>
+                <Window name="$parentCondition1" inherits="MapPointQuestCondition" id="1" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition2" inherits="MapPointQuestCondition" id="2" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition1" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition3" inherits="MapPointQuestCondition" id="3" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition4" inherits="MapPointQuestCondition" id="4" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition5" inherits="MapPointQuestCondition" id="5" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition4">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition6" inherits="MapPointQuestCondition" id="6" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition5">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition7" inherits="MapPointQuestCondition" id="7" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition6">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition8" inherits="MapPointQuestCondition" id="8" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition7">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition9" inherits="MapPointQuestCondition" id="9" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition8">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentCondition10" inherits="MapPointQuestCondition" id="10" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCondition9">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="MapPointTooltipInfo"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="480" y="100" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false"  layer="background" >
+                    <Size>
+                        <AbsPoint x="28" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentName" font="font_default_text" maxchars="64" wordwrap="true" autoresize="true" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="450" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="51" a="255"/>
+                </Label>
+                <Label name="$parentPinTypeDesc" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText1" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPinTypeDesc">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText2" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText3" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText4" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText5" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText6" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText7" inherits="MapPointTooltipInfoText">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText6">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentQuest" inherits="MapPointQuestData" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText7">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <HorizontalResizeImage name="$parentDivLine" inherits="DefaultWindowRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-15" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+        </Window>
+
+
+        <Window name="MapPointsTooltip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="500" y="400" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <Window name="$parentInfo1" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo2" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo3" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo4" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo5" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo6" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo7" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo6">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo8" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo7">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo9" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo8">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInfo10" inherits="MapPointTooltipInfo" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInfo9">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <VerticalResizeImage name="EA_VerticalResizeImage_PairingMapToolTipBackground" texture="EA_PairingMapToolTip" handleinput="false">
+            <Size>
+                <AbsPoint x="220" y="95" />
+            </Size>
+            <Sizes top="50" middle="30" bottom="45" />
+            <TexSlices>
+                <Top    id="tooltip-top" />
+                <Middle id="tooltip-middle" />
+                <Bottom id="tooltip-bottom" />
+            </TexSlices>
+        </VerticalResizeImage>
+
+        <Label name="EA_Label_PairingMapToolTipText" font="font_heading_small_no_shadow" maxchars="32" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="243" y="24" />
+            </Size>
+            <Color r="82" g="50" b="29"  />
+        </Label>
+
+        <Label name="EA_Label_PairingMapToolTipTextSmall" font="font_heading_tiny_no_shadow" maxchars="128" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="243" y="18" />
+            </Size>
+            <Color r="82" g="50" b="29"  />
+        </Label>
+
+        <Label name="EA_Label_PairingMapToolTipTitle" font="font_heading_default_no_shadow" maxchars="32" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="243" y="30" />
+            </Size>
+            <Color r="82" g="50" b="29"  />
+        </Label>
+
+        <Window name="PairingMapDefaultToolTipLabels" handleinput="false" layer="overlay" >
+            <Size>
+                <AbsPoint x="243" y="100" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" >
+                    <AbsPoint x="0" y="30" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Label name="$parentTitle" inherits="EA_Label_PairingMapToolTipTitle" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentZoneType" inherits="EA_Label_PairingMapToolTipText" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentClick" inherits="EA_Label_PairingMapToolTipTextSmall" font="font_journal_body">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneType" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRanks" inherits="EA_Label_PairingMapToolTipText" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentClick" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentStatus" inherits="EA_Label_PairingMapToolTipText">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRanks" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="214" y="23" />
+                    </Size>
+                </Label>
+            </Windows>
+        </Window>
+               
+        <DynamicImage name="EA_DynamicImage_BulletTemplate"  handleinput="false" layer="overlay" texture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="12" y="15" />
+            </Size>
+            <TexCoords x="447" y="738" />
+            <TexDims x="12" y="15" />
+            <TintColor r="255" g="255" b="255" />
+        </DynamicImage>
+        
+        <Window name="PairingMapDefaultRatingActivity" handleinput="false" layer="overlay" >
+            <Size>
+                <AbsPoint x="243" y="100" />
+            </Size>
+            <Windows>          
+                <DynamicImage name="$parentBullet" inherits="EA_DynamicImage_BulletTemplate" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" inherits="EA_Label_PairingMapToolTipTextSmall"  maxchars="1024" layer="overlay" autoresize="true" textalign="left" >
+                    <Size>
+                        <AbsPoint x="233" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Window name="PairingMapCityToolTip"  inherits="TooltipBase"  >
+            <Size>
+                <AbsPoint x="283" y="250" />
+            </Size>
+            <Windows>
+                <VerticalResizeImage name="$parentBackground" inherits="EA_VerticalResizeImage_PairingMapToolTipBackground" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </VerticalResizeImage>
+                <Window name="$parentCityRating" inherits="EA_Window_CityRating" >
+                     <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>             
+                <Window name="$parentLabels" inherits="PairingMapDefaultToolTipLabels" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCityRating" >
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentTimeLeft" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabels" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRatingTimer" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTimeLeft" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentSectionBreak1" inherits="ParchmentDividerLineNoCenter" layer="overlay" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRatingTimer">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentRatingTimer">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentRatingDesc" inherits="EA_Label_PairingMapToolTipText" maxchars="512" layer="overlay" autoresize="true" textalign="left"  >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSectionBreak1" >
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Label>                                
+                <Window name="$parentActivity1" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRatingDesc" >
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity2" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity3" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity2" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity4" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity3" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity5" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity4" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity6" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity5" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity7" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity6" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentActivity8" inherits="PairingMapDefaultRatingActivity" >
+                     <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActivity7" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="PairingMapTierToolTip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="283" y="180" />
+            </Size>
+            <Windows>
+                <VerticalResizeImage name="$parentBackground" inherits="EA_VerticalResizeImage_PairingMapToolTipBackground" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </VerticalResizeImage>
+                <Window name="$parentLabels" inherits="PairingMapDefaultToolTipLabels" />
+            </Windows>
+        </Window>
+
+        <Window name="PairingMapZoneToolTip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="283" y="180" />
+            </Size>
+            <Windows>
+                <VerticalResizeImage name="$parentBackground" inherits="EA_VerticalResizeImage_PairingMapToolTipBackground" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </VerticalResizeImage>
+                <Window name="$parentLabels" inherits="PairingMapDefaultToolTipLabels" />
+                <DynamicImage name="$parentLeftLock" slice="lock" texture="EA_PairingMapToolTip" handleinput="false" layer="overlay" >
+                    <Size>
+                        <AbsPoint x="30" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" realtiveTo="$parentLabelsStatus" >
+                            <AbsPoint x="55" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRightLock" slice="lock" texture="EA_PairingMapToolTip" handleinput="false" layer="overlay">
+                    <Size>
+                        <AbsPoint x="30" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" realtiveTo="$parentLabelsStatus" layer="overlay" >
+                            <AbsPoint x="-55" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Window name="PairingMapFortToolTip"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="283" y="230" />
+            </Size>
+            <Windows>
+                <VerticalResizeImage name="$parentBackground" inherits="EA_VerticalResizeImage_PairingMapToolTipBackground" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </VerticalResizeImage>
+                <Window name="$parentLabels" inherits="PairingMapDefaultToolTipLabels" />
+                <DynamicImage name="$parentLeftLock" slice="lock" texture="EA_PairingMapToolTip" handleinput="false" layer="overlay" >
+                    <Size>
+                        <AbsPoint x="30" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" realtiveTo="$parentLabelsStatus" >
+                            <AbsPoint x="55" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRightLock" slice="lock" texture="EA_PairingMapToolTip" handleinput="false" layer="overlay">
+                    <Size>
+                        <AbsPoint x="30" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" realtiveTo="$parentLabelsStatus" layer="overlay" >
+                            <AbsPoint x="-55" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTimeLeft" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabels" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="PairingMapTravelToolTip"  inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="283" y="250" />
+            </Size>
+            <Windows>
+                <VerticalResizeImage name="$parentBackground" inherits="EA_VerticalResizeImage_PairingMapToolTipBackground" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" />
+                        <Anchor point="bottomleft" relativePoint="bottomleft" />
+                    </Anchors>
+                </VerticalResizeImage>
+                <Window name="$parentLabels" inherits="PairingMapDefaultToolTipLabels" />
+                <Label name="$parentText" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay" font="font_journal_body" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabels" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentMoney" inherits="BlackTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentText2" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay" font="font_journal_body" maxchars="512" textalign="left" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentMoney" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+                
+            
+    </Windows>
+</Interface>
+

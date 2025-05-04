@@ -1,0 +1,181 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EditAppealWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- EditAppeal Window -->
+        <Window name="EditAppealWindow" inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="500" y="605" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="EA_Window_Help">
+                    <AbsPoint x="25" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EditAppealWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="EditAppealWindow.Shutdown" />
+                <EventHandler event="OnShown"       function="EditAppealWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="EditAppealWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EditAppealWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                      <AbsPoint x="0" y="32" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" />
+                  </Anchors>
+                </Window>
+
+                <!-- Appeal Scroll Window 
+                <ScrollWindow name="$parentHistory" childscrollwindow="EditAppealWindowHistoryScrollChild" scrollbar="EditAppealWindowHistoryScrollbar" lineheight="24">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="10" y="0" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentSeperator" >
+                      <AbsPoint x="-15" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <Windows>
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                      <Size>
+                        <AbsPoint x="20" y="200"/>
+                      </Size>
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                          <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                      </Anchors>
+                    </VerticalScrollbar>
+                    <Window name="$parentScrollChild">
+                      <Size>
+                        <AbsPoint x="320" y="0"/>
+                      </Size>
+                      <Windows>
+                          <Label name="$parentText" inherits="DefaultWindowSubTitle" font="font_default_text_small" wordwrap="true" autoresize="true" maxchars="100000" textalign="left" popable="false">
+                          <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                              <AbsPoint x="10" y="30"/>
+                            </Anchor>
+                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                              <AbsPoint x="-10" y="10"/>
+                            </Anchor>
+                          </Anchors>
+                          <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+
+                      </Windows>
+                    </Window> 
+                  </Windows>
+                </ScrollWindow>
+-->
+                <!-- Appeal Log Text -->
+                <LogDisplay name="$parentLogDisplay" font="font_clear_medium" scrollbar="$parentScrollbar" scrollbarPosition="right" background="" textFadeTime="0" maxchars="16384">
+                  <Size>
+                    <AbsPoint x="600" y="300" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="15" y="32" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentSeperator" >
+                      <AbsPoint x="-15" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <Windows>
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain">
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topleft">
+                          <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                      </Anchors>
+                    </VerticalScrollbar>
+                  </Windows>
+                </LogDisplay>
+              
+                <!-- Seperator -->
+                <Window name="$parentSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentButtonBackground" >
+                      <AbsPoint x="0" y="-150" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parentButtonBackground" >
+                      <AbsPoint x="0" y="-150" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+
+                <!-- Edit Appeal Edit Box -->
+                <EditBox name="$parentEditBox" inherits="EA_EditBox_DefaultFrame_Multiline" taborder="1">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSeperator" >
+                      <AbsPoint x="18" y="5" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                      <AbsPoint x="-18" y="-5" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnKeyEnter" function="" />
+                    <EventHandler event="OnKeyEscape" function="" />
+                  </EventHandlers>
+                </EditBox>
+                
+                <!-- Button Bar Barground -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                  <Size>
+                    <AbsPoint x="0" y="75" />
+                  </Size>
+                </Window>
+                
+                <Button name="$parentSubmit" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="25" y="5" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EditAppealWindow.OnLButtonUpSubmitButton"/>
+                  </EventHandlers>
+                </Button>
+                
+                <Button name="$parentCancel" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="center" relativePoint="center" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="0" y="5" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EditAppealWindow.OnLButtonUpCancelButton"/>
+                  </EventHandlers>
+                </Button>
+
+                <Button name="$parentBack" inherits="EA_Button_DefaultResizeable" textalign="center">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="-25" y="5" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="EditAppealWindow.OnLButtonUpBackButton"/>
+                  </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

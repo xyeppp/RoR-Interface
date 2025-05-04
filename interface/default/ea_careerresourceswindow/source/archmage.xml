@@ -1,0 +1,40 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/Archmage.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_ArchmageResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="76" y="75" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" texture="EA_Career_AM_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="76" y="75" />
+                    </Size>
+                    <Windows>
+                        <Label name="$parentGoldText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                            <Size>
+                                <AbsPoint x="40" y="25" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="2" y="-14" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="254" g="210" b="6" a="255" />
+                        </Label>
+                        <Label name="$parentBlueText" inherits="$parentGoldText">
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="-2" y="14" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="57" g="163" b="252" a="255" />
+                        </Label>
+                    </Windows>
+                </DynamicImage>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,228 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/OpenPartyWindowTabLootRollOptions.lua" />
+    </Scripts>
+    <Windows>
+    
+        <Label name="EA_Template_AutoRollRarityHeader" inherits="EA_Label_DefaultText" textalign="center" >
+            <Size>
+                <AbsPoint x="145" y="28" />
+            </Size>
+        </Label>
+        <Label name="EA_Template_AutoRollTitle" inherits="EA_Label_DefaultText" textalign="leftcenter" >
+            <Size>
+                <AbsPoint x="230" y="28" />
+            </Size>
+        </Label>
+        <ComboBox name="EA_Template_AutoRollComboBox" inherits="EA_ComboBox_DefaultResizableSmall" >
+            <EventHandlers>
+                <EventHandler event="OnRButtonUp" function="EA_Window_OpenPartyLootRollOptions.OnRClickComboBox" />
+                <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyLootRollOptions.OnOptionChange" />
+            </EventHandlers>
+        </ComboBox>
+        
+        <Window name="EA_Template_AutoRollRow">
+            <Size>
+                <AbsPoint x="1032" y="62" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" handleinput="false" alpha="0.1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                    <TintColor r="255" g="255" b="255" />
+                </FullResizeImage>
+                <Label name="$parentTitle" inherits="EA_Template_AutoRollTitle">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyLootRollOptions.OnMouseOverRowTitle" />
+                    </EventHandlers>
+                </Label>
+                <ComboBox name="$parentCombo1" inherits="EA_Template_AutoRollComboBox" id="1">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTitle">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <ComboBox name="$parentCombo2" inherits="EA_Template_AutoRollComboBox" id="2">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCombo1">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <ComboBox name="$parentCombo3" inherits="EA_Template_AutoRollComboBox" id="3">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCombo2">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <ComboBox name="$parentCombo4" inherits="EA_Template_AutoRollComboBox" id="4">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCombo3">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <ComboBox name="$parentCombo5" inherits="EA_Template_AutoRollComboBox" id="5">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCombo4">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_OpenPartyLootRollOptionsSocketDef" movable="false" layer="default" savesettings="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSocket" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSocket" />
+            </Anchors>
+            <Windows>
+            
+                <Window name="$parentRarityLabel">
+                    <Size>
+                        <AbsPoint x="1000" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="25" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentCommon" inherits="EA_Template_AutoRollRarityHeader">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="250" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentUncommon" inherits="EA_Template_AutoRollRarityHeader">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentCommon">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentRare" inherits="EA_Template_AutoRollRarityHeader">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentUncommon">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentVeryRare" inherits="EA_Template_AutoRollRarityHeader">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentRare">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentArtifact" inherits="EA_Template_AutoRollRarityHeader">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentVeryRare">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+            
+                <Window name="$parentUsableEquipment" inherits="EA_Template_AutoRollRow" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRarityLabel">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentUnusableEquipment" inherits="EA_Template_AutoRollRow" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUsableEquipment">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCrafting" inherits="EA_Template_AutoRollRow" id="3">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUnusableEquipment">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCurrency" inherits="EA_Template_AutoRollRow" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCrafting">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentPotions" inherits="EA_Template_AutoRollRow" id="5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCurrency">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentTalismans" inherits="EA_Template_AutoRollRow" id="6">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPotions">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentEvent" inherits="EA_Template_AutoRollRow" id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTalismans">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentTrashTitle" inherits="EA_Template_AutoRollTitle">
+                    <Size>
+                        <AbsPoint x="100" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEvent">
+                            <AbsPoint x="25" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentTrashCombo" inherits="EA_Template_AutoRollComboBox" id="0">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTrashTitle">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                
+                <Label name="$parentHelpText" inherits="EA_Template_OpenParty_Label_Small" autoresize="true">
+                    <Size>
+                        <AbsPoint x="600" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentEvent">
+                            <AbsPoint x="-50" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

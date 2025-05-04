@@ -1,0 +1,159 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/LootWindow.lua" />
+	</Scripts>
+	<Windows>
+	
+	    <Button name="EA_Window_LootItemRowTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage" >
+			<Size>
+				<AbsPoint x="335" y="65" />
+			</Size>			
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="EA_Window_Loot.OnMouseOverItem" />
+				<EventHandler event="OnRButtonUp" function="EA_Window_Loot.OnButtonUpItem" />
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+					</Anchors>
+				</FullResizeImage>
+                <DynamicImage name="$parentIcon" inherits="EA_Image_DefaultIcon"  handleinput="false" >
+			    	<Size>
+				        <AbsPoint x="55" y="55" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="10" y="5" />
+				        </Anchor>
+			        </Anchors>
+			        <Windows>
+			        	<DynamicImage name="$parentFrame" inherits="EA_Image_DefaultIconFrame"  handleinput="false" layer="background" >
+					        <Size>
+						    <AbsPoint x="55" y="55" />
+					        </Size>
+				        </DynamicImage>
+			        </Windows>
+			    </DynamicImage>
+				<Label name="$parentName" inherits="EA_Label_DefaultText_Small" textalign="left" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="200" y="55" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+                <Label name="$parentStackCount" inherits="EA_Label_DefaultText_Small" textalign="left" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="200" y="55" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+							<AbsPoint x="-12" y="5"/>
+						</Anchor>
+					</Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+				</Label>
+			</Windows>
+		</Button>
+
+
+		<Window name="EA_Window_Loot" inherits="EA_Window_Default" movable="true" layer="secondary" >
+			<Size>
+				<AbsPoint x="375" y="365" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_Loot.Initialize" />
+				<EventHandler event="OnShutdown" function="EA_Window_Loot.Shutdown" />
+                <EventHandler event="OnShown" function="EA_Window_Loot.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_Loot.OnHidden" />
+			</EventHandlers>
+			<Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Loot.Hide" />
+					</EventHandlers>
+				</Button>
+				
+				
+				<Label name="$parentText" inherits="EA_Label_ChatText"  textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="300" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+				
+                 <Window name="$parentTextSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="80" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="80" />
+                        </Anchor>
+                    </Anchors>
+                </Window>                
+				
+				
+				<!-- List Box of Items  -->
+				<ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_LootItemRowTemplate"  visiblerows="3" rowcount="200" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="358" y="195" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTextSeperator" >
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_Loot.lootData" populationfunction="EA_Window_Loot.PopulateLootData">
+                        <ListColumns>
+                            <ListColumn windowname="Icon" variable="iconNum" format="icon" />
+                            <ListColumn windowname="Name" variable="name" format="wstring" />  
+                            <ListColumn windowname="StackCount" variable="stackCount" format="number" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>		
+                									
+					
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>   
+					
+				<!-- Loot All -->
+				<Button name="$parentLootAllButton" inherits="EA_Button_DefaultResizeable" >
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottom" >
+							<AbsPoint x="0" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Loot.OnLootAll" />
+					</EventHandlers>
+				</Button>
+				
+			</Windows>
+		</Window>
+		
+	</Windows>
+</Interface>

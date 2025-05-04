@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+
+	<Windows>	
+		
+		<Window name="EA_Window_StandardLoadingScreenDef" layer="default" sticky="false"> 	
+			<Size>
+				<AbsPoint x="1490" y="1024" />
+			</Size>
+			<Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo=""/>
+            </Anchors>
+            <EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_LoadingScreen.InitStandardLoadScreen" />
+			</EventHandlers>
+			<Windows>
+				<DynamicImage name="$parentBlankBookImage" inherits="LoadingScreenBookImage" layer="background"  >                    
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                    </Anchors>                
+				</DynamicImage>		
+				
+				<!-- Loading Screen Contents that are faded in and out. -->
+				<Window name="$parentContents" sticky="false"> 
+				    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                    </Anchors>
+				    <Windows>
+				    
+				        <DynamicImage name="$parentZoneImage"  inherits="LoadingScreenBookImage" texture="loading_screen_image" layer="background" >
+				            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                            </Anchors>            
+				        </DynamicImage>
+        				
+                        <DynamicImage name="$parentBlankBookImage" inherits="LoadingScreenBookImage" layer="background"  >                    
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                            </Anchors>                
+                        </DynamicImage>
+
+        				<Window name="$parentTextContainer" sticky="false">
+	                        <Anchors>
+	                            <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+	                            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+	                        </Anchors>
+                            <Windows>
+					            <!-- Title Line 1 -->
+						        <Label name="$parentHeadingLine1" font="font_heading_large_noshadow" textalign="center" textAutoFitMinScale="0.5" >
+					                <Size>
+						                <AbsPoint x="600" y="60"/>
+					                </Size>
+					                <Anchors>
+		                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+		                                    <AbsPoint x="200" y="100" />
+		                                </Anchor>
+		                            </Anchors>                            
+					                <Color r="49" g="36" b="16" />
+				                </Label>
+		        				
+						        <!-- Title Line 2 -->
+						        <Label name="$parentHeadingLine2" font="font_heading_huge_noshadow" textalign="center"  textAutoFitMinScale="0.3" >
+					                <Size>
+						                <AbsPoint x="600" y="80"/>
+					                </Size>
+					                <Anchors>
+		                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeadingLine1">
+		                                    <AbsPoint x="0" y="10" />
+		                                </Anchor>
+		                            </Anchors>
+		                            <Color r="49" g="36" b="16" />
+				                </Label>	
+		        				
+						        <!-- Zone Description -->
+						        <Label name="$parentZoneDescText" font="font_journal_text_large" maxchars="1024" textalign="left" wordwrap="true" autoresize="false">
+					                <Size>
+						                <AbsPoint x="600" y="300"/>
+					                </Size>
+					                <Anchors>
+		                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeadingLine2">
+		                                    <AbsPoint x="0" y="50" />
+		                                </Anchor>
+		                            </Anchors>
+		                            <Color r="49" g="36" b="16" />
+				                </Label>
+				                
+				                
+				                <DynamicImage name="$parentDividerImage" inherits="LoadingScreenDividerImage"  >
+		           			        <Anchors>
+		                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneDescText">
+		                                    <AbsPoint x="0" y="50" />
+		                                </Anchor>
+		                            </Anchors>
+						        </DynamicImage>
+		        				
+						        <!-- Tip Text -->	
+						        <Label name="$parentTipLabel" font="font_journal_heading" textalign="left" wordwrap="true" autoresize="true" >
+					                <Size>
+						                <AbsPoint x="600" y="0"/>
+					                </Size>
+					                <Anchors>
+		                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+		                                    <AbsPoint x="200" y="750" />
+		                                </Anchor>
+		                            </Anchors>
+		                            <Color r="49" g="36" b="16" />
+				                </Label>	
+				                
+				                <Label name="$parentTipText"  font="font_journal_text_large" textalign="left" wordwrap="true" autoresize="false" >
+					                <Size>
+						                <AbsPoint x="600" y="300"/>
+					                </Size>
+					                <Anchors>
+		                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTipLabel">
+		                                    <AbsPoint x="0" y="10" />
+		                                </Anchor>
+		                            </Anchors>
+		                            <Color r="49" g="36" b="16" />
+				                </Label>
+				                
+                                <!-- Trial Account Notes -->
+                                <Label name="$parentNotesHeading" font="font_heading_large_noshadow" textalign="center" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="600" y="60"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topright" relativeTo="">
+		                                    <AbsPoint x="-200" y="170" />
+		                                </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+                                <Label name="$parentNotesHeading2" font="font_heading_default_no_shadow" textalign="center" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="550" y="300"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNotesHeading">
+                                            <AbsPoint x="0" y="25" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+                                
+                                <!-- Loading Animation / Streaming Animation -->
+		                        <AnimatedImage name="$parentLoadingAnim" inherits="LoadingScreenWarSymbolAnimation" >
+		                            <Anchors>
+		                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+		                                    <AbsPoint x="-145" y="00" />
+		                                </Anchor>
+		                            </Anchors>
+		                        </AnimatedImage>
+
+                                <!-- Streaming Labels -->
+                                <Label name="$parentStreamingText"  font="font_default_text_huge"
+                                       textalign="right" wordwrap="false" autoresize="true" layer="secondary" >
+                                    <Size>
+                                        <AbsPoint x="600" y="0" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentLoadingAnim">
+                                            <AbsPoint x="-10" y="-7" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="10" b="50" />
+                                </Label>
+                                
+                                <Label name="$parentStreamingText2"  font="font_default_text_large"
+                                       textalign="right" wordwrap="false" autoresize="true" layer="secondary" >
+                                    <Size>
+                                        <AbsPoint x="600" y="0" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentStreamingText">
+                                            <AbsPoint x="0" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="10" b="50" />
+                                </Label>
+                                
+			                </Windows>
+                        </Window>
+		                
+		                
+		            </Windows>        				
+				</Window>			
+				
+				
+				<AnimatedImage name="$parentPageFlipAnim" inherits="BookAnimDef" layer="overlay" handlinput="false" sticky="false" >
+					<Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="25" y="-130" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="150" />
+                        </Anchor>
+                    </Anchors>
+				</AnimatedImage>
+				
+            </Windows>			
+		</Window>
+		
+		
+		
+	</Windows>
+</Interface>

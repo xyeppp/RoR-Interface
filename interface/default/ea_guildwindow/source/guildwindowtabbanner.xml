@@ -1,0 +1,537 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabBanner.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabBannerSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildWindowTabBanner.Initialize"/>
+        <EventHandler event="OnShutdown" function="GuildWindowTabBanner.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+        <!-- Middle section background -->
+        <!--
+        <DynamicImage name="$parentPicture" texture="EA_Guild_BannerBGOrder" slice="order-background" layer="background" handleinput="false" popable="false" >
+-->
+        <DynamicImage name="$parentPicture" texture="EA_Guild_BannerBGDestruction" slice="destruction-background" layer="background" handleinput="false" popable="false">
+          <Size>
+            <AbsPoint x="512" y="512" />
+          </Size>
+          <TexDims x="512" y="512" />
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="10" y="5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-10" y="27" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+        <!-- This window is used as a Layout Window, representing the top left corner "Quadrant". Its used to easily align other windows. -->
+
+        <Window name="$parentTopLeftQuadrant" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="center" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- This window is used as a Layout Window, representing the bottom right corner "Quadrant". Its used to easily align other windows. -->
+        <Window name="$parentBottomRightQuadrant" handleinput="false">
+          <Anchors>
+            <Anchor point="center" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Banner Number Header -->
+        <Label name="$parentBannerNumberHeader" font="font_guild_MP_R_17" maxchars="32" textalign="center" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="225" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parentTopLeftQuadrant">
+              <AbsPoint x="25" y="25" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverBannerArrow"/>
+          </EventHandlers>
+        </Label>
+
+        <NifDisplay name="GuildStandardScene" nif="GuildStandardNif" layer="background" scale="1.00" ortho="false" fov="0.58" autoprops="false" rotateaxis="3">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTopLeftQuadrant">
+              <AbsPoint x="60" y="60"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTopLeftQuadrant">
+              <AbsPoint x="-15" y="200"/>
+            </Anchor>
+          </Anchors>
+          <Translation x="0.0" y="-240.0" z="60.0" />
+          <Rotation x="0.0" y="180.0" z="150.0" />
+        </NifDisplay>
+
+        <!-- Padlock Image -->
+        <DynamicImage name="$parentLock" texture="EA_Guild" slice="lock" handleinput="true" layer="secondary">
+          <Size>
+            <AbsPoint x="71" y="96" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="bottom" relativeTo="GuildStandardScene">
+              <AbsPoint x="0" y="-75" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverLock" />
+          </EventHandlers>
+        </DynamicImage>
+
+        <!-- Banner Left Arrow -->
+        <Button name="$parentLeftArrow" inherits="EA_Button_DefaultBigLeftArrow">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentBannerNumberHeader">
+              <AbsPoint x="-10" y="2" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabBanner.OnLButtonUpBannerLeftArrow"/>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverBannerArrow"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Banner Right Arrow -->
+        <Button name="$parentRightArrow" inherits="EA_Button_DefaultBigRightArrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentBannerNumberHeader">
+              <AbsPoint x="10" y="2" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabBanner.OnLButtonUpBannerRightArrow"/>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverBannerArrow"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Banner Watermark -->
+        <Label name="$parentBannerWatermark" font="font_guild_MP_R_23" maxchars="64" textalign="center" autoresize="false" wordwrap="true" popable="false">
+          <Size>
+            <AbsPoint x="250" y="64" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentTopLeftQuadrant">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Trophy Slot -->
+        <Button name="$parentTrophySlot" inherits="GuildWindowAvailTrophyTemplate">
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentTacticSlot2">
+              <AbsPoint x="0" y="-10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseDrag" function="GuildWindowTabBanner.OnMouseDragTrophySlot" />
+            <EventHandler event="OnRButtonUp" function="GuildWindowTabBanner.OnRButtonUpTrophySlot" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverTrophySlot" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Post Combo Box -->
+        <ComboBox name="$parentPostCombo" inherits="EA_ComboBox_DefaultResizableSmall" >
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentTrophySlot">
+              <AbsPoint x="0" y="-10" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnSelChanged" function="GuildWindowTabBanner.OnSelChangedPost" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverPostComboBox" />
+          </EventHandlers>
+        </ComboBox>
+
+        <!-- Tactic Slot 1 -->
+        <Button name="$parentTacticSlot1" inherits="GuildWindowTacticSlotTemplate" id="1">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentTacticSlot2">
+              <AbsPoint x="-10" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Tactic Slot 2 -->
+        <Button name="$parentTacticSlot2" inherits="GuildWindowTacticSlotTemplate" id="2">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="GuildStandardScene">
+              <AbsPoint x="0" y="-25" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Tactic Slot 3 -->
+        <Button name="$parentTacticSlot3" inherits="GuildWindowTacticSlotTemplate" id="3">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentTacticSlot2">
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        <!-- Banner Save Button -->
+        <Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable" >
+          <Size>
+            <AbsPoint x="130" y="39" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="bottomright" relativeTo="$parentTacticSlot2">
+              <AbsPoint x="-5" y="50"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabBanner.OnLButtonUpBannerSaveButton" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseoverBannerSaveButton" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Banner Cancel Button -->
+        <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+          <Size>
+            <AbsPoint x="130" y="39" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSaveButton">
+              <AbsPoint x="10" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabBanner.OnLButtonUpBannerCancelButton" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseoverBannerCancelButton" />
+          </EventHandlers>
+        </Button>
+
+        <!--**************************-->
+        <!-- Available Guild Trophies -->
+        <!--**************************-->
+        <!-- For alignment purposes, and to reduce # of windows, We'll anchor the relative windows like this: -->
+        <!-- Header, 1, 2, 3, 4, 5, 6, Left Arrow(to 3), Right Arrow(to 4) -->
+        <!--      [1][2]      -->
+        <!--  <-  [3][4]  ->  -->
+        <!--      [5][6]      -->
+        <!--******************-->
+
+        <!-- Guild Info Title -->
+        <Label name="$parentAvailableGuildTrophiesHeader" font="font_guild_MP_R_17" maxchars="40" textalign="center" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="350" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="35" y="16" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="48" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverBannerTrophiesHeader" />
+          </EventHandlers>
+        </Label>
+
+        <!-- Available Trophy 1 -->
+        <Button name="$parentAvailableTrophy1" inherits="GuildWindowAvailTrophyTemplate" id="1">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="topright" relativeTo="$parentAvailableGuildTrophiesHeader">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Available Trophy 2 -->
+        <Button name="$parentAvailableTrophy2" inherits="GuildWindowAvailTrophyTemplate" id="2">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="topleft" relativeTo="$parentAvailableGuildTrophiesHeader">
+              <AbsPoint x="0" y="5" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Available Trophy 3 -->
+        <Button name="$parentAvailableTrophy3" inherits="GuildWindowAvailTrophyTemplate" id="3">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentAvailableTrophy1">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Available Trophy 4 -->
+        <Button name="$parentAvailableTrophy4" inherits="GuildWindowAvailTrophyTemplate" id="4">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentAvailableTrophy2">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Available Trophy 5 -->
+        <Button name="$parentAvailableTrophy5" inherits="GuildWindowAvailTrophyTemplate" id="5">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentAvailableTrophy3">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Available Trophy 6 -->
+        <Button name="$parentAvailableTrophy6" inherits="GuildWindowAvailTrophyTemplate" id="6">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentAvailableTrophy4">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Guild Trophies Left Arrow -->
+        <Button name="$parentTrophiesLeftArrow" inherits="EA_Button_DefaultBigLeftArrow">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailableTrophy3">
+              <AbsPoint x="-25" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Guild Trophies Right Arrow -->
+        <Button name="$parentTrophiesRightArrow" inherits="EA_Button_DefaultBigRightArrow">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailableTrophy4">
+              <AbsPoint x="25" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!--**************************-->
+        <!-- Available Guild Tactics  -->
+        <!--**************************-->
+        <!-- For alignment purposes, and to reduce # of windows, We'll anchor the relative windows like this: -->
+        <!--     [Header]      -->
+        <!--    [1][2][3][4]   -->
+        <!--     [5][6][7]     -->
+        <!--   [8][9][10][11]  -->
+        <!--    [12][13][14]   -->
+        <!--  [15][16][17][18] -->
+        <!--*******************-->
+
+        <!-- Guild Info Title -->
+        <Label name="$parentAvailableGuildTacticsHeader" font="font_guild_MP_R_17" maxchars="40" textalign="center" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="350" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="35" y="-72" />
+            </Anchor>
+            <Anchor point="right" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="-30" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="GuildWindowTabBanner.OnMouseOverBannerTacticsHeader" />
+          </EventHandlers>
+        </Label>
+
+        <!-- 1st Row -->
+        <!-- Avail Tactic Slot 1 -->
+        <Button name="$parentAvailTacticSlot1" inherits="GuildWindowIconHexSmallButtonTemplate" id="1">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailTacticSlot2">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 2 -->
+        <Button name="$parentAvailTacticSlot2" inherits="GuildWindowIconHexSmallButtonTemplate" id="2">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="topright" relativeTo="$parentAvailableGuildTacticsHeader">
+              <AbsPoint x="0" y="10" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 3 -->
+        <Button name="$parentAvailTacticSlot3" inherits="GuildWindowIconHexSmallButtonTemplate" id="3">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot2">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 4 -->
+        <Button name="$parentAvailTacticSlot4" inherits="GuildWindowIconHexSmallButtonTemplate" id="4">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot3">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- 2nd Row -->
+        <!-- Avail Tactic Slot 5 -->
+        <Button name="$parentAvailTacticSlot5" inherits="GuildWindowIconHexSmallButtonTemplate" id="5">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailTacticSlot6">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 6 -->
+        <Button name="$parentAvailTacticSlot6" inherits="GuildWindowIconHexSmallButtonTemplate" id="6">
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="top" relativeTo="$parentAvailTacticSlot2">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 7 -->
+        <Button name="$parentAvailTacticSlot7" inherits="GuildWindowIconHexSmallButtonTemplate" id="7">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot6">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- 3rd Row -->
+        <!-- Avail Tactic Slot 8 -->
+        <Button name="$parentAvailTacticSlot8" inherits="GuildWindowIconHexSmallButtonTemplate" id="8">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailTacticSlot9">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 9 -->
+        <Button name="$parentAvailTacticSlot9" inherits="GuildWindowIconHexSmallButtonTemplate" id="9">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="top" relativeTo="$parentAvailTacticSlot6">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 10 -->
+        <Button name="$parentAvailTacticSlot10" inherits="GuildWindowIconHexSmallButtonTemplate" id="10">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot9">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 11 -->
+        <Button name="$parentAvailTacticSlot11" inherits="GuildWindowIconHexSmallButtonTemplate" id="11">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot10">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- 4th Row -->
+        <!-- Avail Tactic Slot 12 -->
+        <Button name="$parentAvailTacticSlot12" inherits="GuildWindowIconHexSmallButtonTemplate" id="12">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailTacticSlot13">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 13 -->
+        <Button name="$parentAvailTacticSlot13" inherits="GuildWindowIconHexSmallButtonTemplate" id="13">
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="top" relativeTo="$parentAvailTacticSlot9">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 14 -->
+        <Button name="$parentAvailTacticSlot14" inherits="GuildWindowIconHexSmallButtonTemplate" id="14">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot13">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- 5th Row -->
+        <!-- Avail Tactic Slot 15 -->
+        <Button name="$parentAvailTacticSlot15" inherits="GuildWindowIconHexSmallButtonTemplate" id="15">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentAvailTacticSlot16">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 16 -->
+        <Button name="$parentAvailTacticSlot16" inherits="GuildWindowIconHexSmallButtonTemplate" id="16">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="top" relativeTo="$parentAvailTacticSlot13">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 17 -->
+        <Button name="$parentAvailTacticSlot17" inherits="GuildWindowIconHexSmallButtonTemplate" id="17">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot16">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Avail Tactic Slot 18 -->
+        <Button name="$parentAvailTacticSlot18" inherits="GuildWindowIconHexSmallButtonTemplate" id="18">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentAvailTacticSlot17">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Button>
+        
+      </Windows>
+      <!-- End of Whole Window Definition Children -->
+    </Window>
+    <!-- End of Whole Window Definition  -->
+  </Windows>
+  <!-- End of Guild Window Tab Roster -->
+</Interface>

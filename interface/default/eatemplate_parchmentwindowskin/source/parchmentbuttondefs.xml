@@ -1,0 +1,230 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+          
+	   <!--# Button: TomeCloseButton                   
+           This is the close button style used for the TomeWindow and MapWindow.
+        -->
+        <Button name="TomeCloseButton" inherits="DefaultButton" backgroundtexture="tome_2" highlighttexture="tome_2"  layer="popup">
+            <Size>
+                <AbsPoint x="48" y="48"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexCoords>
+                <Normal x="219" y="126" />
+                <NormalHighlit x="270" y="127" />
+                <Pressed x="270" y="125" />
+                <PressedHighlit x="270" y="127" />
+                <Disabled x="219" y="126" />
+            </TexCoords>
+        </Button>
+	  
+		<Button name="OpenTomeButton" backgroundtexture="assorted_hud_pieces" highlighttexture="assorted_hud_pieces" layer="popup">
+			<Size>
+				<AbsPoint x="32" y="26" />
+			</Size>
+			<TexCoords>
+				<Normal x="39" y="145" />
+				<NormalHighlit x="39" y="145" />
+				<Pressed x="39" y="145" />
+				<PressedHighlit x="39" y="145" />
+				<Disabled x="39" y="145" />
+			</TexCoords>
+		</Button>
+
+		<Button name="TomePreviousPageButton" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup" texturescale="1.18">
+			<Size>
+				<AbsPoint x="114" y="89" />
+			</Size>
+            <TexSlices>
+                <Normal          id="PageTurnLeft" />
+                <NormalHighlit   id="PageTurnLeft-ROLLOVER" />
+                <Pressed         id="PageTurnLeft-ROLLOVER" />
+                <PressedHighlit  id="PageTurnLeft-ROLLOVER" />
+                <Disabled        id="PageTurnLeft" />
+                <DisabledPressed id="PageTurnLeft" />
+            </TexSlices>
+		</Button>
+
+		<Button name="TomeNextPageButton" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup" texturescale="1.18">
+			<Size>
+				<AbsPoint x="114" y="89" />
+			</Size>
+            <TexSlices>
+                <Normal          id="PageTurnRight" />
+                <NormalHighlit   id="PageTurnRight-ROLLOVER" />
+                <Pressed         id="PageTurnRight-ROLLOVER" />
+                <PressedHighlit  id="PageTurnRight-ROLLOVER" />
+                <Disabled        id="PageTurnRight" />
+                <DisabledPressed id="PageTurnRight" />
+            </TexSlices>
+		</Button>
+
+        
+        <Button name="TomeCheckButton" inherits="DefaultButton" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+            <Size>
+                <AbsPoint x="21" y="23" />
+            </Size>
+            <TexSlices>
+                <Normal          id="CircleNotDone" />
+                <NormalHighlit   id="CircleNotDone" />
+                <Pressed         id="CircleDone" />
+                <PressedHighlit  id="CircleDone" />
+                <Disabled        id="CircleNotDone" />
+                <DisabledPressed id="CircleDone" />
+            </TexSlices>
+        </Button>
+
+        <Button name="TomeInfluenceDiamond" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="1.18">
+            <Size>
+                <AbsPoint x="31" y="31" />
+            </Size>
+            <TexSlices>
+                <Normal          id="InfluenceBarRewardDiamond" />
+                <NormalHighlit   id="InfluenceBarRewardDiamond" />
+                <Pressed         id="InfluenceBarRewardDiamond-Available" />
+                <PressedHighlit  id="InfluenceBarRewardDiamond-Available" />
+                <Disabled        id="InfluenceBarRewardDiamond" />
+                <DisabledPressed id="InfluenceBarRewardDiamond-Available" />
+            </TexSlices>
+        </Button>
+
+        <Button name="Button_MapArrow_North" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="57" y="57" />
+            </Size>
+            <TexDims x="57" y="57" />
+            <TexSlices>
+                <Normal id="NextZoneArrow-North"  />
+                <NormalHighlit id="NextZoneArrow-North-ROLLOVER" />
+                <Pressed  id="NextZoneArrow-North" />
+                <PressedHighlit  id="NextZoneArrow-North-ROLLOVER"  />
+            </TexSlices>
+        </Button>
+
+        <Button name="Button_MapArrow_South" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="57" y="57" />
+            </Size>
+            <TexDims x="57" y="57" />
+            <TexSlices>
+                <Normal id="NextZoneArrow-South"  />
+                <NormalHighlit id="NextZoneArrow-South-ROLLOVER" />
+                <Pressed  id="NextZoneArrow-South" />
+                <PressedHighlit  id="NextZoneArrow-South-ROLLOVER"  />
+            </TexSlices>
+        </Button>
+
+        <Button name="Button_MapArrow_East" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="57" y="57" />
+            </Size>
+            <TexDims x="57" y="57" />
+            <TexSlices>
+                <Normal id="NextZoneArrow-East"  />
+                <NormalHighlit id="NextZoneArrow-East-ROLLOVER" />
+                <Pressed  id="NextZoneArrow-East" />
+                <PressedHighlit  id="NextZoneArrow-East-ROLLOVER"  />
+            </TexSlices>
+        </Button>
+
+        <Button name="Button_MapArrow_West" inherits="EA_Button_Default"  backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="57" y="57" />
+            </Size>
+            <TexDims x="57" y="57" />
+            <TexSlices>
+                <Normal id="NextZoneArrow-West"  />
+                <NormalHighlit id="NextZoneArrow-West-ROLLOVER" />
+                <Pressed  id="NextZoneArrow-West" />
+                <PressedHighlit  id="NextZoneArrow-West-ROLLOVER"  />
+            </TexSlices>
+        </Button>
+
+
+
+        <Window name="EA_Window_ParchmentCheckButton">
+            <Size>
+                <AbsPoint x="280" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultCheckBox" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentLabel" inherits="EA_CheckButtonLabel" font="font_journal_text" handleinput="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="255" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="35" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" />
+                </Label>
+            </Windows>
+        </Window>
+
+
+
+        <Button name="EA_Button_ParchmentCheckButton" inherits="EA_Button_Default"
+              backgroundtexture="EA_BigMap01_d5" highlighttexture="EA_BigMap01_d5" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="35" y="25" />
+            </Size>
+            <TexSlices>
+                <NormalHighlit id="Checkbox-ROLLOVER" />
+                <Pressed id="Checkbox-CHECK" />
+                <PressedHighlit id="Checkbox-ROLLOVER" />
+            </TexSlices>
+            <Windows>
+                <DynamicImage name="$parentBox" texture="EA_BigMap01_d5" slice="Checkbox" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="35" y="25" />
+                    </Size>
+                    <TexDims x="35" y="25" />
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Window name="WorldMapCheckButton" >
+            <Size>
+                <AbsPoint x="325" y="25" />
+            </Size>
+            <Windows>
+                <Button name="$parentCheckBox" inherits="EA_Button_ParchmentCheckButton"  handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentName" inherits="TOKTextSmall" wordwrap="false" handleinput="false" textalign="leftcenter" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="45" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA Default HorizontalResizeImages
+
+    This file contains the default horizontal resize images.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+		<!--# HorizontalResizeImage: EA_BrownHorizontalRule
+             A horizontal rule to be used for separating subsections of a window and sometimes underlining titles/subtitles of those sections.
+            
+            Code:
+            (begin code)
+             <HorizontalResizeImage name="EA_BrownHorizontalRule"  handleinput="false" layer="background" texture="shared_01">
+                ...
+            </HorizontalResizeImage>
+            (end)            
+        -->
+		<HorizontalResizeImage name="EA_BrownHorizontalRule" texture="shared_01" handleinput="false" layer="background">
+			<Size>
+				<AbsPoint x="122" y="4" />
+			</Size>
+			<Sizes left="0" middle="58" right="0" />
+			<TexCoords>
+				<Middle x="4" y="0"/>
+			</TexCoords>
+		</HorizontalResizeImage>
+
+		<!--  This is a solid brown horizontal line from texture="shared_01", but seems too thin for anything useful right now
+		<HorizontalResizeImage name="EA_ThinBrownHorizontalRule" texture="shared_01" handleinput="false" layer="background">
+			<Size>
+				<AbsPoint x="26" y="3" />
+			</Size>
+			<Sizes left="0" middle="26" right="0" />
+			<TexCoords>
+				<Middle x="150" y="216"/>
+			</TexCoords>
+		</HorizontalResizeImage>
+
+		-->
+        <!--# FullResizeImage: EA_FullResizeImage_ChatFadedOutTransparent
+            This is a transparent Black image that will be shown when the user is not moused over the Chat Window.
+            The alpha value may be changed in lua by using the WindowSetAlpha function.
+                        
+            Code:
+            (begin code)
+            <FullResizeImage name="EA_FullResizeImage_ChatFadedOutTransparent"  inherits="EA_FullResizeImage_TintableSolidBackground" alpha="0.8">
+                ...
+            </FullResizeImage>
+            (end)            
+        -->
+        <HorizontalResizeImage name="EA_FullResizeImage_ChatFadedOutTransparent" handleinput="false" reverseFill="true" layer="background" alpha="1.0" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="98" y="214" />
+            </Size>
+            <Sizes left="0" middle="98" right="0" />
+            <TexCoords>
+                <Middle x="0" y="278" />
+            </TexCoords>
+        </HorizontalResizeImage>
+	
+</Windows>
+</Interface>

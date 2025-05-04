@@ -1,0 +1,245 @@
+<zone iname="Thunder Mountain">
+    <landmark iname="Karak Palik" id="1" mapIcon="1002" x="11281" y="38478">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Da Scrappin' Camp" id="2" mapIcon="1020" x="11917" y="40677">
+        <race>Greenskin</race>
+        <number>18</number>
+        <ranks realm="destruction" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Palik Watch" id="3" mapIcon="1002" x="12330" y="26357">
+        <race>Dwarf</race>
+        <number>18</number>
+        <ranks realm="order" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Hot Foot Boyz" id="4" mapIcon="1020" x="13528" y="62302">
+        <race>Greenskin</race>
+        <number>17</number>
+        <ranks realm="destruction" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Lava Flow Mine" id="5" mapIcon="1061" x="15822" y="50457">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Moonfang Mine" id="6" mapIcon="1061" x="16962" y="59077">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Dragon's Breath Cave" id="7" mapIcon="1060" x="18636" y="3592">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Nuffin 'Ere" id="8" mapIcon="1061" x="24316" y="4532">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ungdrin Ankor Tunnel" id="9" mapIcon="1061" x="3093" y="5819">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Nothing Cave" id="10" mapIcon="1061" x="3535" y="21262">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Lorkinson's Excavation" id="11" mapIcon="1003" x="4074" y="7279">
+        <race>Dwarf</race>
+        <number>17</number>
+        <ranks realm="order" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Ashhide Tunnel" id="12" mapIcon="1061" x="45256" y="61677">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Neckrender's Warband" id="13" mapIcon="1065" x="46588" y="55217">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Field of Bone" id="14" mapIcon="1025" x="49919" y="9367">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodmaw Cave" id="15" mapIcon="1061" x="50668" y="2531">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Mudja's Warcamp" id="16" mapIcon="1050" x="37072" y="57560">
+        <race>Greenskin</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Dragonslayer Ridge" id="17" mapIcon="1003" x="56188" y="24191">
+        <race>Dwarf</race>
+        <number>19</number>
+        <ranks realm="order" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Da Big Bones" id="18" mapIcon="1025" x="56099" y="43934">
+        <race>Greenskin</race>
+        <number>19</number>
+        <ranks realm="destruction" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Ankul Grob" id="19" mapIcon="1060" x="59668" y="62925">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Hammerstriker Point" id="20" mapIcon="1051" x="36739" y="11707">
+        <race>Dwarf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Sons of Valaya Compound" id="21" mapIcon="1002" x="61473" y="9953">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Magma Tunnel" id="22" mapIcon="1061" x="37006" y="64353">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="25675" y="18997" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="24" mapIcon="1180" x="17633" y="33476" liveevent="9">
+        <importance>minor</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <publicQuest iname="Dragon's Blessing" id="122" iconSet="1" x="15724" y="4889">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Gutbashed Gnoblars" id="131" iconSet="1" x="24322" y="61567">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ungry 'Ungry Greenskins" id="124" iconSet="1" x="24945" y="7548">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Reichart's Raiders" id="128" iconSet="1" x="2810" y="51565">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Und-a-Runki" id="129" iconSet="1" x="3766" y="62445">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ruins of Mingol Kurdak" id="138" iconSet="1" x="61292" y="5270">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ankul Grob" id="145" iconSet="1" x="63450" y="62172">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Red with Envy" id="123" iconSet="1" x="6465" y="12179">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="34" max="35" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Gromril Kruk: Healing Boon" id="151" iconSet="1" x="48405" y="34589">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Doomstriker Vein: Artisan's Gift" id="150" iconSet="1" x="20604" y="33281">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Karak Palik: Merchant's Gift" id="147" iconSet="1" x="24164" y="42729">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Thargrim's Headwall: Defensive Boon" id="182" iconSet="1" x="20802" y="26308">
+    </battlefieldObjective>
+    <keep iname="Karak Karag" id="8" iconSet="1" x="2567" y="35197">
+        <objectiveId>621</objectiveId>
+    </keep>
+    <keep iname="Bloodfist Rock" id="7" iconSet="1" x="37658" y="35247">
+        <objectiveId>620</objectiveId>
+    </keep>
+    <zoneTransition iname="To Kadrin Valley" x="51712" y="0">
+        <zone>009</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Kadrin Valley" x="7680" y="0">
+        <zone>009</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Kadrin Valley" x="33178" y="0">
+        <zone>009</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Black Crag" x="16000" y="65535">
+        <zone>003</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Black Crag" x="53351" y="65535">
+        <zone>003</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Death Peak" x="65535" y="18600">
+        <zone>027</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Death Peak" x="65535" y="53000">
+        <zone>027</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Death Peak" x="65535" y="43000">
+        <zone>027</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Cinderfall" x="0" y="25800">
+        <zone>026</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Cinderfall" x="0" y="45107">
+        <zone>026</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Cinderfall" x="0" y="15980">
+        <zone>026</zone>
+    </zoneTransition>
+</zone>

@@ -1,0 +1,510 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+	<Scripts>
+		<Script file="Source/AdvancedWarWindow.lua" />
+	</Scripts>
+	<Windows>
+
+        <DynamicImage name="OrderKeepIconDef" texture="map_markers01" slice="OrderKeep" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="42" y="43" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </DynamicImage>
+
+        <DynamicImage name="DestructionKeepIconDef" texture="map_markers01" slice="DestructionKeep" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="42" y="43" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </DynamicImage>
+
+        <DynamicImage name="DestructionSubAreaIconDef" texture="map_markers01" slice="QuestAvailable-LiveEvent" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+        </DynamicImage>
+
+        <DynamicImage name="OrderSubAreaIconDef" texture="map_markers01" slice="QuestAvailable-Repeatable" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+        </DynamicImage>
+        
+        <Button name="EA_Button_AdvancedWarTab" inherits="EA_Button_Tab">
+            <Size>
+                <AbsPoint x="250" y="35" />
+            </Size>
+            <TextOffset x="0" y="0" />
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_AdvancedWar.OnClickTab" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="RelicDisplayDef" handleinput="false" layer="secondary">
+            <Size>
+                <AbsPoint x="300" y="150"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" texture="map_markers01" slice="PQ" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="37" y="29" />
+                    </Size>
+                </DynamicImage>
+                <Label name="$parentName" textalign="left" inherits="EA_Label_DefaultText_Small" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="10" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+                <Label name="$parentStatus" textalign="left" inherits="EA_Label_ChatText" handleinput="false" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+                <Label name="$parentZone" textalign="left" inherits="EA_Label_ChatText" handleinput="false" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatus">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+                <!-- Status Icons -->
+                <DynamicImage name="$parentInTransit" texture="map_markers01" slice="QuestMovement" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="35" y="36" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="-30" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSecure" texture="EA_ScenarioSummary01_d5" slice="rank-highlighted" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="17" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="-18" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentCaptured" texture="EA_ScenarioSummary01_d5" slice="axe-highlighted" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="32" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="-30" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Window name="DestructionFortressDef" handleinput="false" layer="secondary">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <DynamicImage name="$parentIcon" inherits="DestructionKeepIconDef">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentName" textalign="left" inherits="EA_Label_DefaultSubHeading" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentOwner" textalign="left" inherits="EA_Label_DefaultText_Small" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+                <!-- Subarea 1 -->
+                <DynamicImage name="$parentSubareaIcon1" inherits="DestructionSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="35" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea1" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon1">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 2 -->
+                <DynamicImage name="$parentSubareaIcon2" inherits="DestructionSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon1">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea2" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon2">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 3 -->
+                <DynamicImage name="$parentSubareaIcon3" inherits="DestructionSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon2">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea3" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon3">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 4 -->
+                <DynamicImage name="$parentSubareaIcon4" inherits="DestructionSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon3">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea4" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon4">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>    
+                
+                <!-- Relic Display -->
+                <Window name="$parentRelic" inherits="RelicDisplayDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="25" y="150" />
+                        </Anchor>                        
+                    </Anchors>
+                </Window>
+                        
+            </Windows>
+        </Window>
+
+        <Window name="OrderFortressDef" handleinput="false" layer="secondary">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <DynamicImage name="$parentIcon" inherits="OrderKeepIconDef">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentName" textalign="left" inherits="EA_Label_DefaultSubHeading" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentOwner" textalign="left" inherits="EA_Label_DefaultText_Small" handleinput="true" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+
+                <!-- Subarea 1 -->
+                <DynamicImage name="$parentSubareaIcon1" inherits="OrderSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="35" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea1" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon1">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 2 -->
+                <DynamicImage name="$parentSubareaIcon2" inherits="OrderSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon1">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea2" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon2">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 3 -->
+                <DynamicImage name="$parentSubareaIcon3" inherits="OrderSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon2">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea3" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon3">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Subarea 4 -->
+                <DynamicImage name="$parentSubareaIcon4" inherits="OrderSubAreaIconDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubareaIcon3">
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentSubarea4" textalign="left" inherits="EA_Label_ChatText" handleinput="true" autoresize="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubareaIcon4">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="204" g="204" b="204" />
+                </Label>
+
+                <!-- Relic Display -->
+                <Window name="$parentRelic" inherits="RelicDisplayDef">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="25" y="150" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_AdvancedWar"  inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="762" y="375" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_AdvancedWar.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_AdvancedWar.Shutdown" />
+                <EventHandler event="OnShown" function="EA_Window_AdvancedWar.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_AdvancedWar.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_AdvancedWar.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Tab Buttons -->
+                <Button name="$parentTabGvD" inherits="EA_Button_AdvancedWarTab" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="5" y="40" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentTabEvC" inherits="EA_Button_AdvancedWarTab" id="2">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTabGvD">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentTabElf" inherits="EA_Button_AdvancedWarTab" id="3">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTabEvC">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Pairing Windows -->
+                <Window name="$parentGvD">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabGvD">
+                            <AbsPoint x="10" y="15"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentGreenskinFortress" inherits="DestructionFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentDwarfFortress" inherits="OrderFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="375" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+
+                <Window name="$parentEvC">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabGvD">
+                            <AbsPoint x="10" y="15"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentChaosFortress" inherits="DestructionFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentEmpireFortress" inherits="OrderFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="375" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+
+                <Window name="$parentElf">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabGvD">
+                            <AbsPoint x="10" y="15"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentDarkElfFortress" inherits="DestructionFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Window name="$parentHighElfFortress" inherits="OrderFortressDef">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="375" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+				
+			</Windows>
+		</Window>
+		
+	</Windows>
+</Interface>

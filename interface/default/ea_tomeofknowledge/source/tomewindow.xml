@@ -1,0 +1,558 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	
+	<!-- The Tome Window is so large, it's component defs and lua implementation are divided into separate files -->
+	<Scripts>
+        <Script file="Source/TomeWindow.lua" />
+        <Script file="Source/TomeWindow_StatUtils.lua" />
+        
+		<Script file="Source/TomeWindow_TitlePage.lua"/>
+		
+		<Script file="Source/TomeWindow_WarJournal.lua"/>
+		<Script file="Source/TomeWindow_QuestJournal.lua"/>
+		<Script file="Source/TomeWindow_Rewards.lua"/>
+		<Script file="Source/TomeWindow_Achievements.lua" />
+		
+		<Script file="Source/TomeWindow_Bestiary.lua"/>
+		<Script file="Source/TomeWindow_NoteworthyPersons.lua"/>
+		<Script file="Source/TomeWindow_HistoryAndLore.lua"/>
+        <Script file="Source/TomeWindow_OldWorldArmory.lua"/>
+        <Script file="Source/TomeWindow_OldWorldArmory_Sigils.lua"/>
+        <Script file="Source/TomeWindow_Sigils.lua"/>
+        
+        <Script file="Source/TomeWindow_LiveEvent.lua"/>
+	</Scripts>
+
+	
+	<Windows>
+
+
+	    <!-- Tome of Knowlege Window -->
+		<Window name="TomeWindow" movable="true" layer="secondary" sticky="true" savesettings="true">
+			<Size>
+				<AbsPoint x="1258" y="885"/>
+			</Size>
+			<Anchors>
+				<Anchor point="top" relativePoint="top" relativeTo="">
+					<AbsPoint x="0" y="30" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="TomeWindow.Initialize"/>
+				<EventHandler event="OnUpdate" function="TomeWindow.Update"/>
+				<EventHandler event="OnShutdown" function="TomeWindow.Shutdown"/>
+				<EventHandler event="OnShown" function="TomeWindow.OnOpen" />
+				<EventHandler event="OnHidden" function="TomeWindow.OnClose" />
+			</EventHandlers>
+			<Sounds>
+			    <Sound event="OnShown" script="Sound.Play( Sound.TOME_OPEN )" />
+			    <Sound event="OnHidden" script="Sound.Play( Sound.TOME_CLOSE)" />
+			</Sounds>
+			<Windows>
+				<DynamicImage name="$parentBackground" texture="EA_Tome" handleinput="false" layer="background" slice="TomeBook" texturescale="1.18" >
+					<Size>
+						<AbsPoint x="1208" y="885"/>
+					</Size>
+					<Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="50" y="0" />
+				        </Anchor>
+			        </Anchors>
+				</DynamicImage>
+				
+				
+				<!-- Back Button -->
+				<Button name="$parentBack"  inherits="EA_Button_DefaultBigLeftArrow" layer="popup">
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+					        <AbsPoint x="96" y="28" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.GoBack" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverBackBtn" />
+			        </EventHandlers>
+				</Button>
+				
+				<!-- Close Button -->
+				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="popup">
+			        <Anchors>
+				        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground" >
+					        <AbsPoint x="-110" y="30" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.Hide" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverCloseBtn" />
+			        </EventHandlers>
+				</Button>
+
+			
+			    <!-- Header Elements -->
+			    <Label name="$parentHeaderLeftText" inherits="TOKTextHeaders"  maxchars="256" textalign="right" autoresize="false" layer="popup" handleinput="false">
+					<Size>
+						<AbsPoint x="400" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="220" y="35"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+			    <Label name="$parentHeaderRightText" inherits="TOKTextHeaders"  maxchars="256" textalign="left" autoresize="false" layer="popup" handleinput="false" >
+					<Size>
+						<AbsPoint x="400" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="-160" y="35"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+
+
+                <!-- Footer Elements -->
+                <DynamicImage name="$parentLeftPageNumber" texture="EA_Tome" slice="MiniSection-Achievements" texturescale="1.18">
+                    <Size>
+                        <AbsPoint x="30" y="31"/>
+                    </Size>
+                	<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+							<AbsPoint x="330" y="-33" />
+						</Anchor>
+					</Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRightPageNumber" texture="EA_Tome" slice="MiniSection-Achievements" texturescale="1.18">
+                    <Size>
+                        <AbsPoint x="30" y="31"/>
+                    </Size>
+                	<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+							<AbsPoint x="-315" y="-40" />
+						</Anchor>
+					</Anchors>
+                </DynamicImage>
+			    
+			
+                <!-- Navigation Buttons -->
+				<Button name="$parentPreviousPageButton" inherits="TomePreviousPageButton" layer="popup">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+							<AbsPoint x="96" y="-22" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="TomeWindow.OnPreviousPage" />
+						<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverPreviousPage" />
+					</EventHandlers>
+				</Button>
+
+				<Button name="$parentNextPageButton" inherits="TomeNextPageButton"  layer="popup">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+							<AbsPoint x="-88" y="-33" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="TomeWindow.OnNextPage" />
+						<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverNextPage" />
+					</EventHandlers>
+				</Button>
+
+                <!-- Section Bookmarks -->
+		        <Button name="$parentIntroductionBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="111" y="96"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="80" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnIntroductionBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverIntroductionBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkHome" />
+				        <NormalHighlit id="BookmarkHome-ROLLOVER" />
+				        <Pressed id="BookmarkHome" />
+				        <PressedHighlit id="BookmarkHome-ROLLOVER" />
+				        <Disabled id="BookmarkHome" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentQuestsBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="180" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnQuestsBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverQuestsBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkQuests" />
+				        <NormalHighlit id="BookmarkQuests-ROLLOVER" />
+				        <Pressed id="BookmarkQuests" />
+				        <PressedHighlit id="BookmarkQuests-ROLLOVER" />
+				        <Disabled id="BookmarkQuests" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentChaptersBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="250" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnChaptersBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverChaptersBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkChapters" />
+				        <NormalHighlit id="BookmarkChapters-ROLLOVER" />
+				        <Pressed id="BookmarkChapters" />
+				        <PressedHighlit id="BookmarkChapters-ROLLOVER" />
+				        <Disabled id="BookmarkChapters" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentAchievementsBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="320" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnAchievementsBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverAchievementsBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkAchievements" />
+				        <NormalHighlit id="BookmarkAchievements-ROLLOVER" />
+				        <Pressed id="BookmarkAchievements" />
+				        <PressedHighlit id="BookmarkAchievements-ROLLOVER" />
+				        <Disabled id="BookmarkAchievements" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentRewardsBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="390" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnRewardsBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverRewardsBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkRewards" />
+				        <NormalHighlit id="BookmarkRewards-ROLLOVER" />
+				        <Pressed id="BookmarkRewards" />
+				        <PressedHighlit id="BookmarkRewards-ROLLOVER" />
+				        <Disabled id="BookmarkRewards" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentLoreBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="460" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnLoreBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverLoreBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkLore" />
+				        <NormalHighlit id="BookmarkLore-ROLLOVER" />
+				        <Pressed id="BookmarkLore" />
+				        <PressedHighlit id="BookmarkLore-ROLLOVER" />
+				        <Disabled id="BookmarkLore" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentNoteworthyPersonsBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="530" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnNoteworthyPersonsBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverNoteworthyPersonsBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkLore" />
+				        <NormalHighlit id="BookmarkLore-ROLLOVER" />
+				        <Pressed id="BookmarkLore" />
+				        <PressedHighlit id="BookmarkLore-ROLLOVER" />
+				        <Disabled id="BookmarkLore" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentBestiaryBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="600" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnBestiaryBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverBestiaryBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkBestiary" />
+				        <NormalHighlit id="BookmarkBestiary-ROLLOVER" />
+				        <Pressed id="BookmarkBestiary" />
+				        <PressedHighlit id="BookmarkBestiary-ROLLOVER" />
+				        <Disabled id="BookmarkBestiary" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentArmoryBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="86" y="65"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="670" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnArmoryBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverArmoryBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkArmory" />
+				        <NormalHighlit id="BookmarkArmory-ROLLOVER" />
+				        <Pressed id="BookmarkArmory" />
+				        <PressedHighlit id="BookmarkArmory-ROLLOVER" />
+				        <Disabled id="BookmarkArmory" />
+			        </TexSlices>
+		        </Button>
+		        <Button name="$parentLiveEventBookmark" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" layer="popup">
+			        <Size>
+				        <AbsPoint x="99" y="91"/>
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topright">
+					        <AbsPoint x="112" y="740" />
+				        </Anchor>
+			        </Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnLiveEventBookmark" />
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseoverLiveEventBookmark" />
+			        </EventHandlers>
+			        <TexSlices>
+				        <Normal id="BookmarkSpecialEvents" />
+				        <NormalHighlit id="BookmarkSpecialEvents-ROLLOVER" />
+				        <Pressed id="BookmarkSpecialEvents" />
+				        <PressedHighlit id="BookmarkSpecialEvents-ROLLOVER" />
+				        <Disabled id="BookmarkSpecialEvents" />
+			        </TexSlices>
+		        </Button>
+
+
+		    	 <!-- Animations -->
+			    <AnimatedImage name="$parentPageFlipAnim" inherits="TomePageFlipAnim"  >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+							<AbsPoint x="60" y="-100"/>
+						</Anchor>
+					</Anchors>
+			    </AnimatedImage>
+			    <AnimatedImage name="$parentPageFlipBackAnim" inherits="TomePageFlipAnim" mirrorTexCoords="true" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+							<AbsPoint x="25" y="-100"/>
+						</Anchor>
+					</Anchors>
+			    </AnimatedImage>
+			 
+
+                <Window name="TomeWindowMap" inherits="TomeWindowMapDef" />
+
+                <!-- Introduction -->
+                <Window name="TomeWindowTitlePage" inherits="TomeWindowTitlePageDef" />
+
+
+                <!-- War Journal -->
+                <Window name="WarJournalTOCSection" inherits="WarJournalTOCSectionDef" />
+				<Window name="WarJournalEntryInfo" inherits="WarJournalEntryInfoDef" />
+
+                <!-- Quest Journal -->
+                <Window name="QuestTableOfContents"  inherits="QuestTableOfContentsDef" />                
+                <Window name="TomeWindowQuestInfo" inherits="TomeWindowQuestInfoDef" />			 
+			
+			    <!-- Rewards -->
+			    <Window name="TomeRewardsInfo" inherits="TomeRewardsInfoDef"  />
+			
+			
+ 
+                <!-- Bestiary -->
+                <Window name="BestiaryTOC" inherits="BestiaryTOCDef" />
+                <Window name="BestiarySubTypeInfo" inherits="BestiarySubTypeInfoDef" />
+                <Window name="BestiarySpeciesInfo" inherits="BestiarySpeciesInfoDef" />
+
+                <!-- Noteworthy Persons -->
+                <Window name="NoteworthyPersonsTOC" inherits="NoteworthyPersonsTOCDef" />
+                <Window name="NoteworthyPersonsZoneInfo" inherits="NoteworthyPersonsZoneInfoDef" />		
+                <Window name="NoteworthyPersonsEntryInfo" inherits="NoteworthyPersonsEntryInfoDef" />			  
+
+                <!-- History & Lore -->
+                <Window name="HistoryAndLoreTOC" inherits="HistoryAndLoreTOCDef" />
+                <Window name="HistoryAndLoreZoneInfo" inherits="HistoryAndLoreZoneInfoDef" />
+                <Window name="HistoryAndLoreEntryInfo" inherits="HistoryAndLoreEntryInfoDef" />
+                
+                <!-- Old World Armory -->
+                <Window name="OldWorldArmory" inherits="OldWorldArmoryDef" />
+                <Window name="OldWorldArmorySigils" inherits="OldWorldArmorySigilsDef" />
+                <Window name="Sigil" inherits="SigilDef" />
+
+                <!-- Achievements -->
+			    <Window name="AchievementsTOC" inherits="AchievementsTOCDef" />
+			    <Window name="AchievementsSubTypeInfo" inherits="AchievementsSubTypeInfoDef" />
+			    
+			    <!-- Live Event -->
+			    <Window name="LiveEvent" inherits="LiveEventDef" />
+                <Window name="LiveEventTaskDetails" inherits="LiveEventTaskDetailsDef" />
+                <Window name="LiveEventList" inherits="LiveEventListDef" />
+
+		
+			</Windows>
+		</Window> <!-- End TomeWindow -->
+	    
+        <Window name="TacticCounterTooltip" inherits="TooltipBase" >
+            <Size>
+                <AbsPoint x="500" y="400" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground"/>
+                <Label name="$parentTitle" font="font_default_text" maxchars="128" wordwrap="true" autoresize="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="470" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentText" font="font_chat_text" maxchars="512" wordwrap="true" autoresize="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="470" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentProgress" font="font_chat_text" maxchars="128" wordwrap="true" autoresize="true" autoresizewidth="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="433" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+				<DynamicImage name="$parentFragmentIcon" textureScale="0.5" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="32" y="32" />
+					</Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentProgress">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+				</DynamicImage>
+				
+				<DynamicImage name="$parentTacticIcon1" textureScale="0.625" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="40" y="40" />
+					</Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentProgress">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+				</DynamicImage>
+                <Label name="$parentTacticText1" font="font_chat_text" maxchars="128" wordwrap="true" autoresize="true" autoresizewidth="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="433" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTacticIcon1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+				<DynamicImage name="$parentTacticIcon2" textureScale="0.625" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="40" y="40" />
+					</Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTacticIcon1">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+				</DynamicImage>
+                <Label name="$parentTacticText2" font="font_chat_text" maxchars="128" wordwrap="true" autoresize="true" autoresizewidth="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="433" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTacticIcon2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+				<DynamicImage name="$parentTacticIcon3" textureScale="0.625" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="40" y="40" />
+					</Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTacticIcon2">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+				</DynamicImage>
+                <Label name="$parentTacticText3" font="font_chat_text" maxchars="128" wordwrap="true" autoresize="true" autoresizewidth="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="433" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTacticIcon3">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+            </Windows>
+        </Window>
+	
+	</Windows>
+	
+</Interface>

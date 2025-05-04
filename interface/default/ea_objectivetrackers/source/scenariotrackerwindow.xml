@@ -1,0 +1,292 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/ScenarioTrackerWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Main Window Specification -->
+        <Window name="EA_Window_ScenarioTracker" sticky="false" layer="background" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="300" y="276"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="-20" y="-30"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_ScenarioTracker.Initialize" />
+                <EventHandler event="OnUpdate"      function="EA_Window_ScenarioTracker.Update" />
+                <EventHandler event="OnShutdown"    function="EA_Window_ScenarioTracker.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentLocation">
+                    <Size>
+                        <AbsPoint x="300" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.MouseOverDescription" />
+                    </EventHandlers>
+                    <Windows>
+                        <Label name="$parentScenarioName" font="font_default_sub_heading" maxchars="32" autoresize="true"
+                               textalign="right" handleinput="false" wordwrap="false" textAutoFitMinScale="0.3">
+                            <Size>
+                                <AbsPoint x="206" y="23"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentClockImage" >
+                                    <AbsPoint x="-5" y="1"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="45" a="255"/>
+                        </Label>
+
+                        <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                    <AbsPoint x="-65" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <Label name="$parentTimerValue" font="font_clear_medium" maxchars="24" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="65" y="23"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentClockImage" >
+                                    <AbsPoint x="2" y="1"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="235" g="235" b="235" a="255"/>
+                        </Label>
+
+                    </Windows>
+                </Window>
+
+                <Window name="$parentScoreboard" handleinput="false">
+                    <Size>
+                        <AbsPoint x="300" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLocation" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentOrderIcon" texture="map_markers01" slice="FlagOrder">
+                            <Size>
+                                <AbsPoint x="28" y="33"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentPointsOrder" font="font_clear_large" maxchars="16" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="50" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOrderIcon" >
+                                    <AbsPoint x="0" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="0" g="148" b="225" a="255"/>
+                        </Label>
+                        
+                        <Label name="$parentGoal" font="font_clear_default" maxchars="32" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="150" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="12"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="45" a="255"/>
+                        </Label>
+
+                        <DynamicImage name="$parentDestructionIcon" texture="map_markers01" slice="FlagDestruction">
+                            <Size>
+                                <AbsPoint x="28" y="33"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                    <AbsPoint x="-50" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentPointsDestruction" font="font_clear_large" maxchars="16" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="50" y="33"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDestructionIcon" >
+                                    <AbsPoint x="0" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="5" b="5" a="255"/>
+                        </Label>
+                    </Windows>
+                </Window>
+
+                <Window name="$parentOverview">
+                    <Size>
+                        <AbsPoint x="300" y="212"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentScoreboard" >
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <!-- Left Column -->
+                        <Window name="$parentPoint2" inherits="EA_Window_ObjectiveOwnershipDisplay" id="2">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint4" inherits="EA_Window_ObjectiveOwnershipDisplay" id="4">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPoint2" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint6" inherits="EA_Window_ObjectiveOwnershipDisplay" id="6">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPoint4" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint8" inherits="EA_Window_ObjectiveOwnershipDisplay" id="8">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPoint6" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+
+                        <!-- Right Column -->
+                        <Window name="$parentPoint1" inherits="EA_Window_ObjectiveOwnershipDisplay" id="1">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint3" inherits="EA_Window_ObjectiveOwnershipDisplay" id="3">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPoint1" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint5" inherits="EA_Window_ObjectiveOwnershipDisplay" id="5">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPoint3" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentPoint7" inherits="EA_Window_ObjectiveOwnershipDisplay" id="7">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPoint5" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_ScenarioTracker.OnMouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+
+                    </Windows>
+                </Window>
+
+                <Window name="$parentScenarioQuest">
+                    <Size>
+                        <AbsPoint x="300" y="23"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOverview" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentName" font="font_clear_medium" maxchars="64" autoresize="true"
+                               textalign="right" handleinput="false" wordwrap="true" textAutoFitMinScale="0.3">
+                            <Size>
+                                <AbsPoint x="206" y="23"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentClockImage" >
+                                    <AbsPoint x="-5" y="1"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="45" a="255"/>
+                        </Label>
+
+                        <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                                    <AbsPoint x="-65" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <Label name="$parentTimerValue" font="font_clear_medium" maxchars="12" autoresize="true"
+                               textalign="left" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="65" y="23"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentClockImage" >
+                                    <AbsPoint x="2" y="1"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="235" g="235" b="235" a="255"/>
+                        </Label>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

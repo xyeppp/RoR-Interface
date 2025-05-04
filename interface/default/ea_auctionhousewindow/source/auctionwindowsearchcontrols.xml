@@ -1,0 +1,164 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/AuctionWindowSearchControls.lua" />
+	</Scripts>
+	<Windows>
+
+        <Window name="AuctionSearchControls" >
+            <Windows>
+                <EditBox name="$parentSearchBox" inherits="EA_EditBox_DefaultFrame" maxchars="512" taborder="1">
+                    <Size>
+                        <AbsPoint x="440" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="AuctionWindowSearchControls.OnLButtonUpSearch" />
+                    </EventHandlers>
+                </EditBox>
+
+                <Button name="$parentSearchButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindowSearchControls.OnLButtonUpSearch"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentClearButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSearchButton" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindowSearchControls.OnLButtonUpClear"/>
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentRankHeader" inherits="AuctionWindowControlLabel" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentMinRank" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <ComboBox name="$parentMinRank" inherits="EA_ComboBox_DefaultResizableTiny" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentRankSeparator">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="AuctionWindowSearchControls.OnChangeMinRank" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <Label name="$parentRankSeparator" inherits="EA_Label_ChatText" textalign="center" autoresizewidth="false" autoresize="false">
+                    <Size>
+                        <AbsPoint x="20" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentMaxRank">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <ComboBox name="$parentMaxRank" inherits="EA_ComboBox_DefaultResizableTiny" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentAdditionalFiltersLabel">
+                            <AbsPoint x="-35" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="AuctionWindowSearchControls.OnChangeMaxRank" />
+                    </EventHandlers>
+                </ComboBox>
+
+                <Window name="$parentAdditionalFiltersButton" inherits="EA_Window_DefaultPlusMinus">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentSearchButton">
+                            <AbsPoint x="-40" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AuctionWindowSearchControls.OnLButtonUpAdditonalFilters" />
+                    </EventHandlers>
+                </Window>
+
+                <Label name="$parentAdditionalFiltersLabel" inherits="AuctionWindowControlLabel" >
+                    <Size>
+                        <AbsPoint x="200" y="45" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentAdditionalFiltersButton" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <ComboBox name="$parentCategories" inherits="EA_ComboBox_DefaultResizableMediumLarge">
+                    <Size>
+                        <AbsPoint x="210" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSearchBox">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="AuctionWindowSearchControls.OnChangeCategory" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <ComboBox name="$parentItemTypes" inherits="EA_ComboBox_DefaultResizableMediumLarge">
+                    <Size>
+                        <AbsPoint x="210" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCategories">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="AuctionWindowSearchControls.OnCheckItemType" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <ComboBox name="$parentSlots" inherits="EA_ComboBox_DefaultResizableMediumLarge">
+                    <Size>
+                        <AbsPoint x="210" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemTypes">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="AuctionWindowSearchControls.OnCheckItemSlot" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <ComboBox name="$parentRarities" inherits="EA_ComboBox_DefaultResizableMediumLarge">
+                    <Size>
+                        <AbsPoint x="210" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlots">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+            </Windows>
+        </Window>
+        
+	</Windows>
+</Interface>

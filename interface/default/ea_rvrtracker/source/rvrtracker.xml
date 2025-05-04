@@ -1,0 +1,30 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/RvRTracker.lua" />
+    </Scripts>
+    <Windows>
+        <Label name="ObjectiveRvRTrackerTimer" font="font_default_text_large" maxchars="4096" textalign="left" autoresize="true" wordwrap="false" handleinput="false">
+            <Size>
+                <AbsPoint x="200" y="50"/>
+            </Size>
+            <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+        
+        <MapDisplay name="EA_Window_RvRTracker" layer="default" movable="true" savesettings="true" pinTexture="map_markers01" shape="rectangle">
+            <Size>
+                <AbsPoint x="350" y="150" />
+            </Size>           
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="-400" />
+                </Anchor>
+            </Anchors>   
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_RvRTracker.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_RvRTracker.Shutdown" />
+                <EventHandler event="OnUpdate" function="EA_Window_RvRTracker.CountdownActiveObjectiveTimers" />
+                <EventHandler event="OnPointMouseOver" function="EA_Window_RvRTracker.OnMouseOverPoint" />
+            </EventHandlers>
+        </MapDisplay>
+    </Windows>
+</Interface>

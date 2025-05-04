@@ -1,0 +1,256 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/BugReportWindow.lua" />
+	</Scripts>
+	<Windows>
+
+    <Label name="BugReportTypesHeaderTemplate" inherits="EA_Label_DefaultText" wordwrap="false" textalign="leftcenter" maxchars="175" handleinput="false">
+      <Size>
+        <AbsPoint x="880" y="26" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+    
+		<Window name="BugReportTypeButton" inherits="EA_LabelCheckButton" popable="false">
+        <!-- Default Size of this window is <x="280" y="32" /> -->
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="BugReportWindow.OnSelectBugType" />
+			</EventHandlers>
+		</Window>
+
+		<!-- Bug Report Window -->
+		<Window name="BugReportWindow" inherits="EA_Window_Default" movable ="true" layer="secondary" savesettings="false">
+			<Size>
+				<AbsPoint x="900" y="605" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="EA_Window_Help">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="BugReportWindow.Initialize" />
+				<EventHandler event="OnShutdown" function="BugReportWindow.Shutdown" />
+				<EventHandler event="OnShown" function="BugReportWindow.OnShown" />
+				<EventHandler event="OnHidden" function="BugReportWindow.OnHidden" />
+			</EventHandlers>
+			<Windows>
+        <!-- Title Bar, Close button, and Corner Image -->
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+        <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="BugReportWindow.Hide" />
+          </EventHandlers>
+        </Button>
+        <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+        <!-- Main Window Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" >
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" />
+          </Anchors>
+        </Window>
+
+        <!-- Help Title Text-->
+        <Label name="$parentHeaderText" font="font_default_heading" maxchars="32" textalign="center" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="900" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+              <AbsPoint x="0" y="15" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Top Seperator -->
+        <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+              <AbsPoint x="0" y="64" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+              <AbsPoint x="0" y="64" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Bug Report Description Header -->
+        <Label name="$parentBugReportDescriptionHeader" inherits="BugReportTypesHeaderTemplate" wordwrap="true">
+          <Size>
+            <AbsPoint x="880" y="56" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeperator" >
+              <AbsPoint x="25" y="10" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentTopSeperator" >
+              <AbsPoint x="-25" y="32" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Bug Types -->
+				<Window name="$parentBugTypes">
+					<Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBugReportDescriptionHeader">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBugReportDescriptionHeader">
+							<AbsPoint x="0" y="125" />  <!-- Each checkbox button + text is 32px high -->
+						</Anchor>
+					</Anchors>
+          <!-- The Check Box Windows are laid out like this: (Note: the Window IDs correspond to the Enum EBugReportTopic-->
+          <!-- Other (ID 6)                                                         -->
+          <!-- Art   (ID 1)               Character(ID 0)             Crash  (ID 3) -->
+          <!-- Items (ID 5)               Monster  (ID 2)             Quests (ID 4) -->
+          <!--                                                                      -->
+          <!-- Descriptive Text                                                     -->
+          <!-- ____________________________________________________________________ -->
+          <!--                                                                      -->
+          <!--                                Edit Box                              -->
+          <!--                                                                      -->
+          <!-- ____________________________________________________________________ -->
+          
+					<Windows>
+            <!-- Art -->
+            <Window name="BugReportType1" inherits="BugReportTypeButton" id="1">
+              <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="BugReportType5" >
+                  <AbsPoint x="0" y="-5" />
+                </Anchor>
+              </Anchors>
+            </Window>
+            <!-- Character -->
+						<Window name="BugReportType0" inherits="BugReportTypeButton" id="0">
+							<Anchors>
+								<Anchor point="top" relativePoint="bottom" relativeTo="BugReportType2">
+									<AbsPoint x="0" y="-5" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            <!-- Crash -->
+						<Window name="BugReportType3" inherits="BugReportTypeButton" id="3">
+							<Anchors>
+								<Anchor point="top" relativePoint="bottom" relativeTo="BugReportType4" >
+									<AbsPoint x="0" y="-5" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            <!-- Item -->
+						<Window name="BugReportType5" inherits="BugReportTypeButton" id="5">
+							<Anchors>
+								<Anchor point="topleft" relativePoint="bottomleft" relativeTo="BugReportWindowText" >
+									<AbsPoint x="0" y="-66" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            <!-- Monster Pathing -->
+						<Window name="BugReportType2" inherits="BugReportTypeButton" id="2">
+							<Anchors>
+								<Anchor point="top" relativePoint="bottom" relativeTo="BugReportWindowText" >
+									<AbsPoint x="0" y="-66" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            <!-- Other -->
+						<Window name="BugReportType6" inherits="BugReportTypeButton" id="6">
+							<Anchors>
+								<Anchor point="topleft" relativePoint="bottomleft" relativeTo="BugReportType1" >
+									<AbsPoint x="0" y="-5" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            <!-- Quests -->
+						<Window name="BugReportType4" inherits="BugReportTypeButton" id="4">
+							<Anchors>
+								<Anchor point="topright" relativePoint="bottomright" relativeTo="BugReportWindowText" >
+									<AbsPoint x="0" y="-66" />
+								</Anchor>
+							</Anchors>
+						</Window>
+            
+					</Windows>
+				</Window>
+
+        <!-- Bug Type Header -->
+        <Label name="$parentDetailsHeader" inherits="BugReportTypesHeaderTemplate" wordwrap="true">
+          <Size>
+            <AbsPoint x="845" y="56" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="BugReportWindowText" >
+              <AbsPoint x="0" y="-5" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        
+        <!-- Bug Report Window Text -->
+			  <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame_Multiline" taborder="2" linecount="9">
+				  <Size>
+					  <AbsPoint x="845" y="200" /> <!-- Accomodates 3 label check boxes whose widths are 280 each. 280*3 = 840-->
+				  </Size>
+				  <Anchors>
+            <Anchor point="left" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="25" y="0" />
+            </Anchor>
+					  <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+						  <AbsPoint x="-25" y="-55" />
+					  </Anchor>
+				  </Anchors>
+				  <EventHandlers>
+					  <EventHandler event="OnKeyEnter" function="" />
+					  <EventHandler event="OnKeyEscape" function="" />
+				  </EventHandlers>
+			  </EditBox>
+
+        <!-- Submit Button -->
+				<Button name="$parentSubmitButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+							<AbsPoint x="0" y="15" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="BugReportWindow.Submit"/>
+					</EventHandlers>
+				</Button>
+
+        <!-- Clear Button -->
+				<Button name="$parentClearButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="topright" relativeTo="$parentText">
+							<AbsPoint x="0" y="15" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="BugReportWindow.Clear"/>
+					</EventHandlers>
+				</Button>
+
+        <!-- Button Bar Barground -->
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+          <Size>
+            <AbsPoint x="0" y="65" />
+          </Size>
+        </Window>
+
+        <!-- Back Button -->
+        <Button name="$parentBackButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackgroundButtonBackgroundFill">
+              <AbsPoint x="-25" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="BugReportWindow.OnLButtonUpBackButton" />
+          </EventHandlers>
+        </Button>
+            
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

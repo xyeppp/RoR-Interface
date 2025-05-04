@@ -1,0 +1,304 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <VerticalResizeImage name="EA_VerticalResizeImage_PlotDivider"  handleinput="false" layer="background" texture="EA_Cultivating01_d5">
+            <Size>
+                <AbsPoint x="4" y="212" />
+            </Size>
+            <Sizes top="0" middle="212" bottom="0" />
+            <TexSlices>
+                <Middle id="PlotDivider-Vertical" />
+            </TexSlices>
+        </VerticalResizeImage>
+        
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_PlotDivider"  handleinput="false" layer="background" texture="EA_Cultivating01_d5">
+            <Size>
+                <AbsPoint x="215" y="4" />
+            </Size>
+            <Sizes left="0" middle="215" right="0" />
+            <TexSlices>
+                <Middle id="PlotDivider-Horizontal" />
+            </TexSlices>
+        </HorizontalResizeImage>
+        
+		<DynamicImage name="EA_DynamicImage_LargeCultivatingCircleFrame"  slice="RoundFrame" texture="EA_Cultivating01_d5" sticky="false"
+		              layer="secondary" handleinput="false" drawchildrenfirst="true">
+			<Size>
+				<AbsPoint x="78" y="78" />
+			</Size>
+		</DynamicImage>
+		
+        <DynamicImage name="EA_DynamicImage_SmallCultivatingCircleFrame"  slice="SmallRoundFrame" texture="EA_Cultivating01_d5" sticky="false"
+                      layer="secondary" handleinput="false" drawchildrenfirst="true">
+			<Size>
+				<AbsPoint x="38" y="38" />
+			</Size>
+		</DynamicImage>
+		
+		<DynamicImage name="EA_DynamicImage_SmallRoundSoilIcon" slice="Dirt-Mini-SLOT" texture="EA_Cultivating01_d5" sticky="false" layer="secondary" handleinput="false">
+		    <Size>
+				<AbsPoint x="34" y="34" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="$parent" />
+			</Anchors>
+		</DynamicImage>
+
+		<DynamicImage name="EA_DynamicImage_PlotNumberFrame" slice="IconFrame-Mini" texture="EA_Cultivating01_d5" sticky="false" handleinput="false">
+		    <Size>
+				<AbsPoint x="23" y="23" />
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+				    <AbsPoint x="10" y="10" />
+				</Anchor>
+			</Anchors>
+			<Windows>
+			    <DynamicImage name="$parentNumber" slice="Square-1" texture="EA_Cultivating01_d5" sticky="false" layer="background" handleinput="false">
+		            <Size>
+				        <AbsPoint x="21" y="21" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+			        </Anchors>
+		        </DynamicImage>
+			</Windows>
+		</DynamicImage>
+		
+		<Window name="CultivatingWindowInnerFrame" layer="secondary" handleinput="true" >
+		    <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="9" y="37" />
+                </Anchor>
+            </Anchors>
+            <Size>
+			    <AbsPoint x="421" y="428" />
+		    </Size>
+		</Window>
+		
+		<Label name="EA_Label_CultivationTextTemplate" font="font_default_text" maxchars="60" textalign="center" autoresize="true" handleinput="false" autoresizewidth="true">
+            <Size>
+                <AbsPoint x="100" y="40"/>
+            </Size>
+            <Color r="255" g="255" b="200" a="255"/>
+        </Label>
+		
+		<Button name="EA_Button_Home" inherits="EA_Button_Default" font="font_default_text_small" textalign="center" textAutoFitMinScale="0.5" 
+		        backgroundtexture="EA_Cultivating01_d5" highlighttexture="EA_Cultivating01_d5" >
+            <Size>
+                <AbsPoint x="70" y="38" />
+            </Size>
+            <TexSlices>
+                <Normal id="Home-Button" />
+                <NormalHighlit id="Home-Button-Rollover" />
+                <Pressed id="Home-Button-Depressed" />
+                <PressedHighlit id="Home-Button-Depressed" />
+                <Disabled id="Home-Button" />
+                <DisabledPressed id="Home-Button-Depressed" />
+            </TexSlices>
+            <TextColors>
+                <Normal         r="226" g="216" b="45" a="255" />
+                <NormalHighlit  r="226" g="216" b="45" a="255" />
+                <Pressed        r="226" g="216" b="45" a="255" />
+                <PressedHighlit r="226" g="216" b="45" a="255" />
+                <Disabled       r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <TextOffset x="0" y="5" />
+        </Button>
+        
+        <DynamicImage name="EA_DynamicImage_CultivationIconBackground" texture="EA_Cultivating01_d5" handleinput="false" layer="background" sticky="false">
+		    <Size>
+			    <AbsPoint x="64" y="64" />
+		    </Size>
+		    <Anchors>
+			    <Anchor point="center" relativePoint="center" relativeTo="$parent" >
+				    <AbsPoint x="0" y="0" />
+			    </Anchor>
+		    </Anchors>
+	    </DynamicImage>
+
+        
+        <Button name="EA_Button_SporeSeedFrame" inherits="EA_Button_Default" backgroundtexture="EA_Cultivating01_d5" highlighttexture="EA_Cultivating01_d5"
+                draganddrop="true" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <TexSlices>
+                <Normal id="IconFrame-2" />
+                <Pressed id="IconFrame-2" />
+                <Disabled id="IconFrame-2" />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CultivationWindow.OnResourceLButtonUp" />
+                <EventHandler event="OnMouseOver" function="CultivationWindow.OnResourceMouseOver" />
+            </EventHandlers>
+            <Windows>
+                 <DynamicImage name="$parentBackground" inherits="EA_DynamicImage_CultivationIconBackground" slice="Black-Slot"/>
+                 <DynamicImage name="$parentIcon" handleinput="false" texturescale="0.875" >
+                    <Size>
+                        <AbsPoint x="56" y="56" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="-2" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+        
+        <Button name="EA_Button_CultivationResourceFrame" inherits="EA_Button_Default" backgroundtexture="EA_Cultivating01_d5" highlighttexture="EA_Cultivating01_d5"
+                draganddrop="true" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="68" y="68" />
+            </Size>
+            <TexSlices>
+                <Normal id="IconFrame-1" />
+                <Pressed id="IconFrame-1" />
+                <Disabled id="IconFrame-1" />
+            </TexSlices>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="CultivationWindow.OnResourceLButtonUp" />
+                <EventHandler event="OnMouseOver" function="CultivationWindow.OnResourceMouseOver" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentBackground" inherits="EA_DynamicImage_CultivationIconBackground" slice="Dirt-Slot"/>
+                <DynamicImage name="$parentIcon" handleinput="false" layer="background" texture="EA_Cultivating01_d5">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentStageTimer" font="font_default_text_small" maxchars="6" textalign="center" layer="popup" handleinput="false">
+					<Size>
+						<AbsPoint x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottom" >
+							<AbsPoint x="0"  y="-10"/>
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="200" a="255"/>
+				</Label>
+				
+
+            </Windows>
+        </Button>
+
+		
+        <Window name="CultivationPlotTemplate" layer="secondary" draganddrop="true" handleinput="true">
+            <Size>
+                <AbsPoint x="211" y="212"/>
+            </Size>
+            
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="CultivationWindow.ShowPlot" />
+				<EventHandler event="OnMouseOver" function="CultivationWindow.OnPlotMouseOver" />
+				<EventHandler event="OnMouseOverEnd" function="CultivationWindow.OnPlotMouseOverEnd" />
+			</EventHandlers>
+			
+			<Windows>
+				<DynamicImage name="$parentBackground" slice="Plot" texture="EA_Cultivating01_d5" handleinput="false" layer="background" sticky="false">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" />
+						<Anchor point="bottomright" relativePoint="bottomright" />
+					</Anchors>
+                    <TexDims x="211" y="212"/>
+				</DynamicImage>
+
+				<Label name="$parentStageName" font="font_default_text" maxchars="64" textAutoFitMinScale="0.5" textalign="left" handleinput="false">
+					<Size>
+						<AbsPoint x="200" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+							<AbsPoint x="0"  y="10"/>
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="200" a="255"/>
+				</Label>
+				
+				<DynamicImage name="$parentNumberFrame" inherits="EA_DynamicImage_PlotNumberFrame" />
+
+				<DynamicImage name="$parentCircleFrame" inherits="EA_DynamicImage_LargeCultivatingCircleFrame" id="1">
+					<Anchors>
+						<Anchor point="top" relativePoint="top">
+							<AbsPoint x="0" y="23" />
+						</Anchor>
+					</Anchors>
+					<Windows>
+					    <DynamicImage name="$parentIcon" slice="PlantStageIcon-1" texture="EA_Cultivating01_d5" sticky="false" handleinput="false">
+		                    <Size>
+				                <AbsPoint x="74" y="74" />
+			                </Size>
+			                <Anchors>
+				                <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+			                </Anchors>
+		                </DynamicImage>
+					</Windows>
+				</DynamicImage>
+				
+				<DynamicImage name="$parentSoilCircleFrame" inherits="EA_DynamicImage_SmallCultivatingCircleFrame" id="2">
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentCircleFrame" >
+							<AbsPoint x="10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<Windows>
+					    <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_SmallRoundSoilIcon" />
+					</Windows>
+				</DynamicImage>
+				
+				<DynamicImage name="$parentWaterCircleFrame" inherits="EA_DynamicImage_SmallCultivatingCircleFrame" id="3">
+					<Anchors>
+						<Anchor point="bottom" relativePoint="top" relativeTo="$parentCircleFrame" >
+							<AbsPoint x="0" y="10" />
+						</Anchor>
+					</Anchors>
+					<Windows>
+					    <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_SmallRoundSoilIcon" slice="WaterDrop-Mini-SLOT" />
+					</Windows>
+				</DynamicImage>
+				
+				<DynamicImage name="$parentNutrientCircleFrame" inherits="EA_DynamicImage_SmallCultivatingCircleFrame" id="4">
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentCircleFrame" >
+							<AbsPoint x="-10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<Windows>
+					    <DynamicImage name="$parentIcon" inherits="EA_DynamicImage_SmallRoundSoilIcon" slice="GreenCross-Mini-SLOT" />
+					</Windows>
+				</DynamicImage>
+
+
+				<Label name="$parentStageTimer" font="font_default_text_small" maxchars="6" textalign="center" layer="popup" handleinput="false">
+					<Size>
+						<AbsPoint x="40" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottom"  relativeTo="$parentCircleFrame">
+							<AbsPoint x="0"  y="-10"/>
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="200" a="255"/>
+				</Label>
+
+				<Label name="$parentTotalTimer" font="font_default_text" maxchars="64" textalign="center" handleinput="false">
+					<Size>
+						<AbsPoint x="200" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottom" relativePoint="bottom">
+							<AbsPoint x="0"  y="-10"/>
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="200" a="255"/>
+				</Label>
+			</Windows>
+		</Window>
+		
+    </Windows>
+</Interface>

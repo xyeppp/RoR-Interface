@@ -1,0 +1,200 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ItemEnhancementWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Button name="EnhancementSlotButton" inherits="EA_Button_DefaultIconFrame">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ItemEnhancementWindow.SlotLButtonUp" />
+                <EventHandler event="OnMouseOver" function="ItemEnhancementWindow.SlotMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="ItemEnhancementWindow" movable="true" layer="secondary">
+            <Size>
+                <AbsPoint x="500" y="630" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                   <AbsPoint x="850" y="30" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="ItemEnhancementWindow.Initialize" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+				        <EventHandler event="OnHidden" function="ItemEnhancementWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+              	<Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />                             
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ItemEnhancementWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- The name of the item, at the top of the dialog, below the title bar.       -->
+                <!-- Using this in lieu of item icon/name in the tooltip below.  I said lieu.   -->
+                <Label name="$parentItemName" font="font_default_text_large" maxchars="128" textalign="center">
+                    <Size>
+                        <AbsPoint x="500" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-5" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Enhancement Slots, where you can put enhancement items                 -->
+                <!-- These anchors are not static, they will be recalculated (centered)     -->
+                <!-- depending on the number of available enhancement slots an item has.    -->
+
+                <Button name="$parentSlot1" inherits="EnhancementSlotButton" id="1">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentSlot2">
+                            <AbsPoint x="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <DynamicImage name="$parentSlot1Id" texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <TexCoords x="193" y="103" />
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSlot1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Button name="$parentSlot2" inherits="EnhancementSlotButton" id="2">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentItemName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <DynamicImage name="$parentSlot2Id" texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <TexCoords x="193" y="124" />
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSlot2">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Button name="$parentSlot3" inherits="EnhancementSlotButton" id="3">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot2">
+                            <AbsPoint x="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <DynamicImage name="$parentSlot3Id" texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <TexCoords x="214" y="103" />
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSlot3">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Seperator -->
+                <Window name="$parentSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentItemName" >
+                      <AbsPoint x="-4" y="160" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentItemName" >
+                      <AbsPoint x="4" y="185" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+
+                <!-- Scroll Region-->
+                <ScrollWindow name="$parentScrollWindow" childscrollwindow="ItemEnhancementWindowScrollWindowChild" scrollbar="ItemEnhancementWindowScrollWindowBar" lineheight="18">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSeperator">
+                      <AbsPoint x="10" y="-10" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="-10" y="10" />
+                    </Anchor>
+                  </Anchors>
+                  <Windows>
+                    
+                    <VerticalScrollbar name="$parentBar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                      <Size>
+                        <AbsPoint x="20" y="200"/>
+                      </Size>
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                          <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                      </Anchors>
+                    </VerticalScrollbar>
+                    
+                    <Window name="$parentChild">
+                      <Size>
+                        <AbsPoint x="460" y="0"/>
+                      </Size>
+                      <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                      </Anchors>
+
+                      <Windows>
+
+                        <Window name="$parentItemInfo" inherits="ItemTooltip" >
+                          <Size>
+                            <AbsPoint x="450" y="25" />
+                          </Size>
+                          <Anchors>
+                            <!-- Note that the template hides the item tooltip's icon/name -->
+                            <Anchor point="topleft" relativePoint="topleft">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Window>
+                        
+                      </Windows>
+                    </Window>
+                  </Windows>
+                </ScrollWindow>
+
+                <!-- Button Bar Background -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                  <Size>
+                    <AbsPoint x="0" y="75" />
+                  </Size>
+                </Window>
+
+                <!-- Bottom of the dialog -->
+                <Button name="$parentFuseEnhancements" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ItemEnhancementWindow.FuseEnhancements" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

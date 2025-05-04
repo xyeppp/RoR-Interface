@@ -1,0 +1,55 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+            
+
+        <!-- One map display is shared by all tome Sections. If you wish to place a map display,
+            add a TomeWindowMapAnchor in the correct spot.
+            
+            Then Call TomeWindow.UseMap() to position the display
+        -->
+        <Window name="TomeWindowMapDef" layer="secondary"> 
+            <Size>
+                <AbsPoint x="450" y="450" />                
+            </Size>
+            <Windows>
+        	    <MapDisplay name="$parentDisplay" loadingAnim="MapLoadingAnim" pinTexture="map_markers01" sticky="false" popable="false" iconScale="0.70">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnPointMouseOver" function="TomeWindow.OnMouseOverMapPoint" />
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickMap" />
+                    </EventHandlers>
+                </MapDisplay>                 
+                <Window name="$parentFrame" inherits="WorldMapScrollWorkFrame" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>        
+        </Window>
+        
+        <Window name="TomeWindowMapAnchorSquare" handleinput="false" >
+            <Size>
+                <AbsPoint x="450" y="450" />                
+            </Size>
+        </Window> 
+        
+        <Window name="TomeWindowMapAnchorRectangle" handleinput="false" >
+            <Size>
+                <AbsPoint x="450" y="225" />                
+            </Size>
+        </Window> 	
+
+    </Windows>
+</Interface>

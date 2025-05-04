@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_TitleBar_Default 
+
+    This file contains the template for the standard window header.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- TitleBar Defs ***********************************************************************************************************************-->
+
+    
+        <!--# HorizontalResizeImage: EA_HorizontalResizeImage_DefaultTopFrame                   
+            This the default image used for the top titlebar of all windows.
+            
+            Code:
+            (begin code)
+             <HorizontalResizeImage name="EA_HorizontalResizeImage_DefaultTopFrame" texture="shared_01" handleinput="false" layer="background" sticky="false">
+             ...
+             </HorizontalResizeImage>
+            (end)
+        -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_DefaultTopFrame" texture="shared_01" handleinput="false" layer="background" sticky="false">
+            <Size>
+                <AbsPoint x="223" y="36" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Sizes left="74" middle="75" right="74" />
+            <TexCoords>
+                <Left x="66" y="5" />
+                <Middle x="141" y="5" />
+                <Right x="217" y="5" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <!--# Window: EA_TitleBar_Default
+            This is a combination element that contains all components of a title bar. This window will automatically
+            anchor itself to topleft and topright of its parent.
+            
+            Code:
+            (begin code)
+             <Window name="EA_TitleBar_Default">
+             ...
+             </Window>
+            (end)
+        -->
+        <Window name="EA_TitleBar_Default">
+            <Size>
+                <AbsPoint x="350" y="36" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="topright" relativePoint="topright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <HorizontalResizeImage name="$parentBackground" inherits="EA_HorizontalResizeImage_DefaultTopFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <Label name="$parentText" font="font_default_war_heading" maxchars="128" textalign="center" >
+                    <Size>
+                        <AbsPoint x="320" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="74" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="-74" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

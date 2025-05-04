@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- Windows -->
+    <Include file="Source/LoginWindow.xml" />
+    <Include file="Source/CinematicWindow.xml" />
+    <Include file="Source/ServerSelectWindow.xml" />
+    <Include file="Source/LoginProgressWindow.xml" />
+    <Include file="Source/CharacterSelectWindow.xml" />
+    <Include file="Source/PregameLoadingWindow.xml" />
+    <Include file="Source/PreloginBackground.xml" />
+    <Include file="Source/LobbyBackground.xml" />
+    <Include file="Source/CreditsWindow.xml" />
+    <!-- I'm using the play button from CharacterSelectWindow.xml so it must be higher in this list than QuickStart.xml -->
+    <Include file="Source/QuickStartWindow.xml" />
+    <Include file="Source/RuleSetPopupWindow.xml" />
+    <!-- the EULAROC window and TransferPopup window use templates from the RuleSet window so they need to stay under it -->
+    <Include file="Source/EULAROCWindow.xml" />
+    <Include file="Source/TransferPopupWindow.xml" />
+    <Include file="Source/RenameWindow.xml" />
+    <Include file="Source/PNCWindow.xml" />
+
+</Interface>

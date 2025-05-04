@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_VictoryPoints01_32b" file="Textures/EA_VictoryPoints01_32b.dds">
+            <Slice id="Advancing-Arrow-Dest-horiz" left="121" top="102" width="11" height="19" />
+            <Slice id="Advancing-Arrow-Dest-vert" left="110" top="132" width="19" height="11" />
+            <Slice id="Advancing-Arrow-Order-horiz" left="110" top="102" width="11" height="19" />
+            <Slice id="Advancing-Arrow-Order-vert" left="110" top="121" width="19" height="11" />
+            <Slice id="Dest-Limiter-Connector-horiz" left="0" top="37" width="24" height="8" />
+            <Slice id="Dest-Limiter-Connector-horiz-empty" left="24" top="37" width="26" height="8" />
+            <Slice id="Dest-Limiter-Connector-horiz-WIN" left="0" top="53" width="50" height="8" />
+            <Slice id="Dest-Limiter-Connector-vert" left="153" top="75" width="8" height="24" />
+            <Slice id="Dest-Limiter-Connector-vert-empty" left="153" top="49" width="8" height="26" />
+            <Slice id="Dest-Limiter-Connector-vert-WIN" left="169" top="49" width="8" height="50" />
+            <Slice id="Dest-Limiter-horiz" left="75" top="36" width="23" height="35" />
+            <Slice id="Dest-Limiter-horiz-empty" left="235" top="150" width="21" height="35" />
+            <Slice id="Dest-Limiter-vert" left="145" top="0" width="35" height="23" />
+            <Slice id="Dest-Limiter-vert-empty" left="73" top="236" width="37" height="20" />
+            <Slice id="Dest-Symbol-horiz" left="55" top="71" width="55" height="55" />
+            <Slice id="Dest-Symbol-horiz-LOSE" left="55" top="181" width="55" height="55" />
+            <Slice id="Dest-Symbol-horiz-WIN" left="55" top="126" width="55" height="55" />
+            <Slice id="Dest-VP-Bar-horiz" left="50" top="0" width="21" height="28" />
+            <Slice id="Dest-VP-Bar-horiz-End-Cap" left="36" top="0" width="13" height="28" />
+            <Slice id="Dest-VP-Bar-vert" left="110" top="31" width="28" height="21" />
+            <Slice id="Dest-VP-Bar-vert-End-Cap" left="110" top="53" width="28" height="13" />
+            <Slice id="Generic-Symbol-horiz" left="180" top="0" width="55" height="55" />
+            <Slice id="Horiz-Background" left="75" top="0" width="30" height="35" />
+            <Slice id="Horiz-Background-CityLeft" left="165" top="165" width="30" height="35" />
+            <Slice id="Horiz-Background-CityRight" left="195" top="165" width="30" height="35" />
+            <Slice id="Lock" left="225" top="185" width="31" height="41" />
+            <Slice id="Loser-Bar-horiz" left="231" top="64" width="21" height="28" />
+            <Slice id="Loser-Bar-horiz-End-Cap" left="217" top="64" width="13" height="28" />
+            <Slice id="Order-Limiter-Connector-horiz" left="0" top="29" width="24" height="8" />
+            <Slice id="Order-Limiter-Connector-horiz-empty" left="24" top="29" width="26" height="8" />
+            <Slice id="Order-Limiter-Connector-horiz-WIN" left="0" top="45" width="50" height="8" />
+            <Slice id="Order-Limiter-Connector-vert" left="145" top="75" width="8" height="24" />
+            <Slice id="Order-Limiter-Connector-vert-empty" left="145" top="49" width="8" height="26" />
+            <Slice id="Order-Limiter-Connector-vert-WIN" left="161" top="49" width="8" height="50" />
+            <Slice id="Order-Limiter-horiz" left="51" top="29" width="23" height="35" />
+            <Slice id="Order-Limiter-horiz-empty" left="235" top="110" width="21" height="34" />
+            <Slice id="Order-Limiter-vert" left="145" top="24" width="35" height="23" />
+            <Slice id="Order-Limiter-vert-empty" left="35" top="236" width="38" height="20" />
+            <Slice id="Order-Symbol-horiz" left="0" top="71" width="55" height="55" />
+            <Slice id="Order-Symbol-horiz-LOSE" left="0" top="181" width="55" height="55" />
+            <Slice id="Order-Symbol-horiz-WIN" left="0" top="126" width="55" height="55" />
+            <Slice id="Order-VP-Bar-horiz" left="0" top="0" width="21" height="28" />
+            <Slice id="Order-VP-Bar-horiz-End-Cap" left="22" top="0" width="13" height="28" />
+            <Slice id="Order-VP-Bar-vert" left="110" top="81" width="28" height="21" />
+            <Slice id="Order-VP-Bar-vert-End-Cap" left="110" top="67" width="28" height="13" />
+            <Slice id="Retreating-Arrow-Dest-horiz" left="235" top="0" width="11" height="19" />
+            <Slice id="Retreating-Arrow-Dest-vert" left="235" top="49" width="19" height="11" />
+            <Slice id="Retreating-Arrow-Order-horiz" left="235" top="19" width="11" height="19" />
+            <Slice id="Retreating-Arrow-Order-vert" left="235" top="38" width="19" height="11" />
+            <Slice id="Vert-Background" left="109" top="0" width="36" height="30" />
+            <Slice id="Vert-Background-CityBottom" left="220" top="226" width="36" height="30" />
+            <Slice id="Vert-Background-CityTop" left="138" top="99" width="36" height="30" />
+            <Slice id="Victor-Bar-horiz" left="181" top="64" width="21" height="28" />
+            <Slice id="Victor-Bar-horiz-End-Cap" left="203" top="64" width="13" height="28" />
+        </Texture>
+    </Assets>
+</Interface>

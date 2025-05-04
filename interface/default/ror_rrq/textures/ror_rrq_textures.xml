@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="ror_rrq_textures" file="textures/rvrometer2.tga">
+      <Slice id="ror_rrq-Background" left="0" top="0" width="49" height="140" />
+      <Slice id="ror_rrq-Bar_Blue" left="64" top="76" width="10" height="9" />
+      <Slice id="ror_rrq-Bar_Red" left="64" top="93" width="10" height="9" />	  
+      <Slice id="ror_rrq-Bar_BlueGlow" left="64" top="71" width="10" height="5" />
+      <Slice id="ror_rrq-Bar_RedGlow" left="64" top="88" width="10" height="5" />	  
+      <Slice id="ror_rrq-Circle" left="51" top="35" width="35" height="36" />
+      <Slice id="ror_rrq-Symbol" left="53" top="2" width="31" height="31" />      
+    </Texture>
+  </Assets>
+</Interface>

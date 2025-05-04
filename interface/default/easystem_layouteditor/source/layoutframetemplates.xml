@@ -1,0 +1,321 @@
+ <Interface xmlns:xsi="http://www.w3.org/1501/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Button name="LayoutEditorResizeButton" inherits="EA_Button_Default" popable="false" layer="secondary">
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="LayoutEditor.BeginResize" />
+            </EventHandlers>
+        </Button>
+
+         <Button name="LayoutEditorCornerResizeButton" inherits="LayoutEditorResizeButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01"   >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+        </Button>
+
+        <!-- Top Left Resize Button -->
+        <Button name="LayoutEditorTopLeftButton" inherits="LayoutEditorCornerResizeButton" >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexSlices>
+                <Normal id="LayoutCorner-TopLeft" />
+                <NormalHighlit id="LayoutCorner-TopLeft-ROLLOVER" />
+                <Pressed id="LayoutCorner-TopLeft-ROLLOVER" />
+                <PressedHighlit id="LayoutCorner-TopLeft-ROLLOVER" />
+            </TexSlices>
+        </Button>
+
+        <!-- Top Right Resize Button -->
+        <Button name="LayoutEditorTopRightButton" inherits="LayoutEditorCornerResizeButton" >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexSlices>
+                <Normal id="LayoutCorner-TopRight" />
+                <NormalHighlit id="LayoutCorner-TopRight-ROLLOVER" />
+                <Pressed id="LayoutCorner-TopRight-ROLLOVER" />
+                <PressedHighlit id="LayoutCorner-TopRight-ROLLOVER" />
+            </TexSlices>
+        </Button>
+
+       <!-- Bottom Left Resize Button -->
+        <Button name="LayoutEditorBottomLeftButton" inherits="LayoutEditorCornerResizeButton" >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexSlices>
+                <Normal id="LayoutCorner-BottomLeft" />
+                <NormalHighlit id="LayoutCorner-BottomLeft-ROLLOVER" />
+                <Pressed id="LayoutCorner-BottomLeft-ROLLOVER" />
+                <PressedHighlit id="LayoutCorner-BottomLeft-ROLLOVER" />
+            </TexSlices>
+        </Button>
+
+        <!-- Bottom Right Resize Button -->
+        <Button name="LayoutEditorBottomRightButton" inherits="LayoutEditorCornerResizeButton" >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexSlices>
+                <Normal id="LayoutCorner-BottomRight" />
+                <NormalHighlit id="LayoutCorner-BottomRight-ROLLOVER" />
+                <Pressed id="LayoutCorner-BottomRight-ROLLOVER" />
+                <PressedHighlit id="LayoutCorner-BottomRight-ROLLOVER" />
+            </TexSlices>
+        </Button>
+
+
+         <!-- Vertical Resize Button -->
+        <VerticalResizeImage name="LayoutEditorVerticalResizeImage" texture="EA_TintableImage"  >
+            <Sizes top="0" middle="30" bottom="0" />
+            <TexCoords>
+                <Middle x="424" y="762" />
+            </TexCoords>
+        </VerticalResizeImage>
+        <VerticalResizeImage name="LayoutEditorVerticalButtonNormal" inherits="LayoutEditorVerticalResizeImage" >
+           <TintColor r="255" g="255" b="200" />
+        </VerticalResizeImage>
+        <VerticalResizeImage name="LayoutEditorVerticalButtonHighlight" inherits="LayoutEditorVerticalResizeImage" >
+            <TintColor r="200" g="200" b="0" />
+        </VerticalResizeImage>
+        <VerticalResizeImage name="LayoutEditorVerticalButtonPressed" inherits="LayoutEditorVerticalResizeImage" >
+            <TintColor r="200" g="200" b="0" />
+        </VerticalResizeImage>
+
+        <Button name="LayoutEditorVerticalButton" inherits="LayoutEditorResizeButton" >
+            <Size>
+                <AbsPoint x="6" y="0" />
+            </Size>
+            <ResizeImages>
+                <Normal def="LayoutEditorVerticalButtonNormal" />
+                <NormalHighlit def="LayoutEditorVerticalButtonHighlight" />
+                <Pressed def="LayoutEditorVerticalButtonPressed"  />
+                <PressedHighlit def="LayoutEditorVerticalButtonPressed"  />
+            </ResizeImages>
+        </Button>
+
+        <!-- Horizontal Resize Button -->
+        <HorizontalResizeImage name="LayoutEditorHorizontalResizeImage" texture="EA_TintableImage"  >
+            <Sizes left="0" middle="30" right="0" />
+            <TexCoords>
+                <Middle x="424" y="762" />
+            </TexCoords>
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="LayoutEditorHorizontalButtonNormal" inherits="LayoutEditorHorizontalResizeImage" >
+            <TintColor r="255" g="255" b="200" />
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="LayoutEditorHorizontalButtonHighlight" inherits="LayoutEditorHorizontalResizeImage" >
+            <TintColor r="200" g="200" b="0" />
+        </HorizontalResizeImage>
+        <HorizontalResizeImage name="LayoutEditorHorizontalButtonPressed" inherits="LayoutEditorHorizontalResizeImage" >
+            <TintColor r="200" g="200" b="0" />
+        </HorizontalResizeImage>
+
+        <Button name="LayoutEditorHorizontalButton" inherits="LayoutEditorResizeButton" >
+            <Size>
+                <AbsPoint x="0" y="5" />
+            </Size>
+            <ResizeImages>
+                <Normal def="LayoutEditorHorizontalButtonNormal" />
+                <NormalHighlit def="LayoutEditorHorizontalButtonHighlight" />
+                <Pressed def="LayoutEditorHorizontalButtonPressed"  />
+                <PressedHighlit def="LayoutEditorHorizontalButtonPressed"  />
+            </ResizeImages>
+        </Button>
+
+
+        <!-- Child window that is create for each window available for edit. -->
+        <Window name="LayoutControlFrameWindow" movable="false" layer="secondary" savesettings="false" sticky="false" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="LayoutEditor.OnControlFrameLButtonDown" />
+                <EventHandler event="OnLButtonUp" function="LayoutEditor.OnControlFrameLButtonUp" />
+                <EventHandler event="OnRButtonDown" function="LayoutEditor.OnControlFrameRButtonDown" />
+                <EventHandler event="OnRButtonUp" function="LayoutEditor.OnControlFrameRButtonUp" />
+                <EventHandler event="OnMButtonDown" function="LayoutEditor.OnControlFrameMButtonDown" />
+                <EventHandler event="OnMButtonUp" function="LayoutEditor.OnControlFrameMButtonUp" />
+            </EventHandlers>
+            <Windows>
+
+                 <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TintableFrame"
+                            handleinput="false" layer="background" alpha="0.75">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                </FullResizeImage>
+                
+                
+                <!-- Resize box that is drawn when the window is being resized -->
+                <FullResizeImage name="$parentResizeFrame" inherits="EA_FullResizeImage_TintableFrame"
+                            handleinput="false" layer="overlay" alpha="0.75" />
+
+
+                <!-- Clickable areas for resizing the corners of the windows -->
+                <Button name="$parentTopLeftResize" inherits="LayoutEditorTopLeftButton" id="1"  >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentTopRightResize" inherits="LayoutEditorTopRightButton" id="2"  >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentBottomLeftResize" inherits="LayoutEditorBottomLeftButton" id="3" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentBottomRightResize" inherits="LayoutEditorBottomRightButton" id="4" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+
+
+                <!-- Clickable areas for resizing the sides of the window -->
+                <Button name="$parentTopResize" inherits="LayoutEditorHorizontalButton" id="5" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTopLeftResize" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTopRightResize">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentBottomResize" inherits="LayoutEditorHorizontalButton" id="6" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentBottomLeftResize" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentBottomRightResize">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentLeftResize" inherits="LayoutEditorVerticalButton" id="7" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopLeftResize" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBottomLeftResize">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentRightResize" inherits="LayoutEditorVerticalButton" id="8" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopRightResize" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottomRightResize">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+           </Windows>
+
+        </Window>
+
+        <!-- Child window that is create for each window available for edit. -->
+        <Window name="LayoutFrameWindow" movable="false" layer="background" savesettings="false" sticky="false">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="LayoutEditor.OnLayoutWindowLButtonDown" />
+                <EventHandler event="OnRButtonDown" function="LayoutEditor.OnLayoutWindowRButtonDown" />
+                <EventHandler event="OnMButtonDown" function="LayoutEditor.OnLayoutWindowMButtonDown" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Background & Frame -->
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                        handleinput="false" layer="background" alpha="0.25">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TintColor r="150" g="150" b="150" />
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TintableFrame"
+                            handleinput="false" layer="background" alpha="0.75">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Label name="$parentName" inherits="EA_Label_DefaultText" autoresize="true" textalign="center" sticky="false" layer="secondary" handleinput="false">
+                        <Size>
+                            <AbsPoint x="200" y="20" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="center" relativePoint="center" relativeTo="">
+                                <AbsPoint x="0" y="0" />
+                            </Anchor>
+                        </Anchors>
+
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+           </Windows>
+        </Window>
+
+
+        <!-- Child window that shows where a frame will be snapped -->
+        <Window name="LayoutSnapFrameWindow" movable="false" layer="default" savesettings="false" sticky="false">
+            <Windows>
+
+                <!-- Background & Frame -->
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                        handleinput="false" layer="background" alpha="0.25">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TintColor r="150" g="150" b="150" />
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TintableFrame"
+                            handleinput="false" layer="background" alpha="0.75">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Label name="$parentName" inherits="EA_Label_DefaultText" autoresize="true" textalign="center" sticky="false" layer="secondary" handleinput="false">
+                        <Size>
+                            <AbsPoint x="200" y="20" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="center" relativePoint="center" relativeTo="">
+                                <AbsPoint x="0" y="0" />
+                            </Anchor>
+                        </Anchors>
+
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+           </Windows>
+        </Window>
+
+        <Button name="LayoutEditorControlButton" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+                <AbsPoint x="230" y="39" />
+            </Size>
+        </Button>
+
+   </Windows>
+</Interface>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Scenario01_32b" file="Textures/EA_Scenario01_32b.dds">
+      <Slice id="banner-base" left="0" top="46" width="46" height="46" />
+      <Slice id="banner-hover" left="46" top="46" width="46" height="46" />
+      <Slice id="banner-press" left="92" top="46" width="46" height="46" />
+      <Slice id="scenario-base" left="0" top="0" width="46" height="46" />
+      <Slice id="scenario-hover" left="46" top="0" width="46" height="46" />
+      <Slice id="scenario-press" left="92" top="0" width="46" height="46" />
+    </Texture>
+  </Assets>
+</Interface>

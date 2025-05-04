@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="Empty-Career-Tactic-Icon" file="Textures/Tac_Slot.dds" />
+    <Texture name="Empty-Renown-Tactic-Icon" file="Textures/Tac_Slot_RvR.dds" />
+    <Texture name="Empty-Tome-Tactic-Icon" file="Textures/Tac_Slot_Tome.dds" />
+  </Assets>
+</Interface>

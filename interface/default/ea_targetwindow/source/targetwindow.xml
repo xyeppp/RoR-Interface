@@ -1,0 +1,30 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+
+        <!-- AnchorWindow for the Target Frames -->
+        <Window name="PrimaryTargetLayoutWindow" inherits="TargetUnitFrameAnchor" savesettings="true" >
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="PlayerWindow">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitializeCustomSettings" function="TargetWindow.InitializePrimaryTargetLayout"/>
+            </EventHandlers>
+        </Window>
+
+        <Window name="SecondaryTargetLayoutWindow" inherits="TargetUnitFrameAnchor" savesettings="true" >
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="PrimaryTargetLayoutWindow" savesettings="true">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+           <EventHandlers>
+             <EventHandler event="OnInitializeCustomSettings" function="TargetWindow.InitializeSecondaryTargetLayout"/>
+           </EventHandlers>
+        </Window>
+        
+     
+    </Windows>
+</Interface>

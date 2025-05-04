@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/PNCWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="PNCWindowMockModal" layer="secondary" inherits="EA_Window_DefaultFrame" alpha="0.5" handleinput="true" sticky="false" poppable="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+        </Window>
+        
+        <Window name="PNCWindow" layer="popup" >
+            <Size>
+                <AbsPoint x="500" y="350" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="PNCWindow.Initialize" />
+                <EventHandler event="OnKeyEnter"   function="PNCWindow.Login" />
+            </EventHandlers>
+            <Windows>                
+                <Window name="PNCWindowBoxBackground" inherits="EA_Window_DefaultFrame" handleinput="false" sticky="false" poppable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="12" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentCharacterNameHeader" font="font_default_heading" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="475" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="217" g="217" b="25" a="255" />
+                </Label>
+                
+                <Label name="$parentCharacterNameDetails" font="font_default_sub_heading" wordwrap="true"  handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="475" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCharacterNameHeader">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                
+                <Label name="PNCWindowCharacterNameLabel" font="font_default_sub_heading" autoresize="true" handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="175" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCharacterNameHeader">
+                            <AbsPoint x="10" y="85" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="250" g="213" b="63" a="255" />
+                </Label>
+                <EditBox name="PNCWindowCharacterName" inherits="EA_EditBox_DefaultFrame" taborder="1" maxchars="14" input="nospaces" caserestriction="firstupperrestlower">
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="PNCWindowCharacterNameLabel">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="PNCWindow.SetCharacterName" />
+                    </EventHandlers>
+                    <TextColor r="255" g="255" b="255" a="255" />
+                </EditBox>
+
+                <Label name="$parentCharacterNameMessages" font="font_default_sub_heading" wordwrap="true"  handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="475" y="120" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCharacterNameHeader">
+                            <AbsPoint x="0" y="110" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="238" g="64" b="0" a="255" />
+                </Label>
+                
+                <Button name="PNCWindowOKButton" inherits="DefaultCoreButton" font="font_default_sub_heading">
+                    <Size>
+                        <AbsPoint x="115" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="PNCWindowBoxBackground">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PNCWindow.SetCharacterName" />
+                    </EventHandlers>
+                    <TextColors>
+                        <Normal r="255" g="255" b="255" a="255" />
+                        <NormalHighlit r="250" g="213" b="63" a="255" />
+                        <Pressed r="250" g="213" b="63" a="255" />
+                        <PressedHighlit r="250" g="213" b="63" a="255" />
+                        <Disabled r="92" g="92" b="92" a="255" />
+                    </TextColors>
+                </Button>
+
+                <Button name="PNCWindowCancelButton" inherits="DefaultCoreButton" font="font_default_sub_heading">
+                    <Size>
+                        <AbsPoint x="115" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="PNCWindowBoxBackground">
+                            <AbsPoint x="-5" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PNCWindow.Cancel" />
+                    </EventHandlers>
+                    <TextColors>
+                        <Normal r="255" g="255" b="255" a="255" />
+                        <NormalHighlit r="250" g="213" b="63" a="255" />
+                        <Pressed r="250" g="213" b="63" a="255" />
+                        <PressedHighlit r="250" g="213" b="63" a="255" />
+                        <Disabled r="92" g="92" b="92" a="255" />
+                    </TextColors>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

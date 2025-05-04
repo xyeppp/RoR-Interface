@@ -1,0 +1,81 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/WitchHunter.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_WitchHunterResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="60" y="67" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentImage" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-Skull">
+                    <Size>
+                        <AbsPoint x="60" y="67" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentEyes" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-GlowingEyes" layer="overlay">
+                    <Size>
+                        <AbsPoint x="35" y="21" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="14" y="33" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentSpike1" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-SpikeA" layer="background">
+                    <Size>
+                        <AbsPoint x="42" y="17" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="-35" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike2" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-SpikeB" layer="background">
+                    <Size>
+                        <AbsPoint x="35" y="41" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="-18" y="-18" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike3" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-SpikeC" layer="background">
+                    <Size>
+                        <AbsPoint x="12" y="58" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="24" y="-41" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike4" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-SpikeD" layer="background">
+                    <Size>
+                        <AbsPoint x="35" y="48" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="45" y="-21" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentSpike5" texture="EA_Career_WH_32b" handleinput="false" slice="WitchHunter-SpikeE" layer="background">
+                    <Size>
+                        <AbsPoint x="56" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentImage" >
+                            <AbsPoint x="53" y="19" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,151 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/KeepObjectiveTracker.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Main Window Specification -->
+        <Window name="EA_Window_KeepObjectiveTracker" sticky="false" layer="background" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="300" y="125"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"                  function="EA_Window_KeepObjectiveTracker.Initialize" />
+                <EventHandler event="OnUpdate"                      function="EA_Window_KeepObjectiveTracker.Update" />
+                <EventHandler event="OnShutdown"                    function="EA_Window_KeepObjectiveTracker.Shutdown" />
+            </EventHandlers>
+
+            <Windows>
+
+                <DynamicImage name="$parentOwnerIcon" texture="map_markers01" slice="OrderKeep">
+                    <Size>
+                        <AbsPoint x="42" y="43"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentLabel" font="font_default_sub_heading" maxchars="24" autoresize="true"
+                       textalign="right" handleinput="false" wordwrap="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="558" y="23"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentOwnerIcon" >
+                            <AbsPoint x="-5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="226" g="216" b="45" a="255"/>
+                </Label>
+
+                <Window name="$parentDuringAction">
+                    <Size>
+                        <AbsPoint x="558" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentOwnerIcon" >
+                            <AbsPoint x="-5" y="24"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_KeepObjectiveTracker.MouseOverQuest" />
+                    </EventHandlers>
+                    <Windows>
+                        <Label name="$parentQuest" font="font_default_text_small" maxchars="64"
+                               textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="513" y="16" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="204" b="102" a="255"/>
+                        </Label>
+
+                        <Label name="$parentTimerValue" font="font_clear_small" maxchars="16" layer="overlay"
+                               textalign="left" autoresize="false" handleinput="false" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="45" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentQuest" >
+                                    <AbsPoint x="0" y="2"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="0" a="255"/>
+                        </Label>
+                        <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTimerValue">
+                                    <AbsPoint x="-2" y="-4" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- Opt out for loot button -->
+                <Button name="$parentOptOutButton" inherits="EA_ObjectiveTracker_OptOutButton">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentOwnerIcon">
+                            <AbsPoint x="0" y="8"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnInitialize" function="TrackerUtils.InitializeOptOutButton" />
+                        <EventHandler event="OnMouseOver" function="TrackerUtils.OnMouseOverOptOut" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_KeepObjectiveTracker.OnLButtonUpOptOut" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentLocked">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentOwnerIcon" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Label name="$parentLocation" font="font_chat_text" maxchars="64"
+                               textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="600" y="18"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+
+                        <Label name="$parentText" font="font_chat_text" maxchars="64"
+                               textalign="right" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="600" y="18"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLocation">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

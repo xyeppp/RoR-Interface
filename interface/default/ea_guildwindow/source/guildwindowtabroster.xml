@@ -1,0 +1,236 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabRoster.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabRosterSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnShutdown" function="GuildWindowTabRoster.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+        <!-- Guild Members Online Text-->
+        <Label name="$parentMembersOnlineText" font="font_guild_MP_R_17" maxchars="128" textalign="leftcenter" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="250" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="15" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Hide Offline Header -->
+        <Label name="$parentHideOfflineHeader" font="font_guild_MP_R_17" maxchars="32" textalign="rightcenter" autoresize="false" popable="false">
+          <Size>
+            <AbsPoint x="150" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentHideOfflineCheckBox">
+              <AbsPoint x="-5" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Hide Offline Checkbox -->
+        <Button name="$parentHideOfflineCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="-35" y="6"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabRoster.OnLButtonUpHideOfflineCheckBox" /> -->
+          </EventHandlers>
+        </Button>
+        
+        <!-- Sort Bar -->
+        <Window name="$parentSortBar">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="5" y="32"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="64"/>
+            </Anchor>
+          </Anchors> 
+
+          <!-- Sort Buttons-->
+          <Windows>
+          
+            <Button name="$parentCareerButton" inherits="EA_Templates_GuildWindowSortButton" id="3" >
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="topleft" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="45" y="32"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <Button name="$parentRankButton" inherits="EA_Templates_GuildWindowSortButton" id="2" >
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareerButton">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCareerButton">
+                  <AbsPoint x="45" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <!-- Sort by Player Name Button-->
+            <Button name="$parentNameButton" inherits="EA_Templates_GuildWindowSortButton" id="1" >
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankButton">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRankButton">
+                  <AbsPoint x="200" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <Button name="$parentSpecialButton" inherits="EA_Templates_GuildWindowSortButton" id="5" handleinput="false">
+              <EventHandlers>
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNameButton">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentNameButton">
+                  <AbsPoint x="134" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+            
+            <Button name="$parentTitleButton" inherits="EA_Templates_GuildWindowSortButton" id="4">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSpecialButton">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSpecialButton">
+                  <AbsPoint x="244" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <Button name="$parentStatusButton" inherits="EA_Templates_GuildWindowSortButton" id="6" >
+              <Size>
+                <AbsPoint x="50" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTitleButton">
+                  <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                  <AbsPoint x="-8" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+            
+            <!-- Arrow Image Definitions -->
+            <DynamicImage name="$parentUpArrow" texture="shared_01" slice="UP-arrow-depressed" handleinput="false" layer="secondary" >
+              <Size>
+                <AbsPoint x="9" y="12" />
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="right">
+                  <AbsPoint x="-12" y="-6"/>
+                </Anchor>
+              </Anchors>
+            </DynamicImage>
+            
+            <DynamicImage name="$parentDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" handleinput="false" layer="secondary" >
+              <Size>
+                <AbsPoint x="9" y="12" />
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="right">
+                  <AbsPoint x="-12" y="-6"/>
+                </Anchor>
+              </Anchors>
+            </DynamicImage>
+            
+          </Windows> <!-- End of Sort Buttons -->
+          
+        </Window><!-- End of $parentSortButtonBar-->
+
+        <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_GuildRosterRow" visiblerows="13" rowcount="150" rowspacing="0">
+          <Size>
+            <AbsPoint x="650" y="400" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortBar" >
+              <AbsPoint x="2" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+              <AbsPoint x="-8" y="-60" />
+            </Anchor>
+          </Anchors>
+
+          <ListData table="GuildWindowTabRoster.memberListData" populationfunction="GuildWindowTabRoster.Populate">
+
+            <ListColumns>
+              <ListColumn windowname="MemberName" variable="name" format="wstring"/>
+              <ListColumn windowname="MemberCareerIcon" variable="careerIcon" format="icon" />
+              <ListColumn windowname="MemberRankNumber" variable="rank" format="number"/>
+              <ListColumn windowname="MemberTitleString" variable="titleString" format="wstring"/>
+              <ListColumn windowname="MemberStandardIcon" variable="standardIcon" format="icon" />
+              <ListColumn windowname="MemberStatusString" variable="statusString" format="wstring"/>
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+        
+        <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="9" y="-60"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-9" y="-10"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <Button name="$parentLeaveButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+              <AbsPoint x="10" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabRoster.OnLButtonUpLeaveButton" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="$parentInviteToGuildButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+              <AbsPoint x="-10" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabRoster.OnLButtonUpInviteToGuildButton" />
+          </EventHandlers>
+        </Button>
+
+      </Windows> <!-- End of Whole Window Definition Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Roster -->
+</Interface>

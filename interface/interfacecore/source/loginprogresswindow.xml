@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+    <Scripts>
+        <Script file="Source/LoginProgressWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="LoginProgressWindow" layer="default" movable="false">
+            <Size>
+                <AbsPoint x="400" y="200" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" >
+                    <AbsPoint x="-60" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="LoginProgressWindow.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="400" y="200" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-4" y="-4" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="4" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true" autoresize="true">
+                    <Size>
+                        <AbsPoint x="380" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <Button name="$parentQuitButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="190" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="LoginProgressWindow">
+                            <AbsPoint x="10" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LoginProgressWindow.Quit" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentRepatchButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="190" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="LoginProgressWindow">
+                            <AbsPoint x="-10" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="LoginProgressWindow.Repatch" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

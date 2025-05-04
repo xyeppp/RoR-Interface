@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+        <Texture name="EA_MoraleAnim_Recharged"  file="Textures/EA_iconRechargedCircular_d5.dds" />
+    </Assets>
+</Interface>

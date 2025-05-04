@@ -1,0 +1,315 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <!-- Book Components -->
+       
+
+
+		<Label name="TOKPageNumber" inherits="TOKSubHeading" maxchars="25" textalign="bottom" wordwrap="true" autoresize="false">
+			<Size>
+				<AbsPoint x="300" y="50"/>
+			</Size>
+			<Color r="82" g="52" b="33" a="255"/>
+		</Label>
+
+		<PageWindow name="TomePageWindow" childcontentswindow="$parentContentsChild" pagesdisplayed="2" guttersize="30" pagenumbertemplate="" sticky="false">
+			<Size>
+				<AbsPoint x="1030" y="700"/>
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="80" />
+				</Anchor>
+			</Anchors>
+		</PageWindow>
+		
+	
+		<Window name="TomeSectionWindow" sticky="false" >
+			<Size>
+				<AbsPoint x="1030" y="828"/>
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+					<AbsPoint x="88" y="15" />
+				</Anchor>
+			</Anchors>
+		</Window>
+
+	     <AnimatedImage name="TomePageFlipAnim" inherits="BookAnimDef" texturescale="3.3" >
+	     	<Size>
+				<AbsPoint x="1129" y="1082"/>
+			</Size>
+	     </AnimatedImage>
+	 
+
+	   <Button name="TomeIconButton" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" drawchildrenfirst="true">
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverGivenReward" />
+			</EventHandlers>
+			<Size>
+				<AbsPoint x="64" y="64" />
+			</Size>
+			<Windows>			
+				<DynamicImage name="$parentIconBase" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="64" y="64" />
+					</Size>
+				</DynamicImage>
+			</Windows>
+			<TexSlices>
+                <Normal id="IconFrame" />
+                <NormalHighlit id="IconFrame" />
+                <Pressed id="IconFrame" />
+                <Disabled id="IconFrame" />
+			</TexSlices>
+		</Button>
+
+	   <Button name="TomeIconButtonWithStacks" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" drawchildrenfirst="true">
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverGivenReward" />
+			</EventHandlers>
+			<Size>
+				<AbsPoint x="64" y="64" />
+			</Size>
+			<Windows>			
+				<DynamicImage name="$parentIconBase" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="64" y="64" />
+					</Size>
+				</DynamicImage>
+                <Label name="$parentText" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+					<Color r="255" g="255" b="255" a="255" />
+                </Label>
+			</Windows>
+			<TexSlices>
+                <Normal id="IconFrame" />
+                <NormalHighlit id="IconFrame" />
+                <Pressed id="IconFrame" />
+                <Disabled id="IconFrame" />
+			</TexSlices>
+		</Button>
+
+        <FullResizeImage name="TomeIconFrameResizable" handleinput="false" layer="background" texture="EA_Tome">
+            <Sizes>
+                <TopLeft x="16" y="16" />
+                <BottomRight x="16" y="16" />
+                <Middle x="32" y="32" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="930" y="829" />
+                <TopCenter x="946" y="829" />
+                <TopRight x="968" y="829" />
+                <MiddleLeft x="930" y="845" />
+                <MiddleCenter x="946" y="845" />
+                <MiddleRight x="968" y="845" />
+                <BottomLeft x="930" y="877" />
+                <BottomCenter x="946" y="877" />
+                <BottomRight x="968" y="877" />
+            </TexCoords>
+        </FullResizeImage>
+
+		<Button name="TomeRewardIconButton" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="0.75" drawchildrenfirst="true">
+			<Size>
+				<AbsPoint x="48" y="48" />
+			</Size>
+			<Windows>			
+				<DynamicImage name="$parentIconBase" textureScale="0.75" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="48" y="48" />
+					</Size>
+				</DynamicImage>
+			</Windows>
+			<TexSlices>
+                <Normal id="IconFrame" />
+                <NormalHighlit id="IconFrame" />
+                <Pressed id="IconFrame" />
+                <Disabled id="IconFrame" />
+			</TexSlices>
+		</Button>
+		
+        <Button name="TomeRewardIconButtonSmall" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="0.625" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="40" y="40" />
+            </Size>
+            <Windows>           
+                <DynamicImage name="$parentIconBase" textureScale="0.625" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="40" y="40" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+            <TexSlices>
+                <Normal id="IconFrame" />
+                <NormalHighlit id="IconFrame" />
+                <Pressed id="IconFrame" />
+                <Disabled id="IconFrame" />
+            </TexSlices>
+        </Button>
+               	    
+	    <Window name="TomeSectionTOCItemWindow" >
+	        <Size>
+	            <AbsPoint x="335" y="20"/>
+            </Size>
+	        <Windows>	    
+	            <Button name="$parentText" inherits="TOKTextButtonMedium" autoresize="true" handleinput="false" autoresizewidth="true" textalign="left" >
+	            	<Size>
+	                    <AbsPoint x="290" y="22"/>
+                    </Size>
+                    <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Button>
+	            <Label name="$parentPageNumber" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left"  >
+	            	<Size>
+	                    <AbsPoint x="25" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Label>
+	            <Label name="$parentDottedLine" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left"  warnOnTextCropped="false">
+	            	<Size>
+	                    <AbsPoint x="200" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentText">
+					        <AbsPoint x="4" y="0"/>
+				        </Anchor>
+				        
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="-30" y="0"/>
+				        </Anchor>				        
+				      
+			        </Anchors>
+	            </Label>	            
+	        </Windows>      	    
+	    </Window>
+	    
+	    <Window name="TomeTOCItemWindow" >
+	        <Size>
+	            <AbsPoint x="335" y="20"/>
+            </Size>
+	        <Windows>	    
+	            <Button name="$parentText" inherits="TOKTextButton" autoresize="true" handleinput="false" autoresizewidth="true" textalign="left" >
+	            	<Size>
+	                    <AbsPoint x="280" y="22"/>
+                    </Size>
+                    <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Button>
+	            <Label name="$parentNumber" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left"  >
+	            	<Size>
+	                    <AbsPoint x="50" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Label>
+	            <Label name="$parentDottedLine" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left"  warnOnTextCropped="false">
+	            	<Size>
+	                    <AbsPoint x="200" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentText">
+					        <AbsPoint x="4" y="0"/>
+				        </Anchor>
+				        
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="-55" y="0"/>
+				        </Anchor>				        
+				      
+			        </Anchors>
+	            </Label>	            
+	        </Windows>      	    
+	    </Window>
+	    
+	    <Window name="TomeTOCItemWindowResizeNumber" >
+	        <Size>
+	            <AbsPoint x="335" y="20"/>
+            </Size>
+	        <Windows>	    
+	            <Button name="$parentText" inherits="TOKTextButton" autoresize="true" handleinput="false" autoresizewidth="true" textalign="left" >
+	            	<Size>
+	                    <AbsPoint x="400" y="22"/>
+                    </Size>
+                    <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Button>
+	            <Label name="$parentNumber" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" autoresizewidth="true" textalign="left"  >
+	            	<Size>
+	                    <AbsPoint x="300" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Label>
+	            <Label name="$parentDottedLine" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left" warnOnTextCropped="false" >
+	            	<Size>
+	                    <AbsPoint x="200" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentText">
+					        <AbsPoint x="4" y="0"/>
+				        </Anchor>
+				        
+				        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentNumber">
+					        <AbsPoint x="-5" y="0"/>
+				        </Anchor>				        
+				      
+			        </Anchors>
+	            </Label>	            
+	        </Windows>      	    
+	    </Window>
+	    
+	    
+	    <Window name="TomeTOCItemWindowWide" inherits="TomeTOCItemWindow" >
+	        <Size>
+	            <AbsPoint x="370" y="20"/>
+            </Size>
+        </Window>
+  
+
+        <Button name="TomeToggleButton" inherits="EA_Button_Default" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="34" y="25" />
+            </Size>          
+            <TexSlices>
+              <NormalHighlit id="Checkbox-Rollover" />
+              <Pressed id="Check" />
+              <PressedHighlit id="Checkbox-Rollover" />
+            </TexSlices>
+            <Windows>
+              <DynamicImage name="$parentBox" texture="EA_Tome" slice="Checkbox" handleinput="false" >
+                <Size>
+                  <AbsPoint x="34" y="25" />
+                </Size>
+              </DynamicImage>
+            </Windows>
+        </Button>
+
+        
+        
+    </Windows>
+</Interface>

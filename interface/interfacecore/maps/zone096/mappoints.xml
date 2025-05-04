@@ -1,0 +1,20 @@
+<zone iname="Karak Eight Peaks Da Deeps">
+    <zoneTransition iname="To Karak Eight Peaks" x="48000" y="0">
+        <zone>061</zone>
+    </zoneTransition>
+    <landmark iname="To Main Level" id="1" mapIcon="2126" x="29950" y="37284">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Beastie Penz" id="2" mapIcon="2122" x="16503" y="40730">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Hammerin Hall" id="3" mapIcon="2124" x="18868" y="30729">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Weaponz Hall" id="4" mapIcon="2123" x="27720" y="31270">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ratbreaka Stand" id="5" mapIcon="2127" x="27585" y="23499">
+        <importance>major</importance>
+    </landmark>
+</zone>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_TombToggle01_32b" file="Textures/EA_TombToggle01_32b.dds">
+      <Slice id="TombToggle-Background" left="66" top="0" width="61" height="128" />
+      <Slice id="TombToggle-BarBLUE" left="8" top="37" width="8" height="18" />
+      <Slice id="TombToggle-BarRED" left="0" top="37" width="8" height="18" />
+      <Slice id="TombToggle-Sacrab" left="18" top="37" width="48" height="46" />
+      <Slice id="TombToggle-SymbolDestro" left="0" top="0" width="33" height="37" />
+      <Slice id="TombToggle-SymbolOrder" left="33" top="0" width="33" height="37" />
+    </Texture>
+  </Assets>
+</Interface>

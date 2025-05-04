@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <Button name="DefaultCoreButton">
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( Sound.BUTTON_CLICK )" />
+                <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+            </Sounds>
+        </Button>
+
+        <!-- Buttons -->
+        
+        <Button name="CoreWindowResizeButton" inherits="DefaultCoreButton" backgroundtexture="" highlighttexture="" >
+            <Size>
+                <AbsPoint x="32" y="31" />
+            </Size>
+       </Button>
+            
+        <Button name="CoreWindowResizeButtonTopRight" inherits="CoreWindowResizeButton">
+            <TexCoords>
+                <Normal x="2" y="31" />
+                <NormalHighlit x="33" y="31" />	
+                <Pressed x="33" y="31"  />
+                <PressedHighlit x="33" y="31" />	
+                <Disabled x="2" y="31" />
+            </TexCoords>
+        </Button>
+        
+        <Button name="CoreWindowResizeButtonBottomRight" inherits="CoreWindowResizeButton">
+            <TexCoords>
+                <Normal x="2" y="0" />
+                <NormalHighlit x="34" y="0" />	
+                <Pressed x="33" y="2"  />
+                <PressedHighlit x="33" y="0" />	
+                <Disabled x="2" y="0" />
+            </TexCoords>
+        </Button>
+        
+        <!--# FullResizeImage: EA_FullResizeImage_PregameBorder                   
+            This the default pregame border used for the all of the pregame windows.
+            
+            Code:
+            (begin code)
+             <FullResizeImage name="EA_FullResizeImage_PregameBorder" handleinput="false" layer="background" texture="pregame_01" >
+             ...
+             </FullResizeImage>
+            (end)
+        -->
+        <FullResizeImage name="EA_FullResizeImage_PregameBorder" handleinput="false" layer="background" texture="pregame_01" frameonly="true">
+            <Sizes>
+                <TopLeft x="26" y="25" />
+                <BottomRight x="26" y="27" />
+                <Middle x="75" y="62" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft id="Window-Frame-Top-Left-Corner" />
+                <TopCenter id="Window-Frame-Top-Span" />
+                <TopRight id="Window-Frame-Top-Right-Corner" />
+                <MiddleLeft id="Window-Frame-Left" />
+                <MiddleCenter id="Window-Frame-Middle" />  <!-- this does not matter since it is frame only -->
+                <MiddleRight id="Window-Frame-Right" />
+                <BottomLeft id="Window-Frame-Bot" />
+                <BottomCenter id="Window-Frame-Span" />
+                <BottomRight id="Window-Frame-Bot-Right-Corner" />
+            </TexSlices>
+        </FullResizeImage>
+        
+        <!--# DynamicImage: EA_DynamicImage_PregameTopIcon                   
+            This the default top frame used for the all of the pregame windows.
+            
+            Code:
+            (begin code)
+             <DynamicImage name="EA_DynamicImage_PregameTopIcon" handleinput="false" layer="background" texture="pregame_01"  slice="Tab-Frame-Right-Corner" >
+             ...
+             </DynamicImage>
+            (end)
+        -->
+        <DynamicImage name="EA_DynamicImage_PregameTopIcon" handleinput="false" layer="background" texture="pregame_01"  slice="panelOrnament" >
+            <Size>
+                <AbsPoint x="116" y="56" />
+            </Size>
+        </DynamicImage>
+        
+    </Windows>
+</Interface>

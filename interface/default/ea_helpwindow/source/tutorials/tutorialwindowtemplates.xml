@@ -1,0 +1,27 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <Label name="EA_Label_TutorialLabelTemplate" font="font_journal_text" textalign="left"
+               wordwrap="true" autoresize="false" handleinput="true" textAutoFitMinScale="0.5" >
+
+            <Color r="0" g="0" b="0" />
+        </Label>
+
+        
+        <Window name="EA_Window_TutorialTabTemplate" movable="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="TutorialWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="TutorialWindowSocket">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+
+        </Window>
+
+        
+    </Windows>
+  
+</Interface>

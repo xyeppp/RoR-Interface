@@ -1,0 +1,6 @@
+<zone iname="High Pass Cemetery">
+    <battlefieldObjective iname="The Crypt" id="5042" iconSet="1" x="25848" y="30277">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Stag" id="5043" iconSet="1" x="32167" y="30261">
+    </battlefieldObjective>
+</zone>

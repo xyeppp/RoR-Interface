@@ -1,0 +1,517 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <Window name="LiveEventTaskEntryDef" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventTask" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="450" y="23" />
+            </Size>
+            <Windows>
+                <Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+		        <Label name="$parentText" inherits="TOKTextLarge"  maxchars="128" textalign="left" autoresize="true" wordwrap="true">
+		            <Size>
+		                <AbsPoint x="327" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+                            <AbsPoint x="7" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+                <Label name="$parentCounter" inherits="TOKTextLarge"  maxchars="32" textalign="right" autoresize="true" wordwrap="false">
+		            <Size>
+		                <AbsPoint x="95" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+	        </Windows>
+        </Window>
+        
+        <Window name="LiveEventTaskTextEntryDef" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventTask" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="450" y="23" />
+            </Size>
+            <Windows>
+		        <Label name="$parentText" inherits="TOKText"  maxchars="1024" textalign="left" autoresize="true" wordwrap="true" handleinput="false">
+		            <Size>
+		                <AbsPoint x="450" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+	        </Windows>
+        </Window>
+        
+        <Window name="LiveEventTaskClickableEntryDef" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventTask" />
+                <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickLiveEventTask" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="450" y="23" />
+            </Size>
+            <Windows>
+                <Button name="$parentCompletedBtn" inherits="TomeCheckButton" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+		        <Button name="$parentText" inherits="TOKTextButton" maxchars="128" textalign="left" autoresize="true" wordwrap="true" handleinput="false">
+		            <Size>
+		                <AbsPoint x="327" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+                            <AbsPoint x="7" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Button>
+                <Label name="$parentCounter" inherits="TOKTextLarge"  maxchars="32" textalign="right" autoresize="true" wordwrap="false">
+		            <Size>
+		                <AbsPoint x="95" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Label>
+	        </Windows>
+        </Window>
+        
+        <Window name="LiveEventTaskClickableTextEntryDef" handleinput="true">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventTask" />
+                <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickLiveEventTask" />
+            </EventHandlers>
+            <Size>
+                <AbsPoint x="450" y="23" />
+            </Size>
+            <Windows>
+		        <Button name="$parentText" inherits="TOKTextButton" maxchars="1024" textalign="left" autoresize="true" wordwrap="true" handleinput="false">
+		            <Size>
+		                <AbsPoint x="450" y="20"/>
+		            </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+		        </Button>
+	        </Windows>
+        </Window>
+        
+        <Window name="ImageTaskGroupContainer" skipinput="true" >
+            <Size>
+                <AbsPoint x="450" y="0" />
+            </Size>
+        </Window>
+        
+        <DynamicImage name="LiveEventTaskImage" handleinput="false" layer="background" >
+            <Size>
+                <AbsPoint x="128" y="128" />
+            </Size>
+        </DynamicImage>
+        
+        <Button name="LiveEventListButton" inherits="TOKHeadingButton"  maxchars="128" textalign="left" autoresize="true" >
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.OnClickLiveEventListButton"/>
+			</EventHandlers>
+		</Button>
+        
+        <Window name="LiveEventDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="LiveEventPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <Label name="$parentTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <Label name="$parentSubTitle" inherits="TOKHeadingSmall" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+        		                <DynamicImage name="$parentImage" handleinput="false" layer="background" texturescale="1.18">
+        		                    <Size>
+        		                        <AbsPoint x="450" y="204"/>
+        		                    </Size>
+        		                    <Anchors>
+        		                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSubTitle">
+        		                            <AbsPoint x="0" y="20"/>
+        		                        </Anchor>
+        		                    </Anchors>
+        		                </DynamicImage>
+        		                
+                                <Label name="$parentSummaryText" inherits="TOKText" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="450" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentImage">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+            			        <Window name="$parentProgress"  >
+            			        	<Size>
+										<AbsPoint x="425" y="184"/>
+									</Size>
+									 <Anchors>
+									    <Anchor point="bottom" relativePoint="top" relativeTo="$parentSummaryText">
+										    <AbsPoint x="0" y="20"/>
+									    </Anchor>
+								    </Anchors>
+								    <Windows>
+
+								        <Window name="$parentBar" inherits="TomeInfluenceDisplay" >
+            			                    <Anchors>
+									            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+										            <AbsPoint x="0" y="0"/>
+									            </Anchor>
+								            </Anchors>
+            			                </Window>
+
+                                        <Label name="$parentLevel1Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+                                        <Label name="$parentLevel2Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+                                        <Label name="$parentLevel3Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="125" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+
+
+            			                <!-- Rewards -->
+
+								        <!-- Level 1 Rewards -->
+								        <Button name="$parentLevel1Reward1" inherits="TomeIconButtonWithStacks" id="1">
+									        <Anchors>
+										        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel1Label">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward2" inherits="TomeIconButtonWithStacks" id="2">
+									        <Anchors>
+										        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward3" inherits="TomeIconButtonWithStacks" id="3">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward4" inherits="TomeIconButtonWithStacks" id="4">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel1Reward2">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward1" />
+                                			</EventHandlers>
+								        </Button>
+
+								        <!-- Level 2 Rewards -->
+                                        <Button name="$parentLevel2Reward1" inherits="TomeIconButtonWithStacks" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel2Label">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward2" inherits="TomeIconButtonWithStacks" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward3" inherits="TomeIconButtonWithStacks" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward4" inherits="TomeIconButtonWithStacks" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel2Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward2" />
+                                			</EventHandlers>
+                                        </Button>
+
+								        <!-- Level 3 Rewards -->
+                                        <Button name="$parentLevel3Reward1" inherits="TomeIconButtonWithStacks" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel3Label">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward2" inherits="TomeIconButtonWithStacks" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward3" inherits="TomeIconButtonWithStacks" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward4" inherits="TomeIconButtonWithStacks" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel3Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverLiveEventReward3" />
+                                			</EventHandlers>
+                                        </Button>
+
+								    </Windows>
+            			        </Window>
+                                
+                                <Label name="$parentIneligibleText" inherits="TOKHeadingSmall" autoresize="true">
+            			        	<Size>
+										<AbsPoint x="425"/>
+									</Size>
+									 <Anchors>
+									    <Anchor point="bottom" relativePoint="top" relativeTo="$parentSummaryText">
+										    <AbsPoint x="0" y="40"/>
+									    </Anchor>
+								    </Anchors>
+                                </Label>
+            			        
+                                <Label name="$parentLoreText" inherits="TOKText" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="450" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentProgress">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+        
+        <!-- Task Details Def. Some tasks can be clicked to show subtasks and additional information. -->
+        <Window name="LiveEventTaskDetailsDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="LiveEventTaskDetailsPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <Label name="$parentTitle" inherits="TOKSectionTitle" textalign="center" maxchars="1024" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+        		                
+                                <Label name="$parentSummaryText" inherits="TOKText" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="450" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentPageBreakDummy">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSummaryText">
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+
+			</Windows>
+		</Window>
+        
+        <!-- Live Event List window. Gives a list of all available live events. The player can click on an event to view that specific event. -->
+        <Window name="LiveEventListDef" inherits="TomeSectionWindow" >
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="LiveEventListPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <Label name="$parentTitle" inherits="TOKSectionTitle" textalign="center" maxchars="1024" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentPageBreakDummy">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                                            <AbsPoint x="30" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                            </Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+                
+                <Window name="LiveEventListShowEnded" inherits="WorldMapCheckButton" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="LiveEventListShowIneligible">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickLiveEventShowEnded" />
+                    </EventHandlers>
+                </Window>
+                
+                <Window name="LiveEventListShowIneligible" inherits="WorldMapCheckButton" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="25" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickLiveEventShowIneligible" />
+                    </EventHandlers>
+                </Window>
+
+			</Windows>
+		</Window>
+	
+    </Windows>
+</Interface>

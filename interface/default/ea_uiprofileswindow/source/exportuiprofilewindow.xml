@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ExportUiProfileWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_UiProfileExport" movable="true" layer="popup" savesettings="false" >
+            <Size>
+                <AbsPoint x="500" y="375" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="325" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_UiProfileExport.Initialize" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <DynamicImage name="$parentWindowImage" inherits="EA_Default_CustomizeUIImage" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileExport.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Label name="$parentInstructions" font="font_chat_text" handleinput="false" wordwrap="true" autoresize="false" textAutoFitMinScale="0.75"  textalign="center"  >
+                    <Size>
+                        <AbsPoint x="400" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentComboBoxPrompt" inherits="EA_Label_DefaultSubHeading" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentComboBox" inherits="EA_ComboBox_DefaultResizableLarge"  layer="popup" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentComboBoxPrompt">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_UiProfileExport.OnComboBoxSelChanged" />
+                    </EventHandlers>
+                </ComboBox>
+
+
+                <Label name="$parentEditBoxPrompt" inherits="EA_Label_DefaultSubHeading" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentComboBox">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <EditBox name="$parentEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="20" taborder="1" input="textandnumbers" >
+                    <Size>
+                        <AbsPoint x="300" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentEditBoxPrompt" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnTextChanged" function="EA_Window_UiProfileExport.OnEditBoxTextChanged" />
+                    </EventHandlers>
+                </EditBox>
+
+                <Label name="$parentNameConflictText" font="font_chat_text" handleinput="false" wordwrap="true" autoresize="false" textAutoFitMinScale="0.75"  textalign="center"  >
+                    <Size>
+                        <AbsPoint x="400" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentEditBox">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="206" g="44" b="44" />
+                 </Label>
+
+
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="-75" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileExport.OnOkayButton"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                            <AbsPoint x="75" y="-10"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_UiProfileExport.OnCancelButton"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

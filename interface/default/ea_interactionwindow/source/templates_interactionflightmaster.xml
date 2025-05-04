@@ -1,0 +1,783 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+        <!-- Templates -->
+        <Button name="EA_Button_FlightPairing" inherits="EA_Button_Parchment_MapText" >
+            <Size>
+                <AbsPoint x="350" y="32"/>
+            </Size>
+            <Anchors>
+                <Anchor point="left" relativePoint="left" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_InteractionFlightMasterWindow.OnPairingButton" />
+            </EventHandlers>
+        </Button>
+        
+        <!-- Flight Point Button Template -->
+        <Window name="EA_Button_Flight">
+            <Size>
+                <AbsPoint x="350" y="32"/>
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightPairing" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_InteractionFlightMasterWindow.FlightPointLButtonUp" />
+                        <EventHandler event="OnMouseOver" function="EA_InteractionFlightMasterWindow.OnMouseOverFlightTextButton" />
+                        <EventHandler event="OnMouseOverEnd" function="EA_InteractionFlightMasterWindow.OnMouseOverEndFlightTextButton" />
+                    </EventHandlers>
+                </Button>
+                <Window name="$parentMoneyFrame" inherits="BlackTextMoneyFrame">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" />
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <!-- Flight Pairing Map Button Template -->
+        <!-- Button Template -->
+        <Button name="EA_Button_FlightSmall" backgroundtexture="EA_Campaign01_d5" highlighttexture="EA_Campaign01_d5" inherits="EA_Button_Default" sticky="false">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <TexSlices>
+                <Normal id="Zone-Travel-Available" />
+                <NormalHighlit id="Zone-Travel-Available" />
+                <Pressed id="Zone-Travel-Current" />
+                <PressedHighlit id="Zone-Travel-Current" />
+                <Disabled id="Zone-Travel-Unavailable" />
+                <DisabledPressed id="Zone-Travel-Unavailable" />
+            </TexSlices>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_InteractionFlightMasterWindow.FlightMapPointLButtonUp" />
+                <EventHandler event="OnMouseOver" function="EA_InteractionFlightMasterWindow.OnMouseOverFlightMapPoint" />
+                <EventHandler event="OnMouseOverEnd" function="EA_InteractionFlightMasterWindow.OnMouseOverEndFlightRoundButton" />
+            </EventHandlers>
+        </Button>
+        
+        <Button name="EA_Button_FlightSmallCity" inherits="EA_Button_FlightSmall" >
+            <Size>
+                <AbsPoint x="87" y="88" />
+            </Size>
+            <TexSlices>
+                <Normal id="City-Travel-Available" />
+                <NormalHighlit id="City-Travel-Available" />
+                <Pressed id="City-Travel-Current" />
+                <PressedHighlit id="City-Travel-Current" />
+                <Disabled id="City-Travel-Unavailable" />
+                <DisabledPressed id="City-Travel-Unavailable" />
+            </TexSlices>
+        </Button>
+        
+        <Button name="EA_Button_FlightSmallWing" inherits="EA_Button_FlightSmall" >
+            <Size>
+                <AbsPoint x="55" y="54" />
+            </Size>
+            <TexSlices>
+                <Normal id="Wing-Travel-Available" />
+                <NormalHighlit id="Wing-Travel-Available" />
+                <Pressed id="Wing-Travel-Current" />
+                <PressedHighlit id="Wing-Travel-Current" />
+                <Disabled id="Wing-Travel-Unavailable" />
+                <DisabledPressed id="Wing-Travel-Unavailable" />
+            </TexSlices>
+            <EventHandlers/>
+        </Button>
+        
+        <Button name="EA_Button_FlightSmallCityWing" inherits="EA_Button_FlightSmall" >
+            <Size>
+                <AbsPoint x="55" y="54" />
+            </Size>
+            <TexSlices>
+                <Normal id="Wing-Travel-Available" />
+                <NormalHighlit id="Wing-Travel-Available" />
+                <Pressed id="Wing-Travel-Current" />
+                <PressedHighlit id="Wing-Travel-Current" />
+                <Disabled id="Wing-Travel-Unavailable" />
+                <DisabledPressed id="Wing-Travel-Unavailable" />
+            </TexSlices>
+        </Button>
+
+        <Window name="EA_Button_FlightPairingMapTopLabel">
+            <Size>
+                <AbsPoint x="67" y="67"/>
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall"  />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <Window name="EA_Button_FlightPairingMapBottomLabel">
+            <Size>
+                <AbsPoint x="67" y="67"/>
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall" />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <Window name="EA_Button_FlightPairingMapLeftLabel">
+            <Size>
+                <AbsPoint x="67" y="67"/>
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall" />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="-37" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <Window name="EA_Button_FlightPairingMapRightLabel">
+            <Size>
+                <AbsPoint x="67" y="67"/>
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall" />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="15" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <Window name="EA_Button_FlightPairingMapWing">
+            <Size>
+                <AbsPoint x="55" y="54" />
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmallWing" />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <Window name="EA_Button_FlightPairingMapCityWing">
+            <Size>
+                <AbsPoint x="55" y="54" />
+            </Size>
+            <Windows>
+                <Button name="$parentFlightButton" inherits="EA_Button_FlightSmallCityWing" />
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0"  />
+                </Label>
+             </Windows>
+        </Window>
+        
+        <!-- Flight Pairing Map Templates -->
+        <Window name="EA_DvGMapPairing">
+            <Size>
+                <AbsPoint x="1000" y="1000"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_TravelMap_GvD_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+                <!-- Teir 1 -->
+                <Window name="$parentEkrund" inherits="EA_Button_FlightPairingMapRightLabel" id="6">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="7" y="461" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentMountBloodhorn" inherits="EA_Button_FlightPairingMapLeftLabel" id="11">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="167" y="461" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 2 -->
+               <Window name="$parentBarakVarr" inherits="EA_Button_FlightPairingMapTopLabel" id="7">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="339" y="345" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentMarshesOfMadness" inherits="EA_Button_FlightPairingMapBottomLabel" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="339" y="506" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 3 -->
+               <Window name="$parentBlackFirePass" inherits="EA_Button_FlightPairingMapTopLabel" id="8">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="384" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall"  />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="239" y="120" />
+                            </Size>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentTheBadlands" inherits="EA_Button_FlightPairingMapBottomLabel" id="2">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="544" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Teir 4 -->
+				 <Window name="$parentKarazAKarak" inherits="EA_Button_FlightPairingMapTopLabel" id="62">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="841" y="109" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall"  />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="236" y="120" />
+                            </Size>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentStonewatch" inherits="EA_Button_FlightPairingMapCityWing" id="10">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="850" y="183" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentKadrinValley" inherits="EA_Button_FlightPairingMapBottomLabel" id="9">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="285" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCinderFall" inherits="EA_Button_FlightPairingMapWing" handleinput="false" id="26">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="803" y="468" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentDeathPeak" inherits="EA_Button_FlightPairingMapWing" handleinput="false" id="27">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="894" y="468" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentThunderMountain" inherits="EA_Button_FlightPairingMapBottomLabel" id="5">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="458" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentBlackCrag" inherits="EA_Button_FlightPairingMapBottomLabel" id="3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="637" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentButchersPass" inherits="EA_Button_FlightPairingMapCityWing" id="4">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="848" y="759" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+				
+				<Window name="$parentKarakEightPeaks" inherits="EA_Button_FlightPairingMapBottomLabel" id="61">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="816" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_EvCMapPairing">
+            <Size>
+                <AbsPoint x="1000" y="1000"/>
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_TravelMap_EvC_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                
+                <!-- Teir 1 -->
+                <Window name="$parentNorsca" inherits="EA_Button_FlightPairingMapTopLabel" id="100">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="87" y="365" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentNordland" inherits="EA_Button_FlightPairingMapBottomLabel" id="106">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="87" y="525" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 2 -->
+               <Window name="$parentTrollCountry" inherits="EA_Button_FlightPairingMapTopLabel" id="101">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="339" y="395" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentOstland" inherits="EA_Button_FlightPairingMapBottomLabel" id="107">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="339" y="553" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 3 -->
+               <Window name="$parentHighPass" inherits="EA_Button_FlightPairingMapTopLabel" id="102">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="586" y="350" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentTalabecland" inherits="EA_Button_FlightPairingMapBottomLabel" id="108">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="585" y="509" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Teir 4 -->
+                <Window name="$parentInevitableCity" inherits="EA_Button_FlightPairingMapTopLabel" id="161">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="841" y="109" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall"  />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="236" y="120" />
+                            </Size>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentTheMaw" inherits="EA_Button_FlightPairingMapCityWing" id="104">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="850" y="183" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentChaosWastes" inherits="EA_Button_FlightPairingMapBottomLabel" id="103">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="284" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentWestPraag" inherits="EA_Button_FlightPairingMapWing" handleinput="false" id="120">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="803" y="469" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentPraag" inherits="EA_Button_FlightPairingMapBottomLabel" id="105">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="458" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                
+                <Window name="$parentReikland" inherits="EA_Button_FlightPairingMapBottomLabel" id="109">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="637" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentReikwald" inherits="EA_Button_FlightPairingMapCityWing" id="110">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="848" y="759" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentAltdorf" inherits="EA_Button_FlightPairingMapBottomLabel" id="162">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="816" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_HEvDEMapPairing">
+            <Size>
+                <AbsPoint x="1000" y="1000" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_TravelMap_Elves_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Size>
+                        <AbsPoint x="250" y="126" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" >
+                            <AbsPoint x="20" y="55" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Size>
+                        <AbsPoint x="265" y="126" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="-2" y="-105" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+                <!-- Teir 1 -->
+                <Window name="$parentBlightedIsle" inherits="EA_Button_FlightPairingMapBottomLabel" id="200">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="625" y="17" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentChrace" inherits="EA_Button_FlightPairingMapBottomLabel" id="206">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="625" y="176" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 2 -->
+               <!-- Special Case cause of long name -->
+               <Window name="$parentShadowlands" inherits="EA_Button_FlightPairingMapBottomLabel" id="201">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="310" y="261" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall" />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top">
+                                    <AbsPoint x="0" y="35" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentEllyrion" inherits="EA_Button_FlightPairingMapBottomLabel" id="207">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="310" y="420" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <!-- Teir 3 -->
+               <Window name="$parentAvelorn" inherits="EA_Button_FlightPairingMapBottomLabel" id="202">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="616" y="450" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentSaphery" inherits="EA_Button_FlightPairingMapBottomLabel" id="208">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="616" y="609" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Teir 4 -->
+                <Window name="$parentFellLanding" inherits="EA_Button_FlightPairingMapBottomLabel" id="204">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="100" y="848" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentCaledor" inherits="EA_Button_FlightPairingMapBottomLabel" id="203">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="309" y="840" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentIsleOfTheDead" inherits="EA_Button_FlightPairingMapWing" handleinput="false" id="220">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="491" y="802" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Special Case cause of long name -->
+                <Window name="$parentDragonwake" inherits="EA_Button_FlightPairingMapBottomLabel" id="205">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="484" y="842" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall" />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background" wordwrap="false" textAutoFitMinScale="0.5">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top">
+                                    <AbsPoint x="0" y="35" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+               <Window name="$parentEataine" inherits="EA_Button_FlightPairingMapBottomLabel" id="209">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="663" y="841" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentShiningWay" inherits="EA_Button_FlightPairingMapBottomLabel" id="210">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="842" y="848" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_TKMapPairing">
+            <Size>
+                <AbsPoint x="1000" y="1000" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="EA_TravelMap_TK_d1" handleinput="false" layer="background">
+                   <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexCoords x="0" y="0" />
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>
+                
+                <DynamicImage name="$parentCurrentZone" inherits="EA_DynamicImage_CurrentZone" />
+                
+                <Label name="$parentOrder" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="45" g="63" b="133" />
+                </Label>
+                <Label name="$parentDestruction" inherits="EA_Label_WorldMapPairingSide" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="170" g="25" b="25" />
+                </Label>
+                
+               <Window name="$parentNecZandri" inherits="EA_Button_FlightPairingMapBottomLabel" id="191">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="113" y="218" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentGarQuaph" inherits="EA_Button_FlightPairingMapBottomLabel" id="413">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="564" y="275" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

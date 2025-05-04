@@ -1,0 +1,60 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponGeneralFireWindow.lua" />
+	</Scripts>
+	<Windows>
+		
+		<!-- This window contains the UI elements that are general across all fire modes -->
+		<Window name="SiegeWeaponGeneralFireWindow" movable="false" layer="secondary"  savesettings="false" >
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+				<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="SiegeWeaponGeneralFireWindow.Initialize" />	
+			</EventHandlers>
+			<Windows>                                                 
+                
+                <LogDisplay name="$parentChatLogDisplay" inherits="ChatLogDisplay"  scrollbar="$parentScrollbar" scrollbarPosition="right" maxentries="15" >   
+                    <Size>
+                        <AbsPoint x="500" y="150" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+					        <AbsPoint x="25" y="-25" />
+				        </Anchor>
+			        </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft">
+                                    <AbsPoint x="-20" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright"/>
+                            </Anchors>
+                        </VerticalScrollbar>
+                    </Windows>
+                </LogDisplay>                              
+                               
+                
+                <Label name="$parentInstructions" inherits="EA_Label_DefaultSubHeading" textalign="right" autoresize="true" wordwrap="true" >
+                    <Size>
+                        <AbsPoint x="600" y="30" />
+                    </Size>
+                    <Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					        <AbsPoint x="-25" y="-25" />
+				        </Anchor>
+			        </Anchors>
+			         <Color r="235" g="235" b="235" />
+                </Label>              
+            
+             
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

@@ -1,0 +1,164 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/CityTrackerWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Main Window Specification -->
+        <Window name="EA_Window_CityTracker" layer="background" sticky="false" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="600" y="300"/>
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="0" y="-33"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"                  function="EA_Window_CityTracker.Initialize" />
+                <EventHandler event="OnInitializeCustomSettings"    function="EA_Window_CityTracker.InitializeLayout" />
+                <EventHandler event="OnUpdate"                      function="EA_Window_CityTracker.Update" />
+                <EventHandler event="OnShutdown"                    function="EA_Window_CityTracker.Shutdown" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentOverview" >
+                    <Size>
+                        <AbsPoint x="600" y="70" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Label name="$parentStatus" font="font_default_text_huge" maxchars="32" autoresize="true"
+                                     textalign="right" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="485" y="20"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="10"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="45" a="255"/>
+                        </Label>
+
+                        <Label name="$parentDescription" font="font_default_text" maxchars="128" autoresize="true"
+                               textalign="right" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="600" y="40"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStatus" >
+                                    <AbsPoint x="0" y="10"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="45" a="255"/>
+                        </Label>
+
+                    </Windows>
+                </Window>
+
+                <Window name="$parentObjective1" id="1" skipinput="true">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOverview" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Objective Groups -->
+                        <Window name="$parentQuest1" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="1">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_CityTracker.MouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentQuest2" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="2">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest1">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_CityTracker.MouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+
+                        <!-- Opt out for loot button -->
+                        <Button name="$parentOptOutButton" id="1" inherits="EA_ObjectiveTracker_OptOutButton">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest2">
+                                    <AbsPoint x="0" y="8"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnInitialize" function="TrackerUtils.InitializeOptOutButton" />
+                                <EventHandler event="OnMouseOver" function="TrackerUtils.OnMouseOverOptOut" />
+                                <EventHandler event="OnLButtonUp" function="EA_Window_CityTracker.OnLButtonUpOptOut" />
+                            </EventHandlers>
+                        </Button>
+
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentObjective2" id="2" skipinput="true">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentObjective1" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <!-- Objective Groups -->
+                        <Window name="$parentQuest1" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="1">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_CityTracker.MouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+                        <Window name="$parentQuest2" inherits="EA_Window_PublicQuestTrackerQuestCluster" id="2">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest1">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_CityTracker.MouseOverQuest" />
+                            </EventHandlers>
+                        </Window>
+
+                        <!-- Opt out for loot button -->
+                        <Button name="$parentOptOutButton" id="2" inherits="EA_ObjectiveTracker_OptOutButton">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuest2">
+                                    <AbsPoint x="0" y="8"/>
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnInitialize" function="TrackerUtils.InitializeOptOutButton" />
+                                <EventHandler event="OnMouseOver" function="TrackerUtils.OnMouseOverOptOut" />
+                                <EventHandler event="OnLButtonUp" function="EA_Window_CityTracker.OnLButtonUpOptOut" />
+                            </EventHandlers>
+                        </Button>
+
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

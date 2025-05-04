@@ -1,0 +1,277 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/MailWindowTabMessage.lua" />
+    </Scripts>
+    <Windows>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="MailWindowTabMessage" savesettings="false" layer="secondary" movable="true">
+            <Size>
+                <AbsPoint x="420" y="620" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="MailWindow">
+                    <AbsPoint x="25" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="MailWindowTabMessage.Initialize" />
+                <EventHandler event="OnShutdown" function="MailWindowTabMessage.Shutdown" />
+                <EventHandler event="OnShown" function="MailWindowTabMessage.OnOpen" />
+                <EventHandler event="OnHidden" function="MailWindowTabMessage.OnClose" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Title Bar, Close button, and Corner Image -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabMessage.OnClose" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_MailImage"/>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-6" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- From -->
+                <Window name="$parentFrom" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentHeader" inherits="MailMessageHeaderTemplate" textalign="rightcenter">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="5" y="15" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentText" inherits="MailMessageTextTemplate" textalign="leftcenter">
+                            <Size>
+                                <AbsPoint x="250" y="32"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentHeader">
+                                    <AbsPoint x="10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+                <!-- Subject -->
+                <Label name="$parentSubjectText" inherits="MailRowTextTemplate">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFrom">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFrom">
+                            <AbsPoint x="-20" y="47" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Text Separator 1 -->
+                <Window name="$parentSeparator1" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubjectText">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSubjectText">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="shared_01" slice="Text-Separator">
+                            <Size>
+                                <AbsPoint x="55" y="15" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parent"/>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <!-- Body -->
+                <ScrollWindow name="$parentBody" childscrollwindow="MailWindowTabMessageBodyScrollChild" scrollbar="MailWindowTabMessageBodyScrollbar" lineheight="24" autoHideScrollBar="true">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSeparator1" >
+                      <AbsPoint x="10" y="0" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDisplaySeperator" >
+                      <AbsPoint x="-15" y="5" />
+                    </Anchor>
+                  </Anchors>
+                  <Windows>
+                    <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                      <Size>
+                        <AbsPoint x="20" y="200"/>
+                      </Size>
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                          <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                      </Anchors>
+                    </VerticalScrollbar>
+                    <Window name="$parentScrollChild">
+                      <Size>
+                        <AbsPoint x="320" y="0"/>
+                      </Size>
+
+                      <Windows>
+                        <Label name="$parentText" inherits="MailRowTextTemplate" maxchars="799" autoresize="true" wordwrap="true" textalign="left">
+                          <Size>
+                            <AbsPoint x="360" y="25" />
+                          </Size>
+                          <Anchors>
+                            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                              <AbsPoint x="0" y="5" />
+                            </Anchor>
+                          </Anchors>
+                        </Label>
+                      </Windows>
+
+                    </Window> <!-- End of parentScrollChild -->
+                  </Windows>
+                </ScrollWindow>
+
+                <!-- Display Seperator -->
+                <Window name="$parentDisplaySeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="96" />
+                        </Anchor>
+                        <Anchor point="right" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="96" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+              
+                <!-- Attachments Header -->
+                <Label name="$parentAttachmentHeader" inherits="MailMessageTextTemplate" textalign="right">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCoinsFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentCoinsFrame" inherits="MoneyFrame" handleinput="true">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottomleft" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Attachment Slots -->
+                <ActionButtonGroup name="$parentAttachmentSlots" inherits="EA_ActionButtonGroup_DefaultSmall" draganddrop="true"  gameactionbutton="right"  >
+                  <Anchors>
+                    <Anchor point="top" relativePoint="bottom" relativeTo="$parentBarBackground">
+                      <AbsPoint x="0" y="4" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnActionButtonLButtonDown" function="MailWindowTabMessage.OnLButtonDownAttachmentSlot" />
+                    <EventHandler event="OnActionButtonLButtonUp" function="MailWindowTabMessage.OnLButtonUpAttachmentSlot" />
+                    <EventHandler event="OnActionButtonRButtonUp" function="MailWindowTabMessage.OnRButtonUpAttachmentSlot" />
+                    <EventHandler event="OnActionButtonMouseOver" function="MailWindowTabMessage.OnMouseOverAttachmentSlot" />
+                    <EventHandler event="OnActionButtonMouseOverEnd" function="MailWindowTabMessage.OnMouseOverEndAttachmentSlot" />
+                  </EventHandlers>
+                </ActionButtonGroup>
+
+                <!-- Background  -->
+                <DynamicImage name="$parentAttachmentBackground" texture="EA_Backpack01_d5" slice="BackpackBackground" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentAttachmentSlots">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="412" y="120" />
+                </DynamicImage>
+
+                <!--************-->
+                <!-- Button Bar -->
+                <!--************-->
+                <Window name="$parentBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>
+
+                <!-- Command Reply Button -->
+                <Button name="$parentCommandReplyButton" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabMessage.OnLButtonUpReplyButton" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentBarBackground">
+                            <AbsPoint x="10" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Command Take Item Button -->
+                <Button name="$parentCommandTakeItemButton" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabMessage.OnLButtonUpTakeAll" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentBarBackground">
+                            <AbsPoint x="0" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Delete Message Button -->
+                <Button name="$parentDeleteMessageButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentBarBackground">
+                            <AbsPoint x="-10" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabMessage.OnLButtonDeleteMessage" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Report Spam Button -->
+                <Button name="$parentReportSpamMessageButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentFrom">
+                            <AbsPoint x="-15" y="15"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="MailWindowTabMessage.OnLButtonReportSpamMessage" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

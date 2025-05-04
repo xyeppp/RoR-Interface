@@ -1,0 +1,161 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionWindowGuildCreateForm.lua" />
+    </Scripts>
+
+    <Windows>
+        <!-- Main Dialog Window -->
+        <Window name="InteractionWindowGuildCreateForm" inherits="EA_Window_Default" layer="secondary" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="450" y="450" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="-50" y="-150" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="InteractionWindowGuildCreateForm.Initialize" />
+                <EventHandler event="OnShutdown"    function="InteractionWindowGuildCreateForm.Shutdown" />
+                <EventHandler event="OnShown"       function="InteractionWindowGuildCreateForm.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+
+            <Windows>
+                <!-- Title Bar, close button block -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="InteractionWindowGuildCreateForm.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Whole window background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+
+                <!-- Dialog Text Area-->
+                <ScrollWindow name="GuildFormScrollWindow" childscrollwindow="GuildFormScrollWindowScrollChild" scrollbar="GuildFormScrollWindowScrollbar" lineheight="18" autoHideScrollBar="true">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentNamePrompt">
+                            <AbsPoint x="0" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="GuildFormScrollWindow">
+                                    <AbsPoint x="-12" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildFormScrollWindow">
+                                    <AbsPoint x="-12" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="400" y="0"/>
+                            </Size>
+                            <Windows>
+                                <!-- Dialog Text -->
+                                <Label name="InteractionWindowGuildCreateFormDialogText" font="font_chat_text" maxchars="1024" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="390" y="200"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" >
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </ScrollWindow>
+                <!-- End of Dialog Text Area-->
+                
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+
+                <Window name="$parentMiddleSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="GuildFormScrollWindow" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="GuildFormScrollWindow" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- "Guild Name:" Label -->
+                <Label name="$parentNamePrompt" wordwrap="false" font="font_default_text" maxchars="64" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="450" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="GuildNameEditBox" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- Guild Name Edit Box -->
+                <EditBox name="GuildNameEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="24" taborder="1">
+                    <Size>
+                        <AbsPoint x="400" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentError" >
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <TextOffset x="4" y="4" />
+                </EditBox>
+                
+                <!-- Error Text -->
+                <Label name="$parentError" wordwrap="true" autoresize="true" font="font_clear_default" maxchars="256" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="0" b="0" a="255" />
+                </Label>
+
+                <!-- Guild Command Create Guild Button -->
+                <Button name="CreateGuildButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="175" y="39"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="0" y="7"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="InteractionWindowGuildCreateForm.GuildCommandCreateGuild" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

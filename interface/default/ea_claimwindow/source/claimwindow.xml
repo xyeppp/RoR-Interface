@@ -1,0 +1,195 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/ClaimWindow.lua" />
+	</Scripts>
+	<Windows>
+	
+	    <Button name="EA_Window_ClaimItemRowTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage" >
+			<Size>
+				<AbsPoint x="605" y="65" />
+			</Size>			
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="EA_Window_Claim.OnMouseOverItem" />
+				<EventHandler event="OnLButtonUp" function="EA_Window_Claim.OnButtonUpItem" />
+				<EventHandler event="OnRButtonUp" function="EA_Window_Claim.OnButtonUpItem" />
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+					</Anchors>
+				</FullResizeImage>
+                <DynamicImage name="$parentIcon" inherits="EA_Image_DefaultIcon"  handleinput="false" >
+			    	<Size>
+				        <AbsPoint x="55" y="55" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="10" y="5" />
+				        </Anchor>
+			        </Anchors>
+			        <Windows>
+			        	<DynamicImage name="$parentFrame" inherits="EA_Image_DefaultIconFrame"  handleinput="false" layer="background" >
+					        <Size>
+						    <AbsPoint x="55" y="55" />
+					        </Size>
+				        </DynamicImage>
+			        </Windows>
+			    </DynamicImage>
+				<Label name="$parentName" inherits="EA_Label_DefaultText_Small" textalign="left" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="550" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+                <Label name="$parentRewardSubject" inherits="EA_Label_ChatText" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="350" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRewardStatus" inherits="EA_Label_ChatText" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentName">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" />
+                </Label>
+            </Windows>
+		</Button>
+
+
+
+		<Window name="EA_Window_Claim"  inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+			<Size>
+				<AbsPoint x="650" y="573" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="EA_Window_Claim.Initialize" />
+				<EventHandler event="OnShutdown" function="EA_Window_Claim.Shutdown" />
+                <EventHandler event="OnShown" function="EA_Window_Claim.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_Claim.OnHidden" />
+			</EventHandlers>
+			<Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Claim.Hide" />
+					</EventHandlers>
+				</Button>
+				
+				
+				<Label name="$parentText" textalign="left" inherits="EA_Label_ChatText"  textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="600" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+
+                <Label name="$parentResetText" textalign="left" inherits="EA_Label_ChatText"  textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="600" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentText" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+				
+                 <Window name="$parentTextSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="155" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="155" />
+                        </Anchor>
+                    </Anchors>
+                </Window>                
+				
+				
+				<!-- List Box of Items  -->
+				<ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Window_ClaimItemRowTemplate"  visiblerows="5" rowcount="200" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="629" y="322" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTextSeperator" >
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="EA_Window_Claim.lootData" populationfunction="EA_Window_Claim.PopulateLootData">
+                        <ListColumns>
+                            <ListColumn windowname="Icon" variable="iconNum" format="icon" />
+                            <ListColumn windowname="Name" variable="name" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>		
+                                                									
+					
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>
+
+                <!-- Reset Reward Button -->
+                <Button name="$parentResetButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="10" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Claim.ResetReward" />
+                    </EventHandlers>
+                </Button> 
+					
+				<!-- Claim Button -->
+				<Button name="$parentAcceptButton" inherits="EA_Button_DefaultResizeable" >
+					<Anchors>
+						<Anchor point="bottomright" relativePoint="bottomright" >
+							<AbsPoint x="-10" y="-10" />
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Claim.ClaimReward" />
+					</EventHandlers>
+				</Button>
+				
+			</Windows>
+		</Window>
+		
+	</Windows>
+</Interface>

@@ -1,0 +1,244 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+		<Texture name="Map_40" file="textures/40.tga" />
+		<Texture name="Map_60" file="textures/60.tga" />		
+		<Texture name="Map_80" file="textures/80.tga" />
+		<Texture name="Map_100" file="textures/100.tga" />
+		<Texture name="Map_120" file="textures/120.tga" />
+		<Texture name="Map_140" file="textures/140.tga" />
+		<Texture name="Map_160" file="textures/160.tga" />
+		<Texture name="Map_180" file="textures/180.tga" />
+		<Texture name="Map_200" file="textures/200.tga" />
+		<Texture name="Map_220" file="textures/220.tga" />
+		<Texture name="Map_240" file="textures/240.tga" />
+		<Texture name="Map_260" file="textures/260.tga" />
+		<Texture name="Map_280" file="textures/280.tga" />
+		<Texture name="Map_300" file="textures/300.tga" />
+		<Texture name="Map_320" file="textures/320.tga" />
+		<Texture name="Map_340" file="textures/340.tga" />
+		<Texture name="Map_360" file="textures/360.tga" />
+		<Texture name="Map_380" file="textures/380.tga" />
+		<Texture name="Map_400" file="textures/400.tga" />		
+    </Assets>
+    <Windows>
+
+               <Window name="RoR_MapExtension_Temnlate_40" sticky="false" layer="default">
+                    <Size><AbsPoint x="40" y="40" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_40" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="40" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+               <Window name="RoR_MapExtension_Temnlate_60" sticky="false" layer="default">
+                    <Size><AbsPoint x="60" y="60" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_60" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="60" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+               <Window name="RoR_MapExtension_Temnlate_80" sticky="false" layer="default">
+                    <Size><AbsPoint x="80" y="80" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_80" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="80" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+                <Window name="RoR_MapExtension_Temnlate_100" sticky="false" layer="default">
+                    <Size><AbsPoint x="100" y="100" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_100" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="100" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+               <Window name="RoR_MapExtension_Temnlate_120" sticky="false" layer="default">
+                    <Size><AbsPoint x="120" y="120" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_120" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="120" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+               <Window name="RoR_MapExtension_Temnlate_140" sticky="false" layer="default">
+                    <Size><AbsPoint x="140" y="140" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_140" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="140" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+              <Window name="RoR_MapExtension_Temnlate_160" sticky="false" layer="default">
+                    <Size><AbsPoint x="160" y="160" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_160" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="160" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+              <Window name="RoR_MapExtension_Temnlate_180" sticky="false" layer="default">
+                    <Size><AbsPoint x="180" y="180" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_180" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="180" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+              <Window name="RoR_MapExtension_Temnlate_200" sticky="false" layer="default">
+                    <Size><AbsPoint x="200" y="200" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_200" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="200" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+             <Window name="RoR_MapExtension_Temnlate_220" sticky="false" layer="default">
+                    <Size><AbsPoint x="220" y="220" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_220" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="220" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+             <Window name="RoR_MapExtension_Temnlate_240" sticky="false" layer="default">
+                    <Size><AbsPoint x="240" y="240" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_240" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="240" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_260" sticky="false" layer="default">
+                    <Size><AbsPoint x="260" y="260" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_260" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="260" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+           <Window name="RoR_MapExtension_Temnlate_280" sticky="false" layer="default">
+                    <Size><AbsPoint x="280" y="280" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_280" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="280" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_300" sticky="false" layer="default">
+                    <Size><AbsPoint x="300" y="300" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_300" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="300" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_320" sticky="false" layer="default">
+                    <Size><AbsPoint x="320" y="320" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_320" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="320" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_340" sticky="false" layer="default">
+                    <Size><AbsPoint x="340" y="340" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_340" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="340" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_360" sticky="false" layer="default">
+                    <Size><AbsPoint x="360" y="360" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_360" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="360" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_380" sticky="false" layer="default">
+                    <Size><AbsPoint x="380" y="380" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_380" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="380" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+
+            <Window name="RoR_MapExtension_Temnlate_400" sticky="false" layer="default">
+                    <Size><AbsPoint x="400" y="400" /></Size>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="Map_400" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+                            <Size><AbsPoint x="20" y="400" /></Size>
+                            <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+				
+        <DynamicImage name="RoR_MapExtensionImage_Temp" handleinput="false" popable="false" id="1" textureScale="1.0" layer="default">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </DynamicImage>
+
+
+        <Window name="RoR_MapExtension_Overlay" sticky="true" handleinput="false" layer="popup" warnOnTextCropped="false">
+            <Size>
+                <AbsPoint x="1024" y="1024" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="EA_Window_WorldMapZoneViewMapDisplay">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+
+<!-- stuff here-->
+
+
+            </Windows>
+
+        </Window>
+
+
+    </Windows>
+</Interface>

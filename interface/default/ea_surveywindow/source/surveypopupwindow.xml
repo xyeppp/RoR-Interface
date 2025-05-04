@@ -1,0 +1,131 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SurveyPopupWindow.lua" />
+  </Scripts>
+  <Windows>
+
+    <Window name="EA_Window_SurveyPopup" savesettings="false" >
+      <Size>
+        <AbsPoint x="600" y="75" />
+      </Size>
+      <Anchors>
+        <Anchor point="top" relativePoint="top" relativeTo="" >
+          <AbsPoint x="0" y="45" />
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="EA_Window_SurveyPopup.Initialize" />        
+        <EventHandler event="OnUpdate" function="EA_Window_SurveyPopup.UpdateCountdownTime" />
+      </EventHandlers>
+      <Windows>
+      
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+            </Anchors>
+        </Window>
+		
+        <DynamicImage name="$parentIcon"  textureScale="0.859" handleinput="false" >
+          <Size>
+            <AbsPoint x="55" y="55" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="10" y="10" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+        <Label name="$parentName" inherits="EA_Label_DefaultSubHeading" textalign="leftcenter" handleinput="false" wordwrap="true">
+          <Size>
+            <AbsPoint x="500" y="25" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentIcon">
+              <AbsPoint x="15" y="5"/>
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" />
+        </Label>
+        <Label name="$parentTimer" inherits="EA_Label_DefaultText" textalign="left" handleinput="false" wordwrap="true">
+          <Size>
+            <AbsPoint x="500" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+          <TextColor r="235" g="235" b="235" />
+        </Label>
+        <Button name="$parentShowNowButton" inherits="EA_Button_DefaultResizeable">
+          <Anchors>            
+            <Anchor point="right" relativePoint="right" >
+              <AbsPoint x="-10" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_SurveyPopup.ShowSurvey" />
+          </EventHandlers>
+        </Button>
+      </Windows>
+    </Window>
+    
+    <Window name="EA_Window_CSRSurveyPopup" savesettings="false" >
+      <Size>
+        <AbsPoint x="600" y="150" />
+      </Size>
+      <Anchors>
+        <Anchor point="top" relativePoint="top" relativeTo="" >
+          <AbsPoint x="0" y="45" />
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="EA_Window_CsrSurveyPopup.Initialize" />        
+      </EventHandlers>
+      <Windows>
+      
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+            </Anchors>
+        </Window>
+
+        <Label name="$parentName" inherits="EA_Label_DefaultSubHeading" textalign="leftcenter" handleinput="false" wordwrap="true">
+          <Size>
+            <AbsPoint x="435" y="120" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="15" y="5"/>
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" />
+        </Label>
+        <Button name="$parentShowNowButton" inherits="EA_Button_DefaultResizeable">
+          <Anchors>            
+            <Anchor point="topright" relativePoint="topright" >
+              <AbsPoint x="-15" y="30" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_SurveyPopup.ShowSurvey" />
+          </EventHandlers>
+        </Button>
+        <Button name="$parentCancelSurveyButton" inherits="EA_Button_DefaultResizeable">
+          <Anchors>            
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowNowButton" >
+              <AbsPoint x="0" y="15" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_CsrSurveyPopup.OnCancelCsrSurvey" />
+          </EventHandlers>
+        </Button>
+      </Windows>
+    </Window>
+    
+  </Windows>
+</Interface>

@@ -1,0 +1,284 @@
+<zone iname="Nordland">
+    <landmark iname="Norscan Longships" id="1" mapIcon="1042" x="10141" y="10057">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Grimmenhagen Barrows" id="2" mapIcon="1061" x="19472" y="39125">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Grey Lady Coaching Inn" id="3" mapIcon="1031" x="20694" y="28230">
+        <race>Empire</race>
+        <number>2</number>
+        <ranks realm="order" min="3" max="4" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Renown Trainer</service>
+            <service>Tradeskill Trainers</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Grimmenhagen Windmill" id="4" mapIcon="1033" x="23449" y="41164">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Grimmenhagen Village" id="5" mapIcon="1039" x="24162" y="54300">
+        <race>Empire</race>
+        <number>1</number>
+        <ranks realm="order" min="1" max="2" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Arnholdt's Company" id="6" mapIcon="1053" x="28171" y="19133">
+        <race>Empire</race>
+        <services>
+            <service>Apprentice Renown Trainer</service>
+            <service>Renown Gear Merchant</service>
+	    <service>Recruit's Medallion Merchant</service>
+	    <service>Recruit's Emblem Merchant</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Traitor's Crossing" id="7" mapIcon="1065" x="46380" y="24374">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Grimmenhagen Farm" id="8" mapIcon="1031" x="31744" y="43028">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Breuer's Regiment" id="9" mapIcon="1065" x="32732" y="18490">
+        <race>Empire</race>
+        <number>3</number>
+        <ranks realm="order" min="5" max="7" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Murder Wood" id="10" mapIcon="1064" x="38918" y="37950">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="New Emskrank" id="11" mapIcon="1030" x="39674" y="14767">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Blessed Gathering" id="12" mapIcon="1052" x="40647" y="4192">
+        <race>Chaos</race>
+        <services>
+            <service>Apprentice Renown Trainer</service>
+            <service>Renown Gear Merchant</service>
+	    <service>Recruit's Medallion Merchant</service>
+	    <service>Recruit's Emblem Merchant</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Death's Brink" id="13" mapIcon="1031" x="42555" y="1915">
+        <race>Chaos</race>
+        <number>3</number>
+        <ranks realm="destruction" min="5" max="7" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="The Webworks" id="14" mapIcon="1062" x="45739" y="30691">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gausser's Wilding" id="15" mapIcon="1064" x="48425" y="39065">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Smugglers' Tunnel" id="16" mapIcon="1063" x="51666" y="47847">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Authun's Host" id="17" mapIcon="1031" x="57567" y="20415">
+        <race>Chaos</race>
+        <number>4</number>
+        <ranks realm="destruction" min="8" max="9" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Salzenmund Keep" id="18" mapIcon="1031" x="62342" y="46954">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Beeckerhoven Crypt" id="19" mapIcon="1060" x="63212" y="20198">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="31386" y="6984" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="25125" y="11959" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="37367" y="2571" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: The Murderball Rally" id="23" mapIcon="1097" x="29854" y="8599" liveevent="30">
+        <importance>minor</importance>
+        <specialType>11</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Order" id="24" mapIcon="1096" x="35782" y="4145" liveevent="30">
+        <importance>minor</importance>
+        <specialType>14</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Destruction" id="25" mapIcon="1095" x="26121" y="14617" liveevent="30">
+        <importance>minor</importance>
+        <specialType>15</specialType>
+    </landmark>
+    <landmark iname="Chaos Portal" id="26" mapIcon="1041" x="16149" y="46860">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Wayshrine of Sigmar" id="27" mapIcon="1036" x="32113" y="28823">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Hangman's Wood" id="28" mapIcon="1064" x="41371" y="23353">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Dreizack" id="29" mapIcon="1039" x="5874" y="16335">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ulric's Cave" id="30" mapIcon="1062" x="59560" y="33373">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Salzenmund Tower" id="31" mapIcon="1032" x="48250" y="50867">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Salzenmund" id="32" mapIcon="1030" x="52526" y="56160">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ormsdeep" id="33" mapIcon="1037" x="48722" y="63790">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ravenraid Mill" id="34" mapIcon="1033" x="55391" y="7888">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="The Norse are Coming" id="167" iconSet="1" x="12632" y="11607">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Burning Windmill" id="273" iconSet="1" x="18425" y="21162">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Raven Host Vanguard" id="165" iconSet="1" x="29259" y="43256">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="1" max="2" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Faewulf's Rest" id="186" iconSet="1" x="38822" y="25207">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Pillager's Approach" id="189" iconSet="1" x="45209" y="15757">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Webworks" id="184" iconSet="1" x="48858" y="30974">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Macabre Fervor" id="196" iconSet="1" x="48895" y="1654">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Salzenmund" id="193" iconSet="1" x="51589" y="58171">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Pillage and Plunder" id="199" iconSet="1" x="54697" y="9359">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Fields of Woe" id="194" iconSet="1" x="55243" y="25584">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Sacred Ground" id="192" iconSet="1" x="57330" y="33790">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Wilds of War" id="197" iconSet="1" x="62105" y="14201">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Ruins of Schloss von Rubendorff" id="176" iconSet="1" x="8698" y="28450">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="The Harvest Shrine: Healing Boon" id="5096" iconSet="1" x="40253" y="13317">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Festenplatz: Defensive Boon" id="5097" iconSet="1" x="35202" y="10148">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Nordland XI: Artisan's Gift" id="228" iconSet="1" x="25362" y="4563">
+    </battlefieldObjective>
+    <zoneTransition iname="To Norsca" x="48000" y="0">
+        <zone>100</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ostland" x="65535" y="32000">
+        <zone>107</zone>
+    </zoneTransition>
+</zone>

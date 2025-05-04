@@ -1,0 +1,393 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <!-- Bestiary Defs -->
+
+		<Window name="BestiaryTypeHeading" >
+			<Size>
+				<AbsPoint x="425" y="20"/>
+			</Size>
+			<Windows>
+				<Label name="$parentText" inherits="TOKSubHeading" textalign="left" autoresize="true">
+					<Size>
+						<AbsPoint x="300" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				<Label name="$parentKills" inherits="TOKSubHeading" textalign="right" autoresize="true">
+					<Size>
+						<AbsPoint x="100" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+
+		<Window name="BestiarySubTypeTOCItem" inherits="TomeTOCItemWindowResizeNumber">
+			<Size>
+				<AbsPoint x="405" y="18"/>
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.OnSelectBestiarySubType"/>
+			</EventHandlers>
+		</Window>
+
+
+		<Window name="BestiarySpeciesTOCItem">
+			<Size>
+				<AbsPoint x="405" y="30"/>
+			</Size>
+			<Windows>
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="$parent">
+							<AbsPoint x="0" y="0" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+	            <Button name="$parentText" inherits="TOKTextButton" autoresize="true" handleinput="false" autoresizewidth="true" textalign="left" >
+	            	<Size>
+	                    <AbsPoint x="335" y="22"/>
+                    </Size>
+                    <Anchors>
+				        <Anchor point="right" relativePoint="left" relativeTo="$parentCompletedBtn">
+					        <AbsPoint x="8" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Button>
+	            <Label name="$parentNumber" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" autoresizewidth="true" textalign="left"  >
+	            	<Size>
+	                    <AbsPoint x="300" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+					        <AbsPoint x="0" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Label>
+	            <Label name="$parentDottedLine" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left" warnOnTextCropped="false" >
+	            	<Size>
+	                    <AbsPoint x="200" y="22"/>
+                    </Size>
+	            	<Anchors>
+				        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentText">
+					        <AbsPoint x="4" y="0"/>
+				        </Anchor>
+				        
+				        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentNumber">
+					        <AbsPoint x="-5" y="0"/>
+				        </Anchor>
+			        </Anchors>
+	            </Label>
+            </Windows>
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.OnSelectBestiarySpecies"/>
+			</EventHandlers>
+		</Window>
+
+		<Window name="BestiarySpeciesTaskWindow">
+			<Size>
+				<AbsPoint x="450" y="55"/>
+			</Size>
+			<Windows>								
+				<HorizontalResizeImage name="$parentTopLine" inherits="TomeResizableHorizontalRule" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+							<AbsPoint x="-25" y="0"/>
+						</Anchor>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="25" y="0"/>
+						</Anchor>
+					</Anchors>
+				</HorizontalResizeImage>
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="10" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Label name="$parentText" inherits="TOKText" textalign="left" autoresize="true" >
+					<Size>
+						<AbsPoint x="250" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="15" y="0"/>
+						</Anchor>
+					</Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverBestiaryTaskEntry"/>
+                        <EventHandler event="OnRButtonUp" function="TomeWindow.OnRightClickBestiaryTaskEntry"/>
+                    </EventHandlers>
+				</Label>
+				
+				<Button name="$parentReward1" inherits="TomeRewardIconButtonSmall" id="1" >
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="">
+							<AbsPoint x="0" y="10" />
+						</Anchor>
+					</Anchors>
+		            <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverBestiarySpeciesReward"/>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickBestiarySpeciesReward"/>
+			        </EventHandlers>
+		        </Button>
+		        <Button name="$parentReward2" inherits="TomeRewardIconButtonSmall" id="2" >
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+							<AbsPoint x="0"/>
+						</Anchor>
+					</Anchors>
+		            <EventHandlers>
+				        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverBestiarySpeciesReward"/>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickBestiarySpeciesReward"/>
+			        </EventHandlers>
+		        </Button>
+                <Button name="$parentCard" inherits="TomeRewardIconButtonSmall">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+                            <AbsPoint x="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverBestiarySpeciesCard"/>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickBestiarySpeciesCard"/>
+                    </EventHandlers>
+                </Button>
+			</Windows>
+		</Window>
+
+         <!-- Bestiary TOC Def -->
+		<Window name="BestiaryTOCDef" inherits="TomeSectionWindow" >
+
+			<Windows>
+
+				<!-- Contents -->
+				<PageWindow name="BestiaryTOCPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								
+								<!-- Title -->
+								<Label name="BestiarySectionTitle" inherits="TOKSectionTitle" textalign="center" >
+								    <Size>
+								        <AbsPoint x="500" />
+								    </Size>
+									<Anchors>
+										<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+								<!-- The windows for the TOC elements are created dynamically as needed -->
+								<Window name="$parentTOCAnchor" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySectionTitle">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+
+        <!-- Bestiary SubType Def -->
+		<Window name="BestiarySubTypeInfoDef"  inherits="TomeSectionWindow" >
+
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="BestiarySubTypeInfoPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Entry Name -->
+								<Label name="BestiarySubTypeInfoName" inherits="TOKSectionTitle" textalign="center" >
+								    <Size>
+								        <AbsPoint x="500" />
+								    </Size>
+									<Anchors>
+										<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+								<!-- Main Text -->
+								<Label name="BestiarySubTypeInfoText" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySubTypeInfoName">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+								<!-- Kill Text -->
+								<Label name="BestiarySubTypeInfoKillText"  inherits="TOKSubHeading" textalign="center" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySubTypeInfoText">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+								<!-- Entry Name -->
+								
+								<Window name="BestiarySubTypeListHeader" inherits="BestiaryTypeHeading" >
+									<Anchors>
+										<Anchor point="bottomleft" relativePoint="topleft" relativeTo="BestiarySubTypeInfoKillText">
+											<AbsPoint x="-5" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+
+								<!-- Windows for the species links are created dynamically as needed -->
+								<Window name="$parentTOCAnchor" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySubTypeListHeader">
+											<AbsPoint x="0" y="15"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+
+        <!-- Bestiary Species Def -->
+		<Window name="BestiarySpeciesInfoDef"  inherits="TomeSectionWindow" >
+
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="BestiarySpeciesInfoPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Entry Name -->
+								<Label name="BestiarySpeciesInfoName" inherits="TOKSectionTitle" textalign="center" >
+								    <Size>
+								        <AbsPoint x="500" />
+								    </Size>
+									<Anchors>
+										<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								<!-- Kill Text -->
+								<Label name="BestiarySpeciesInfoKillText" inherits="TOKSubHeading" textalign="center" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesInfoName">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								<!-- Main Image -->
+								<DynamicImage name="BestiarySpeciesInfoImage" texture="bestiary_species_image" texturescale="1.5" >
+									<Size>
+										<AbsPoint x="384" y="384"/>
+									</Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesInfoKillText">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</DynamicImage>
+
+
+								<!-- 1st Text Block -->
+								<Label name="BestiarySpeciesInfoText1" inherits="TOKTextItalic" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesInfoImage">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+								<!-- Divider -->
+								<DynamicImage name="BestiarySpeciesDivider" inherits="TomeDiamondDivider">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesInfoText1">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</DynamicImage>
+
+								<!-- Rewards -->
+								<Window name="BestiarySpeciesTaskAnchor" >
+								    <Size>
+								        <AbsPoint x="450" y="0" />
+								    </Size>
+									<Anchors>
+								        <Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesDivider">
+										    <AbsPoint x="0" y="15"/>
+									    </Anchor>
+								    </Anchors>
+    							</Window>
+    							
+    							<Label name="BestiarySpeciesInfoTaskLabel" inherits="TOKHeadingSmall" textalign="left">
+									<Size>
+										<AbsPoint x="200" y="0"/>
+									</Size>
+									<Anchors>
+										<Anchor point="topleft" relativePoint="topleft" relativeTo="BestiarySpeciesTaskAnchor">
+											<AbsPoint x="35" y="5"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								<Label name="BestiarySpeciesInfoRewardsLabel" inherits="TOKHeadingSmall" textalign="right">
+									<Anchors>
+										<Anchor point="topright" relativePoint="topright" relativeTo="BestiarySpeciesTaskAnchor">
+											<AbsPoint x="-20" y="5"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+    							
+								
+								<!-- Reward Window are created dynamically as needed -->
+
+								<Label name="BestiarySpeciesInfoText2" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="BestiarySpeciesTaskAnchor">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								<Label name="BestiarySpeciesInfoText3" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottomleft" relativePoint="topleft" relativeTo="BestiarySpeciesInfoText2">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+		
+    </Windows>
+</Interface>

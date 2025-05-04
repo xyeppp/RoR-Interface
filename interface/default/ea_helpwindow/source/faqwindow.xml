@@ -1,0 +1,288 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/FAQWindow.lua"/>
+    </Scripts>
+    <Windows>
+
+        <!-- Templates -->
+        <VerticalScrollbar name="FAQWindowVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="FAQWindow.OnVertScrollLButtonUp" />
+            </EventHandlers>
+        </VerticalScrollbar>
+
+        <Button name="FAQWindowTextButton" inherits="DefaultButton" font="font_default_text_small" textalign="left">
+            <Size>
+                <AbsPoint x="850" y="32" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="255" b="255" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+        <Button name="FAQRowLabel" maxchars="512" inherits="FAQWindowTextButton">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="FAQWindow.OnLButtonUpPlayerRow" />
+                <EventHandler event="OnRButtonUp" function="FAQWindow.OnRButtonUpPlayerRow" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Single Row Definition -->
+        <Window name="FAQWindowRow">
+            <Size>
+                <AbsPoint x="850" y="26"/>
+            </Size>
+            <Windows>
+
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="">
+                        <AbsPoint x="-4" y="26" />
+                      </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Selected Player Highlight Border -->
+                <FullResizeImage name="$parentSelectionBorder" inherits="DefaultWindowBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Button name="$parentPlusButton" inherits="PlusButton" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"  >
+                            <AbsPoint x="2" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="FAQWindow.OnLButtonUpPlayerRow" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentMinusButton" inherits="MinusButton" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"  >
+                            <AbsPoint x="2" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="FAQWindow.OnLButtonUpPlayerRow" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Data Labels -->
+                <Button name="$parentName" inherits="FAQRowLabel">
+                    <Size>
+                        <AbsPoint x="850" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="20" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>      
+
+            </Windows>
+        </Window>
+
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="FAQWindow" inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="900" y="605"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="EA_Window_Help">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="FAQWindow.Initialize"/>
+                <EventHandler event="OnShutdown"    function="FAQWindow.Shutdown"/>
+                <EventHandler event="OnShown"       function="FAQWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Title Bar, Close button, and Corner Image -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="FAQWindow.Hide" />
+                  </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                      <AbsPoint x="0" y="32" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" />
+                  </Anchors>
+                </Window>
+
+                <!-- Help Title Text-->
+                <Label name="$parentHeaderText" font="font_default_heading" maxchars="32" textalign="center" autoresize="false" popable="false">
+                  <Size>
+                    <AbsPoint x="900" y="32" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                  </Anchors>
+                </Label>
+
+                <!-- Top Seperator -->
+                <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+
+                <ListBox name="$parentPlayerList" scrollbar="FAQWindowVertScroll" rowdef="FAQWindowRow" visiblerows="8" rowcount="100" rowspacing="0">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeperator">
+                      <AbsPoint x="10" y="-8"/>
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentMiddleSeperator">
+                      <AbsPoint x="-10" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                  <ListData table="FAQWindow.listBoxData" populationfunction="FAQWindow.UpdateFAQWindowRow">
+                    <ListColumns>
+                      <ListColumn windowname="Name" variable="name"  format="wstring" />
+                    </ListColumns>
+                  </ListData>
+                </ListBox>
+
+                <!-- Middle Seperator -->
+                <Window name="$parentMiddleSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="left" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                    <Anchor point="right" relativePoint="bottomright" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+              
+                <!-- Main  Window -->
+                <ScrollWindow name="FAQWindowMain" childscrollwindow="FAQWindowMainScrollChild" scrollbar="FAQWindowMainScrollbar" lineheight="18">
+
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMiddleSeperator" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                          <AbsPoint x="-15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="20" y="200"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="4" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="320" y="0"/>
+                            </Size>
+                            <Windows>
+
+                                <!-- Topic title -->
+                                <Label name="FAQWindowTopicLabel" font="font_default_sub_heading" maxchars="256" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="850" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="5" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="204" b="102" a="255"/>
+                                </Label>
+
+                                <!-- Topic's Text -->
+                                <Label name="FAQWindowMainText" font="font_chat_text" maxchars="4096" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="530" y="200"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="FAQWindowTopicLabel">
+                                            <AbsPoint x="5" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </ScrollWindow>
+
+              <!-- Button Bar Barground -->
+              <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                <Size>
+                  <AbsPoint x="0" y="75" />
+                </Size>
+              </Window>
+
+              <!-- Back Button -->
+              <Button name="$parentKnowledgeBaseButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                  <AbsPoint x="250" y="39" />
+                </Size>
+                <Anchors>
+                  <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackgroundButtonBackgroundFill">
+                    <AbsPoint x="25" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="FAQWindow.OnLButtonUpKnowledgeBaseButton" />
+                </EventHandlers>
+              </Button>
+              
+              <!-- Back Button -->
+              <Button name="$parentBackButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                  <AbsPoint x="150" y="39" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackgroundButtonBackgroundFill">
+                    <AbsPoint x="-25" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="FAQWindow.OnLButtonUpBackButton" />
+                </EventHandlers>
+              </Button>
+              
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

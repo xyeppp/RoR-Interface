@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_PairingMap_GvD1_d1" file="Textures/EA_PairingMap_GvD1_d1.dds" />
+        <Texture name="EA_PairingMap_GvD1_paths" file="Textures/PairingMap_GvD1_paths.dds" />
+        <Texture name="EA_PairingMap_EvC1_d1" file="Textures/EA_PairingMap_EvC1_d1.dds" />
+        <Texture name="EA_PairingMap_EvC1_paths" file="Textures/PairingMap_EvC1_paths.dds" />
+        <Texture name="EA_PairingMap_Elves1_d1" file="Textures/EA_PairingMap_Elves1_d1.dds" />
+        <Texture name="EA_PairingMap_Elves1_paths" file="Textures/PairingMap_Elves1_paths.dds" />
+        <Texture name="EA_PairingMap_TK1_d1" file="Textures/EA_PairingMap_TK1_d1.dds" />
+
+        <Texture name="EA_Campaign01_d5" file="Textures/EA_Campaign01_d5.dds">
+            <Slice id="City-CONTESTED" left="0" top="369" width="87" height="88" />
+            <Slice id="City-CONTESTED-MINI" left="0" top="307" width="59" height="61" />
+            <Slice id="City-Dest-Chaos" left="206" top="88" width="87" height="88" />
+            <Slice id="City-Dest-Chaos-MINI" left="59" top="307" width="59" height="61" />
+            <Slice id="City-Dest-DarkElf" left="380" top="88" width="87" height="88" />
+            <Slice id="City-Dest-DarkElf-MINI" left="177" top="307" width="59" height="61" />
+            <Slice id="City-Dest-Greenskin" left="293" top="88" width="87" height="88" />
+            <Slice id="City-Dest-Greenskin-MINI" left="118" top="307" width="59" height="61" />
+            <Slice id="City-Order-Dwarf" left="293" top="0" width="87" height="88" />
+            <Slice id="City-Order-Dwarf-MINI" left="295" top="289" width="59" height="61" />
+            <Slice id="City-Order-Empire" left="206" top="0" width="87" height="88" />
+            <Slice id="City-Order-Empire-MINI" left="236" top="289" width="59" height="61" />
+            <Slice id="City-Order-HighElf" left="380" top="0" width="87" height="88" />
+            <Slice id="City-Order-HighElf-MINI" left="354" top="299" width="59" height="61" />
+            <Slice id="City-Travel-Available" left="425" top="339" width="87" height="88" />
+            <Slice id="City-Travel-Current" left="364" top="424" width="87" height="88" />
+            <Slice id="City-Travel-Unavailable" left="287" top="368" width="87" height="88" />
+            <Slice id="Fort-CONTESTED" left="1" top="249" width="51" height="58" />
+            <Slice id="Fort-CONTESTED-MINI" left="174" top="4" width="32" height="36" />
+            <Slice id="Fort-Dest-Chaos" left="52" top="249" width="51" height="58" />
+            <Slice id="Fort-Dest-Chaos-MINI" left="110" top="76" width="32" height="36" />
+            <Slice id="Fort-Dest-DarkElf" left="154" top="249" width="51" height="58" />
+            <Slice id="Fort-Dest-DarkElf-MINI" left="174" top="76" width="32" height="36" />
+            <Slice id="Fort-Dest-Greenskin" left="103" top="249" width="51" height="58" />
+            <Slice id="Fort-Dest-Greenskin-MINI" left="142" top="76" width="32" height="36" />
+            <Slice id="Fort-Order-Dwarf" left="256" top="231" width="51" height="58" />
+            <Slice id="Fort-Order-Dwarf-MINI" left="142" top="40" width="32" height="36" />
+            <Slice id="Fort-Order-Empire" left="205" top="231" width="51" height="58" />
+            <Slice id="Fort-Order-Empire-MINI" left="110" top="40" width="32" height="36" />
+            <Slice id="Fort-Order-HighElf" left="307" top="231" width="51" height="58" />
+            <Slice id="Fort-Order-HighElf-MINI" left="174" top="40" width="32" height="36" />
+            <Slice id="Fort-Travel-Unavailable" left="461" top="454" width="51" height="58" />
+            <Slice id="Fort-Travel-Unavailable-MINI" left="467" top="0" width="32" height="36" />
+            <Slice id="Lock-Big" left="112" top="0" width="30" height="39" />
+            <Slice id="Lock-mini" left="142" top="0" width="20" height="27" />
+            <Slice id="Wing-CONTESTED" left="458" top="285" width="54" height="54" />
+            <Slice id="Wing-Dest-Chaos" left="201" top="177" width="54" height="54" />
+            <Slice id="Wing-Dest-DarkElf" left="309" top="177" width="54" height="54" />
+            <Slice id="Wing-Dest-Greenskin" left="255" top="177" width="54" height="54" />
+            <Slice id="Wing-Order-Dwarf" left="417" top="177" width="54" height="54" />
+            <Slice id="Wing-Order-Empire" left="363" top="177" width="54" height="54" />
+            <Slice id="Wing-Order-HighElf" left="458" top="231" width="54" height="54" />
+            <Slice id="Wing-Travel-Available" left="87" top="435" width="55" height="54" />
+            <Slice id="Wing-Travel-Current" left="142" top="435" width="55" height="54" />
+            <Slice id="Wing-Travel-Unavailable" left="197" top="435" width="55" height="54" />
+            <Slice id="You-Are-Here-arrows" left="1" top="0" width="109" height="114" />
+            <Slice id="Zone-CONTESTED" left="358" top="231" width="67" height="67" />
+            <Slice id="Zone-Dest-Chaos" left="0" top="182" width="67" height="67" />
+            <Slice id="Zone-Dest-DarkElf" left="134" top="182" width="67" height="67" />
+            <Slice id="Zone-Dest-Greenskin" left="67" top="182" width="67" height="67" />
+            <Slice id="Zone-Order-Dwarf" left="67" top="115" width="67" height="67" />
+            <Slice id="Zone-Order-Empire" left="0" top="115" width="67" height="67" />
+            <Slice id="Zone-Order-HighElf" left="134" top="115" width="67" height="67" />
+            <Slice id="Zone-Travel-Available" left="87" top="368" width="67" height="67" />
+            <Slice id="Zone-Travel-Current" left="154" top="368" width="67" height="67" />
+            <Slice id="Zone-Travel-Unavailable" left="221" top="368" width="66" height="67" />
+        </Texture>
+        
+        <Texture name="EA_WorldMap01_d1" file="Textures/EA_WorldMap01_d1.dds">
+            <Slice id="WorldMap" left="0" top="0" width="1292" height="1024" />
+        </Texture>
+
+    </Assets>
+</Interface>

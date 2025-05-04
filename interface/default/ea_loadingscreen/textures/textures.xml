@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>    
+    <Texture name="EA_Texture_LoadingShield1" file="Textures/EA_loading_shield_d5.dds" />
+  
+    <Texture name="EA_Texture_LoadingAnimationParchmentSymbol" file="Textures/EA_loading-animated-WAR-d5.DDS" />
+  
+     <Texture name="EA_Texture_LoadingScreen_BlankBook" file="Textures/blank-book.DDS" />
+  
+  
+  
+    <Texture name="EA_Texture_Racial_Filigree_Rules" file="Textures/EA_loading-racial_filigree-d5.DDS">
+      <Slice id="chaos-filigree" left="0" top="42" width="256" height="42" />
+      <Slice id="darkelf-filigree" left="0" top="168" width="256" height="42" />
+      <Slice id="dwarf-filigree" left="0" top="210" width="256" height="42" />
+      <Slice id="empire-filigree" left="0" top="0" width="256" height="42" />
+      <Slice id="greenskin-filigree" left="0" top="84" width="256" height="42" />
+      <Slice id="highelf-filigree" left="0" top="126" width="256" height="42" />
+    </Texture>
+  
+  </Assets>
+</Interface>

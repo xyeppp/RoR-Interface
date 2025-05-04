@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Scripts>
+    <Script file="Source/QuickStartWindow.lua" />
+  </Scripts>
+  <Windows>
+    <Window name="QuickStartWindow" layer="default" movable="false">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft"/>
+        <Anchor point="bottomright" relativePoint="bottomright"/>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="QuickStartWindow.Initialize" />
+        <EventHandler event="OnShown" function="QuickStartWindow.OnShown" />
+        <EventHandler event="OnLButtonUp" function="QuickStartWindow.LButtonUp" />
+        <EventHandler event="OnLButtonDown" function="QuickStartWindow.LButtonDown" />
+      </EventHandlers>
+
+      <Windows>
+        <DynamicImage name="$parentWARBanner" layer="secondary" handleinput="false" texture="EA_Pregame01_d5" slice="Warhammer-Online-Logo">
+          <Size>
+            <AbsPoint x="782" y="296" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="120" y="0" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+
+        <!-- Trial Account Info Window -->
+        <Window name="$parentTrialAccountInfo" inherits="EA_TrialAccountInfoTemplate">
+            <Size>
+                <AbsPoint x="550" y="270" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="$parentNameLabel">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <!-- Bottom Options prior to connecting to the server lobby -->
+        <Button name="$parentCharactersButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Size>
+            <AbsPoint x="284" y="105" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentPlay">
+              <AbsPoint x="0" y="20" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.GoToCharacters"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentPNCButton" inherits="EA_Button_DefaultPregameResizeable">
+            <Size>
+                <AbsPoint x="284" y="105" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentCharactersButton">
+                    <AbsPoint x="0" y="20" />
+                </Anchor>
+            </Anchors>
+           <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="QuickStartWindow.ShowPNCWindow"/>
+            </EventHandlers>
+        </Button>          
+          
+        <Button name="$parentServersButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Size>
+            <AbsPoint x="224" y="105" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentCinematicButton">
+              <AbsPoint x="-20" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.GoToServers"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentCinematicButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Size>
+            <AbsPoint x="284" y="105" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentCreditsButton">
+              <AbsPoint x="-20" y="0" />
+            </Anchor>
+          </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CinematicDisplay.ToggleShowing"/>
+                    </EventHandlers>
+        </Button>
+        <Button name="$parentCreditsButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Size>
+            <AbsPoint x="224" y="105" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+              <AbsPoint x="0" y="-25" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_Credits.ToggleShowing"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentSettingsButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentCreditsButton">
+              <AbsPoint x="20" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.ToggleSettings"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentPlay" inherits="CharacterSelectLargeButton">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft">
+              <AbsPoint x="225" y="-500" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.Play"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentQuitButton" inherits="EA_Button_DefaultPregameResizeable">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentSettingsButton">
+              <AbsPoint x="20" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.QuitGame"/>
+          </EventHandlers>
+        </Button>
+        <Button name="$parentUpgradeTrial" inherits="EA_Button_DefaultPregameResizeable">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="QuickStartWindow.UpgradeTrial"/>
+          </EventHandlers>
+        </Button>
+        <Label name="$parentNameLabel" font="font_default_text_giant" maxchars="2056" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+          <Size>
+            <AbsPoint x="670" y="50" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentRankLabel">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentRankLabel" font="font_default_text_large" maxchars="2056" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+          <Size>
+            <AbsPoint x="670" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentLocationLabel">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentLocationLabel" font="font_default_text_large" maxchars="2056" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+          <Size>
+            <AbsPoint x="670" y="20" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentPlay">
+              <AbsPoint x="0" y="-20" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Server Queue Window -->
+        <Window name="QuickStartQueueStatusWindow" layer="popup" movable="false">
+          <Size>
+            <AbsPoint x="600" y="300" />
+          </Size>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" >
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+            <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="false" layer="background">
+              <Size>
+                <AbsPoint x="600" y="300" />
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="-4" y="-4" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="4" y="4" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <Label name="$parentText" font="font_default_text_huge" maxchars="512" textalign="center" wordwrap="true" autoresize="true">
+              <Size>
+                <AbsPoint x="500" y="200" />
+              </Size>
+              <Anchors>
+                <Anchor point="top" relativePoint="top">
+                  <AbsPoint x="0" y="30" />
+                </Anchor>
+              </Anchors>
+              <Color r="255" g="255" b="255" a="255" />
+            </Label>
+          </Windows>
+        </Window>
+      </Windows>
+    </Window>
+  </Windows>
+</Interface>

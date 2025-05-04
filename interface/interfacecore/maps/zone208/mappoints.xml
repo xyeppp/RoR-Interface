@@ -1,0 +1,207 @@
+<zone iname="Saphery">
+    <landmark iname="Mansion of Evermourn" id="1" mapIcon="1209" x="20921" y="27774">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Starsight Mansion" id="2" mapIcon="1209" x="30572" y="46110">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Silverglass" id="3" mapIcon="1207" x="39805" y="47797">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Thornvale Manor" id="4" mapIcon="1209" x="52955" y="5215">
+        <race>HighElf</race>
+        <number>13</number>
+        <ranks realm="order" min="26" max="27" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Menuthil's Burden" id="5" mapIcon="1208" x="55165" y="43874">
+        <race>HighElf</race>
+        <number>14</number>
+        <ranks realm="order" min="28" max="29" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Southern Stonewind Cavern" id="6" mapIcon="1062" x="57128" y="60235">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Northern Stonewind Cavern" id="7" mapIcon="1062" x="59853" y="42688">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Central Stonewind Cavern" id="8" mapIcon="1062" x="60427" y="50695">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Kyaran's Advance" id="9" mapIcon="1251" x="8861" y="34423">
+        <race>DarkElf</race>
+        <number>14</number>
+        <ranks realm="destruction" min="28" max="29" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Knife's Edge" id="10" mapIcon="1255" x="9952" y="6108">
+        <race>DarkElf</race>
+        <number>13</number>
+        <ranks realm="destruction" min="26" max="27" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="11" mapIcon="1259" x="33545" y="3745" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="12" mapIcon="1259" x="21110" y="8392" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="13" mapIcon="1259" x="28448" y="10613" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <publicQuest iname="White Tower of Hoeth" id="430" iconSet="1" x="19675" y="51695">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Trial By Fire" id="423" iconSet="1" x="24208" y="21731">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="House of Cards" id="429" iconSet="1" x="29508" y="56062">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ghyran's Embrace" id="428" iconSet="1" x="31159" y="32404">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Siege of Silverglass" id="433" iconSet="1" x="42680" y="47824">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Circle of the Winds" id="421" iconSet="1" x="42131" y="18755">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Hall of the Crimson Shroud" id="432" iconSet="1" x="44827" y="36212">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Platinum Tower" id="419" iconSet="1" x="54798" y="31953">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Sweating the Stone" id="431" iconSet="1" x="55125" y="56087">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Thanon Hall" id="420" iconSet="1" x="58499" y="20838">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Recompense" id="424" iconSet="1" x="7673" y="27244">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Whitemoon Manor" id="422" iconSet="1" x="9285" y="17498">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+	<landmark iname="Stormfire Tower" id="14" mapIcon="1214" x="40487" y="25266">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Stone of Avatheys" id="15" mapIcon="1212" x="56578" y="56756">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sinelian Hall" id="16" mapIcon="1209" x="44973" y="34578">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Anurion's Manor" id="17" mapIcon="1214" x="30304" y="32137">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The White Tower of Hoeth" id="18" mapIcon="1207" x="18522" y="47922">
+        <importance>major</importance>
+    </landmark>
+    <battlefieldObjective iname="The Spire of Teclis: Healing Boon" id="5064" iconSet="1" x="39624" y="11013">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Sari' Daroir: Defensive Boon" id="5063" iconSet="1" x="26326" y="6143">
+    </battlefieldObjective>
+    <keep iname="Well of Qhaysh" id="23" iconSet="1" x="17360" y="15774">
+        <objectiveId>5062</objectiveId>
+    </keep>
+    <!-- BEGIN Avelorn points -->
+    <battlefieldObjective iname="The Wood Choppaz: Artisan's Gift" id="5066" iconSet="1" x="20193" y="62763" zone="202">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Maiden's Landing: Merchant's Gift" id="5065" iconSet="1" x="38709" y="63063" zone="202">
+    </battlefieldObjective>
+    <keep iname="Ghrond's Sacristy" id="24" iconSet="1" x="29119" y="53846" zone="202">
+        <objectiveId>5067</objectiveId>
+    </keep>
+    <!-- END Avelord points -->
+    <zoneTransition iname="To Avelorn" x="48000" y="0">
+        <zone>202</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Avelorn" x="16000" y="0">
+        <zone>202</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Caledor" x="32000" y="65535">
+        <zone>203</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Eataine" x="65535" y="48000">
+        <zone>209</zone>
+    </zoneTransition>
+</zone>

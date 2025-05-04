@@ -1,0 +1,324 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/RRQProgressBar.lua" />
+    </Scripts>
+
+    <Windows>
+        
+        <StatusBar name="RRQTomeStatusBar" foreground="EA_StatusBar_DefaultTintableBar" background="" handleinput="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="topright" relativePoint="topright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </StatusBar>
+        
+        <Window name="RRQTomeStatusBarFrame" handleinput="false">
+            <Windows>
+                <StatusBar name="$parentBar" inherits="RRQTomeStatusBar" reverseFill="true" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+            </Windows>
+        </Window>
+        
+        <DynamicImage name="RRQMidMarker" texture="EA_HUD_01" slice="Quest-Tracker-Open-ROLLOVER" handleinput="false" >
+            <Size>
+                <AbsPoint x="36" y="38" />
+            </Size>
+        </DynamicImage>
+        
+        <DynamicImage name="TKBackground" texture="EA_TombToggle01_32b" slice="TombToggle-Background" handleinput="false" >
+            <Size>
+                <AbsPoint x="61" y="128" />
+            </Size>
+        </DynamicImage>
+        
+        <DynamicImage name="TKScarab" texture="EA_TombToggle01_32b" slice="TombToggle-Sacrab" handleinput="false" >
+            <Size>
+                <AbsPoint x="48" y="46" />
+            </Size>
+        </DynamicImage>
+        
+        <DynamicImage name="TKRealmSymbol1" texture="EA_TombToggle01_32b" slice="TombToggle-SymbolOrder" handleinput="false" >
+            <Size>
+                <AbsPoint x="33" y="37" />
+            </Size>
+        </DynamicImage>
+
+        <DynamicImage name="TKRealmSymbol2" texture="EA_TombToggle01_32b" slice="TombToggle-SymbolDestruction" handleinput="false" >
+            <Size>
+                <AbsPoint x="33" y="37" />
+            </Size>
+        </DynamicImage>
+        
+        <VerticalResizeImage name="TKBarFillRealm1" texture="EA_TombToggle01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="8" y="0" />
+            </Size>
+            <Sizes top="0" middle="18" bottom="0" />
+            <TexSlices>
+                <Middle id="TombToggle-BarBLUE" />
+            </TexSlices>
+        </VerticalResizeImage>
+        
+        <VerticalResizeImage name="TKBarFillRealm2" texture="EA_TombToggle01_32b" handleinput="false">
+            <Size>
+                <AbsPoint x="8" y="0" />
+            </Size>
+            <Sizes top="0" middle="18" bottom="0" />
+            <TexSlices>
+                <Middle id="TombToggle-BarRED" />
+            </TexSlices>
+        </VerticalResizeImage>
+        
+        <DynamicImage name="TKLock" texture="EA_VictoryPoints01_32b" handleinput="false" popable="false" layer="secondary" slice="Lock">
+            <Size>
+                <AbsPoint x="31" y="41" />
+            </Size>
+        </DynamicImage>
+        
+        <!-- Template for one set of RRQ Status Bars -->
+        <Window name="RRQBarsSetTemplate" savesettings="false" >
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RRQProgressBar.DefaultOnMouseoverCallback" />
+            </EventHandlers>
+            <Windows>
+                <!-- NOTE: Background was added to help me know I'm anchoring bars right. Can remove later in art pass -->
+                <!-- <FullResizeImage name="$parentBackgroundCover" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="125" g="125" b="125" />
+                </FullResizeImage> -->
+                
+                <!-- Neutral -->
+                <Window name="$parentBar0" inherits="EA_Window_DefaultFrameStatusBar" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!-- Order -->
+                <Window name="$parentBar1" inherits="EA_Window_DefaultFrameStatusBar" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar0" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentBar0" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <!-- Destruction -->
+                <Window name="$parentBar2" inherits="EA_Window_DefaultFrameStatusBar" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentBar1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            
+            </Windows>
+        </Window>
+        
+        <!-- Alternate RRQ display for the initial Live Event with a realm resource quest in the tome.
+                This is somewhat similar to the Zone Control bar, the max is the sum
+                of both realm's progress and the bars show the proportion each realm
+                contributed. 
+        -->
+        <Window name="RRQBarsTugoWarTemplate" savesettings="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RRQProgressBar.DefaultOnMouseoverCallback" />
+            </EventHandlers>
+            <Windows>
+                <!-- NOTE: Background was added to help me know I'm anchoring bars right. Can remove later in art pass -->
+                <!-- <FullResizeImage name="$parentBackgroundCover" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="125" g="125" b="125" />
+                </FullResizeImage> -->
+                <!-- Neutral - no display -->
+                <Window name="$parentBar0" handleinput="false">
+                    <Windows>
+                        <StatusBar name="$parentBar" inherits="RRQTomeStatusBar" reverseFill="true" >
+                        </StatusBar>
+                    </Windows>
+                </Window>
+                <!-- Order -->
+                <Window name="$parentBar1" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="2" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-2" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <StatusBar name="$parentBar" inherits="RRQTomeStatusBar" reverseFill="false" >
+                        </StatusBar>
+                    </Windows>
+                </Window>
+                <!-- Destruction -->
+                <Window name="$parentBar2" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="2" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-2" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <StatusBar name="$parentBar" inherits="RRQTomeStatusBar" reverseFill="true" >
+                        </StatusBar>
+                    </Windows>
+                </Window>
+                <FullResizeImage name="$parentBackground" inherits="EA_Button_ResizeIconFrameNormal" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <!-- Center marker -->
+                <DynamicImage name="$parentMidMarker" inherits="RRQMidMarker" layer="secondary" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <!-- Stylized look for gated Tomb Kings dungeon control -->
+        <Window name="RRQBarsTombKingsTemplate" savesettings="false" >
+            <Size>
+                <AbsPoint x="62" y="128" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RRQProgressBar.DefaultOnMouseoverCallback" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentBackground" inherits="TKBackground" layer="background" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentScarab" inherits="TKScarab" layer="secondary" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackground" >
+                            <AbsPoint x="-1" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLockIcon" inherits="TKLock" layer="secondary" handleinput="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentScarab" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRealmSymbol1" inherits="TKRealmSymbol1" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRealmSymbol2" inherits="TKRealmSymbol2" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- Progress Bars -->
+                <VerticalResizeImage name="$parentBar1" inherits="TKBarFillRealm1" layer="default" >
+                    <Anchors>
+                        <!-- <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="20" y="43" />
+                        </Anchor> -->
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                            <AbsPoint x="20" y="-25" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentBar2" inherits="TKBarFillRealm2" layer="default" >
+                    <Anchors>
+                        <!--<Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground">
+                            <AbsPoint x="-22" y="43" />
+                        </Anchor> -->
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-22" y="-25" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+            </Windows>
+        </Window>
+
+        <!-- Container Templates -->
+        <Window name="EA_Window_RRQStatusContainerHorizontalTemplate" >
+            <Size>
+                <AbsPoint x="200" y="79" />
+            </Size>
+        </Window>
+        
+        <Window name="EA_Window_RRQStatusContainerTomeTemplate" >
+            <Size>
+                <AbsPoint x="200" y="23" />
+            </Size>
+        </Window>
+        
+        <Window name="EA_Window_RRQStatusContainerTombKingsTemplate" >
+            <Size>
+                <AbsPoint x="62" y="128" />
+            </Size>
+        </Window>
+        
+    </Windows>
+</Interface>

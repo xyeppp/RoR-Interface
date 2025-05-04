@@ -1,0 +1,892 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+  
+        <Window name="TOKTextButtonWithDottedLine">
+            <Windows>
+                <Button name="$parentText" inherits="TOKTextButton" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="400" y="22"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentDottedLine" inherits="TOKText" handleinput="false" wordwrap="false" autoresize="false" textalign="left" warnOnTextCropped="false" >
+                    <Size>
+                        <AbsPoint x="400" y="22"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentText">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>                       
+                    </Anchors>
+                </Label>  
+            </Windows>
+        </Window>
+
+        <Button name="TomeGivenRewardButton" inherits="TomeIconButtonWithStacks">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverGivenReward" />
+                <EventHandler event="OnLButtonDown" function="TomeWindow.OnLButtonDownGivenReward" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="TomeChoiceRewardButton" inherits="TomeIconButtonWithStacks">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverChoiceReward" />
+                <EventHandler event="OnLButtonDown" function="TomeWindow.OnLButtonDownChoiceReward" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Quest Table of Contents Components -->
+        <Button name="QuestTOCSortButton" inherits="TOKQuestTextButton" >
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverQuestTOCSortButton" />
+                <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickQuestTOCSortButton" />
+            </EventHandlers>
+        </Button>
+
+
+        <!-- Left Side = 500, Right Side = 500 -->
+        <Window name="QuestTableOfContentsHeaderLine" layer="secondary">
+            <Size>
+                <AbsPoint x="1000" y="45"/>
+            </Size>
+            <Windows>
+
+                <Button name="$parentQuestComplete" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="65" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage"  texture="EA_Tome" handleinput="false" slice="CircleDone" >
+                            <Size>
+                                <AbsPoint x="21" y="23" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="16" y="10" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+                <Button name="$parentQuestType" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="65" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentQuestComplete">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage"  texture="map_markers01" handleinput="false" slice="QuestInactive-Grey" >
+                            <Size>
+                                <AbsPoint x="32" y="32" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="8" y="6" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+                <Button name="$parentName" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="330" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentQuestType">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentZone" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="330" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="60" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentTrack" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="65" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentZone">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage"  texture="EA_HUD_01" handleinput="false" slice="Quest-Tracker-Open" texturescale="0.9" >
+                            <Size>
+                                <AbsPoint x="32" y="34" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="12" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+                <Button name="$parentMapPin" inherits="QuestTOCSortButton" >
+                    <Size>
+                        <AbsPoint x="65" y="34" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTrack">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage"  texture="EA_HUD_01" handleinput="false" slice="Big-Map-Button" texturescale="0.625" >
+                            <Size>
+                                <AbsPoint x="30" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                    <AbsPoint x="12" y="4" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </Button>
+
+                <HorizontalResizeImage name="$parentBottomDivider1" inherits="TomeResizableHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottom" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <HorizontalResizeImage name="$parentBottomDivider2" inherits="TomeResizableHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottom" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="20" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+        </Window>
+
+        <Window name="QuestTableOfContentsLine" >
+            <Size>
+                <AbsPoint x="1000" y="32"/>
+            </Size>
+            <Windows>
+
+                <!-- Quest Complete -->
+                <Button name="$parentComplete" inherits="TomeCheckButton" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Quest Type -->
+                <DynamicImage name="$parentQuestTypeIcon" texture="map_markers01" slice="QuestInactive-Grey">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentComplete">
+                            <AbsPoint x="40" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Window name="$parentQuestName" inherits="TOKTextButtonWithDottedLine"  maxchars="128" textalign="left" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="350" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="150" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectQuest"/>
+                    </EventHandlers>
+                </Window>
+
+
+                <Window name="$parentZone" inherits="TOKTextButtonWithDottedLine"  handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="320" y="32"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentQuestName">
+                            <AbsPoint x="35" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <Button name="$parentTrackBtn" inherits="TomeToggleButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentZone">
+                            <AbsPoint x="24" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.ToggleTrackQuest"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentTrackPinBtn" inherits="TomeToggleButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTrackBtn">
+                            <AbsPoint x="38" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.ToggleTrackQuestPin"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!-- Quest Info Components -->
+        <Window name="QuestConditionWindow">
+            <Size>
+                <AbsPoint x="350" y="20"/>
+            </Size>
+            <Windows>
+                <Button name="$parentCheck" inherits="TomeCheckButton" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentName" inherits="TOKText" autoresize="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="250" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCheck" >
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCounter" inherits="TOKText" textalign="right">
+                    <Size>
+                        <AbsPoint x="75" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <VerticalResizeImage name="QuestTOCVertLine" inherits="TomeVertResizeLine" handleinput="false">
+            <Size>
+                <AbsPoint x="5" y="675" />
+            </Size>
+        </VerticalResizeImage>
+
+        <!-- Quest Window Def -->
+        <Window name="QuestTableOfContentsDef"  inherits="TomeSectionWindow" >
+
+            <Windows>
+
+
+                <!-- Column Headers -->
+                <Window name="QuestTOCHeaders" inherits="QuestTableOfContentsHeaderLine" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="80" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Sort Arrows -->
+                <DynamicImage name="QuestTOCHeaderUpArrow" texture="shared_01" slice="UP-arrow-depressed" layer="popup" handleinput="false" texturescale="1.5">
+		            <Size>
+		                <AbsPoint x="14" y="18" />
+		            </Size>
+                </DynamicImage>
+                <DynamicImage name="QuestTOCHeaderDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" layer="popup" handleinput="false" texturescale="1.5">
+                    <Size>
+                        <AbsPoint x="14" y="18" />
+                    </Size>
+                </DynamicImage>
+
+
+                <!-- Vertical seperators -->
+                <VerticalResizeImage name="$parentVertLine1" inherits="QuestTOCVertLine" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="QuestTOCHeadersQuestComplete">
+                            <AbsPoint x="5" y="7"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentVertLine2" inherits="QuestTOCVertLine" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="QuestTOCHeadersQuestType">
+                            <AbsPoint x="5" y="7"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentVertLine3" inherits="QuestTOCVertLine" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="QuestTOCHeadersZone">
+                            <AbsPoint x="5" y="7"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentVertLine4" inherits="QuestTOCVertLine" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="QuestTOCHeadersTrack">
+                            <AbsPoint x="5" y="7"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+
+                <!-- Contents - Use a single page page window, to allow a two page layout -->
+                <PageWindow name="QuestTOCPageWindow" inherits="TomePageWindow" pagesdisplayed="1" >
+                    <Size>
+                        <AbsPoint x="1000" y="670"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="QuestTOCHeaders">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentContentsChild">
+                            <Windows>
+                                <!-- Anchor for the dynamically created quest windows. -->
+                                <Window name="$parentQuestListAnchor" >
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </PageWindow>
+
+            </Windows>
+        </Window>
+        
+
+        <!-- Quest Info Def -->
+        <Window name="TomeWindowQuestInfoDef" inherits="TomeSectionWindow">
+            <EventHandlers>
+                <EventHandler event="OnUpdate" function="TomeWindow.QuestInfoUpdate" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Contents -->
+                <PageWindow name="TomeWindowQuestInfoPageWindow" inherits="TomePageWindow">
+                    <Windows>
+                        <Window name="$parentContentsChild">
+                            <Windows>
+
+                                <!-- Title -->
+                                <Label name="TomeWindowQuestInfoQuestName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+						        <Window name="TomeWindowQuestInfoTypeName" >
+						            <Size>
+						                <AbsPoint x="500" y="32" />
+						            </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoQuestName">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+						            <Windows>
+						                <Label name="$parentText" inherits="TOKTextItalic" autoresizewidth="true">
+		                                    <Anchors>
+		                                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+		                                            <AbsPoint x="0" y="0"/>
+		                                        </Anchor>
+		                                    </Anchors>
+						                </Label>
+						                <DynamicImage name="$parentIconLeft" texture="map_markers01" handleinput="false" slice="QuestInactive-Grey" >
+						                    <Size>
+						                        <AbsPoint x="32" y="32" />
+						                    </Size>
+						                    <Anchors>
+						                        <Anchor point="left" relativePoint="right" relativeTo="$parentText" >
+						                            <AbsPoint x="-5" y="0" />
+						                        </Anchor>
+						                    </Anchors>
+						                </DynamicImage>
+						                <DynamicImage name="$parentIconRight" texture="map_markers01" handleinput="false" slice="QuestInactive-Grey" >
+						                    <Size>
+						                        <AbsPoint x="32" y="32" />
+						                    </Size>
+						                    <Anchors>
+						                        <Anchor point="right" relativePoint="left" relativeTo="$parentText" >
+						                            <AbsPoint x="5" y="0" />
+						                        </Anchor>
+						                    </Anchors>
+						                </DynamicImage>
+						            </Windows>
+						        </Window>
+
+                                <!-- Starting Text -->
+                                <Label name="TomeWindowQuestInfoStartDlgText" inherits="TOKTextItalic" autoresize="true">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoTypeName">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <DynamicImage name="$parentDivider" inherits="TomeDiamondDivider">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoStartDlgText">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                                <!-- Options -->
+                                <Window name="$parentOptionsGroup" >
+                                    <Size>
+                                        <AbsPoint x="400" y="60"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Button name="TomeWindowQuestInfoTrackBtn" inherits="TomeToggleButton" >
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                                    <AbsPoint x="0" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <EventHandlers>
+                                                <EventHandler event="OnLButtonUp" function="TomeWindow.QuestInfoToggleTrackQuest"/>
+                                            </EventHandlers>
+                                        </Button>
+		                                <Label name="TomeWindowQuestInfoTrackLabel" inherits="TOKText" textalign="left" >
+		                                    <Size>
+		                                        <AbsPoint x="250" y="20" />
+		                                    </Size>
+		                                    <Anchors>
+		                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoTrackBtn">
+		                                            <AbsPoint x="5" y="0"/>
+		                                        </Anchor>
+		                                    </Anchors>
+		                                </Label>
+		                                
+                                        <Button name="TomeWindowQuestInfoMapBtn" inherits="TomeToggleButton" >
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoTrackBtn">
+                                                    <AbsPoint x="0" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <EventHandlers>
+                                                <EventHandler event="OnLButtonUp" function="TomeWindow.QuestInfoToggleTrackQuestPin"/>
+                                            </EventHandlers>
+                                        </Button>
+		                                <Label name="TomeWindowQuestInfoMapLabel" inherits="TOKText" textalign="left" >
+		                                    <Size>
+		                                        <AbsPoint x="250" y="20" />
+		                                    </Size>
+		                                    <Anchors>
+		                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoMapBtn">
+		                                            <AbsPoint x="5" y="0"/>
+		                                        </Anchor>
+		                                    </Anchors>
+		                                </Label>
+		
+		                                <!-- Abandon & Share Buttons -->
+		                                <Button name="TomeWindowQuestInfoAbandonButton" inherits="TOKTextButton" textalign="right" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="150" y="25" />
+                                            </Size>
+		                                    <Anchors>
+		                                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+		                                            <AbsPoint x="0" y="0"/>
+		                                        </Anchor>
+		                                    </Anchors>
+		                                    <EventHandlers>
+		                                        <EventHandler event="OnLButtonUp" function="TomeWindow.AbandonQuest"/>
+		                                    </EventHandlers>
+		                                </Button>
+		                                <Button name="TomeWindowQuestInfoShareButton" inherits="TOKTextButton" textalign="right" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="150" y="25" />
+                                            </Size>
+		                                    <Anchors>
+		                                        <Anchor point="bottomright" relativePoint="topright" relativeTo="TomeWindowQuestInfoAbandonButton">
+		                                            <AbsPoint x="0" y="5"/>
+		                                        </Anchor>
+		                                    </Anchors>
+		                                    <EventHandlers>
+		                                        <EventHandler event="OnLButtonUp" function="TomeWindow.ShareQuest"/>
+		                                    </EventHandlers>
+		                                </Button>
+		                            </Windows>
+                                </Window>
+
+
+
+                                <!-- PAGE BREAK - Quest Particulars -->
+
+                                <Label name="TomeWindowQuestInfoQuestDetailsLabel" inherits="TOKSubHeading">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOptionsGroup">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="TomeWindowQuestInfoDescriptionText" inherits="TOKText" autoresize="true">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoQuestDetailsLabel">
+                                            <AbsPoint x="20" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+
+                                <!-- Timer -->
+
+                                <Label name="TomeWindowQuestInfoRequirementsLabel" inherits="TOKSubHeading">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoDescriptionText">
+                                            <AbsPoint x="-20" y="30"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="TomeWindowQuestInfoTimer" >
+                                    <Size>
+                                        <AbsPoint x="350" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoRequirementsLabel">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentText" inherits="TOKText" autoresize="true" autoresizewidth="true">
+                                            <Size>
+                                                <AbsPoint x="200" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="left" relativePoint="left" relativeTo="$parent" >
+                                                    <AbsPoint x="30" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+                                        <Label name="$parentValue" inherits="TOKText" handleinput="false" autoresizewidth="true">
+                                            <Size>
+                                                <AbsPoint x="65" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="right" relativeTo="$parent" >
+                                                    <AbsPoint x="7" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+                                        <DynamicImage name="$parentClockImage"  texture="assorted_hud_pieces" handleinput="false" layer="background">
+                                            <Size>
+                                                <AbsPoint x="20" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="left" relativePoint="right" relativeTo="$parentValue">
+                                                    <AbsPoint x="-5" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <TexCoords x="50" y="192" />
+                                        </DynamicImage>
+                                    </Windows>
+                                </Window>
+
+                                <!-- Conditions -->
+                                <Window name="TomeWindowQuestInfoCondition1" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoTimer">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition2" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition1">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition3" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition2">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition4" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition3">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition5" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition4">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition6" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition5">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition7" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition6">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition8" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition7">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition9" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition8">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowQuestInfoCondition10" inherits="QuestConditionWindow">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoCondition9">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!-- Rewards Label -->
+                                <Label name="TomeWindowQuestInfoRewardsLabel" inherits="TOKSubHeading">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowQuestInfoCondition10">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!-- Given Rewards -->
+                                <Button name="TomeWindowQuestInfoGivenReward1" inherits="TomeGivenRewardButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoRewardsLabel">
+                                            <AbsPoint x="40" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward2" inherits="TomeGivenRewardButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward1">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward3" inherits="TomeGivenRewardButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward2">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward4" inherits="TomeGivenRewardButton" id="4">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward3">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward5" inherits="TomeGivenRewardButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward4">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward6" inherits="TomeGivenRewardButton" id="6">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoGivenReward1">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward7" inherits="TomeGivenRewardButton" id="7">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward6">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward8" inherits="TomeGivenRewardButton" id="8">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward7">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward9" inherits="TomeGivenRewardButton" id="9">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward8">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoGivenReward10" inherits="TomeGivenRewardButton" id="10">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoGivenReward9">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Choice Rewards -->
+                                <Label name="TomeWindowQuestInfoChoiceRewardsLabel" inherits="TOKText"  wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="450" y="16"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoGivenReward6">
+                                            <AbsPoint x="-20" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <Button name="TomeWindowQuestInfoChoiceReward1" inherits="TomeChoiceRewardButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoChoiceRewardsLabel">
+                                            <AbsPoint x="20" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward2" inherits="TomeChoiceRewardButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward1">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward3" inherits="TomeChoiceRewardButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward2">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward4" inherits="TomeChoiceRewardButton" id="4">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward3">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward5" inherits="TomeChoiceRewardButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward4">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward6" inherits="TomeChoiceRewardButton" id="6">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="TomeWindowQuestInfoChoiceReward1">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward7" inherits="TomeChoiceRewardButton" id="7">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward6">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward8" inherits="TomeChoiceRewardButton" id="8">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward7">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward9" inherits="TomeChoiceRewardButton" id="9">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward8">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="TomeWindowQuestInfoChoiceReward10" inherits="TomeChoiceRewardButton" id="10">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="TomeWindowQuestInfoChoiceReward9">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+
+
+                            </Windows>
+                        </Window>
+                        <!-- name=WarStorylineEpilogueInfoContentsChild -->
+                    </Windows>
+                </PageWindow>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

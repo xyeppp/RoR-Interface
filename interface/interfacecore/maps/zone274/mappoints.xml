@@ -1,0 +1,8 @@
+<zone iname="Pyramid of Settra">
+  <battlefieldObjective iname="Chamber of Ptra" id="5165" iconSet="1" x="32722" y="29614">
+  </battlefieldObjective>
+  <battlefieldObjective iname="Chamber of Djaf" id="5166" iconSet="1" x="35281" y="34049">
+  </battlefieldObjective>
+  <battlefieldObjective iname="Chamber of Usirian" id="5167" iconSet="1" x="30159" y="34049">
+  </battlefieldObjective>
+</zone>

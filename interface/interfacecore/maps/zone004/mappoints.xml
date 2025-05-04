@@ -1,0 +1,21 @@
+<zone iname="Butcher's Pass">
+    <landmark iname="Portal to The Maw" id="1" mapIcon="1073" x="17724" y="27359">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to Fell Landing" id="2" mapIcon="1073" x="46286" y="24015">
+        <importance>major</importance>
+    </landmark>
+	<battlefieldObjective iname="Doom-Diver Hill" id="8005" iconSet="1" x="25724" y="19008">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Bigun Hutz" id="8006" iconSet="1" x="34978" y="19930">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Da East Fang" id="8007" iconSet="1" x="33355" y="10810">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Da West Tusk" id="8008" iconSet="1" x="28520" y="10697">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Peakz Pass" id="8009" iconSet="1" x="30563" y="20691">
+    </battlefieldObjective>
+    <zoneTransition iname="To Black Crag" x="48000" y="0">
+        <zone>003</zone>
+    </zoneTransition>
+</zone>

@@ -1,0 +1,106 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/GlyphDisplay.lua" />
+    </Scripts>
+
+    <Windows>
+    
+        <DynamicImage name="WorldMapGlyph" texture="EA_DiamondFrame" handleinput="true">
+            <Size>
+                <AbsPoint x="32" y="32" />
+            </Size>
+            <TexDims x="64" y="64" />
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="GlyphDisplay.OnMouseOverGlyph" />
+                <EventHandler event="OnLButtonDown" function="GlyphDisplay.OnClickGlyph" />
+            </EventHandlers>
+        </DynamicImage>
+        
+        <FullResizeImage name="GlyphLineBackground" inherits="EA_Button_ResizeIconFrameNormal" handleinput="false" layer="background" >
+            <!-- anchoring must be done dynamically --> 
+        </FullResizeImage>
+        
+        <Window name="GlyphDisplayTemplate" savesettings="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <!-- NOTE: Background was added to help me know I'm anchoring right. Can remove later in art pass -->
+                <!-- <FullResizeImage name="$parentBackgroundCover" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="125" g="125" b="125" />
+                </FullResizeImage> -->
+                
+                <FullResizeImage name="$parentLine1" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine2" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine3" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine4" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine5" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine6" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine7" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine8" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine9" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                <FullResizeImage name="$parentLine10" inherits="GlyphLineBackground" >
+                </FullResizeImage>
+                
+                <!-- Glyphs are dynamically added -->
+            </Windows>
+        </Window>
+        
+        <!-- Container Templates -->
+        <!-- TODO: Smart code that tiles sets of glyphs into any available space rather than predefined templates -->
+        <!--        future zones could have more or less glyphs -->
+        <Window name="EA_Window_GlyphContainerHorizontalTemplate"  > <!-- 1 rows of up to 10 glyphs -->
+            <Size>
+                <AbsPoint x="365" y="32" />
+            </Size>
+        </Window>
+        
+        
+        <!-- Glyph Tracker above minimap -->
+        <Window name="EA_Window_GlyphTracker" layer="secondary" savesettings="true">
+            <Size>
+                <AbsPoint x="365" y="32" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                    <AbsPoint x="-5" y="20" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+            
+                <Window name="$parentContainer" inherits="EA_Window_GlyphContainerHorizontalTemplate" >
+                    <Size>
+                        <AbsPoint x="365" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,368 @@
+<!-- NOTE: This file is doccumented with NaturalDocs style comments. All comments begining with "<!--#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/GuildVaultWindow.lua" />
+    </Scripts>
+    <Windows>
+
+      <!-- Tab button definition for the row of available subsections -->
+      <Button name="GuildVaultWindowTabButtonTemplate" inherits="EA_Button_Tab">
+        <EventHandlers>
+          <EventHandler event="OnLButtonUp" function="GuildVaultWindow.OnLButtonUpTab" />
+          <EventHandler event="OnMouseOver" function="GuildVaultWindow.OnMouseOverTab" />
+        </EventHandlers>
+        <TextOffset x="0" y="5" />
+        <Windows>
+          <DynamicImage name="$parentLock" texture="EA_HUD_01" slice="Icon-Lock" textureScale="0.9" handleinput="false">
+            <Size>
+              <AbsPoint x="20" y="33" />
+            </Size>
+            <Anchors>
+              <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                <AbsPoint x="13" y="0" />
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+        </Windows>
+      </Button>
+
+      <Button name="GuildVaultSlotTemplate" inherits="EA_Button_DefaultTimerFrame_Small" draganddrop="true" textalign="bottomright" gameactionbutton="right" >
+        <EventHandlers>
+          <EventHandler event="OnLButtonDown" function="BankWindow.EquipmentLButtonDown" />
+          <EventHandler event="OnLButtonUp" function="BankWindow.EquipmentLButtonUp" />
+          <EventHandler event="OnRButtonDown" function="BankWindow.EquipmentRButtonDown" />
+          <EventHandler event="OnMouseOver" function="BankWindow.EquipmentMouseOver" />
+        </EventHandlers>
+      </Button>
+      
+      <!--*******************************************************************-->
+      <!--                      Whole Window Definition                      -->
+      <!--*******************************************************************-->
+      <Window name="GuildVaultWindow" inherits="EA_Window_Default" handleinput="true" movable="true" sticky="true" layer="secondary" savesettings="false">
+          <Size>
+              <AbsPoint x="675" y="590" />
+          </Size>
+          <Anchors>
+              <Anchor point="center" relativePoint="center"/>
+          </Anchors>
+          <EventHandlers>
+             <EventHandler event="OnInitialize" function="GuildVaultWindow.Initialize" />
+            <EventHandler event="OnShown"       function="GuildVaultWindow.OnShown" />
+            <EventHandler event="OnHidden"      function="GuildVaultWindow.OnHidden" />
+            <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+          </EventHandlers>
+        
+          <Windows>
+            
+            <!-- Title Bar, close button block -->
+            <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+            <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildVaultWindow.OnClose" />
+              </EventHandlers>
+            </Button>
+            <DynamicImage name="$parentCornerImage" inherits="EA_Default_MerchantImage"/>
+            
+            <!-- Whole window background -->
+            <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                  <AbsPoint x="0" y="-6" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright"/>
+              </Anchors>
+            </Window>
+
+            <!-- Tabs Block -->
+            <Window name="$parentTabs">
+              <Anchors>
+                <Anchor point="bottomleft"  relativePoint="topleft"  relativeTo="$parentTitleBar">
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+                <Anchor point="bottomright"  relativePoint="bottomright"  relativeTo="$parentTitleBar">
+                  <AbsPoint x="0" y="60" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+
+                <Button name="$parentVault1" inherits="GuildVaultWindowTabButtonTemplate" id="1">
+                  <Anchors>
+                    <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                      <AbsPoint x="20" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <Button name="$parentVault2" inherits="GuildVaultWindowTabButtonTemplate" id="2">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVault1">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <Button name="$parentVault3" inherits="GuildVaultWindowTabButtonTemplate" id="3">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVault2">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <Button name="$parentVault4" inherits="GuildVaultWindowTabButtonTemplate" id="4">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVault3">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+                <Button name="$parentVault5" inherits="GuildVaultWindowTabButtonTemplate" id="5">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentVault4">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                </Button>
+
+                <Window name="$parentSeparatorLeft" inherits="EA_Window_TabSeparatorLeftSide" layer="popup">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="bottomleft">
+                      <AbsPoint x="0" y="-6" />
+                    </Anchor>
+
+                    <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentVault1">
+                      <AbsPoint x="0" y="-6" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+                
+                <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="popup">
+                  <Anchors>
+                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentVault5">
+                      <AbsPoint x="0" y="-6" />
+                    </Anchor>
+                    
+                    <Anchor point="bottomright" relativePoint="bottomright" >
+                      <AbsPoint x="0" y="-6" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+              </Windows>
+            </Window> <!-- TABS End -->
+
+            <ActionButtonGroup name="$parentSlots" inherits="EA_ActionButtonGroup_Default" draganddrop="true"  gameactionbutton="right"  >
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTabs">
+                  <AbsPoint x="0" y="10" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnActionButtonLButtonDown" function="GuildVaultWindow.OnLButtonDownVaultSlot" />
+                <EventHandler event="OnActionButtonLButtonUp" function="GuildVaultWindow.OnLButtonUpVaultSlot" />
+                <EventHandler event="OnActionButtonRButtonUp" function="GuildVaultWindow.OnRButtonUpVaultSlot" />
+                <EventHandler event="OnActionButtonMouseOver" function="GuildVaultWindow.OnMouseOverVaultSlot" />
+              </EventHandlers>
+            </ActionButtonGroup>
+            
+            <!-- Purchase Additional Row -->
+            <Window name="$parentBuyNewRow" skipinput="true">
+                <Size>
+                    <AbsPoint x="355" y="37" />
+                </Size>
+                <Anchors>
+                    <Anchor point="bottom" relativePoint="top" relativeTo="$parentSlots"/>
+                </Anchors>
+                <Windows>
+                    <DynamicImage name="$parentLock" texture="EA_HUD_01" slice="Icon-Lock" handleinput="false">
+                        <Size>
+                            <AbsPoint x="22" y="37" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="left" relativePoint="left" relativeTo="$parent" />
+                        </Anchors>
+                    </DynamicImage>
+                    
+                    <Button name="$parentButton" inherits="EA_Button_DefaultText" textalign="leftcenter" autoresizewidth="true">
+                        <Size>
+                            <AbsPoint x="320" y="37" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentLock">
+                                <AbsPoint x="13" y="0" />
+                            </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                            <EventHandler event="OnLButtonUp" function="GuildVaultWindow.OnBuyNewRow" />
+                        </EventHandlers>
+                    </Button>
+                </Windows>
+            </Window>
+
+            <!-- Guild Vault --> 
+            <Window name="$parentMoneyInVault" inherits="MoneyFrame" handleinput="false">
+              <Anchors>
+                <Anchor point="top" relativePoint="bottom" relativeTo="$parentBarBackground">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Window>
+
+            <!--************-->
+            <!-- Button Bar -->
+            <!--************-->
+            <Window name="$parentBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+              <Size>
+                <AbsPoint x="0" y="65" />
+              </Size>
+            </Window>
+
+            <Button name="$parentDepositButton" inherits="EA_Button_DefaultResizeable" >
+              <Anchors>
+                <Anchor point="left" relativePoint="left" relativeTo="$parentBarBackground">
+                  <AbsPoint x="25" y="6"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildVaultWindow.OnLButtonUpDepositButton" />
+                <EventHandler event="OnMouseOver" function="GuildVaultWindow.OnMouseOverDepositButton" />
+              </EventHandlers>
+            </Button>
+
+            <Button name="$parentWithdrawButton" inherits="EA_Button_DefaultResizeable" >
+              <Anchors>
+                <Anchor point="right" relativePoint="right" relativeTo="$parentBarBackground">
+                  <AbsPoint x="-25" y="6"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildVaultWindow.OnLButtonUpWithdrawButton" />
+                <EventHandler event="OnMouseOver" function="GuildVaultWindow.OnMouseOverWithdrawButton" />
+              </EventHandlers>
+            </Button>
+
+            <!--************-->
+            <!-- Coin Input -->
+
+            <Window name="$parentMoney">
+              <Size>
+                <AbsPoint x="300" y="55" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBarBackground">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+                
+                <!-- Edit Box Gold -->
+                <EditBox name="$parentEditBoxGold" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="1">
+                  <Size>
+                    <AbsPoint x="54" y="34"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="left" relativePoint="right" relativeTo="$parentGoldCoin">
+                      <AbsPoint x="-4" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                  </EventHandlers>
+                </EditBox>
+                <!-- Edit Box Gold Background -->
+                <FullResizeImage name="$parentEditBoxGoldBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEditBoxGold">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentEditBoxGold">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </FullResizeImage>
+
+                <!-- Gold Coin Icon -->
+                <DynamicImage name="$parentGoldCoin" inherits="EA_Templates_GoldCoin">
+                  <Anchors>
+                    <Anchor point="left" relativePoint="right" relativeTo="$parentEditBoxSilver">
+                      <AbsPoint x="-10" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </DynamicImage>
+
+                <!-- Edit Box Silver -->
+                <EditBox name="$parentEditBoxSilver" inherits="EA_EditBox_DefaultFrame" maxchars="2" input="numbers" taborder="2">
+                  <Size>
+                    <AbsPoint x="40" y="34"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="center" relativePoint="right" relativeTo="$parent">
+                      <AbsPoint x="-2" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                  </EventHandlers>
+                </EditBox>
+
+                <!-- Edit Box Silver Background -->
+                <FullResizeImage name="$parentEditBoxSilverBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEditBoxSilver">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentEditBoxSilver">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </FullResizeImage>
+
+                <!-- Silver Coin Icon -->
+                <DynamicImage name="$parentSilverCoin" inherits="EA_Templates_SilverCoin">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentEditBoxSilver">
+                      <AbsPoint x="4" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </DynamicImage>
+
+                <!-- Edit Box Brass -->
+                <EditBox name="$parentEditBoxBrass" inherits="EA_EditBox_DefaultFrame" maxchars="2" input="numbers" taborder="3">
+                  <Size>
+                    <AbsPoint x="40" y="34"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentSilverCoin">
+                      <AbsPoint x="10" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                  </EventHandlers>
+                </EditBox>
+
+                <!-- Edit Box Brass Background -->
+                <FullResizeImage name="$parentEditBoxBrassBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEditBoxBrass">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentEditBoxBrass">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </FullResizeImage>
+
+                <!-- Brass Coin Icon -->
+                <DynamicImage name="$parentBrassCoin" inherits="EA_Templates_BrassCoin">
+                  <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentEditBoxBrass">
+                      <AbsPoint x="4" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                </DynamicImage>
+                
+              </Windows>
+            </Window>
+            
+          </Windows>
+        </Window> <!-- End of Guild Vault Window -->
+
+    </Windows>
+</Interface>

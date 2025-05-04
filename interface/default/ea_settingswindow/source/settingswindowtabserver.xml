@@ -1,0 +1,135 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabServer.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabServer" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabServer.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabServerContentsScrollChild" scrollbar="SWTabServerContentsScrollbar" lineheight="18" autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+
+                        <!-- Server Tab-->
+                        <Window name="$parentSettingsServer">
+                            <Size>
+                                <AbsPoint x="500" y="190" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <!--Server Tab Items-->
+                                <Label name="$parentOption1Label" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableOption1" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOption1Label" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+
+                                <Label name="$parentOption2Label" inherits="EA_Settings_ItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="335" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <Window name="$parentEnableOption2" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOption2Label" >
+                                            <AbsPoint x="50" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+
+
+                            </Windows>
+                        </Window>
+                                
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Chat -->
+</Interface>

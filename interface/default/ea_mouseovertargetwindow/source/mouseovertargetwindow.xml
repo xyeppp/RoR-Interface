@@ -1,0 +1,27 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/MouseOverTargetWindow.lua" />
+    </Scripts>
+    <Windows>
+    
+        <!-- Container window -->
+        <Window name="MouseOverTargetWindow" movable="false" layer="secondary" handleinput="false" savesettings="true" >
+            <!-- To change size, edit the size of "MouseOverTargetUnitFrame" in Templates_UnitFrames.xml -->   
+            <Size>
+                <AbsPoint x="300" y="70" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="Root">
+                    <AbsPoint x="0" y="-200" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="MouseOverTargetWindow.Initialize" />
+            </EventHandlers>            
+            <Windows>
+ 
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

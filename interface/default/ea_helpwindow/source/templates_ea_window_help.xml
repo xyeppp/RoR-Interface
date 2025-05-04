@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Windows>
+
+    <!-- Templates -->
+    <VerticalScrollbar name="EA_Window_AppealVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="EA_Window_Appeal.OnVertScrollLButtonUp" />
+      </EventHandlers>
+    </VerticalScrollbar>
+
+    <Button name="EA_Window_AppealTextButton" inherits="DefaultButton" font="font_default_text_small" textalign="left">
+      <Size>
+        <AbsPoint x="250" y="32" />
+      </Size>
+      <TextColors>
+        <Normal r="226" g="216" b="45" a="255" />
+        <!-- Yellow r=226, g=216, b=45-->
+        <NormalHighlit r="255" g="255" b="255" a="255" />
+        <Pressed r="255" g="255" b="255" a="255" />
+        <PressedHighlit r="255" g="255" b="255" a="255" />
+        <Disabled r="92" g="92" b="92" a="255" />
+      </TextColors>
+    </Button>
+
+    <Button name="AppealRowLabel" inherits="EA_Window_AppealTextButton">
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="EA_Window_Appeal.OnLButtonUpTopicRow" />
+        <!-- <EventHandler event="OnRButtonUp" function="EA_Window_Appeal.OnRButtonUpTopicRow" /> -->
+      </EventHandlers>
+    </Button>
+
+    <!-- Single Row Definition -->
+    <Window name="AppealTopicRow">
+      <Size>
+        <AbsPoint x="260" y="26"/>
+      </Size>
+      <Windows>
+
+        <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+          <Size>
+            <AbsPoint x="268" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="4" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Data Labels -->
+        <Button name="$parentName" inherits="AppealRowLabel">
+          <Size>
+            <AbsPoint x="260" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="">
+              <AbsPoint x="5" y="6"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+      </Windows>
+    </Window>
+    
+    <!-- Templates -->
+    <VerticalScrollbar name="ManualWindowVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="ManualWindow.OnVertScrollLButtonUp" />
+      </EventHandlers>
+    </VerticalScrollbar>
+
+    <Button name="ManualWindowTextButton" inherits="DefaultButton" font="font_default_text_small" textalign="left">
+      <Size>
+        <AbsPoint x="300" y="32" />
+      </Size>
+      <TextColors>
+          <Normal r="255" g="255" b="255" a="255" />
+          <NormalHighlit r="255" g="85" b="0" a="255" />
+          <Pressed r="155" g="155" b="155" a="255" />
+          <PressedHighlit r="255" g="85" b="0" a="255" />
+          <Disabled r="92" g="92" b="92" a="255" />
+      </TextColors>
+    </Button>
+
+    <!-- Single Row Definition -->
+    <Window name="ManualWindowRow">
+      <Size>
+        <AbsPoint x="294" y="26"/>
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="ManualWindow.OnLButtonUpRow" />
+        <EventHandler event="OnRButtonUp" function="ManualWindow.OnRButtonUpRow" />
+      </EventHandlers>
+      <Windows>
+
+        <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+          <Size>
+            <AbsPoint x="300" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="4" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+        
+        <!-- Plus and Minus Buttons -->
+        <Button name="$parentPlusButton" inherits="PlusButton">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentName">
+              <AbsPoint x="-3" y="-3"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <Button name="$parentMinusButton" inherits="MinusButton">
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentName">
+              <AbsPoint x="-3" y="-3"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Data Labels -->
+        <Button name="$parentName" maxchars="80" inherits="ManualWindowTextButton">
+          <Size>
+            <AbsPoint x="294" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="">
+              <AbsPoint x="20" y="6"/>   <!-- Will be overriden by the List Box populator function -->
+            </Anchor>
+          </Anchors>
+        </Button>
+      </Windows>
+    </Window>
+   
+    
+  </Windows>
+</Interface>
+

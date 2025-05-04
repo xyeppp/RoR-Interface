@@ -1,0 +1,12 @@
+<zone iname="Gromril Crossing">
+    <battlefieldObjective iname="The Mill" id="5021" iconSet="1" x="28890" y="29444">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5022" iconSet="1" x="21709" y="30773">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5031" iconSet="1" x="24158" y="24827">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5032" iconSet="1" x="26701" y="18113">
+    </battlefieldObjective>
+    <battlefieldObjective iname="" id="5033" iconSet="1" x="19548" y="20451">
+    </battlefieldObjective>
+</zone>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+
+    <Windows>    
+
+        <Window name="EA_Template_LoadScreen_PatchNoteItem" handleinput="false" layer="overlay" >
+            <Size>
+                <AbsPoint x="550" y="100" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBullet" inherits="EA_DynamicImage_BulletTemplate" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="127" g="127" b="127" />
+                </DynamicImage>
+                <Label name="$parentText" inherits="TOKText"  maxchars="1024" layer="overlay" autoresize="true" textalign="left" >
+                    <Size>
+                        <AbsPoint x="520" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBullet" >
+                            <AbsPoint x="10" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="49" g="36" b="16" />
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_PatchNotesLoadingScreenDef" layer="default" sticky="false">
+            <Size>
+                <AbsPoint x="1490" y="1024" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo=""/>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_LoadingScreen.InitPatchNotesLoadScreen" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentBlankBookImage" inherits="LoadingScreenBookImage" layer="background"  >                    
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" />
+                    </Anchors>                
+                </DynamicImage>
+
+                <!-- Contents -->
+                <PageWindow name="$parentContents" childcontentswindow="$parentChild" pagesdisplayed="2" guttersize="30" pagenumbertemplate="" sticky="false">
+                    <Size>
+                        <AbsPoint x="1240" y="884"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="135" y="70"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                    
+                        <!-- Loading Animation / Streaming Animation -->
+                        <AnimatedImage name="$parentLoadingAnim" inherits="LoadingScreenWarSymbolAnimation" >
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </AnimatedImage>
+                        
+                        <!-- Streaming Labels -->
+                        <Label name="$parentStreamingText"  font="font_default_text_huge"
+                               textalign="right" wordwrap="false" autoresize="true" layer="secondary" >
+                            <Size>
+                                <AbsPoint x="600" y="0" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentLoadingAnim">
+                                    <AbsPoint x="-10" y="-7" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="10" b="50" />
+                        </Label>
+                                
+                        <Label name="$parentStreamingText2"  font="font_default_text_large"
+                               textalign="right" wordwrap="false" autoresize="true" layer="secondary" >
+                            <Size>
+                                <AbsPoint x="600" y="0" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentStreamingText">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="10" b="50" />
+                        </Label>
+                    
+                        <Window name="$parentChild">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+
+                                <!-- Title Line 1 -->
+                                <Label name="$parentHeadingLine1" font="font_heading_large_noshadow" textalign="center" textAutoFitMinScale="0.5" >
+                                    <Size>
+                                        <AbsPoint x="550" y="60"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+
+                                <!-- Title Line 2 -->
+                                <Label name="$parentHeadingLine2" font="font_heading_huge_noshadow" textalign="center"  textAutoFitMinScale="0.3" >
+                                    <Size>
+                                        <AbsPoint x="550" y="80"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeadingLine1">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+                                
+                                <!-- Zone Description -->
+                                <Label name="$parentZoneDescText" font="font_journal_text_large" maxchars="1024" textalign="left" wordwrap="true" autoresize="false">
+                                    <Size>
+                                        <AbsPoint x="550" y="300"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeadingLine2">
+                                            <AbsPoint x="0" y="50" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+                                
+                                <!-- Tip Text -->
+                                <Label name="$parentTipLabel" font="font_journal_heading" textalign="left" wordwrap="false" autoresize="false" >
+                                    <Size>
+                                        <AbsPoint x="550" y="30"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="0" y="600" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+
+                                <Label name="$parentTipText"  font="font_journal_text_large" textalign="left" wordwrap="true" autoresize="true" >
+                                    <Size>
+                                        <AbsPoint x="550" y="300"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTipLabel">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+
+                                <!-- Notes Header -->
+                                <Window name="$parentNotesPageBreak">
+                                    <Size>
+                                        <AbsPoint x="550" y="0"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTipText">
+                                            <AbsPoint x="0" y="25" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Label name="$parentNotesHeading" font="font_heading_large_noshadow" textalign="center" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="585" y="300"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNotesPageBreak">
+                                            <AbsPoint x="0" y="25" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+                                <Label name="$parentNotesHeading2" font="font_heading_default_no_shadow" textalign="center" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="550" y="300"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNotesHeading">
+                                            <AbsPoint x="0" y="25" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="49" g="36" b="16" />
+                                </Label>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </PageWindow>
+
+                <AnimatedImage name="$parentPageFlipAnim" inherits="BookAnimDef" layer="overlay" handlinput="false" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                            <AbsPoint x="25" y="-130" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="150" />
+                        </Anchor>
+                    </Anchors>
+                </AnimatedImage>
+
+            </Windows>
+        </Window>
+
+
+
+    </Windows>
+</Interface>

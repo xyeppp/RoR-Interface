@@ -1,0 +1,24 @@
+<zone iname="The Maw">
+    <landmark iname="Portal to Butcher's Pass" id="1" mapIcon="1073" x="31548" y="50546">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to Fell Landing" id="2" mapIcon="1073" x="30432" y="47525">
+        <importance>major</importance>
+    </landmark>
+    <battlefieldObjective iname="Loyalists Fate" id="8025" iconSet="1" x="26787" y="57506">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Precarious Portal" id="8026" iconSet="1" x="26687" y="53061">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Skull Cache" id="8027" iconSet="1" x="23424" y="59548">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Slaaneshi Bonfire" id="8028" iconSet="1" x="17557" y="59198">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Twisted Meddle" id="8029" iconSet="1" x="14894" y="50103">
+    </battlefieldObjective>
+    <zoneTransition iname="To Chaos Wastes" x="16000" y="65535">
+        <zone>103</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Chaos Wastes" x="48000" y="65535">
+        <zone>103</zone>
+    </zoneTransition>
+</zone>

@@ -1,0 +1,240 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ApothecaryWindow.lua" />
+    </Scripts>
+    <Windows>
+        <!-- Main Crafting Window -->
+        <Window name="ApothecaryWindow" layer="secondary" movable="false" id="4">
+            <Size>
+                <AbsPoint x="435" y="574" />
+            </Size>
+            <!-- The layout system will anchor this window correctly -->
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="ApothecaryWindow.Initialize" />
+                <EventHandler event="OnShown" function="ApothecaryWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="ApothecaryWindow.OnHidden" />
+                <EventHandler event="OnRButtonUp" function="ApothecaryWindow.OnRButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <!-- STANDARD WINDOW FRAME -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_ApothecaryImage" layer="secondary" />
+                
+                <!-- Background -->
+                <DynamicImage name="$parentApothecaryBackground" layer="background" texture="EA_Apothecary01_d5" slice="Main-Background"  drawchildrenfirst="true" >
+                    <Size>
+                        <AbsPoint x="419" y="448" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="9" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentBeaker" texture="EA_Apothecary01_d5" slice="Container-Background" >
+                            <Size>
+                                <AbsPoint x="158" y="225" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="2" y="-45" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+                
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+                
+                <!-- Close Button -->
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CraftingSystem.Done" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- END STANDARD WINDOW FRAME -->
+                
+                <!-- top section -->
+                <!-- Skill amount -->
+                <Label name="$parentSkill" font="font_default_text_small" maxchars="64" textalign="center">
+                    <Size>
+                        <AbsPoint x="200" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="45" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255" />
+                </Label>
+
+                
+                <!-- middle section -->
+                <!-- left side -->
+                
+                <Button name="$parentContainerSlot" inherits="ApothecaryWindowContainerSlotTemplate" id="0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="45" y="80" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- Stability Meter -->
+                <DynamicImage name="$parentStabilityMeter"  inherits="EA_DynamicImage_StabilityMeterTemplate" >
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="ApothecaryWindow.OnMouseOverStability" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" >
+                            <AbsPoint x="-95" y="-75" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- right side -->
+                <Button name="$parentDeterminentSlot" inherits="ApothecaryWindowDeterminentSlotTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentContainerSlot">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentBottle2" inherits="EA_DynamicImage_BottleTemplate" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="0" y="120" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentBottle1" inherits="EA_DynamicImage_BottleTemplate" >
+                     <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentBottle2" >
+                            <AbsPoint x="-25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentBottle3" inherits="EA_DynamicImage_BottleTemplate" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentBottle2">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Button name="$parentResource2Slot" inherits="ApothecaryWindowBottleSlotTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="0" y="127" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentResource1Slot" inherits="ApothecaryWindowBottleSlotTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentResource2Slot" >
+                            <AbsPoint x="-32" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentResource3Slot" inherits="ApothecaryWindowBottleSlotTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentResource2Slot">
+                            <AbsPoint x="32" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <!-- bottom section -->
+                
+                <FullResizeImage name="$parentHintTextBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="-9" y="-93" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="9" y="-53" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor  r="20" g="20" b="20" />
+                </FullResizeImage>
+                <!-- Status/Hint Text	-->
+                <Window name="$parentSeparator1" inherits="EA_Window_DefaultSeparator">
+                	<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" >
+							<AbsPoint x="0" y="-37" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" >
+							<AbsPoint x="0" y="-37" />
+						</Anchor>
+					</Anchors>
+                </Window>
+                
+                <Label name="$parentHintText" font="font_clear_default" maxchars="200" textalign="left"
+                    wordwrap="false" autoresize="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentHintTextBackground">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentHintTextIcon" inherits="EA_DynamicImage_OrangeOrbTemplate" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentHintText" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Window name="$parentSeparator2" inherits="EA_Window_DefaultSeparator">
+                	<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" >
+							<AbsPoint x="0" y="-77" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" >
+							<AbsPoint x="0" y="-77" />
+						</Anchor>
+					</Anchors>
+                </Window>
+                
+
+                <!-- Craft Now! button -->
+                <Button name="$parentCommitButton" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ApothecaryWindow.Perform" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="-11" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+            </Windows>
+        </Window>
+        <!-- END Main ApothecaryWindow -->
+    </Windows>
+</Interface>

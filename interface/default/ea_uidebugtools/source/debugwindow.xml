@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/DebugWindow.lua" />
+    </Scripts>
+    <Windows>
+
+
+        <Window name="LogFilterButton" inherits="EA_LabelCheckButton" id="1">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="DebugWindow.UpdateDisplayFilter" />
+            </EventHandlers>
+        </Window>
+
+
+        <Window name="DebugWindow" movable="true" layer="popup" savesettings="true">
+            <Size>
+                <AbsPoint x="800" y="450" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="100" y="100" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="DebugWindow.Initialize" />
+                <EventHandler event="OnUpdate" function="DebugWindow.Update" />
+                <EventHandler event="OnShutdown" function="DebugWindow.Shutdown" />
+            </EventHandlers>
+            <Windows>
+               
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                                      
+              
+                
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                               
+               
+                <LogDisplay name="$parentText" font="font_chat_text" scrollbar="$parentScrollbar" scrollbarPosition="right" background="" maxchars="4096" maxentries="-1">
+                    <Size>
+                        <AbsPoint x="780" y="390" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentLogDisplaySeperator">
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft">
+                                    <AbsPoint x="-20" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright"/>
+                            </Anchors>
+                        </VerticalScrollbar>
+                    </Windows>
+                </LogDisplay>
+                
+                 <Window name="$parentLogDisplaySeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="0" y="-40" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                            <AbsPoint x="0" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                </Window>    
+
+
+                <Label name="$parentMouseOverLabel" font="font_chat_text" maxchars="256" handleinput="false">
+                    <Size>
+                        <AbsPoint x="200" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentReloadUi">
+                            <AbsPoint x="10" y="-65"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentMouseOverText" font="font_chat_text"  maxchars="256" handleinput="false">
+                    <Size>
+                        <AbsPoint x="700" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMouseOverLabel">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentMousePointLabel" font="font_chat_text" maxchars="256" handleinput="false">
+                    <Size>
+                        <AbsPoint x="120" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentMousePointText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentMousePointText" font="font_chat_text"  maxchars="256" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="25"/>
+                    </Size>
+                    <Anchors>
+
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentToggleLogging">
+                            <AbsPoint x="-2" y="-55"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+
+                <Button name="$parentReloadUi" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="InterfaceCore.ReloadUI"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentToggleLogging" inherits="EA_Button_DefaultResizeable"  font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentToggleOptions">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.ToggleLogging"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentToggleOptions" inherits="EA_Button_DefaultResizeable"  font="font_chat_text" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.ToggleOptions"/>
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentResizeButton" inherits="CoreWindowResizeButtonBottomRight" layer="popup" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="DebugWindow.OnResizeBegin" />
+                    </EventHandlers>
+                </Button>
+
+
+
+            </Windows>
+        </Window>
+        
+        
+        <!--- Options Window -->
+        <Window name="DebugWindowOptions" layer="overlay" movable="true" >
+            <Size>
+                <AbsPoint x="400" y="500" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <Windows>
+                
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />                                      
+              
+                
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.HideOptions" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentClearLogText" inherits="EA_Button_DefaultResizeable" textalign="center">
+                    <Anchors>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                        <AbsPoint x="-10" y="-15" />
+                    </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="DebugWindow.ClearTextLog"/>
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentFiltersTitle" inherits="EA_Settings_SectionTitle" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="40" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentFilterType1" inherits="LogFilterButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFiltersTitle">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentFilterType2" inherits="LogFilterButton" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentFilterType3" inherits="LogFilterButton" id="3">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentFilterType4" inherits="LogFilterButton" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentFilterType5" inherits="LogFilterButton" id="5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentFilterType6" inherits="LogFilterButton" id="6">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentErrorHandlingTitle" inherits="EA_Settings_SectionTitle" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFilterType6">
+                            <AbsPoint x="-20" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentErrorOption1" inherits="EA_LabelCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentErrorHandlingTitle">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.UpdateLuaErrorHandling" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentErrorOption2" inherits="EA_LabelCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentErrorOption1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.UpdateCodeErrorHandling" />
+                    </EventHandlers>
+                </Window>
+
+                <Window name="$parentLuaDebugLibrary" inherits="EA_LabelCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentErrorOption2">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="DebugWindow.UpdateLoadLuaDebugLibrary" />
+                    </EventHandlers>
+                </Window>
+
+            </Windows>
+        </Window>
+
+        
+    </Windows>
+</Interface>

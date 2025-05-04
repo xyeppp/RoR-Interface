@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+
+        <!-- Heading Font -->
+        <Font name="font_heading_default"   face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_medium"    face="AR HeiU30" file="Uhei00m.ttf" height="40" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_large"     face="AR HeiU30" file="Uhei00m.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_huge"      face="AR HeiU30" file="Uhei00m.ttf" height="72" texsize="512" antialias="true" hinting="false" autohinting="false" outline="false" shadow="true" shadowsize="3"/>
+        <Font name="font_heading_medium_noshadow"    face="AR HeiU30" file="Uhei00m.ttf" height="40" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_large_noshadow"     face="AR HeiU30" file="Uhei00m.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_big_noshadow"       face="AR HeiU30" file="Uhei00m.ttf" height="60" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+        <Font name="font_heading_huge_noshadow"      face="AR HeiU30" file="Uhei00m.ttf" height="72" texsize="512" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" shadowsize="0"/>
+
+
+        <!-- Journal Fonts -->
+        <Font name="font_journal_body"              face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text"              face="AR HeiU30" file="Uhei00m.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_body_large"        face="AR HeiU30" file="Uhei00m.ttf" height="21" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_large"        face="AR HeiU30" file="Uhei00m.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_huge"         face="AR HeiU30" file="Uhei00m.ttf" height="26" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_text_italic"       face="AR HeiU30" file="Uhei00m.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_sub_heading"       face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_heading"           face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_heading_smaller"   face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_journal_small_heading"     face="AR HeiU30" file="Uhei00m.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+
+        <!-- Default Window Fonts -->
+        <Font name="font_default_heading"           face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2" />
+        <Font name="font_default_medium_heading"    face="AR HeiU30" file="Uhei00m.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_sub_heading"       face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_sub_heading_no_outline" face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_default_war_heading"       face="AR HeiU30" file="Uhei00m.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" shadowsize="2"/>
+        <Font name="font_default_text"              face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_no_outline"   face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_default_text_small"        face="AR HeiU30" file="Uhei00m.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_large"        face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_default_text_huge"         face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="512" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+        <Font name="font_default_text_giant"        face="AR HeiU30" file="Uhei00m.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" outlineSize="2" shadow="false"/>
+
+        <!-- Chat Fonts -->
+        <Font name="font_chat_text"                 face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_chat_text_no_outline"      face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_chat_text_bold"            face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_default"             face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_tiny"                face="AR HeiU30" file="Uhei00m.ttf" height="14" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_small"               face="AR HeiU30" file="Uhei00m.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_medium"              face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_large"               face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_small_bold"          face="AR HeiU30" file="Uhei00m.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_medium_bold"         face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_clear_large_bold"          face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <!-- Special Fonts -->
+        <Font name="font_default_text_gigantic"          face="AR HeiU30" file="Uhei00m.ttf" height="48" texsize="256" antialias="true" hinting="true" autohinting="false" outline="false" shadow="true"/>
+        <Font name="font_heading_default_no_shadow"      face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_zone_name_no_shadow"    face="AR HeiU30" file="Uhei00m.ttf" height="26" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_tiny_no_shadow"         face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_20pt_no_shadow"         face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_22pt_no_shadow"         face="AR HeiU30" file="Uhei00m.ttf" height="22" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_small_no_shadow"        face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_huge_no_shadow"         face="AR HeiU30" file="Uhei00m.ttf" height="63" texsize="256" antialias="true" hinting="false" autohinting="false" outline="false" shadow="false" />
+        <Font name="font_heading_rank"                   face="AR HeiU30" file="Uhei00m.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="false"/>
+        <Font name="font_heading_target_mouseover_name"  face="AR HeiU30" file="Uhei00m.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false" />
+        <Font name="font_heading_unitframe_large_name"   face="AR HeiU30" file="Uhei00m.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="false" shadow="true"/>
+        <Font name="font_heading_unitframe_con"          face="AR HeiU30" file="Uhei00m.ttf" height="16" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <!-- Center Messaging Alert Fonts -->
+        <Font name="font_alert_outline_tiny"        face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_small"       face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_medium"      face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_large"       face="AR HeiU30" file="Uhei00m.ttf" height="36" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_huge"        face="AR HeiU30" file="Uhei00m.ttf" height="42" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_giant"       face="AR HeiU30" file="Uhei00m.ttf" height="48" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_gigantic"    face="AR HeiU30" file="Uhei00m.ttf" height="60" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+
+        <!-- Half of the orginal font size for the Center Messaging Alerts -->
+        <Font name="font_alert_outline_half_tiny"     face="AR HeiU30" file="Uhei00m.ttf" height="9" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_small"    face="AR HeiU30" file="Uhei00m.ttf" height="12" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_medium"   face="AR HeiU30" file="Uhei00m.ttf" height="15" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_large"    face="AR HeiU30" file="Uhei00m.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_huge"     face="AR HeiU30" file="Uhei00m.ttf" height="21" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_giant"    face="AR HeiU30" file="Uhei00m.ttf" height="24" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+        <Font name="font_alert_outline_half_gigantic" face="AR HeiU30" file="Uhei00m.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false" shadowsize="1" />
+
+        <!-- Guild Fonts -->
+        <Font name="font_guild_MP_R_17" face="AR HeiU30" file="Uhei00m.ttf" height="17" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_guild_MP_R_19" face="AR HeiU30" file="Uhei00m.ttf" height="19" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+        <Font name="font_guild_MP_R_23" face="AR HeiU30" file="Uhei00m.ttf" height="23" texsize="256" antialias="true" hinting="false" autohinting="true" outline="true" shadow="false"/>
+
+        <Font name="font_name_plate_titles_old" face="AR HeiU30" file="Uhei00m.ttf" height="15" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_name_plate_names_old"  face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="512" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+
+        <Font name="font_name_plate_titles" face="AR HeiU30" file="Uhei00m.ttf" height="20" texsize="512" antialias="true" hinting="true" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_name_plate_names"  face="AR HeiU30" file="Uhei00m.ttf" height="26" texsize="512" antialias="true" hinting="true" autohinting="false" outline="true" shadow="false"/>
+
+        <!-- Korean game rating font -->
+        <Font name="font_title_window_game_rating_text" face="2002L_NHN" file="2002L_NHN.ttf" height="30" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+        <Font name="font_chat_window_game_rating_text"  face="2002L_NHN" file="2002L_NHN.ttf" height="18" texsize="256" antialias="true" hinting="false" autohinting="false" outline="true" shadow="false"/>
+
+    </Assets>
+</Interface>

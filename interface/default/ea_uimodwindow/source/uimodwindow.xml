@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/UiModWindow.lua" />
+    </Scripts>
+    <Windows>
+
+
+        <Button name="EA_Button_UiModuleListRowTemplate" inherits="EA_Button_DefaultListRow" >
+            <Size>
+                <AbsPoint x="800" y="34"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="UiModWindow.OnClickModRow" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <Label name="$parentModuleName" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="370" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="10" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentType" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="150" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentModuleName">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="UiModWindow.OnMouseOverModType" />
+                    </EventHandlers>
+                </Label>
+                <Label name="$parentStatus" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="150" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentType">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="UiModWindow.OnMouseOverStatus" />
+                    </EventHandlers>
+                </Label>
+                <Button name="$parentEnabled" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentStatus">
+                            <AbsPoint x="30" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnToggleModEnabled" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Button>
+
+
+        <Button name="ModWindowSortButton" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="245" y="31" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="UiModWindow.OnClickModListSortButton" />
+                <EventHandler event="OnMouseOver" function="UiModWindow.OnMouseOverModListSortButton" />
+            </EventHandlers>
+        </Button>
+
+
+        <!-- Ui Mod Window -->
+        <Window name="UiModWindow" movable="true" layer="secondary" inherits="EA_Window_Default" savesettings="true" >
+            <Size>
+                <AbsPoint x="1300" y="700" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="right" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="UiModWindow.Initialize" />
+                <EventHandler event="OnShown" function="UiModWindow.OnShown" />
+                <EventHandler event="OnHidden" function="UiModWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Basic Instructions -->
+                <Label name="$parentInstructions" inherits="ModDetailsTextDef" autoresize="false" textAutoFitMinScale="0.75" handleinput="true" textalign="center" >
+                    <Size>
+                        <AbsPoint x="900" y="80" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+
+
+                <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="100" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="100" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Category Combo -->
+
+                <ComboBox name="$parentCategoryComboBox" inherits="EA_ComboBox_DefaultResizableLarge" maxvisibleitems="20" layer="popup" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="120" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="UiModWindow.OnCategoryComboSelChanged" />
+                    </EventHandlers>
+                </ComboBox>                    
+            
+                <Window name="$parentVerticalSeperator" inherits="EA_Window_DefaultVerticalSeparator" >
+                    <Size>
+                        <AbsPoint x="28" y="500" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentModsList">
+                            <AbsPoint x="-8" y="-67" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentModsList">
+                            <AbsPoint x="-8" y="77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="ModWindowSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="375" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentModsList">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton2" inherits="ModWindowSortButton" id="2">
+                    <Size>
+                        <AbsPoint x="155" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton3" inherits="ModWindowSortButton" id="3">
+                    <Size>
+                        <AbsPoint x="155" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton4" inherits="ModWindowSortButton" id="4">
+                    <Size>
+                        <AbsPoint x="135" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <DynamicImage name="$parentSortUpArrow" inherits="EA_ListSortUpArrow" />
+                <DynamicImage name="$parentSortDownArrow" inherits="EA_ListSortDownArrow" />
+
+
+
+                <ListBox name="$parentModsList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Button_UiModuleListRowTemplate" visiblerows="10" rowspacing="2">
+                    <Size>
+                        <AbsPoint x="820" y="360" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeperator">
+                            <AbsPoint x="10" y="50"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="UiModWindow.modsListData" populationfunction="UiModWindow.UpdateModRows">
+                        <ListColumns>
+                            <ListColumn windowname="ModuleName" variable="wideStrName" format="wstring" />
+                            <ListColumn windowname="CategoryName" variable="categoryName" format="wstring" />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+                <Label name="$parentNoModsText" inherits="ModDetailsLabelDef" textalign="center" >
+                    <Size>
+                        <AbsPoint x="470" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentModsList">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentListBottomSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentModsList" >
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentModsList" >
+                            <AbsPoint x="10" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Mod Management Buttons -->
+
+                <Button name="$parentReEnableAllAutoDisabledButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentListBottomSeperator">
+                            <AbsPoint x="25" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnReEnableAutoDisabled" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentEnableAllButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentDisableAllButton">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnEnableAllButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentDisableAllButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentListBottomSeperator">
+                            <AbsPoint x="-25" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnDisableAllButton" />
+                    </EventHandlers>
+                </Button>
+
+
+
+                <!-- Scrolling Mod Details Window -->
+                <ScrollWindow name="$parentModDetails" inherits="EA_ScrollWindow_ModInfoTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentModsList" >
+                            <AbsPoint x="10" y="-60" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentModsList" >
+                            <AbsPoint x="10" y="75" />
+                        </Anchor>
+                    </Anchors>
+                </ScrollWindow>
+
+
+                <!-- Buttons -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" />
+
+                <Button name="$parentAdvancedButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="200" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="UiModWindow">
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnAdvancedButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentCancelButton">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnOkayButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="UiModWindow">
+                            <AbsPoint x="-25" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

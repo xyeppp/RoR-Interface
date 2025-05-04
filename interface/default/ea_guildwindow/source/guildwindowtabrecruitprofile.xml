@@ -1,0 +1,275 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Windows>
+
+      <Label name="GuildWindowProfileTitleTemplate" inherits="GuildWindowSectionTitle" >
+          <Size>
+              <AbsPoint x="150" y="20" />
+          </Size>
+          <Color r="255" g="204" b="102" />
+      </Label>
+
+      <Label name="GuildWindowProfileTextTemplate" inherits="GuildWindowSectionTitle" wordwrap="true" >
+          <Size>
+              <AbsPoint x="300" y="40" />
+          </Size>
+          <Color r="235" g="235" b="235" />
+      </Label>
+
+
+
+
+      <!-- Edit Box Section -->
+      <Window name="GuildRecruitmentProfileEditBoxSection" >
+          <Windows>
+
+               <!-- Title -->
+              <Label name="$parentTitle" inherits="GuildWindowProfileTitleTemplate" >
+                  <Size>
+                      <AbsPoint x="400" y="32" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                          <AbsPoint x="-20" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Edit Box-->
+              <EditBox name="$parentEditBox" inherits="EA_EditBox_DefaultFrame_Multiline" maxchars="99" taborder="1">
+                  <Size>
+                      <AbsPoint x="550" y="60"/>
+                  </Size>
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="00" y="0"/>
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnKeyEnter" function="GuildWindowTabRecruit.OnKeyEnterEditBox" />
+                      <EventHandler event="OnKeyEscape" function="GuildWindowTabRecruit.OnKeyEscapeEditBox" />
+                      <EventHandler event="OnTextChanged" function="GuildWindowTabRecruit.MarkProfileAsChanged" />
+                  </EventHandlers>
+              </EditBox>
+
+          </Windows>
+      </Window>
+
+      <Window name="GuildWindowRecruitProfileCheckBoxTemplate" inherits="EA_LabelCheckButtonSmall" >
+          <Size>
+              <AbsPoint x="300" y="30" />
+          </Size>
+          <EventHandlers>
+              <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.ToggleCheckBox" />
+          </EventHandlers>
+      </Window>
+
+      <ComboBox name="GuildWindowRecruitProfileComboTemplate" inherits="EA_ComboBox_DefaultResizable"  >
+          <EventHandlers>
+              <EventHandler event="OnSelChanged" function="GuildWindowTabRecruit.MarkProfileAsChanged" />
+          </EventHandlers>
+      </ComboBox>
+
+
+    <!-- Edit Profile Template -->
+    <Window name="GuildWindowRecruitEditProfileTemplate" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+          <AbsPoint x="0" y="-50"/>
+        </Anchor>
+      </Anchors>
+        <EventHandlers>
+            <EventHandler event="OnLButtonDown" function="GuildWindowTabRecruit.OnLButtonEditProfile"/>
+        </EventHandlers>
+      <Windows>
+
+
+          <!-- Recruiting Status -->
+          <Label name="$parentRecruitingStatusTitle" inherits="GuildWindowProfileTitleTemplate" >
+              <Size>
+                  <AbsPoint x="600" y="25" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                      <AbsPoint x="20" y="15"/>
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+
+          <Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable">
+              <Anchors>
+                  <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentHorizRule">
+                      <AbsPoint x="-25" y="5" />
+                  </Anchor>
+              </Anchors>
+              <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.SaveProfile" />
+              </EventHandlers>
+          </Button>
+
+          <Button name="$parentResetButton" inherits="EA_Button_DefaultResizeable">
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentSaveButton">
+                      <AbsPoint x="0" y="-2" />
+                  </Anchor>
+              </Anchors>
+              <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.ResetProfile" />
+              </EventHandlers>
+          </Button>
+
+          <!-- Guild Link -->
+          <Label name="$parentGuildLinkText" inherits="GuildWindowProfileTitleTemplate" textalign="right" autoresize="true" wordwrap="true" >
+              <Size>
+                <AbsPoint x="160" y="40" />
+              </Size>
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topright" relativeTo="$parentResetButton">
+                      <AbsPoint x="-20" y="0"/>
+                  </Anchor>
+              </Anchors>
+              <EventHandlers>
+                  <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                  <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+              </EventHandlers>
+          </Label>
+
+          <!-- Horizontal Rule -->
+          <Window name="$parentHorizRule" inherits="EA_Window_DefaultSeparator" >
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                      <AbsPoint x="0" y="90"/>
+                  </Anchor>
+                  <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                      <AbsPoint x="0" y="90"/>
+                  </Anchor>
+              </Anchors>
+          </Window>
+
+
+          <!-- Description -->
+        <Window name="$parentDesc" inherits="GuildRecruitmentProfileEditBoxSection" id="1">
+            <Size>
+                <AbsPoint x="300" y="60" />
+            </Size>
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="20" y="125"/>
+              </Anchor>
+            </Anchors>
+        </Window>
+
+        <!-- Full Summary -->
+        <Window name="$parentSummary" inherits="GuildRecruitmentProfileEditBoxSection" id="1">
+          <Size>
+              <AbsPoint x="300" y="300" />
+          </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDesc">
+                    <AbsPoint x="0" y="10"/>
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <!-- PlayStyle -->
+        <Label name="$parentPlayStyleTitle" inherits="GuildWindowProfileTitleTemplate" >
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSummary">
+                    <AbsPoint x="0" y="20"/>
+                </Anchor>
+            </Anchors>
+        </Label>
+        <ComboBox name="$parentPlayStyleCombo" inherits="GuildWindowRecruitProfileComboTemplate"  >
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+        </ComboBox>
+
+          <!-- PlayStyle -->
+          <Label name="$parentAtmosphereTitle" inherits="GuildWindowProfileTitleTemplate" >             
+              <Anchors>
+                  <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                      <AbsPoint x="0" y="10"/>
+                  </Anchor>
+              </Anchors>
+          </Label>
+          <ComboBox name="$parentAtmosphereCombo" inherits="GuildWindowRecruitProfileComboTemplate"  >
+              <Anchors>
+                  <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAtmosphereTitle">
+                      <AbsPoint x="0" y="0"/>
+                  </Anchor>
+              </Anchors>
+          </ComboBox>
+
+
+          <!-- Careers Needed -->
+          <Label name="$parentCareersNeededTitle" inherits="GuildWindowProfileTitleTemplate" >
+              <Anchors>
+                  <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDesc">
+                      <AbsPoint x="20" y="0"/>
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+        <!-- Tiers Needed -->
+        <Label name="$parentTiersNeededTitle" inherits="GuildWindowProfileTitleTemplate" >
+           <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareersNeededTitle">
+                  <AbsPoint x="150" y="0"/>
+              </Anchor>
+           </Anchors>
+       </Label>
+
+        <!-- Recruting Status -->
+
+         <!-- Interests  -->
+          <Label name="$parentInterestsTitle" inherits="GuildWindowProfileTitleTemplate" >
+              <Anchors>
+                  <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentTiersNeededTitle">
+                      <AbsPoint x="0" y="160"/>
+                  </Anchor>
+              </Anchors>
+          </Label>
+
+          <!-- Recruiters -->
+          <Label name="$parentRecruitersTitle" inherits="GuildWindowProfileTitleTemplate" >
+              <Anchors>
+                  <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                      <AbsPoint x="300" y="0"/>
+                  </Anchor>
+              </Anchors>
+          </Label>
+          <Label name="$parentRecruitersText" inherits="GuildWindowProfileTitleTemplate" wordwrap="true">
+              <Size>
+                  <AbsPoint x="430" y="50" />
+              </Size>
+              <Anchors>
+                  <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRecruitersTitle">
+                      <AbsPoint x="5" y="0"/>
+                  </Anchor>
+              </Anchors>
+              <EventHandlers>
+                  <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                  <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+              </EventHandlers>
+              <Color r="235" g="235" b="235" />
+          </Label>
+       
+      </Windows> 
+    </Window>
+
+
+  </Windows>  
+</Interface>

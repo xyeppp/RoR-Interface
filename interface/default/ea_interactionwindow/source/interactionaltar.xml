@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionAltar.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <Window name="EA_Window_InteractionAltar" inherits="EA_Window_Default" movable="false" layer="default" savesettings="false">
+            <Size>
+                <AbsPoint x="610" y="380" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionAltar.OnInitialize" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionAltar.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionAltar.OnHidden" />
+                <EventHandler event="OnUpdate"      function="EA_Window_InteractionAltar.OnUpdate" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltar.Hide" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_CharacterImage" />
+                
+                <Label name="$parentInstructions" font="font_default_text" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="470" y="80" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <DynamicImage name="$parentItemIcon" textureScale="1.5" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="96" y="96" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentItemFrame" texture="EA_SquareFrame" textureScale="1.5" handleinput="false" layer="background" >
+                    <Size>
+                        <AbsPoint x="96" y="96" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentItemIcon">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Label name="$parentItemCount" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentItemIcon">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentDonateButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentItemIcon">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltar.OnDonate" />
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentAbilityIcon" textureScale="1.5" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="96" y="96" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentAbilityFrame" texture="EA_SquareFrame" textureScale="1.5" handleinput="false" layer="background" >
+                    <Size>
+                        <AbsPoint x="96" y="96" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentAbilityIcon">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <CooldownDisplay name="$parentAbilityCooldown" handleinput="false">
+                    <Size>
+                        <AbsPoint x="84" y="84" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentAbilityIcon"/>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentTimer" handleinput="false" font="font_chat_text" maxchars="10" text="" textalign="center">
+                            <Size>
+                                <AbsPoint x="55" y="22" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="243" g="243" b="16" a="255" />
+                        </Label>
+                    </Windows>
+                </CooldownDisplay>
+                
+                <Label name="$parentAbilityCount" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentAbilityIcon">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentActivateButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentAbilityIcon">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltar.OnActivate" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionAltar.OnActivateMouseOver" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentChargeText" font="font_default_text" textalign="center" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="260" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemIcon">
+                            <AbsPoint x="9" y="30"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- BEGIN three arrow display -->
+                <DynamicImage name="$parentArrowMiddle" texture="shared_01" slice="RIGHT-arrow-depressed" textureScale="2.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="24" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentChargeText">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentArrowLeft" texture="shared_01" slice="RIGHT-arrow-depressed" textureScale="2.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="24" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentArrowMiddle">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentArrowRight" texture="shared_01" slice="RIGHT-arrow-depressed" textureScale="2.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="24" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentArrowMiddle">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <!-- END three arrow display -->
+                
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+                
+                <EditBox name="$parentDonationEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="1">
+                    <Size>
+                        <AbsPoint x="55" y="34"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="65" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+                <FullResizeImage name="$parentDonationEditBoxBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDonationEditBox">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDonationEditBox">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+                
+                <DynamicImage name="$parentItemIconSmall" textureScale="0.5" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentDonationEditBox">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Label name="$parentAmountInBackpack" font="font_default_text" textalign="left" handleinput="false" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="300" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentItemIconSmall">
+                            <AbsPoint x="20" y="3"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentCloseButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="-25" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionAltar.Hide" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

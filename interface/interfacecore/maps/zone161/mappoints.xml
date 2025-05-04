@@ -1,0 +1,58 @@
+<zone iname="The Inevitable City">
+    <landmark iname="Wyvern's Roost" id="1" mapIcon="1430" x="27660" y="30397">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Viper Pit" id="2" mapIcon="1431" x="33780" y="28300">
+        <importance>major</importance>
+        <specialType>3</specialType>
+    </landmark>
+    <landmark iname="The Breaking Grounds" id="3" mapIcon="1429" x="22074" y="31240">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sacellum Dungeons" id="4" mapIcon="1074" x="38307" y="34643">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sacellum Dungeons" id="5" mapIcon="1074" x="41884" y="37503">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sacellum Dungeons" id="6" mapIcon="1074" x="45481" y="34648">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bilerot Burrow" id="7" mapIcon="1074" x="22073" y="35198">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodwrought Enclave" id="8" mapIcon="1074" x="38355" y="53042">
+        <importance>major</importance>
+    </landmark>
+    <textPoint iname="Undercroft" id="8" x="48463" y="48757">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="Viper's Pit" id="9" x="48463" y="50478">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="The Apex" id="10" x="48463" y="52200">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="Citadel" id="11" x="48463" y="53700">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="Monolith" id="12" x="48463" y="55200">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="Stables" id="13" x="48463" y="56700">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+</zone>
+

@@ -1,0 +1,140 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+     <Script file="Source/GuildWindowTabRewards.lua"/>
+  </Scripts>
+  <Windows>
+    
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabRewardsSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="GuildWindowTabRewards.Initialize"/>
+      </EventHandlers>
+      <Windows>
+
+          <!--  Banner Section -->
+          <Window name="$parentBanner" inherits="GuildWindowTabBannerSocket" >
+              <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                      <AbsPoint x="0" y="0"/>
+                  </Anchor>
+                  <Anchor point="bottom" relativePoint="bottomright" relativeTo="$parent">
+                      <AbsPoint x="105" y="0"/>
+                  </Anchor>
+              </Anchors>
+          </Window>
+
+
+
+
+          <!-- Rewards List Header Background -->
+        <FullResizeImage name="$parentListHeaderBackground" handleinput="false" inherits="EA_FullResizeImage_TintableSolidBackground">
+            <Size>
+                <AbsPoint x="0" y="40" />
+            </Size> 
+           <Anchors>
+            <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBanner">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="-4" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- List Header Guild Rank -->
+        <Label name="$parentListHeaderGuildRank" font="font_guild_MP_R_19" textalign="leftcenter">
+          <Size>
+            <AbsPoint x="250" y="34" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentListHeaderBackground">
+              <AbsPoint x="15" y="0" />
+            </Anchor>
+            <Anchor point="bottom" relativePoint="bottomright" relativeTo="$parentListHeaderBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+
+        <!-- List Header Rewards -->
+        <Label name="$parentListHeaderRewards" font="font_guild_MP_R_19" textalign="center">
+          <Size>
+            <AbsPoint x="250" y="34" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="topleft" relativeTo="$parentListHeaderBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentListHeaderBackground">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+        
+        <!--**************-->
+        <!-- Rewards List -->
+        <!--**************-->
+
+        <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="GuildRewardRow" visiblerows="11" rowspacing="0">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentListHeaderBackground">
+              <AbsPoint x="2" y="10"/>
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-5" y="-65"/>
+            </Anchor>
+          </Anchors>
+          <ListData table="GuildWindowTabRewards.rewardListData" populationfunction="GuildWindowTabRewards.PopulateRewards">
+            <ListColumns>
+              <ListColumn windowname="Rank" variable="rewardRank" format="number" />
+              <ListColumn windowname="Name" variable="rewardName" format="wstring" />
+              <ListColumn windowname="NameNoTactic" variable="rewardName" format="wstring" />
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+
+        <Button name="$parentShowTacticsButton" inherits="EA_Button_DefaultResizeable" layer="popup">
+          <Size>
+            <AbsPoint x="150" y="39" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+              <AbsPoint x="-20" y="-20"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabRewards.OnLButtonUpViewTacticsListButton" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="$parentResetHeraldryButton" inherits="EA_Button_DefaultResizeable" layer="popup">
+            <Size>
+                <AbsPoint x="200" y="39" />
+            </Size>
+            <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentShowTacticsButton">
+                    <AbsPoint x="130" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabRewards.OnLButtonUpResetHeraldry" />
+            </EventHandlers>
+        </Button>
+        
+      </Windows> <!-- End of Whole Window Definition Chidren -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Roster -->
+</Interface>

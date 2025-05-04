@@ -1,0 +1,78 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/PetButton.lua" />
+        <Script file="Source/PetWindow.lua" />
+    </Scripts>
+    <Windows>
+        <!-- Stance Adjustment "button" def -->
+        <Window name="EA_PetStanceButton">
+            <Size>
+                <AbsPoint x="36" y="18" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver"       function="FrameManager.OnMouseOver" />
+                <EventHandler event="OnMouseOverEnd"    function="FrameManager.OnMouseOverEnd" />
+                <EventHandler event="OnLButtonUp"       function="FrameManager.OnLButtonUp" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentNormal" handleinput="false">
+                    <Size>
+                        <AbsPoint x="36" y="18" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentRollover" handleinput="false">
+                    <Size>
+                        <AbsPoint x="36" y="18" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <!-- Main Pet Window -->
+        <Window name="PetWindow" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="112" y="96" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnUpdate"                      function="FrameManager.OnUpdate" />
+                <EventHandler event="OnInitializeCustomSettings"    function="FrameManager.OnInitializeCustomSettings" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentStance" handleinput="false" popable="false" layer="background" sticky="false">
+                    <Size>
+                        <AbsPoint x="51" y="52" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentRing">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentRing" handleinput="false" popable="false" sticky="false">
+                    <Size>
+                        <AbsPoint x="82" y="82" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Button name="$parentReleasePet" inherits="EA_Button_DefaultWindowClose">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parentRing">
+                            <AbsPoint x="10" y="3" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver"   function="FrameManager.OnMouseOver" />
+                        <EventHandler event="OnLButtonUp"   function="FrameManager.OnLButtonUp" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

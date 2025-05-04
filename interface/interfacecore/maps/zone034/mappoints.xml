@@ -1,0 +1,12 @@
+<zone iname="Thunder Valley">
+    <battlefieldObjective iname="Gyrocopter Hangar" id="5025" iconSet="1" x="36878" y="32880">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Fireball Mortar" id="5026" iconSet="1" x="40966" y="36666">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Gungnir's Fist" id="5027" iconSet="1" x="32973" y="36582">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Blasting Cart" id="5028" iconSet="1" x="32324" y="27713">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Firing Range" id="5029" iconSet="1" x="41266" y="27696">
+    </battlefieldObjective>
+</zone>

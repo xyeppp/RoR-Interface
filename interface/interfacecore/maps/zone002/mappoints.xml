@@ -1,0 +1,283 @@
+<zone iname="The Badlands">
+    <chapter iname="Norrikson's Excavation" id="1" mapIcon="1003" x="10718" y="39567">
+        <race>Dwarf</race>
+        <number>10</number>
+        <ranks realm="order" min="20" max="21" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Copperstone's River Crossing" id="2" mapIcon="1003" x="12140" y="15888">
+        <race>Dwarf</race>
+        <number>11</number>
+        <ranks realm="order" min="22" max="23" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Enclave of the Withered Hand" id="3" mapIcon="1062" x="14607" y="5050">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Dour Guard" id="4" mapIcon="1051" x="15686" y="33842">
+        <race>Dwarf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Trug's Hut" id="5" mapIcon="1020" x="16928" y="5734">
+        <race>Greenskin</race>
+        <number>11</number>
+        <ranks realm="destruction" min="22" max="23" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Doomfist Crater" id="6" mapIcon="1082" x="19971" y="43493">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Dragon Skeleton" id="7" mapIcon="1025" x="22145" y="55346">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Olin's Hideout" id="8" mapIcon="1062" x="32824" y="16455">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Dunhilda's Lads" id="9" mapIcon="1003" x="33032" y="12354">
+        <race>Dwarf</race>
+        <number>13</number>
+        <ranks realm="order" min="26" max="27" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Bloodspike Cave" id="10" mapIcon="1063" x="3910" y="18545">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Khazad Bolg Tunnel" id="11" mapIcon="1060" x="41123" y="795">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Mount Gunbad" id="12" mapIcon="2002" x="4485" y="3170">
+        <importance>major</importance>
+        <specialType>1</specialType>
+    </landmark>
+    <landmark iname="Bloodspike Cave" id="13" mapIcon="1063" x="4457" y="22844">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Bloodgash Cave" id="14" mapIcon="1062" x="45318" y="7995">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Geyser Den" id="15" mapIcon="1062" x="4655" y="51332">
+        <importance>minor</importance>
+    </landmark>
+    <warcamp iname="Muggar's Choppaz" id="16" mapIcon="1050" x="47037" y="44963">
+        <race>Greenskin</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Ironbeard's Assault" id="17" mapIcon="1022" x="48106" y="16118">
+        <race>Dwarf</race>
+        <number>14</number>
+        <ranks realm="order" min="28" max="29" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Bloodgash Cave" id="18" mapIcon="1062" x="57874" y="13396">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Bloodmaw Cave" id="19" mapIcon="1062" x="59777" y="27084">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Bloodmaw Cave" id="20" mapIcon="1062" x="62963" y="36683">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Warpclaw Hideout" id="21" mapIcon="1063" x="8752" y="51017">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Brokebone Pass" id="22" mapIcon="1022" x="9470" y="28991">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cave of Whispers" id="23" mapIcon="1062" x="30236" y="28761">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="24" mapIcon="1259" x="31572" y="51655" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="25" mapIcon="1259" x="38253" y="51252" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="26" mapIcon="1259" x="22799" y="34651" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="27" mapIcon="1180" x="23525" y="52822" liveevent="9">
+        <importance>minor</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <landmark iname="Withered Skaven Tunnel" id="28" mapIcon="1063" x="27029" y="46666">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Mossy Skaven Tunnel" id="29" mapIcon="1063" x="23730" y="60546">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Damp Skaven Tunnel" id="30" mapIcon="1063" x="37415" y="53340">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodmaw Rock" id="31" mapIcon="1076" x="39846" y="39242">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodgash Ravine" id="32" mapIcon="1021" x="50152" y="8551">
+    	<importance>major</importance>
+    </landmark>
+    <publicQuest iname="Savage Assault" id="68" iconSet="1" x="10148" y="35079">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Kazad Drung" id="67" iconSet="1" x="11331" y="58926">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Revoltin' Gobbos" id="63" iconSet="1" x="12346" y="5629">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="22" max="23" />
+        <realm>Both</realm>
+    </publicQuest>
+    <publicQuest iname="Troll Island" id="69" iconSet="1" x="15768" y="23773">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Mutant Exiles" id="64" iconSet="1" x="16370" y="17757">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="22" max="23" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Fireforge's Camp" id="65" iconSet="1" x="22904" y="11457">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="22" max="23" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Fireforge's Camp" id="65" iconSet="1" x="20236" y="8260">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="22" max="23" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Putrid Tar Pits" id="86" iconSet="1" x="30563" y="18001">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Tomb of Kali'Amon" id="88" iconSet="1" x="35152" y="30725">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Cauldron" id="66" iconSet="1" x="3735" y="26774">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="20" max="21" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Skullbreaka Ridge" id="87" iconSet="1" x="41966" y="24593">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="26" max="27" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Skullsmasher's Boyz" id="133" iconSet="1" x="44336" y="31133">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Bloody Savages" id="132" iconSet="1" x="53851" y="19616">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Black Orc Slog" id="134" iconSet="1" x="56949" y="55578">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="28" max="29" />
+        <realm>Order</realm>
+    </publicQuest>
+    <!-- BEGIN Black Fire Pass points (no direct link) -->
+    <battlefieldObjective iname="Furrig's Fall: Defensive Boon" id="76" iconSet="1" x="15972" y="5461" zone="8" allowGutter="false">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Bugman's Brewery: Merchant's Gift" id="100" iconSet="1" x="25109" y="18956" zone="8" allowGutter="false">
+    </battlefieldObjective>
+    <keep iname="Gnol Baraz" id="3" iconSet="1" x="2904" y="16306" zone="8" allowGutter="false">
+        <objectiveId>619</objectiveId>
+    </keep>
+    <!-- END Black Fire pass points -->
+    <battlefieldObjective iname="Goblin Artillery Range: Healing Boon" id="101" iconSet="1" x="27020" y="60709">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Karagaz: Artisan's Gift" id="90" iconSet="1" x="43520" y="58951">
+    </battlefieldObjective>
+    <keep iname="Thickmuck Pit" id="4" iconSet="1" x="20318" y="41418">
+        <objectiveId>618</objectiveId>
+    </keep>
+    <zoneTransition iname="To Black Fire Pass" x="48000" y="0">
+        <zone>008</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Kadrin Valley" x="65535" y="32000">
+        <zone>009</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="0" y="32000">
+        <zone>001</zone>
+    </zoneTransition>
+</zone>

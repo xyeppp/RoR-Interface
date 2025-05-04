@@ -1,0 +1,496 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/Calendar.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!-- Calendar DOTW Label Template -->
+    <Label name="CalendarDOTWLabelTemplate" maxchars="1" font="font_guild_MP_R_17" textalign="center">
+      <Size>
+        <AbsPoint x="48" y="28" />
+      </Size>
+      <Color r="255" g="204" b="102" a="255"/>
+    </Label>
+    
+    <!-- Calendar Day Background Template -->
+    <FullResizeImage name="CalendarDayBackgroundTemplate" inherits="EA_FullResizeImage_TintableSolidBackground">
+      <Size>
+        <AbsPoint x="44" y="28" />
+      </Size>
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+          <AbsPoint x="2" y="3"/>
+        </Anchor>
+      </Anchors>
+    </FullResizeImage>
+
+    <!-- Calendar Day Label Template -->
+    <Label name="CalendarDayLabelTemplate" maxchars="2" inherits="EA_Label_DefaultText" font="font_guild_MP_R_17" textalign="center" popable="false">
+      <Size>
+        <AbsPoint x="48" y="32" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnMouseOver" function="Calendar.OnMouseOverDay" />
+        <EventHandler event="OnMouseOverEnd" function="Calendar.OnMouseOverDayEnd" />
+        <EventHandler event="OnLButtonUp" function="Calendar.OnLButtonUpDay" />
+        <EventHandler event="OnRButtonUp" function="Calendar.OnRButtonUpDay" />
+      </EventHandlers>
+    </Label>
+
+    <!-- Calendar Day Template -->
+    <Window name="CalendarDayTemplate">
+      <Size>
+        <AbsPoint x="48" y="34" />
+      </Size>
+      <Windows>
+        <FullResizeImage name="$parentBackground" inherits="CalendarDayBackgroundTemplate"/>
+        <Label name="$parentText" inherits="CalendarDayLabelTemplate" textalign="center"/>
+      </Windows>
+    </Window>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="CalendarSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="Calendar.Initialize"/>
+        <EventHandler event="OnShutdown" function="Calendar.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+        <!-- Whole Window Background -->
+        <FullResizeImage name="$parentBackground" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Calendar MonthYear Background-->
+        <FullResizeImage name="CalendarMonthYearBackground" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+              <AbsPoint x="2" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground">
+              <AbsPoint x="-2" y="48"/>
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <Button name="CalendarMinusButton" inherits="EA_Button_Guild_Left_Arrow" layer="secondary" >
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="CalendarMonthYearBackground">
+              <AbsPoint x="16" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="Calendar.OnLButtonUpMinusButton" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Guild Calendar Year and Month -->
+        <Label name="CalendarYearMonthLabel" font="font_guild_MP_R_23" maxchars="16" textalign="center" autoresize="false" >
+          <Size>
+            <AbsPoint x="350" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="CalendarMonthYearBackground">
+              <AbsPoint x="16" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="CalendarMonthYearBackground">
+              <AbsPoint x="-16" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" a="255"/>
+        </Label>
+
+        <!-- Calendar Plus Button -->
+        <Button name="CalendarPlusButton" inherits="EA_Button_Guild_Right_Arrow" layer="secondary" >
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="CalendarMonthYearBackground">
+              <AbsPoint x="-16" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="Calendar.OnLButtonUpPlusButton" />
+          </EventHandlers>
+        </Button>
+        
+        <!-- DOTW header Labels -->
+        <Label name="$parentDOTW1" inherits="CalendarDOTWLabelTemplate" >
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="CalendarMonthYearBackground">
+              <AbsPoint x="12" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW2" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW1">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW3" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW2">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW4" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW3">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW5" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW4">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW6" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW5">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        <Label name="$parentDOTW7" inherits ="CalendarDOTWLabelTemplate">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDOTW6">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Label>
+        
+        <!-- Current Day Highlight, this will be re-anchored in lua -->
+        <FullResizeImage name="$parentCurrentDayFrame" inherits="EA_FullResizeImage_TintableFrame">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDay1" />
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDay1" />
+          </Anchors>
+        </FullResizeImage>
+        
+        <!-- Day Definitions -->
+        <Window name="$parentDay1" inherits ="CalendarDayTemplate" id="1">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="GuildWindowCalendarDOTW1">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay2" inherits ="CalendarDayTemplate" id="2">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay1">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay3" inherits ="CalendarDayTemplate" id="3">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay2">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay4" inherits ="CalendarDayTemplate" id="4">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay3">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay5" inherits ="CalendarDayTemplate" id="5">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay4">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay6" inherits ="CalendarDayTemplate" id="6">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay5">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay7" inherits ="CalendarDayTemplate" id="7">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay6">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Days 8 through 14 -->
+        <Window name="$parentDay8" inherits ="CalendarDayTemplate" id="8">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentDay1">
+              <AbsPoint x="0" y="-6"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay9" inherits ="CalendarDayTemplate" id="9">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay8">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay10" inherits ="CalendarDayTemplate" id="10">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay9">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay11" inherits ="CalendarDayTemplate" id="11">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay10">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay12" inherits ="CalendarDayTemplate" id="12">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay11">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay13" inherits ="CalendarDayTemplate" id="13">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay12">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay14" inherits ="CalendarDayTemplate" id="14">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay13">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Days 15 through 21 -->
+        <Window name="$parentDay15" inherits ="CalendarDayTemplate" id="15">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentDay8">
+              <AbsPoint x="0" y="-6"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay16" inherits ="CalendarDayTemplate" id="16">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay15">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay17" inherits ="CalendarDayTemplate" id="17">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay16">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay18" inherits ="CalendarDayTemplate" id="18">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay17">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay19" inherits ="CalendarDayTemplate" id="19">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay18">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay20" inherits ="CalendarDayTemplate" id="20">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay19">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay21" inherits ="CalendarDayTemplate" id="21">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay20">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Days 22 through 28 -->
+        <Window name="$parentDay22" inherits ="CalendarDayTemplate" id="22">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentDay15">
+              <AbsPoint x="0" y="-6"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay23" inherits ="CalendarDayTemplate" id="23">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay22">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay24" inherits ="CalendarDayTemplate" id="24">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay23">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay25" inherits ="CalendarDayTemplate" id="25">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay24">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay26" inherits ="CalendarDayTemplate" id="26">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay25">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay27" inherits ="CalendarDayTemplate" id="27">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay26">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay28" inherits ="CalendarDayTemplate" id="28">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay27">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Days 29 through 35 -->
+        <Window name="$parentDay29" inherits ="CalendarDayTemplate" id="29">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentDay22">
+              <AbsPoint x="0" y="-6"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay30" inherits ="CalendarDayTemplate" id="30">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay29">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay31" inherits ="CalendarDayTemplate" id="31">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay30">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay32" inherits ="CalendarDayTemplate" id="32">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay31">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay33" inherits ="CalendarDayTemplate" id="33">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay32">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay34" inherits ="CalendarDayTemplate" id="34">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay33">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay35" inherits ="CalendarDayTemplate" id="36">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay34">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <!-- Days 36 through 42 -->
+        <Window name="$parentDay36" inherits ="CalendarDayTemplate" id="36">
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentDay29">
+              <AbsPoint x="0" y="-6"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay37" inherits ="CalendarDayTemplate" id="37">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay36">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay38" inherits ="CalendarDayTemplate" id="38">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay37">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay39" inherits ="CalendarDayTemplate" id="39">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay38">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay40" inherits ="CalendarDayTemplate" id="40">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay39">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay41" inherits ="CalendarDayTemplate" id="41">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay40">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+        <Window name="$parentDay42" inherits ="CalendarDayTemplate" id="42">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentDay41">
+              <AbsPoint x="-4" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+      </Windows> <!-- End of Whole Window Definition Parts -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Roster -->
+</Interface>

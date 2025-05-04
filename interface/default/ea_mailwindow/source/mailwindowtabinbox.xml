@@ -1,0 +1,181 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Scripts>
+    <Script file="Source/MailWindowTabInbox.lua" />
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="MailWindowTabInboxSocket" layer="secondary" movable="false">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="MailWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="MailWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="MailWindowTabInbox.Initialize" />
+        <EventHandler event="OnShutdown" function="MailWindowTabInbox.Shutdown" />
+      </EventHandlers>
+      <Windows>
+
+        <Window name="$parentSpaceAboveList" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="65"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Label name="$parentMessageNumberText" font="font_default_text" textalign="leftcenter" wordwrap="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSpaceAboveList">
+              <AbsPoint x="25" y="5" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentSpaceAboveList">
+              <AbsPoint x="-25" y="37" /> <!-- y = top y + 32 -->
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" />
+        </Label>
+
+        <ComboBox name="$parentSortComboBox" inherits="EA_ComboBox_DefaultResizable" >
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSpaceAboveList">
+              <AbsPoint x="-35" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnSelChanged" function="MailWindowTabInbox.OnSelChangedSortComboBox" />
+          </EventHandlers>
+        </ComboBox>
+
+        <Label name="$parentSortComboBoxHeader" font="font_clear_small" textalign="rightcenter" wordwrap="false">
+          <Size>
+            <AbsPoint x="200" y="29" /> <!-- y = same as parentSortComboBox -->
+        </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpaceAboveList">
+              <AbsPoint x="25" y="-24" />  <!-- x = same indent as parentMessageNumberText, y = -height -->
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentSortComboBox">
+              <AbsPoint x="-7" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" />
+        </Label>
+
+        <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Templates_MailRow" visiblerows="4" rowcount="150" rowspacing="0">
+          <Size>
+            <AbsPoint x="515" y="450" />
+          </Size>
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSpaceAboveList" >
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentDisplaySeperator" >
+              <AbsPoint x="-10" y="0" />
+            </Anchor>
+          </Anchors>
+          <ListData table="MailWindowTabInbox.listData" populationfunction="MailWindowTabInbox.Populate">
+            <ListColumns>
+              <ListColumn windowname="HeaderFromText"     variable="from"     format="wstring"/>
+              <ListColumn windowname="HeaderSubjectText"  variable="subject"  format="wstring"/>
+              <ListColumn windowname="HeaderSentText"     variable="sent"     format="wstring"/>
+              <ListColumn windowname="HeaderExpiresText"  variable="expires"  format="wstring"/>
+              <ListColumn windowname="HeaderMoney"        variable="money"    format="wstring"/>
+            </ListColumns>
+          </ListData>
+        </ListBox>
+
+        <Window name="$parentDisplaySeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBarBackground" >
+              <AbsPoint x="0" y="-45" />
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground" >
+              <AbsPoint x="0" y="-45" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Window name="$parentSpaceBelowList" handleinput="false">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDisplaySeperator">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBarBackground">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Label name="$parentResultText" inherits="MailRowTextTemplate" wordwrap="true" textalign="center">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSpaceBelowList">
+              <AbsPoint x="10" y="5" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSpaceBelowList">
+              <AbsPoint x="-10" y="-5" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!--************-->
+        <!-- Button Bar -->
+        <!--************-->
+        <Window name="$parentBarBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+          <Size>
+            <AbsPoint x="0" y="60" />
+          </Size>
+        </Window>
+
+        <Button name="$parentOpenMessageButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parentBarBackground">
+              <AbsPoint x="25" y="6"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="MailWindowTabInbox.OnLButtonOpenMessage" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="$parentDeleteMessageButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentBarBackground">
+              <AbsPoint x="0" y="6"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="MailWindowTabInbox.OnLButtonDeleteMessage" />
+          </EventHandlers>
+        </Button>
+
+        <Button name="$parentReturnMessageButton" inherits="EA_Button_DefaultResizeable" >
+          <Anchors>
+            <Anchor point="right" relativePoint="right" relativeTo="$parentBarBackground">
+              <AbsPoint x="-25" y="6"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="MailWindowTabInbox.OnLButtonReturnMessage" />
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+    </Window>
+
+  </Windows>
+
+</Interface>

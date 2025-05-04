@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_ScrollBar_ChatVertical
+
+    This file contains the templates to construct and use the standard vertical scrollbar. It has a chain motif.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <!--# VerticalScrollbar: EA_ScrollBar_ChatVertical                   
+            This the default vertical scrollbar.
+            
+            Code:
+            (begin code)
+            <VerticalScrollbar name="EA_ScrollBar_ChatVertical" up="EA_ScrollBar_DefaultUpArrowButton" down="EA_ScrollBar_DefaultDownArrowButton" thumb="EA_ScrollBar_DefaultThumb" gutter="EA_ScrollBar_DefaultChainGutter" >
+                ...
+            </VerticalScrollbar>
+            (end)
+        -->
+        <VerticalScrollbar name="EA_ScrollBar_ChatVertical"
+                           up="EA_ScrollBar_ChatUpArrowButton"
+                           down="EA_ScrollBar_ChatDownArrowButton"
+                           thumb="EA_ScrollBar_ChatThumb">
+            <Size>
+                <AbsPoint x="22" y="0" />
+            </Size>
+            <ThumbOffset x="3" y="0" />
+            <UpOffset x="0" y="0" />
+            <DownOffset x="0" y="0" />
+            <ActiveZoneOffset x="100" y="0" />
+        </VerticalScrollbar>
+
+        <Button name="EA_ScrollBar_ChatUpArrowButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01"
+                                                         overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexCoords>
+                <Normal x="172" y="341" />
+                <NormalHighlit x="201" y="341" />
+                <Pressed x="172" y="370" />
+                <PressedHighlit x="172" y="370" />
+                <Disabled x="230" y="341" />
+            </TexCoords>
+            <OverlaySize x="18" y="13" />
+            <OverlayOffset x="5" y="7" />
+            <OverlayTexCoords>
+                <Normal x="494" y="420" />
+                <NormalHighlit x="475" y="420" />
+                <Pressed x="494" y="420" />
+                <PressedHighlit x="475" y="420" />
+            </OverlayTexCoords>
+        </Button>
+
+        <Button name="EA_ScrollBar_ChatDownArrowButton" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01"
+                                                           overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexCoords>
+                <Normal x="172" y="341" />
+                <NormalHighlit x="201" y="341" />
+                <Pressed x="172" y="370" />
+                <PressedHighlit x="172" y="370" />
+                <Disabled x="230" y="341" />
+            </TexCoords>
+            <OverlaySize x="18" y="13" />
+            <OverlayOffset x="5" y="9" />
+            <OverlayTexCoords>
+                <Normal x="494" y="434" />
+                <NormalHighlit x="475" y="434" />
+                <Pressed x="494" y="434" />
+                <PressedHighlit x="475" y="434" />
+            </OverlayTexCoords>
+        </Button>
+        <VerticalResizeImage name="EA_ScrollBar_ChatThumb" texture="EA_HUD_01" reverseFill="true">
+            <Size>
+                <AbsPoint x="23" y="39" />
+            </Size>
+            <Sizes top="13" middle="13" bottom="13" />
+            <TexCoords>
+                <Top x="172" y="403" />
+                <Middle x="172" y="416" />
+                <Bottom x="172" y="429" />
+            </TexCoords>
+        </VerticalResizeImage>
+    </Windows>
+</Interface>

@@ -1,0 +1,129 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- The main window -->
+        <Window name="EA_Window_WorldMap" inherits="EA_Window_Default" movable="false" layer="secondary" popable="true" handleinput="true" savesettings="false" >
+            <Size>
+                <AbsPoint x="1600" y="1200" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_WorldMap.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_WorldMap.Shutdown" />
+                <EventHandler event="OnMouseWheel" function="EA_Window_WorldMap.HandleMouseWheel" />
+                <Eventhandler event="OnShown" function="EA_Window_WorldMap.OnShown" />
+                <Eventhandler event="OnHidden" function="EA_Window_WorldMap.OnHidden" />
+            </EventHandlers>
+            <Sounds>
+                <Sound event="OnShown" script="Sound.Play( Sound.OPEN_WORLD_MAP )" />
+                <Sound event="OnHidden" script="Sound.Play( Sound.CLOSE_WORLD_MAP )" />
+            </Sounds>
+            <Windows>
+                           
+                <FullResizeImage name="$parentBackgroundCover" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" alpha="0.8" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+                   
+            
+                <FullResizeImage name="$parentBackgroundTexture" inherits="ParchmentFullResizeImage" layer="background" handleinput="true" sticky="false">
+                    <Size>
+                        <AbsPoint x="1600" y="1200" />
+                    </Size>  
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>                                   
+                    </Anchors>                  
+                </FullResizeImage>
+      
+
+                <Button name="$parentClose" inherits="TomeCloseButton">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackgroundTexture" >
+                            <AbsPoint x="-40" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentZoneView" inherits="WorldMapZoneViewTemplate" />
+                <Window name="$parentPairingView" inherits="WorldMapPairingViewTemplate" />
+                <Window name="$parentWorldView" inherits="WorldMapWorldViewTemplate" />
+
+
+                
+                <!-- View Buttons -->
+                <Window name="$parentViewModes" inherits="WorldMapViewModeButtons" layer="popup" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneViewBorder">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentTombKingsBarContainer" inherits="EA_Window_RRQStatusContainerTombKingsTemplate" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentWorldViewBorder">
+                            <AbsPoint x="30" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window> 
+                <Window name="$parentTombKingsTrackerToggle" inherits="WorldMapCheckButton" layer="popup">
+                    <Size>
+                        <AbsPoint x="150" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTombKingsBarContainer">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                                   
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.ToggleHUDRRQTracker" />
+                    </EventHandlers>
+                </Window>
+                
+            </Windows>
+        </Window>
+        
+        <!-- HUD RRQ Tracker -->
+         <Window name="EA_Window_RRQTracker" inherits="EA_Window_RRQStatusContainerTombKingsTemplate" layer="default" movable="true" savesettings="true">         
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="-290" />
+                </Anchor>
+            </Anchors>   
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_RRQTracker.Initialize" />
+                <EventHandler event="OnShutdown" function="EA_Window_RRQTracker.Shutdown" />
+                <EventHandler event="OnShown" function="EA_Window_RRQTracker.OnShown" />
+                <EventHandler event="OnHidden" function="EA_Window_RRQTracker.OnHidden" />
+            </EventHandlers>
+            <Windows>     
+            
+
+                <Window name="$parentBarContainer" inherits="EA_Window_RRQStatusContainerTombKingsTemplate" >
+                
+                </Window> 
+        
+           </Windows>
+        </Window>
+    </Windows>
+</Interface>

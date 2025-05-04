@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_TitleBar_Default
+
+    This file contains the template for the standard window header.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- TitleBar Defs *******************************************************************************************************************************-->
+
+
+        <!--# StatusBar: EA_StatusBar_DefaultTintable
+            This is a default tintable status bar. This does not have a background image.
+        -->
+        <StatusBar name="EA_StatusBar_DefaultTintable" background="EA_StatusBar_DefaultTintableBar" foreground="EA_StatusBar_DefaultTintableBar" >
+            <Size>
+                <AbsPoint x="22" y="15" />
+            </Size>
+        </StatusBar>
+
+        <HorizontalResizeImage name="EA_StatusBar_DefaultTintableBar" texture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="50" y="14" />
+            </Size>
+            <Sizes left="0" middle="50" right="0" />
+            <TexCoords>
+                <Left x="346" y="655" />
+                <Middle x="346" y="655" />
+                <Right x="396" y="655" />
+            </TexCoords>
+        </HorizontalResizeImage>
+                <!--# Window: EA_Window_DefaultFrameStatusBar
+            This is a default tintable status bar inside of the EA_HorizontalResizeImage_DefaultTopFrame image
+        -->
+        <Window name="EA_Window_DefaultFrameStatusBar" >
+            <Size>
+                <AbsPoint x="223" y="23" />
+            </Size>
+            <Windows>
+                <StatusBar name="$parentBar" inherits="EA_StatusBar_DefaultTintable" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="2" y="4" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-2" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </StatusBar>
+                <FullResizeImage name="$parentBackground" inherits="EA_Button_ResizeIconFrameNormal" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentBarText" font="font_clear_small_bold" maxchars="64" textalign="center" layer="overlay" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <FullResizeImage name="$parentBackgroundGlow" texture="EA_HUD_01">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" />
+                    </Anchors>
+                    <Sizes>
+                        <TopLeft x="10" y="11" />
+                        <BottomRight x="10" y="11" />
+                        <Middle x="44" y="4" />
+                    </Sizes>
+                    <TexCoords>
+                        <TopLeft x="346" y="669" />
+                        <TopCenter x="356" y="669" />
+                        <TopRight x="400" y="669" />
+                        <MiddleLeft x="346" y="680" />
+                        <MiddleCenter x="356" y="680" />
+                        <MiddleRight x="346" y="680" />
+                        <BottomLeft x="346" y="684" />
+                        <BottomCenter x="356" y="684" />
+                        <BottomRight x="400" y="684" />
+                    </TexCoords>
+                </FullResizeImage>
+            </Windows>
+        </Window>
+
+       <!--# Window: EA_Window_DefaultFrameStatusBar
+            This is a default tintable status bar inside of the EA_HorizontalResizeImage_DefaultTopFrame image. This defintion contains an interpolating bar that wont' jump around.
+        -->
+        <Window name="EA_Window_DefaultFrameStatusBar_Interpolate" >
+            <Size>
+                <AbsPoint x="223" y="23" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_Button_ResizeIconFrameNormal" handleinput="false" layer="background" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentMouseover" inherits="EA_Button_ResizeIconFrameHighlight" handleinput="false" layer="secondary" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <StatusBar name="$parentBar" inherits="EA_StatusBar_DefaultTintable" interpolate="true" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                    </Windows>
+                </StatusBar>
+                <Label name="$parentBarText" font="font_clear_small_bold" maxchars="64" textalign="center" layer="overlay" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

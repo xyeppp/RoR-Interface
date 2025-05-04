@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_TempTargets_d3" file="Textures/EA_TempTargets_d3.dds">
+      <Slice id="frame" left="0" top="0" width="128" height="128" />
+      <Slice id="background" left="128" top="0" width="128" height="128" />
+      <Slice id="dove" left="0" top="128" width="128" height="128" />
+      <Slice id="skull" left="128" top="128" width="128" height="128" />
+    </Texture>
+  </Assets>
+</Interface>

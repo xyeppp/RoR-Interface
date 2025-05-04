@@ -1,0 +1,274 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TalismanMakingWindow.lua" />
+    </Scripts>
+    <Windows>
+        <!-- Main Crafting Window -->
+        <Window name="TalismanMakingWindow" layer="secondary" movable="false" id="5">
+            <Size>
+                <AbsPoint x="439" y="593" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="TalismanMakingWindow.Initialize" />
+                <EventHandler event="OnShown" function="TalismanMakingWindow.Clear" />
+                <EventHandler event="OnLButtonUp" function="TalismanMakingWindow.OnLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="TalismanMakingWindow.OnRButtonUp" />
+                <EventHandler event="OnHidden" function="TalismanMakingWindow.OnHidden" />
+                <EventHandler event="OnUpdate" function="TalismanMakingWindow.UpdatePowerAnimation" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                
+                <!-- Background -->
+                <DynamicImage name="$parentTalismanBackground" layer="background" texture="EA_Talisman01_d5" slice="Background" >
+                    <Size>
+                        <AbsPoint x="423" y="467" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="9" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+                
+                <!-- Close Button -->
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CraftingSystem.Done" />
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentCornerImage" layer="secondary" inherits="EA_Default_TalismanImage" />
+                
+                <!-- top section -->
+                <!-- Skill amount -->
+                <Label name="$parentSkill" font="font_default_text_small" maxchars="64" textalign="center">
+                    <Size>
+                        <AbsPoint x="200" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="45" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255" />
+                </Label>
+                
+                <DynamicImage name="$parentPowerMeterBackground"  texture="EA_Talisman01_d5" slice="Power-Meter-Background" >
+                    <Size>
+                        <AbsPoint x="28" y="164" />
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="TalismanMakingWindow.OnMouseOverPowerMeter" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="bottomright" >
+                            <AbsPoint x="-50" y="-75" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Power O'Meter -->
+                <DynamicImage name="$parentPowerMeter"  texture="EA_Talisman01_d5" slice="Power-Meter" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="28" y="164" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentPowerMeterBackground" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <Button name="$parentContainerSlot" inherits="EA_Button_TalismanMakingContainerSlotTemplate" id="0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTalismanBackground" >
+                            <AbsPoint x="26" y="22" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDeterminentSlot" inherits="EA_Button_TalismanMakingSlotTemplate" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTalismanBackground">
+                            <AbsPoint x="180" y="124" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentDeterminentSlotOrb" texture="EA_Talisman01_d5" slice="orb-red" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentDeterminentSlot">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Button name="$parentGoldSlot" inherits="EA_Button_TalismanMakingSlotTemplate" id="2">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTalismanBackground">
+                            <AbsPoint x="54" y="261" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentGoldSlotOrb" texture="EA_Talisman01_d5" slice="orb-orange" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentGoldSlot">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="$parentCuriosSlot" inherits="EA_Button_TalismanMakingSlotTemplate" id="3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTalismanBackground" >
+                            <AbsPoint x="180" y="310" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentCuriosSlotOrb" texture="EA_Talisman01_d5" slice="orb-green" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentCuriosSlot">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="$parentMagicSlot" inherits="EA_Button_TalismanMakingSlotTemplate" id="4">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTalismanBackground">
+                            <AbsPoint x="308" y="261" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentMagicSlotOrb" texture="EA_Talisman01_d5" slice="orb-blue" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMagicSlot">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- bottom section -->
+                <FullResizeImage name="$parentHintTextBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="-9" y="-93" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="9" y="-53" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor  r="20" g="20" b="20" />
+                </FullResizeImage>
+                
+                <!-- Status/Hint Text	-->
+                <Window name="$parentSeparator1" inherits="EA_Window_DefaultSeparator">
+                	<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" >
+							<AbsPoint x="0" y="-37" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" >
+							<AbsPoint x="0" y="-37" />
+						</Anchor>
+					</Anchors>
+                </Window>
+                
+                <Label name="$parentHintText" font="font_clear_default" maxchars="200" textalign="left"
+                    wordwrap="false" autoresize="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentHintTextBackground">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentHintTextIcon" texture="EA_Talisman01_d5" slice="orb-orange" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentHintText" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Window name="$parentSeparator2" inherits="EA_Window_DefaultSeparator">
+                	<Anchors>
+						<Anchor point="bottomleft" relativePoint="bottomleft" >
+							<AbsPoint x="0" y="-77" />
+						</Anchor>
+						<Anchor point="bottomright" relativePoint="bottomright" >
+							<AbsPoint x="0" y="-77" />
+						</Anchor>
+					</Anchors>
+                </Window>
+                
+
+                
+                <!-- Craft Now! button -->
+                <Button name="$parentCommitButton" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TalismanMakingWindow.Perform" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="-74" y="-11" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentClearButton" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TalismanMakingWindow.OnClearButton" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="74" y="-11" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,8 @@
+<zone iname="Nordenwatch">
+    <battlefieldObjective iname="The Fortress" id="5100" iconSet="1" x="25893" y="30164">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Barracks" id="5101" iconSet="1" x="30483" y="26702">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Lighthouse" id="5102" iconSet="1" x="31314" y="33228">
+    </battlefieldObjective>
+</zone>

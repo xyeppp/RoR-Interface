@@ -1,0 +1,40 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/ZoneControlWindow.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <!-- Zone Control -->
+        <Window name="EA_Window_ZoneControl" layer="default" savesettings="true">
+            <Size>
+                <AbsPoint x="250" y="45" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                    <AbsPoint x="0" y="15" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_ZoneControl.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_ZoneControl.Shutdown" />
+            </EventHandlers>
+            <Windows>
+            
+                <Window name="$parentContainer" inherits="EA_Window_ZoneControlContainerHorizontalTemplate" >
+                    <Size>
+                        <AbsPoint x="140" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+        </Window>
+        
+      
+    </Windows>
+</Interface>

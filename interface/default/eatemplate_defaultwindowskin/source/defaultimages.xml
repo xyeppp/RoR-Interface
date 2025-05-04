@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: DefaultImages 
+
+    This file contains misc dynamic image definitions.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Windows>
+
+
+        <DynamicImage name="EA_DynamicImage_ClockIcon" handleinput="false" layer="overlay" texture="EA_HUD_01" slice="Clock" >
+            <Size>
+                <AbsPoint x="22" y="23" />
+            </Size>
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_RankBackground" texture="EA_HUD_01" slice="Guildxp-Symbol" popable="false" >
+            <Size>
+                <AbsPoint x="42" y="40" />
+            </Size>
+            <TexDims x="42" y="40" />
+        </DynamicImage>
+
+
+    </Windows>
+</Interface>

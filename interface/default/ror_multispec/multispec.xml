@@ -1,0 +1,290 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+   <Scripts>
+      <Script file="MultiSpec.lua" />
+   </Scripts>
+   
+
+   
+   
+   <Windows>
+      	    <Button name="MultiSpec_ItemRowTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage" >
+			<Size>
+				<AbsPoint x="377" y="45" />
+			</Size>			
+			<EventHandlers>
+			<!--	<EventHandler event="OnMouseOver" function="EA_Window_Loot.OnMouseOverItem" /> -->
+				<EventHandler event="OnRButtonUp" function="" />
+				<EventHandler event="OnLButtonUp" function="MultiSpec.Select" />
+			</EventHandlers>
+			<Windows>
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo=""/><AbsPoint x="2" y="2" />
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/><AbsPoint x="-2" y="-2" />
+					</Anchors>
+				<TintColor r="25" g="25" b="25" a="1"/>
+				</FullResizeImage>
+                <DynamicImage name="$parentIcon" texture="EA_Abilities01_d5" textureScale="0.9" handleinput="false" >
+			    	<Size>
+				        <AbsPoint x="38" y="38" />
+			        </Size>
+			        <Anchors>
+				        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					        <AbsPoint x="5" y="3" />
+				        </Anchor>
+			        </Anchors>
+			        <Windows>
+			        	<DynamicImage name="$parentFrame" inherits="EA_Image_DefaultIconFrame"  handleinput="false" layer="background" >
+					        <Size>
+						    <AbsPoint x="38" y="38" />
+					        </Size>
+				        </DynamicImage>
+			        </Windows>
+			    </DynamicImage>
+				<Label name="$parentName" inherits="EA_Label_DefaultText_Small" textalign="left" warnOnTextCropped="false" handleinput="false" wordwrap="false">
+					<Size>
+						<AbsPoint x="120" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+		
+				<Label name="$parentType" font="font_clear_small" textalign="right" warnOnTextCropped="false" handleinput="false" wordwrap="false">
+					<Size>
+						<AbsPoint x="280" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="right" relativeTo="">
+							<AbsPoint x="-10" y="-5"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+		
+				
+					<Label name="$parentPath1" inherits="EA_Label_ChatText" textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="false">
+					<Size>
+						<AbsPoint x="40" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentName">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				
+				<Label name="$parentPath2" inherits="EA_Label_ChatText" textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="false">
+					<Size>
+						<AbsPoint x="40" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentPath1">
+							<AbsPoint x="40" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				
+				<Label name="$parentPath3" inherits="EA_Label_ChatText" textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="false">
+					<Size>
+						<AbsPoint x="40" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentPath2">
+							<AbsPoint x="40" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>		
+
+		
+			</Windows>
+		</Button>
+   
+    <!-- Main Window Stuff here -->
+	
+	
+			<Window name="MultiSpec_Window" inherits="EA_Window_Default" movable="false" layer="secondary" >
+			<Size>
+				<AbsPoint x="400" y="420" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnShown" function="MultiSpec.OnShown" />
+				<EventHandler event="OnHidden" function="MultiSpec.OnHidden" />
+			</EventHandlers>
+			<Windows>
+								
+			
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+				<DynamicImage name="$parentCornerImage" inherits="EA_Default_TrainingImage"/>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="MultiSpec.Close" />
+					</EventHandlers>
+				</Button>
+				
+				
+				<Label name="$parentText" inherits="EA_Label_ChatText"  textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="400" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+
+				
+				<Label name="$parentPath1Label"  font="font_clear_tiny"  textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="85" y="40" />
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topright" relativeTo="$parentList">
+							<AbsPoint x="-175" y="-24"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+
+				<Label name="$parentPath2Label" font="font_clear_tiny" textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="85" y="40" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentPath1Label">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+
+				<Label name="$parentPath3Label"  font="font_clear_tiny"  textalign="center" warnOnTextCropped="false" handleinput="false" wordwrap="true">
+					<Size>
+						<AbsPoint x="85" y="40" />
+					</Size>
+					<Anchors>
+						<Anchor point="right" relativePoint="left" relativeTo="$parentPath2Label">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+				
+                 <Window name="$parentTextSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="80" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="80" />
+                        </Anchor>
+                    </Anchors>
+                </Window>                
+				
+				
+				<!-- List Box of Items  -->
+				
+			
+				<ListBox name="$parentList" scrollbar="" rowdef="MultiSpec_ItemRowTemplate"  visiblerows="5" rowcount="200" rowspacing="3">
+                    <Size>
+                        <AbsPoint x="400" y="240" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTextSeperator" >
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+
+                    <ListData table="MultiSpec.Speccs" populationfunction="MultiSpec.PopulateData">
+                        <ListColumns>
+                            <!--ListColumn windowname="Icon" variable="iconNum" format="icon" /-->
+                            <ListColumn windowname="Name" variable="type" format="wstring" />  
+							<ListColumn windowname="Path1" variable="Path1" format="number" />  
+							<ListColumn windowname="Path2" variable="Path2" format="number" />  
+							<ListColumn windowname="Path3" variable="Path3" format="number" />  
+                        </ListColumns>
+                    </ListData>
+                </ListBox>		
+                									
+			
+        <!--Button name="EA_Templates_CoreTrainingSortButton" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="100" y="35" />
+            </Size>
+							<Anchors>
+                             <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentList">
+                             <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+
+        </Button-->
+
+
+			
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>   
+								
+					
+				<!-- Loot All -->
+
+					<Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable">
+					<Size>
+                        <AbsPoint x="110" y="38" />
+                    </Size>  
+					<Anchors>
+                             <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                             <AbsPoint x="12" y="-13" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                             <EventHandler event="OnLButtonUp" function="MultiSpec.Save" />
+                            </EventHandlers>
+					</Button>		
+
+					<Button name="$parentLoadButton"  inherits="EA_Button_DefaultResizeable">
+					<Size>
+                        <AbsPoint x="110" y="38" />
+                    </Size>  
+					<Anchors>
+                             <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                             <AbsPoint x="-10" y="-13" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                             <EventHandler event="OnLButtonUp" function="MultiSpec.Load" />
+                            </EventHandlers>
+		
+					</Button>		
+					
+					<Button name="$parentClearButton"  inherits="EA_Button_DefaultResizeable">
+					<Size>
+                        <AbsPoint x="110" y="38" />
+                    </Size>  
+					<Anchors>
+                             <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                             <AbsPoint x="-12" y="-13" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                             <EventHandler event="OnLButtonUp" function="MultiSpec.Clear" />
+                            </EventHandlers>
+					</Button>		
+					
+			
+			
+			</Windows>
+		</Window>
+	
+   </Windows>
+   
+</Interface>

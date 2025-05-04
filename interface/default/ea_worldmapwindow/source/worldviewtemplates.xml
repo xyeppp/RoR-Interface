@@ -1,0 +1,128 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+    <Windows>                       
+                       
+         <Button name="WorldViewPairingButton" inherits="TOKTextButtonMedium" 
+                    textAutoFitMinScale="0.5" autoresize="false" layer="popup" textalign="center"
+                    drawchildrenfirst="true" >
+            <Size>
+               <AbsPoint x="134" y="102" />
+            </Size>            
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.SelectPairing" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentGlow" handleinput="false" highlighttexture="EA_BigMap01_d5" >
+                    <Size>
+                        <AbsPoint x="253" y="253" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="WorldmapHighlight" />
+                        <PressedHighlit id="WorldmapHighlight" />
+                    </TexSlices>
+                    <TexDims x="253" y="253" />
+                </Button>
+                <!--
+                <Window name="$parentBG" inherits="EA_Window_DefaultBackgroundFrame" >
+                     <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                -->
+            </Windows>         
+         </Button>              
+                       
+                       
+                                
+        <!-- Template that Always exists in the MapWindow for the World View -->
+        <Window name="WorldMapWorldViewTemplate" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                            
+                <!-- Map Border -->
+                <Window name="$parentBorder" inherits="WorldMapScrollworkBorder" >
+                    <Size>
+                        <AbsPoint x="1375" y="1110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="-15" y="11" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <DynamicImage name="$parentWorldMapImage" texture="EA_WorldMap01_d1" slice="WorldMap" >
+                    <Size>
+                        <AbsPoint x="1292" y="1024" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="75" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="1292" y="1024" />
+                </DynamicImage>
+                
+                
+                <!-- Greenskin / Dwarf Pairing Button -->                
+                <Button name="$parentPairingButton1" inherits="WorldViewPairingButton" id="1" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentWorldMapImage">
+                            <AbsPoint x="1034" y="527" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                 <!-- Chaos / Empire Pairing Button -->                
+                <Button name="$parentPairingButton2" inherits="WorldViewPairingButton" id="2" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentWorldMapImage">
+                            <AbsPoint x="1034" y="232" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                                
+                <!-- Dark Elf / High Elf Pairing Button -->                
+                <Button name="$parentPairingButton3" inherits="WorldViewPairingButton" id="3" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentWorldMapImage">
+                            <AbsPoint x="170" y="591" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Tomb Kings Pairing Button -->                
+                <Button name="$parentPairingButton100" inherits="WorldViewPairingButton" id="100" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentWorldMapImage">
+                            <AbsPoint x="863" y="896" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+            
+            </Windows>
+        </Window>
+         
+                          
+
+    </Windows>
+
+</Interface>

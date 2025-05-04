@@ -1,0 +1,627 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabInterface.lua"/>
+  </Scripts>
+  <Windows>
+  
+    <!-- Action Bar Settings -->
+
+    <Window name="EA_Window_SettingsActionBarLayoutButton" inherits="EA_Window_DefaultLabelToggleCircle">
+        <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="SettingsWindowTabInterface.OnActionBarLayoutSelect" />
+            <EventHandler event="OnMouseOver" function="SettingsWindowTabInterface.OnMouseOverLayoutMode" />
+        </EventHandlers>
+    </Window>
+    
+    <Window name="EA_Window_SettingsActionBarCustomization">
+        <Size>
+            <AbsPoint x="820" y="40" />
+        </Size>
+        <Windows>
+            <Label name="$parentName" inherits="TooltipItemTitle">
+                <Size>
+                    <AbsPoint x="75" y="40" />
+                </Size>
+                <Anchors>
+                    <Anchor point="left" relativePoint="left">
+                        <AbsPoint x="10" y="0" />
+                    </Anchor>
+                </Anchors>
+                <Color r="255" g="255" b="255" a="255" />
+            </Label>
+            <Button name="$parentMakeVertical" inherits="TooltipGenericCheckButton" >
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentName" >
+                        <AbsPoint x="35" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnInitialize" function="EA_GenericCheckButton.Initialize" />
+                    <EventHandler event="OnLButtonUp" function="SettingsWindowTabInterface.ToggleMakeVertical" />
+                    <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" /> 
+                </EventHandlers>
+            </Button>
+            <ComboBox name="$parentRows" inherits="EA_ComboBox_DefaultResizableTiny" >
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentMakeVertical" >
+                        <AbsPoint x="110" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSelChanged" function="SettingsWindowTabInterface.SelectRows" />
+                </EventHandlers>
+            </ComboBox>
+            <ComboBox name="$parentNumberButtons" inherits="EA_ComboBox_DefaultResizableTiny" >
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentRows" >
+                        <AbsPoint x="80" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSelChanged" function="SettingsWindowTabInterface.SelectNumButtons" />
+                </EventHandlers>
+            </ComboBox>
+            <ComboBox name="$parentVisibility" inherits="EA_ComboBox_DefaultResizable" >
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentNumberButtons" >
+                        <AbsPoint x="50" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSelChanged" function="SettingsWindowTabInterface.SelectVisibility" />
+                </EventHandlers>
+            </ComboBox>
+        </Windows>
+    </Window>
+    
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabInterface" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabInterface.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabInterfaceContentsScrollChild" scrollbar="SWTabInterfaceContentsScrollbar" lineheight="18"  autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+
+                        <!-- UI Profiles -->
+                        <Window name="$parentSettingsSubSystems" >
+                            <Size>
+                                <AbsPoint x="500" y="100" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Button name="$parentCharacterProfilesButton" inherits="EA_Button_DefaultResizeable" >
+                                    <Size>
+                                        <AbsPoint x="200" y="39" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabInterface.OnManageUIProfiles" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" />
+                                    </EventHandlers>
+                                </Button>
+                                <Button name="$parentUiModsButton" inherits="EA_Button_DefaultResizeable" >
+                                    <Size>
+                                        <AbsPoint x="200" y="39" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCharacterProfilesButton" >
+                                            <AbsPoint x="20" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabInterface.OnManageUIMods" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <Button name="$parentLayoutEditorButton" inherits="EA_Button_DefaultResizeable">
+                                    <Size>
+                                        <AbsPoint x="200" y="39" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentUiModsButton" >
+                                            <AbsPoint x="20" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabInterface.OnBeginLayoutEditor" />
+                                        <EventHandler event="OnMouseOver" function="SettingsWindowTabbed.OnMouseOverTooltipElement" />
+                                    </EventHandlers>
+                                </Button>
+
+                            </Windows>
+                        </Window>
+                        <!-- end UI Profiles -->
+                                    
+                       <!-- Action Bars -->
+                        <Window name="$parentSettingsActionBars" >
+                            <Size>
+                                <AbsPoint x="820" y="585" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsSubSystems">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsSubSystems" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <!-- Lock Action Bars -->
+                                <Window name="$parentLockActionBars" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!-- Cooldown Text Display Options -->
+                                <Window name="$parentShowCooldownText" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLockActionBars">
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <!--  Layout Modes -->
+                                <!-- The id's on the buttons are the LayoutMode settings for the cluster manager. -->
+                                <Window name="$parentLayoutMode">
+                                    <Size>
+                                        <AbsPoint x="525" y="175" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLockActionBars">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentTitle" inherits="TooltipItemTitle">
+                                            <Size>
+                                                <AbsPoint x="175" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" />
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Window name="$parent1Bar" inherits="EA_Window_SettingsActionBarLayoutButton" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                                                    <AbsPoint x="20" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent2Bars" inherits="EA_Window_SettingsActionBarLayoutButton" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent1Bar">
+                                                    <AbsPoint x="0" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent2BarsStacked" inherits="EA_Window_SettingsActionBarLayoutButton" id="3">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent2Bars">
+                                                    <AbsPoint x="0" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent3Bars" inherits="EA_Window_SettingsActionBarLayoutButton" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topright" >
+                                                    <AbsPoint x="0" y="25" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent4Bars" inherits="EA_Window_SettingsActionBarLayoutButton" id="5">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent3Bars">
+                                                    <AbsPoint x="0" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parent5Bars" inherits="EA_Window_SettingsActionBarLayoutButton" id="6">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent4Bars">
+                                                    <AbsPoint x="0" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                    </Windows>
+                                </Window>
+                                
+                                <Window name="$parentCustomize">
+                                    <Size>
+                                        <AbsPoint x="820" y="300" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLayoutMode">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Windows>
+                                        <Label name="$parentTitle" inherits="TooltipItemTitle">
+                                            <Size>
+                                                <AbsPoint x="175" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" />
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Label name="$parentMakeVertical" inherits="TooltipItemTitle" textalign="center" >
+                                            <Size>
+                                                <AbsPoint x="150" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle" >
+                                                    <AbsPoint x="60" y="5" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Label name="$parentRows" inherits="TooltipItemTitle" textalign="center" >
+                                            <Size>
+                                                <AbsPoint x="150" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parentMakeVertical" >
+                                                    <AbsPoint x="5" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Label name="$parentNumberButtons" inherits="TooltipItemTitle" textalign="center" >
+                                            <Size>
+                                                <AbsPoint x="150" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parentRows" >
+                                                    <AbsPoint x="5" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Label name="$parentVisibility" inherits="TooltipItemTitle" textalign="center" >
+                                            <Size>
+                                                <AbsPoint x="150" y="20" />
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="right" relativePoint="left" relativeTo="$parentNumberButtons" >
+                                                    <AbsPoint x="5" y="0" />
+                                                </Anchor>
+                                            </Anchors>
+                                            <Color r="255" g="255" b="255" a="255" />
+                                        </Label>
+                                        <Window name="$parentBar1" inherits="EA_Window_SettingsActionBarCustomization" id="1">
+                                            <Anchors>
+                                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                                    <AbsPoint x="0" y="50" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentBar2" inherits="EA_Window_SettingsActionBarCustomization" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar1">
+                                                    <AbsPoint x="0" y="10" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentBar3" inherits="EA_Window_SettingsActionBarCustomization" id="3">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar2">
+                                                    <AbsPoint x="0" y="10" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentBar4" inherits="EA_Window_SettingsActionBarCustomization" id="4">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar3">
+                                                    <AbsPoint x="0" y="10" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                        <Window name="$parentBar5" inherits="EA_Window_SettingsActionBarCustomization" id="5">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBar4">
+                                                    <AbsPoint x="0" y="10" />
+                                                </Anchor>
+                                            </Anchors>
+                                        </Window>
+                                    </Windows>
+                                </Window>
+                        
+                                
+                            </Windows>
+                        </Window> <!-- end Action Bars -->
+                       
+                        <!-- Center Screen Message Settings -->
+                        <Window name="$parentCustomizeUiMessageSettings">
+                            <Size>
+                                <AbsPoint x="500" y="380" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsActionBars">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsActionBars" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <!-- Desc labels for the checkboxes and cooldown slides -->
+                                <Label name="$parentEnableLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                               
+                                <Label name="$parentCooldownLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="175" y="20" />
+                                    </Size>
+                                    <Anchors>                            
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEnableLabel">
+                                            <AbsPoint x="60" y="0" />
+                                        </Anchor>
+                                    </Anchors>                            
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                               
+                                <!-- Checkboxes and sliders for alert text -->
+                                <Window name="$parentAlertCombat" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnableLabel">
+                                            <AbsPoint x="0" y="15" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentCombatSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertCombat">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                                
+                                <Window name="$parentAlertRvR" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertCombat" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentRvRSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertRvR">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+
+                                <Window name="$parentAlertGeo" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertRvR" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentGeoSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertGeo">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                                
+                                <Window name="$parentAlertAchiev" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertGeo" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentAchievSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertAchiev">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                                
+                                <Window name="$parentAlertQuest" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertAchiev" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentQuestSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertQuest">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                                                        
+                                <Window name="$parentAlertSocial" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertQuest" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentSocialSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertSocial">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                                                        
+                                <Window name="$parentAlertDefault" inherits="TooltipCheckButton">
+                                    <Size>
+                                        <AbsPoint x="215" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAlertSocial" >
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+
+                                    </Anchors>
+                                </Window>
+                                <SliderBar name="$parentDefaultSlider" inherits="EA_Default_SliderBar" numticks="SettingsWindowTabInterface.NUM_COOLDOWN_VALUES" >
+                                    <Size>
+                                        <AbsPoint x="150" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAlertDefault">
+                                            <AbsPoint x="23" y="3" />
+                                        </Anchor>
+                                    </Anchors>
+                                </SliderBar>
+                            </Windows>
+                        </Window> <!-- end Center Screen Message Settings -->
+                        
+                        
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Interface -->
+</Interface>

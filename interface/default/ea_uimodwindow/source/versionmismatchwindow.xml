@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/VersionMismatchWindow.lua" />
+    </Scripts>
+    <Windows>
+             
+             
+       <Window name="MismatchVersionModWindowRow">
+			<Size>
+				<AbsPoint x="800" y="34"/>
+			</Size>
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="UiModVersionMismatchWindow.OnClickModRow" />
+			</EventHandlers>
+			<Windows>								
+				<FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" />
+						<Anchor point="bottomright" relativePoint="bottomright" />
+					</Anchors>
+				</FullResizeImage>				
+				<Label name="$parentName" maxchars="80" font="font_chat_text" >
+					<Size>
+						<AbsPoint x="470" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="">
+							<AbsPoint x="5" y="6"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+                <Label name="$parentGameVersion" maxchars="80" font="font_chat_text" >
+                    <Size>
+                        <AbsPoint x="470" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+			</Windows>
+		</Window>
+
+                
+        <Button name="ModWindowSortButton" inherits="EA_Button_ListSort" >
+           <Size>
+                <AbsPoint x="245" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="UiModVersionMismatchWindow.OnClickModListSortButton" />
+                <EventHandler event="OnMouseOver" function="UiModVersionMismatchWindow.OnMouseOverModListSortButton" />
+            </EventHandlers>
+        </Button>
+
+		
+        <!-- Ui Mod Window -->
+        <Window name="UiModVersionMismatchWindow" movable="true" layer="secondary" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="850" y="600" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="UiModVersionMismatchWindow.Initialize" />
+                <EventHandler event="OnShown" function="UiModVersionMismatchWindow.OnShown" />
+                <EventHandler event="OnHidden" function="UiModVersionMismatchWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModVersionMismatchWindow.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Basic Instructions -->
+                <Label name="$parentInstructions" inherits="ModDetailsTextDef" autoresize="false" textAutoFitMinScale="0.75" handleinput="true" textalign="center" >
+                    <Size>
+                        <AbsPoint x="700" y="80" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+                <Label name="$parentCurrentVersionText" inherits="EA_Label_DefaultSubHeading" autoresize="false" textAutoFitMinScale="0.75" handleinput="true" textalign="center" >
+                    <Size>
+                        <AbsPoint x="700" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="235" g="235" b="235" />
+                </Label>
+                                       
+
+                <Window name="$parentModListSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentSortButton1" >
+                            <AbsPoint x="-10" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentSortButton2" >
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>                                                           
+                
+                                
+                <!-- Sort Buttons -->
+                <Button name="$parentSortButton1" inherits="ModWindowSortButton" id="1">
+                    <Size>
+                        <AbsPoint x="465" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentModsList">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSortButton2" inherits="ModWindowSortButton" id="2">
+                    <Size>
+                        <AbsPoint x="365" y="31" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <DynamicImage name="$parentSortUpArrow" inherits="EA_ListSortUpArrow" />
+                <DynamicImage name="$parentSortDownArrow" inherits="EA_ListSortDownArrow" />
+               
+                
+                
+               <ListBox name="$parentModsList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="MismatchVersionModWindowRow" visiblerows="9" rowspacing="2">
+					<Size>
+						<AbsPoint x="830" y="330" />
+					</Size>
+					<Anchors>
+						<Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+							<AbsPoint x="0" y="180"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="UiModVersionMismatchWindow.modsList" populationfunction="UiModVersionMismatchWindow.UpdateModRows">
+						<ListColumns>
+							<ListColumn windowname="Name" variable="wideStrName" format="wstring" />
+                            <ListColumn windowname="GameVersion" variable="wideStrGameVersion" format="wstring" />
+                        </ListColumns>
+					</ListData>
+				</ListBox>      
+                                
+                
+                <!-- Buttons -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" />
+                
+               <Button name="$parentReEnableButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="200" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="UiModVersionMismatchWindow">
+                           <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModVersionMismatchWindow.OnReEnableButton" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="UiModVersionMismatchWindow">
+                            <AbsPoint x="-25" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModVersionMismatchWindow.OnCancelButton" />
+                    </EventHandlers>
+                </Button>                     
+
+            </Windows>
+        </Window>
+
+
+        
+        
+    </Windows>
+</Interface>

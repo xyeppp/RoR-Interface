@@ -1,0 +1,264 @@
+<zone iname="Praag">
+    <landmark iname="Summonig Circle" id="1" mapIcon="1041" x="10071" y="15158">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Lieberholz's Command" id="2" mapIcon="1065" x="13442" y="57645">
+        <race>Empire</race>
+        <number>17</number>
+        <ranks realm="order" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Death's Cross" id="3" mapIcon="1030" x="15077" y="49313">
+        <race>Empire</race>
+        <number>18</number>
+        <ranks realm="order" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Westmark Barricade" id="4" mapIcon="1053" x="15982" y="36557">
+        <race>Empire</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Skaven Tunnels" id="5" mapIcon="1061" x="1995" y="60474">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Shrine of the Bear" id="6" mapIcon="1062" x="2575" y="23883">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Knight's Watch" id="7" mapIcon="1065" x="27880" y="24480">
+        <race>Empire</race>
+        <number>19</number>
+        <ranks realm="order" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+
+
+
+    <landmark iname="Raven Host Reinforcements" id="8" mapIcon="1069" x="3467" y="43418">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Ravensworn" id="9" mapIcon="1052" x="44414" y="38091">
+        <race>Chaos</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Southern Breach" id="10" mapIcon="1065" x="45783" y="48559">
+        <race>Chaos</race>
+        <number>19</number>
+        <ranks realm="destruction" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Daemonfire" id="11" mapIcon="1040" x="49751" y="7280">
+        <race>Chaos</race>
+        <number>18</number>
+        <ranks realm="destruction" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Ragehorn Herdstone" id="12" mapIcon="1044" x="58739" y="61699">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Korzah's Assault" id="13" mapIcon="1065" x="5895" y="10854">
+        <race>Chaos</race>
+        <number>17</number>
+        <ranks realm="destruction" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Stoneclan Caverns" id="14" mapIcon="1063" x="62114" y="42924">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ursun's Den" id="15" mapIcon="1063" x="62546" y="30009">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cinderash Tower" id="16" mapIcon="1032" x="62947" y="20994">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Skaven Tunnels" id="17" mapIcon="1060" x="8573" y="64393">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="18" mapIcon="1259" x="32899" y="28484" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="24941" y="12591" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="28075" y="61813" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: The Murderball Rally" id="21" mapIcon="1097" x="32350" y="32143" liveevent="30">
+        <importance>minor</importance>
+        <specialType>13</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Order" id="22" mapIcon="1096" x="34579" y="5890" liveevent="30">
+        <importance>minor</importance>
+        <specialType>16</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Destruction" id="23" mapIcon="1095" x="29895" y="60218" liveevent="30">
+        <importance>minor</importance>
+        <specialType>17</specialType>
+    </landmark>
+    <publicQuest iname="Gates of Praag" id="286" iconSet="1" x="11166" y="2960">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="34" max="35" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Hell's Fall" id="303" iconSet="1" x="11747" y="12931">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Broken Ground" id="288" iconSet="1" x="11839" y="43768">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Griffon's Last Stand" id="301" iconSet="1" x="13103" y="23197">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Southern Breach" id="299" iconSet="1" x="39314" y="49688">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Eastern Breach" id="287" iconSet="1" x="42939" y="23532">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The End is Nigh" id="306" iconSet="1" x="47530" y="56501">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Cinderash Enclave" id="291" iconSet="1" x="58616" y="26510">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Tomb of Deathsword" id="290" iconSet="1" x="59303" y="1548">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Wings of the Griffon" id="300" iconSet="1" x="62194" y="57510">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Beasts of War" id="304" iconSet="1" x="6721" y="28658">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Eyes in the Dark" id="293" iconSet="1" x="7970" y="34411">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Martyr's Square: Artisan's Gift" id="5080" iconSet="1" x="30708" y="34731">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Kurlov's Armory: Defensive Boon" id="5081" iconSet="1" x="42081" y="29354">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Russenscheller Graveyard: Healing Boon" id="5083" iconSet="1" x="24848" y="58484">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Manor of Ortel von Zaris: Merchant's Gift" id="5084" iconSet="1" x="26925" y="47955">
+    </battlefieldObjective>
+    <keep iname="Southern Garrison" id="17" iconSet="1" x="37104" y="62411"> <!-- y coord changed from 63111 to make room for full keep icon -->
+        <objectiveId>606</objectiveId>
+    </keep>
+    <keep iname="Garrison of Skulls" id="18" iconSet="1" x="35254" y="11798">
+        <objectiveId>607</objectiveId>
+    </keep>
+    <zoneTransition iname="To Chaos Wastes" x="16000" y="0">
+        <zone>103</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Chaos Wastes" x="48000" y="0">
+        <zone>103</zone>
+    </zoneTransition>
+    <zoneTransition iname="To West Praag" x="0" y="16000">
+        <zone>120</zone>
+    </zoneTransition>
+    <zoneTransition iname="To West Praag" x="0" y="48000">
+        <zone>120</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Reikland" x="16000" y="65535">
+        <zone>109</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Reikland" x="48000" y="65535">
+        <zone>109</zone>
+    </zoneTransition>
+</zone>
+
+

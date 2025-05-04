@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Backpack01_d5" file="Textures/EA_Backpack01_d5.dds">
+      <Slice id="BackpackBackground" left="0" top="51" width="412" height="120" />
+      <Slice id="BackpackItemTab" left="412" top="251" width="85" height="47" />
+      <Slice id="BackpackItemTab-Rollover" left="412" top="298" width="85" height="47" />
+      <Slice id="BackpackItemTab-Selected" left="412" top="345" width="85" height="47" />
+      <Slice id="Bag1-Closed" left="0" top="0" width="46" height="50" />
+      <Slice id="Bag1-Open" left="230" top="0" width="46" height="50" />
+      <Slice id="Bag2-Closed" left="46" top="0" width="46" height="50" />
+      <Slice id="Bag2-Open" left="276" top="0" width="46" height="50" />
+      <Slice id="Bag3-Closed" left="92" top="0" width="46" height="50" />
+      <Slice id="Bag3-Open" left="322" top="0" width="46" height="50" />
+      <Slice id="Bag4-Closed" left="138" top="0" width="46" height="50" />
+      <Slice id="Bag4-Open" left="368" top="0" width="46" height="50" />
+      <Slice id="Bag5-Closed" left="184" top="0" width="46" height="50" />
+      <Slice id="Bag5-Open" left="414" top="0" width="46" height="50" />
+      <Slice id="CraftItemTab" left="242" top="251" width="85" height="47" />
+      <Slice id="CraftItemTab-Rollover" left="242" top="298" width="85" height="47" />
+      <Slice id="CraftItemTab-Selected" left="242" top="345" width="85" height="47" />
+      <Slice id="CurrencyItemTab" left="327" top="251" width="85" height="47" />
+      <Slice id="CurrencyItemTab-Rollover" left="327" top="298" width="85" height="47" />
+      <Slice id="CurrencyItemTab-Selected" left="327" top="345" width="85" height="47" />
+      <Slice id="LootSortButton" left="415" top="51" width="31" height="28" />
+      <Slice id="LootSortButton-Depressed" left="446" top="51" width="31" height="28" />
+      <Slice id="LootSortButton-Rollover" left="477" top="51" width="31" height="28" />
+      <Slice id="MarketingRewardsBtn" left="412" top="80" width="42" height="30" />
+      <Slice id="MarketingRewardsBtn-Rollover" left="454" top="80" width="42" height="30" />
+      <Slice id="Quest-Background-Chain" left="0" top="171" width="412" height="13" />
+      <Slice id="QuestItemTab" left="412" top="110" width="85" height="47" />
+      <Slice id="QuestItemTab-Rollover" left="412" top="157" width="85" height="47" />
+      <Slice id="QuestItemTab-Selected" left="412" top="204" width="85" height="47" />
+    </Texture>
+  </Assets>
+</Interface>

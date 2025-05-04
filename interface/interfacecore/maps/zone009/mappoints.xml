@@ -1,0 +1,249 @@
+<zone iname="Kadrin Valley">
+    <chapter iname="Kazad Gromar" id="1" mapIcon="1003" x="10931" y="11061">
+        <race>Dwarf</race>
+        <number>15</number>
+        <ranks realm="order" min="30" max="31" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Hungry Troll Pub" id="2" mapIcon="1006" x="15136" y="43146">
+        <race>Dwarf</race>
+        <number>16</number>
+        <ranks realm="order" min="32" max="33" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Krung's Scrappin' Spot" id="3" mapIcon="1050" x="37552" y="52483">
+        <race>Greenskin</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Shrine of Grimnir" id="4" mapIcon="1005" x="26379" y="10596">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Gharvin's Brace" id="5" mapIcon="1051" x="27215" y="5953">
+        <race>Dwarf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Mine of Grung Grimaz" id="6" mapIcon="1061" x="3243" y="41241">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Gashfang's Warband" id="7" mapIcon="1020" x="40093" y="40528">
+        <race>Greenskin</race>
+        <number>21</number>
+        <ranks realm="destruction" min="39" max="39" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Badrot's Bashin' Place" id="8" mapIcon="1020" x="40562" y="32841">
+        <race>Greenskin</race>
+        <number>22</number>
+        <ranks realm="destruction" min="40" max="40" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Ghavrin's Mine" id="9" mapIcon="1061" x="42105" y="10411">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Tower of Grung Grimaz" id="10" mapIcon="1002" x="4264" y="45191">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Kloingar Mine" id="11" mapIcon="1061" x="43325" y="60028">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gharvin's Tower" id="12" mapIcon="1002" x="44682" y="13159">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Peak Tower" id="13" mapIcon="1002" x="50339" y="14354">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Naguk's Cold Camp" id="14" mapIcon="1020" x="52346" y="57159">
+        <race>Greenskin</race>
+        <number>20</number>
+        <ranks realm="destruction" min="38" max="38" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Slayer Keep" id="15" mapIcon="1060" x="54512" y="25752">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Everpeak Mine" id="16" mapIcon="1060" x="56804" y="4061">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Duraz Deb Cave" id="17" mapIcon="1061" x="59807" y="13961">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Tunnel of Baradum" id="18" mapIcon="1060" x="61203" y="41424">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="29875" y="12808" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="20" mapIcon="1180" x="16374" y="31933" liveevent="9">
+        <importance>minor</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <publicQuest iname="Plague Mist Vale" id="93" iconSet="1" x="10147" y="17991">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Sealed Tower" id="107" iconSet="1" x="16310" y="59730">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ambush Pass" id="91" iconSet="1" x="19203" y="12110">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Evil Axis" id="92" iconSet="1" x="20071" y="16614">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Clarion Tower" id="120" iconSet="1" x="24446" y="32011">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Battlegut Ogres" id="119" iconSet="1" x="32382" y="20998">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Duraz Dok" id="113" iconSet="1" x="36026" y="31618">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="39" max="39" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Beer Barrel Bash" id="115" iconSet="1" x="41009" y="4660">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Burnbeard's Oath" id="103" iconSet="1" x="44342" y="59282">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Kazad Urbar" id="104" iconSet="1" x="58095" y="56890">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Duraz Deb" id="121" iconSet="1" x="58713" y="11174">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Slayer Keep" id="116" iconSet="1" x="59303" y="23166">
+        <difficulty>hard</difficulty>
+        <players min="24" />
+        <rewards>advanced</rewards>
+        <ranks min="40" max="40" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Baradum" id="102" iconSet="1" x="59416" y="43571">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="38" max="38" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Gates of Grung Grimaz" id="108" iconSet="1" x="8062" y="42398">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Night Riders" id="109" iconSet="1" x="8309" y="56554">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Hardwater Falls: Artisan's Gift" id="153" iconSet="1" x="37033" y="10429">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Icehearth Crossing: Healing Boon" id="156" iconSet="1" x="29736" y="19889">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Gromril Junction: Defensive Boon" id="157" iconSet="1" x="12007" y="34544">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Dolgrund's Cairn: Merchant's Gift" id="158" iconSet="1" x="53011" y="38607">
+    </battlefieldObjective>
+    <keep iname="Karaz Drengi" id="5" iconSet="1" x="45497" y="18604">
+        <objectiveId>622</objectiveId>
+    </keep>
+    <keep iname="Kazad Dammaz" id="6" iconSet="1" x="34229" y="46700">
+        <objectiveId>623</objectiveId>
+    </keep>
+    <zoneTransition iname="To Stonewatch" x="48000" y="0">
+        <zone>010</zone>
+    </zoneTransition>
+    <zoneTransition iname="To The Badlands" x="0" y="32000">
+        <zone>002</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Thunder Mountain" x="32000" y="65535">
+        <zone>005</zone>
+    </zoneTransition>
+</zone>

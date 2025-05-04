@@ -1,0 +1,279 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/PlayerWindow.lua" />
+    </Scripts>
+    <Windows>
+    
+        <!-- Player Window -->
+        <Window name="PlayerWindow" movable="false" popable="false" savesettings="true">
+            <Size>
+                <AbsPoint x="270" y="111" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="8" y="27" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="PlayerWindow.Initialize" />
+                <EventHandler event="OnUpdate" function="PlayerWindow.Update" />
+                <EventHandler event="OnShutdown" function="PlayerWindow.Shutdown" />
+                <EventHandler event="OnShown" function="PlayerWindow.OnShown" />
+                <EventHandler event="OnHidden" function="PlayerWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+            
+                <!-- Player Status Container -->
+                <Window name="$parentStatusContainer" inherits="PlayerStatusContainerTemplate" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="PlayerWindow">
+                            <AbsPoint x="89" y="27" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="PlayerWindow.OnLButtonDown" />
+                        <EventHandler event="OnRButtonUp" function="PlayerWindow.OnRButtonUp" />
+                    </EventHandlers>
+                </Window>
+                <!-- Player's Name -->
+                <Label name="$parentPlayerName" font="font_heading_unitframe_large_name" maxchars="15" textalign="bottomleft" layer="default">
+                    <Size>
+                        <AbsPoint x="180" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="PlayerWindow">
+                            <AbsPoint x="95" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="PlayerWindow.OnLButtonDown" />
+                        <EventHandler event="OnRButtonUp" function="PlayerWindow.OnRButtonUp" />
+                    </EventHandlers>
+                </Label>
+
+                <!-- Portrait Background-->
+                <DynamicImage name="$parentPortraitBackground" inherits="PortraitBackground" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="9" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+
+                <!-- Portrait -->
+                <CircleImage name="$parentPortrait" texture="render_scene_player_portrait" numsegments="16" layer="default" popable="false">
+                    <Size>
+                        <AbsPoint x="82" y="82" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentPortraitFrame">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PlayerWindow.MouseOverPortrait" />
+                        <EventHandler event="OnMouseOverEnd" function="PlayerWindow.MouseOverPortraitEnd" />
+                        <EventHandler event="OnLButtonDown" function="PlayerWindow.OnLButtonDown" />
+                        <EventHandler event="OnRButtonUp" function="PlayerWindow.OnRButtonUp" />
+                    </EventHandlers>
+                    <TexCoords x="50" y="50" />
+                </CircleImage>
+                
+                
+                <!-- Death Portrait -->
+                <DynamicImage name="$parentDeathPortrait" inherits="DeathImage" scale="0.9" handleinput="false" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="9" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+
+                <!-- Portrait Frame-->
+                <DynamicImage name="$parentPortraitFrame" inherits="PortraitFrame" handleinput="false" layer="secondary" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- notes regarding size and texturescale:
+                                                    the abs point in the size tag should reflect original size (namely x="38" y="38") multiplied by the 'texturescale' value in the CircleImage tag.
+                                            -->
+                <Window name = "$parentKillingSpree" layer="overlay">
+                    <Size>
+                        <AbsPoint x="270" y="111" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <CircleImage name="$parentArc" texture="EA_HUD_01" numsegments="32" layer="background">
+                            <Size>
+                                <AbsPoint x="81" y="80"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                                    <AbsPoint x="-81" y="-4" />
+                                </Anchor>
+                            </Anchors>
+                            <TexCoords x="40" y="705" /> <!-- size is 77x77, upper left x=0, y=666-->
+                        </CircleImage>
+						<Window name="$parentBox" inherits="EA_Window_DefaultTooltipBackground">
+							<Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="20" y="68" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="-183" y="-22" />
+                                </Anchor>
+                            </Anchors>
+						</Window>
+                        <Label name="$parentText" font="font_clear_tiny" maxchars="20" textalign="center">
+                            <Size>
+                                <AbsPoint x="80" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="14" y="62" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                
+
+                <!-- Level Background -->
+                <DynamicImage name="$parentLevelBackground" inherits="LevelBackgroundTemplate" handleinput="false" popable="false" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>                
+                
+
+                <!-- RVR Information -->
+                <DynamicImage name="$parentRvRFlagIndicator" inherits="RvRFlagIndicator" popable="false" handleinput="true" layer="secondary">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="-6" y="14" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PlayerWindow.OnMouseoverRvRIndicator" />
+                    </EventHandlers>
+                </DynamicImage>
+                <Label name="$parentRvRFlagCountDown" font="font_heading_huge" maxchars="64" textalign="center" layer="popup" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="800" y="72" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="Root">
+                            <AbsPoint x="0" y="-230" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="213" g="2" b="0" a="255" />
+                </Label>      
+                
+                <!-- Relic Bonus Indicator -->
+                <DynamicImage name="$parentRelicBonus" texture="EA_ScenarioSummary01_d5" slice="rank-highlighted" handleinput="true" popable="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="17" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="65"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PlayerWindow.MouseOverRelicBonus" />
+                    </EventHandlers>
+                </DynamicImage>          
+                
+                
+                <!-- Level Text -->
+                <Label name="$parentLevelText" font="font_heading_rank" maxchars="10" textalign="center" autoresize="false" popable="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="31" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLevelBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+					<EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PlayerWindow.MouseOverLevel" />
+					</EventHandlers>
+                </Label>
+                
+                
+                <!-- Advancement Indicator -->
+                <DynamicImage name="$parentAdvancementIndicator" inherits="AdvancementIndicator" handleinput="false" popable="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="23" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                
+                <!-- Renown Indicator -->
+                <DynamicImage name="$parentRenownIndicator" inherits="RenownIndicator" handleinput="false" popable="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="-6" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                
+                <!-- Group Leader Crown -->
+                <DynamicImage name="$parentGroupLeaderCrown" inherits="GroupLeaderCrown" handleinput="false" popable="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="41" y="-1" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                
+                <!-- Warband Leader Crown -->
+                <DynamicImage name="$parentWarbandLeaderCrown" inherits="WarbandLeaderCrown" handleinput="false" popable="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="41" y="-1" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Main Assist Crown -->
+                <DynamicImage name="$parentMainAssistCrown" inherits="MainAssistCrown" handleinput="false" popable="false" layer="popup">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="62" y="-41" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Morale Mini -->
+                <!-- Slice is dynamically changed depending on what abilities the player's morale percentage has unlocked -->
+                <DynamicImage name="$parentMoraleMini" inherits="MoraleMiniTemplate" handleinput="false" layer="secondary" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="86" y="39" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

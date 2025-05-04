@@ -1,0 +1,399 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/AbilitiesWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Button name="AbilitiesWindowButtonDef" handleinput="true" font="font_clear_default" textalign="topleft" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentSquareIcon" handleinput="false">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_Abilities01_d5" slice="AbilityIconFrame" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+                <CircleImage name="$parentCircleIcon" handleinput="false" layer="background" numsegments="8">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_Abilities01_d5" slice="MoraleIconFrame" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </CircleImage>
+                <Label name="$parentDesc" font="font_default_text" textalign="left"
+                    autoresize="true" handleinput="false" maxchars="32">
+                    <Size>
+                        <AbsPoint x="375" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="4" y="2" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <Label name="$parentDescPath" font="font_journal_body" textalign="left" autoresize="true" handleinput="false"> <!--font_clear_default-->
+                    <Size>
+                        <AbsPoint x="375" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDesc">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="229" g="173" b="52" a="255" />
+                </Label>
+                <Label name="$parentDescType" font="font_clear_small" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="375" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDescPath">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Button>
+        <!--  Single row template for the list of advance packages -->
+        <Window name="AbilityEntry">
+            <Size>
+                <AbsPoint x="364" y="75" />
+            </Size>
+            <Windows>
+                <Button name="$parentButton" inherits="AbilitiesWindowButtonDef" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="AbilitiesWindow.ActionLButtonDown" />
+                        <EventHandler event="OnLButtonUp" function="AbilitiesWindow.ActionLButtonUp" />
+                        <EventHandler event="OnRButtonDown" function="AbilitiesWindow.ActionRButtonDown" />
+                        <EventHandler event="OnRButtonUp" function="AbilitiesWindow.ActionRButtonUp" />
+                        <EventHandler event="OnMouseOver" function="AbilitiesWindow.ActionMouseOver" />
+                        <EventHandler event="OnMouseOverEnd" function="AbilitiesWindow.ActionMouseOverEnd" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+        <Window name="AbilitiesWindowModeTab" >
+            <Size>
+                <AbsPoint x="83" y="94" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentActiveImage" texture="EA_Abilities01_d5" slice="MainTab-Selected" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="83" y="94" />
+                    </Size>
+                </DynamicImage>
+                <Button name="$parentInactiveImage" backgroundtexture="EA_Abilities01_d5" highlighttexture="EA_Abilities01_d5" layer="background">
+                    <Size>
+                        <AbsPoint x="83" y="94" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          id="MainTab" />
+                        <NormalHighlit   id="MainTab-Rollover" />
+                        <Pressed         id="MainTab" />
+                        <PressedHighlit  id="MainTab-Rollover" />
+                        <Disabled        id="MainTab" />
+                        <DisabledPressed id="MainTab" />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="AbilitiesWindow.MainTabTooltip" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentIcon" texture="EA_Abilities01_d5" slice="MainTab-SymbolGeneral" handleinput="false">
+                    <Size>
+                        <AbsPoint x="83" y="94" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AbilitiesWindow.SelectMode" />
+                <EventHandler event="OnMouseOver" function="AbilitiesWindow.MainTabTooltip" />
+            </EventHandlers>
+        </Window>
+        <Window name="AbilitiesWindowFilterTab">
+            <Size>
+                <AbsPoint x="43" y="48" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIcon" texture="EA_Abilities01_d5" slice="Tab-ALL" layer="background" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="43" y="48" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentActiveImage" texture="EA_Abilities01_d5" slice="RightTabFrame-Selected" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="50" y="48" />
+                    </Size>
+                </DynamicImage>
+                <Button name="$parentInactiveImage" backgroundtexture="EA_Abilities01_d5" highlighttexture="EA_Abilities01_d5">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="43" y="48" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          id="RightTabFrame" />
+                        <NormalHighlit   id="RightTabFrame-Rollover" />
+                        <Pressed         id="RightTabFrame-Rollover" />
+                        <PressedHighlit  id="RightTabFrame-Rollover" />
+                        <Disabled        id="RightTabFrame" />
+                        <DisabledPressed id="RightTabFrame" />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="AbilitiesWindow.FilterTabTooltip" />
+                    </EventHandlers>
+                </Button>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AbilitiesWindow.SetFilterTab" />
+                <EventHandler event="OnMouseOver" function="AbilitiesWindow.FilterTabTooltip" />
+            </EventHandlers>
+        </Window>
+        <Window name="AbilitiesWindow" movable="false" layer="secondary">
+            <Size>
+                <AbsPoint x="421" y="649" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="150" y="238" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="AbilitiesWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="AbilitiesWindow.Shutdown" />
+                <EventHandler event="OnShown"       function="AbilitiesWindow.OnOpen" />
+                <EventHandler event="OnHidden"      function="AbilitiesWindow.OnClose" />
+                <EventHandler event="OnMouseWheel"  function="AbilitiesWindow.OnMouseWheel" />
+                <EventHandler event="OnRButtonDown" function="AbilitiesWindow.OnRButtonDown" />
+                <EventHandler event="OnRButtonUp"   function="AbilitiesWindow.OnRButtonUp" />
+            </EventHandlers>
+            <Sounds>
+                <Sound event="OnShown" script="Sound.Play( Sound.WINDOW_OPEN )" />
+                <Sound event="OnHidden" script="Sound.Play( Sound.WINDOW_CLOSE )" />
+            </Sounds>
+            <Windows>
+                <Window name="$parentBackground" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentTabBackground" texture="EA_Abilities01_d5" slice="MainTabBackground" layer="background">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="7" y="4" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="364" y="86" />
+                            </Size>
+                        </DynamicImage>
+                        <HorizontalResizeImage name="$parentTabBar" texture="EA_Abilities01_d5" layer="background">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentTabBackground" />
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="364" y="20" />
+                            </Size>
+                            <Sizes left="8" middle="98" right="8" />
+                            <TexSlices>
+                                <Left id="TabBar-EndCap-Left" />
+                                <Middle id="TabBar" />
+                                <Right id="TabBar-EndCap-Right" />
+                            </TexSlices>
+                        </HorizontalResizeImage>
+                        <DynamicImage name="$parentStoneTablet" texture="EA_Abilities01_d5" slice="StoneTabletBackground" layer="background">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTabBar" />
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="364" y="501" />
+                            </Size>
+                        </DynamicImage>
+                        <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultFrame" > <!-- inherits="EA_Window_DefaultFrame" -->
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentStoneTablet">
+                                    <AbsPoint x="7" y="6" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                    </Windows>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="378" y="36" />
+                    </Size>
+                </Window>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentTitleBar"/>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AbilitiesWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerIcon" inherits="EA_Default_SpellbookImage" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-40" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentTopBookend" texture="EA_Abilities01_d5" slice="TabTopper" handleinput="false">
+                    <Size>
+                        <AbsPoint x="37" y="77" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBackgroundFrame">
+                            <AbsPoint x="0" y="60" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentBottomBookend" texture="EA_Abilities01_d5" slice="TabBottom" handleinput="false">
+                    <Size>
+                        <AbsPoint x="37" y="113" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentBackgroundFrame" />
+                    </Anchors>
+                </DynamicImage>
+                <Window name="AbilitiesWindowModeTab1" inherits="AbilitiesWindowModeTab" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackgroundTabBar">
+                            <AbsPoint x="15" y="-1" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="AbilitiesWindowModeTab2" inherits="AbilitiesWindowModeTab" id="2">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="AbilitiesWindowModeTab1" />
+                    </Anchors>
+                </Window>
+                <Window name="AbilitiesWindowModeTab3" inherits="AbilitiesWindowModeTab" id="3">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="AbilitiesWindowModeTab2"/>
+                    </Anchors>
+                </Window>
+                <!-- temp change -->
+                <Window name="AbilitiesWindowModeTab4" inherits="AbilitiesWindowModeTab" id="4">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="AbilitiesWindowModeTab3"/>
+                    </Anchors>
+                </Window>
+                <!-- end temp change -->
+                <!-- Blank window filler label -->
+                <Label name="AbilitiesWindowNoAbilitiesText" font="font_default_text" 
+                    wordwrap="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="300" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="AbilitiesWindowBackgroundStoneTablet">
+                            <AbsPoint x="17" y="50" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <!-- The page buttons -->
+                <Button name="$parentPrevPage" backgroundtexture="EA_Abilities01_d5" highlighttexture="EA_Abilities01_d5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackgroundStoneTablet">
+                            <AbsPoint x="12" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="63" y="32" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          id="PrevButton" />
+                        <NormalHighlit   id="PrevButton-Rollover" />
+                        <Pressed         id="PrevButton-Depressed" />
+                        <PressedHighlit  id="PrevButton-Depressed" />
+                        <Disabled        id="PrevButton-Disabled" /> <!-- Buttons are hidden when disabled. -->
+                        <DisabledPressed id="PrevButton-Disabled" />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AbilitiesWindow.PrevPage"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentNextPage" backgroundtexture="EA_Abilities01_d5" highlighttexture="EA_Abilities01_d5">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundStoneTablet">
+                            <AbsPoint x="-12" y="-8" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="63" y="32" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          id="NextButton" />
+                        <NormalHighlit   id="NextButton-Rollover" />
+                        <Pressed         id="NextButton-Depressed" />
+                        <PressedHighlit  id="NextButton-Depressed" />
+                        <Disabled        id="NextButton-Disabled" /> <!-- Buttons are hidden when disabled. -->
+                        <DisabledPressed id="NextButton-Disabled" />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="AbilitiesWindow.NextPage"/>
+                    </EventHandlers>
+                </Button>
+                <Label name="AbilitiesWindowPageNumber" font="font_default_text" textalign="center" autoresize="true" handleinput="false" maxchars="24">
+                    <Size>
+                        <AbsPoint x="200" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackgroundStoneTablet">
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Assets>
+
+        <Texture name="window_frame1" file="Textures/WindowFrame1.dds" />
+
+        <Texture name="assorted_hud_pieces" file="Textures/in_game_32bit.DDS" />
+        <Texture name="tactics_editor" file="Textures/tacticEditorIcons.dds" />
+
+        <Texture name="ui_main" file="Textures/UI_Main01.dds" />
+
+        <Texture name="list_up_arrow" file="Textures/UpArrow.dds" />
+        <Texture name="list_down_arrow" file="Textures/DownArrow.dds" />
+
+
+        <!-- Icon Frames -->
+        <Texture name="icon_frame_square" file="Textures/Square_Frame.dds" />
+        <Texture name="icon_frame_square_highlight" file="Textures/Square_Frame_Highlight.dds" />
+        <Texture name="icon_frame_square_pressed" file="Textures/Square_Frame_Press.dds" />
+
+        <!-- Animations -->
+        <Texture name="anim_book" file="Textures/anim_tomepageflipping.dds" />
+        <Texture name="anim_morale_flash" file="Textures/morale_flash01.dds" />
+        <Texture name="anim_morale_glow" file="Textures/morale_glow01.dds" />
+        <Texture name="anim_waaagh_1" file="Textures/waagh_stage_1_contact_sheet.DDS" />
+        <Texture name="anim_waaagh_2" file="Textures/waagh_stage_2_contact_sheet.DDS" />
+        <Texture name="anim_waaagh_3" file="Textures/waagh_stage_3_contact_sheet.DDS" />
+        <Texture name="anim_waaagh_4" file="Textures/waagh_stage_4_contact_sheet.DDS" />
+        <Texture name="anim_waaagh_5" file="Textures/waagh_stage_4_contact_sheet.DDS" />
+        <Texture name="anim_waaagh_round_1" file="Textures/waagh_stage_1_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_waaagh_round_2" file="Textures/waagh_stage_2_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_waaagh_round_3" file="Textures/waagh_stage_3_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_waaagh_round_4" file="Textures/waagh_stage_4_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_waaagh_round_5" file="Textures/waagh_stage_4_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_fury_1" file="Textures/RFury_stage_1_contact_sheet.DDS" />
+        <Texture name="anim_fury_2" file="Textures/RFury_stage_2_contact_sheet.DDS" />
+        <Texture name="anim_fury_3" file="Textures/RFury_stage_3_contact_sheet.DDS" />
+        <Texture name="anim_fury_4" file="Textures/RFury_stage_4_contact_sheet.DDS" />
+        <Texture name="anim_fury_5" file="Textures/RFury_stage_4_contact_sheet.DDS" />
+        <Texture name="anim_fury_round_1" file="Textures/RFury_stage_1_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_fury_round_2" file="Textures/RFury_stage_2_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_fury_round_3" file="Textures/RFury_stage_3_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_fury_round_4" file="Textures/RFury_stage_4_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_fury_round_5" file="Textures/RFury_stage_4_contact_sheet_morale_round.DDS" />
+        <Texture name="anim_marquee_square" file="Textures/square_marquee.DDS" />
+
+        <!-- Scenario Summary -->
+        <Texture name="scenario_widgets" file="Textures/ScenarioSummaryGrfx.dds" />
+
+    </Assets>
+</Interface>

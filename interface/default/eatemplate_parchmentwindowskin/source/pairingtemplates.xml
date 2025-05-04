@@ -1,0 +1,77 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    
+    <Windows>        
+    
+
+        <Button name="TomePairingGvD" layer="secondary" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="1.18"
+                font="font_heading_medium_noshadow" maxchars="256" textalign="center" wordwrap="true" autoresize="false" >
+            <Size>
+                <AbsPoint x="531" y="186" />
+            </Size>
+            <TexSlices>
+                <Normal          id="PairingGvD" />
+                <NormalHighlit   id="PairingGvD" />
+                <Pressed         id="PairingGvDSelected" />
+                <PressedHighlit  id="PairingGvDSelected" />
+                <Disabled        id="PairingGvD" />
+                <DisabledPressed id="PairingGvD" />
+            </TexSlices>
+            <TextColors>
+                <Normal r="155" g="0" b="0" a="255"/>
+                <NormalHighlit r="255" g="85" b="0" a="255"/>
+                <Pressed r="95" g="57" b="36" a="255"/>
+                <PressedHighlit r="95" g="57" b="36" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+                <DisabledPressed r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+        
+        <Button name="TomePairingEvC" layer="secondary" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="1.18"
+                font="font_heading_medium_noshadow" maxchars="256" textalign="center" wordwrap="true" autoresize="false" >
+            <Size>
+                <AbsPoint x="531" y="186" />
+            </Size>
+            <TexSlices>
+                <Normal          id="PairingEvC" />
+                <NormalHighlit   id="PairingEvC" />
+                <Pressed         id="PairingEvCSelected" />
+                <PressedHighlit  id="PairingEvCSelected" />
+                <Disabled        id="PairingEvC" />
+                <DisabledPressed id="PairingEvC" />
+            </TexSlices>
+            <TextColors>
+                <Normal r="155" g="0" b="0" a="255"/>
+                <NormalHighlit r="255" g="85" b="0" a="255"/>
+                <Pressed r="95" g="57" b="36" a="255"/>
+                <PressedHighlit r="95" g="57" b="36" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+                <DisabledPressed r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+        
+        <Button name="TomePairingElves" layer="secondary" backgroundtexture="EA_Tome" highlighttexture="EA_Tome" texturescale="1.18"
+                font="font_heading_medium_noshadow" maxchars="256" textalign="center" wordwrap="true" autoresize="false" >
+            <Size>
+                <AbsPoint x="531" y="186" />
+            </Size>
+            <TexSlices>
+                <Normal          id="PairingElves" />
+                <NormalHighlit   id="PairingElves" />
+                <Pressed         id="PairingElvesSelected" />
+                <PressedHighlit  id="PairingElvesSelected" />
+                <Disabled        id="PairingElves" />
+                <DisabledPressed id="PairingElves" />
+            </TexSlices>
+            <TextColors>
+                <Normal r="155" g="0" b="0" a="255"/>
+                <NormalHighlit r="255" g="85" b="0" a="255"/>
+                <Pressed r="95" g="57" b="36" a="255"/>
+                <PressedHighlit r="95" g="57" b="36" a="255"/>
+                <Disabled r="95" g="57" b="36" a="255" />
+                <DisabledPressed r="95" g="57" b="36" a="255" />
+            </TextColors>
+        </Button>
+    
+
+    </Windows>
+</Interface>

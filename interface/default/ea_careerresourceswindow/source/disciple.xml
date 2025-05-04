@@ -1,0 +1,43 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/Disciple.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_DiscipleResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="110" y="86" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBackgroundImage" texture="EA_Career_Di_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="110" y="86" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFillImage" texture="EA_Career_Di_32b" handleinput="false">
+                    <Size>
+                        <AbsPoint x="110" y="37" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                    <Size>
+                        <AbsPoint x="110" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="14" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="216" g="40" b="42" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

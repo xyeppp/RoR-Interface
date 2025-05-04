@@ -1,0 +1,246 @@
+<zone iname="Caledor">
+    <landmark iname="Manor of Dorielle" id="1" mapIcon="1207" x="13364" y="3729">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="The Vault of the Dragon Princes" id="2" mapIcon="1072" x="14331" y="21457">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="30" max="31" />
+        <objectiveId>448</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Pure Power" id="3" mapIcon="1072" x="17673" y="55930">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="40" max="40" />
+        <objectiveId>483</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <landmark iname="Drakespine Passage" id="4" mapIcon="1060" x="22561" y="44283">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Shrine of Tethlis" id="5" mapIcon="1072" x="27692" y="48238">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="39" max="39" />
+		<objectiveId>473</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Kelysian's Landing" id="6" mapIcon="1072" x="28865" y="3088">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="30" max="31" />
+        <objectiveId>450</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Executioner's Blade" id="7" mapIcon="1072" x="33719" y="58538">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="39" max="39" />
+        <objectiveId>474</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Shrine of the Dragontamer" id="8" mapIcon="1072" x="39431" y="48526">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="39" max="39" />
+        <objectiveId>472</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Battle of Avethir" id="9" mapIcon="1072" x="4115" y="2920">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="30" max="31" />
+        <objectiveId>449</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <landmark iname="The Drakemine" id="10" mapIcon="1062" x="4528" y="18897">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Brightmoon Forest" id="11" mapIcon="1064" x="47776" y="48008">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Loryndaal" id="12" mapIcon="1072" x="48165" y="13358">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="32" max="33" />
+        <objectiveId>462</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Ulan Bel" id="13" mapIcon="1072" x="55440" y="35535">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="38" max="38" />
+        <objectiveId>466</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Malyros' Rest" id="14" mapIcon="1072" x="57546" y="25400">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="32" max="33" />
+        <objectiveId>461</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Drake's Rest" id="15" mapIcon="1072" x="57942" y="65176">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="38" max="38" />
+        <objectiveId>471</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Fortress of Caledor" id="16" mapIcon="1072" x="60840" y="3453">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="32" max="32" />
+        <objectiveId>458</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Shadowchasm" id="17" mapIcon="1072" x="62196" y="55430">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="38" max="38" />
+        <objectiveId>470</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <landmark iname="Silverdeep Cavern" id="18" mapIcon="1062" x="62718" y="40972">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Tor Sethai" id="19" mapIcon="1072" x="7138" y="52356">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="40" max="40" />
+        <objectiveId>482</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Might of Ulthuan" id="20" mapIcon="1072" x="7967" y="44002">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="40" max="40" />
+        <objectiveId>484</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <warcamp iname="Conqueror's Watch" id="21" mapIcon="1055" x="29537" y="24492">
+        <race>DarkElf</race>
+        <services>
+          <service>Renown Trainer</service>
+          <service>Quartermaster</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <warcamp iname="Conqueror's Descent" id="22" mapIcon="1054" x="29209" y="40265">
+        <race>HighElf</race>
+        <services>
+          <service>Renown Trainer</service>
+          <service>Quartermaster</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Crimson Scar" id="23" mapIcon="1251" x="2015" y="23405">
+        <race>DarkElf</race>
+        <number>15</number>
+		<ranks realm="destruction" min="30" max="31" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <chapter iname="Drakeshadow" id="24" mapIcon="1251" x="46034" y="7251">
+        <race>DarkElf</race>
+        <number>16</number>
+		<ranks realm="destruction" min="32" max="33" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <chapter iname="Drakestar's Lament" id="25" mapIcon="1208" x="47838" y="51219">
+        <race>HighElf</race>
+        <number>21</number>
+		<ranks realm="order" min="22" max="23" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <chapter iname="Asuryan's Reach" id="26" mapIcon="1208" x="16603" y="50391">
+        <race>HighElf</race>
+        <number>22</number>
+		<ranks realm="order" min="24" max="25" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    
+
+<!--<landmark iname="Live Event: Shrine of Khaine" id="27" mapIcon="1026" x="59144" y="27278">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+</landmark>-->
+<!--<landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1026" x="19967" y="33265">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+</landmark>-->    
+<!--<landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1026" x="9618" y="33676">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>-->
+
+<landmark iname="Wild Hunt: Curse of Kurnous" id="30" mapIcon="1072" x="24802" y="31346" liveevent="23">
+        <importance>minor</importance>
+        <specialType>10</specialType>
+    </landmark>
+<zoneTransition iname="To Fell Landing" x="0" y="32000">
+        <zone>204</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Dragon Wake" x="65535" y="59085">
+        <zone>205</zone>
+    </zoneTransition>
+ <zoneTransition iname="To Dragon Wake" x="65535" y="30806">
+        <zone>205</zone>
+    </zoneTransition>
+<zoneTransition iname="To Dragon Wake" x="65535" y="11861">
+        <zone>205</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Dragon Wake" x="65535" y="48000">
+        <zone>205</zone>
+    </zoneTransition>
+	<zoneTransition iname="To Saphery" x="0" y="21600">
+        <zone>208</zone>
+    </zoneTransition>
+</zone>

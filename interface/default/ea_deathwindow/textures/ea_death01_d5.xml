@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_Death01_d5" file="Textures/EA_Death01_d5.dds">
+      <Slice id="MainWindow" left="0" top="0" width="437" height="461" />
+      <Slice id="RespawnButton-Depressed" left="310" top="461" width="187" height="51" />
+      <Slice id="RespawnButton-Rollover" left="123" top="461" width="187" height="51" />
+    </Texture>
+  </Assets>
+</Interface>

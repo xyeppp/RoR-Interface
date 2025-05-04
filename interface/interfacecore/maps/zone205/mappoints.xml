@@ -1,0 +1,269 @@
+<zone iname="Dragonwake">
+    <landmark iname="Drake's Peace" id="1" mapIcon="1070" x="11691" y="52250">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Drakewarden Keep" id="2" mapIcon="1054" x="1400" y="25600">
+        <race>HighElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Meraloris Cavern" id="3" mapIcon="1062" x="20192" y="16054">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Oriphonaith Cavern" id="4" mapIcon="1062" x="20656" y="10065">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="The Cynath Threshold" id="5" mapIcon="1210" x="24300" y="2176">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Taromir's Malice" id="6" mapIcon="1208" x="27000" y="17000">
+        <race>DarkElf</race>
+        <number>18</number>
+        <ranks realm="destruction" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Drake's Honor" id="7" mapIcon="1063" x="36029" y="25477">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Oakbrow's Charge" id="8" mapIcon="1208" x="46500" y="22100">
+        <race>HighElf</race>
+        <number>18</number>
+        <ranks realm="order" min="36" max="36" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Drakeslayer Hold" id="9" mapIcon="1055" x="53000" y="45300">
+        <race>DarkElf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Celrath Pass" id="10" mapIcon="1208" x="53200" y="48200">
+        <race>DarkElf</race>
+        <number>19</number>
+        <ranks realm="destruction" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="The Urithair Threshold" id="11" mapIcon="1210" x="54138" y="1372">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Caladain Cavern" id="12" mapIcon="1062" x="59385" y="60674">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Caelanriol" id="13" mapIcon="1208" x="61500" y="21100">
+        <race>HighElf</race>
+        <number>17</number>
+        <ranks realm="order" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Well of Absolution" id="14" mapIcon="1208" x="61817" y="3408">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Spires of Vaul" id="15" mapIcon="1208" x="7140" y="47700">
+        <race>HighElf</race>
+        <number>19</number>
+        <ranks realm="order" min="37" max="37" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Well of Mercy" id="16" mapIcon="1206" x="8261" y="9375">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Saruthil's Wake" id="17" mapIcon="1208" x="900" y="10800">
+        <race>DarkElf</race>
+        <number>17</number>
+        <ranks realm="destruction" min="34" max="35" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Cinderblade" id="18" mapIcon="1205" x="2600" y="54181">
+        <race>HighElf</race>
+        <number>20</number>
+        <ranks realm="order" min="38" max="38" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="61023" y="34675" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="32077" y="41423" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="16234" y="41154" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Wild Hunt: Curse of Kurnous" id="22" mapIcon="1072" x="32404" y="38728" liveevent="23">
+        <importance>minor</importance>
+        <specialType>10</specialType>
+    </landmark>
+    <publicQuest iname="Rescue of Aenares" id="460" iconSet="1" x="14979" y="26525">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Cliffs of Vaul" id="463" iconSet="1" x="22087" y="54705">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Blood Focus" id="464" iconSet="1" x="26356" y="50326">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Dominion of Khaine" id="465" iconSet="1" x="28502" y="63243">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Caladain Gate" id="467" iconSet="1" x="37327" y="46785">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Dragonwatch Falls" id="456" iconSet="1" x="38479" y="4797">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Caladain's Furnace" id="468" iconSet="1" x="38779" y="62861">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Keepers Watch" id="454" iconSet="1" x="40187" y="21825">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Caladain Steppe" id="469" iconSet="1" x="46064" y="48693">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Keeper's Vigil" id="457" iconSet="1" x="46369" y="15325">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Galiron's Mouth" id="459" iconSet="1" x="47245" y="28689">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Dragonwatch" id="455" iconSet="1" x="49241" y="5021">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Milaith's Memory: Artisan's Gift" id="612" iconSet="1" x="51949" y="41217">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Mournfire's Approach: Healing Boon" id="613" iconSet="1" x="21763" y="29559">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Pelgorath's Ember: Defensive Boon" id="614" iconSet="1" x="26060" y="42823">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Fireguard Spire: Merchant's Gift" id="615" iconSet="1" x="7646" y="34479">
+    </battlefieldObjective>
+    <keep iname="Covenant of Flame" id="27" iconSet="1" x="37557" y="30354">
+        <objectiveId>628</objectiveId>
+    </keep>
+    <keep iname="Drakebreaker's Scourge" id="28" iconSet="1" x="18624" y="31222">
+        <objectiveId>629</objectiveId>
+    </keep>
+    <zoneTransition iname="To Caledor" x="0" y="13312">
+        <zone>203</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Caledor" x="0" y="24986">
+        <zone>203</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Caledor" x="0" y="31232">
+        <zone>203</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Caledor" x="0" y="48000">
+        <zone>203</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Eataine" x="65535" y="52800">
+        <zone>209</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Eataine" x="65535" y="20600">
+        <zone>209</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Eataine" x="65535" y="36864">
+        <zone>209</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Isle of the Dead" x="24576" y="0">
+        <zone>220</zone>
+    </zoneTransition>
+</zone>

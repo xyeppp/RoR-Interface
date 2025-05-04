@@ -1,0 +1,243 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+
+        <Window name="TomeWindowTitlePageStatItem" inherits="TomeTOCItemWindowResizeNumber" >
+	        <Size>
+	            <AbsPoint x="370" y="22"/>
+            </Size>
+        </Window>
+        
+        
+        <Window name="TomeUnreadEntryWindow" >
+            <Size>
+                <AbsPoint x="400" y="26"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="TomeWindow.OnClickUnreadEntry"/>
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentIcon" texture="EA_Tome" slice="MiniSection-Achievements" >
+                    <Size>
+                        <AbsPoint x="25" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Button name="$parentText" inherits="TOKTextButton" maxchars="256" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="400" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentIcon">
+                            <AbsPoint x="5" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+        
+
+	    <Window name="TomeWindowTitlePageDef" inherits="TomeSectionWindow">
+		    <Windows>
+                <!-- Intro -->
+                <Window name="$parentTitleImageGroup">
+                    <Windows>
+		                <DynamicImage name="TomeWindowTitlePageTitleImage" texture="EA_Tome" handleinput="false" layer="background" slice="TomeTitleImage" texturescale="1.18">
+		                    <Size>
+		                        <AbsPoint x="523" y="422"/>
+		                    </Size>
+		                    <Anchors>
+		                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+		                            <AbsPoint x="0" y="11"/>
+		                        </Anchor>
+		                    </Anchors>
+		                </DynamicImage>
+		                
+		                <!-- Title image text -->
+		                <Label name="TomeWindowTitlePageTitleKnowledge" inherits="TOKTitleLarge" textalign="center" autoresize="false" autoresizewidth="false" textAutoFitMinScale="0.5">
+                      <Size>
+                        <AbsPoint x="315" y="48"/>
+                      </Size>
+		                    <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom" relativeTo="TomeWindowTitlePageTitleImage">
+                            <AbsPoint x="0" y="-132"/>
+                          </Anchor>
+		                    </Anchors>
+		                </Label>
+		                <Label name="TomeWindowTitlePageTitleTome" inherits="TOKTitleHuge" textalign="false" autoresize="true" autoresizewidth="true">
+		                    <Anchors>
+		                        <Anchor point="top" relativePoint="bottom" relativeTo="TomeWindowTitlePageTitleKnowledge">
+		                            <AbsPoint x="-25" y="0"/>
+		                        </Anchor>
+		                    </Anchors>
+		                </Label>
+		                <Label name="TomeWindowTitlePageTitleOf" inherits="TOKTitleMedium" textalign="false" autoresize="true" autoresizewidth="true">
+		                    <Anchors>
+		                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="TomeWindowTitlePageTitleTome">
+		                            <AbsPoint x="7" y="-6"/>
+		                        </Anchor>
+		                    </Anchors>
+		                </Label>
+		                <Label name="TomeWindowTitlePageTitleThe" inherits="TOKTitleSmall" textalign="false" autoresize="true" autoresizewidth="true">
+		                    <Anchors>
+		                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="TomeWindowTitlePageTitleTome">
+		                            <AbsPoint x="0" y="3"/>
+		                        </Anchor>
+		                    </Anchors>
+		                </Label>
+                    </Windows>
+                </Window>
+
+                        
+			    <!-- Contents -->
+			    <PageWindow name="$parentPageWindow" inherits="TomePageWindow" >
+				    <Windows>
+                        
+					    <Window name="$parentContentsChild">
+						    <Windows>
+							    
+                                <Label name="TomeWindowTitlePagePlayerTextIntro" inherits="TOKTextHuge" textalign="center" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="500"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageTitleImage">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+							    <Label name="TomeWindowTitlePagePlayerText" inherits="TOKSubHeading" textalign="center" autoresize="true" wordwrap="true">
+							        <Size>
+							            <AbsPoint x="500"/>
+							        </Size>
+								    <Anchors>
+									    <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePagePlayerTextIntro">
+										    <AbsPoint x="0" y="0"/>
+									    </Anchor>
+								    </Anchors>
+							    </Label>
+                                <Button name="$parentPlayerTitle" inherits="TOKTextButton" maxchars="256" textalign="center" autoresize="true" >
+                                    <Size>
+                                        <AbsPoint x="400" y="20"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePagePlayerText">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="TomeWindow.ClickTitlePagePlayerTitle"/>
+                                    </EventHandlers>
+                                </Button>
+							    
+                                <DynamicImage name="$parentDivider" inherits="TomeDiamondDivider">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPlayerTitle">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+								
+								<!-- STATS -->
+                                <Window name="TomeWindowTitlePageStatTomeXp" inherits="TomeWindowTitlePageStatItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowTitlePageStatTomeUnlocks" inherits="TomeWindowTitlePageStatItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatTomeXp">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowTitlePageStatRvRKills" inherits="TomeWindowTitlePageStatItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatTomeUnlocks">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="TomeWindowTitlePageStatMonsterKills" inherits="TomeWindowTitlePageStatItem" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatRvRKills">
+                                            <AbsPoint x="0" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+								<Window name="TomeWindowTitlePageStatHoursPlayed" inherits="TomeWindowTitlePageStatItem" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatMonsterKills">
+											<AbsPoint x="0" y="5"/>
+										</Anchor>
+									</Anchors>
+                                </Window>
+								<Window name="TomeWindowTitlePageStatSoloMMR" inherits="TomeWindowTitlePageStatItem" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatHoursPlayed">
+											<AbsPoint x="0" y="5"/>
+										</Anchor>
+									</Anchors>
+                                </Window>
+
+								<Window name="TomeWindowTitlePageStatPremadeMMR" inherits="TomeWindowTitlePageStatItem" >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatSoloMMR">
+											<AbsPoint x="0" y="5"/>
+										</Anchor>
+									</Anchors>
+                                </Window>
+
+							    <!-- NEW ENTRIES -->
+                                <Window name="$parentNewEntriesTitleAnchor">
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatPremadeMMR">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+							    <Label name="$parentNewEntriesTitle" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNewEntriesTitleAnchor">
+                                            <AbsPoint x="0" y="10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                <Window name="$parentNewEntriesAnchor" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNewEntriesTitle">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Label name="$parentNoNewEntriesText" inherits="TOKText"  maxchars="128" textalign="center" autoresize="true" >
+                                    <Size>
+                                        <AbsPoint x="350" y="16"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="top" relativeTo="$parentNewEntriesAnchor">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+						    </Windows>
+					    </Window>
+				    </Windows>
+			    </PageWindow>
+		    </Windows>
+	    </Window>
+	
+    </Windows>
+</Interface>

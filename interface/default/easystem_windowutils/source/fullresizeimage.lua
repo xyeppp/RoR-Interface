@@ -1,0 +1,1 @@
+FullResizeImage = Frame:Subclass ()

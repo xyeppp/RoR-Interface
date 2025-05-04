@@ -1,0 +1,74 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/AlertTextWindow.lua" />
+	</Scripts>
+	<Windows>
+		<Label name="AlertTextLine" font="font_alert_outline_large" maxchars="256" textalign="center" wordwrap="true" autoresize="true">
+			<Size>
+				<AbsPoint x="1024" y="60" />
+			</Size>
+			<Color r="255" g="255" b="255" a="255" />
+		</Label>
+		
+		<Window name="AlertTextWindow" movable="false" layer="popup">
+			<Size>
+				<AbsPoint x="1024" y="150" />
+			</Size>
+			<Anchors>
+				<Anchor point="top" relativePoint="top" >
+					<AbsPoint x="0" y="275" />
+				</Anchor>
+			</Anchors>
+            <Windows>
+                <Label name="$parentLine1" inherits="AlertTextLine">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                        <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLine2" inherits="AlertTextLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLine1">
+                        <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLine3" inherits="AlertTextLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLine2">
+                        <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLine4" inherits="AlertTextLine" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLine3">
+                        <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLine5" inherits="AlertTextLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLine4">
+                        <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        
+        <!-- This is a container window for all of the alert text -->
+        <Window name="AlertTextContainerWindow" movable="false" handleinput="false" layer="popup" >
+			<Size>
+				<AbsPoint x="1024" y="150" />
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" />
+                <Anchor point="bottomright" relativePoint="bottomright" />
+			</Anchors>    
+	    </Window>
+	    
+    </Windows>	    
+</Interface>

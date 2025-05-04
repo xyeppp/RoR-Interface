@@ -1,0 +1,542 @@
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Windows>
+
+    <Label name="MailRowHeaderTemplate" inherits="EA_Label_DefaultText" font="font_default_text_small" textalign="rightcenter" wordwrap="false" handleinput="false">
+      <Size>
+        <AbsPoint x="125" y="24" />
+      </Size>
+    </Label>
+
+    <Label name="MailRowTextTemplate" inherits="EA_Label_DefaultText" font="font_default_text_small" textalign="leftcenter" wordwrap="false" handleinput="false">
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+    <Label name="SendMailHeaderTemplate" wordwrap="false" textalign="rightcenter" font="font_default_text_small" inherits="EA_Label_DefaultText" handleinput="false">
+      <Size>
+        <AbsPoint x="100" y="30" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+    <Label name="MailMessageHeaderTemplate" wordwrap="false" textalign="rightcenter" font="font_default_text_small" inherits="EA_Label_DefaultText" handleinput="false">
+      <Size>
+        <AbsPoint x="100" y="30" />
+      </Size>
+    </Label>
+
+    <Label name="MailMessageTextTemplate" wordwrap="false" textalign="leftcenter" inherits="EA_Label_DefaultText" handleinput="false">
+      <Size>
+        <AbsPoint x="250" y="26" />
+      </Size>
+      <Color r="255" g="255" b="255" a="255"/>
+    </Label>
+
+    <!-- Tab button definition for the row of available subsections -->
+    <Button name="EA_Templates_MailWindowTabButton" inherits="EA_Button_Tab">
+      <Size>
+        <AbsPoint x="124" y="35" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="MailWindow.OnLButtonUpTab" />
+        <EventHandler event="OnMouseOver" function="MailWindow.OnMouseOverTab" />
+      </EventHandlers>
+      <TextOffset x="0" y="5" />
+    </Button>
+
+    <!-- Money Window Template -->
+    <Window name="MailWindowMoneyWindowTemplate" >
+      <Size>
+        <AbsPoint x="250" y="28" />
+      </Size>
+      <Windows>
+
+        <!-- Money Window Template -->
+        <Label name="$parentHeader" inherits="MailRowHeaderTemplate" textalign="right">
+          <Size>
+            <AbsPoint x="250" y="24" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="-2" y="0" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+
+        <Window name="$parentFrame" inherits="MoneyFrame" handleinput="true">
+          <Anchors>
+            <Anchor point="top" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="2" y="0" />
+            </Anchor>
+          </Anchors>
+        </Window>
+      </Windows>
+    </Window>
+
+    <!-- Contains a minus button, input box, plus button, icon, and header. used as a single row for Money Input-->
+    <Window name="EA_Templates_CoinInput">
+      <Windows>
+
+        <!-- Minus Button -->
+        <Button name="$parentButtonMinus" inherits="EA_Button_DefaultMinus">
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parent">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Edit Box -->
+        <EditBox name="$parentEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="3" input="numbers" taborder="1">
+          <Size>
+            <AbsPoint x="50" y="32"/>
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentButtonMinus">
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+          </EventHandlers>
+        </EditBox>
+
+        <!-- Plus Button -->
+        <Button name="$parentButtonPlus" inherits="EA_Button_DefaultPlus">
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentEditBox">
+              <AbsPoint x="10" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- Icon -->
+        <DynamicImage name="$parentIcon" texture="assorted_hud_pieces" handleinput="false" layer="background">
+          <Size>
+            <AbsPoint x="19" y="19" />
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentButtonPlus">
+              <AbsPoint x="10" y="0"/>
+            </Anchor>
+          </Anchors>
+          <TexCoords x="197" y="82" />
+        </DynamicImage>
+
+        <!-- Header -->
+        <Label name="$parentHeader" inherits="MailRowHeaderTemplate" textalign="leftcenter">
+          <Size>
+            <AbsPoint x="250" y="25" />
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeto="$parentIcon">
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+      </Windows>
+    </Window>
+
+    <!-- Money Input Template-->
+    <Window name="EA_Templates_MoneyInput">
+      <Size>
+        <AbsPoint x="250" y="100" />
+      </Size>
+      <Windows>
+
+        <Window name="$parentGold" inherites="EA_Templates_CoinInput">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeto="$parent">
+              <AbsPoint x="10" y="5" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Window name="$parentBrass" inherites="EA_Templates_CoinInput">
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeto="$parent">
+              <AbsPoint x="10" y="0" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Window name="$parentBrass" inherites="EA_Templates_CoinInput">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="bottomleft" relativeto="$parent">
+              <AbsPoint x="10" y="-5" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+      </Windows>
+    </Window>
+
+    <!-- Filter check button and label combination -->
+    <Window name="EA_Templates_FilterCheckLabel" movable="false">
+      <Size>
+        <AbsPoint x="200" y="35" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="MailWindow.ApplyFilters" />
+      </EventHandlers>
+      <Windows>
+        <Button name="$parentButton" inherits="EA_Button_DefaultCheckBox">
+          <Anchors>
+            <Anchor point="left" relativePoint="left">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+        <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false">
+          <Size>
+            <AbsPoint x="255" y="16" />
+          </Size>
+          <Anchors>
+            <Anchor point="right" relativePoint="left" relativeTo="$parentButton">
+              <AbsPoint x="5" y="3" />
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="255" b="255" a="255" />
+        </Label>
+      </Windows>
+    </Window>
+
+    <!-- Filter Windows -->
+    <Window name="EA_Templates_FilterMenu" movable="false" layer="secondary">
+      <Size>
+        <AbsPoint x="200" y="378" />
+      </Size>
+      <Anchors>
+        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+          <AbsPoint x="0" y="0" />
+        </Anchor>
+      </Anchors>
+      <Windows>
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright">
+              <AbsPoint x="0" y="0"/>
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomleft">
+              <AbsPoint x="-9" y="0"/>
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Window name="$parentAttachmentMoney" inherits="EA_Templates_FilterCheckLabel">
+          <Size>
+            <AbsPoint x="200" y="35" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="5" y="10" />
+            </Anchor>
+          </Anchors>
+        </Window>
+      </Windows>
+    </Window>
+
+    <!-- Entire Mailbox Row Definition -->
+    <Button name="EA_Templates_MailRow" inherits="EA_Button_MailRow">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="MailWindow.SelectMailHeader" />
+        <EventHandler event="OnRButtonUp" function="MailWindow.OnRButtonUpMailHeader" />
+      </EventHandlers>
+    </Button>
+
+    <!--  Single row template for Mailbox Header States -->
+    <FullResizeImage name="EA_Button_MailRowNormal" texture="EA_SquareFrame">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <Sizes>
+        <TopLeft x="10" y="10" />
+        <BottomRight x="10" y="10" />
+        <Middle x="44" y="44" />
+      </Sizes>
+      <TexCoords>
+        <TopLeft x="0" y="0" />
+        <TopCenter x="10" y="0" />
+        <TopRight x="54" y="0" />
+        <MiddleLeft x="0" y="10" />
+        <MiddleCenter x="10" y="10" />
+        <MiddleRight x="54" y="10" />
+        <BottomLeft x="0" y="54" />
+        <BottomCenter x="10" y="54" />
+        <BottomRight x="54" y="54" />
+      </TexCoords>
+    </FullResizeImage>
+
+    <FullResizeImage name="EA_Button_MailRowHighlight" texture="EA_SquareFrame_Highlight" frameonly="true">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <Sizes>
+        <TopLeft x="26" y="26" />
+        <BottomRight x="26" y="26" />
+        <Middle x="12" y="12" />
+      </Sizes>
+      <TexCoords>
+        <TopLeft x="0" y="0" />
+        <TopCenter x="26" y="0" />
+        <TopRight x="38" y="0" />
+        <MiddleLeft x="0" y="26" />
+        <MiddleCenter x="26" y="26" />
+        <MiddleRight x="38" y="26" />
+        <BottomLeft x="0" y="38" />
+        <BottomCenter x="26" y="38" />
+        <BottomRight x="38" y="38" />
+      </TexCoords>
+    </FullResizeImage>
+
+    <FullResizeImage name="EA_Button_MailRowPressed" texture="EA_SquareFrame_Pressed">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <Sizes>
+        <TopLeft x="10" y="10" />
+        <BottomRight x="10" y="10" />
+        <Middle x="44" y="44" />
+      </Sizes>
+      <TexCoords>
+        <TopLeft x="0" y="0" />
+        <TopCenter x="10" y="0" />
+        <TopRight x="54" y="0" />
+        <MiddleLeft x="0" y="10" />
+        <MiddleCenter x="10" y="10" />
+        <MiddleRight x="54" y="10" />
+        <BottomLeft x="0" y="54" />
+        <BottomCenter x="10" y="54" />
+        <BottomRight x="54" y="54" />
+      </TexCoords>
+    </FullResizeImage>
+
+    <FullResizeImage name="EA_Button_MailRowDisabled" texture="EA_SquareFrame">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <Sizes>
+        <TopLeft x="10" y="10" />
+        <BottomRight x="10" y="10" />
+        <Middle x="44" y="44" />
+      </Sizes>
+      <TexCoords>
+        <TopLeft x="0" y="0" />
+        <TopCenter x="10" y="0" />
+        <TopRight x="54" y="0" />
+        <MiddleLeft x="0" y="10" />
+        <MiddleCenter x="10" y="10" />
+        <MiddleRight x="54" y="10" />
+        <BottomLeft x="0" y="54" />
+        <BottomCenter x="10" y="54" />
+        <BottomRight x="54" y="54" />
+      </TexCoords>
+    </FullResizeImage>
+
+    <!--  Single row template for the list of Mail Headers -->
+    <Button name="EA_Button_MailRow" inherits="EA_Button_Default" drawchildrenfirst="true">
+      <Size>
+        <AbsPoint x="480" y="110" />
+      </Size>
+      <TextColors>
+        <Normal r="255" g="255" b="255" a="255" />
+        <NormalHighlit r="250" g="213" b="63" a="255" />
+        <Pressed r="250" g="213" b="63" a="255" />
+        <PressedHighlit r="250" g="213" b="63" a="255" />
+        <Disabled r="92" g="92" b="92" a="255" />
+      </TextColors>
+      <ResizeImages>
+        <NormalHighlit def="EA_Button_MailRowHighlight" />
+        <Pressed def="EA_Button_MailRowPressed" />
+        <PressedHighlit def="EA_Button_MailRowPressed"  />
+        <Disabled def="EA_Button_MailRowDisabled"  />
+      </ResizeImages>
+
+      <Windows>
+        <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="4" y="4" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+              <AbsPoint x="-4" y="-4" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Icon -->
+        <DynamicImage name="$parentIcon" texture="EA_MailWindow01_32b" slice="Letter" popable="false">
+          <Size>
+            <AbsPoint x="65" y="62" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="$parent">
+              <AbsPoint x="5" y="0"/>
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+        <!--
+                <Button name="$parentSelectAllCheckBoxButton" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                      <AbsPoint x="4" y="4" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="MailWindowTabInbox.OnLButtonUpSelectAllCheckBoxButton" />
+                  </EventHandlers>
+                </Button>
+-->
+        <!-- Messge Headers-->
+        <Window name="$parentHeader">
+          <Size>
+            <AbsPoint x="450" y="110" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="50" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+
+            <!-- From -->
+            <Label name="$parentFrom" inherits="MailRowHeaderTemplate">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentFromText" inherits="MailRowTextTemplate">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentFrom">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+                <Anchor point="topright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="-10" y="31" /> <!-- y = top of parentFrom + y of MailRowHeaderTemplate -->
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Subject -->
+            <Label name="$parentSubject" inherits="MailRowHeaderTemplate">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFrom">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentSubjectText" inherits="MailRowTextTemplate">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSubject">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentFromText">
+                  <AbsPoint x="0" y="24" /> <!-- y = y of MailRowHeaderTemplate -->
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Sent -->
+            <Label name="$parentSent" inherits="MailRowHeaderTemplate">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSubject">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentSentText" inherits="MailRowTextTemplate" >
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSent">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSubjectText">
+                  <AbsPoint x="0" y="24" /> <!-- y = y of MailRowHeaderTemplate -->
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Expires -->
+            <Label name="$parentExpires" inherits="MailRowHeaderTemplate">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentExpiresText" inherits="MailRowTextTemplate">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentExpires">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSentText">
+                  <AbsPoint x="0" y="24" /> <!-- y = y of MailRowHeaderTemplate -->
+                </Anchor>
+              </Anchors>
+            </Label>
+          </Windows>
+        </Window>
+
+        <DynamicImage name="$parentCoinsImage" texture="EA_MailWindow01_32b" slice="coins" layer="secondary">
+          <Size>
+            <AbsPoint x="22" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="-5" y="5"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="MailWindow.OnMouseOverCoinsImage" />
+          </EventHandlers>
+        </DynamicImage>
+
+        <!-- Attachment -->
+        <Button name="$parentAttachmentButton" inherits="EA_Button_DefaultIconFrame" texturescale="0.5" draganddrop="false" handleinput="true" id="1" gameactionbutton="right" layer="secondary">
+          <Size>
+            <AbsPoint x="32" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentCoinsImage">
+              <AbsPoint x="-10" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="MailWindow.OnMouseOverAttachmentItem" />
+          </EventHandlers>
+        </Button>
+
+        <!-- Multiple Attachment Icon. Used in place of the item icon in the above "$parentAttachmentButton" -->
+        <DynamicImage name="$parentMultipleAttachmentsImage" texture="EA_MailWindow01_32b" slice="MultiPackage" layer="secondary">
+          <Size>
+            <AbsPoint x="32" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="right" relativeTo="$parentCoinsImage">
+              <AbsPoint x="-10" y="0" />
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnMouseOver" function="MailWindow.OnMouseOverAttachmentItem" />
+          </EventHandlers>
+        </DynamicImage>
+
+      </Windows>
+    </Button>
+
+    <VerticalScrollbar name="MailWindowVerticalScrollBarTemplate" inherits="EA_ScrollBar_DefaultVerticalChain" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="MailWindowTabInbox.OnVertScrollLButtonUp" />
+      </EventHandlers>
+    </VerticalScrollbar>
+
+  </Windows>
+</Interface>
+

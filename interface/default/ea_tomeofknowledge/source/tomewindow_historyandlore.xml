@@ -1,0 +1,237 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+    
+        <!-- History and Lore Defs -->		
+
+		<Button name="HistoryAndLoreZoneButton" inherits="TOKTextButton"  maxchars="128" textalign="left" autoresize="true" >
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="TomeWindow.SelectHistoryAndLoreZone"/>
+			</EventHandlers>
+		</Button>
+		
+		<Window name="HistoryAndLoreEntryWindow">
+			<Size>
+				<AbsPoint x="350" y="30"/>
+			</Size>
+			<Windows>								
+				<Button name="$parentCompletedBtn" inherits="TomeCheckButton" handleinput="false">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="5" />
+						</Anchor>
+					</Anchors>					
+		        </Button>
+				<Button name="$parentText" inherits="TOKTextButton"  textalign="left" autoresize="true" >
+			       <Size>
+						<AbsPoint x="300" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topright" relativePoint="topleft" relativeTo="$parentCompletedBtn">
+							<AbsPoint x="5" y="0"/>
+						</Anchor>
+					</Anchors>
+			        <EventHandlers>
+				        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectHistoryAndLoreEntry"/>
+                        <EventHandler event="OnRButtonUp" function="TomeWindow.OnRightClickHistoryAndLoreEntry"/>
+			        </EventHandlers>
+		        </Button>		
+			</Windows>
+		</Window>
+
+		<Label name="HistoryAndLoreTierLabel" inherits="TOKText" textalign="left" />	    
+
+
+		<!-- History & Lore TOC Def -->
+		<Window name="HistoryAndLoreTOCDef" inherits="TomeSectionWindow" >
+			<Windows>
+			
+                <Button name="HistoryAndLorePairing1" inherits="TomePairingGvD" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-10" y="90" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveHistoryAndLorePairing"/>
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentDivider1" inherits="TomeDiamondDivider">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLorePairing1">
+                            <AbsPoint x="0" y="20"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="HistoryAndLorePairing2" inherits="TomePairingEvC" id="2">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider1">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveHistoryAndLorePairing"/>
+                    </EventHandlers>
+                </Button>
+                
+                <DynamicImage name="$parentDivider2" inherits="TomeDiamondDivider">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLorePairing2">
+                            <AbsPoint x="0" y="20"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Button name="HistoryAndLorePairing3" inherits="TomePairingElves" id="3">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDivider2">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="TomeWindow.SelectActiveHistoryAndLorePairing"/>
+                    </EventHandlers>
+                </Button>
+
+				<!-- Contents -->
+				<PageWindow name="HistoryAndLoreTOCPageWindow" inherits="TomePageWindow" >
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+                                <!-- Zones -->
+                                
+                                <Label name="HistoryAndLoreZonesLabel" inherits="TOKSubHeading" >
+                                    <Size>
+                                        <AbsPoint x="425" />
+                                    </Size>
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLorePairing3">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+																
+								<Window name="$parentZonesTOCAnchor"  >
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLoreZonesLabel">
+											<AbsPoint x="0" y="10"/>
+										</Anchor>
+									</Anchors>
+								</Window>
+								
+														
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+		<!-- Noteworthy Persons Info Def -->
+		<Window name="HistoryAndLoreZoneInfoDef" inherits="TomeSectionWindow" >
+		
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="HistoryAndLoreZoneInfoPageWindow" inherits="TomePageWindow" >
+
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Zone Name -->
+                                <Label name="HistoryAndLoreZoneInfoName" inherits="TOKSectionTitle" textalign="center" >
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+							
+							    <!-- Zone Map -->
+							    <Window name="HistoryAndLoreZoneInfoMapAnchor" inherits="TomeWindowMapAnchorSquare" >
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLoreZoneInfoName">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>   		
+
+								<!-- Main Text -->
+								<Label name="HistoryAndLoreZoneInfoText" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLoreZoneInfoMapAnchor">
+											<AbsPoint x="0" y="5"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+
+								<!-- Entry List Anchor - Entry Window are created dynamically -->
+                                <Label name="HistoryAndLoreZoneInfoEntryLabel" inherits="TOKSubHeading" >
+                                    <Size>
+                                        <AbsPoint x="425" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLoreZoneInfoText">
+                                            <AbsPoint x="0" y="20"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+								
+								
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+			<!-- Noteworthy Persons Info Def -->
+		<Window name="HistoryAndLoreEntryInfoDef" inherits="TomeSectionWindow" >
+		
+			<Windows>
+				<!-- Contents -->
+				<PageWindow name="HistoryAndLoreEntryInfoPageWindow" inherits="TomePageWindow" >
+
+					<Windows>
+						<Window name="$parentContentsChild">
+							<Windows>
+
+								<!-- Entry Name -->
+								<Label name="HistoryAndLoreEntryInfoEntryName" inherits="TOKSectionTitle" textalign="center">
+                                    <Size>
+                                        <AbsPoint x="500" />
+                                    </Size>
+								    <Anchors>
+									    <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+										    <AbsPoint x="0" y="20"/>
+									    </Anchor>
+								    </Anchors>
+							    </Label>									
+								
+								
+								<!-- Entry Text -->
+								<Label name="HistoryAndLoreEntryInfoEntryText" inherits="TOKText" autoresize="true">
+									<Anchors>
+										<Anchor point="bottom" relativePoint="top" relativeTo="HistoryAndLoreEntryInfoEntryName">
+											<AbsPoint x="0" y="20"/>
+										</Anchor>
+									</Anchors>
+								</Label>
+								
+
+							</Windows>
+						</Window>
+					</Windows>
+				</PageWindow>
+			</Windows>
+		</Window>
+		
+    </Windows>
+</Interface>

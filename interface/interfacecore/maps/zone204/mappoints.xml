@@ -1,0 +1,21 @@
+<zone iname="Fell Landing">
+    <landmark iname="Portal to Butcher's Pass" id="1" mapIcon="1073" x="35882" y="35407">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to The Maw" id="2" mapIcon="1073" x="36798" y="32610">
+        <importance>major</importance>
+    </landmark>
+	<battlefieldObjective iname="Cold One Cages" id="8015" iconSet="1" x="55418" y="28130">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Forward Bivouac Site" id="8016" iconSet="1" x="55323" y="32618">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Reaper's Watch" id="8017" iconSet="1" x="46541" y="24627">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Storage Tent" id="8018" iconSet="1" x="46090" y="34502">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Witch-King's Command" id="8019" iconSet="1" x="49905" y="23789">
+    </battlefieldObjective>
+    <zoneTransition iname="To Caledor" x="65535" y="32000">
+        <zone>203</zone>
+    </zoneTransition>
+</zone>

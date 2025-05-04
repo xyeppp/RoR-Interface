@@ -1,0 +1,216 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionHealerWindow.lua" />
+    </Scripts>
+
+    <Windows>
+        <!--Healer Window-->
+        <Window name="EA_Window_InteractionHealer" layer="secondary" movable="false" inherits="EA_Window_Default"  savesettings="false">
+            <Size>
+                <AbsPoint x="350" y="240" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomleft" >
+                    <AbsPoint x="100" y="-650" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionHealer.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_InteractionHealer.Shutdown" />
+                <EventHandler event="OnRButtonUp"   function="EA_Window_InteractionHealer.OnRButtonUp" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionHealer.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionHealer.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionHealer.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Main  Window -->
+                <Window name="EA_Window_InteractionHealerMain" inherits="EA_Window_DefaultFrame">
+                    <Size>
+                        <AbsPoint x="360" y="202" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="10" y="32" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>                        
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="340" y="0"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="EA_Window_InteractionHealerMain" />
+                            </Anchors>
+                            <Windows>
+                                <Label name="$parentNumPenaltiesLabel" font="font_clear_default" maxchars="128" textalign="center" autoresize="true" handleinput="false" wordwrap="true">
+                                    <Size>
+                                        <AbsPoint x="220" y="18"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="EA_Window_InteractionHealerTitleBar">
+                                            <AbsPoint x="0" y="15"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255"/>
+                                </Label>
+                                <Label name="$parentNumPenalties" font="font_clear_default" maxchars="128" textalign="center" autoresize="true" handleinput="false" wordwrap="true">
+                                    <Size>
+                                        <AbsPoint x="32" y="32"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentNumPenaltiesLabel">
+                                            <AbsPoint x="5" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255"/>
+                                </Label>
+
+
+
+                                <Label name="$parentCostToRemoveLabel" font="font_clear_default" maxchars="128" textalign="center" autoresize="true" handleinput="false" wordwrap="true">
+                                    <Size>
+                                        <AbsPoint x="160" y="32"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNumPenaltiesLabel">
+                                            <AbsPoint x="-87.5" y="38"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255"/>
+                                </Label>
+                                <Window name="$parentCostToRemoveMoneyFrame" inherits="MoneyFrame">
+                                    <Size>
+                                        <AbsPoint x="150" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCostToRemoveLabel">
+                                            <AbsPoint x="10" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Label name="$parentCostToRemoveAllLabel" font="font_clear_default" maxchars="128" textalign="center" autoresize="true" handleinput="false" wordwrap="true">
+                                    <Size>
+                                        <AbsPoint x="160" y="32"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNumPenaltiesLabel">
+                                            <AbsPoint x="87.5" y="38"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255"/>
+                                </Label>
+                                <Window name="$parentCostToRemoveAllMoneyFrame" inherits="MoneyFrame">
+                                    <Size>
+                                        <AbsPoint x="150" y="20" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCostToRemoveAllLabel">
+                                            <AbsPoint x="10" y="5"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </Window>
+
+
+
+                <!-- Window Buttons -->
+                <Button name="$parentHealOne" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="27" y="-16" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionHealer.HealOnePenalty" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentHealAll" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-27" y="-16" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionHealer.HealAllPenalties" />
+                    </EventHandlers>
+                </Button>
+
+
+
+                <!--Separators-->
+                <Window name="$parentSeparatorTop" inherits="EA_Window_DefaultSeparator" >
+                    <Size>
+                        <AbsPoint x="350" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="EA_Window_InteractionHealerMainScrollChildNumPenaltiesLabel" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentSeparatorBottom" inherits="EA_Window_DefaultSeparator" >
+                    <Size>
+                        <AbsPoint x="350" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="-52.5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentSeparatorVertical" inherits="EA_Window_DefaultVerticalSeparator" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="topleft" relativeTo="$parentSeparatorTop" >
+                            <AbsPoint x="-14" y="-4" />
+                        </Anchor>
+                        <Anchor point="center" relativePoint="bottomright" relativeTo="$parentSeparatorBottom" >
+                            <AbsPoint x="14" y="4" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!--Metal Background to Buttons-->
+                <Window name="$parentButtonBackground" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="330" y="65" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <FullResizeImage name="$parentButtonBackgroundFill" inherits="EA_FullResizeImage_MetalFill">
+                            <Size>
+                                <AbsPoint x="332" y="52"/>
+                            </Size>
+                        </FullResizeImage>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>
+

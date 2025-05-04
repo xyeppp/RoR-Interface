@@ -1,0 +1,55 @@
+<zone iname="Altdorf">
+    <landmark iname="Sigmar's Hammer" id="1" mapIcon="1075" x="17713" y="49479">
+        <importance>major</importance>
+        <specialType>3</specialType>
+    </landmark>
+    <landmark iname="The White Courser" id="2" mapIcon="1069" x="19216" y="47890">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Emperor's Flying Corps" id="3" mapIcon="1065" x="28542" y="30413">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Sewers of Altdorf" id="4" mapIcon="1074" x="30299" y="32336">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Sewers of Altdorf" id="5" mapIcon="1074" x="31114" y="36257">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Sewers of Altdorf" id="6" mapIcon="1074" x="34555" y="40571">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sigmar Crypts" id="7" mapIcon="1074" x="13135" y="39166">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Warpblade Tunnels" id="10" mapIcon="1074" x="25633" y="35587">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Warpblade Tunnels" id="11" mapIcon="1074" x="19488" y="37770">
+        <importance>major</importance>
+    </landmark>
+    <textPoint iname="Palace" id="3" x="42146" y="47224">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="Market" id="4" x="42146" y="48700">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Lord's Row" id="5" x="42146" y="50224">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Temple" id="6" x="42146" y="51700">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="War Quarters" id="7" x="42146" y="53100">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+</zone>

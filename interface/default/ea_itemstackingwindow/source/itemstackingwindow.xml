@@ -1,0 +1,83 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/ItemStackingWindow.lua" />
+	</Scripts>
+	<Windows>
+		<Window name="ItemStackingWindow" layer="secondary" movable="true">
+			<Size>
+				<AbsPoint x="280" y="200" />
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="ItemStackingWindow.Initialize" />
+				<EventHandler event="OnShutdown" function="ItemStackingWindow.Shutdown" />
+                <EventHandler event="OnKeyEnter" function="ItemStackingWindow.OnKeyEnter" />
+                <EventHandler event="OnKeyEscape" function="ItemStackingWindow.OnKeyEscape" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentWindowBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ItemStackingWindow.OnClose" />
+                    </EventHandlers>
+                </Button>
+
+                <Label name="$parentItemText" font="font_chat_text" maxchars="128"  wordwrap="true" autoresize="true">
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="15" y="50" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0"/>
+                </Label>
+                
+                <!-- Text Input for the number of items to split -->
+                <EditBox name="$parentTextInput" inherits="EA_EditBox_DefaultFrame" maxchars="3" history="false" textalign="right" input="numbers" taborder="0">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentItemText">
+                            <AbsPoint x="0" y="45" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnKeyEnter" function="ItemStackingWindow.OnKeyEnter" />
+                        <EventHandler event="OnKeyEscape" function="ItemStackingWindow.OnKeyEscape" />
+                        <EventHandler event="OnTextChanged" function="ItemStackingWindow.OnTextChanged" />
+                    </EventHandlers>
+                </EditBox>
+                
+                <Button name="$parentOkay" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="140" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ItemStackingWindow.OkayButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancel" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentOkay">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ItemStackingWindow.CancelButton" />
+                    </EventHandlers>
+                </Button>
+			</Windows>				
+			
+		</Window>
+	</Windows>
+</Interface>

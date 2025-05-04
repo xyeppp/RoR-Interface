@@ -1,0 +1,12 @@
+<zone iname="Altdorf War Quarters">
+    <battlefieldObjective iname="The Courtyard" id="7001" iconSet="1" x="25186" y="49445">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Warmachine Quarters North" id="7012" iconSet="1" x="30923" y="45844">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Warmachine Quarters South" id="7013" iconSet="1" x="30922" y="53138">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Militia Quarters North" id="7014" iconSet="1" x="19416" y="45824">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Militia Quarters South" id="7015" iconSet="1" x="19407" y="53133">
+    </battlefieldObjective>
+</zone>

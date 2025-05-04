@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+    <Windows>
+        <Window name="TwoButtonDlg" layer="popup"  savesettings="false" >
+            <Size>
+                <AbsPoint x="1024" y="768" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="DialogManager.OnTwoButtonDlgButton1" />
+                <EventHandler event="OnLButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnRButtonDown" function="DialogManager.OnClickError" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="500" y="160" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        <Label name="$parentText" font="font_default_text" textalign="center" wordwrap="true" autoresize="true" >
+                            <Size>
+                                <AbsPoint x="480" y="80" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                        <Label name="$parentTimer" font="font_default_text" maxchars="128" textalign="center" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="380" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentText">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                        <Button name="$parentButton1" inherits="EA_Button_DefaultResizeable" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTimer">
+                                    <AbsPoint x="-85" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnTwoButtonDlgButton1" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentButton2" inherits="EA_Button_DefaultResizeable" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentTimer">
+                                    <AbsPoint x="85" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnTwoButtonDlgButton2" />
+                            </EventHandlers>
+                        </Button>
+                        <Window name="$parentNeverWarn" inherits="EA_LabelCheckButton">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentButton1">
+                                    <AbsPoint x="0" y="20" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnTwoButtonDlgNeverWarn" />
+                            </EventHandlers>
+                        </Window>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="TwoButtonDlg1" inherits="TwoButtonDlg" id="1"/>
+        <Window name="TwoButtonDlg2" inherits="TwoButtonDlg" id="2"/>
+        <Window name="TwoButtonDlg3" inherits="TwoButtonDlg" id="3"/>
+        <Window name="TwoButtonDlg4" inherits="TwoButtonDlg" id="4"/>
+        <Window name="TwoButtonDlg5" inherits="TwoButtonDlg" id="5"/>
+
+    </Windows>
+</Interface>
+
+

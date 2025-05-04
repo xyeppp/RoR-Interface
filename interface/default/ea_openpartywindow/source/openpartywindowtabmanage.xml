@@ -1,0 +1,659 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/OpenPartyWindowTabManage.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Template: Single Member Row -->
+        <Window name="EA_Template_WarbandManageMemberLine" handleinput="true">
+            <Size>
+                <AbsPoint x="350" y="40"/>
+            </Size>
+            <Windows>
+            
+                <DynamicImage name="$parentMasterLooterIcon" inherits="MasterLooterImage" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentMainAssistIcon">
+                            <AbsPoint x="-13" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            
+                <DynamicImage name="$parentMainAssistIcon" inherits="MainAssistCrown" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentGroupLeaderIcon">
+                            <AbsPoint x="-13" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentGroupLeaderIcon" inherits="GroupLeaderCrown" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <DynamicImage name="$parentGroupAssistantIcon" inherits="WarbandAssistantImage" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Row Label Background -->
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" alpha="0.0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="255" g="255" b="255" />
+                </FullResizeImage>
+
+                <!-- Row Label Player Name -->
+                <Label name="$parentName" inherits="EA_Template_OpenParty_Label_Small" textalign="leftcenter" handleinput="false">
+                    <Size>
+                        <AbsPoint x="200" y="40"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="60" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Row Label Player Rank -->
+                <Label name="$parentRank" inherits="EA_Template_OpenParty_Label_Small" textalign="center" handleinput="false">
+                    <Size>
+                        <AbsPoint x="50" y="40"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCareerIcon"/>
+                    </Anchors>
+                </Label>
+                
+                <DynamicImage name="$parentCareerIcon" textureScale="1.0" handleinput="false">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_OpenPartyManage.OnLButtonDownPlayerRow"/>
+                <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseOverPlayerRow"/>
+                <EventHandler event="OnMouseOverEnd" function="EA_Window_OpenPartyManage.OnMouseOverEndPlayerRow"/>
+                <EventHandler event="OnRButtonUp" function="EA_Window_OpenPartyManage.OnRButtonUpPlayerRow"/>
+            </EventHandlers>
+        </Window>
+        <!-- end Single Member Row -->
+        
+        <FullResizeImage name="EA_Template_WarbandManageRowTint" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false" alpha="0.1">
+            <Size>
+                <AbsPoint x="350" y="40" />
+            </Size>
+            <TintColor r="255" g="255" b="255" />
+        </FullResizeImage>
+        
+        <ListBox name="EA_Template_WarbandManageListBox" rowdef="EA_Template_WarbandManageMemberLine" visiblerows="6" rowcount="6" rowspacing="0">
+            <Windows>
+                <FullResizeImage name="$parentPermaTint1" inherits="EA_Template_WarbandManageRowTint" alpha="0.08">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentPermaTint2" inherits="EA_Template_WarbandManageRowTint" alpha="0.03">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermaTint1" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentPermaTint3" inherits="EA_Template_WarbandManageRowTint" alpha="0.08">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermaTint2" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentPermaTint4" inherits="EA_Template_WarbandManageRowTint" alpha="0.03">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermaTint3" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentPermaTint5" inherits="EA_Template_WarbandManageRowTint" alpha="0.08">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermaTint4" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentPermaTint6" inherits="EA_Template_WarbandManageRowTint" alpha="0.03">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPermaTint5" />
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseOverWarbandListBox"/>
+                <EventHandler event="OnMouseOverEnd" function="EA_Window_OpenPartyManage.OnMouseOverEndWarbandListBox"/>
+            </EventHandlers>
+        </ListBox>
+        
+        <Window name="EA_Window_OpenPartyManageDragWindow" inherits="EA_Template_WarbandManageMemberLine" handleinput="false" layer="overlay" savesettings="false">
+            <EventHandlers>
+                <!-- purposely left blank to clear out inherited event handlers -->
+            </EventHandlers>
+        </Window>
+
+
+        <Window name="EA_Window_OpenPartyManageSocketDef" movable="false" layer="default" savesettings="false" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSocket" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSocket" />
+            </Anchors>
+
+            <EventHandlers>
+                <EventHandler event="OnShown" function="EA_Window_OpenPartyManage.OnShown"/>
+            </EventHandlers>
+
+            <Windows>
+            
+            
+                <Window name="$parentHeaderSeparator" inherits="EA_Window_DefaultSeparator">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="25" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            
+                <Label name="$parentLootHeaderText" inherits="EA_Label_DefaultSubHeading" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentVertSeparator">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="250" y="30" />
+                    </Size>
+                </Label>
+                
+                <Label name="$parentLootModeTitle" inherits="EA_Label_DefaultText" textalign="left">
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootHeaderText">
+                            <AbsPoint x="30" y="45" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentLootModeCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootModeTitle">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyManage.OnLootModeSelChange" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseoverLootModeCombo" />
+                    </EventHandlers>
+                </ComboBox>
+            
+                <Window name="$parentNeedOnUseButton" inherits="EA_LabelCheckButton">
+                    <Size>
+                        <AbsPoint x="170" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootModeCombo">
+                            <AbsPoint x="20" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleNeedOnUse" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseoverNeedOnUse" />
+                    </EventHandlers>
+                </Window>
+                
+                <Window name="$parentAutoLootRvR" inherits="EA_LabelCheckButton">
+                    <Size>
+                        <AbsPoint x="200" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNeedOnUseButton">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleAutoLootRvR" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseoverAutoLootRvR" />
+                    </EventHandlers>
+                </Window>
+
+                <Label name="$parentLootThresholdTitle" inherits="EA_Label_DefaultText" textalign="left" >
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAutoLootRvR">
+                            <AbsPoint x="-20" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentLootThresholdCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootThresholdTitle">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyManage.OnLootThresholdSelChange" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseoverLootThresholdCombo" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                <Label name="$parentMasterLooterTitle" inherits="EA_Label_DefaultText" textalign="left" >
+                    <Size>
+                        <AbsPoint x="250" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootThresholdCombo">
+                            <AbsPoint x="0" y="40" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentMasterLooterCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMasterLooterTitle">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyManage.OnMasterLooterSelChange" />
+                    </EventHandlers>
+                </ComboBox>
+                
+                
+                <Window name="$parentLegend">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" />
+                        <Anchor point="bottom" relativePoint="topright" relativeTo="$parentVertSeparator">
+                            <AbsPoint x="4" y="-185" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentLegendSeparator" inherits="EA_Window_DefaultSeparator">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent" />
+                            </Anchors>
+                        </Window>
+
+                        <DynamicImage name="$parentLeaderIcon" inherits="GroupLeaderCrown">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="30" y="35" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentLeaderText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="false" wordwrap="false" textAutoFitMinScale=".5">
+                            <Size>
+                                <AbsPoint x="240" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentLeaderIcon">
+                                    <AbsPoint x="10" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <DynamicImage name="$parentAssistantIcon" inherits="WarbandAssistantImage">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentAssistantText">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentAssistantText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="false" wordwrap="false" textAutoFitMinScale=".5">
+                            <Size>
+                                <AbsPoint x="240" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLeaderText">
+                                    <AbsPoint x="0" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <DynamicImage name="$parentMainAssistIcon" inherits="MainAssistCrown">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentMainAssistText">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentMainAssistText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="false" wordwrap="false" textAutoFitMinScale=".5">
+                            <Size>
+                                <AbsPoint x="240" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentAssistantText">
+                                    <AbsPoint x="0" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <DynamicImage name="$parentMasterLooterIcon" inherits="MasterLooterImage">
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentMasterLooterText">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <Label name="$parentMasterLooterText" inherits="EA_Label_DefaultText" textalign="leftcenter" autoresizewidth="false" wordwrap="false" textAutoFitMinScale=".5">
+                            <Size>
+                                <AbsPoint x="240" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentMainAssistText">
+                                    <AbsPoint x="0" y="5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                    </Windows>
+                </Window>
+
+
+                <Window name="$parentVertSeparator" inherits="EA_Window_DefaultVerticalSeparator">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentWarband">
+                            <AbsPoint x="10" y="35" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentWarband">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                
+                <Window name="$parentConvertToWarband" layer="overlay">
+                    <Size>
+                        <AbsPoint x="300" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentWarband">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        <Button name="$parentButton" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                            <Size>
+                                <AbsPoint x="200" y="39" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="$parent" />
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.FormWarband"/>
+                            </EventHandlers>
+                        </Button>
+                    </Windows>
+                </Window>
+                
+                
+                <Window name="$parentWarband">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="-720" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                    
+                        <FullResizeImage name="$parentHoverFrame" inherits="EA_FullResizeImage_TintableFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </FullResizeImage>
+                    
+                        <Label name="$parentHeaderText" inherits="EA_Label_DefaultSubHeading" handleinput="true">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="250" y="30" />
+                            </Size>
+                        </Label>
+                    
+                        <Window name="$parent1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="1" y="45" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="350" y="270" />
+                            </Size>
+                            <Windows>
+                            
+                                <Label name="$parentLabel" inherits="EA_Label_DefaultText" handleinput="false">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="350" y="30" />
+                                    </Size>
+                                </Label>
+                                <Button name="$parentShow" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="left" relativeTo="$parentLabel">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleWarbandVisibility" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <ListBox name="$parentList" inherits="EA_Template_WarbandManageListBox">
+                                    <Size>
+                                        <AbsPoint x="350" y="240" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel" />
+                                    </Anchors>
+                                    <ListData table="EA_Window_OpenPartyManage.warbandParties[1].players" populationfunction="EA_Window_OpenPartyManage.PopulateParty1">
+                                        <ListColumns>
+                                            <ListColumn windowname="Name"       variable="name"         format="wstring"/>
+                                            <ListColumn windowname="Rank"       variable="level"        format="number" />
+                                            <ListColumn windowname="CareerIcon" variable="careerIcon"   format="icon" />
+                                        </ListColumns>
+                                    </ListData>
+                                </ListBox>
+
+                            </Windows>
+                        </Window>
+                        
+                        <Window name="$parent2">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent1">
+                                    <AbsPoint x="0" y="5" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="350" y="270" />
+                            </Size>
+                            <Windows>
+
+                                <Label name="$parentLabel" inherits="EA_Label_DefaultText" handleinput="false">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="350" y="30" />
+                                    </Size>
+                                </Label>
+                                <Button name="$parentShow" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="left" relativeTo="$parentLabel">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleWarbandVisibility" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <ListBox name="$parentList" inherits="EA_Template_WarbandManageListBox">
+                                    <Size>
+                                        <AbsPoint x="350" y="240" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel" />
+                                    </Anchors>
+                                    <ListData table="EA_Window_OpenPartyManage.warbandParties[2].players" populationfunction="EA_Window_OpenPartyManage.PopulateParty2">
+                                        <ListColumns>
+                                            <ListColumn windowname="Name"       variable="name"         format="wstring"/>
+                                            <ListColumn windowname="Rank"       variable="level"        format="number" />
+                                            <ListColumn windowname="CareerIcon" variable="careerIcon"   format="icon" />
+                                        </ListColumns>
+                                    </ListData>
+                                </ListBox>
+
+                            </Windows>
+                        </Window>
+
+
+                        <Window name="$parent3">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parent1">
+                                    <AbsPoint x="10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="350" y="270" />
+                            </Size>
+                            <Windows>
+
+                                <Label name="$parentLabel" inherits="EA_Label_DefaultText" handleinput="false">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="350" y="30" />
+                                    </Size>
+                                </Label>
+                                <Button name="$parentShow" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="left" relativeTo="$parentLabel">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleWarbandVisibility" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <ListBox name="$parentList" inherits="EA_Template_WarbandManageListBox">
+                                    <Size>
+                                        <AbsPoint x="350" y="240" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel" />
+                                    </Anchors>
+                                    <ListData table="EA_Window_OpenPartyManage.warbandParties[3].players" populationfunction="EA_Window_OpenPartyManage.PopulateParty3">
+                                        <ListColumns>
+                                            <ListColumn windowname="Name"       variable="name"         format="wstring"/>
+                                            <ListColumn windowname="Rank"       variable="level"        format="number" />
+                                            <ListColumn windowname="CareerIcon" variable="careerIcon"   format="icon" />
+                                        </ListColumns>
+                                    </ListData>
+                                </ListBox>
+
+                            </Windows>
+                        </Window>
+                        
+                        <Window name="$parent4">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parent2">
+                                    <AbsPoint x="10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="350" y="270" />
+                            </Size>
+                            <Windows>
+
+                                <Label name="$parentLabel" inherits="EA_Label_DefaultText" handleinput="false">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                                    </Anchors>
+                                    <Size>
+                                        <AbsPoint x="350" y="30" />
+                                    </Size>
+                                </Label>
+                                <Button name="$parentShow" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="left" relativeTo="$parentLabel">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnLButtonUp" function="EA_Window_OpenPartyManage.ToggleWarbandVisibility" />
+                                    </EventHandlers>
+                                </Button>
+
+                                <ListBox name="$parentList" inherits="EA_Template_WarbandManageListBox">
+                                    <Size>
+                                        <AbsPoint x="350" y="240" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabel" />
+                                    </Anchors>
+                                    <ListData table="EA_Window_OpenPartyManage.warbandParties[4].players" populationfunction="EA_Window_OpenPartyManage.PopulateParty4">
+                                        <ListColumns>
+                                            <ListColumn windowname="Name"       variable="name"         format="wstring"/>
+                                            <ListColumn windowname="Rank"       variable="level"        format="number" />
+                                            <ListColumn windowname="CareerIcon" variable="careerIcon"   format="icon" />
+                                        </ListColumns>
+                                    </ListData>
+                                </ListBox>
+
+                            </Windows>
+                        </Window>
+                    
+                    </Windows>
+                </Window>
+                
+            </Windows>
+        
+        </Window>
+
+
+    </Windows>
+</Interface>

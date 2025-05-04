@@ -1,0 +1,501 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_CustomizePerformanceWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Button name="EA_Window_CustomizePerformanceButton" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+                <AbsPoint x="200" y="39" />
+            </Size>
+        </Button>
+
+        <!-- Customize Performance Window -->
+        <Window name="EA_Window_CustomizePerformance" movable="true" savesettings="false" layer="secondary" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="900" y="787" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_CustomizePerformance.Initialize" />
+                <EventHandler event="OnShown" function="EA_Window_CustomizePerformance.OnShow" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Ok and Cancel -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+
+                <Button name="$parentCancelButton" inherits="EA_Window_CustomizePerformanceButton" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="EA_Window_CustomizePerformance">
+                            <AbsPoint x="-15" y="-16" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnCancelButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentOkayButton" inherits="EA_Window_CustomizePerformanceButton">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentCancelButton">
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnOkayButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Custom Radio group -->
+                <Label name="$parentCustomSettingLabel" inherits="EA_Settings_ItemTitle" wordwrap="false" autoresizewidth="true" maxchars="128">
+                    <Size>
+                        <AbsPoint x="250" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="40" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentCustom1" inherits="EA_Window_DefaultLabelToggleCircle">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomSettingLabel">
+                            <AbsPoint x="45" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnCustomSelect1" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentCustom2" inherits="EA_Window_DefaultLabelToggleCircle">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustom1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnCustomSelect2" />
+                    </EventHandlers>
+                </Window>
+
+                <!-- Default Settings -->
+                <Label name="$parentDefaults" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="175" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCustomSettingLabel">
+                            <AbsPoint x="120" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentVeryHighQualButton" inherits="EA_Window_CustomizePerformanceButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDefaults">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnVeryHiqhQuality" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentHighQualButton" inherits="EA_Window_CustomizePerformanceButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentVeryHighQualButton">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnHiqhQuality" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentBalancedButton" inherits="EA_Window_CustomizePerformanceButton">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentVeryHighQualButton">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnBalanced" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentFastestButton" inherits="EA_Window_CustomizePerformanceButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentBalancedButton">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CustomizePerformance.OnFastest" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentOptionsTopSeparator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="185" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="185" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Environment settings -->
+                <FullResizeImage name="$parentEnvironmentSection" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOptionsTopSeparator">
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentOptionsTopSeparator">
+                            <AbsPoint x="300" y="300" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentEnvironmentLabel" inherits="EA_Settings_SectionTitle">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEnvironmentSection">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentDrawDistanceLabel" inherits="EA_Settings_ItemTitle" textalign="center">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnvironmentLabel">
+                            <AbsPoint x="45" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <SliderBar name="$parentDrawDistanceSlider" inherits="EA_Default_SliderBar">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDrawDistanceLabel" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </SliderBar>
+                <Label name="$parentDrawNearLabel" inherits="EA_Settings_ItemTitle" wordwrap="false" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDrawDistanceSlider">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentDrawFarLabel" inherits="EA_Settings_ItemTitle" textalign="right" wordwrap="false" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="60" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentDrawDistanceSlider">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentEnableGrass" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnvironmentLabel" >
+                            <AbsPoint x="30" y="130" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentEnableWaterReflection" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnableGrass" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentEnableWaterWake" inherits="EA_LabelCheckButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnableWaterReflection" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Effects -->
+                <FullResizeImage name="$parentEffectsSection" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentOptionsTopSeparator">
+                            <AbsPoint x="-15" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomleft" relativeTo="$parentEnvironmentSection">
+                            <AbsPoint x="10" y="145" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentEffectsLabel" inherits="EA_Settings_SectionTitle">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentEffectsSection">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentEffectsDetailLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="220" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEffectsLabel">
+                            <AbsPoint x="30" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentEffectsQualityCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentEffectsDetailLabel">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <Label name="$parentAbilityEffectsLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="220" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEffectsDetailLabel">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentAbilityEffectsCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentAbilityEffectsLabel">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+
+                <!-- Lighting settings -->
+                <FullResizeImage name="$parentLightingSection" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentEnvironmentSection">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentLightingLabel" inherits="EA_Settings_SectionTitle">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLightingSection">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentEnableLightMaps" inherits="EA_LabelCheckButton">
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLightingLabel" >
+                            <AbsPoint x="30" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_CustomizePerformance.OnMouseOverLightingCheckBox" />
+                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                        <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentEnableSpecular" inherits="EA_LabelCheckButton">
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnableLightMaps" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_CustomizePerformance.OnMouseOverLightingCheckBox" />
+                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                        <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                    </EventHandlers>
+                </Window>
+                <Window name="$parentEnablePostProcess" inherits="EA_LabelCheckButton">
+                    <Size>
+                        <AbsPoint x="150" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnableSpecular" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_CustomizePerformance.OnMouseOverLightingCheckBox" />
+                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                        <EventHandler event="OnLButtonUp" function="EA_LabelCheckButton.Toggle" />
+                    </EventHandlers>
+                </Window>
+
+                <!-- Miscellaneous -->
+                <FullResizeImage name="$parentMiscSection" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentEffectsSection">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentEnvironmentSection">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentMiscLabel" inherits="EA_Settings_SectionTitle">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentMiscSection">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentShadowsLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMiscLabel">
+                            <AbsPoint x="20" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentShadowsCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentShadowsLabel">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+                <Label name="$parentAnimationLabel" inherits="EA_Settings_ItemTitle">
+                    <Size>
+                        <AbsPoint x="150" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShadowsLabel">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <ComboBox name="$parentAnimationCombo" inherits="EA_ComboBox_DefaultResizable" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentAnimationLabel">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </ComboBox>
+
+
+                <!-- GPU Settings -->
+                <FullResizeImage name="$parentGPUSection" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMiscSection">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground">
+                            <AbsPoint x="-15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentGPULabel" inherits="EA_Settings_SectionTitle">
+                    <Size>
+                        <AbsPoint x="175" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGPUSection">
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentTextureMemorySliderGroup">
+                    <Size>
+                        <AbsPoint x="320" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentGPUSection">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <SliderBar name="$parentSlider" inherits="EA_Default_SliderBar">
+                            <Size>
+                                <AbsPoint x="300" y="33" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnMouseOver" function="EA_Window_CustomizePerformance.OnMouseOverTextureMemorySlider" />
+                            </EventHandlers>
+                        </SliderBar>
+                        <Label name="$parentLabel" inherits="EA_Settings_ItemTitle" textalign="center" autoresizewidth="true" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="250" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlider">
+                                    <AbsPoint x="0" y="-5" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentLeftLabel" inherits="EA_Settings_ItemTitle" autoresizewidth="true" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="80" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSlider">
+                                    <AbsPoint x="0" y="2" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Label name="$parentRightLabel" inherits="EA_Settings_ItemTitle" textalign="right" autoresizewidth="true" wordwrap="false">
+                            <Size>
+                                <AbsPoint x="80" y="20" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSlider">
+                                    <AbsPoint x="0" y="2" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

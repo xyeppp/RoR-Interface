@@ -1,0 +1,12 @@
+<zone iname="Battle for Praag">
+    <battlefieldObjective iname="Northern Praag" id="5136" iconSet="1" x="41751" y="33421">
+    </battlefieldObjective>
+    <battlefieldObjective iname="North Central Praag" id="5137" iconSet="1" x="38410" y="33946">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Central Praag" id="5138" iconSet="1" x="36958" y="36779">
+    </battlefieldObjective>
+    <battlefieldObjective iname="South Central Praag" id="5139" iconSet="1" x="35476" y="39674">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Southern Praag" id="5140" iconSet="1" x="32440" y="40376">
+    </battlefieldObjective>
+</zone>

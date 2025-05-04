@@ -1,0 +1,723 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/MacroWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Button name="EA_Window_MacroIconButton" inherits="DefaultIconButton">
+            <EventHandlers>
+                <EventHandler event="OnMouseDrag" function="EA_Window_Macro.IconMouseDrag" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_Macro.IconLButtonUp" />
+                <EventHandler event="OnRButtonDown" function="EA_Window_Macro.IconRButtonDown" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Macro.IconMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Window_MacroDetailIconButton" inherits="DefaultIconButton">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_Macro.DetailIconLButtonDown" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_Macro.DetailIconLButtonUp" />
+                <EventHandler event="OnRButtonDown" function="EA_Window_Macro.DetailIconRButtonDown" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Macro.DetailIconMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="MacroIconSelectionWindowIconButton" inherits="DefaultIconButton">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_Macro.SelectionIconLButtonDown" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_Macro.SelectionIconLButtonUp" />
+                <EventHandler event="OnRButtonDown" function="EA_Window_Macro.SelectionIconRButtonDown" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Macro.SelectionIconMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="MacroIconSelectionWindow" movable="false" layer="popup">
+            <Size>
+                <AbsPoint x="422" y="230" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="EA_Window_Macro">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Macro.HideMacroIconSelectionWindow" />
+                    </EventHandlers>
+                </Button>
+
+                <ScrollWindow name="Icons" childscrollwindow="IconsScrollChild" scrollbar="IconsScrollbar" lineheight="55">
+                    <Size>
+                        <AbsPoint x="372" y="175" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="22" y="224"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="350" y="0"/>
+                            </Size>
+                            <Windows>
+                                <Button name="MacroIconSelectionWindowIconSlot1" inherits="MacroIconSelectionWindowIconButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot2" inherits="MacroIconSelectionWindowIconButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot1" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot3" inherits="MacroIconSelectionWindowIconButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot2" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot4" inherits="MacroIconSelectionWindowIconButton" id="4">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot3" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot5" inherits="MacroIconSelectionWindowIconButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot4" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot6" inherits="MacroIconSelectionWindowIconButton" id="6">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot5" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="MacroIconSelectionWindowIconSlot7" inherits="MacroIconSelectionWindowIconButton" id="7">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="MacroIconSelectionWindowIconSlot1" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot8" inherits="MacroIconSelectionWindowIconButton" id="8">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot7" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot9" inherits="MacroIconSelectionWindowIconButton" id="9">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot8" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot10" inherits="MacroIconSelectionWindowIconButton" id="10">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot9" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot11" inherits="MacroIconSelectionWindowIconButton" id="11">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot10" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot12" inherits="MacroIconSelectionWindowIconButton" id="12">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot11" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="MacroIconSelectionWindowIconSlot13" inherits="MacroIconSelectionWindowIconButton" id="13">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="MacroIconSelectionWindowIconSlot7" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot14" inherits="MacroIconSelectionWindowIconButton" id="14">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot13" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot15" inherits="MacroIconSelectionWindowIconButton" id="15">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot14" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot16" inherits="MacroIconSelectionWindowIconButton" id="16">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot15" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot17" inherits="MacroIconSelectionWindowIconButton" id="17">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot16" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="MacroIconSelectionWindowIconSlot18" inherits="MacroIconSelectionWindowIconButton" id="18">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="MacroIconSelectionWindowIconSlot17" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                            </Windows>
+                        </Window>
+
+                    </Windows>
+                </ScrollWindow>
+            </Windows>
+        </Window>
+
+
+        <!-- Macro Window -->
+        <Window name="EA_Window_Macro" movable="false" layer="secondary" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="600" y="450" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_Macro.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_Macro.Shutdown" />
+                <EventHandler event="OnShown"       function="EA_Window_Macro.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_Macro.OnHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Macro.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <FullResizeImage name="$parentMacrosBackground" inherits="EA_FullResizeImage_DefaultFrame">
+                    <Size>
+                        <AbsPoint x="390" y="126" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <ScrollWindow name="$parentMacros" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="90">
+                    <Size>
+                        <AbsPoint x="375" y="115" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentMacrosBackground">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="20" y="200"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="350" y="0"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+
+                                <Button name="EA_Window_MacroIconSlot1" inherits="EA_Window_MacroIconButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot2" inherits="EA_Window_MacroIconButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot1" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot3" inherits="EA_Window_MacroIconButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot2" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot4" inherits="EA_Window_MacroIconButton" id="4">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot3" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot5" inherits="EA_Window_MacroIconButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot4" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot6" inherits="EA_Window_MacroIconButton" id="6">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot5" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot7" inherits="EA_Window_MacroIconButton" id="7">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot1" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot8" inherits="EA_Window_MacroIconButton" id="8">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot7" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot9" inherits="EA_Window_MacroIconButton" id="9">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot8" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot10" inherits="EA_Window_MacroIconButton" id="10">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot9" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot11" inherits="EA_Window_MacroIconButton" id="11">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot10" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot12" inherits="EA_Window_MacroIconButton" id="12">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot11" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot13" inherits="EA_Window_MacroIconButton" id="13">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot7">
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot14" inherits="EA_Window_MacroIconButton" id="14">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot13" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot15" inherits="EA_Window_MacroIconButton" id="15">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot14" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot16" inherits="EA_Window_MacroIconButton" id="16">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot15" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot17" inherits="EA_Window_MacroIconButton" id="17">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot16" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot18" inherits="EA_Window_MacroIconButton" id="18">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot17" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot19" inherits="EA_Window_MacroIconButton" id="19">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot13" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot20" inherits="EA_Window_MacroIconButton" id="20">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot19" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot21" inherits="EA_Window_MacroIconButton" id="21">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot20" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot22" inherits="EA_Window_MacroIconButton" id="22">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot21" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot23" inherits="EA_Window_MacroIconButton" id="23">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot22" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot24" inherits="EA_Window_MacroIconButton" id="24">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot23" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot25" inherits="EA_Window_MacroIconButton" id="25">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot19" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot26" inherits="EA_Window_MacroIconButton" id="26">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot25" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot27" inherits="EA_Window_MacroIconButton" id="27">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot26" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot28" inherits="EA_Window_MacroIconButton" id="28">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot27" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot29" inherits="EA_Window_MacroIconButton" id="29">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot28" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot30" inherits="EA_Window_MacroIconButton" id="30">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot29" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot31" inherits="EA_Window_MacroIconButton" id="31">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot19" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot32" inherits="EA_Window_MacroIconButton" id="32">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot31" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot33" inherits="EA_Window_MacroIconButton" id="33">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot32" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot34" inherits="EA_Window_MacroIconButton" id="34">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot33" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot35" inherits="EA_Window_MacroIconButton" id="35">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot34" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot36" inherits="EA_Window_MacroIconButton" id="36">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot35" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot37" inherits="EA_Window_MacroIconButton" id="37">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot31" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot38" inherits="EA_Window_MacroIconButton" id="38">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot37" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot39" inherits="EA_Window_MacroIconButton" id="39">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot38" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot40" inherits="EA_Window_MacroIconButton" id="40">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot39" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot41" inherits="EA_Window_MacroIconButton" id="41">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot40" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot42" inherits="EA_Window_MacroIconButton" id="42">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot41" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <Button name="EA_Window_MacroIconSlot43" inherits="EA_Window_MacroIconButton" id="43">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="EA_Window_MacroIconSlot37" >
+                                            <AbsPoint x="0" y="4" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot44" inherits="EA_Window_MacroIconButton" id="44">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot43" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot45" inherits="EA_Window_MacroIconButton" id="45">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot44" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot46" inherits="EA_Window_MacroIconButton" id="46">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot45" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot47" inherits="EA_Window_MacroIconButton" id="47">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot46" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <Button name="EA_Window_MacroIconSlot48" inherits="EA_Window_MacroIconButton" id="48">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="EA_Window_MacroIconSlot47" >
+                                            <AbsPoint x="4" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                            </Windows>
+                        </Window>
+                        <!-- / ScrollChild -->
+
+                    </Windows>
+                </ScrollWindow>
+
+                <Window name="$parentDetails">
+                    <Size>
+                        <AbsPoint x="580" y="260" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="10" y="170" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+
+                        <Button name="$parentIcon" inherits="EA_Window_MacroDetailIconButton" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Label name="$parentNameTitle" inherits="DefaultWindowSubTitle" textalign="left">
+                            <Size>
+                                <AbsPoint x="260" y="25" />
+                            </Size>
+                            <Anchors>
+                                <Anchor>
+                                    <AbsPoint x="60" y="10" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <EditBox name="$parentName" inherits="EA_EditBox_DefaultFrame"  taborder="1" maxchars="63">
+                            <Size>
+                                <AbsPoint x="320" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentIcon" >
+                                    <AbsPoint x="8" y="16" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnKeyEnter" function="" />
+                                <EventHandler event="OnKeyEscape" function="" />
+                            </EventHandlers>
+                        </EditBox>
+
+                        <Label name="$parentTextTitle" inherits="DefaultWindowSubTitle" textalign="left">
+                            <Size>
+                                <AbsPoint x="260" y="25" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                    <AbsPoint x="0" y="65" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <EditBox name="$parentText" inherits="EA_EditBox_DefaultFrame_Multiline" taborder="2" maxchars="255" linecount="9">
+                            <Size>
+                                <AbsPoint x="580" y="180" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentIcon" >
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnKeyEnter" function="" />
+                                <EventHandler event="OnKeyEscape" function="" />
+                            </EventHandlers>
+                        </EditBox>
+
+                        <Button name="$parentSave" inherits="EA_Button_DefaultResizeable" textalign="center" text="Save">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                                    <AbsPoint x="35" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_Macro.OnSave"/>
+                            </EventHandlers>
+                        </Button>
+
+                    </Windows>
+                </Window>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

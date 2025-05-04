@@ -1,0 +1,450 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabTargetting.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabTargetting" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabTargetting.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabTargettingContentsScrollChild" scrollbar="SWTabTargettingContentsScrollbar" lineheight="18"  autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+                                    
+                        <!-- Health Bars -->
+                        <Window name="$parentSettingsHealthbars" >
+                            <Size>
+                                <AbsPoint x="500" y="220" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Label name="$parentYourHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="35" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentYourHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentYourHealthbar">
+                                            <AbsPoint x="10" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <Label name="$parentTargetHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentYourHealthbar">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentTargetHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTargetHealthbar">
+                                            <AbsPoint x="10" y="-5" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+                                
+                                <Label name="$parentGroupHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTargetHealthbar">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentGroupHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentGroupHealthbar">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <Label name="$parentFriendlyPlayerHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroupHealthbar">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentFriendlyPlayerHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFriendlyPlayerHealthbar">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <Label name="$parentEnemyPlayerHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFriendlyPlayerHealthbar">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentEnemyPlayerHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnemyPlayerHealthbar">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <Label name="$parentMonsterHealthbar" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="230" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnemyPlayerHealthbar">
+                                            <AbsPoint x="0" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentMonsterHealthbarCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentMonsterHealthbar">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+                            </Windows>
+                        </Window> <!-- end Health Bars -->
+                        
+                        <!-- Names -->
+                        <Window name="$parentSettingsNames" inherits="TooltipWindow">
+                            <Size>
+                                <AbsPoint x="500" y="310" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsHealthbars">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsHealthbars" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Label name="$parentFont" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="180" y="40" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentFontCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFont">
+                                            <AbsPoint x="10" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+
+                                <Window name="$parentYourName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFont" >
+                                            <AbsPoint x="0" y="20" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentYourTitle" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentYourName" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentYourGuild" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentYourTitle" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                
+                                <Window name="$parentTargetName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentYourName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentTargetTitle" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentTargetName" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentTargetGuild" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentTargetTitle" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                
+                                <Window name="$parentFriendlyPlayerName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTargetName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentFriendlyPlayerTitle" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFriendlyPlayerName" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentFriendlyPlayerGuild" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentFriendlyPlayerTitle" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentEnemyPlayerName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFriendlyPlayerName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentEnemyPlayerTitle" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnemyPlayerName" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentEnemyPlayerGuild" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentEnemyPlayerTitle" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentYourPetName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEnemyPlayerName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentNPCTitle" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentYourPetName" >
+                                            <AbsPoint x="5" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentFriendlyNPCName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentYourPetName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentEnemyNPCName" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentFriendlyNPCName" >
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                            </Windows>
+                        </Window> <!-- end Names -->
+                        
+                        <!-- Reticles -->
+                        <Window name="$parentSettingsReticles" >
+                            <Size>
+                                <AbsPoint x="500" y="170" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsNames">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsNames" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="$parentTarget" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentMouseOver" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentTarget" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentOverheadArrow" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTarget" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentTargetPointer" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentOverheadArrow" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentGroupPointer" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOverheadArrow" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentDamagePointer" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentGroupPointer" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                            </Windows>
+                        </Window> <!-- end Reticles -->
+                        
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab Targetting -->
+</Interface>

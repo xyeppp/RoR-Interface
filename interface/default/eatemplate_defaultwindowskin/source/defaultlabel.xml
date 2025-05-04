@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Text_Default 
+
+    This file contains all of the standard label definitions for Text on the Default UI.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <!-- Label Defs ********************************************************************************************-->
+
+        <Label name="EA_Label_DefaultHeading" font="font_heading_default" textalign="center" wordwrap="true">
+            <Size>
+                <AbsPoint x="260" y="30" />
+            </Size>
+            <Color r="255" g="204" b="102" /> 
+        </Label>
+
+
+
+        <Label name="EA_Label_DefaultSubHeading" font="font_default_text_large" textalign="center" wordwrap="true">
+            <Size>
+                <AbsPoint x="260" y="30" />
+            </Size>
+            <Color r="255" g="204" b="102" /> 
+        </Label>
+
+
+        <Label name="EA_Label_DefaultText" font="font_default_text" textalign="center" wordwrap="true">
+            <Size>
+                <AbsPoint x="260" y="30" />
+            </Size>
+            <Color r="255" g="204" b="102" />
+        </Label>
+
+        <Label name="EA_Label_DefaultText_Small" font="font_default_text_small" textalign="left" wordwrap="true">
+            <Size>
+                <AbsPoint x="260" y="20" />
+            </Size>
+            <Color r="255" g="204" b="102" /> 
+        </Label>
+
+        <Label name="EA_Label_ChatText" font="font_chat_text" textalign="center" wordwrap="true">
+            <Size>
+                <AbsPoint x="260" y="30" />
+            </Size>
+            <Color r="255" g="255" b="255" /> 
+        </Label>
+
+    </Windows>
+</Interface>

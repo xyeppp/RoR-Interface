@@ -1,0 +1,501 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <Scripts>
+        <Script file="Source/PQLootWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Base Text Definition -->
+        <Label name="PQLootBaseTextTemplate" inherits="EA_Label_DefaultText" textalign="left">
+            <Size>
+                <AbsPoint x="60" y="20" />
+            </Size>
+        </Label>
+
+        <Window name="PQLootSetOfTumblers">
+            <Size>
+                <AbsPoint x="80" y="30" />
+            </Size>
+            <Windows>
+                <AnimatedImage name="$parentDigit1" inherits="PQLootAnimTumbler">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </AnimatedImage>
+                <AnimatedImage name="$parentDigit2" inherits="PQLootAnimTumbler">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentDigit1">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </AnimatedImage>
+                <AnimatedImage name="$parentDigit3" inherits="PQLootAnimTumbler">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentDigit2">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </AnimatedImage>
+                <AnimatedImage name="$parentDigit4" inherits="PQLootAnimTumbler">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentDigit3">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </AnimatedImage>
+            </Windows>
+        </Window>
+
+        <!-- Scoreboard Header Definition -->
+        <Window name="PQLootRewardsHeaderTemplate">
+            <Size>
+                <AbsPoint x="590" y="30" />
+            </Size>
+
+            <Windows>
+                <Label name="$parentContributorsText" inherits="PQLootBaseTextTemplate">
+                    <Size>
+                        <AbsPoint x="320" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentRewardIcon" texture="EA_PQLoot" slice="PQHeaderIconLoot">
+                    <Size>
+                        <AbsPoint x="28" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentContributorsText">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverHeaderIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+                <DynamicImage name="$parentGradeIcon" texture="EA_PQLoot" slice="PQHeaderIconMedals">
+                    <Size>
+                        <AbsPoint x="28" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRewardIcon">
+                            <AbsPoint x="22" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverHeaderIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+
+                <DynamicImage name="$parentContributionIcon" texture="EA_PQLoot" slice="PQHeaderIcon-die">
+                    <Size>
+                        <AbsPoint x="28" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentGradeIcon">
+                            <AbsPoint x="27" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverHeaderIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+                <DynamicImage name="$parentPersistenceIcon" texture="EA_HUD_01" slice="RealmBonus-Order">
+                    <Size>
+                        <AbsPoint x="18" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentContributionIcon">
+                            <AbsPoint x="15" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverHeaderIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+                <DynamicImage name="$parentRollIcon" texture="EA_PQLoot" slice="PQHeaderIcon-dice">
+                    <Size>
+                        <AbsPoint x="30" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentPersistenceIcon">
+                            <AbsPoint x="42" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverHeaderIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+        <!-- End of Header Definition-->
+
+
+        <!-- Single Row Definition -->
+        <Window name="PQLootRewardsRow">
+            <Size>
+                <AbsPoint x="590" y="30" />
+            </Size>
+
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentPlace" inherits="PQLootBaseTextTemplate">
+                    <Size>
+                        <AbsPoint x="30" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentName" inherits="PQLootBaseTextTemplate">
+
+                    <Size>
+                        <AbsPoint x="290" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentPlace">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <DynamicImage name="$parentRewardIcon" texture="EA_PQLoot">
+                    <Size>
+                        <AbsPoint x="25" y="23" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+
+                </DynamicImage>
+
+                <DynamicImage name="$parentGradeIcon" texture="EA_PQLoot">
+                    <Size>
+                        <AbsPoint x="16" y="19" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRewardIcon">
+                            <AbsPoint x="25" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentContribution" inherits="PQLootBaseTextTemplate" textalign="right">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentGradeIcon">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <DynamicImage name="$parentPersistence" texture="EA_HUD_01" slice="RealmBonus-Order">
+                    <Size>
+                        <AbsPoint x="18" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentContribution">
+                            <AbsPoint x="15" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="PQLootWindow.OnMouseOverPersistenceIcon" />
+                    </EventHandlers>
+                </DynamicImage>
+
+                <Window name="$parentRoll" inherits="PQLootSetOfTumblers">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentPersistence">
+                            <AbsPoint x="15" y="0"/>
+                        </Anchor>
+                    </Anchors>
+
+                </Window>
+                <!--  each column also has a representation for when it's missing -->
+                <!--  OPTIMIZATION: this wastes a lot of extra windows. It would be simpler
+					  if the "missing" data was the same window type as the "exists" data -->
+
+                <Label name="$parentRewardIconMissing" inherits="PQLootBaseTextTemplate" textalign="center">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentRewardIcon" />
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentGradeIconMissing" inherits="PQLootBaseTextTemplate" textalign="center">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentGradeIcon" />
+                    </Anchors>
+                </Label>
+
+                <!-- we don't need a $parentContributionMissing window since we can reuse $parentContribution" -->
+
+            </Windows>
+        </Window>
+        <!-- End of Single Row Definition-->
+
+
+        <!-- Main PQLoot Window  -->
+        <Window name="PQLootWindow" layer="secondary" movable="true" inherits="EA_Window_Default">
+            <Size>
+                <!-- <AbsPoint x="675" y="600" /> -->
+                <AbsPoint x="675" y="600" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" >
+                    <AbsPoint x="0" y="200" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="PQLootWindow.Initialize" />
+                <EventHandler event="OnUpdate"      function="PQLootWindow.OnUpdate" />
+                <EventHandler event="OnShutdown"    function="PQLootWindow.Shutdown" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="PQLootWindow.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- STANDARD WINDOW FRAME -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PQLootWindow.Done" />
+                    </EventHandlers>
+                </Button>
+                <!-- END STANDARD WINDOW FRAME -->
+
+                <!-- top section -->
+
+                <Label name="$parentStateInfo" inherits="PQLootBaseTextTemplate" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="60" y="45" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+                <Label name="$parentMultiSackText" inherits="PQLootBaseTextTemplate" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentStateInfo">
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Time  -->
+                <Label name="$parentTimeText" inherits="DefaultWindowText" textalign="left">
+                    <Size>
+                        <AbsPoint x="70" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-20" y="45" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+                <DynamicImage name="$parentClockImage" inherits="DefaultClockImage" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentTimeText">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+
+                <HorizontalResizeImage name="$parentLine" inherits="EA_BrownHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentScoreboardHeader">
+                            <AbsPoint x="-10" y="-15" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentScoreboardHeader">
+                            <AbsPoint x="10" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+
+                <!-- Middle Section -->
+
+                <Window name="$parentScoreboardHeader" inherits="PQLootRewardsHeaderTemplate">
+
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="30" y="95" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <HorizontalResizeImage name="$parentLine2" inherits="EA_BrownHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScoreboardHeader">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentScoreboardHeader">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <!-- Scoreboard Table  -->
+                <ListBox name="$parentList" rowdef="PQLootRewardsRow" visiblerows="10" rowcount="48" rowspacing="0" scrollbar="EA_ScrollBar_DefaultVerticalChain">
+                    <Size>
+                        <AbsPoint x="622" y="300" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScoreboardHeader">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <ListData table="PQLootWindow.scoreboardData" populationfunction="PQLootWindow.Populate">
+                        <ListColumns>
+                            <ListColumn windowname="Place"          variable="place"          format="number" />
+                            <ListColumn windowname="Name"           variable="name"           format="wstring"  />
+                            <ListColumn windowname="Contribution"   variable="contribution"   format="wstring"  />
+                        </ListColumns>
+                    </ListData>
+                </ListBox>
+
+
+                <HorizontalResizeImage name="$parentLine3" inherits="EA_BrownHorizontalRule" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentList">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentList">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+
+                <Window name="$parentPlayerData" inherits="PQLootRewardsRow">
+                    <Size>
+                        <AbsPoint x="590" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLine3">
+                            <AbsPoint x="0" y="3" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Bottom Section -->
+
+                <!-- section separator -->
+                <Window name="$parentBottomDivider1" inherits="EA_Window_DefaultSeparator">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-115" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-115" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="$parentPlayerResultsText" font="font_default_text" maxchars="200" textalign="center" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="580" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPlayerData">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- section separator -->
+                <Window name="$parentBottomDivider2" inherits="EA_Window_DefaultSeparator">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-55" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-55" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Close button -->
+                <Button name="$parentCloseButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="-17"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="PQLootWindow.Done" />
+                    </EventHandlers>
+                </Button>
+
+
+                <!-- BOX to outline where the player is in the table -->
+                <FullResizeImage name="$parentHighlightBox" inherits="EA_FullResizeImage_TintableFrame" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="600" y="34" />
+                    </Size>
+                </FullResizeImage>
+
+
+
+                <Window name="$parentTransitionWindow" layer="overlay">
+
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-20" y="-60" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <!-- Background -->
+                        <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" handleinput="false" alpha="0.6">
+
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright"/>
+                            </Anchors>
+                        </FullResizeImage>
+                        <Label name="$parentText" font="font_heading_medium" maxchars="200" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="590" y="120" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" />
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+
+
+            </Windows>
+        </Window>
+        <!-- END Main PQLootWindow -->
+
+    </Windows>
+</Interface>

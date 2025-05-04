@@ -1,0 +1,81 @@
+<zone iname="Death Peak">
+    <landmark iname="Ancestral Gates" id="1" mapIcon="1002" x="12070" y="9100">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Valley of Bones" id="2" mapIcon="1002" x="12981" y="36380">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ashback Den" id="3" mapIcon="1061" x="13033" y="33833">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Quimp's Cave" id="4" mapIcon="1061" x="14402" y="39902">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Skoragrim's Forge" id="5" mapIcon="1003" x="18652" y="26639">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Big Shot Huts" id="6" mapIcon="1065" x="22400" y="32900">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Whoosha's Boyz" id="7" mapIcon="1003" x="3014" y="38289">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Webspun Hollow" id="8" mapIcon="1060" x="3064" y="52709">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Acidburn Cave" id="9" mapIcon="1061" x="4864" y="15741">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ancestral Guardians" id="10" mapIcon="1003" x="4975" y="6725">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Mingol Kurdak" id="11" mapIcon="1065" x="6446" y="58897">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sinar Orcstom" id="12" mapIcon="1005" x="7181" y="10705">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bristle Cavern" id="13" mapIcon="1061" x="8613" y="33183">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Squiggy Pit" id="14" mapIcon="1060" x="9460" y="40204">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Lair of the Blisterclaw" id="136" iconSet="1" x="25395" y="11766">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Fallen Keep of Grom Rodrin" id="137" iconSet="1" x="4513" y="10820">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Whoosha's Boyz" id="144" iconSet="1" x="5609" y="40938">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Peak's Edge" id="525" iconSet="1" x="20671" y="37777">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+        <ranks min="37" max="37" />
+        <realm>Order</realm>
+    </publicQuest>
+    <zoneTransition iname="To Marshes of Madness" x="0" y="18600">
+        <zone>005</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="0" y="53000">
+        <zone>005</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="0" y="43000">
+        <zone>005</zone>
+    </zoneTransition>
+</zone>

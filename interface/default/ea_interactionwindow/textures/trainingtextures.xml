@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_Training_Specialization_Background" file="Textures/TEMP_Mastery_d5.dds" >
+            <Slice id="alpha" left="486" top="0" width="26" height="512" />
+            <Slice id="Background" left="0" top="0" width="486" height="512" />
+        </Texture>
+
+        <Texture name="EA_Training_Specialization" file="Textures/EA_Training01_d5.dds">
+            <Slice id="ability-black" left="0" top="371" width="69" height="69" />
+            <Slice id="ability-orange" left="0" top="302" width="69" height="69" />
+            <Slice id="ability-white" left="0" top="233" width="69" height="69" />
+            <Slice id="ability-yellow" left="0" top="440" width="69" height="69" />
+            <Slice id="arrow-green-end" left="100" top="158" width="150" height="19" />
+            <Slice id="arrow-green-head" left="100" top="198" width="150" height="41" />
+            <Slice id="arrow-green-mid" left="100" top="177" width="150" height="21" />
+            <Slice id="arrow-red-end" left="100" top="77" width="150" height="19" />
+            <Slice id="arrow-red-head" left="100" top="117" width="150" height="41" />
+            <Slice id="arrow-red-mid" left="100" top="96" width="150" height="21" />
+            <Slice id="bar-empty" left="0" top="0" width="100" height="30" />
+            <Slice id="bar-fill" left="100" top="0" width="100" height="30" />
+            <Slice id="Button-base" left="0" top="30" width="100" height="41" />
+            <Slice id="button-roll" left="0" top="71" width="100" height="41" />
+            <Slice id="Button-select" left="0" top="112" width="100" height="41" />
+            <Slice id="Button-Static" left="100" top="30" width="100" height="41" />
+            <Slice id="grey-bar" left="100" top="74" width="100" height="3" />
+            <Slice id="minus-base" left="225" top="0" width="25" height="21" />
+            <Slice id="minus-roll" left="225" top="21" width="25" height="21" />
+            <Slice id="minus-static" left="225" top="42" width="25" height="21" />
+            <Slice id="morale-black" left="130" top="373" width="56" height="66" />
+            <Slice id="morale-orange" left="130" top="307" width="56" height="66" />
+            <Slice id="morale-white" left="130" top="241" width="56" height="66" />
+            <Slice id="morale-yellow" left="130" top="439" width="56" height="66" />
+            <Slice id="plus-base" left="200" top="0" width="25" height="21" />
+            <Slice id="plus-roll" left="200" top="21" width="25" height="21" />
+            <Slice id="plus-static" left="200" top="42" width="25" height="21" />
+            <Slice id="tactic-black" left="69" top="373" width="61" height="66" />
+            <Slice id="tactic-orange" left="69" top="307" width="61" height="66" />
+            <Slice id="tactic-white" left="69" top="241" width="61" height="66" />
+            <Slice id="tactic-yellow" left="69" top="439" width="61" height="66" />
+            <Slice id="white-bar" left="100" top="71" width="100" height="3" />
+        </Texture>
+
+    </Assets>
+</Interface>

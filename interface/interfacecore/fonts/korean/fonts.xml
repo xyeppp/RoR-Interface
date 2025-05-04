@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Assets>
+		<Font name="font_arial09" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="9" texsize="256" />
+		<Font name="font_arial11" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="11" texsize="256" />
+		<Font name="font_arial14" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="14" texsize="512" />
+		<Font name="font_arial14_bold" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="14" texsize="512" />
+		<Font name="font_arial18" face="AsiaYHB-EA" height="18" file="AsiaYHB-EA.ttf" texsize="521" />
+		<Font name="font_arial18_bold" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="18" texsize="512" />
+		<Font name="font_arial35_bold" face="AsiaYHB-EA" file="AsiaYHB-EA.ttf" height="35" texsize="512" />	
+	</Assets>
+</Interface>

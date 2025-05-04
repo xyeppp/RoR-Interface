@@ -1,0 +1,121 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ContestedInstanceSelectionWindow.lua"/>
+    </Scripts>
+    <Windows>
+
+        <Window name="ContestedInstanceSelectionWindow" movable="true" layer="secondary" inherits="EA_Window_Default"  savesettings="false">
+            <Size>
+                <AbsPoint x="575" y="300" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="ContestedInstanceSelectionWindow.Initialize" />
+                <EventHandler event="OnShown" function="ContestedInstanceSelectionWindow.OnShown" />
+                <EventHandler event="OnHidden" function="ContestedInstanceSelectionWindow.OnHidden" />
+                <EventHandler event="OnUpdate" function="ContestedInstanceSelectionWindow.OnUpdate" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ContestedInstanceSelectionWindow.OnCancel" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerIcon" inherits="EA_Default_RvRImage" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-40" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Label name="$parentInstructions" font="font_default_text" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="460" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="45"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentRespondTime" font="font_default_text" textalign="left" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="460" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentInstructions">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentNewButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="220" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRespondTime" >
+                            <AbsPoint x="-120" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ContestedInstanceSelectionWindow.OnNew" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentInvadeButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="220" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentRespondTime" >
+                            <AbsPoint x="120" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ContestedInstanceSelectionWindow.OnInvade" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" >
+                            <AbsPoint x="144" y="-16" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ContestedInstanceSelectionWindow.OnCancel" />
+                    </EventHandlers>
+                </Button>
+
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

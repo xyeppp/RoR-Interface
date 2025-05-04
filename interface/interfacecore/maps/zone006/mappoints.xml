@@ -1,0 +1,186 @@
+<zone iname="Ekrund">
+    <landmark iname="Stonemane's Junction" id="1" mapIcon="1063" x="15310" y="46996">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Stonemane's Junction" id="2" mapIcon="1063" x="15393" y="45476">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Stonemane's Junction" id="3" mapIcon="1063" x="15434" y="43941">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Pick & Goggles" id="4" mapIcon="1006" x="21411" y="38308">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Mordrin's Anvil" id="5" mapIcon="1003" x="23352" y="41598">
+        <race>Dwarf</race>
+        <number>1</number>
+        <ranks realm="order" min="1" max="2" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Ancestor's Watch" id="6" mapIcon="1005" x="24900" y="38644">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Burguz's Boyz" id="7" mapIcon="1027" x="33839" y="29884">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Redhammer Tunnel" id="8" mapIcon="1060" x="40951" y="34981">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Redhammer Brewery" id="9" mapIcon="1006" x="44798" y="30228">
+        <race>Dwarf</race>
+        <number>2</number>
+        <ranks realm="order" min="3" max="4" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Tradeskill Trainers</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Redhammer Tunnel" id="10" mapIcon="1060" x="45632" y="33353">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Njorinsson's Tomb" id="11" mapIcon="1061" x="46412" y="51700">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Norri's Tunnel" id="12" mapIcon="1060" x="51705" y="20966">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Norri's Tunnel" id="13" mapIcon="1061" x="54155" y="13091">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Durak's Mine" id="14" mapIcon="1060" x="54691" y="32095">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Grudgekeg's Guard" id="15" mapIcon="1051" x="55981" y="16605">
+        <race>Dwarf</race>
+        <services>
+            <service>Apprentice Renown Trainer</service>
+            <service>Renown Gear Merchant</service>
+            <service>Recruit's Medallion Merchant</service>
+	    <service>Recruit's Emblem Merchant</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Gorgor's Smash" id="16" mapIcon="1020" x="58378" y="39472">
+        <race>Greenskin</race>
+        <number>4</number>
+        <ranks realm="destruction" min="8" max="9" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="The Wolf Den" id="17" mapIcon="1062" x="59279" y="54016">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Crawla Cave" id="18" mapIcon="1062" x="59507" y="37398">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Goldfist's Tomb" id="19" mapIcon="1060" x="60821" y="46635">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Snorrison's Tomb" id="20" mapIcon="1060" x="61341" y="42826">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Crawla Cave" id="21" mapIcon="1062" x="64543" y="32427">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="62399" y="7141" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="52286" y="8388" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Cave" id="24" mapIcon="1063" x="41862" y="27774">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Dragonback Pass" id="25" mapIcon="2004" x="53700" y="19100">
+        <importance>major</importance>
+        <specialType>1</specialType>
+    </landmark>
+    <publicQuest iname="Battle of Bitterstone" id="283" iconSet="1" x="35523" y="31188">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="2" max="3" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Raiders Haven" id="11" iconSet="1" x="43067" y="41537">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Durak's Gate" id="16" iconSet="1" x="43230" y="17724">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Engine Number Nine" id="15" iconSet="1" x="51687" y="26076">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Goldfist Hole Recovery" id="13" iconSet="1" x="52169" y="40576">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Broketoof Camp" id="12" iconSet="1" x="53993" y="49769">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="8" max="9" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Murgluk's Gits" id="14" iconSet="1" x="60660" y="29427">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="3" max="4" />
+        <realm>Order</realm>
+    </publicQuest>
+    <battlefieldObjective iname="Cannon Battery: Merchant's Gift" id="1" iconSet="1" x="55830" y="9694">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Stonemine Tower: Defensive Boon" id="5099" iconSet="1" x="50481" y="5218">
+    </battlefieldObjective>
+    <!-- BEGIN Mount Bloodhorn points -->
+    <battlefieldObjective iname="The Lookout: Artisan's Gift" id="2" iconSet="1" x="16435" y="13515" zone="11">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Ironmane Outpost: Healing Boon" id="5098" iconSet="1" x="20828" y="5870" zone="11">
+    </battlefieldObjective>
+    <!-- END Mount Bloodhorn points -->
+    <zoneTransition iname="To Mount Bloodhorn" x="65535" y="30000">
+        <zone>011</zone>
+	</zoneTransition>
+	<zoneTransition iname="To Barak Varr" x="0" y="32000">
+        <zone>007</zone>
+	</zoneTransition>
+</zone>

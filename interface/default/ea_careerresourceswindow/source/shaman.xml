@@ -1,0 +1,53 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/Shaman.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_ShamanResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="76" y="75" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentJaws" texture="EA_Career_Sh_32b" slice="ShamanJaws" handleinput="false">
+                    <Size>
+                        <AbsPoint x="119" y="47" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRedHead" texture="EA_Career_Sh_32b" slice="ShamanRedHead" handleinput="false">
+                    <Size>
+                        <AbsPoint x="60" y="50" />
+                    </Size>
+                </DynamicImage>
+                <DynamicImage name="$parentYellowHead" texture="EA_Career_Sh_32b" slice="ShamanYellowHead" handleinput="false">
+                    <Size>
+                        <AbsPoint x="59" y="50" />
+                    </Size>
+                </DynamicImage>
+                <Label name="$parentGoldText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                    <Size>
+                        <AbsPoint x="40" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="26" y="11" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="254" g="210" b="6" a="255" />
+                </Label>
+                <Label name="$parentRedText" inherits="$parentGoldText">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center">
+                            <AbsPoint x="-24" y="11" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="201" g="49" b="39" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

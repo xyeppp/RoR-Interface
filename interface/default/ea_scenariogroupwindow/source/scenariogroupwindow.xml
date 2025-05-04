@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/ScenarioGroupWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        
+        <!-- Join Button Template -->
+        <Button name="JoinScenarioGroupButton" inherits="EA_Button_DefaultText" textalign="center">
+            <Size>
+                <AbsPoint x="160" y="32"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.JoinGroup"/>
+                <EventHandler event="OnMouseOver" function="ScenarioGroupWindow.OnJoinGroupMouseOver"/>
+            </EventHandlers>
+        </Button>
+        
+        
+        <!-- List Row Template for Ungrouped Players Window -->
+		<Window name="UngroupedPlayerRow">
+			<Size>
+				<AbsPoint x="528" y="26"/>
+			</Size>
+			<Windows>								
+				<FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+					<Size>
+						<AbsPoint x="528" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FullResizeImage>				
+				<Label name="$parentName" maxchars="64" inherits="DefaultWindowText" textalign="left">
+					<Size>
+						<AbsPoint x="528" y="26"/>
+					</Size>
+					<Anchors>
+						<Anchor point="left" relativePoint="left" relativeTo="">
+							<AbsPoint x="5" y="6"/>
+						</Anchor>
+					</Anchors>
+				</Label>
+			</Windows>
+		</Window>
+		
+		
+		<!-- Listbox Scrollbar Template -->	
+		<VerticalScrollbar name="UngroupedPlayerVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.OnVertScrollLButtonUp" />
+            </EventHandlers>		
+		</VerticalScrollbar>
+
+    
+        <!-- Group Member Status Template -->
+        <!-- A single UI element to indicate the status of this group member (e.g. Reserved or Available) -->
+        <Window name="GroupMemberStatusTemplate" layer="popup" handleinput="false" popable="false">
+            <Size>
+                <AbsPoint x="175" y="50"/>
+            </Size>
+            
+            <Windows>
+            
+                <Label name="$parentLabel" font="font_default_text_small" wordwrap="false" maxchars="20" textalign="center">
+                    <Size>
+                        <AbsPoint x="165" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="12"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="192" g="192" b="192"  /> <!-- gray -->
+                </Label>
+            
+            </Windows>
+            
+        </Window>
+        
+    
+        <!-- Single Group Window Template -->
+        <!-- Desc: Displays a single group's data -->
+        <Window name="SingleSGroupTemplate" layer="popup">
+            <Size>
+                <AbsPoint x="160" y="380" />
+            </Size>
+            
+            <Windows>
+            
+                <FullResizeImage name="$parentBG" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+          
+                <Label name="$parentName" inherits="EA_Label_DefaultText" popable="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="160" y="30"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parentBG">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            
+                <FullResizeImage name="$parentNameBG" inherits="EA_FullResizeImage_DefaultFrame" popable="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentName">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                
+                <Button name="$parentVisibleButton" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentNameBG" >
+                            <AbsPoint x="12" y="7" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="ScenarioGroupWindow.ToggleVisibility" />
+                        <EventHandler event="OnMouseOver" function="ScenarioGroupWindow.OnMouseoverVisibleButton" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentMembers" inherits="BGGroup">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentNameBG" />
+                    </Anchors>
+                </Window>
+                
+                <!-- Status Text (Avail/Reserved) -->
+                <Window name="$parentMemberStatus1" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember1" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentMemberStatus2" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember2" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentMemberStatus3" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember3" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentMemberStatus4" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember4" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentMemberStatus5" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember5" />
+                    </Anchors>
+                </Window>
+                <Window name="$parentMemberStatus6" inherits="GroupMemberStatusTemplate" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentMembersMember6" />
+                    </Anchors>
+                </Window>
+                
+            </Windows>
+            
+        </Window>
+        
+        
+        <!-- Size Toggling Mechanism Template -->
+        <Window name="ScenarioGroupMiddleBar" movable="false" layer="popup">
+            <Size>
+                <AbsPoint x="1005" y="40" />
+            </Size>
+        
+            <Windows>
+            
+                <!-- Background Border -->
+                <FullResizeImage name="$parentBG" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+            
+                <!-- Minor Instructions -->          
+                <Label name="$parentInstructions" inherits="EA_Label_DefaultText" maxchars="150" popable="false" textalign="leftcenter" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="700" y="30"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="12" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- Main Group Toggle -->
+                <Button name="$parentGroupToggleButton" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="" >
+                            <AbsPoint x="-12" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonDown" function="ScenarioGroupWindow.ToggleMainGroupVisibility" />
+                    </EventHandlers>
+                    <Windows>
+                        <Label name="$parentText" inherits="EA_Label_DefaultText" textalign="rightcenter" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="300" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parent" />
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Button>
+
+            </Windows>
+            
+        </Window>
+        
+        
+        <!-- Bottom Button Buttons for ScenarioGroupWindow -->
+        <!-- Contains the join/leave, closing, and ungrouped button UI elements -->
+        <Window name="ScenarioGroupBottomBar" movable="false" layer="popup">
+            <Size>
+                <AbsPoint x="1005" y="62" />
+            </Size>
+        
+            <Windows>
+            
+                <!-- Bottom Bar Background Border (surrounds lower buttons, not size toggle button) -->
+                <FullResizeImage name="$parentBG" inherits="EA_FullResizeImage_DefaultFrame" handleinput="false" layer="background">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+            
+                <!-- Ungrouped Launcher Button (displays another window with a list of players who are ungrouped, but in the scenario) -->
+                <Button name="$parentUngroupedLauncher" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Size>
+                        <AbsPoint x="230" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-10" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.ShowUngroupedPlayers"/>
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Exit Button (a convenience measure in case people don't want to click the X -->
+                <Button name="$parentBigClose" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Size>
+                        <AbsPoint x="140" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="10" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.Hide"/>
+                    </EventHandlers>
+                </Button>
+
+                <!-- Claim Main Assist Button (First person in a group that claims main assist becomes it)-->
+                <Button name="$parentClaimMainAssist" inherits="EA_Button_DefaultResizeable" font="font_chat_text" textalign="center">
+                    <Size>
+                        <AbsPoint x="185" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="10" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.ClaimMainAssist"/>
+                    </EventHandlers>
+                </Button>
+                
+                
+                
+            </Windows>
+        
+        </Window>
+
+
+        <!-- Main ScenarioGroupWindow Definition -->
+        <!-- This window allows the player to select persistent group visibility, join, and leave scenario groups -->
+        <Window name="ScenarioGroupWindow" movable="false" layer="secondary" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="1005" y="547" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="ScenarioGroupWindow.Initialize" />
+                <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Standard Window Frame -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.Hide" />
+                    </EventHandlers>
+                </Button>           
+                
+                <!-- Group 1 -->
+                <Window name="$parentGroup1" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentJoinGroup1" inherits="JoinScenarioGroupButton" id="1">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup1" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Group 2 -->
+                <Window name="$parentGroup2" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroup1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>  
+                <Button name="$parentJoinGroup2" inherits="JoinScenarioGroupButton" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup2" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Group 3 -->
+                <Window name="$parentGroup3" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroup2">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>  
+                <Button name="$parentJoinGroup3" inherits="JoinScenarioGroupButton" id="3">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup3" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Group 4 -->
+                <Window name="$parentGroup4" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroup3">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>  
+                <Button name="$parentJoinGroup4" inherits="JoinScenarioGroupButton" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup4" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Group 5 -->
+                <Window name="$parentGroup5" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroup4">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentJoinGroup5" inherits="JoinScenarioGroupButton" id="5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup5" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Group 6 -->
+                <Window name="$parentGroup6" inherits="SingleSGroupTemplate" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroup5">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="$parentJoinGroup6" inherits="JoinScenarioGroupButton" id="6">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup6" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <!-- Bottom Bar Buttons -->
+                <Window name="$parentBottomBar" inherits="ScenarioGroupBottomBar" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- More/Less Size Toggler -->
+                <Window name="$parentMiddleBar" inherits="ScenarioGroupMiddleBar" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottomBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Leave Group Button (only displayed if in a scenario group) -->
+                <Button name="$parentLeaveButton" inherits="EA_Button_DefaultText" textalign="center">
+                    <Size>
+                        <AbsPoint x="160" y="32"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.LeaveGroup"/>
+                        <EventHandler event="OnMouseOver" function="ScenarioGroupWindow.OnLeaveGroupMouseOver"/>
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+
+        <!-- FloatingScenarioGroup Definitions -->
+        <!-- These windows are free-floating versions of the windows seen in the main ScenarioGroupWindow -->
+        <Window name="FloatingScenarioGroup1Window" inherits="BGGroup" savesettings="true">
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="GroupWindow">
+                    <AbsPoint x="0" y="12" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <Window name="FloatingScenarioGroup2Window" inherits="BGGroup" savesettings="true">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="FloatingScenarioGroup1Window">
+                  <AbsPoint x="0" y="15" />
+              </Anchor>
+          </Anchors>
+        </Window>
+        
+        <Window name="FloatingScenarioGroup3Window" inherits="BGGroup" savesettings="true">
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="FloatingScenarioGroup1Window">
+                    <AbsPoint x="5" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <Window name="FloatingScenarioGroup4Window" inherits="BGGroup" savesettings="true">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="FloatingScenarioGroup3Window">
+                  <AbsPoint x="0" y="15" />
+              </Anchor>
+          </Anchors>
+        </Window>
+        
+        <Window name="FloatingScenarioGroup5Window" inherits="BGGroup" savesettings="true">
+            <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="FloatingScenarioGroup3Window">
+                    <AbsPoint x="5" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+        <Window name="FloatingScenarioGroup6Window" inherits="BGGroup" savesettings="true">
+          <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="FloatingScenarioGroup5Window">
+                  <AbsPoint x="0" y="15" />
+              </Anchor>
+          </Anchors>
+        </Window>
+        
+        
+        <!-- Ungrouped Players Window -->
+        <!-- This window displays a list of players' names who are currently ungrouped. Their health may not be monitored! -->
+        <Window name="UngroupedPlayersWindow" movable="true" layer="popup" inherits="EA_Window_Default" savesettings="true">
+            <Size>
+                <AbsPoint x="565" y="343" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="ScenarioGroupWindow">
+                    <AbsPoint x="0" y="200" />
+                </Anchor>
+            </Anchors>
+            
+            <Windows>
+
+                <!-- Standard Window Frame -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.HideUngroupedPlayersWindow" />
+                    </EventHandlers>
+                </Button>     
+                
+                <!-- List of Ungrouped Players -->
+				<ListBox name="$parentList" scrollbar="UngroupedPlayerVertScroll" rowdef="UngroupedPlayerRow" visiblerows="11" rowcount="60" rowspacing="2">
+					<Size>
+						<AbsPoint x="550" y="300"/>
+					</Size>
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+							<AbsPoint x="13" y="5"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="ScenarioGroupWindow.playerGroupData" populationfunction="ScenarioGroupWindow.UpdateUngroupedPlayerRow">
+						<ListColumns>
+							<ListColumn windowname="Name" variable="name" format="wstring" />							
+						</ListColumns>
+					</ListData>
+				</ListBox>		        
+                
+            </Windows>
+            
+        </Window>
+        
+        
+    <Window name="ScenarioGroupSetOpacityWindow" movable="false" layer="popup" >
+        <Size>
+            <AbsPoint x="300" y="90" />
+        </Size>
+        <EventHandlers>
+            <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            <EventHandler event="OnShown" function="WindowUtils.OnShown" />
+            <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+        </EventHandlers>
+        <Windows>
+
+            <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+            <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="ScenarioGroupWindow.CloseSetOpacityWindow" />
+                </EventHandlers>
+            </Button>
+
+            <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                        <AbsPoint x="0" y="32" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" >
+                        <AbsPoint x="0" y="0" />
+                    </Anchor>
+                </Anchors>
+            </Window>
+
+            <SliderBar name="$parentSlider" inherits="EA_Default_SliderBar" >
+                <Size>
+                    <AbsPoint x="140" y="33" />
+                </Size>
+                <Anchors>
+                    <Anchor point="left" relativePoint="left" >
+                        <AbsPoint x="75" y="13" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnSlide" function="ScenarioGroupWindow.OnOpacitySlide" />
+                </EventHandlers>
+            </SliderBar>
+        </Windows>
+    </Window>
+        
+        
+    </Windows>
+</Interface>

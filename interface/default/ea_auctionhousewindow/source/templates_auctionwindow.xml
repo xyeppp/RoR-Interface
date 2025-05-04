@@ -1,0 +1,196 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+	</Scripts>
+	<Windows>
+
+        <Button name="AuctionWindowTabButton" inherits="EA_Button_Tab">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AuctionWindow.OnLButtonUpTab" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+        <VerticalScrollbar name="AuctionWindowVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AuctionWindow.OnVertScrollLButtonUp" />
+            </EventHandlers>
+        </VerticalScrollbar>
+
+        <Button name="AuctionWindowTextButton" inherits="EA_Button_Default" font="font_default_text_small" textalign="left">
+            <Size>
+                <AbsPoint x="300" y="32" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="155" g="155" b="155" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+        <Label name="AuctionWindowControlLabel" inherits="EA_Label_ChatText" textalign="left" autoresizewidth="true" autoresize="true" >
+            <Size>
+                <AbsPoint x="100" y="45" />
+            </Size>
+        </Label>
+
+        <Label name="AuctionWindowListLabel" inherits="EA_Label_DefaultText" textalign="left" maxchars="80" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="300" y="55" />
+            </Size>
+        </Label>
+
+        <Button name="AuctionWindowContextMenuItem" inherits="EA_Button_DefaultMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentCheck" texture="shared_01" layer="popup" popable="false" sticky="false" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="18" y="19" />
+                    </Size>
+                    <TexCoords x="390" y="78" />
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+            <Size>
+                <AbsPoint x="300" y="29" />
+            </Size>
+            <TextOffset x="25" y="5" />
+        </Button>
+
+        <Button name="AuctionWindowContextMenuItemCareer" inherits="AuctionWindowContextMenuItem" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="AuctionWindowSearchControls.OnLButtonDownCareerSelection" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="AuctionWindowContextMenuItemStatistic" inherits="AuctionWindowContextMenuItem" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="AuctionWindowSearchControls.OnLButtonDownStatisticSelection" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="AuctionWindowContextMenuItemRestriction" inherits="AuctionWindowContextMenuItem" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="AuctionWindowSearchControls.OnLButtonDownRestrictionSelection" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Single Row Definition for the category list-->
+        <Window name="AuctionWindowCategoryRow">
+            <Size>
+                <AbsPoint x="325" y="26"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AuctionWindow.OnLButtonUpCategoryRow" />
+                <EventHandler event="OnRButtonUp" function="AuctionWindow.OnRButtonUpCategoryRow" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Size>
+                        <AbsPoint x="321" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="4" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Window name="$parentExpand" inherits="EA_Window_DefaultPlusMinus">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentName">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Data Labels -->
+                <Button name="$parentName" maxchars="80" inherits="AuctionWindowTextButton">
+                    <Size>
+                        <AbsPoint x="301" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="20" y="4"/>
+                            <!-- Will be overriden by the List Box populator function -->
+                        </Anchor>
+                    </Anchors>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Button name="AuctionWindowSortButton" inherits="EA_Button_DefaultListSort">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AuctionWindow.ChangeSearchResultsSorting" />
+            </EventHandlers>
+        </Button>
+
+        <!-- Single Row Definition for the Auction Window Search Results list-->
+        <Button name="AuctionWindowResultsRow" inherits="EA_Button_ResizeIconFrame_NoNormalImage" drawchildrenfirst="true" >
+            <Size>
+                <AbsPoint x="0" y="65" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="AuctionWindow.OnSearchResultsRowSelected" />
+            </EventHandlers>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="5" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-5" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Button name="$parentIcon" inherits="EA_Button_DefaultIconFrame" handleinput="true">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="AuctionWindow.OnMouseOverResultsIcon" />
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentName" inherits="AuctionWindowListLabel" >
+                    <Size>
+                        <AbsPoint x="450" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentIcon">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRank" inherits="AuctionWindowListLabel" textAlign="center">
+                    <Size>
+                        <AbsPoint x="100" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentName">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentPrice" inherits="MoneyFrame" handleinput="false">
+                    <Size>
+                        <AbsPoint x="170" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRank">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Button>
+        
+	</Windows>
+</Interface>

@@ -1,0 +1,59 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/LayerTimerWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="LayerTimerWindow" movable="false" popable="false" handleinput="false" savesettings="true">
+            <Size>
+                <AbsPoint x="500" y="50" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="LayerTimerWindow.Initialize" />
+                <EventHandler event="OnUpdate" function="LayerTimerWindow.Update" />
+                <EventHandler event="OnHidden" function="LayerTimerWindow.OnHidden" />
+                <EventHandler event="OnInitializeCustomSettings" function="LayerTimerWindow.OnInitializeCustomSettings" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentCastTimer" movable="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="500" y="40" />
+                    </Size>
+                    <Windows>
+                        <Label name="$parentText" font="font_default_sub_heading" handleinput="false" textalign="left">
+                            <Size>
+                                <AbsPoint x="400" y="25" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="20" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                        <Window name="$parentStatus" inherits="EA_Window_DefaultFrameStatusBar" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft">
+                                    <AbsPoint x="0" y="25" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="0" y="25" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <Label name="$parentTimeText" font="font_default_text" maxchars="16" handleinput="false" textalign="right">
+                            <Size>
+                                <AbsPoint x="100" y="25" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="-20" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

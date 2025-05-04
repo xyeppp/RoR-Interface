@@ -1,0 +1,21 @@
+<zone iname="Stonewatch">
+    <landmark iname="Portal to Reikwald" id="1" mapIcon="1073" x="36591" y="47975">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Portal to Shining Way" id="2" mapIcon="1073" x="22788" y="42615">
+        <importance>major</importance>
+    </landmark>
+	<battlefieldObjective iname="Artillery Deck" id="8000" iconSet="1" x="35531" y="56035">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Eastern Watch" id="8001" iconSet="1" x="32445" y="59927">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Oathsworn Stand" id="8002" iconSet="1" x="30491" y="50563">
+    </battlefieldObjective>
+	<battlefieldObjective iname="Stonewatch Station" id="8003" iconSet="1" x="23408" y="58783">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Western Watch" id="8004" iconSet="1" x="27614" y="60192">
+    </battlefieldObjective>
+    <zoneTransition iname="To Kadrin Valley" x="32000" y="65535">
+        <zone>009</zone>
+    </zoneTransition>
+</zone>

@@ -1,0 +1,432 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+
+    <Windows>        
+                     
+        <!-- Templates -->        
+        <Button name="WorldMapQuestTrackerToggle" texturescale="0.66" inherits="TomeToggleButton" layer="secondary">
+            <Size>
+                <AbsPoint x="24" y="24"/>
+            </Size>
+        </Button>
+
+        <Window name="ParchmentQuestTrackerData" >
+            <Size>
+                <AbsPoint x="375" y="50" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverQuest" />
+            </EventHandlers>
+            <Windows>
+            
+                 <!-- Map Toggle -->        
+                <Button name="$parentMapToggle" inherits="EA_Button_ParchmentCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>                    
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.ToggleTrackQuestMapPin" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverToggleTrackQuestMapPin" />
+                    </EventHandlers>
+                </Button>
+                
+                <!-- Track Toggle -->        
+                <Button name="$parentTrackToggle" inherits="EA_Button_ParchmentCheckButton" id="1">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentMapToggle">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>                            
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.ToggleTrackQuest" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverToggleTrackQuest" />
+                    </EventHandlers>
+                </Button>
+                            
+            
+            
+                <DynamicImage name="$parentComplete" texture="map_markers01">
+                    <Size>
+                        <AbsPoint x="32" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright"  >
+                            <AbsPoint x="0" y="3"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage> 
+                              
+                <Button name="$parentName" inherits="TOKTextButton" maxchars="64" textalign="left" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="275" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTrackToggle" >
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnClickQuestName"/>
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverQuestName"/>
+                    </EventHandlers>
+                </Button>                          
+                
+                <DynamicImage name="$parentClockImage"  texture="assorted_hud_pieces" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="20" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentName">
+                            <AbsPoint x="-5" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="50" y="192" />
+                </DynamicImage>                
+                <Label name="$parentTimerValue" font="font_default_sub_heading" maxchars="16" textalign="left" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="55" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentClockImage" >
+                            <AbsPoint x="-4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+                
+                <Label name="$parentTimerName" inherits="TOKTextSmall" textalign="left" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="275" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName" >
+                            <AbsPoint x="0" y="4"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+                
+                
+                <Label name="$parentConditionsText" inherits="TOKTextSmall" textalign="left" autoresize="true" handleinput="false" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="275" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTimerName" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>                
+               
+            </Windows>
+        </Window>
+        
+        
+      
+        <Window name="ZoneViewMapPointToggleButton" inherits="WorldMapCheckButton" >
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.TogglePinFilter" />
+          </EventHandlers>
+        </Window>
+        
+        <!-- Zone transition point templates -->
+        <Button name="ZoneTransitionPointNorth" inherits="Button_MapArrow_North"  >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverTransitionPoint" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="ZoneTransitionPointSouth" inherits="Button_MapArrow_South" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverTransitionPoint" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="ZoneTransitionPointEast" inherits="Button_MapArrow_East" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverTransitionPoint" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="ZoneTransitionPointWest" inherits="Button_MapArrow_West"  >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverTransitionPoint" />
+            </EventHandlers>
+        </Button>
+        
+        <Label name="MapTextPoint" font="font_default_text" maxchars="64" textalign="left" wordwrap="false" autoresizewidth="false" autoresize="false" handleinput="false">
+            <Size>
+                <AbsPoint x="350" y="60" />
+            </Size>
+        </Label>
+        
+        <Label name="ObjectiveMapTimer" font="font_default_text_large" maxchars="4096" textalign="left" autoresize="true" wordwrap="false" handleinput="false">
+            <Size>
+                <AbsPoint x="200" y="50"/>
+            </Size>
+            <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+
+        <!-- Template that Always exists in the MapWindow for the Zone View -->
+        <Window name="WorldMapZoneViewTemplate" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundTexture">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+            
+                <!-- Main Map Display -->
+                <MapDisplay name="$parentMapDisplay" loadingAnim="MapLoadingAnim" pinTexture="map_markers01" sticky="false" layer="background">
+                    <Size>
+                        <AbsPoint x="1000" y="1000" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="75" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnPointMouseOver" function="EA_Window_WorldMap.OnMouseOverPoint" />
+                        <EventHandler event="OnUpdate" function="EA_Window_WorldMap.Update" />
+                        <EventHandler event="OnMouseWheel" function="EA_Window_WorldMap.HandleMouseWheel" />
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnClickMap" />
+                    </EventHandlers>
+                </MapDisplay>
+                
+                <!-- Map Border -->
+                <Window name="$parentBorder" inherits="WorldMapScrollworkBorder" >
+                    <Size>
+                        <AbsPoint x="1075" y="1110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="40" y="11" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+
+                
+                <!-- Side Bar *******************************************************************************-->
+                
+                <!-- Zones Combo Box -->
+                <Label name="$parentZoneControlHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="10" y="55" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                
+                <Window name="$parentZoneControlContainer" inherits="EA_Window_ZoneControlContainerHorizontalTemplate" layer="secondary">
+                    <Size>
+                        <AbsPoint x="150" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneControlHeader">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentGlyphContainer" inherits="EA_Window_GlyphContainerHorizontalTemplate" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneControlHeader">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentSectionBreak1" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentZoneControlContainer">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Warfronts Combo Box -->
+                <Label name="$parentMapMarkersHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak1">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCoordinates" inherits="TOKTextItalic" textalign="center">
+                    <Size>
+                        <AbsPoint x="325" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentMapMarkersHeader">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentMapFilter1" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCoordinates">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMapFilter2" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMapFilter1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMapFilter3" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMapFilter2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMapFilter4" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMapFilter3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMapFilter5" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMapFilter4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMapFilter6" inherits="ZoneViewMapPointToggleButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMapFilter5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Embedded Quest Tracker -->
+                <Window name="$parentSectionBreak2" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentSectionBreak1">
+                            <AbsPoint x="0" y="260" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                 <Label name="$parentQuestTrackerHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak2">
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <!-- TODO - Add these after the HUD QuestTracker Assets are Added 
+                <DyanmicImage name="$parentTrackMapImage" texture="map_markers01" slice="NPC-Travel" >
+                    <Size>
+                        <AbsPoint x="35" y="36"/>
+                    </Size>
+                     <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentQuestTracker" >
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="35" y="36"/>
+                </DynamicImage>
+               <DyanmicImage name="$parentTrackQuestImage" texture="map_markers01" slice="NPC-Travel" >
+                    <Size>
+                        <AbsPoint x="35" y="36"/>
+                    </Size>
+                     <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentQuestTracker" >
+                            <AbsPoint x="0" y="-4" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="35" y="36"/>
+                </DynamicImage>
+                -->
+                <PageWindow name="$parentQuestTracker" childcontentswindow="$parentContentsChild" pagesdisplayed="1" >
+                    <Size>
+                        <AbsPoint x="375" y="475"/>
+                    </Size>
+                    <EventHandlers>
+                        <EventHandler event="OnUpdate" function="EA_Window_WorldMap.UpdateQuestTracker" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQuestTrackerHeader" >
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentContentsChild">
+                            <Windows>
+                                
+                                <!-- Quest Trackers are created Dyanmically -->
+                                <Window name="$parentDataAnchor" >
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" >
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                
+                           </Windows>
+                        </Window>
+                        
+                    </Windows>                       
+                </PageWindow>
+                
+                
+               <Label name="$parentQuestTrackerPageText" inherits="TOKText" textalign="center" autoresize="true" wordwrap="false" >
+                    <Size>
+                        <AbsPoint x="200" y="50"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top"  relativeTo="$parentQuestTracker" >
+                            <AbsPoint x="0" y="20"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentQuestTrackerPreviousPageButton" inherits="EA_Button_DefaultBigLeftArrow" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentQuestTracker" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnQuestTrackerPreviousPage" />                        
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverQuestTrackerPreviousPage" />
+                    </EventHandlers>
+                </Button>
+                
+               <Button name="$parentQuestTrackerNextPageButton" inherits="EA_Button_DefaultBigRightArrow" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentQuestTracker" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnQuestTrackerNextPage" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverQuestTrackerNextPage" />
+                    </EventHandlers>
+                </Button>
+            
+            </Windows>
+        </Window>
+         
+    </Windows>
+
+</Interface>

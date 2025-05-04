@@ -1,0 +1,285 @@
+<zone iname="Mount Bloodhorn">
+    <landmark iname="Old Dwarf Lookout Tower" id="1" mapIcon="1002" x="12069" y="32554">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Chompa's Cave" id="2" mapIcon="1063" x="14363" y="45692">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Crawla Cave" id="3" mapIcon="1063" x="152" y="31837">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Da War Maker" id="4" mapIcon="1081" x="16741" y="52276">
+        <race>Greenskin</race>
+        <number>2</number>
+        <ranks realm="destruction" min="3" max="4" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Tradeskill Trainers</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Da Gobbo Camp" id="5" mapIcon="1027" x="17934" y="38075">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Mouth of Morngrim" id="6" mapIcon="1061" x="1997" y="20151">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sharpthorn Mine" id="7" mapIcon="1061" x="20273" y="60663">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Old Stoneson Mine" id="8" mapIcon="1062" x="24845" y="34866">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Forgotten Hold" id="9" mapIcon="1060" x="26430" y="25693">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Komar" id="10" mapIcon="1020" x="2955" y="26610">
+        <race>Greenskin</race>
+        <number>3</number>
+        <ranks realm="destruction" min="5" max="7" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Gates of Ekrund" id="11" mapIcon="1083" x="3075" y="4119">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Snouts' Pens" id="12" mapIcon="1027" x="31335" y="50725">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Broketoof Boyz" id="13" mapIcon="1021" x="3310" y="48402">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Statue of the Oathbearer" id="14" mapIcon="1005" x="33890" y="26476">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lobber Hill" id="15" mapIcon="1020" x="36203" y="51010">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Traitor's Watch" id="16" mapIcon="1065" x="37857" y="16381">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Spore Rock" id="17" mapIcon="1062" x="39942" y="48013">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Da Start" id="18" mapIcon="1062" x="43307" y="50902">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Skalfson's Watch" id="19" mapIcon="1025" x="43401" y="19642">
+        <race>Dwarf</race>
+        <number>4</number>
+        <ranks realm="order" min="8" max="9" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Da Stumps" id="20" mapIcon="1064" x="44868" y="57153">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Mouth of Morngrim" id="21" mapIcon="1061" x="4609" y="22024">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gran Thewn Watch" id="22" mapIcon="1002" x="48034" y="33764">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gnol Barak" id="23" mapIcon="1061" x="54087" y="20711">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Forgehand's Workshop" id="24" mapIcon="1002" x="55552" y="11324">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Komar" id="25" mapIcon="1003" x="8096" y="25682">
+        <race>Dwarf</race>
+        <number>3</number>
+        <ranks realm="order" min="5" max="7" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Screeb's Stunty Killin' Camp" id="26" mapIcon="1050" x="8414" y="20363">
+        <race>Greenskin</race>
+        <services>
+            <service>Apprentice Renown Trainer</service>
+            <service>Renown Gear Merchant</service>
+	    <service>Recruit's Medallion Merchant</service>
+	    <service>Recruit's Emblem Merchant</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Skarzag's Stompin' Grounds" id="27" mapIcon="1020" x="42563" y="52756">
+        <race>Greenskin</race>
+        <number>1</number>
+        <ranks realm="destruction" min="1" max="2" />
+        <services>
+            <service>Apprentice Career Trainer</service>
+            <service>General Merchants</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1259" x="13157" y="18157" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1259" x="11354" y="8702" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="30" mapIcon="1180" x="2756" y="11487" liveevent="9">
+        <importance>minor</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <landmark iname="Wolftoof Wud" id="31" mapIcon="1064" x="5719" y="52531">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sharpthorn Wud" id="32" mapIcon="1064" x="25789" y="56627">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ironmane's Lock" id="33" mapIcon="1008" x="38672" y="61861">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloody Sun Camp" id="34" mapIcon="1027" x="46787" y="45743">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Snotwood" id="35" mapIcon="1064" x="59528" y="21069">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gutrot Mine" id="36" mapIcon="1060" x="63055" y="21543">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodhammer Falls" id="37" mapIcon="1038" x="29022" y="9549">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ironmane Mine" id="38" mapIcon="1060" x="22576" y="10458">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Siege of Komar" id="17" iconSet="1" x="1486" y="35185">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ironclaw Camp" id="6" iconSet="1" x="15525" y="40397">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Sharpthorn Rock Mine" id="5" iconSet="1" x="17947" y="61615">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Sharpthorn Wud" id="3" iconSet="1" x="24135" y="50168">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="3" max="4" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Urgog's Rage" id="4" iconSet="1" x="33779" y="56229">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="1" max="2" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Marghaz Bloodtoof Ritual" id="20" iconSet="1" x="39863" y="39419">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Traitors Watch" id="21" iconSet="1" x="42340" y="10823">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Sacred Grove" id="10" iconSet="1" x="6010" y="61242">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Gutrot Mine" id="19" iconSet="1" x="63489" y="5224">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="8" max="9" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Kron Komar Gap" id="9" iconSet="1" x="7880" y="30789">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="5" max="7" />
+        <realm>Both</realm>
+	</publicQuest>	
+   	<publicQuest iname="Bloodhorn Barrens" id="496" iconSet="1" x="19528" y="32502">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+	<publicQuest iname="Scartusk Camp" id="495" iconSet="1" x="11489" y="58128">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <battlefieldObjective iname="The Lookout: Artisan's Gift" id="2" iconSet="1" x="16435" y="13515">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Ironmane Outpost: Healing Boon" id="5098" iconSet="1" x="20828" y="5870">
+    </battlefieldObjective>
+    <!-- BEGIN Ekrund points -->
+    <battlefieldObjective iname="Cannon Battery: Merchant's Gift" id="1" iconSet="1" x="55830" y="9694" zone="6">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Stonemine Tower: Defensive Boon" id="5099" iconSet="1" x="50481" y="5218" zone="6">
+    </battlefieldObjective>
+    <!-- END Ekrund points -->
+    <zoneTransition iname="To Ekrund" x="0" y="32000">
+        <zone>006</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Marshes of Madness" x="65535" y="32000">
+        <zone>001</zone>
+    </zoneTransition>
+</zone>
+
+
+
+
+

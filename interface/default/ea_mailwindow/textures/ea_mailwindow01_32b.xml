@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Assets>
+    <Texture name="EA_MailWindow01_32b" file="Textures/EA_MailWindow01_32b.dds">
+      <Slice id="coins" left="130" top="0" width="22" height="32" />
+      <Slice id="MultiPackage" left="152" top="0" width="32" height="32" />
+      <Slice id="cod-taken" left="65" top="124" width="65" height="62" />
+      <Slice id="cod-unread" left="0" top="124" width="65" height="62" />
+      <Slice id="cod-untaken" left="0" top="186" width="65" height="62" />
+      <Slice id="mail-read" left="0" top="62" width="65" height="62" />
+      <Slice id="mail-unread" left="0" top="0" width="65" height="62" />
+      <Slice id="package-read" left="65" top="62" width="65" height="62" />
+      <Slice id="package-unread" left="65" top="0" width="65" height="62" />
+    </Texture>
+  </Assets>
+</Interface>

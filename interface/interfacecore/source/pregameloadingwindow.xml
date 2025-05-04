@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\Interface.xsd">
+    <Scripts>
+        <Script file="Source/PregameLoadingWindow.lua" />
+    </Scripts>
+    <Windows>
+        
+        <!-- Loading Window -->
+        <Window name="PregameLoadingWindow" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" />
+                <Anchor point="bottomright" relativePoint="bottomright" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="PregameLoadingWindow.Initialize" />
+                <EventHandler event="OnLButtonDown" function="PregameLoadingWindow.OnLButtonDown" />
+            </EventHandlers>
+            <Windows>
+                
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" sticky="false" > 
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+                
+                <DynamicImage name="$parentImage" handleinput="false" layer="background" texture="loading_screen" sticky="false">
+                    <Size>
+                        <AbsPoint x="1024" y="1024" />
+                    </Size>
+                     <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="1024" y="1024" />
+                </DynamicImage>               
+
+                <!-- Loading Text -->
+                <Label name="$parentText" layer="secondary" handleinput="false" font="font_heading_default" textalign="center" autoresize="true" >
+                  <Size>
+                    <AbsPoint x="1200" y="0" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                      <AbsPoint x="0" y="-60" />
+                    </Anchor>
+                  </Anchors>
+                  <Color r="235" g="235" b="235" />
+                </Label>
+                
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

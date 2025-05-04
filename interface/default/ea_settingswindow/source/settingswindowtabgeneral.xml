@@ -1,0 +1,424 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/SettingsWindowTabGeneral.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="SettingsWindowTabGeneral" movable="false" >
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="SettingsWindowTabbedSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="SettingsWindowTabGeneral.Initialize"/>
+      </EventHandlers>
+      <Windows>
+      
+        <!-- Scrolling Window -->
+        <ScrollWindow name="$parentContents" childscrollwindow="SWTabGeneralContentsScrollChild" scrollbar="SWTabGeneralContentsScrollbar" lineheight="18"  autoHideScrollBar="true">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </VerticalScrollbar>
+                
+                <Window name="$parentScrollChild">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentScrollbar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows> <!-- Tab-specific content goes in here -->
+                                    
+                        <!-- Game Play -->
+                        <Window name="$parentSettingsGamePlay" >
+                            <Size>
+                                <AbsPoint x="500" y="315" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="topright" >
+                                  <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="400" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+                                
+                                <Window name="$parentAutoLootAll" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStaticAbilityTooltips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentAutoLootAll" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentClickThroughSelf" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentStaticAbilityTooltips" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentAutoLootInRvR" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentAutoLootAll" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentShowRvRAlerts" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentAutoLootInRvR" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStickyTargeting" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowRvRAlerts" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentStaticTooltips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentStickyTargeting" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentShowToolTips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentStaticTooltips" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentPreventPlayerStatusFade" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentClickThroughSelf" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentAllowAutoQueueing" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPreventPlayerStatusFade" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentClickToMove" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowToolTips" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentOldMinimapBorder" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentAllowAutoQueueing" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Label name="$parentCombatLightingLabel" inherits="TooltipItemTitle">
+                                    <Size>
+                                        <AbsPoint x="250" y="16" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOldMinimapBorder" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+                                <ComboBox name="$parentCombatLightingCombo" inherits="TooltipComboBox" >
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentCombatLightingLabel">
+                                            <AbsPoint x="10" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                </ComboBox>
+                                
+                            </Windows>
+                        </Window><!-- end Game Play -->
+
+
+                        <Window name="$parentSettingsHelpTips" >
+                            <Size>
+                                <AbsPoint x="500" y="195" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsGamePlay">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsGamePlay" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="400" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="$parentShowTutorials" inherits="TooltipCheckButtonWide">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentHideAdvancedWindowsUntilNeeded" inherits="TooltipCheckButtonWide">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShowTutorials" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentShowBeginnerTips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHideAdvancedWindowsUntilNeeded" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentShowGameplayTips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowBeginnerTips" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentShowUiTips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentShowBeginnerTips" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentShowAdvancedTips" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentShowUiTips" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+
+                            </Windows>
+                        </Window><!-- end Help Tips  --> 
+                        
+                        <!-- Dialog Warnings -->
+                        <Window name="$parentSettingsDialogWarnings" >
+                            <Size>
+                                <AbsPoint x="500" y="175" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsHelpTips">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsHelpTips" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="$parentWarnBuy" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentWarnSell" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentWarnBuy" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+
+                                <Window name="$parentWarnRepair" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentWarnBuy" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentWarnRefine" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentWarnSell" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentWarnRefineCurrency" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentWarnRefine" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                
+                                <Window name="$parentWarnPerfLevel" inherits="EA_LabelCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentWarnRepair" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <EventHandlers>
+                                        <EventHandler event="OnInitialize" function="EA_LabelCheckButton.Initialize" />
+                                        <EventHandler event="OnLButtonUp" function="SettingsWindowTabGeneral.OnWarnPerfLevelLButtonUp" />
+                                    </EventHandlers>
+                                </Window>
+
+                            </Windows>
+                        </Window> <!-- end Dialog Warnings -->
+                        
+                        <!-- Camera -->
+                        <Window name="$parentSettingsCamera">
+                            <Size>
+                                <AbsPoint x="500" y="120" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSettingsDialogWarnings">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentSettingsDialogWarnings" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <FullResizeImage name="$parentBackground" inherits="SettingsSectionBackground" />
+                                <Label name="$parentTitle" inherits="EA_Settings_SectionTitle">
+                                    <Size>
+                                        <AbsPoint x="550" y="30" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft">
+                                            <AbsPoint x="10" y="10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Label>
+
+                                <Window name="$parentUseFirstPersonView" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="" >
+                                            <AbsPoint x="45" y="40" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentInvertMouselook" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentUseFirstPersonView" >
+                                            <AbsPoint x="70" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentPlayerFade" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUseFirstPersonView" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                                <Window name="$parentSmartFollow" inherits="TooltipCheckButton">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInvertMouselook" >
+                                            <AbsPoint x="0" y="8" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Window>
+                            </Windows>
+                        </Window> <!-- end Camera -->
+                        
+                    </Windows>
+                </Window> <!-- Scroll Child -->
+            </Windows>
+        </ScrollWindow>
+        
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Settings Window Tab General -->
+</Interface>

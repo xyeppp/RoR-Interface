@@ -1,0 +1,305 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/CultivationWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="CultivationWindow" layer="secondary" movable="false" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="438" y="556" />
+            </Size>
+            <!-- the layout system will anchor this window correctly -->
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="CultivationWindow.Initialize" />
+                <EventHandler event="OnUpdate"      function="CultivationWindow.UpdateTimers" />
+                <EventHandler event="OnShutdown"    function="CultivationWindow.Shutdown" />
+                <EventHandler event="OnShown"       function="CultivationWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+                <EventHandler event="OnRButtonUp"   function="CultivationWindow.OnRButtonUp" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Cultivation Window FRAME -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_CultivatingImage" layer="popup"/>
+                
+                <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="0" y="-50" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Close Button -->
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CultivationWindow.Done" />
+                    </EventHandlers>
+                </Button>
+                <!-- END OF FRAME -->
+
+                <!-- Plots Window which contains all four plots -->
+                <Window name="$parentPlots" inherits="CultivatingWindowInnerFrame" >
+                    <Windows>
+                        <Window name="$parentPlot1" inherits="CultivationPlotTemplate" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                            </Anchors>
+                        </Window>
+
+                        <Window name="$parentPlot2" inherits="CultivationPlotTemplate" id="2">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" />
+                            </Anchors>
+                        </Window>
+
+                        <Window name="$parentPlot3" inherits="CultivationPlotTemplate" id="3">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlot1" >
+                                    <AbsPoint x="0" y="2" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Window name="$parentPlot4" inherits="CultivationPlotTemplate" id="4">
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPlot2" >
+                                    <AbsPoint x="0" y="2" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <HorizontalResizeImage name="$parentHorizPlotDivider" inherits="EA_HorizontalResizeImage_PlotDivider" >
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlot1" />
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPlot2" />
+                            </Anchors>
+                        </HorizontalResizeImage>
+
+                        <VerticalResizeImage name="$parentVertPlotDivider" inherits="EA_VerticalResizeImage_PlotDivider" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlot1">
+                                    <AbsPoint x="-2" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentPlot3" >
+                                    <AbsPoint x="-2" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </VerticalResizeImage>
+                    </Windows>
+                </Window>
+
+                <!-- Single Plot Window which contains more detail about a single plot -->
+                <Window name="$parentSinglePlot" inherits="CultivatingWindowInnerFrame" >
+                    <Windows>
+                        <DynamicImage name="$parentMainBackground" slice="PlotView-Background" texture="EA_Cultivating01_d5" handleinput="false" layer="background" sticky="false">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                            <TexDims x="423" y="427"/>
+                        </DynamicImage>
+
+                        <DynamicImage name="$parentStageBackground" slice="PlantStage-1" texture="EA_Cultivating01_d5" handleinput="false" layer="background" sticky="false">
+                            <Size>
+                                <AbsPoint x="175" y="296"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="117" y="124" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <Button name="$parentHome" inherits="EA_Button_Home">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="14" y="15" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="CultivationWindow.Home" />
+                            </EventHandlers>
+                        </Button>
+
+                        <Button name="$parentSeedSpore" inherits="EA_Button_SporeSeedFrame" id="1">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="21" y="76" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+
+                        <Button name="$parentNutrient" inherits="EA_Button_CultivationResourceFrame" id="4">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" >
+                                    <AbsPoint x="325" y="73" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        
+                        <Label name="$parentStage3" inherits="EA_Label_CultivationTextTemplate">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentNutrient">
+                                    <AbsPoint x="0" y="-5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <Button name="$parentWater" inherits="EA_Button_CultivationResourceFrame" id="3">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNutrient" >
+                                    <AbsPoint x="0" y="45" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        
+                        <Label name="$parentStage2" inherits="EA_Label_CultivationTextTemplate">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentWater">
+                                    <AbsPoint x="0" y="-5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <Button name="$parentSoil" inherits="EA_Button_CultivationResourceFrame" id="2">
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentWater" >
+                                    <AbsPoint x="0" y="45" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        
+                        <Label name="$parentStage1" inherits="EA_Label_CultivationTextTemplate">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentSoil">
+                                    <AbsPoint x="0" y="-5"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        
+                        <Label name="$parentSkill" inherits="EA_Label_CultivationTextTemplate" >
+                            <Size>
+                                <AbsPoint x="150" y="40"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="15"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <Label name="$parentName" inherits="EA_Label_CultivationTextTemplate" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="-40" y="15"/>
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+
+                        <Label name="$parentTimeLeft" inherits="EA_Label_CultivationTextTemplate" autoresizewidth="false">
+                            <Size>
+                                <AbsPoint x="423" y="30"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255"/>
+                        </Label>
+                    </Windows>
+                </Window>
+
+                <!-- bottom section -->
+                <FullResizeImage name="$parentHintTextBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright"  >
+                            <AbsPoint x="-9" y="-93" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="9" y="-53" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor  r="20" g="20" b="20" />
+                </FullResizeImage>
+
+                <Label name="$parentInstruction" font="font_clear_default" maxchars="200" textalign="left" wordwrap="false" autoresize="true" autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="420" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parentHintTextBackground" >
+                            <AbsPoint x="10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Status/Hint Text	-->
+                <Window name="$parentSeparator1" inherits="EA_Window_DefaultSeparator">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="0" y="-37" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="-37" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentSeparator2" inherits="EA_Window_DefaultSeparator">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="0" y="-77" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="-77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Craft Now! button -->
+                <Button name="$parentHarvest" inherits="EA_Button_DefaultResizeable" gameactionbutton="left">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="-75" y="-11" />
+                        </Anchor>
+                    </Anchors>
+
+                    <Sounds>
+                        <Sound event="OnLButtonUp" script="Sound.Play( Sound.CULTIVATING_HARVEST_CROP )" />
+                    </Sounds>
+                </Button>
+
+                <!-- Cancel Button -->
+                <Button name="$parentUproot" inherits="EA_Button_DefaultResizeable">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CultivationWindow.Cancel" />
+                        <EventHandler event="OnMouseOver" function="CultivationWindow.OnUprootButtonMouseOver" />
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="75" y="-11" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+            </Windows>
+        </Window>
+        <!-- end Main CultivationWindow -->
+
+    </Windows>
+</Interface>

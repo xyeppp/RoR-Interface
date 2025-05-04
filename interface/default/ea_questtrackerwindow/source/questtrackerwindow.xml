@@ -1,0 +1,211 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/QuestTrackerWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_QuestTrackerNub" layer="secondary" savesettings="true">
+            <Size>
+                <AbsPoint x="36" y="38"/>
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="EA_Window_OverheadMap">
+                    <AbsPoint x="0" y="10"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp"   function="EA_Window_QuestTrackerNub.ToggleWindow" />
+                <EventHandler event="OnInitialize"  function="EA_Window_QuestTrackerNub.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButtonClosed" inherits="EA_Button_Default" handleinput="false"
+                        backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                    <Size>
+                        <AbsPoint x="22" y="38" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal          id="Quest-Tracker-Closed"            />
+                        <NormalHighlit   id="Quest-Tracker-Closed-ROLLOVER"   />
+                    </TexSlices>
+                </Button>
+                <Button name="$parentButtonOpen" inherits="EA_Button_Default" handleinput="false"
+                        backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+                    <Size>
+                        <AbsPoint x="36" y="38" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Pressed         id="Quest-Tracker-Open"  />
+                        <PressedHighlit  id="Quest-Tracker-Open-ROLLOVER"  />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_QuestTracker" savesettings="true">
+            <Size>
+                <AbsPoint x="332" y="600"/>
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="EA_Window_QuestTrackerNub">
+                    <AbsPoint x="0" y="5"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"                  function="EA_Window_QuestTracker.Initialize" />
+                <EventHandler event="OnInitializeCustomSettings"    function="EA_Window_QuestTracker.InitializeLayout" />
+                <EventHandler event="OnUpdate"                      function="EA_Window_QuestTracker.Update" />
+                <EventHandler event="OnShutdown"                    function="EA_Window_QuestTracker.Shutdown" />
+                <EventHandler event="OnRButtonUp"                   function="EA_Window_QuestTracker.CreateContextMenu" />
+            </EventHandlers>
+            <Windows>
+
+                <!--
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+                </FullResizeImage>
+                -->
+
+                <Window name="$parentData1" inherits="EA_Template_QuestTrackerEntry" id="1">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData2" inherits="EA_Template_QuestTrackerEntry" id="2">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData1">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData3" inherits="EA_Template_QuestTrackerEntry" id="3">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData2">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData4" inherits="EA_Template_QuestTrackerEntry" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData3">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData5" inherits="EA_Template_QuestTrackerEntry" id="5">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData4">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData6" inherits="EA_Template_QuestTrackerEntry" id="6">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData5">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData7" inherits="EA_Template_QuestTrackerEntry" id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData6">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData8" inherits="EA_Template_QuestTrackerEntry" id="8">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData7">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData9" inherits="EA_Template_QuestTrackerEntry" id="9">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData8">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentData10" inherits="EA_Template_QuestTrackerEntry" id="10">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentData9">
+                            <AbsPoint x="0" y="10"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_SetQuestTrackerOpacity" movable="true" layer="popup" savesettings="false">
+            <Size>
+                <AbsPoint x="200" y="90" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_QuestTracker.CloseSetOpacityWindow" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="32" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <SliderBar name="$parentSlider" inherits="EA_Default_SliderBar" >
+                    <Size>
+                        <AbsPoint x="140" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" >
+                            <AbsPoint x="30" y="13" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSlide" function="EA_Window_QuestTracker.OnSlideWindowOptionsAlpha" />
+                    </EventHandlers>
+                </SliderBar>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

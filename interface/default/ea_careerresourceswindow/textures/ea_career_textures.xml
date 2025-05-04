@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_Career_AM_32b" file="Textures/EA_Career_AM_32b.dds">
+            <Slice id="ArchmageBlueHighlight" left="152" top="0" width="76" height="75" />
+            <Slice id="ArchmageDefault" left="0" top="0" width="76" height="75" />
+            <Slice id="ArchmageGoldHighlight" left="76" top="0" width="76" height="75" />
+        </Texture>
+
+        <Texture name="EA_Career_BO_32b" file="Textures/EA_Career_BO_32b.dds">
+            <Slice id="BlackOrc-Best" left="0" top="122" width="118" height="85" />
+            <Slice id="BlackOrc-Betta" left="0" top="62" width="118" height="60" />
+            <Slice id="BlackOrc-Good" left="0" top="0" width="118" height="62" />
+        </Texture>
+
+        <Texture name="EA_Career_BW_32b" file="Textures/EA_Career_BW_32b.dds">
+            <Slice id="BrightWizard-FireFrame1" left="0"   top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame2" left="80"  top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame3" left="160" top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame4" left="240" top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame5" left="320" top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame6" left="400" top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame7" left="480" top="0" width="80" height="100" />
+            <Slice id="BrightWizard-FireFrame8" left="560" top="0" width="80" height="99" />
+            <Slice id="BrightWizard-GlowingEyes" left="722" top="0" width="82" height="78" />
+            <Slice id="BrightWizard-Skull" left="640" top="0" width="82" height="78" />
+        </Texture>
+
+        <Texture name="EA_Career_Di_32b" file="Textures/EA_Career_Di_32b.dds">
+            <Slice id="Disciple" left="0" top="0" width="110" height="86" />
+            <Slice id="DiscipleFill" left="0" top="86" width="110" height="37" />
+        </Texture>
+
+        <Texture name="EA_Career_Ch_32b" file="Textures/EA_Career_Ch_32b.dds">
+            <Slice id="ChosenEye1" left="0" top="0" width="85" height="58" />
+            <Slice id="ChosenEye2" left="85" top="0" width="85" height="58" />
+            <Slice id="ChosenEye3" left="170" top="0" width="85" height="58" />
+            <Slice id="ChosenFrame" left="0" top="58" width="153" height="70" />
+        </Texture>
+
+        <Texture name="EA_Career_WP_32b" file="Textures/EA_Career_WP_32b.dds">
+            <Slice id="WarriorPriestBackground" left="0" top="0" width="103" height="68" />
+            <Slice id="WarriorPriestFill" left="0" top="68" width="103" height="60" />
+        </Texture>
+
+        <Texture name="EA_Career_WH_32b" file="Textures/EA_Career_WH_32b.dds">
+            <Slice id="WitchHunter-GlowingEyes" left="60" top="0" width="35" height="21" />
+            <Slice id="WitchHunter-Skull" left="0" top="0" width="60" height="67" />
+            <Slice id="WitchHunter-SpikeA" left="60" top="43" width="42" height="17" />
+            <Slice id="WitchHunter-SpikeB" left="47" top="67" width="35" height="41" />
+            <Slice id="WitchHunter-SpikeC" left="0" top="67" width="12" height="58" />
+            <Slice id="WitchHunter-SpikeD" left="12" top="67" width="35" height="48" />
+            <Slice id="WitchHunter-SpikeE" left="60" top="21" width="56" height="22" />
+        </Texture>
+
+        <Texture name="EA_Career_WE_32b" file="Textures/EA_Career_WE_32b.dds">
+            <Slice id="WitchElfSpikeA" left="0" top="0" width="45" height="128" />
+            <Slice id="WitchElfSpikeB" left="45" top="0" width="39" height="128" />
+            <Slice id="WitchElfSpikeC" left="84" top="0" width="41" height="128" />
+            <Slice id="WitchElfSpikeD" left="125" top="0" width="39" height="128" />
+            <Slice id="WitchElfSpikeE" left="164" top="0" width="45" height="128" />
+        </Texture>
+
+        <Texture name="EA_Career_Sq_32b" file="Textures/EA_Career_Sq_32b.dds">
+            <Slice id="PetState-Aggressive" left="51" top="82" width="51" height="52" />
+            <Slice id="PetState-Button-Aggressive" left="0" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Aggressive-ROLLOVER" left="36" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive" left="0" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive-ROLLOVER" left="36" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Passive" left="0" top="223" width="36" height="18" />
+            <Slice id="PetState-Button-Passive-ROLLOVER" left="36" top="223" width="36" height="18" />
+            <Slice id="PetState-Defensive" left="51" top="134" width="51" height="52" />
+            <Slice id="PetStateFrame" left="0" top="0" width="82" height="82" />
+            <Slice id="PetState-Passive" left="0" top="134" width="51" height="52" />
+            <Slice id="ReleaseIcon" left="0" top="82" width="51" height="52" />
+        </Texture>
+
+        <Texture name="EA_Career_Ma_32b" file="Textures/EA_Career_Ma_32b.dds">
+            <Slice id="PetState-Aggressive" left="51" top="82" width="51" height="52" />
+            <Slice id="PetState-Button-Aggressive" left="0" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Aggressive-ROLLOVER" left="36" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive" left="0" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive-ROLLOVER" left="36" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Passive" left="0" top="223" width="36" height="18" />
+            <Slice id="PetState-Button-Passive-ROLLOVER" left="36" top="223" width="36" height="18" />
+            <Slice id="PetState-Defensive" left="51" top="134" width="51" height="52" />
+            <Slice id="PetStateFrame" left="0" top="0" width="82" height="82" />
+            <Slice id="PetState-Passive" left="0" top="134" width="51" height="52" />
+            <Slice id="ReleaseIcon" left="0" top="82" width="51" height="52" />
+        </Texture>
+
+        <Texture name="EA_Career_WL_32b" file="Textures/EA_Career_WL_32b.dds">
+            <Slice id="PetState-Aggressive" left="51" top="82" width="51" height="52" />
+            <Slice id="PetState-Button-Aggressive" left="0" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Aggressive-ROLLOVER" left="36" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive" left="0" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive-ROLLOVER" left="36" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Passive" left="0" top="223" width="36" height="18" />
+            <Slice id="PetState-Button-Passive-ROLLOVER" left="36" top="223" width="36" height="18" />
+            <Slice id="PetState-Defensive" left="51" top="134" width="51" height="52" />
+            <Slice id="PetStateFrame" left="0" top="0" width="82" height="82" />
+            <Slice id="PetState-Passive" left="0" top="134" width="51" height="52" />
+            <Slice id="ReleaseIcon" left="0" top="82" width="51" height="52" />
+        </Texture>
+
+        <Texture name="EA_Career_En_32b" file="Textures/EA_Career_En_32b.dds">
+            <Slice id="PetState-Aggressive" left="51" top="82" width="51" height="52" />
+            <Slice id="PetState-Button-Aggressive" left="0" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Aggressive-ROLLOVER" left="36" top="187" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive" left="0" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Defensive-ROLLOVER" left="36" top="205" width="36" height="18" />
+            <Slice id="PetState-Button-Passive" left="0" top="223" width="36" height="18" />
+            <Slice id="PetState-Button-Passive-ROLLOVER" left="36" top="223" width="36" height="18" />
+            <Slice id="PetState-Defensive" left="51" top="134" width="51" height="52" />
+            <Slice id="PetStateFrame" left="0" top="0" width="82" height="82" />
+            <Slice id="PetState-Passive" left="0" top="134" width="51" height="52" />
+            <Slice id="ReleaseIcon" left="0" top="82" width="51" height="52" />
+        </Texture>
+
+        <Texture name="EA_Career_So_32b" file="Textures/EA_Career_So_32b.dds">
+            <Slice id="SorcererFrame" left="0" top="0" width="120" height="64" />
+            <Slice id="Sorcerer-Orb1" left="0" top="64" width="64" height="64" />
+            <Slice id="Sorcerer-Orb2" left="64" top="64" width="64" height="64" />
+            <Slice id="Sorcerer-Orb3" left="0" top="128" width="64" height="64" />
+            <Slice id="Sorcerer-Orb4" left="64" top="128" width="64" height="64" />
+            <Slice id="Sorcerer-Orb5" left="0" top="192" width="64" height="64" />
+        </Texture>
+
+        <Texture name="EA_Career_SM_32b" file="Textures/EA_Career_SM_32b.dds">
+            <Slice id="SwordmasterBest" left="0" top="155" width="128" height="101" />
+            <Slice id="SwordmasterBetta" left="0" top="80" width="128" height="75" />
+            <Slice id="SwordmasterGood" left="0" top="0" width="128" height="80" />
+        </Texture>
+
+        <Texture name="EA_Career_Sh_32b" file="Textures/EA_Career_Sh_32b.dds">
+            <Slice id="ShamanJaws" left="0" top="50" width="119" height="47" />
+            <Slice id="ShamanRedHead" left="0" top="0" width="60" height="50" />
+            <Slice id="ShamanYellowHead" left="60" top="0" width="59" height="50" />
+        </Texture>
+
+        <Texture name="EA_Career_IB_32b" file="Textures/EA_Career_IB_32b.dds">
+            <Slice id="IronbreakerGlowingEyes" left="0" top="76" width="86" height="76" />
+            <Slice id="IronbreakerNormal" left="0" top="0" width="86" height="76" />
+        </Texture>
+
+        <Texture name="EA_Career_BG_32b" file="Textures/EA_Career_BG_32b.dds">
+            <Slice id="BlackGuardGlowingEyes" left="0" top="104" width="118" height="104" />
+            <Slice id="BlackGuardNormal" left="0" top="0" width="118" height="104" />
+        </Texture>
+        
+        <Texture name="EA_Career_SL_32b" file="Textures/EA_Career_SL_32b.dds">
+            <Slice id="Slayer-Frame01" left="670" top="0" width="134" height="86" />
+            <Slice id="Slayer-Frame02" left="536" top="0" width="134" height="86" />
+            <Slice id="Slayer-Frame03" left="402" top="0" width="134" height="86" />
+            <Slice id="Slayer-Frame04" left="268" top="0" width="134" height="86" />
+            <Slice id="Slayer-Frame05" left="134" top="0" width="134" height="86" />
+            <Slice id="Slayer-Frame06" left="0" top="0" width="134" height="86" />
+            <Slice id="Slayer-GreenGlow" left="402" top="86" width="134" height="86" />
+            <Slice id="Slayer-Medallion" left="134" top="86" width="134" height="86" />
+            <Slice id="Slayer-Medallion-Angry" left="268" top="86" width="134" height="86" />
+            <Slice id="Slayer-needle" left="728" top="86" width="18" height="150" />
+            <Slice id="Slayer-Ring" left="0" top="86" width="134" height="86" />
+            <Slice id="Slayer-YellowGlow" left="536" top="86" width="134" height="86" />
+        </Texture>
+        
+        <Texture name="EA_Career_BZ_32b" file="Textures/EA_Career_BZ_32b.dds">
+            <Slice id="Choppa-GlowFrame01" left="670" top="0" width="134" height="86" />
+            <Slice id="Choppa-GlowFrame02" left="536" top="0" width="134" height="86" />
+            <Slice id="Choppa-GlowFrame03" left="402" top="0" width="134" height="86" />
+            <Slice id="Choppa-GlowFrame04" left="268" top="0" width="134" height="86" />
+            <Slice id="Choppa-GlowFrame05" left="134" top="0" width="134" height="86" />
+            <Slice id="Choppa-GlowFrame06" left="0" top="0" width="134" height="86" />
+            <Slice id="Choppa-GreenGlow" left="402" top="86" width="134" height="86" />
+            <Slice id="Choppa-HeadDefault" left="134" top="86" width="134" height="86" />
+            <Slice id="Choppa-HeadGlow" left="268" top="86" width="134" height="86" />
+            <Slice id="Choppa-needle" left="732" top="86" width="18" height="150" />
+            <Slice id="Choppa-Ring" left="0" top="86" width="134" height="86" />
+            <Slice id="Choppa-YellowGlow" left="536" top="86" width="134" height="86" />
+        </Texture>
+    </Assets>
+</Interface>

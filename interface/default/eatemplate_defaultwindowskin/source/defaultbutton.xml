@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_Button_Default 
+
+    This file contains all of the standard button templates that are used to create most of the Default UI Buttons.
+    You can inherit from any of these definitions for your add ons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Scripts>
+        <Script file="Source/DefaultButton.lua" />
+    </Scripts>
+    
+    <Windows>
+
+        <!-- Button Defs ************************************************************************************************-->
+
+
+
+        <!--# Button: EA_Button_Default                   
+            This is the default button definion that ONLY provides the click sounds. It provides no artwork
+            or text. This should be the base for all other button definitions.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_Default">
+             ...
+             </Button>
+            (end) 
+        -->
+        <Button name="EA_Button_Default">
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( Sound.BUTTON_CLICK )" />
+                <Sound event="OnMouseOver" script="Sound.Play( Sound.BUTTON_OVER )" />
+            </Sounds>
+        </Button>
+
+
+        <!--# Button: EA_Button_DefaultWindowClose                   
+            This is the default close button used for all windows. This only provides the artwork - each window is 
+            responsible for adding a click callback.
+        -->
+        <Button name="EA_Button_DefaultWindowClose" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" layer="popup">
+            <Size>
+                <AbsPoint x="37" y="37" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexCoords>
+                <Normal x="274" y="46" />
+                <NormalHighlit x="274" y="83" />
+                <Pressed x="274" y="120"  />
+                <PressedHighlit x="274" y="120"  />
+                <Disabled x="274" y="46" />
+            </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultText                   
+            This is the default text button for all windows. It provides no artwork, only a font.
+        -->
+        <Button name="EA_Button_DefaultText" inherits="EA_Button_Default" font="font_default_sub_heading">
+            <Size>
+                <AbsPoint x="200" y="32" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="85" b="0" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+        </Button>
+
+
+
+        <!--# Button: EA_Button_DefaultSmallSquare
+            This is the default small square button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultSmallSquare" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultSmallSquare" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <TexCoords>
+                <Normal x="168" y="43" />
+                <NormalHighlit x="168" y="69" />
+                <Pressed x="168" y="95" />
+                <PressedHighlit x="168" y="95" />
+                <Disabled x="142" y="95" />
+            </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultUp
+            This is the default up button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultUp" inherits="EA_Button_DefaultSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultUp" inherits="EA_Button_DefaultSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <OverlayTexCoords>
+                <Normal x="194" y="43" />
+                <NormalHighlit x="194" y="55" />
+                <Pressed x="194" y="43" />
+                <PressedHighlit x="194" y="55" />
+                <Disabled x="194" y="43" />
+            </OverlayTexCoords>
+            <OverlaySize x="9" y="12"/>
+            <OverlayOffset x="9" y="7"/>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultDown
+            This is the default down button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultDown" inherits="EA_Button_DefaultSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultDown" inherits="EA_Button_DefaultSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <OverlayTexCoords>
+                <Normal x="203" y="43" />
+                <NormalHighlit x="203" y="55" />
+                <Pressed x="203" y="43" />
+                <PressedHighlit x="203" y="55" />
+                <Disabled x="203" y="43" />
+            </OverlayTexCoords>
+            <OverlaySize x="9" y="12"/>
+            <OverlayOffset x="9" y="7"/>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultCheckBox
+            This is the default down button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultCheckBox" inherits="EA_Button_DefaultSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultCheckBox" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexCoords>
+                <Normal x="324" y="78" />
+                <NormalHighlit x="346" y="78" />
+                <Pressed x="324" y="78" />
+                <PressedHighlit x="346" y="78" />
+                <Disabled x="368" y="78" />
+                <DisabledPressed x="368" y="78" />
+            </TexCoords>
+            <OverlayTexCoords>
+                <Pressed x="390" y="78" />
+                <PressedHighlit x="390" y="78" />
+                <DisabledPressed x="390" y="78" />
+            </OverlayTexCoords>
+            <OverlaySize x="18" y="19"/>
+            <OverlayOffset x="2" y="2"/>
+        </Button>
+
+
+        <!--# Button: EA_Button_DefaultIcon
+            This is the default icon button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultIcon" inherits="EA_Button_Default" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultIcon" inherits="EA_Button_Default" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+            <TexCoords>
+                <Normal texture="icon_frame_square" x="0" y="0" />
+                <NormalHighlit texture="icon_frame_square_highlight" x="0" y="0" />
+                <Pressed texture="icon_frame_square_pressed" x="0" y="0" />
+                <Disabled texture="icon_frame_square" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <!--# Button: EA_Button_DefaultIconStack
+            This is the default icon button that allows for stack counts to be added.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultIconStack" inherits="EA_Button_Default" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultIconStack" inherits="EA_Button_Default" texturescale="0.859" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="55" y="55" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="0.859" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                </DynamicImage>
+                <Label name="$parentTextBase" font="font_chat_text" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+					<Color r="255" g="255" b="255" a="255" />
+                </Label>
+			</Windows>
+            <TexCoords>
+                <Normal texture="icon_frame_square" x="0" y="0" />
+                <NormalHighlit texture="icon_frame_square_highlight" x="0" y="0" />
+                <Pressed texture="icon_frame_square_pressed" x="0" y="0" />
+                <Disabled texture="icon_frame_square" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+		
+        <!--# Button: EA_Button_DefaultIcon_Large
+            This is the default icon button for full sized icons.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultIcon_Large" inherits="EA_Button_Default" texturescale="1.0" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultIcon_Large" inherits="EA_Button_Default" texturescale="1.0" font="font_default_text" textalign="bottomright" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="1.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+            <TexCoords>
+                <Normal texture="icon_frame_square" x="0" y="0" />
+                <NormalHighlit texture="icon_frame_square_highlight" x="0" y="0" />
+                <Pressed texture="icon_frame_square_pressed" x="0" y="0" />
+                <Disabled texture="icon_frame_square" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <!-- The horizontal images for the resizeable button -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonNormal" texture="shared_01">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="27" middle="76" right="27" />
+            <TexCoords>
+                <Left x="0" y="84" />
+                <Middle x="27" y="84" />
+                <Right x="103" y="84" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonNormalHighlit" texture="shared_01">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="27" middle="76" right="27" />
+            <TexCoords>
+                <Left x="0" y="123" />
+                <Middle x="27" y="123" />
+                <Right x="103" y="123" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonPressed" texture="shared_01">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="27" middle="76" right="27" />
+            <TexCoords>
+                <Left x="0" y="162" />
+                <Middle x="27" y="162" />
+                <Right x="103" y="162" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeableButtonDisabled" texture="shared_01">
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <Sizes left="27" middle="76" right="27" />
+            <TexCoords>
+                <Left x="0" y="201" />
+                <Middle x="27" y="201" />
+                <Right x="103" y="201" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <!--# Button: EA_Button_DefaultResizeable
+            This is the default resizable button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultResizeable" inherits="EA_Button_Default" font="font_default_text_small" textalign="center" textAutoFitMinScale="0.5" backgroundtexture="shared_01" highlighttexture="shared_01" >
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultResizeable" inherits="EA_Button_Default" font="font_default_text_small" textalign="center" textAutoFitMinScale="0.5"
+            backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="130" y="39" />
+            </Size>
+            <TextColors>
+                <Normal         r="226" g="216" b="45" a="255" />
+                <NormalHighlit  r="226" g="216" b="45" a="255" />
+                <Pressed        r="226" g="216" b="45" a="255" />
+                <PressedHighlit r="226" g="216" b="45" a="255" />
+                <Disabled       r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <Normal def="EA_HorizontalResizeImage_ResizeableButtonNormal" />
+                <NormalHighlit def="EA_HorizontalResizeImage_ResizeableButtonNormalHighlit" />
+                <Pressed def="EA_HorizontalResizeImage_ResizeableButtonPressed"  />
+                <Disabled def="EA_HorizontalResizeImage_ResizeableButtonDisabled" />
+            </ResizeImages>
+            <TextOffset x="10" y="5" />
+        </Button>
+
+        <!-- The horizontal images for the resizeable button -->
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeablePregameButtonNormal" texture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="244" y="105" />
+            </Size>
+            <Sizes left="52" middle="141" right="52" />
+            <TexSlices>
+                <Left   id="Button-LeftEnd"    />
+                <Middle id="Button-CenterSpan" />
+                <Right  id="Button-RightEnd"   />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeablePregameButtonNormalHighlit" texture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="244" y="105" />
+            </Size>
+            <Sizes left="52" middle="141" right="52" />
+            <TexSlices>
+                <Left   id="Button-LeftEnd-Rollover"    />
+                <Middle id="Button-CenterSpan-Rollover" />
+                <Right  id="Button-RightEnd-Rollover"   />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeablePregameButtonPressed" texture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="244" y="105" />
+            </Size>
+            <Sizes left="52" middle="141" right="52" />
+            <TexSlices>
+                <Left   id="Button-LeftEnd-Selected"    />
+                <Middle id="Button-CenterSpan-Selected" />
+                <Right  id="Button-RightEnd-Selected"   />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_HorizontalResizeImage_ResizeablePregameButtonDisabled" texture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="244" y="105" />
+            </Size>
+            <Sizes left="52" middle="141" right="52" />
+            <TexSlices>
+                <Left   id="Button-LeftEnd"    />
+                <Middle id="Button-CenterSpan" />
+                <Right  id="Button-RightEnd"   />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <!--# Button: EA_Button_DefaultPregameResizeable
+            This is the default pregame resizable button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultPregameResizeable" inherits="EA_Button_Default" font="font_default_text_small" textalign="center" textAutoFitMinScale="0.5" >
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultPregameResizeable" inherits="EA_Button_Default" font="font_heading_default" textalign="center" textAutoFitMinScale="0.5" >
+            <Size>
+                <AbsPoint x="244" y="105" />
+            </Size>
+            <TextColors>
+                <Normal         r="226" g="216" b="45" a="255" />
+                <NormalHighlit  r="237" g="227" b="61" a="255" />
+                <Pressed        r="226" g="216" b="45" a="255" />
+                <PressedHighlit r="237" g="227" b="61" a="255" />
+                <Disabled       r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <ResizeImages>
+                <Normal         def="EA_HorizontalResizeImage_ResizeablePregameButtonNormal" />
+                <NormalHighlit  def="EA_HorizontalResizeImage_ResizeablePregameButtonNormalHighlit" />
+                <Pressed        def="EA_HorizontalResizeImage_ResizeablePregameButtonPressed"  />
+                <Disabled       def="EA_HorizontalResizeImage_ResizeablePregameButtonDisabled" />
+            </ResizeImages>
+            <TextOffset x="0" y="5" />
+            <Sounds>
+              <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_DEFAULT_BUTTON )" />
+              <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+
+        <!--# The 'important' animated overlay for use on default buttons -->
+        <AnimatedImage name="EA_AnimatedImage_DefaultChoiceOverlay" texture="EA_DefaultSelectionOverlay" fps="10" layer="overlay" handleinput="false" sticky="false">
+            <Size>
+                <AbsPoint x="78" y="39"/>
+            </Size>
+            <AnimFrames>
+
+                <AnimFrame id="1" x="0" y="0" />
+                <AnimFrame id="2" x="0" y="39" />
+                <AnimFrame id="3" x="0" y="78" />
+                <AnimFrame id="4" x="0" y="117" />
+                <AnimFrame id="5" x="0" y="156" />
+                <AnimFrame id="6" x="0" y="195" />
+                <AnimFrame id="7" x="0" y="234" />
+                <AnimFrame id="8" x="0" y="273" />
+                <AnimFrame id="9" x="0" y="312" />
+                <AnimFrame id="10" x="0" y="351" />
+
+            </AnimFrames>
+        </AnimatedImage>
+
+
+        <!--# Button: EA_Button_TabPressed
+            This is the pressed state of a Tab button
+        -->
+        <FullResizeImage name="EA_Button_TabPressed" texture="shared_01">
+            <Size>
+                <AbsPoint x="129" y="46" />
+            </Size>
+            <Sizes>
+                <TopLeft x="19" y="19" />
+                <Middle x="91" y="12" />
+                <BottomRight x="19" y="15" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft id="Tab-Selected-top-left" />
+                <TopCenter id="Tab-Selected-top-middle" />
+                <TopRight id="Tab-Selected-top-right" />
+                <MiddleLeft id="Tab-Selected-left" />
+                <MiddleCenter id="Tab-Selected-middle" />
+                <MiddleRight id="Tab-Selected-right" />
+                <BottomLeft id="Tab-Selected-bottom-left" />
+                <BottomCenter id="Tab-Selected-middle" />
+                <BottomRight id="Tab-Selected-bottom-right" />
+            </TexSlices>
+        </FullResizeImage>
+
+      <!--# Button: EA_Button_TabNormal
+            This is the normal state of a Tab button
+        -->
+        <FullResizeImage name="EA_Button_TabNormal" texture="shared_01">
+            <Size>
+                <AbsPoint x="125" y="46" />
+            </Size>
+            <Sizes>
+                <TopLeft x="19" y="15" />
+                <Middle x="87" y="15" />
+                <BottomRight x="19" y="16" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft id="Back-Tab-Top-Left" />
+                <TopCenter id="Back-Tab-Top-Middle" />
+                <TopRight id="Back-Tab-Top-Right" />
+                <MiddleLeft id="Back-Tab-Left" />
+                <MiddleCenter id="Back-Tab-Middle" />
+                <MiddleRight id="Back-Tab-Right" />
+                <BottomLeft id="Back-Tab-lower-Left" />
+                <BottomCenter id="Back-Tab-lower-Middle" />
+                <BottomRight id="Back-Tab-lower-Right" />
+            </TexSlices>
+        </FullResizeImage>
+
+        <!--# Button: EA_Button_TabHighlit
+            This is the highlighted state of a Tab button
+        -->
+        <FullResizeImage name="EA_Button_TabHighlit" texture="shared_01">
+          <Size>
+            <AbsPoint x="125" y="46" />
+          </Size>
+          <Sizes>
+            <TopLeft x="19" y="15" />
+            <Middle x="87" y="15" />
+            <BottomRight x="19" y="16" />
+          </Sizes>
+          <TexSlices>
+            <TopLeft id="Back-Tab-Top-Left-rollover" />
+            <TopCenter id="Back-Tab-Top-Middle-rollover" />
+            <TopRight id="Back-Tab-Top-Right-rollover" />
+            <MiddleLeft id="Back-Tab-Left-rollover" />
+            <MiddleCenter id="Back-Tab-Middle-rollover" />
+            <MiddleRight id="Back-Tab-Right-rollover" />
+            <BottomLeft id="Back-Tab-lower-Left-rollover" />
+            <BottomCenter id="Back-Tab-lower-Middle-rollover" />
+            <BottomRight id="Back-Tab-lower-Right-rollover" />
+          </TexSlices>
+        </FullResizeImage>
+
+        <!--# Button: EA_Button_TabDisabled
+            This is the disabled state of a Tab button
+        -->
+        <FullResizeImage name="EA_Button_TabDisabled" texture="shared_01">
+          <Size>
+            <AbsPoint x="125" y="46" />
+          </Size>
+          <Sizes>
+            <TopLeft x="19" y="15" />
+            <Middle x="87" y="15" />
+            <BottomRight x="19" y="16" />
+          </Sizes>
+          <TexSlices>
+            <TopLeft id="Back-Tab-Top-Left" />
+            <TopCenter id="Back-Tab-Top-Middle" />
+            <TopRight id="Back-Tab-Top-Right" />
+            <MiddleLeft id="Back-Tab-Left" />
+            <MiddleCenter id="Back-Tab-Middle" />
+            <MiddleRight id="Back-Tab-Right" />
+            <BottomLeft id="Back-Tab-lower-Left" />
+            <BottomCenter id="Back-Tab-lower-Middle" />
+            <BottomRight id="Back-Tab-lower-Right" />
+          </TexSlices>
+        </FullResizeImage>
+
+      <!--# Button: EA_Button_Tab
+            This is the default tab button.  Place on top of a EA_Window_TabSeparator for best results.
+        -->
+      
+        <Button name="EA_Button_Tab" font="font_default_text"  inherits="EA_Button_Default" textalign="center">
+          <Size>
+            <AbsPoint x="129" y="46" />
+          </Size>
+          <ResizeImages>
+            <Normal             def="EA_Button_TabNormal" />
+            <NormalHighlit      def="EA_Button_TabHighlit" />
+            <Pressed            def="EA_Button_TabPressed" />
+            <PressedHighlit     def="EA_Button_TabPressed" />
+            <Disabled           def="EA_Button_TabDisabled" />
+          </ResizeImages>
+          <TextColors>
+            <Normal             r="222" g="192" b= "50" />
+            <NormalHighlit      r="222" g="192" b= "50" />
+            <Pressed            r="235" g="235" b="235" />
+            <PressedHighlit     r="255" g= "85" b=  "0" />
+            <Disabled           r= "128" g= "128" b= "128" />
+          </TextColors>
+        </Button>
+        
+        <!--# Button: EA_Button_BottomTab
+            This is a bottom tab button, used in a row to create a tabbed window.
+        -->
+        <HorizontalResizeImage name="EA_Button_BottomTabPressed" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="129" y="47" />
+            </Size>
+            <Sizes left="18" middle="93" right="18" />
+            <TexSlices>
+                <Left   id="BottomTab-Selected-Left"   />
+                <Middle id="BottomTab-Selected-Center" />
+                <Right  id="BottomTab-Selected-Right"  />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_Button_BottomTabNormal" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="129" y="47" />
+            </Size>
+            <Sizes left="18" middle="93" right="18" />
+            <TexSlices>
+                <Left   id="BottomTab-Normal-Left"   />
+                <Middle id="BottomTab-Normal-Center" />
+                <Right  id="BottomTab-Normal-Right"  />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_Button_BottomTabHighlit" texture="EA_HUD_01">
+            <Size>
+                <AbsPoint x="129" y="47" />
+            </Size>
+            <Sizes left="18" middle="93" right="18" />
+            <TexSlices>
+                <Left   id="BottomTab-Rollover-Left"   />
+                <Middle id="BottomTab-Rollover-Center" />
+                <Right  id="BottomTab-Rollover-Right"  />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <Button name="EA_Button_BottomTab" font="font_default_text"  inherits="EA_Button_Default" textalign="center">
+            <Size>
+                <AbsPoint x="129" y="47" />
+            </Size>
+            <ResizeImages>
+                <Normal             def="EA_Button_BottomTabNormal"  />
+                <NormalHighlit      def="EA_Button_BottomTabHighlit" />
+                <Pressed            def="EA_Button_BottomTabPressed" />
+                <PressedHighlit     def="EA_Button_BottomTabPressed" />
+            </ResizeImages>
+            <TextColors>
+                <Normal             r="222" g="192" b="50" />
+                <NormalHighlit      r="222" g="192" b="50" />
+                <Pressed            r="235" g="235" b="235" />
+                <PressedHighlit     r="255" g="85" b="0" />
+            </TextColors>
+        </Button>
+
+        <!--# Button: EA_Button_ChatConfigDefault
+              This is the default icon button.
+              
+              Code:
+              (begin code)
+               <Button name="EA_Button_DefaultIcon" inherits="EA_Button_Default" drawchildrenfirst="true">
+                  ...
+              </Button>
+              (end)            
+          -->
+        <Button name="EA_Button_ChatConfigDefault" inherits="EA_Button_Default" drawchildrenfirst="true" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01">
+          <Size>
+            <AbsPoint x="35" y="35" />
+          </Size>
+          <TexCoords>
+            <Normal x="269" y="370" />
+            <NormalHighlit x="388" y="382" />
+            <Pressed x="423" y="382" />
+            <PressedHighlit x="423" y="382" />
+          </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultToggleCircle
+            This is the default smallc circlular toggle button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultToggleCircle" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultToggleCircle" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01"
+                    overlaytexture="shared_01" >
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <TexCoords>
+                <Normal x="324" y="100" />
+                <NormalHighlit x="346" y="100" />
+                <Pressed x="346" y="100" />
+                <PressedHighlit x="346" y="100" />
+                <Disabled x="368" y="100" />
+            </TexCoords>
+            <OverlaySize x="22" y="22" />
+            <OverlayOffset x="5" y="0" />
+            <OverlayTexCoords>
+                <Pressed x="390" y="100" />
+            </OverlayTexCoords>
+            </Button>
+
+        <!--# Window: EA_Window_DefaultLabelToggleCircle
+            This is the default label toggle circle window. Although not a button it behaves like one.
+            
+            Code:
+            (begin code)
+             <Window name="EA_Window_DefaultLabelToggleCircle" >
+                ...
+            </Window>
+            (end)            
+        -->
+        <Window name="EA_Window_DefaultLabelToggleCircle">
+            <Size>
+                <AbsPoint x="220" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_DefaultLabelToggleCircle.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultToggleCircle" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentLabel" font="font_default_text"  textalign="left" handleinput="false" autoresize="true" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="195" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="35" y="3" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+        
+       <!--# Window: EA_Window_DefaultLabelToggleCircleSmall
+            This is the smaller version of the label toggle circle window that expects it's label to word-wrap. Although not a button it behaves like one.
+            
+            Code:
+            (begin code)
+             <Window name="EA_Window_DefaultLabelToggleCircle" >
+                ...
+            </Window>
+            (end)            
+        -->
+        <Window name="EA_Window_DefaultLabelToggleCircleSmall">
+            <Size>
+                <AbsPoint x="180" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_DefaultLabelToggleCircle.Initialize" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultToggleCircle" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentLabel" font="font_default_text"  textalign="left" handleinput="false" autoresize="true" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="155" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <!--# Button: EA_Button_DefaultBigLeftArrow
+            This is the default big left arrow button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultBigLeftArrow" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultBigLeftArrow" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="30" y="56" />
+            </Size>
+            <TexCoords>
+                <Normal x="482" y="0" />
+                <NormalHighlit x="482" y="56" />
+                <Pressed x="482" y="112" />
+                <Disabled x="482" y="168" />
+            </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultBigRightArrow
+            This is the default big right arrow button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultBigRightArrow" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)            
+        -->
+        <Button name="EA_Button_DefaultBigRightArrow" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="30" y="56" />
+            </Size>
+            <TexCoords>
+                <Normal x="452" y="0" />
+                <NormalHighlit x="452" y="56" />
+                <Pressed x="452" y="112" />
+                <Disabled x="452" y="168" />
+            </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultTextCursor                   
+            This is the default button used to open up (and possibly close) a editbox for text entry.
+        -->
+        <Button name="EA_Button_DefaultTextCursor" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="18" y="18" />
+            </Size>
+            <TexCoords>
+                <Normal x="425" y="54" />
+                <NormalHighlit x="425" y="72" />
+                <Pressed x="425" y="90"  />
+                <PressedHighlit x="425" y="72"  />
+                <!-- <Disabled x="274" y="46" /> -->
+            </TexCoords>
+            <!-- Note: textDims isn't supported yet in button.cpp, but when it is, TexDims will allow this element to be resized.
+        <TexDims x="18" y="18" /> -->
+        </Button>
+
+        <!--# Button: EA_Button_DefaultChatScrollToBottom                  
+            This is the default button to use for the chat window arrows.
+        -->
+        <Button name="EA_Button_DefaultChatScrollToBottom" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" 
+                                                            overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexCoords>
+                <Normal x="172" y="341" />
+                <NormalHighlit x="201" y="341" />
+                <Pressed x="172" y="370"  />
+                <PressedHighlit x="201" y="341"  />
+                <Disabled x="230" y="341" />
+            </TexCoords>
+            <OverlaySize x="19" y="15" />
+            <OverlayOffset x="5" y="7" />
+            <OverlayTexCoords>
+                <Normal x="493" y="447" />
+                <NormalHighlit x="474" y="447" />
+                <Pressed x="493" y="447" />
+                <PressedHighlit x="474" y="447" />
+            </OverlayTexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultChatCursorButton                  
+            This is the default button to use for the chat window text entry button.
+        -->
+        <Button name="EA_Button_DefaultChatCursorButton" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" 
+                                                            overlaytexture="EA_HUD_01" overlayhighlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="29" y="29" />
+            </Size>
+            <TexDims x="29" y="29" />
+            <TexCoords>
+                <Normal x="304" y="421" />
+                <NormalHighlit x="304" y="421" />
+                <Pressed x="333" y="410"  />
+                <PressedHighlit x="333" y="410"  />
+            </TexCoords>
+            <OverlaySize x="19" y="20" />
+            <OverlayOffset x="5" y="6" />
+            <OverlayTexCoords>
+                <Normal x="493" y="463" />
+                <NormalHighlit x="474" y="463" />
+                <Pressed x="493" y="463" />
+                <PressedHighlit x="474" y="463" />
+            </OverlayTexCoords>
+        </Button>
+        
+        <!--# Button: EA_Button_DefaultChatResizeButton                  
+            This is the default button to use for the chat window.
+        -->
+        <Button name="EA_Button_DefaultChatResizeButton" inherits="EA_Button_Default" backgroundtexture="EA_HUD_01" highlighttexture="EA_HUD_01" >
+            <Size>
+                <AbsPoint x="20" y="21" />
+            </Size>
+            <TexCoords>
+                <Normal x="165" y="241" />
+                <NormalHighlit x="145" y="241" />
+                <Pressed x="165" y="241"  />
+                <PressedHighlit x="165" y="241"  />
+            </TexCoords>
+        </Button>
+
+        <Button name="EA_Button_DefaultCoreSmallSquare" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <TexCoords>
+                <Normal x="168" y="43" />
+                <NormalHighlit x="168" y="69" />
+                <Pressed x="168" y="95" />
+                <PressedHighlit x="168" y="95" />
+                <Disabled x="142" y="95" />
+            </TexCoords>
+        </Button>
+
+        <Button name="EA_Button_DefaultRightArrow" inherits="EA_Button_DefaultCoreSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <OverlayTexCoords>
+                <Normal x="212" y="42" />
+                <NormalHighlit x="212" y="51" />
+                <Pressed x="212" y="51" />
+                <PressedHighlit x="212" y="51" />
+                <Disabled x="212" y="42" />
+            </OverlayTexCoords>
+            <OverlaySize x="12" y="9"/>
+            <OverlayOffset x="7" y="9"/>
+        </Button>
+
+        <Button name="EA_Button_DefaultLeftArrow" inherits="EA_Button_DefaultCoreSmallSquare" overlaytexture="shared_01" overlayhightlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="26" y="26" />
+            </Size>
+            <OverlayTexCoords>
+                <Normal x="224" y="42" />
+                <NormalHighlit x="224" y="51" />
+                <Pressed x="224" y="51" />
+                <PressedHighlit x="224" y="51" />
+                <Disabled x="224" y="42" />
+            </OverlayTexCoords>
+            <OverlaySize x="12" y="9"/>
+            <OverlayOffset x="7" y="9"/>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultPlus
+            This is the default plus button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultPlus" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)
+        -->
+        <Button name="EA_Button_DefaultPlus" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="18" y="18" />
+            </Size>
+            <TexCoords>
+                <Normal x="236" y="42" />
+                <NormalHighlit x="236" y="60" />
+                <Pressed x="236" y="78" />
+                <Disabled x="236" y="96" />
+            </TexCoords>
+        </Button>
+
+        <!--# Button: EA_Button_DefaultMinus
+            This is the default minus button.
+            
+            Code:
+            (begin code)
+             <Button name="EA_Button_DefaultMinus" backgroundtexture="shared_01" highlighttexture="shared_01">
+                ...
+            </Button>
+            (end)
+        -->
+        <Button name="EA_Button_DefaultMinus" inherits="EA_Button_Default" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="18" y="18" />
+            </Size>
+            <TexCoords>
+                <Normal x="254" y="42" />
+                <NormalHighlit x="254" y="60" />
+                <Pressed x="254" y="78" />
+                <Disabled x="254" y="96" />
+            </TexCoords>
+        </Button>
+
+        <Window name="EA_Window_DefaultPlusMinus" >
+            <Size>
+                <AbsPoint x="18" y="18" />
+            </Size>
+            <Windows>
+                <Button name="$parentPlusButton" inherits="EA_Button_DefaultPlus" />
+                <Button name="$parentMinusButton" inherits="EA_Button_DefaultMinus" />
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

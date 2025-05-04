@@ -1,0 +1,38 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/RpBarWindow.lua" />
+    </Scripts>
+    <Windows>    
+
+        <!-- Left Status Window -->
+        <Window name="RpBarWindow" movable="false" layer="background" popable="false" skipinput="true" savesettings="true">
+            <Size>
+                <AbsPoint x="522" y="16" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="XpBarWindow" >
+                    <AbsPoint x="18" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <!-- This child window contains all the visible contents -->
+                <Window name="$parentContents" inherits="EA_Window_HUDRpStatusBar" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" />
+                    </Anchors>
+
+                    <EventHandlers>
+                        <EventHandler event="OnInitialize" function="RpBarWindow.Initialize" />
+                        <EventHandler event="OnShutdown" function="RpBarWindow.Shutdown" />
+                        <EventHandler event="OnMouseOver" function="RpBarWindow.MouseoverRpBar" />
+                        <EventHandler event="OnMouseOverEnd" function="RpBarWindow.MouseoverEndRpBar" />
+                        <EventHandler event="OnSizeUpdated" function="RpBarWindow.OnSizeUpdated" />
+                    </EventHandlers>
+                </Window>
+            </Windows>
+            
+        </Window>
+    </Windows>
+    
+</Interface>

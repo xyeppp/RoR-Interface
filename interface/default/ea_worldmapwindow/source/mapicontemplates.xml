@@ -1,0 +1,538 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+    <Windows>        
+                     
+
+        <!-- Zone Buttons for the custom Pairing screen -->
+        <Window name="WorldMapButtonTemplate">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverPairingMapZone" />
+            </EventHandlers>
+        </Window>
+        
+        <Window name="WorldMapCityButtonTemplate">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverPairingMapZone" />
+            </EventHandlers>
+        </Window>
+        
+        <Window name="WorldMapFortButtonTemplate">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_WorldMap.OnZoneButtonSelect" />
+                <EventHandler event="OnMouseOver" function="EA_Window_WorldMap.OnMouseOverPairingMapZone" />
+            </EventHandlers>
+        </Window>
+        
+        <DynamicImage name="EA_DynamicImage_SmallHotSpot_Full" texture="map_markers01" slice="Small-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="56" y="56" />
+            </Size>
+            <TexDims x="28" y="28" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_SmallHotSpot_Small" texture="map_markers01" slice="Small-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="42" y="42" />
+            </Size>
+            <TexDims x="28" y="28" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_SmallHotSpot_Tiny" texture="map_markers01" slice="Small-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="28" y="28" />
+            </Size>
+            <TexDims x="28" y="28" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_MediumHotSpot_Full" texture="map_markers01" slice="RvR-Hotspot" handleinput="false">
+            <Size>
+                <AbsPoint x="62" y="66" />
+            </Size>
+            <TexDims x="31" y="33" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_MediumHotSpot_Small" texture="map_markers01" slice="RvR-Hotspot" handleinput="false">
+            <Size>
+                <AbsPoint x="47" y="50" />
+            </Size>
+            <TexDims x="31" y="33" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_MediumHotSpot_Tiny" texture="map_markers01" slice="RvR-Hotspot" handleinput="false">
+            <Size>
+                <AbsPoint x="31" y="33" />
+            </Size>
+            <TexDims x="31" y="33" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_LargeHotSpot_Full" texture="map_markers01" slice="BIG-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="78" y="76" />
+            </Size>
+            <TexDims x="39" y="38" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_LargeHotSpot_Small" texture="map_markers01" slice="BIG-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="59" y="57" />
+            </Size>
+            <TexDims x="39" y="38" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_LargeHotSpot_Tiny" texture="map_markers01" slice="BIG-RVR-Hot-Spot" handleinput="false">
+            <Size>
+                <AbsPoint x="39" y="38" />
+            </Size>
+            <TexDims x="39" y="38" />
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_LargeControlIcon" texture="EA_Campaign01_d5" slice="Zone-Dest-Greenskin" handleinput="false">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_LargeControlIconWithLock" texture="EA_Campaign01_d5" slice="Zone-Dest-Greenskin" handleinput="false">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+               <DynamicImage name="$parentLock" inherits="EA_DynamicImage_BigLock">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="center">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </DynamicImage>
+        
+        <DynamicImage name="EA_DynamicImage_BigLock" texture="EA_Campaign01_d5" slice="Lock-Big" handleinput="false">
+            <Size>
+                <AbsPoint x="30" y="39" />
+            </Size>
+        </DynamicImage>
+        
+       <DynamicImage name="EA_DynamicImage_SmallLock" texture="EA_Campaign01_d5" slice="Lock-mini" handleinput="false">
+            <Size>
+                <AbsPoint x="20" y="27" />
+            </Size>
+        </DynamicImage>
+        
+        <Label name="EA_Label_WorldMapPairing" font="font_heading_zone_name_no_shadow" maxchars="32" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="220" y="120" />
+            </Size>
+            <Color r="148" g="110" b="74"  />
+        </Label>
+        
+        <Label name="EA_Label_WorldMapPairingSide" font="font_heading_huge_no_shadow" maxchars="32" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="500" y="63" />
+            </Size>
+        </Label>
+        
+        <Window name="WorldMapZoneButtonTopText" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapZoneButtonBottomText" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapZoneButtonBottomLeftText" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="-37" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapZoneButtonTopRightText" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom">
+                            <AbsPoint x="15" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapLockZoneButton" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="67" y="67" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapZoneButtonSmall" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="54" y="54" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="Wing-Dest-Greenskin" handleinput="false">
+                    <Size>
+                        <AbsPoint x="54" y="54" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Window name="WorldMapZoneButtonTiny" inherits="WorldMapButtonTemplate">
+            <Size>
+                <AbsPoint x="37" y="37" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="Wing-Dest-Greenskin" handleinput="false">
+                    <Size>
+                        <AbsPoint x="37" y="37" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="54" y="54" />
+                    <Windows>
+                        <DynamicImage name="$parentLock" inherits="EA_DynamicImage_SmallLock" layer="secondary">
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" handleinput="false">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapFortButton" inherits="WorldMapFortButtonTemplate">
+            <Size>
+                <AbsPoint x="51" y="58" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="Fort-Dest-Chaos" handleinput="false">
+                    <Size>
+                        <AbsPoint x="51" y="58" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentLock" inherits="EA_DynamicImage_BigLock" layer="secondary">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="center" handleinput="false">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapFortButtonSmall" inherits="WorldMapFortButtonTemplate">
+            <Size>
+                <AbsPoint x="32" y="36" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="Fort-Dest-Chaos-MINI" handleinput="false">
+                    <Size>
+                        <AbsPoint x="32" y="36" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentLock" inherits="EA_DynamicImage_SmallLock" handleinput="false" layer="secondary">
+                            <Anchors>
+                                <Anchor point="right" relativePoint="center" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapCityButtonDown" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="87" y="88" />
+            </Size>
+            <Windows>
+               <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos" handleinput="false">
+                    <Size>
+                        <AbsPoint x="87" y="88" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_BigLock">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="right" relativeTo="$parentControlIcon" handleinput="false">
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_BigLock">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="left" relativeTo="$parentControlIcon" handleinput="false">
+                            <AbsPoint x="0" y="-15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapCityButtonUp" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="87" y="88" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top">
+                            <AbsPoint x="0" y="35" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="236" y="120" />
+                    </Size>
+                </Label>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos" handleinput="false">
+                    <Size>
+                        <AbsPoint x="87" y="88" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_BigLock">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="right" relativeTo="$parentControlIcon" handleinput="false">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_BigLock">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="left" relativeTo="$parentControlIcon" handleinput="false">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapCityButtonSmallDown" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="59" y="61" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos-MINI" handleinput="false">
+                    <Size>
+                        <AbsPoint x="59" y="61" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="right" relativeTo="$parentControlIcon">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="left" relativeTo="$parentControlIcon">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <Window name="WorldMapCityButtonSmallUp" inherits="WorldMapCityButtonTemplate">
+            <Size>
+                <AbsPoint x="59" y="61" />
+            </Size>
+            <Windows>
+               <DynamicImage name="$parentControlIcon" texture="EA_Campaign01_d5" slice="City-Dest-Chaos-MINI" handleinput="false">
+                    <Size>
+                        <AbsPoint x="59" y="61" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock1" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="right" relativeTo="$parentControlIcon">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLock2" inherits="EA_DynamicImage_SmallLock" handleinput="false">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="left" relativeTo="$parentControlIcon">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <DynamicImage name="EA_DynamicImage_TierBulletTemplate" texture="EA_Campaign01_d5" slice="bullet" layer="popup" >
+            <Size>
+                <AbsPoint x="12" y="12" />
+            </Size>
+        </DynamicImage>
+        
+        <Window name="EA_Window_TierNameTemplate">
+            <Size>
+                <AbsPoint x="86" y="90" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentBullet1" inherits="EA_DynamicImage_TierBulletTemplate" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" />
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_heading_default_no_shadow" maxchars="32" textalign="center" wordwrap="true" autoresize="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="86" y="60" />
+                    </Size>
+                    <Color r="82" g="50" b="29"  />
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentBullet1">
+                            <AbsPoint x="0" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentBullet2" inherits="EA_DynamicImage_TierBulletTemplate" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+        
+        <DynamicImage name="EA_DynamicImage_CurrentZone" texture="EA_Campaign01_d5" slice="You-Are-Here-arrows" handleinput="false" layer="background" id="0">
+             <Size>
+                <AbsPoint x="109" y="114" />
+            </Size>
+        </DynamicImage>
+
+         
+    </Windows>
+
+</Interface>

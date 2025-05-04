@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/UiModAdvancedWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_AdvancedMainUIPathToggle" inherits="EA_Window_DefaultLabelToggleCircle" id="2" >
+            <Size>
+                <AbsPoint x="400" y="32" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="UiModWindow.SelectMainUiLoadOption" />
+            </EventHandlers>
+        </Window>
+
+        <!-- Ui Mod Window -->
+        <Window name="UiModAdvancedWindow" movable="true" layer="secondary">
+            <Size>
+                <AbsPoint x="550" y="550" />
+            </Size>
+            <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="">
+                    <AbsPoint x="0" y="200" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="UiModWindow.InitAdvancedWindow" />
+                <EventHandler event="OnShown" function="UiModWindow.OnAdvancedShown" />
+                <EventHandler event="OnHidden" function="UiModWindow.OnAdvancedHidden" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnAdvancedCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Basic Instructions -->
+                <Label name="$parentInstructions" inherits="ModDetailsTextDef" autoresize="false" textAutoFitMinScale="0.75" textalign="center" >
+                    <Size>
+                        <AbsPoint x="450" y="80" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="206" g="44" b="44" />
+                </Label>
+
+                <!-- Custom UI Options -->
+                <Window name="$parentCustomUIBackground" inherits="EA_Window_DefaultFrame" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="500" y="250" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar">
+                            <AbsPoint y="80" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <Label name="$parentCustomUITitle" font="font_default_sub_heading" maxchars="64" textalign="left">
+                    <Size>
+                        <AbsPoint x="450" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentCustomUIBackground">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+
+
+                <!-- Show Main UI Mods in -->
+                <Window name="$parentShowInAddOnsListCheck" inherits="EA_LabelCheckButton" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCustomUITitle">
+                            <AbsPoint x="10" y="20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.ToggleShowMainUiInModsList" />
+                    </EventHandlers>
+                </Window>
+
+                <Window name="$parentUseEADefaultToggle" inherits="EA_Window_AdvancedMainUIPathToggle" id="1" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShowInAddOnsListCheck">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentUseCustomUIToggle" inherits="EA_Window_AdvancedMainUIPathToggle" id="2" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUseEADefaultToggle">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <EditBox name="$parentCustomUiDirectory" inherits="EA_EditBox_DefaultFrame"  maxchars="256" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentUseCustomUIToggle">
+                            <AbsPoint x="20" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+
+                <!-- Add On Options -->
+                <Window name="$parentModsBackground" inherits="EA_Window_DefaultFrame" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="500" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCustomUIBackground">
+                            <AbsPoint y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <Label name="$parentAddOnsTitle" font="font_default_sub_heading" maxchars="64" textalign="left">
+                    <Size>
+                        <AbsPoint x="450" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentModsBackground">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" a="255"/>
+                </Label>
+
+                <EditBox name="$parentAddOnsDirectory" inherits="EA_EditBox_DefaultFrame" maxchars="256" >
+                    <Size>
+                        <AbsPoint x="450" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAddOnsTitle">
+                            <AbsPoint x="10" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </EditBox>
+
+
+                <!-- Buttons -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" />
+
+                <Button name="$parentDebugWindowButton" inherits="EA_Button_DefaultResizeable">
+                    <Size>
+                        <AbsPoint x="200" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnDebugWindowButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentOkayButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentCancelButton">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnAdvancedOkayButton" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="" >
+                            <AbsPoint x="-25" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="UiModWindow.OnAdvancedCancelButton" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+
+
+    </Windows>
+</Interface>

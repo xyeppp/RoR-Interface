@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionKeepUpgrades.lua" />
+    </Scripts>
+
+    <Windows>
+
+        <Window name="KeepUpgradesListHeader">
+            <Size>
+                <AbsPoint x="580" y="40" />
+            </Size>
+            <Windows>
+                <Label name="$parentUpgrade" font="font_default_text_large" maxchars="25" textalign="left" autoresize="false" popable="false">
+                    <Size>
+                        <AbsPoint x="125" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="15" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRank" font="font_default_text_large" maxchars="25" textalign="left" autoresize="false" popable="false">
+                    <Size>
+                        <AbsPoint x="75" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="305" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentCost" font="font_default_text_large" maxchars="25" textalign="left" autoresize="false" popable="false">
+                    <Size>
+                        <AbsPoint x="75" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="390" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentTime" font="font_default_text_large" maxchars="25" textalign="left" autoresize="false" popable="false">
+                    <Size>
+                        <AbsPoint x="75" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="500" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="KeepUpgradesRow" savesettings="false">
+            <Size>
+                <AbsPoint x="1165" y="50" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground1" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false">
+                    <Size>
+                        <AbsPoint x="580" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentUpgrade1" font="font_default_text_large" maxchars="50" textalign="left" autoresize="false" autoresizewidth="true" popable="false">
+                    <Size>
+                        <AbsPoint x="290" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionKeepUpgrades.OnUpgradeMouseOver" />
+                    </EventHandlers>
+                </Label>
+                <Button name="$parentRankDown1" inherits="EA_Button_DefaultMinus" texturescale="1.3333">
+                    <Size>
+                        <AbsPoint x="24" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="295" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnRankDown" />
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentRank1" font="font_default_text_large" maxchars="10" textalign="center" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="20" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRankDown1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentRankUp1" inherits="EA_Button_DefaultPlus" texturescale="1.3333">
+                    <Size>
+                        <AbsPoint x="24" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRank1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnRankUp" />
+                    </EventHandlers>
+                </Button>
+                <Window name="$parentMoney1" inherits="LargeYellowTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="380" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentClock1" inherits="EA_DynamicImage_ClockIcon" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="490" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTime1" font="font_default_text_large" maxchars="10" textalign="left" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="60" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="520" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <FullResizeImage name="$parentBackground2" inherits="EA_FullResizeImage_TintableSolidBackground" handleinput="false">
+                    <Size>
+                        <AbsPoint x="580" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="585" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <Label name="$parentUpgrade2" font="font_default_text_large" maxchars="50" textalign="left" autoresize="false" autoresizewidth="true" popable="false">
+                    <Size>
+                        <AbsPoint x="290" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="590" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionKeepUpgrades.OnUpgradeMouseOver" />
+                    </EventHandlers>
+                </Label>
+                <Button name="$parentRankDown2" inherits="EA_Button_DefaultMinus" texturescale="1.3333">
+                    <Size>
+                        <AbsPoint x="24" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="880" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnRankDown" />
+                    </EventHandlers>
+                </Button>
+                <Label name="$parentRank2" font="font_default_text_large" maxchars="10" textalign="center" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="20" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRankDown2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentRankUp2" inherits="EA_Button_DefaultPlus" texturescale="1.3333">
+                    <Size>
+                        <AbsPoint x="24" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRank2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnRankUp" />
+                    </EventHandlers>
+                </Button>
+                <Window name="$parentMoney2" inherits="LargeYellowTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="965" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentClock2" inherits="EA_DynamicImage_ClockIcon" handleinput="false">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="1075" y="-3" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTime2" font="font_default_text_large" maxchars="10" textalign="left" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="60" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="1105" y="7" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+        
+        <Window name="EA_Window_InteractionKeepUpgrades" inherits="EA_Window_Default" movable="false" layer="default" savesettings="false">
+            <Size>
+                <AbsPoint x="1185" y="345"/>
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionKeepUpgrades.OnInitialize" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionKeepUpgrades.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionKeepUpgrades.OnHidden" />
+                <EventHandler event="OnUpdate"      function="EA_Window_InteractionKeepUpgrades.OnUpdate" />
+            </EventHandlers>
+            <Windows>
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.Hide" />
+                    </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_GuildImage" />
+                
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" />
+                
+                <Button name="$parentSaveButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="">
+                            <AbsPoint x="35" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnSave" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentResetButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSaveButton">
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.OnReset" />
+                    </EventHandlers>
+                </Button>
+                
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionKeepUpgrades.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+                <Window name="$parentTopSeparator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <DynamicImage name="$parentRankBackground" inherits="EA_DynamicImage_RankBackground" handleinput="false" popable="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="center" relativeTo="$parentTitleBar">
+                            <AbsPoint x="95" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentRankText" font="font_default_text_large" maxchars="3" textalign="center" autoresize="false" popable="false">
+                    <Size>
+                        <AbsPoint x="31" y="32" />
+                    </Size>
+                    <Color r="226" g="216" b="45" a="255"/>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentRankBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionKeepUpgrades.OnRankMouseOver" />
+                    </EventHandlers>
+                </Label>
+                
+                <Label name="$parentKeepName" font="font_default_text_large" maxchars="255" textalign="left" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="375" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRankBackground">
+                            <AbsPoint x="10" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                              
+                <Label name="$parentCurrentUpkeepLabel" font="font_default_text_large" maxchars="64" textalign="right" autoresize="false" popable="false" handleinput="false">
+                    <Size>
+                        <AbsPoint x="255" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="center" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-345" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentCurrentUpkeepMoney" inherits="LargeYellowTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCurrentUpkeepLabel">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentHeader1" inherits="KeepUpgradesListHeader">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeparator" />
+                    </Anchors>
+                </Window>
+                
+                <Window name="$parentHeader2" inherits="KeepUpgradesListHeader">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentHeader1">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <ListBox name="$parentListBox" scrollbar="" rowdef="KeepUpgradesRow" visiblerows="1" rowcount="12" rowspacing="0">
+                    <Size>
+                        <AbsPoint x="1165" y="50" />
+                    </Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeader1">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+					</Anchors>
+					<ListData table="EA_Window_InteractionKeepUpgrades.listData" populationfunction="EA_Window_InteractionKeepUpgrades.PopulateList">
+						<ListColumns>
+							<ListColumn windowname="Upgrade1" variable="upgrade1"  format="wstring" />
+                            <ListColumn windowname="Upgrade2" variable="upgrade2"  format="wstring" />
+                            <!-- Other columns are manually set by the population function -->
+                        </ListColumns>
+					</ListData>
+				</ListBox>
+                
+                <Label name="$parentTotalUpkeepLabel" font="font_default_text_large" maxchars="64" textalign="right" autoresize="false" popable="false" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="380" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentListBox">
+                            <AbsPoint x="0" y="65" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentTotalUpkeepMoney" inherits="LargeYellowTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentTotalUpkeepLabel">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentGuildFundsLabel" font="font_default_text_large" maxchars="64" textalign="right" autoresize="false" popable="false" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="380" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentListBox">
+                            <AbsPoint x="540" y="65" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentGuildFundsMoney" inherits="LargeYellowTextMoneyFrame">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentGuildFundsLabel">
+                            <AbsPoint x="10" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+
+</Interface>

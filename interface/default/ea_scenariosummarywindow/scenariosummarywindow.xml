@@ -1,0 +1,905 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="ScenarioSummaryWindow.lua"/>
+	</Scripts>
+	<Windows>
+	
+        <!-- Templates -->	
+		<Button name="ScenarioSummaryPlayerHeaderButton" inherits="EA_Button_Default" backgroundtexture="EA_ScenarioSummary01_d8" highlighttexture="EA_ScenarioSummary01_d8" font="font_clear_default" layer="secondary">
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="ScenarioSummaryWindow.OnSortPlayerList" />
+				<EventHandler event="OnMouseOver" function="ScenarioSummaryWindow.OnMouseOverSortButton" />
+			</EventHandlers>
+			 <TextColors>
+                <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="204" b="102" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+		</Button>
+		
+
+
+		
+		<VerticalScrollbar name="ScenarioSummaryVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="ScenarioSummaryWindow.OnVertScrollLButtonUp" />
+			</EventHandlers>
+		</VerticalScrollbar>
+	
+	    <!-- Top Sort Buttons (Icons) -->
+		<Window name="ScenarioSummaryPlayerHeader" savesettings="false" layer="secondary" skipinput="true">
+            <Size>
+                <AbsPoint x="1327" y="75"/>
+            </Size>
+            <Windows>
+                <!-- Filter Combo -->
+		        <ComboBox name="$parentFilterCombo" inherits="EA_ComboBox_DefaultResizable" layer="secondary">
+		        	<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<EventHandlers>
+                        <EventHandler event="OnSelChanged" function="ScenarioSummaryWindow.OnFilterSelChanged" />
+                    </EventHandlers>
+		        </ComboBox>
+                
+                <Button name="$parentCareer" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="9" textalign="left">
+                    <Size>
+                        <AbsPoint x="63" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="5" y="55"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentName" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="1" textalign="left">
+                    <Size>
+                        <AbsPoint x="190" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareer">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentRankText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="10" textalign="top">
+                    <Size>
+                        <AbsPoint x="61" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentRank" inherits="ScenarioSummaryPlayerHeaderButton" id="10">
+                    <Size>
+                        <AbsPoint x="17" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentRankText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="rank" />
+                        <NormalHighlit  id="rank-highlighted" />
+                        <Pressed        id="rank-highlighted" />
+                        <PressedHighlit id="rank-highlighted" />
+                        <Disabled       id="rank" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentGroupKillsText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="2" textalign="top">
+                    <Size>
+                        <AbsPoint x="67" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankText">
+                            <AbsPoint x="11" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentGroupKills" inherits="ScenarioSummaryPlayerHeaderButton" id="2">
+                    <Size>
+                        <AbsPoint x="36" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentGroupKillsText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="multi-skulls" />
+                        <NormalHighlit  id="multi-skulls-highlighted" />
+                        <Pressed        id="multi-skulls-highlighted" />
+                        <PressedHighlit id="multi-skulls-highlighted" />
+                        <Disabled       id="multi-skulls" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentDeathsText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="3" textalign="top">
+                    <Size>
+                        <AbsPoint x="67" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroupKillsText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDeaths" inherits="ScenarioSummaryPlayerHeaderButton" id="3">
+                    <Size>
+                        <AbsPoint x="25" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentDeathsText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="tombstone" />
+                        <NormalHighlit  id="tombstone-highlighted" />
+                        <Pressed        id="tombstone-highlighted" />
+                        <PressedHighlit id="tombstone-highlighted" />
+                        <Disabled       id="tombstone" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentDeathBlowsText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="4" textalign="top">
+                    <Size>
+                        <AbsPoint x="61" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDeathsText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDeathBlows" inherits="ScenarioSummaryPlayerHeaderButton" id="4">
+                    <Size>
+                        <AbsPoint x="18" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentDeathBlowsText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="sword-skull" />
+                        <NormalHighlit  id="sword-skull-highlighted" />
+                        <Pressed        id="sword-skull-highlighted" />
+                        <PressedHighlit id="sword-skull-highlighted" />
+                        <Disabled       id="sword-skull" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentDamageDealtText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="5" textalign="top">
+                    <Size>
+                        <AbsPoint x="133" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDeathBlowsText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDamageDealt" inherits="ScenarioSummaryPlayerHeaderButton" id="5">
+                    <Size>
+                        <AbsPoint x="32" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentDamageDealtText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="axe" />
+                        <NormalHighlit  id="axe-highlighted" />
+                        <Pressed        id="axe-highlighted" />
+                        <PressedHighlit id="axe-highlighted" />
+                        <Disabled       id="axe" />
+                    </TexSlices>
+                </Button>
+
+               <Button name="$parentKillDamageDealtText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="6" textalign="top">
+                    <Size>
+                        <AbsPoint x="133" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDamageDealtText">
+                            <AbsPoint x="14" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentKillDamageDealt" inherits="ScenarioSummaryPlayerHeaderButton" id="6">
+                    <Size>
+                        <AbsPoint x="31" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentKillDamageDealtText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="crown" />
+                        <NormalHighlit  id="crown-highlighted" />
+                        <Pressed        id="crown-highlighted" />
+                        <PressedHighlit id="crown-highlighted" />
+                        <Disabled       id="crown" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentHealingDealtText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="7" textalign="top">
+                    <Size>
+                        <AbsPoint x="133" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentKillDamageDealtText">
+                            <AbsPoint x="4" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentHealingDealt" inherits="ScenarioSummaryPlayerHeaderButton" id="7">
+                    <Size>
+                        <AbsPoint x="28" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentHealingDealtText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="health" />
+                        <NormalHighlit  id="health-highlighted" />
+                        <Pressed        id="health-highlighted" />
+                        <PressedHighlit id="health-highlighted" />
+                        <Disabled       id="health" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentProtectionText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="8" textalign="top">
+                    <Size>
+                        <AbsPoint x="133" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentHealingDealtText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentProtection" inherits="ScenarioSummaryPlayerHeaderButton" id="8">
+                    <Size>
+                        <AbsPoint x="27" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentProtectionText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="shield" />
+                        <NormalHighlit  id="shield-highlighted" />
+                        <Pressed        id="shield-highlighted" />
+                        <PressedHighlit id="shield-highlighted" />
+                        <Disabled       id="shield" />
+                    </TexSlices>
+                </Button>
+                
+                <Button name="$parentObjectiveScoreText" inherits="ScenarioSummaryPlayerHeaderButton" maxchars="64" id="9" textalign="top">
+                    <Size>
+                        <AbsPoint x="133" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentProtectionText">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentObjectiveScore" inherits="ScenarioSummaryPlayerHeaderButton" id="9">
+                    <Size>
+                        <AbsPoint x="37" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentObjectiveScoreText">
+                            <AbsPoint x="0" y="-3"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="target" />
+                        <NormalHighlit  id="target-highlighted" />
+                        <Pressed        id="target-highlighted" />
+                        <PressedHighlit id="target-highlighted" />
+                        <Disabled       id="target" />
+                    </TexSlices>
+                </Button>
+
+                <!-- Arrow Image Definitions -->
+                <DynamicImage name="$parentUpArrow" texture="list_up_arrow" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="23" y="28" />
+                    </Size>
+                </DynamicImage>
+
+                <DynamicImage name="$parentDownArrow" texture="list_down_arrow" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="23" y="28" />
+                    </Size>
+                </DynamicImage>
+
+            </Windows>
+        </Window>
+
+        <Label name="PlayerRowLabel" font="font_clear_default" maxchars="80">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="ScenarioSummaryWindow.OnLButtonUpPlayerRow" />
+                <EventHandler event="OnRButtonUp" function="ScenarioSummaryWindow.OnRButtonUpPlayerRow" />
+            </EventHandlers>
+        </Label>
+
+        <Label name="PlayerRowLabelWithTooltip" inherits="PlayerRowLabel">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="ScenarioSummaryWindow.OnMouseOverPlayerRow" />
+            </EventHandlers>
+        </Label>
+
+        <!-- Single Row Definition -->
+        <Window name="ScenarioSummaryPlayerRow" savesettings="false">
+			<Size>
+				<AbsPoint x="1227" y="26"/>
+			</Size>
+            <Windows>
+
+                <!-- Background Pieces -->
+                <FullResizeImage name="$parentBackgroundCareer" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentCareer" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCareer" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentName" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentName" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundRank" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRank" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRank" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundGroupKills" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGroupKills" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentGroupKills" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundDeaths" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDeaths" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDeaths" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundDeathBlows" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDeathBlows" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDeathBlows" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundDamageDealt" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDamageDealt" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDamageDealt" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundKillDamageDealt" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentKillDamageDealt" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentKillDamageDealt" />
+                    </Anchors>
+                </FullResizeImage>	
+                <FullResizeImage name="$parentBackgroundHealingDealt" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentHealingDealt" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentHealingDealt" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundProtection" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentProtection" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentProtection" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundObjectiveScore" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentObjectiveScore" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentObjectiveScore" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Selected Player Highlight Border -->
+                <FullResizeImage name="$parentSelectionBorder" handleinput="false" layer="background" texture="EA_TilableSquareFrame_Highlight">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Sizes>
+                        <TopLeft x="10" y="10" />
+                        <BottomRight x="10" y="10" />
+                        <Middle x="44" y="44" />
+                    </Sizes>
+                    <TexCoords>
+                        <TopLeft x="0" y="0" />
+                        <TopCenter x="10" y="0" />
+                        <TopRight x="54" y="0" />
+                        <MiddleLeft x="0" y="10" />
+                        <MiddleCenter x="10" y="10" />
+                        <MiddleRight x="54" y="10" />
+                        <BottomLeft x="0" y="54" />
+                        <BottomCenter x="10" y="54" />
+                        <BottomRight x="54" y="54" />
+                    </TexCoords>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentCareer">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentObjectiveScore">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Data Labels -->
+                <Label name="$parentCareer" maxchars="64" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="65" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="6"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentCareerIcon">
+                    <Size>
+                        <AbsPoint x="34" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentCareer">
+                            <AbsPoint x="0" y="-4"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentArchetype" layer="overlay" texturescale="1">
+                    <Size>
+                        <AbsPoint x="25" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentCareerIcon">
+                            <AbsPoint x="-8" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>       
+                <Label name="$parentName" maxchars="80" inherits="PlayerRowLabel">
+                    <Size>
+                        <AbsPoint x="190.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCareer">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentRank" maxchars="64" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="75.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentGroupKills" maxchars="16" inherits="PlayerRowLabelWithTooltip"  textalign="center">
+                    <Size>
+                        <AbsPoint x="66.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRank">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentDeaths" maxchars="16" inherits="PlayerRowLabelWithTooltip"  textalign="center">
+                    <Size>
+                        <AbsPoint x="68.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGroupKills">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentDeathBlows" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="60.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDeaths">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentDamageDealt" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="140.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDeathBlows">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentKillDamageDealt" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="143.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDamageDealt">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentHealingDealt" maxchars="16" inherits="PlayerRowLabelWithTooltip"  textalign="center">
+                    <Size>
+                        <AbsPoint x="133.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentKillDamageDealt">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentProtection" maxchars="16" inherits="PlayerRowLabelWithTooltip"  textalign="center">
+                    <Size>
+                        <AbsPoint x="133.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentHealingDealt">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentObjectiveScore" maxchars="16" inherits="PlayerRowLabel" textalign="center">
+                    <Size>
+                        <AbsPoint x="130.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentProtection">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+		</Window>
+		
+				
+		<!-- Whole Window Definition -->
+		<Window name="ScenarioSummaryWindow" movable="true" layer="secondary" savesettings="false" >
+			<Size>
+				<AbsPoint x="1245" y="965"/>
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0"/>
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="ScenarioSummaryWindow.Initialize"/>
+				<EventHandler event="OnShown" function="ScenarioSummaryWindow.OnShown"/>			
+				<EventHandler event="OnHidden" function="ScenarioSummaryWindow.OnHidden"/>		
+				<EventHandler event="OnUpdate" function="ScenarioSummaryWindow.OnUpdate"/>				
+			</EventHandlers>
+			<Windows>
+			
+			    <!-- General Window Settings -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+                    </Anchors>
+                </Window>
+				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="ScenarioSummaryWindow.ToggleShowing"/>
+					</EventHandlers>
+				</Button>				
+				
+				<!--Score Info  -->
+                <Window name="$parentScoreBackground" savesettings="false" >
+                    <Size>
+                        <AbsPoint x="1245" y="170"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="5" y="40"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Scenario Name -->
+                <Label name="$parentScenarioName" font="font_default_heading" maxchars="128" textalign="center" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="390" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+
+                <DynamicImage name="$parentOrderCap" texture="EA_ScenarioSummary01_d8" handleinput="false" slice="order-symbol" layer="popup">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentScenarioName">
+                            <AbsPoint x="-97.5" y="75" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentDestructionCap" texture="EA_ScenarioSummary01_d8" handleinput="false" slice="destruction-symbol" layer="popup">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentScenarioName">
+                            <AbsPoint x="97.5" y="75" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Time  -->
+                <DynamicImage name="$parentClockImage" inherits="DefaultClockImage" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentScoreBackground">
+                            <AbsPoint x="20" y="60" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTimeLabel" font="font_clear_large" maxchars="64" textalign="left" autoresize="true"
+				    autoresizewidth="true">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentClockImage">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+
+                <!-- Score Info -->
+                <Label name="$parentOrderPoints" font="font_clear_large_bold" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="200" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOrderCap">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="12" g="47" b="158" a="255" />
+                </Label>
+                <Label name="$parentDestructionPoints" font="font_clear_large_bold" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="200" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDestructionCap">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="158" g="12" b="13" a="255" />
+                </Label>
+
+                <Label name="$parentOrderLabel" font="font_clear_small" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentOrderPoints">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentDestructionLabel" font="font_clear_small" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentDestructionPoints">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Bonus XP -->
+                <Label name="$parentBonusXPLabel" font="font_clear_default" maxchars="64" textalign="right" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentScoreBackground">
+                            <AbsPoint x="-250" y="75" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentBonusXPValue" font="font_clear_default" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="130" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBonusXPLabel">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <!-- Bonus Renown -->
+                <Label name="$parentBonusRenownLabel" font="font_clear_default" maxchars="64" textalign="right" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBonusXPLabel">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentBonusRenownValue" font="font_clear_default" maxchars="64" textalign="center" >
+                    <Size>
+                        <AbsPoint x="130" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBonusRenownLabel">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+                <!-- Player List ***************************************************************************** -->
+
+                <!-- List Border -->
+                <Window name="$parentPlayerListBackground" savesettings="false" layer="background">
+					<Size>
+						<AbsPoint x="1245" y="745"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScoreBackground">
+							<AbsPoint x="0" y="-3"/>
+						</Anchor>
+					</Anchors>
+				</Window>
+
+                <!-- Sort Buttons -->
+				<Window name="$parentPlayerListHeader" inherits="ScenarioSummaryPlayerHeader">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPlayerListBackground">												
+							<AbsPoint x="7" y="5"/>
+						</Anchor>
+					</Anchors>
+				</Window>
+                
+                <HorizontalResizeImage name="$parentDivider1" inherits="DefaultWindowRule">
+                    <Size>
+                        <AbsPoint x="1227" y="2" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayerListHeader">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+				
+				<!-- Listview: Order -->
+				<ListBox name="$parentPlayerList" scrollbar="ScenarioSummaryVertScroll" rowdef="ScenarioSummaryPlayerRow" visiblerows="23" rowcount="100" rowspacing="2">
+					<Size>
+						<AbsPoint x="1232" y="650"/> <!-- Height is also adjusted by the Lua code, so changes here need to be made in the Lua code as well -->
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayerListHeader">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="ScenarioSummaryWindow.playersData" populationfunction="ScenarioSummaryWindow.UpdatePlayerRow">
+						<ListColumns>
+							<ListColumn windowname="Name" variable="name"  format="wstring" />							
+							<ListColumn windowname="GroupKills" variable="groupkills" format="number" style="comma"/>
+							<ListColumn windowname="Deaths" variable="deaths" format="number" style="comma" />													
+							<ListColumn windowname="DeathBlows" variable="deathblows" format="number" style="comma" />		
+							<ListColumn windowname="DamageDealt" variable="damagedealt" format="number" style="comma" />
+							<ListColumn windowname="KillDamageDealt" variable="killdamagedealt" format="number" style="comma" />							
+							<ListColumn windowname="HealingDealt" variable="healingdealt" format="number" style="comma" />
+							<ListColumn windowname="Protection" variable="protection" format="number" style="comma"/>		
+							<ListColumn windowname="CareerIcon" variable="careerIcon" format="icon" />		
+							<ListColumn windowname="Rank" variable="rank" format="number" />
+                            <ListColumn windowname="ObjectiveScore" variable="objectivescore" format="number" style="comma" />
+                        </ListColumns>
+					</ListData>
+				</ListBox>
+                
+                <!-- Victor / Tie text and banner -->
+                <DynamicImage name="$parentVictorBanner" texture="scenario_widgets" handleinput="false">
+                    <Size>
+                        <AbsPoint x="70" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="70" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <Label name="$parentVictorText" font="font_default_text_huge" maxchars="64" textalign="left" handleinput="false">
+                    <Size>
+                        <AbsPoint x="550" y="45" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentVictorBanner">
+                            <AbsPoint x="50" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentLeaveNowButton" inherits="EA_Button_DefaultResizeable" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-150" y="-35" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="ScenarioSummaryWindow.OnLeaveNowClicked" />
+                    </EventHandlers>
+                </Button>
+                
+                <Label name="$parentLeaveNowTimer" font="font_clear_large" maxchars="64" textalign="left" autoresize="true" autoresizewidth="true" handleinput="false">
+                    <Size>
+                        <AbsPoint x="300" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLeaveNowButton">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

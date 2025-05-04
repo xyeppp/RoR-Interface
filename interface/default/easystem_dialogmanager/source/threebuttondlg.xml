@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+    <Windows>
+        <Window name="ThreeButtonDlg" layer="popup" savesettings="false" >
+            <Size>
+                <AbsPoint x="1024" y="768" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnKeyEnter" function="DialogManager.OnThreeButtonDlgButton1" />
+                <EventHandler event="OnLButtonDown" function="DialogManager.OnClickError" />
+                <EventHandler event="OnRButtonDown" function="DialogManager.OnClickError" />
+            </EventHandlers>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" />
+            </Anchors>
+            <Windows>
+                <Window name="$parentBox" >
+                    <Size>
+                        <AbsPoint x="600" y="160" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" />
+                                <Anchor point="bottomright" relativePoint="bottomright" />
+                            </Anchors>
+                        </Window>
+                        <Label name="$parentText" font="font_default_text"  maxchars="128" textalign="center" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="480" y="80" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                        <Button name="$parentButton1" inherits="EA_Button_DefaultResizeable" >
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentButton2">
+                                    <AbsPoint x="-15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnThreeButtonDlgButton1" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentButton2" inherits="EA_Button_DefaultResizeable" >
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="">
+                                    <AbsPoint x="0" y="-10" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnThreeButtonDlgButton2" />
+                            </EventHandlers>
+                        </Button>
+                        <Button name="$parentButton3" inherits="EA_Button_DefaultResizeable" >
+                            <Anchors>
+                                <Anchor point="right" relativePoint="left" relativeTo="$parentButton2">
+                                  <AbsPoint x="15" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="DialogManager.OnThreeButtonDlgButton3" />
+                            </EventHandlers>
+                        </Button>
+                    
+                    </Windows>
+                </Window>
+            </Windows>
+        </Window>
+
+        <Window name="ThreeButtonDlg1" inherits="ThreeButtonDlg" id="1"/>
+        <Window name="ThreeButtonDlg2" inherits="ThreeButtonDlg" id="2"/>
+        <Window name="ThreeButtonDlg3" inherits="ThreeButtonDlg" id="3"/>
+        <Window name="ThreeButtonDlg4" inherits="ThreeButtonDlg" id="4"/>
+        <Window name="ThreeButtonDlg5" inherits="ThreeButtonDlg" id="5"/>
+
+    </Windows>
+</Interface>
+
+

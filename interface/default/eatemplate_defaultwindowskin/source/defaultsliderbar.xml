@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<!--# Title: EA_SliderBar_Default
+    This file contains the templates for the default slider bar.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Windows>
+
+        <!--# VerticalScrollbar: EA_Default_SliderBar                   
+            This the default slider bar
+            
+            Code:
+            (begin code)
+            <SliderBar name="EA_Default_SliderBar" background="EA_Default_SliderBackground" tickmark="EA_Default_SliderTick" sliderbutton="EA_Default_SliderButton" numticks="5" >
+               ...
+            </SliderBar>
+            (end)
+        -->        
+        <SliderBar name="EA_Default_SliderBar" background="EA_BrownHorizontalRule" tickmark="EA_Default_SliderTick" sliderbutton="EA_Default_SliderButton" numticks="5" >
+            <Size>
+                <AbsPoint x="200" y="33" />
+            </Size>
+        </SliderBar>
+
+        <DynamicImage name="EA_Default_SliderTick" texture="shared_01">
+            <Size>
+                <AbsPoint x="4" y="20" />
+            </Size>
+            <TexCoords x="88" y="51" />
+        </DynamicImage>
+
+
+        <Button name="EA_Default_SliderButton" backgroundtexture="shared_01" highlighttexture="shared_01" >
+            <Size>
+                <AbsPoint x="14" y="34" />
+            </Size>
+            <TexCoords>
+                <Normal x="92" y="44" />
+                <NormalHighlit x="105" y="44" />
+                <Pressed x="120" y="44" />
+                <PressedHighlit x="120" y="44" />
+                <Disabled x="92" y="44" />
+            </TexCoords>
+        </Button>
+   
+    </Windows>
+</Interface>

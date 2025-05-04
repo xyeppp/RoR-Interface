@@ -1,0 +1,87 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/Slayer.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_SlayerResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="134" y="86" />
+            </Size>
+            <Windows>
+				<AnimatedImage name="$parentRedGlow" texture="EA_Career_SL_32b" fps="10" layer="background" handleinput="false" sticky="false">
+                    <Size>
+                        <AbsPoint x="134" y="86"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <AnimFrames>
+                        <AnimFrame id="1" x="670"  y="0" />
+                        <AnimFrame id="2" x="536"  y="0" />
+                        <AnimFrame id="3" x="402"  y="0" />
+                        <AnimFrame id="4" x="268"  y="0" />
+                        <AnimFrame id="5" x="134"  y="0" />
+                        <AnimFrame id="6" x="0"   y="0" />
+                    </AnimFrames>
+                </AnimatedImage>
+                <DynamicImage name="$parentGreenGlow" texture="EA_Career_SL_32b" slice="Slayer-GreenGlow" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="134" y="86" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentYellowGlow" texture="EA_Career_SL_32b" slice="Slayer-YellowGlow" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="134" y="86" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>                
+                <DynamicImage name="$parentRing" texture="EA_Career_SL_32b" slice="Slayer-Ring" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="134" y="86" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				<DynamicImage name="$parentNeedle" texture="EA_Career_SL_32b" slice="Slayer-needle" layer="background" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="18" y="150" />
+                    </Size>
+                </DynamicImage>                
+				<DynamicImage name="$parentDefault" texture="EA_Career_SL_32b" slice="Slayer-Medallion" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="134" y="95" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				<DynamicImage name="$parentAngry" texture="EA_Career_SL_32b" slice="Slayer-Medallion-Angry" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="134" y="95" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+         </Window>
+    </Windows>
+</Interface>

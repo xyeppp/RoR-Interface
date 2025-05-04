@@ -1,0 +1,43 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/IronBreaker.lua" />
+    </Scripts>
+    <Windows>
+        <Window name="EA_IronBreakerResource" inherits="EA_CareerResourceTemplate">
+            <Size>
+                <AbsPoint x="86" y="76" />
+            </Size>
+            <Windows>
+                 <DynamicImage name="$parentBackgroundImage" texture="EA_Career_IB_32b" slice="IronbreakerNormal" handleinput="false">
+                    <Size>
+                        <AbsPoint x="86" y="76" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentGlowImage" texture="EA_Career_IB_32b" slice="IronbreakerGlowingEyes" handleinput="false">
+                    <Size>
+                        <AbsPoint x="86" y="76" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentText" font="font_default_text_large" maxchars="3" textalign="center" handleinput="false" autoresize="true">
+                    <Size>
+                        <AbsPoint x="86" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="27" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="85" g="179" b="252" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/InteractionInfluenceRewards.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="EA_Window_InteractionInfluenceRewards" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="512" y="600" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_InteractionInfluenceRewards.Initialize" />
+                <EventHandler event="OnShown"       function="EA_Window_InteractionInfluenceRewards.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_InteractionInfluenceRewards.OnHidden" />
+                <EventHandler event="OnLButtonDown" function="WindowUtils.TrapClick" />
+            </EventHandlers>
+            <Windows>
+                <!-- Background frame -->
+                <Window name="$parentBackground" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="512" y="600" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentTop" texture="EA_Interaction" slice="PublicQuest-Frame-Top">
+                            <Size>
+                                <AbsPoint x="512" y="52" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <DynamicImage name="$parentTail" texture="EA_Interaction" slice="PublicQuest-Side-Pointer">
+                            <Size>
+                                <AbsPoint x="146" y="95" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTop" >
+                                    <AbsPoint x="98" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <DynamicImage name="$parentTailFill" texture="EA_Interaction" slice="PQ">
+                            <Size>
+                                <AbsPoint x="464" y="95" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTop" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+
+                        <VerticalResizeImage name="$parentResize" texture="EA_Interaction">
+                            <Size>
+                                <AbsPoint x="512" y="95" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTailFill" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottom" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Sizes top="0" middle="92" bottom="0" />
+                            <TexSlices>
+                                <Middle id="PublicQuest-Center-Span" />
+                            </TexSlices>
+                        </VerticalResizeImage>
+
+                        <DynamicImage name="$parentBottom" texture="EA_Interaction" slice="PublicQuest-Frame-Bottom">
+                            <Size>
+                                <AbsPoint x="512" y="60" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                    </Windows>
+
+                </Window>
+                <DynamicImage name="$parentCornerIcon" inherits="EA_Default_QuestImage"/>
+
+                <!-- Window Title Label -->
+                <Label name="$parentTitleLabel" font="font_journal_heading"
+                       textalign="center" autoresize="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="512" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="30"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255"/>
+                </Label>
+
+                <!-- Name Label -->
+                <Label name="$parentNameLabel" font="font_journal_sub_heading"
+                       textalign="center" autoresize="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="512" y="45"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleLabel" >
+                            <AbsPoint x="0" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="158" g="127" b="117" a="255"/>
+                </Label>
+
+                <!-- Idle Text -->
+                <Label name="$parentText"
+                       font="font_journal_text" maxchars="1024" textalign="left" wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="422" y="200"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNameLabel">
+                            <AbsPoint x="45" y="25" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255" />
+                </Label>
+
+                <Window name="$parentLevel1" inherits="EA_Window_InfluenceRewardRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentText">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentLevel2" inherits="EA_Window_InfluenceRewardRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft"  relativeTo="$parentLevel1">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentLevel3" inherits="EA_Window_InfluenceRewardRow">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft"  relativeTo="$parentLevel2">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Window Buttons -->
+                <Button name="$parentCancel" inherits="EA_Button_InteractionConversation" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                            <AbsPoint x="-90" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionInfluenceRewards.Cancel" />
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentSelect" inherits="EA_Button_InteractionConversationImportant" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="90" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionInfluenceRewards.SelectInfluenceRewards" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

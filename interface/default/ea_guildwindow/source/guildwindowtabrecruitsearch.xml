@@ -1,0 +1,730 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Windows>
+
+
+      <Label name="GuildWindowSearchLabelTemplate" inherits="GuildWindowSectionTitle" >
+          <Size>
+              <AbsPoint x="150" y="32" />
+          </Size>
+      </Label>
+
+      <Label name="GuildWindowSearchTitleTemplate" inherits="GuildWindowSectionTitle" >
+          <Size>
+              <AbsPoint x="150" y="20" />
+          </Size>
+          <Color r="255" g="204" b="102" />
+      </Label>
+
+      <Label name="GuildWindowSearchTextTemplate" inherits="GuildWindowSectionTitle"  font="font_chat_text" wordwrap="true" >
+          <Size>
+              <AbsPoint x="300" y="40" />
+          </Size>
+          <Color r="235" g="235" b="235" />
+      </Label>
+
+
+      <Button name="EA_Button_GuildRecruitSearchSortTemplate" inherits="EA_Button_ListSort" >
+          <Size>
+              <AbsPoint x="245" y="31" />
+          </Size>
+          <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.OnClickSearchListSortButton" />
+              <EventHandler event="OnMouseOver" function="GuildWindowTabRecruit.OnMouseOverSearchListSortButton" />
+          </EventHandlers>
+      </Button>
+
+
+      <!--  Single row template for a Guild Member with notes-->
+      <Button name="EA_Button_GuildRecruitSearchRowTemplate" inherits="EA_Button_ResizeIconFrame_NoNormalImage">
+          <Size>
+              <AbsPoint x="395" y="55" />
+          </Size>
+          <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.OnLButtonUpGuildsList" />
+          </EventHandlers>
+          <Windows>
+
+              <FullResizeImage name="$parentBackground" handleinput="false" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+
+
+              <!-- Guild Level -->
+
+              <!-- Rank Background -->
+              <DynamicImage name="$parentRankBackground" inherits="EA_DynamicImage_RankBackground" handleinput="false" popable="false" layer="default">
+                  <Size>
+                      <AbsPoint x="33" y="33" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="3" y="5" />
+                      </Anchor>
+                  </Anchors>
+              </DynamicImage>
+
+              <!-- Rank Text -->
+              <Label name="$parentRankText" inherits="GuildWindowRankText" font="font_guild_MP_R_17" handleinput="false" >
+                  <Size>
+                      <AbsPoint x="31" y="32" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parentRankBackground">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+              <!-- Guild Name -->
+              <Label name="$parentName" inherits="GuildWindowYellowHeadingText" font="font_guild_MP_R_17" textalign="leftcenter" handleinput="false" >
+                  <Size>
+                      <AbsPoint x="250" y="20" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRankBackground">
+                          <AbsPoint x="2" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Desc -->
+              <Label name="$parentDescription" font="font_guild_MP_R_17" textalign="left" handleinput="false" >
+                  <Size>
+                      <AbsPoint x="365" y="20" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+              <!-- PlayersText -->
+              <Label name="$parentPlayersText" inherits="GuildWindowYellowHeadingText" font="font_guild_MP_R_17" textalign="right" handleinput="false" >
+                  <Size>
+                      <AbsPoint x="140" y="20" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                          <AbsPoint x="-5" y="5" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+          </Windows>
+      </Button>
+
+
+      <Window name="GuildRecruitProfileTemplate" >
+          <Size>
+              <AbsPoint x="550" y="500" />
+          </Size>
+          <Windows>
+              <FullResizeImage name="$parentHeadingBackground" handleinput="true" inherits="EA_FullResizeImage_TintableSolidBackground">
+                  <Size>
+                      <AbsPoint x="0" y="40" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+
+
+              <!-- Rank Background -->
+              <DynamicImage name="$parentRankBackground" inherits="EA_DynamicImage_RankBackground" handleinput="false" popable="false" layer="default">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </DynamicImage>
+
+              <!-- Rank Text -->
+              <Label name="$parentRankText" inherits="GuildWindowRankText" font="font_guild_MP_R_23" >
+                  <Size>
+                      <AbsPoint x="31" y="32" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parentRankBackground">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+              <!-- Guild Name -->
+              <Label name="$parentName" inherits="GuildWindowYellowHeadingText" font="font_default_text" textalign="left" >
+                  <Size>
+                      <AbsPoint x="350" y="20" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentRankBackground">
+                          <AbsPoint x="2" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <Color r="226" g="216" b="45" />
+              </Label>
+
+              <!-- Summary -->
+              <FullResizeImage name="$parentSummaryBackground" inherits="EA_FullResizeImage_TanBorder"  >
+                  <Size>
+                      <AbsPoint x="0" y="130" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="10" y="45" />
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                          <AbsPoint x="-10" y="45" />
+                      </Anchor>
+                  </Anchors>
+              </FullResizeImage>
+              <!-- Scrolling Quest Window -->
+              <ScrollWindow name="$parentSummary" childscrollwindow="$parentScrollChild" scrollbar="$parentScrollbar" lineheight="18" autohidescrollbar="false">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSummaryBackground">
+                          <AbsPoint x="5" y="5" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentSummaryBackground">
+                          <AbsPoint x="-5" y="-5" />
+                      </Anchor>
+                  </Anchors>
+                  <Windows>
+                      <!-- Scroll Bar -->
+                      <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                          <Anchors>
+                              <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                  <AbsPoint x="0" y="0" />
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                  <AbsPoint x="0" y="0" />
+                              </Anchor>
+                          </Anchors>
+                      </VerticalScrollbar>
+
+                      <Window name="$parentScrollChild">
+                          <Anchors>
+                              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                  <AbsPoint x="5" y="5" />
+                              </Anchor>
+                              <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                  <AbsPoint x="-15" y="0" />
+                              </Anchor>
+                          </Anchors>
+                          <Windows>
+                              <Label name="$parentText" font="font_chat_text" textalign="left" wordwrap="true" maxchars="500" autoresize="true" >
+                                  <Size>
+                                      <AbsPoint x="400" y="0" />
+                                  </Size>
+                                  <Anchors>
+                                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                          <AbsPoint x="0" y="0" />
+                                      </Anchor>
+                                  </Anchors>
+                              </Label>
+                          </Windows>
+                      </Window>
+                  </Windows>
+
+              </ScrollWindow>
+
+
+              <!-- PlayersText -->
+              <Label name="$parentPlayersText" inherits="GuildWindowYellowHeadingText" font_default_textfont="font_guild_MP_R_17" textalign="right" >
+                  <Size>
+                      <AbsPoint x="140" y="20" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                          <AbsPoint x="-5" y="5" />
+                      </Anchor>
+                  </Anchors>
+                  <Color r="226" g="216" b="45" />
+              </Label>
+
+
+
+              <!-- GuildLeader -->
+              <Label name="$parentGuildLeaderTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSummaryBackground">
+                          <AbsPoint x="10" y="10"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentGuildLeaderText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildLeaderTitle">
+                          <AbsPoint x="10" y="0"/>
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                      <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+                  </EventHandlers>
+              </Label>
+              
+              <!-- Alliance Name -->
+              <Label name="$parentAllianceTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGuildLeaderTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentAllianceText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAllianceTitle">
+                          <AbsPoint x="10" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- PlayStyle -->
+              <Label name="$parentPlayStyleTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAllianceTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentPlayStyleText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- PlayStyle -->
+              <Label name="$parentAtmosphereTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentAtmosphereText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentAtmosphereTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+              <!-- Interests  -->
+              <Label name="$parentInterestsTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAtmosphereTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentInterestsText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentInterestsTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+
+
+              <!-- Tiers Needed -->
+              <Label name="$parentTiersNeededTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentInterestsTitle">
+                          <AbsPoint x="0" y="20"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentTiersNeededText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTiersNeededTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+              <!-- Careers Needed -->
+              <Label name="$parentCareersNeededTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTiersNeededTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentCareersNeededText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareersNeededTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ActionButtonGroup name="$parentCareersNeeded" inherits="EA_ActionButtonGroup_CareerIconsWithTooltip" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCareersNeededTitle" >
+                          <AbsPoint x="5" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </ActionButtonGroup>
+
+              <!-- Recruiters  -->
+              <Label name="$parentRecruitersTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCareersNeeded">
+                          <AbsPoint x="-5" y="5"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <Label name="$parentRecruitersText" inherits="GuildWindowSearchTextTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRecruitersTitle">
+                          <AbsPoint x="10" y="2"/>
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+                      <EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+                  </EventHandlers>
+              </Label>
+
+          </Windows>
+      </Window>
+
+      <!-- Search Guild Template  -->
+      <Window name="GuildWindowRecruitSearchTemplate" movable="false" layer="secondary">
+          <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0"/>
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="-50"/>
+              </Anchor>
+          </Anchors>
+          <Windows>
+
+`             <!-- Not in a Guild Instructions -->
+`             <Window name="$parentNotInGuild" >
+                    <Size>
+                        <AbsPoint x="500" y="80" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="-40"/>
+                        </Anchor>
+
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="-40"/>
+                        </Anchor>
+
+                    </Anchors>
+                  <Windows>
+                      <Label name="$parentText" font="font_chat_text" textalign="center" wordwrap="true" >
+                          <Size>
+                              <AbsPoint x="360" y="50" />
+                          </Size>
+                          <Anchors>
+                              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                  <AbsPoint x="25" y="0"/>
+                              </Anchor>
+                              <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                  <AbsPoint x="-25" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                          <TextColor r="235" g="235" b="235" />
+                      </Label>
+                      <Window name="$parentHorizRule" inherits="EA_Window_DefaultSeparator" >
+                          <Anchors>
+                              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Window>
+                  </Windows>
+              </Window>
+
+              <!-- PlayStyle -->
+              <Label name="$parentSearchTypeTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Size>
+                      <AbsPoint x="360" y="20" />
+                  </Size>                  
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="20" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentSearchTypeCombo" inherits="EA_ComboBox_DefaultResizable" layer="popup" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentSearchTypeTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+
+              <!-- PlayStyle -->
+              <Label name="$parentPlayStyleTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSearchTypeTitle">
+                          <AbsPoint x="0" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentPlayStyleCombo" inherits="EA_ComboBox_DefaultResizableMedium" layer="popup" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentPlayStyleTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+              <!-- Atmosphere -->
+              <Label name="$parentAtmosphereTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                          <AbsPoint x="230" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentAtmosphereCombo" inherits="EA_ComboBox_DefaultResizableMedium" layer="popup" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentAtmosphereTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+
+
+              <!-- Total Players  -->
+              <Label name="$parentTotalPlayersTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayStyleTitle">
+                          <AbsPoint x="0" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentTotalPlayersCombo" inherits="EA_ComboBox_DefaultResizableSmall" layer="popup" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentTotalPlayersTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+              <!-- Players Online -->
+              <Label name="$parentOnlinePlayersTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAtmosphereTitle">
+                          <AbsPoint x="0" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentOnlinePlayersCombo" inherits="EA_ComboBox_DefaultResizableSmall" layer="popup" >
+                  <Anchors>
+                      <Anchor point="right" relativePoint="left" relativeTo="$parentOnlinePlayersTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+
+              <!-- GuildRank -->
+              <Label name="$parentGuildRankTitle" inherits="GuildWindowSearchTitleTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTotalPlayersTitle">
+                          <AbsPoint x="0" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Label>
+              <ComboBox name="$parentGuildRankCombo" inherits="EA_ComboBox_DefaultResizableSmall" layer="popup" >
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuildRankTitle">
+                          <AbsPoint x="0" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </ComboBox>
+
+              <!-- Recruting the Player's Career/Rank? -->
+              <Window name="$parentIsRecruitingPlayer" inherits="EA_LabelCheckButtonSmall" >
+                  <Size>
+                      <AbsPoint x="300" y="30" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentOnlinePlayersTitle">
+                          <AbsPoint x="0" y="15"/>
+                      </Anchor>
+                  </Anchors>
+              </Window>
+
+              <Button name="$parentSearchButton" inherits="EA_Button_DefaultResizeable">
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentHorizRule">
+                          <AbsPoint x="-25" y="-5" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonUp" function="GuildWindowTabRecruit.SearchForGuilds" />
+                  </EventHandlers>
+              </Button>
+
+              <!-- Horizontal Rule -->
+              <Window name="$parentHorizRule" inherits="EA_Window_DefaultSeparator" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                          <AbsPoint x="0" y="150"/>
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                          <AbsPoint x="0" y="150"/>
+                      </Anchor>
+                  </Anchors>
+              </Window>
+
+              <Window name="$parentVertRule" inherits="EA_Window_DefaultVerticalSeparator" >
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                          <AbsPoint x="420" y="160"/>
+                      </Anchor>
+                      <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                          <AbsPoint x="420" y="0"/>
+                      </Anchor>
+                  </Anchors>
+              </Window>
+
+
+
+              <!-- Sort Buttons -->
+              <Button name="$parentSortButton1" inherits="EA_Button_GuildRecruitSearchSortTemplate" id="1">
+                  <Size>
+                      <AbsPoint x="35" y="31" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentList">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+                  <Windows>
+
+                      <!-- Rank Background -->
+                      <DynamicImage name="$parentRankBackground" inherits="EA_DynamicImage_RankBackground" handleinput="false" popable="false" layer="default">
+                          <Size>
+                              <AbsPoint x="20" y="20" />
+                          </Size>
+                          <Anchors>
+                              <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                                  <AbsPoint x="1" y="0" />
+                              </Anchor>
+                          </Anchors>
+                      </DynamicImage>
+
+                  </Windows>
+              </Button>
+              <Button name="$parentSortButton2" inherits="EA_Button_GuildRecruitSearchSortTemplate" id="2">
+                  <Size>
+                      <AbsPoint x="240" y="31" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton1">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Button>
+              <Button name="$parentSortButton3" inherits="EA_Button_GuildRecruitSearchSortTemplate" id="3">
+                  <Size>
+                      <AbsPoint x="65" y="31" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton2">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Button>
+              <Button name="$parentSortButton4" inherits="EA_Button_GuildRecruitSearchSortTemplate" id="4">
+                  <Size>
+                      <AbsPoint x="75" y="31" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSortButton3">
+                          <AbsPoint x="0" y="0" />
+                      </Anchor>
+                  </Anchors>
+              </Button>
+
+              <DynamicImage name="$parentSortUpArrow" inherits="EA_ListSortUpArrow" />
+              <DynamicImage name="$parentSortDownArrow" inherits="EA_ListSortDownArrow" />
+
+              <!-- Search Results List -->
+              <ListBox name="$parentList" scrollbar="EA_ScrollBar_DefaultVerticalChain" rowdef="EA_Button_GuildRecruitSearchRowTemplate" visiblerows="7" rowspacing="0" >
+                  <Size>
+                      <AbsPoint x="420" y="0" />
+                  </Size>
+                  <Anchors>
+                      <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHorizRule" >
+                          <AbsPoint x="10" y="20" />
+                      </Anchor>
+                      <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" >
+                          <AbsPoint x="10" y="-5" />
+                      </Anchor>
+                  </Anchors>
+
+                  <ListData table="GuildWindowTabRecruit.Search.guildProfiles" populationfunction="GuildWindowTabRecruit.PopulateSearchResults">
+                      <ListColumns>
+                          <ListColumn windowname="Name" variable="name" format="wstring"/>
+                          <ListColumn windowname="Description" variable="desc" format="wstring"/>
+                          <ListColumn windowname="RankText" variable="rank" format="number"/>
+                      </ListColumns>
+                  </ListData>
+              </ListBox>
+
+              <Label name="$parentNoGuildsFoundText" inherits="GuildWindowSearchTextTemplate" autoresize="true">
+                  <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentList" >
+                          <AbsPoint x="10" y="10" />
+                      </Anchor>
+                      <Anchor point="topright" relativePoint="topright" relativeTo="$parentList" >
+                          <AbsPoint x="-10" y="10" />
+                      </Anchor>
+                  </Anchors>
+              </Label>
+
+             <!-- Selected Profile -->
+              <Window name="$parentSelectedProfile" inherits="GuildRecruitProfileTemplate" >
+                  <Anchors>
+                      <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentVertRule" >
+                          <AbsPoint x="-10" y="-10" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentHorizRule" >
+                          <AbsPoint x="-10" y="-10" />
+                      </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                      <EventHandler event="OnLButtonDown" function="GuildWindowTabRecruit.OnLButtonDownSelectedProfile"/>
+                  </EventHandlers>
+              </Window>
+
+
+          </Windows>
+      </Window>
+
+  </Windows>  
+</Interface>

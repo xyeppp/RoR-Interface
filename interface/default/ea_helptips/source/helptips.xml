@@ -1,0 +1,228 @@
+﻿<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/HelpTips.lua" />
+    </Scripts>
+    <Windows>
+        <!--Templates-->
+        <Window name="EA_HelpTipBase" movable="false" handleinput="true" savesettings="false">
+            <Size>
+                <AbsPoint x="75" y="69" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                                 handleinput="false" layer="background" alpha="0.0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="150" />
+                </FullResizeImage>
+                <DynamicImage name="$parentImageTwo" texture="EA_Texture_Menu01" handleinput="true" slice="Help-Button-Selected" >
+                    <Size>
+                        <AbsPoint x="73" y="69" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexDims x="73" y="71" />
+                </DynamicImage>
+                <Window name="$parentImageOne" movable="false" handleinput="true" savesettings="false">
+                    <Size>
+                        <AbsPoint x="73" y="69" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentImage" texture="EA_Texture_Menu01" handleinput="true" slice="Help-Button-Highlighted" >
+                            <Size>
+                                <AbsPoint x="73" y="69" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <TexDims x="73" y="71" />
+                        </DynamicImage>
+                    </Windows>
+                </Window>
+                <Button name="$parentButton" inherits="EA_Button_Default" backgroundtexture="EA_Texture_Menu01" highlighttexture="EA_Texture_Menu01" >
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="HelpTips.OnLTipPress" />
+                        <EventHandler event="OnRButtonUp" function="HelpTips.OnRTipPress" />
+                        <EventHandler event="OnMouseOver" function="HelpTips.OnMouseOverTip" />
+                    </EventHandlers>
+                    <Size>
+                        <AbsPoint x="73" y="69" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Help-Button-Highlighted" />
+                        <Pressed id="Help-Button-Selected" />
+                        <PressedHighlit id="Help-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+             </Windows>           
+        </Window>
+
+        <!--Singular Help Tip Window, there will be only 1 up at a time-->
+        <Window name="EA_HelpTipWindow" movable="true" layer="popup" id="1" savesettings="false" >
+            <Size>
+                <AbsPoint x="500" y="300" />
+            </Size>
+            <Windows>
+
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground"  >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Title Section -->
+                <DynamicImage name="$parentCornerIcon" inherits="EA_Default_HelpImage" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-10" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <Label name="$parentTitleText" inherits="TOKTitleMedium"
+                       textalign="leftcenter" autoresize="false" wordwrap="true" textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="50" y="80"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="120" y="25"/>
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground" >
+                            <AbsPoint x="-50" y="25"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" />
+                </Label>
+
+                <!-- Text -->
+                <Label name="$parentText" inherits="TOKText"  maxchars="2048" textalign="left" wordwrap="true" autoresize="true" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="20" y="125" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackground">
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="0" b="0" />
+                </Label>
+                
+                <!-- Butons -->
+
+                <Window name="$parentCheckButton" inherits="EA_Window_ParchmentCheckButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                            <AbsPoint x="20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Button name="$parentCloseButton" inherits="EA_Button_InteractionConversationImportant" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-20" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="HelpTips.OnCloseButton" />
+                    </EventHandlers>
+                </Button>
+                
+             
+            </Windows>
+        </Window>
+                
+        <!--Focus window, used when a help tip needs to point to an existing UI element-->
+        <Window name="EA_FocusWindow" movable="false" handleinput="false" layer="overlay" savesettings="false">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft"/>
+                <Anchor point="bottomright" relativePoint="bottomright"/>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" texture="EA_HUD_01" handleinput="false" layer="background" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <Sizes>
+                        <TopLeft x="19" y="19" />
+                        <BottomRight x="19" y="19" />
+                        <Middle x="26" y="16" />
+                    </Sizes>
+                    <TexSlices>
+                        <TopLeft      id="HelpTipFrame-TopLeft" />
+                        <TopCenter    id="HelpTipFrame-TopCenter" />
+                        <TopRight     id="HelpTipFrame-TopRight" />
+                        <MiddleLeft   id="HelpTipFrame-MiddleLeft" />
+                        <MiddleCenter id="HelpTipFrame-MiddleCenter" />
+                        <MiddleRight  id="HelpTipFrame-MiddleRight" />
+                        <BottomLeft   id="HelpTipFrame-BottomLeft" />
+                        <BottomCenter id="HelpTipFrame-BottomCenter" />
+                        <BottomRight  id="HelpTipFrame-BottomRight" />
+                    </TexSlices>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundLayer" inherits="EA_FullResizeImage_TintableSolidBackground"
+                            handleinput="false" layer="background" alpha="0.3">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="150" />
+                </FullResizeImage>
+            </Windows>
+        </Window>
+        
+        <!--Container Window for all Help Tips-->
+        <Window name="EA_HelpTipsContainerWindow" movable="false" skipinput="true" layer="default" savesettings="true">
+            <Size>
+                <AbsPoint x="512" y="70" />
+            </Size>
+            <Anchors>
+                <Anchor point="bottom" relativePoint="bottom" relativeTo="Root" >
+                    <AbsPoint x="256" y="-200" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                            handleinput="false" layer="background" alpha="0.0">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                    <TintColor r="150" g="150" b="150" />
+                </FullResizeImage>
+                <!--<FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TintableFrame"
+                            handleinput="false" layer="background" alpha="0.75">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft"/>
+                        <Anchor point="bottomright" relativePoint="bottomright"/>
+                    </Anchors>
+                </FullResizeImage>-->
+            </Windows>
+        </Window>
+        
+    </Windows>
+</Interface>

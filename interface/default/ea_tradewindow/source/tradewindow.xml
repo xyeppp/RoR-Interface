@@ -1,0 +1,220 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TradeWindow.lua" />
+    </Scripts>
+    <Windows>
+        <Button name="EA_Window_TradeItemSlotButton" inherits="EA_Button_DefaultIconFrame">
+            <EventHandlers>
+                <EventHandler event="OnLButtonDown" function="EA_Window_Trade.ItemSlotLButtonDown" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_Trade.ItemSlotLButtonUp" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_Trade.ItemSlotRButtonUp" />
+                <EventHandler event="OnMouseOver" function="EA_Window_Trade.ItemSlotMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Window name="EA_Window_TradePlayerOffer" layer="secondary" popable="false">
+            <Size>
+                <AbsPoint x="210" y="278" />
+            </Size>
+            <Windows>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_TintableFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                </FullResizeImage>
+            
+                <Label name="$parentName" font="font_default_text" textalign="center"  maxchars="30"  wordwrap="true" autoresize="true" >
+                    <Size>
+                        <AbsPoint x="180" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255"/>
+                </Label>
+
+                <!-- Item Slots -->
+                <Button name="$parentSlot1" inherits="EA_Window_TradeItemSlotButton" id="1">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="20" y="50" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot2" inherits="EA_Window_TradeItemSlotButton" id="2">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot1">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot3" inherits="EA_Window_TradeItemSlotButton" id="3">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot2">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot4" inherits="EA_Window_TradeItemSlotButton" id="4">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSlot1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot5" inherits="EA_Window_TradeItemSlotButton" id="5">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot4">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot6" inherits="EA_Window_TradeItemSlotButton" id="6">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot5">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot7" inherits="EA_Window_TradeItemSlotButton"  id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSlot4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot8" inherits="EA_Window_TradeItemSlotButton" id="8">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot7">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentSlot9" inherits="EA_Window_TradeItemSlotButton" id="9">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot8">
+                            <AbsPoint x="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+            </Windows>
+        </Window>
+
+        <Window name="EA_Window_Trade" movable="false" layer="secondary" inherits="EA_Window_Default">
+            <Size>
+                <AbsPoint x="450" y="375" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="500" y="530" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_Window_Trade.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_Window_Trade.Shutdown" />
+                <EventHandler event="OnUpdate"      function="EA_Window_Trade.OnUpdate" />
+                <EventHandler event="OnShown"       function="EA_Window_Trade.OnShown" />
+                <EventHandler event="OnHidden"      function="EA_Window_Trade.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />        
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="EA_Window_Trade.CancelTrade" />
+					</EventHandlers>
+				</Button>				
+				
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_BagImage" layer="popup" sticky="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-56" y="-50" />
+                        </Anchor>
+                    </Anchors>>
+                </DynamicImage>
+
+                <Window name="$parentUserTradeOffer" inherits="EA_Window_TradePlayerOffer">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <VerticalResizeImage name="$parentCenterDivider" inherits="EA_VerticalResizeImage_DefaultVerticalSeparatorMiddle" layer="secondary">
+                   <Size>
+                        <AbsPoint x="8" y="280" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+
+
+                <Window name="$parentUserTradeOfferMoney" inherits="EditableMoneyFrame" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentUserTradeOffer">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOtherTradeOffer" inherits="EA_Window_TradePlayerOffer">
+                    <Anchors>
+                       <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar" >
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentOtherTradeOfferMoney" inherits="MoneyFrame" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentOtherTradeOffer">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                
+                <!-- Buttons Section -->
+                <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                    <Size>
+                        <AbsPoint x="0" y="65" />
+                    </Size>
+                </Window>   
+					
+				<!-- Loot All -->
+                <Button name="$parentUserAcceptButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="-100" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Trade.ToggleAcceptButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentCancelButton" inherits="EA_Button_DefaultResizeable">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="100" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Trade.CancelTrade" />
+                    </EventHandlers>
+                </Button>
+
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

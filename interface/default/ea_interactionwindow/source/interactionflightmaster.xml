@@ -1,0 +1,325 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InteractionFlightMaster.lua" />
+    </Scripts>
+
+    <Windows>
+        <!-- Flight Master Window -->
+        <Window name="EA_InteractionFlightMasterWindow" layer="secondary" movable="false" inherits="EA_Window_Default" savesettings="false">
+            <Size>
+                <AbsPoint x="1600" y="1200" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="EA_InteractionFlightMasterWindow.Initialize" />
+                <EventHandler event="OnShutdown"    function="EA_InteractionFlightMasterWindow.Shutdown" />
+                <EventHandler event="OnRButtonUp"   function="EA_InteractionFlightMasterWindow.OnRButtonUp" />
+                <EventHandler event="OnShown"       function="WindowUtils.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentBackgroundCover" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" alpha="0.8" sticky="false" >
+                    <Size>
+                        <AbsPoint x="1600" y="1200" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="-5" y="-5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                </FullResizeImage>
+
+
+                <FullResizeImage name="$parentBackgroundTexture" inherits="ParchmentFullResizeImage" layer="background" handleinput="false">
+                    <Size>
+                        <AbsPoint x="1600" y="1200" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Window name="$parentBorder" inherits="WorldMapScrollworkBorder" >
+                    <Size>
+                        <AbsPoint x="1075" y="1110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundTexture">
+                            <AbsPoint x="70" y="11" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Button name="$parentClose" inherits="TomeCloseButton">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackgroundTexture" >
+                            <AbsPoint x="-40" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_InteractionFlightMasterWindow.Hide" />
+                    </EventHandlers>
+                </Button>
+                
+
+                <!-- DvG -->
+                <Window name="$parent1Map" inherits="EA_DvGMapPairing" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- EvC -->
+                <Window name="$parent2Map" inherits="EA_EvCMapPairing" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- HEvDE -->
+                <Window name="$parent3Map" inherits="EA_HEvDEMapPairing" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- TK -->
+                <Window name="$parent100Map" inherits="EA_TKMapPairing" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="40" y="77" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <!-- Tomb Kings access tracker -->
+                <Window name="$parentTombKingsBarContainer" inherits="EA_Window_RRQStatusContainerTombKingsTemplate" layer="popup">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-35" y="-80" />
+                        </Anchor>
+                    </Anchors>
+                </Window> 
+                
+                <!-- Side Bar -->
+                <Label name="$parentTravelHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBorder">
+                            <AbsPoint x="10" y="55" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Label name="$parentTravelDescription" inherits="EA_Label_Parchment_Text" >
+                    <Size>
+                        <AbsPoint x="350" y="24" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTravelHeader" >
+                            <AbsPoint x="0" y="20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Window name="$parentSectionBreak1" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTravelDescription">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentRealmWarHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak1">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <Button name="$parentPairing1" inherits="EA_Button_FlightPairing" id="1" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativepoint="top" relativeTo="$parentRealmWarHeader">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentPairing2" inherits="EA_Button_FlightPairing" id="2" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativepoint="top" relativeTo="$parentPairing1">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentPairing3" inherits="EA_Button_FlightPairing" id="3" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativepoint="top" relativeTo="$parentPairing2">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentPairing100" inherits="EA_Button_FlightPairing" id="100" textalign="center">
+                    <Anchors>
+                        <Anchor point="bottom" relativepoint="top" relativeTo="$parentPairing3">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Window name="$parentSectionBreak2" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentPairing100">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+                <Label name="$parentZoneHeader" inherits="MapSideBarSectionHeader" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSectionBreak2">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- SideBar Text Buttons -->
+                <Window name="$parentNameButton1" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottom" relativepoint="top" relativeTo="$parentZoneHeader">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton2" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton1">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton3" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton2">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton4" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton3">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton5" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton4">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton6" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton5">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton7" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton6">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton8" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton7">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton9" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton8">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton10" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton9">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton11" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton10">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton12" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton11">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton13" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton12">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentNameButton14" inherits="EA_Button_Flight" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativepoint="topleft" relativeTo="$parentNameButton13">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

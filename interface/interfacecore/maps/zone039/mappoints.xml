@@ -1,0 +1,8 @@
+<zone iname="Logrin's Forge">
+    <battlefieldObjective iname="Logrin's Anvil" id="5012" iconSet="1" x="24435" y="32053">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Logrin's Hammer" id="5013" iconSet="1" x="20441" y="32053">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Logrin's Axe" id="5014" iconSet="1" x="28388" y="32011">
+    </battlefieldObjective>
+</zone>

@@ -1,0 +1,535 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/EA_Window_Help.lua"/>
+    </Scripts>
+    <Windows>
+
+      <!-- Header Template -->
+      <Label name="EA_Window_HelpHeaderTemplate" font="font_default_sub_heading" maxchars="50" textalign="rightcenter" wordwrap="true" autoresize="false" popable="false">
+        <Size>
+          <AbsPoint x="150" y="96" />
+        </Size>
+        <Color r="226" g="216" b="45" a="255"/>
+      </Label>
+
+      <!-- Description Template -->
+      <Label name="EA_Window_HelpDescriptionTemplate" font="font_default_text" maxchars="250" textalign="left" wordwrap="true" autoresize="false" popable="false">
+        <Size>
+          <AbsPoint x="275" y="250" />
+        </Size>
+        <Color r="255" g="255" b="255" a="255"/>
+      </Label>
+      
+      <!--*******************************************************************-->
+      <!--                      Whole Window Definition                      -->
+      <!--*******************************************************************-->
+      <Window name="EA_Window_Help" inherits="EA_Window_Default" layer="secondary" movable="true" savesettings="false">
+        <Size>
+          <AbsPoint x="900" y="755" />
+        </Size>
+        <Anchors>
+          <Anchor point="center" relativePoint="center"/>
+        </Anchors>
+        <EventHandlers>
+          <EventHandler event="OnInitialize" function="EA_Window_Help.Initialize" />
+          <EventHandler event="OnShutdown" function="EA_Window_Help.Shutdown" />
+          <EventHandler event="OnShown" function="EA_Window_Help.OnShown" />
+          <EventHandler event="OnHidden" function="EA_Window_Help.Hide" />
+        </EventHandlers>
+        <Windows>
+
+          <!-- Title Bar, Close button, and Corner Image -->
+          <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+          <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.Hide" />
+            </EventHandlers>
+          </Button>
+          <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+          <!-- Main Window Background -->
+          <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" >
+                <AbsPoint x="0" y="32" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" />
+            </Anchors>
+          </Window>
+
+          <!--***************-->
+          <!-- Window Frames -->
+          <!--***************-->
+
+          <!-- Left Window -->
+          <Window name="$parentLeftWindow" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentBackground">
+                <AbsPoint x="300" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Left Top Window -->
+          <Window name="$parentLeftTopWindow" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLeftWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="right" relativePoint="bottomright" relativeTo="$parentLeftWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Left Bottom Window -->
+          <Window name="$parentLeftBottomWindow" popable="false">
+            <Anchors>
+              <Anchor point="left" relativePoint="topleft" relativeTo="$parentLeftWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLeftWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Center Window -->
+          <Window name="$parentCenterWindow" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                <AbsPoint x="300" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                <AbsPoint x="-300" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+          
+          <!-- Center Top Window -->
+          <Window name="$parentCenterTopWindow" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentCenterWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="right" relativePoint="bottomright" relativeTo="$parentCenterWindow">
+                <AbsPoint x="0" y="90" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Center Bottom Window -->
+          <Window name="$parentCenterBottomWindow" popable="false">
+            <Anchors>
+              <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentCenterTopWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCenterWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Right Window -->
+          <Window name="$parentRightWindow" popable="false">
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentBackground">
+                <AbsPoint x="-300" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Right Top Window -->
+          <Window name="$parentRightTopWindow" popable="false">
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRightWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="right" relativePoint="bottomright" relativeTo="$parentRightWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Right Bottom Window -->
+          <Window name="$parentRightBottomWindow" popable="false">
+            <Anchors>
+              <Anchor point="left" relativePoint="topleft" relativeTo="$parentRightWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRightWindow">
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!--************-->
+          <!-- Seperators -->
+          <!--************-->
+
+           <!-- Left Vertical Seperator -->
+          <Window name="$parentLeftSeperator" inherits="EA_Window_DefaultVerticalSeparator" handleinput="false" >
+            <Anchors>
+              <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLeftWindow" >
+                <AbsPoint x="-14" y="-18" />
+              </Anchor>
+              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLeftWindow" >
+                <AbsPoint x="14" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- Right Vertical Seperator -->
+          <Window name="$parentRightSeperator" inherits="EA_Window_DefaultVerticalSeparator" handleinput="false" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRightWindow" >
+                <AbsPoint x="-14" y="-18" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentRightWindow" >
+                <AbsPoint x="14" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+          
+          <!-- LeftWindow Seperator -->
+          <Window name="$parentLeftWindowSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentLeftBottomWindow" >
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentLeftBottomWindow" >
+                <AbsPoint x="4" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+          
+          <!-- Center Seperator -->
+          <Window name="$parentCenterWindowSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentCenterBottomWindow" >
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+              <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentCenterBottomWindow" >
+                <AbsPoint x="4" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+
+          <!-- RightWindow Seperator -->
+          <Window name="$parentRightWindowSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+            <Anchors>
+              <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentRightBottomWindow" >
+                <AbsPoint x="-4" y="0" />
+              </Anchor>
+              <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentRightBottomWindow" >
+                <AbsPoint x="0" y="0" />
+              </Anchor>
+            </Anchors>
+          </Window>
+          
+          <!--*****************-->
+          <!-- Window Contents -->
+          <!--*****************-->
+          
+          <!-- FAQ Icon -->
+          <DynamicImage name="$parentFAQIcon" texture="EA_Help01_32b" slice="Icon-FAQ" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentLeftWindow">
+                <AbsPoint x="-10" y="10"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          
+          <!-- FAQ Header-->
+          <Label name="$parentFAQHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentFAQIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- FAQ Description -->
+          <Label name="$parentFAQDescriptionText" inherits="EA_Window_HelpDescriptionTemplate">
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentFAQIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentLeftTopWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Manual Icon -->
+          <DynamicImage name="$parentManualIcon" texture="EA_Help01_32b" slice="Icon-Manual" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentLeftBottomWindow">
+                <AbsPoint x="-10" y="0"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+
+          <!-- Manual Header -->
+          <Label name="$parentManualHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentManualIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Manual Description -->
+          <Label name="$parentManualDescriptionText" inherits="EA_Window_HelpDescriptionTemplate">
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentManualIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentLeftBottomWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Appeal Icon -->
+          <DynamicImage name="$parentAppealIcon" texture="EA_Help01_32b" slice="Icon-Appeal" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentCenterTopWindow">
+                <AbsPoint x="-10" y="10"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          
+          <!-- Appeal Header -->
+          <Label name="$parentAppealHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentAppealIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Appeal Description -->
+          <Label name="$parentAppealDescriptionText" inherits="EA_Window_HelpDescriptionTemplate" maxchars="350">
+            <Size>
+              <AbsPoint x="275" y="350" />
+            </Size>
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentAppealIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentCenterTopWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- ReportBug Icon -->
+          <DynamicImage name="$parentReportBugIcon" texture="EA_Help01_32b" slice="Icon-Bug" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentRightTopWindow">
+                <AbsPoint x="-10" y="10"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+          
+          <!-- ReportBug Header -->
+          <Label name="$parentReportBugHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentReportBugIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- ReportBug Description -->
+          <Label name="$parentReportBugDescriptionText" inherits="EA_Window_HelpDescriptionTemplate">
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentReportBugIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentRightTopWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Feedback Icon -->
+          <DynamicImage name="$parentFeedbackIcon" texture="EA_Help01_32b" slice="Icon-Feedback" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentRightBottomWindow">
+                <AbsPoint x="-10" y="0"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+
+          <!-- Feedback Header -->
+          <Label name="$parentFeedbackHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentFeedbackIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Feedback Description -->
+          <Label name="$parentFeedbackDescriptionText" inherits="EA_Window_HelpDescriptionTemplate">
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentFeedbackIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentRightBottomWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+          
+          <!-- Tips Icon -->
+          <DynamicImage name="$parentTipsIcon" texture="EA_Help01_32b" slice="Icon-FAQ" popable="false">
+            <Size>
+              <AbsPoint x="89" y="85" />
+            </Size>
+            <Anchors>
+              <Anchor point="topright" relativePoint="topright" relativeTo="$parentCenterBottomWindow">
+                <AbsPoint x="-10" y="0"/>
+              </Anchor>
+            </Anchors>
+          </DynamicImage>
+
+          <!-- Tips Header -->
+          <Label name="$parentTipsHeader" inherits="EA_Window_HelpHeaderTemplate">
+            <Anchors>
+              <Anchor point="left" relativePoint="right" relativeTo="$parentTipsIcon">
+                <AbsPoint x="-10" y="0" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!-- Tips Description -->
+          <Label name="$parentTipsDescriptionText" inherits="EA_Window_HelpDescriptionTemplate">
+            <Anchors>
+              <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTipsIcon">
+                <AbsPoint x="0" y="15" />
+              </Anchor>
+              <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentCenterBottomWindow">
+                <AbsPoint x="15" y="-45" />
+              </Anchor>
+            </Anchors>
+          </Label>
+
+          <!--************-->
+          <!-- Buttons    -->
+          <!--************-->
+          
+          <Button name="$parentFaqButton" inherits="EA_Button_DefaultResizeable" >
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentLeftTopWindow">
+                <AbsPoint x="0" y="-20"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpFaqButton" />
+            </EventHandlers>
+          </Button>
+
+          <Button name="$parentManualButton" inherits="EA_Button_DefaultResizeable" >
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentLeftBottomWindow">
+                <AbsPoint x="0" y="-10"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpManualButton" />
+            </EventHandlers>
+          </Button>
+          
+          <Button name="$parentAppealButton" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+              <AbsPoint x="250" y="39" />
+            </Size>
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentCenterTopWindow">
+                <AbsPoint x="0" y="-20"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpAppealButton" />
+            </EventHandlers>
+          </Button>
+
+          <Button name="$parentEditAppealButton" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+              <AbsPoint x="250" y="39" />
+            </Size>
+            <Anchors>
+              <Anchor point="top" relativePoint="bottom" relativeTo="$parentAppealButton">
+                <AbsPoint x="0" y="-20"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpEditAppealButton" />
+            </EventHandlers>
+          </Button>
+          
+          <Button name="$parentReportBugButton" inherits="EA_Button_DefaultResizeable" >
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentRightTopWindow">
+                <AbsPoint x="0" y="-20"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpReportBugButton" />
+            </EventHandlers>
+          </Button>
+
+          <Button name="$parentFeedbackButton" inherits="EA_Button_DefaultResizeable" >
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentRightBottomWindow">
+                <AbsPoint x="0" y="-10"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpFeedbackButton" />
+            </EventHandlers>
+          </Button>
+          
+          <Button name="$parentTipsButton" inherits="EA_Button_DefaultResizeable" >
+            <Size>
+                  <AbsPoint x="250" y="39" />
+            </Size>
+            <Anchors>
+              <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentCenterBottomWindow">
+                <AbsPoint x="0" y="-10"/>
+              </Anchor>
+            </Anchors>
+            <EventHandlers>
+              <EventHandler event="OnLButtonUp" function="EA_Window_Help.OnLButtonUpTipsButton" />
+            </EventHandlers>
+          </Button>
+          
+        </Windows> <!-- End of Windows for "EA_Window_Help"-->
+      </Window> <!-- End of "EA_Window_Help" -->
+      
+    </Windows>
+</Interface>

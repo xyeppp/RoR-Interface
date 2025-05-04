@@ -1,0 +1,157 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Windows>
+          
+
+		<!-- Title Underline -->
+        <HorizontalResizeImage name="TomeResizableHorizontalRule" texture="EA_Tome" handleinput="false" layer="background" texturescale="1.25" >
+            <Size>
+                <AbsPoint x="450" y="4"/>
+            </Size>
+            <Sizes left="0" middle="252" right="0" />
+            <TexSlices>
+                <Middle id="HorizontalLineTiling" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="TomeTopEdgeLine" inherits="TomeResizableHorizontalRule">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="topright" relativePoint="topright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="TomeBottomEdgeLine" inherits="TomeResizableHorizontalRule">
+            <Anchors>
+                <Anchor point="bottomleft" relativePoint="bottomleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </HorizontalResizeImage>
+        
+        <!-- Diamond Divider -->
+        <DynamicImage name="TomeDiamondDivider" texture="EA_Tome" handleinput="false" layer="background" slice="id3Diamonds" texturescale="1.18">
+            <Size>
+                <AbsPoint x="50" y="17" />
+            </Size>
+        </DynamicImage>
+        
+        <!-- Closed Scroll -->
+        <DynamicImage name="TomeScrollClosed" texture="EA_Tome" handleinput="false" layer="background" slice="ScrollCollapsed">
+            <Size>
+                <AbsPoint x="102" y="50" />
+            </Size>
+        </DynamicImage>
+        
+        <!-- Open Scroll -->
+        <VerticalResizeImage name="TomeScrollOpen" handleinput="false" layer="background" texture="EA_Tome">
+            <Size>
+                <AbsPoint x="401" y="300" />
+            </Size>
+            <Sizes top="49" middle="59" bottom="63" />
+            <TexSlices>
+                <Top id="ScrollTop" />
+                <Middle id="ScrollMiddle" />
+                <Bottom id="ScrollBottom" />
+            </TexSlices>
+        </VerticalResizeImage>
+
+        
+       <VerticalResizeImage name="TomeVertResizeLine" handleinput="false" layer="background" texture="EA_Tome" texturescale="1.25">
+            <Size>
+                <AbsPoint x="5" y="200" />
+            </Size>
+            <Sizes top="0" middle="181" bottom="0" />
+            <TexSlices>
+                <Middle id="VerticalLineTiling" />
+            </TexSlices>
+        </VerticalResizeImage>
+
+        <VerticalResizeImage name="TomeLeftEdgeLine" inherits="TomeVertResizeLine" >
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomleft" relativePoint="bottomleft" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </VerticalResizeImage>
+
+        <VerticalResizeImage name="TomeRightEdgeLine" inherits="TomeVertResizeLine" >
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+        </VerticalResizeImage>
+
+
+        <DynamicImage name="EA_DynamicImage_StarTemplate"  handleinput="false" layer="overlay" texture="EA_PairingMapToolTip" slice="star-destruction">
+            <Size>
+                <AbsPoint x="20" y="20" />
+            </Size>
+        </DynamicImage>
+        
+        <Window name="EA_Window_CityRating" >
+           <Size>
+                <AbsPoint x="100" y="20" />
+            </Size>
+            <Windows>
+                  <DynamicImage name="$parentStar1" inherits="EA_DynamicImage_StarTemplate" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentStar2" inherits="EA_DynamicImage_StarTemplate" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentStar1" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentStar3" inherits="EA_DynamicImage_StarTemplate" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentStar1" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentStar4" inherits="EA_DynamicImage_StarTemplate" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentStar2" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentStar5" inherits="EA_DynamicImage_StarTemplate" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentStar3" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        
+        </Window>
+        
+        <!-- Armory -->
+        <DynamicImage name="TomeArmoryGuy" texture="EA_Tome" handleinput="false" layer="background" slice="ArmoryGuy" texturescale="1.18">
+            <Size>
+                <AbsPoint x="248" y="558"/>
+            </Size>
+        </DynamicImage>
+        
+    </Windows>
+</Interface>

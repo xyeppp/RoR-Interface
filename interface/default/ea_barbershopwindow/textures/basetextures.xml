@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Assets>
+        <Texture name="EA_BarbershopTexture" file="Textures/EA_Barbershop01_d5.dds">
+            <Slice id="background" left="2" top="0" width="1020" height="638" />
+            <Slice id="bleach-jar" left="159" top="640" width="46" height="47" />
+            <Slice id="bleach-jar-depressed" left="257" top="640" width="44" height="47" />
+            <Slice id="bleach-jar-rollover" left="208" top="640" width="46" height="47" />
+            <Slice id="Button-Left" left="2" top="640" width="20" height="26" />
+            <Slice id="Button-Left-depressed" left="2" top="697" width="20" height="26" />
+            <Slice id="Button-Left-rollover" left="2" top="668" width="20" height="26" />
+            <Slice id="Button-Middle" left="32" top="640" width="46" height="26" />
+            <Slice id="Button-Middle-depressed" left="32" top="697" width="46" height="26" />
+            <Slice id="Button-Middle-Left" left="24" top="640" width="8" height="26" />
+            <Slice id="Button-Middle-Left-depressed" left="24" top="697" width="8" height="26" />
+            <Slice id="Button-Middle-Left-rollover" left="24" top="668" width="8" height="26" />
+            <Slice id="Button-Middle-Right" left="78" top="640" width="8" height="26" />
+            <Slice id="Button-Middle-Right-depressed" left="78" top="697" width="8" height="26" />
+            <Slice id="Button-Middle-Right-rollover" left="78" top="668" width="8" height="26" />
+            <Slice id="Button-Middle-rollover" left="32" top="668" width="46" height="26" />
+            <Slice id="Button-Right" left="88" top="640" width="20" height="26" />
+            <Slice id="Button-Right-depressed" left="88" top="697" width="20" height="26" />
+            <Slice id="Button-Right-rollover" left="88" top="668" width="20" height="26" />
+            <Slice id="colorswatch" left="252" top="710" width="24" height="13" />
+            <Slice id="colorswatch-primary" left="219" top="697" width="14" height="27" />
+            <Slice id="colorswatch-secondary" left="233" top="697" width="14" height="27" />
+            <Slice id="dye-jar" left="159" top="698" width="26" height="25" />
+            <Slice id="dye-jar-rollover" left="189" top="698" width="26" height="25" />
+            <Slice id="icon-frame" left="112" top="640" width="43" height="42" />
+            <Slice id="icon-frame-rollover" left="112" top="686" width="43" height="42" />
+        </Texture>
+    </Assets>
+</Interface>

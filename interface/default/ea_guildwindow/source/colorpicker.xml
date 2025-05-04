@@ -1,0 +1,37 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/ColorPicker.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="ColorPicker" inherits="EA_Window_Default" movable="false" layer="secondary">
+      <Size>
+        <AbsPoint x="157" y="336" />
+      </Size>
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="ColorPicker.Initialize" />
+      </EventHandlers>
+      <Windows>
+        
+        <!-- Color Swatch Background -->
+        <DynamicImage name="$parentBackground" texture="EA_Guild" slice="colorswatch-background" handleinput="true" popable="false" sticky="false">
+          <Size>
+            <AbsPoint x="157" y="336" />
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+        </DynamicImage>
+ 
+      </Windows>
+     </Window>
+  </Windows>
+</Interface>

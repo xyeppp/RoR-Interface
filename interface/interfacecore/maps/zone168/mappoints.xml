@@ -1,0 +1,8 @@
+<zone iname="Altdorf">
+    <battlefieldObjective iname="The Armory" id="951" iconSet="1" x="19545" y="49474"></battlefieldObjective>
+    <battlefieldObjective iname="The Siege Workshop" id="952" iconSet="1" x="30186" y="49490"></battlefieldObjective>
+    <battlefieldObjective iname="Emperor's Circle" id="953" iconSet="1" x="25176" y="41635"></battlefieldObjective>
+    <battlefieldObjective iname="The Library" id="954" iconSet="1" x="20949" y="35955"></battlefieldObjective>
+    <battlefieldObjective iname="The South Docks" id="955" iconSet="1" x="37675" y="40267"></battlefieldObjective>
+    <battlefieldObjective iname="The North Docks" id="956" iconSet="1" x="34037" y="31531"></battlefieldObjective>
+</zone>

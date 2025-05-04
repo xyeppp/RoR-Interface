@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/CharacterSelectWindow.lua" />
+    </Scripts>
+    <Windows>
+      <EditBox name="EA_EditBox_CharacterCreate" font="font_default_text" background="EA_FullResizeImage_BlackTransparent" filter="euckr" popable="false"/>
+      
+      <Window name="CharacterSelectInfoBox" layer="popup" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="750" y="300" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentLabelTitle" font="font_default_text_huge" maxchars="2056" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="670" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLabelSecondTitleLeft" font="font_default_text_huge" maxchars="30" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabelTitle">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLabelSecondTitleMiddle" font="font_default_text_huge" maxchars="30" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLabelTitle">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLabelSecondTitleRight" font="font_default_text_huge" maxchars="30" textalign="center" wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLabelTitle">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLabel" font="font_guild_MP_R_23" maxchars="2056" textalign="left" wordwrap="true" autoresize="false">
+                    <Size>
+                        <AbsPoint x="730" y="205" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabelSecondTitleLeft">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentLabelSecondTitleRight">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+              <DynamicImage name="$parentIconBase" textureScale="1.0" handleinput="true" layer="background" texture="EA_HUD_01">
+                <Size>
+                  <AbsPoint x="16" y="16" />
+                </Size>
+                <Anchors>
+                  <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                    <AbsPoint x="40" y="-20" />
+                  </Anchor>
+                </Anchors>
+              </DynamicImage>
+              <Label name="$parentPopBonusLabel" font="font_guild_MP_R_17" maxchars="512" textalign="left" wordwrap="false" autoresize="false">
+                <Size>
+                  <AbsPoint x="730" y="30" />
+                </Size>
+                <Anchors>
+                  <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                    <AbsPoint x="65" y="-5" />
+                  </Anchor>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="0" y="-5" />
+                  </Anchor>
+                </Anchors>
+              </Label>
+            </Windows>
+        </Window>
+        <Window name="CharacterSelectInfoBox2" layer="popup" movable="false" savesettings="false">
+            <Size>
+                <AbsPoint x="750" y="300" />
+            </Size>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Label name="$parentLabelTitle" font="font_default_text_huge" maxchars="2056" textalign="center" wordwrap="true" autoresize="false">
+                    <Size>
+                        <AbsPoint x="730" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="10" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentLabel" font="font_guild_MP_R_23" maxchars="2056" textalign="left" wordwrap="true" autoresize="false">
+                    <Size>
+                        <AbsPoint x="730" y="250" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLabelTitle">
+                            <AbsPoint x="0" y="15" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!-- Feature Combo Box -->        
+        <Button name="FeatureComboBoxSelectedButton" font="font_default_text" textalign="center" >
+            <Size>
+                <AbsPoint x="200" y="67" />
+            </Size>
+            <TextColors>
+                <Normal r="255" g="255" b="255" a="255" />
+                <NormalHighlit r="250" g="213" b="63" a="255" />
+                <Pressed r="250" g="213" b="63" a="255" />
+                <PressedHighlit r="250" g="213" b="63" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+            <Windows>
+                <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_BlackTransparent" > 
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentFrame" inherits="EA_FullResizeImage_DefaultComboBox" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+            </Windows>
+            <TextOffset x="5" y="5" />
+        </Button>
+
+        <Button name="FeatureComboBoxMenuItemButton" inherits="EA_Button_DefaultMenuButton"  textalign="center" textAutoFitMinScale="0.6" >
+            <Size>
+                <AbsPoint x="190" y="30" />
+            </Size>
+        </Button>
+
+        <ComboBox name="FeatureComboBox" selectedbutton="FeatureComboBoxSelectedButton" 
+                                         menubackground="EA_Window_ComboBoxMenuBackground" 
+                                         menuitembutton="FeatureComboBoxMenuItemButton"
+                                         scrollbar="EA_ScrollBar_DefaultVerticalChain" 
+                                         maxvisibleitems="15" >
+            <Size>
+                <AbsPoint x="200" y="67" />
+            </Size>
+            <MenuButtonOffset x="5" y="5" />
+        </ComboBox>
+        
+        <Button name="PregameNextButtonTemplate" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="50" y="67" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="ArrowRight"  />
+                <NormalHighlit   texture="" id="ArrowRight-Rollover"   />
+                <Pressed         texture="" id="ArrowRight-Selected"   />
+                <PressedHighlit  texture="" id="ArrowRight-Selected"   />
+                <Disabled        texture="" id="ArrowRight"   />
+                <DisabledPressed texture="" id="ArrowRight-Rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+
+        <Button name="PregamePrevButtonTemplate" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="50" y="67" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="ArrowLeft"  />
+                <NormalHighlit   texture="" id="ArrowLeft-Rollover"   />
+                <Pressed         texture="" id="ArrowLeft-Selected"   />
+                <PressedHighlit  texture="" id="ArrowLeft-Selected"   />
+                <Disabled        texture="" id="ArrowLeft"   />
+                <DisabledPressed texture="" id="ArrowLeft-Rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+
+        <Window name="CharacterSelectFeatureWindow">
+            <Size>
+                <AbsPoint x="300" y="67" />
+            </Size>
+            <Windows>
+                <Button name="$parentNextButton" inherits="PregameNextButtonTemplate">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.NextFeature"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <ComboBox name="$parentComboBox" inherits="FeatureComboBox" layer="popup" >
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnSelChanged" function="CharacterSelectWindow.OnSelectFeature" />
+                    </EventHandlers>
+                </ComboBox>
+                <Button name="$parentPrevButton" inherits="PregamePrevButtonTemplate">
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.PrevFeature"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentFeatureLabel" font="font_default_text_huge" maxchars="30" textalign="right" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="300" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="$parentPrevButton">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Button name="CharacterSelectButton" inherits="EA_Button_DefaultPregameResizeable"  >
+            <Size>
+                <AbsPoint x="200" y="105" />
+            </Size>
+        </Button>
+
+        <Button name="CharacterSelectLargeButton" inherits="EA_Button_Default" font="font_heading_large" textalign="center" textAutoFitMinScale="0.5"
+            backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5" >
+            <Size>
+                <AbsPoint x="497" y="147" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="Play-Button"  />
+                <NormalHighlit   texture="" id="Play-Button-Rollover"   />
+                <Pressed         texture="" id="Play-Button-Depressed"   />
+                <PressedHighlit  texture="" id="Play-Button-Depressed"   />
+                <Disabled        texture="" id="Play-Button"   />
+                <DisabledPressed texture="" id="Play-Button"   />
+            </TexSlices>
+            <TextColors>
+                <Disabled r="75"  g="75"  b="75" a="255"/>
+            </TextColors>
+            <Sounds>
+              <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_PLAY_GAME_BUTTON )" />
+              <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+        
+        <Button name="CharacterSelectMediumLargeButton" inherits="EA_Button_Default" font="font_heading_medium" textalign="center" textAutoFitMinScale="0.5"
+            backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5" texturescale="0.75" >
+            <Size>
+                <AbsPoint x="373" y="110" />
+            </Size>
+            <TexSlices>
+                <Normal          texture="" id="Play-Button"  />
+                <NormalHighlit   texture="" id="Play-Button-Rollover"   />
+                <Pressed         texture="" id="Play-Button-Depressed"   />
+                <PressedHighlit  texture="" id="Play-Button-Depressed"   />
+                <Disabled        texture="" id="Play-Button"   />
+                <DisabledPressed texture="" id="Play-Button"   />
+            </TexSlices>
+            <TextColors>
+                <Disabled r="75"  g="75"  b="75" a="255"/>
+            </TextColors>
+            <Sounds>
+              <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_PLAY_GAME_BUTTON )" />
+              <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+        </Button>
+
+        <Window name="CharacterSelectWindow" savesettings="false">
+            <Size>
+                <AbsPoint x="1600" y="1200" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="Root" />
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="Root" />
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="CharacterSelectWindow.Initialize" />
+                <EventHandler event="OnShutdown" function="CharacterSelectWindow.Shutdown" />
+                <EventHandler event="OnKeyEnter" function="CharacterSelectWindow.Play" />
+                <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.LButtonUp" />
+                <EventHandler event="OnLButtonDown" function="CharacterSelectWindow.LButtonDown" />
+                <EventHandler event="OnUpdate" function="CharacterSelectWindow.Update" />
+            </EventHandlers>
+            <Windows>
+                <Window name="CharacterSelectPageChange">
+                    <Size>
+                        <AbsPoint x="300" y="67" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="CharacterSelectDeleteButton">
+                            <AbsPoint x="0" y="-100" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentNextButton" inherits="PregameNextButtonTemplate">
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.NextCharacterPage"/>
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <ComboBox name="$parentComboBox" inherits="FeatureComboBox" layer="popup" >
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnSelChanged" function="CharacterSelectWindow.OnSelectCharacterPage" />
+                            </EventHandlers>
+                        </ComboBox>
+                        <Button name="$parentPrevButton" inherits="PregamePrevButtonTemplate">
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.PrevCharacterPage"/>
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                    </Windows>
+                </Window>
+                <Button name="CharacterSelectPlay" inherits="CharacterSelectMediumLargeButton">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="CharacterSelectQuit">
+                            <AbsPoint x="100" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.Play"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectPNC" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="CharacterSelectPlay">
+                            <AbsPoint x="85" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ShowPNCWindow"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectServer" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="CharacterSelectNewChar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ShowServerSelect"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectNewChar" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="CharacterSelectDeleteButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.NewChar"/>
+                        <EventHandler event="OnMouseOver" function="CharacterSelectWindow.ShowAvailableSlots"/>
+                        <EventHandler event="OnMouseOverEnd" function="CharacterSelectWindow.HideAvailableSlots"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectDeleteButton" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="-250" y="-25" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.Delete"/>
+                        <EventHandler event="OnMouseOver" function="CharacterSelectWindow.ShowAvailableSlots"/>
+                        <EventHandler event="OnMouseOverEnd" function="CharacterSelectWindow.HideAvailableSlots"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectSettingsButton" inherits="CharacterSelectButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectDeleteButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.OnSettingsButton"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectQuit" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectSettingsButton" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.Quit"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectUiModButton" inherits="CharacterSelectButton" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.OnUiModButton"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="CharacterSelectUpgradeTrial" inherits="CharacterSelectButton">
+                  <Anchors>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                      <AbsPoint x="0" y="0" />
+                    </Anchor>
+                  </Anchors>
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.UpgradeTrial"/>
+                  </EventHandlers>
+                </Button>
+                <Label name="CharacterSelectCharacterSlotsAvailableText" font="font_default_text_huge" maxchars="50" textalign="leftcenter" layer="background">
+                    <Size>
+                        <AbsPoint x="500" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="CharacterSelectDeleteButton">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="243" g="243" b="0"  />
+                </Label>
+                <Label name="CharacterSelectMultirealmInfo" font="font_default_text_huge" maxchars="255" textalign="leftcenter" layer="background">
+                    <Size>
+                        <AbsPoint x="800" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="CharacterSelectCharacterSlotsAvailableText">
+                            <AbsPoint x="0" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="206" g="44" b="44"  />
+                </Label>
+
+                <!-- Trial Account Info Window -->
+                <Window name="TrialAccountInfo" inherits="EA_TrialAccountInfoTemplate">
+                    <Size>
+                        <AbsPoint x="550" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top">
+                            <AbsPoint x="0" y="25" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="CharacterSelectAutoLogged" layer="popup" movable="false" savesettings="false">
+                <Size>
+                  <AbsPoint x="100" y="160" />
+                </Size>
+                <Anchors>
+                  <Anchor point="topright" relativePoint="topleft" relativeTo="CharacterSelectServer">
+                    <AbsPoint x="20" y="-20" />
+                  </Anchor>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                    <AbsPoint x="-45" y="-10" />
+                  </Anchor>
+                </Anchors>
+                <Windows>
+                  <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                    </Anchors>
+                  </Window>
+                  <Label name="$parentText" font="font_default_war_heading" maxchars="850" textAutoFitMinScale=".5" wordwrap="true" textalign="left">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                        <AbsPoint x="10" y="10" />
+                      </Anchor>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                        <AbsPoint x="-10" y="-10" />
+                      </Anchor>
+                    </Anchors>
+                    <Size>
+                      <AbsPoint x="1020" y="120" />
+                    </Size>
+                  </Label>
+                </Windows>
+              </Window>
+
+                <Button name="CharacterSelectBack" inherits="CharacterSelectButton">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="100" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.Back"/>
+                    </EventHandlers>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_BACK_NEXT_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Button name="CharacterSelectCareerToFeature" inherits="CharacterSelectButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectBack">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ToFeature"/>
+                    </EventHandlers>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_BACK_NEXT_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Button name="CharacterSelectCareerCreateChar" inherits="CharacterSelectLargeButton" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectBack">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.CreateChar"/>
+                    </EventHandlers>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_DONE_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Window name="$parentCenterAnchor" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-300" y="150" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentBottomCenterAnchor" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright">
+                            <AbsPoint x="-300" y="-150" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="CharacterSelectCareerGenderMale" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5" id="1">
+                    <Size>
+                        <AbsPoint x="115" y="105" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          texture="" id="MaleButton"  />
+                        <NormalHighlit   texture="" id="MaleButton-Rollover"   />
+                        <Pressed         texture="" id="MaleButton-Selected"   />
+                        <PressedHighlit  texture="" id="MaleButton-Selected"   />
+                        <Disabled        texture="" id="MaleButton-Disabled"   />
+                        <DisabledPressed texture="" id="MaleButton-Disabled"   />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.SelectGender"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topright" relativeTo="$parentBottomCenterAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_GENDER_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Button name="CharacterSelectCareerGenderFemale" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5"  id="2">
+                    <Size>
+                        <AbsPoint x="115" y="105" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          texture="" id="FemaleButton"  />
+                        <NormalHighlit   texture="" id="FemaleButton-Rollover"   />
+                        <Pressed         texture="" id="FemaleButton-Selected"   />
+                        <PressedHighlit  texture="" id="FemaleButton-Selected"   />
+                        <Disabled        texture="" id="FemaleButton-Disabled"   />
+                        <DisabledPressed texture="" id="FemaleButton-Disabled"   />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.SelectGender"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentBottomCenterAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_GENDER_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <FullResizeImage name="CharacterSelectNameEditBackground" inherits="EA_FullResizeImage_PregameBorder" layer="default" popable="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="CharacterSelectNameEdit">
+                            <AbsPoint x="-16" y="-14" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="CharacterSelectNameEdit">
+                            <AbsPoint x="16" y="16" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+                <EditBox name="CharacterSelectNameEdit" inherits="EA_EditBox_CharacterCreate" taborder="1" maxchars="14" scrolling="horz" input="text" caserestriction="firstupperrestlower">
+                    <Size>
+                        <AbsPoint x="250" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentCenterAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TextOffset x="10" y="4" />
+                </EditBox>
+                <Label name="CharacterSelectNameLabel" font="font_default_text_huge" maxchars="10" textalign="right">
+                    <Size>
+                        <AbsPoint x="175" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="CharacterSelectNameEdit">
+                            <AbsPoint x="-18" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+              <Button name="CharacterSelectRandomName" inherits="CharacterSelectButton" font="font_default_medium_heading" >
+                <Size>
+                  <AbsPoint x="225" y="105" />
+                </Size>
+                <Anchors>
+                  <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectNameEdit">
+                    <AbsPoint x="0" y="20" />
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.RandomName"/>
+                </EventHandlers>
+                <Sounds>
+                  <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_RANDOM_BUTTON )" />
+                  <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                </Sounds>
+              </Button>
+
+                <Window name="CharacterSelectTemplateOptions">
+                    <Size>
+                        <AbsPoint x="300" y="67" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectRandomName">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentNextButton" inherits="PregameNextButtonTemplate">
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.NextTemplate"/>
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <ComboBox name="$parentComboBox" inherits="FeatureComboBox" layer="popup" >
+                            <Anchors>
+                                <Anchor point="center" relativePoint="center" relativeTo="" >
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnSelChanged" function="CharacterSelectWindow.OnFilterSelChanged" />
+                            </EventHandlers>
+                        </ComboBox>
+                        <Button name="$parentPrevButton" inherits="PregamePrevButtonTemplate">
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.PrevTemplate"/>
+                            </EventHandlers>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Button>
+                        <Label name="$parentTemplatesLabel" font="font_default_text_huge" maxchars="30" textalign="right" textAutoFitMinScale="0.5">
+                            <Size>
+                                <AbsPoint x="300" y="35" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="left" relativePoint="right" relativeTo="$parentPrevButton">
+                                    <AbsPoint x="-10" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="CharacterSelectFeatureWindow1" inherits="CharacterSelectFeatureWindow" id="1">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectTemplateOptions">
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow2" inherits="CharacterSelectFeatureWindow" id="2">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow1">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow3" inherits="CharacterSelectFeatureWindow" id="3">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow2">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow4" inherits="CharacterSelectFeatureWindow" id="4">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow3">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow5" inherits="CharacterSelectFeatureWindow" id="5">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow4">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow6" inherits="CharacterSelectFeatureWindow" id="6">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow7" inherits="CharacterSelectFeatureWindow" id="7">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow6">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectFeatureWindow8" inherits="CharacterSelectFeatureWindow" id="8">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow7">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Button name="CharacterSelectRandomFeatures" inherits="CharacterSelectButton" font="font_default_medium_heading" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectFeatureWindow8ComboBox">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.RandomFeatures"/>
+                    </EventHandlers>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_RANDOM_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Button name="CharacterSelectCareerZoomIn" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5">
+                    <Size>
+                        <AbsPoint x="87" y="87" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          texture="" id="ZoomInButton"  />
+                        <NormalHighlit   texture="" id="ZoomInButton-Rollover"   />
+                        <Pressed         texture="" id="ZoomInButton-Selected"   />
+                        <PressedHighlit  texture="" id="ZoomInButton-Selected"   />
+                        <Disabled        texture="" id="ZoomInButton"   />
+                        <DisabledPressed texture="" id="ZoomInButton-Rollover"   />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ZoomIn"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottomright" relativeTo="CharacterSelectCareerCreateChar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ZOOM_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Button name="CharacterSelectCareerZoomOut" backgroundtexture="EA_Pregame01_d5" highlighttexture="EA_Pregame01_d5">
+                    <Size>
+                        <AbsPoint x="87" y="87" />
+                    </Size>
+                    <TexSlices>
+                        <Normal          texture="" id="ZoomInButton020"  />
+                        <NormalHighlit   texture="" id="ZoomInButton-Rollover027"   />
+                        <Pressed         texture="" id="ZoomInButton-Selected036"   />
+                        <PressedHighlit  texture="" id="ZoomInButton-Selected036"   />
+                        <Disabled        texture="" id="ZoomInButton020"   />
+                        <DisabledPressed texture="" id="ZoomInButton-Rollover027"   />
+                    </TexSlices>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ZoomOut"/>
+                    </EventHandlers>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottomleft" relativeTo="CharacterSelectCareerCreateChar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Sounds>
+                      <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ZOOM_BUTTON )" />
+                      <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+                    </Sounds>
+                </Button>
+                <Label name="CharacterSelectTitleLabel" font="font_heading_large" maxchars="80" textalign="center">
+                    <Size>
+                        <AbsPoint x="1000" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="CharacterSelectTitleSubLabel" font="font_heading_medium" maxchars="120" textalign="center">
+                    <Size>
+                        <AbsPoint x="1200" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="CharacterSelectTitleLabel">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="CharacterSelectInfoBoxAnchor">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="260" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectInfoBox2Right" inherits="CharacterSelectInfoBox2" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectInfoBoxAnchor">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectInfoBoxRight" inherits="CharacterSelectInfoBox" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="CharacterSelectInfoBoxAnchor">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="CharacterSelectInfoBoxLeft" inherits="CharacterSelectInfoBox" >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="right" relativeTo="CharacterSelectInfoBoxAnchor">
+                            <AbsPoint x="-10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <!-- Server Queue Window -->
+                <Window name="QueueStatusWindow" layer="popup" movable="false">
+                    <Size>
+                        <AbsPoint x="600" y="300" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" handleinput="false" layer="background">
+                            <Size>
+                                <AbsPoint x="600" y="300" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="-4" y="-4" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="4" y="4" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+
+                        <Label name="$parentText" font="font_default_text_huge" maxchars="512" textalign="center" wordwrap="true" autoresize="true">
+                            <Size>
+                                <AbsPoint x="500" y="200" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top">
+                                    <AbsPoint x="0" y="30" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="255" b="255" a="255" />
+                        </Label>
+                    </Windows>
+                </Window>
+              <!-- Delete confirmation box -->
+              <Window name="DeleteConfirmation" layer="popup" movable="false" savesettings="false">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnKeyEscape" function="CharacterSelectWindow.HideDeleteDialog"/>
+                  <EventHandler event="OnKeyEnter" function="CharacterSelectWindow.DoDelete"/>
+                  <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.GiveDeleteEditBoxFocus"/>
+                  <EventHandler event="OnRButtonUp" function="CharacterSelectWindow.GiveDeleteEditBoxFocus"/>
+                  <EventHandler event="OnLButtonDown" function="CharacterSelectWindow.GiveDeleteEditBoxFocus"/>
+                  <EventHandler event="OnRButtonDown" function="CharacterSelectWindow.GiveDeleteEditBoxFocus"/>
+                </EventHandlers>
+                <Windows>
+                  <!-- Background Tint -->
+                  <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                          handleinput="false" layer="background" alpha="0.5">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                  </FullResizeImage>
+                  <Window name="$parentBox" layer="popup" movable="false" savesettings="false">
+                    <Size>
+                      <AbsPoint x="500" y="250" />
+                    </Size>
+                    <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                      <EventHandler event="OnKeyEscape" function="CharacterSelectWindow.HideDeleteDialog"/>
+                      <EventHandler event="OnKeyEnter" function="CharacterSelectWindow.DoDelete"/>
+                    </EventHandlers>
+                    <Windows>
+                      <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                        <Anchors>
+                          <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                          <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                        </Anchors>
+                      </Window>
+                      <Window name="$parentBottomAnchor" handleinput="false">
+                        <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="-70" />
+                          </Anchor>
+                        </Anchors>
+                      </Window>
+                      <Label name="$parentLabelDialog" font="font_default_text_large" maxchars="800" textalign="center" wordwrap="true" autoresize="false" autoresizewidth="false" >
+                        <Size>
+                          <AbsPoint x="475" y="40" />
+                        </Size>
+                        <Anchors>
+                          <Anchor point="top" relativePoint="bottom" relativeTo="$parentLabelPrompt">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                        </Anchors>
+                      </Label>
+                      <Label name="$parentLabelPrompt" font="font_default_text_large" maxchars="50" textalign="center" wordwrap="true" autoresize="false" autoresizewidth="false" >
+                        <Size>
+                          <AbsPoint x="475" y="40" />
+                        </Size>
+                        <Anchors>
+                          <Anchor point="top" relativePoint="bottom" relativeTo="$parentEdit">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                        </Anchors>
+                      </Label>
+                      <EditBox name="$parentEdit" inherits="EA_EditBox_CharacterCreate" taborder="1" maxchars="3" scrolling="horz" input="text" caserestriction="upper">
+                        <Size>
+                          <AbsPoint x="70" y="30" />
+                        </Size>
+                        <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="0" y="-60" />
+                          </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                            <EventHandler event="OnTextChanged"  function="CharacterSelectWindow.UpdateDeleteConfirmation" />
+                        </EventHandlers>
+                        <TextOffset x="10" y="4" />
+                      </EditBox>
+                      <Button name="$parentDelete" inherits="CharacterSelectButton">
+                        <TextColors>
+                          <Disabled r="75"  g="75"  b="75" a="255"/>
+                        </TextColors>
+                        <Anchors>
+                          <Anchor point="left" relativePoint="right" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="-20" y="0" />
+                          </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                          <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.DoDelete"/>
+                        </EventHandlers>
+                      </Button>
+                      <Button name="$parentCancel" inherits="CharacterSelectButton">
+                        <Anchors>
+                          <Anchor point="right" relativePoint="left" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="20" y="0" />
+                          </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                          <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.HideDeleteDialog"/>
+                        </EventHandlers>
+                      </Button>
+                    </Windows>
+                  </Window>
+                </Windows>
+              </Window>
+
+             <!-- Forced Random Name box -->
+              <Window name="ForcedRandomName" layer="popup" movable="false" savesettings="false">
+                <Anchors>
+                  <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                  <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnKeyEnter" function="CharacterSelectWindow.AcceptForcedRandomName"/>
+                </EventHandlers>
+                <Windows>
+                  <!-- Background Tint -->
+                  <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground"
+                          handleinput="false" layer="background" alpha="0.5">
+                    <Anchors>
+                      <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"/>
+                      <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+                    </Anchors>
+                    <TintColor r="0" g="0" b="0" />
+                  </FullResizeImage>
+                  <Window name="$parentBox" layer="popup" movable="false" savesettings="false">
+                    <Size>
+                      <AbsPoint x="500" y="250" />
+                    </Size>
+                    <Anchors>
+                      <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                        <AbsPoint x="0" y="0" />
+                      </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                      <EventHandler event="OnKeyEnter" function="CharacterSelectWindow.AcceptForcedRandomName"/>
+                    </EventHandlers>
+                    <Windows>
+                      <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                        <Anchors>
+                          <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                          <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                          </Anchor>
+                        </Anchors>
+                      </Window>
+                      <Window name="$parentBottomAnchor" handleinput="false">
+                        <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom">
+                            <AbsPoint x="0" y="-70" />
+                          </Anchor>
+                        </Anchors>
+                      </Window>
+                      <Label name="$parentLabelPrompt" font="font_default_text_large" maxchars="300" textalign="center" wordwrap="true" autoresize="false" autoresizewidth="false" >
+                        <Size>
+                          <AbsPoint x="475" y="60" />
+                        </Size>
+                        <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentDisplay">
+                            <AbsPoint x="0" y="-50" />
+                          </Anchor>
+                        </Anchors>
+                      </Label>
+                      <Label name="$parentDisplay" font="font_default_text_large" maxchars="30" textalign="center" wordwrap="true" autoresize="false" autoresizewidth="false" >
+                        <Size>
+                          <AbsPoint x="475" y="40" />
+                        </Size>
+                        <Anchors>
+                          <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="0" y="-50" />
+                          </Anchor>
+                        </Anchors>
+                      </Label>                      
+                      <Button name="$parentRandom" inherits="CharacterSelectButton">
+                        <TextColors>
+                          <Disabled r="75"  g="75"  b="75" a="255"/>
+                        </TextColors>
+                        <Anchors>
+                          <Anchor point="left" relativePoint="right" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="-20" y="0" />
+                          </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                          <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.ForcedRandomName"/>
+                        </EventHandlers>
+                      </Button>
+                      <Button name="$parentAccept" inherits="CharacterSelectButton">
+                        <Anchors>
+                          <Anchor point="right" relativePoint="left" relativeTo="$parentBottomAnchor">
+                            <AbsPoint x="20" y="0" />
+                          </Anchor>
+                        </Anchors>
+                        <EventHandlers>
+                          <EventHandler event="OnLButtonUp" function="CharacterSelectWindow.AcceptForcedRandomName"/>
+                        </EventHandlers>
+                      </Button>
+                    </Windows>
+                  </Window>
+                </Windows>
+              </Window>            
+              
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

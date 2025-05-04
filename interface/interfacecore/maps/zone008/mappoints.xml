@@ -1,0 +1,276 @@
+<zone iname="Black Fire Pass">
+    <landmark iname="Lord Thardrik's Tower" id="1" mapIcon="1002" x="12824" y="59889">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Black Fire Basin" id="2" mapIcon="1060" x="15854" y="3382">
+        <importance>major</importance>
+        <specialType>2</specialType>
+    </landmark>
+    <chapter iname="Drok's Fist" id="3" mapIcon="1020" x="31238" y="58683">
+        <race>Greenskin</race>
+        <number>12</number>
+        <ranks realm="destruction" min="24" max="25" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Gorthug's Chew" id="4" mapIcon="1020" x="32468" y="37078">
+        <race>Greenskin</race>
+        <number>13</number>
+		<ranks realm="destruction" min="26" max="27" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <warcamp iname="Blackteef's Boyz" id="5" mapIcon="1050" x="32699" y="9059">
+        <race>Greenskin</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <warcamp iname="Odinadotr's Watch" id="6" mapIcon="1051" x="34377" y="23522">
+        <race>Dwarf</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Moogz's Brawl" id="7" mapIcon="1020" x="4037" y="52105">
+        <race>Greenskin</race>
+        <number>10</number>
+        <ranks realm="destruction" min="20" max="21" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Spida Hole" id="8" mapIcon="1062" x="42915" y="47191">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ancient's Reach" id="9" mapIcon="1005" x="44202" y="20216">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Khazad Bolg Tunnel" id="10" mapIcon="1061" x="44430" y="63002">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Black Fire Mine" id="11" mapIcon="1061" x="44470" y="3826">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Da Big Burn" id="12" mapIcon="1020" x="46813" y="27235">
+        <race>Greenskin</race>
+        <number>14</number>
+        <ranks realm="destruction" min="28" max="29" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Proudrock" id="13" mapIcon="1002" x="47956" y="61814">
+        <race>Dwarf</race>
+        <number>12</number>
+        <ranks realm="order" min="24" max="25" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Black Rock Mine" id="14" mapIcon="1061" x="50562" y="49599">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Hindelburg Mine" id="15" mapIcon="1060" x="57116" y="61959">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Warpclaw Cave" id="16" mapIcon="1062" x="57729" y="51901">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ebon Hollow" id="17" mapIcon="1062" x="59700" y="45679">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Orehound's Lament" id="18" mapIcon="1061" x="7108" y="23344">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="11457" y="23216" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="23092" y="7555" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="15332" y="6389" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Bitter Rivals" id="22" mapIcon="1180" x="3836" y="8927" liveevent="9">
+        <importance>major</importance>
+        <specialType>7</specialType>
+    </landmark>
+    <landmark iname="Withered Skaven Tunnel" id="23" mapIcon="1060" x="18464" y="14602">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Mossy Skaven Tunnel" id="24" mapIcon="1060" x="20417" y="23596">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Damp Skaven Tunnel" id="25" mapIcon="1060" x="27501" y="26535">
+    	<importance>major</importance>
+    </landmark>
+    <publicQuest iname="Sigmarite Temple" id="72" iconSet="1" x="14422" y="39668">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Statue of Inspiration" id="54" iconSet="1" x="17307" y="55907">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Altstadt" id="70" iconSet="1" x="25489" y="34533">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Grimbeard Station" id="73" iconSet="1" x="27613" y="45336">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="24" max="25" />
+        <realm>Both</realm>
+    </publicQuest>
+    <publicQuest iname="Gassy Mines" id="53" iconSet="1" x="28911" y="57150">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Kolaz Umgal Scouts" id="85" iconSet="1" x="37671" y="14867">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Moonfang Remnant" id="74" iconSet="1" x="42832" y="43709">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="24" max="25" />
+        <realm>Both</realm>
+    </publicQuest>
+    <publicQuest iname="Blight Favored Cult" id="83" iconSet="1" x="44397" y="32937">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Thardrik Smashin'" id="55" iconSet="1" x="4504" y="58307">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="20" max="21" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Kolaz Umgal" id="75" iconSet="1" x="52203" y="36024">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="24" max="25" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Blighted Herd" id="84" iconSet="1" x="54566" y="23087">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="28" max="29" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Hindelburg" id="79" iconSet="1" x="57590" y="58272">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="24" max="25" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Priesterstadt" id="71" iconSet="1" x="7504" y="37110">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="26" max="27" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <landmark iname="Gassy Mines" id="26" mapIcon="1060" x="24190" y="56615">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Blackfire Rangers" id="27" mapIcon="1068" x="59445" y="15748">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Kolaz Umgal Mine" id="28" mapIcon="1061" x="50653" y="39827">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Snow Peak Temple" id="29" mapIcon="1034" x="15602" y="36493">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Blighted Herdstone" id="30" mapIcon="1026" x="56007" y="21381">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Iceridge Forest" id="31" mapIcon="1064" x="52933" y="9375">
+    	<importance>minor</importance>
+    </landmark>
+    <landmark iname="Olfnir's Stand" id="32" mapIcon="1002" x="10328" y="24569">
+    	<importance>minor</importance>
+    </landmark>
+    <battlefieldObjective iname="Furrig's Fall: Defensive Boon" id="76" iconSet="1" x="15972" y="5461">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Bugman's Brewery: Merchant's Gift" id="100" iconSet="1" x="25109" y="18956">
+    </battlefieldObjective>
+    <keep iname="Gnol Baraz" id="3" iconSet="1" x="2904" y="16306">
+        <objectiveId>619</objectiveId>
+    </keep>
+    <!-- BEGIN The Badlands points (no direct link) -->
+    <battlefieldObjective iname="Goblin Artillery Range: Healing Boon" id="101" iconSet="1" x="27020" y="60709" zone="2" allowGutter="false">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Karagaz: Artisan's Gift" id="90" iconSet="1" x="43520" y="58951" zone="2" allowGutter="false">
+    </battlefieldObjective>
+    <keep iname="Thickmuck Pit" id="4" iconSet="1" x="20318" y="41418" zone="2" allowGutter="false">
+        <objectiveId>618</objectiveId>
+    </keep>
+    <!-- END The Badlands points -->
+    <zoneTransition iname="To The Badlands" x="32000" y="65535">
+        <zone>002</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Black Crag" x="65535" y="32000">
+        <zone>003</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Barak Varr" x="0" y="48000">
+        <zone>007</zone>
+    </zoneTransition>
+</zone>

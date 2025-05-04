@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+
+<!--# Title: EA_Text_Default 
+
+    This file contains all of the definitions for the HUD menu buttons.
+-->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+        <Button name="EA_Button_HUDMenuButton" inherits="EA_Button_Default" backgroundtexture="EA_Texture_Menu01" highlighttexture="EA_Texture_Menu01" handleinput="false" >
+            <Size>
+                <AbsPoint x="73" y="71" />
+            </Size>
+        </Button>
+
+        <DynamicImage name="EA_Image_HUDMenuButton" texture="EA_Texture_Menu01"  handleinput="false">
+            <Size>
+                <AbsPoint x="52" y="71" />
+            </Size>
+        </DynamicImage>
+
+        <Window name="EA_Window_HUDMenuButton" >
+            <Size>
+                <AbsPoint x="52" y="71" />
+            </Size>
+        </Window>
+
+        <!--# Window: EA_Window_HUDBag                   
+            This is the default HUD bag button.
+        -->
+        <Window name="EA_Window_HUDBag" inherits="EA_Window_HUDMenuButton" layer="default">
+            <Windows>
+                <DynamicImage name="$parentGlow" texture="EA_Texture_Menu01" slice="AccentGlow" handleinput="false"  layer="background">
+                    <Size>
+                        <AbsPoint x="73" y="71" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="5" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <TintColor r="229" g="99" b="99" />
+                </DynamicImage>
+
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Bag-Button"  layer="default" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton"  layer="secondary">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Bag-Button-Highlighted" />
+                        <Pressed id="Bag-Button-Selected" />
+                        <PressedHighlit id="Bag-Button-Selected" />
+                    </TexSlices>
+                </Button>
+
+                <Label name="$parentLabel" inherits="EA_Label_DefaultText_Small" textalign="bottom" maxchars="24" textAutoFitMinScale="0.5" handleinput="false" layer="popup">
+                    <Size>
+                        <AbsPoint x="73" y="71" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDSettings                   
+            This is the default HUD settings button.
+        -->
+        <Window name="EA_Window_HUDSettings" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="CustomizeInterface-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="CustomizeInterface-Button-Highlighted" />
+                        <Pressed id="CustomizeInterface-Button-Selected" />
+                        <PressedHighlit id="CustomizeInterface-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDGuild                  
+            This is the default HUD Guild button.
+        -->
+        <Window name="EA_Window_HUDGuild" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Guild-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Guild-Button-Highlighted" />
+                        <Pressed id="Guild-Button-Selected" />
+                        <PressedHighlit id="Guild-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+
+        <!--# Window: EA_Window_HUDHelp                  
+            This is the default HUD Help button.
+        -->
+        <Window name="EA_Window_HUDHelp" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Help-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Help-Button-Highlighted" />
+                        <Pressed id="Help-Button-Selected" />
+                        <PressedHighlit id="Help-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDMainMenu                  
+            This is the default HUD MainMenu button.
+        -->
+        <Window name="EA_Window_HUDMainMenu" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="MainMenu-Button">
+                    <Size>
+                        <AbsPoint x="58" y="71" />
+                    </Size>
+                </DynamicImage>
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="MainMenu-Button-Highlighted" />
+                        <Pressed id="MainMenu-Button-Selected" />
+                        <PressedHighlit id="MainMenu-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+
+        <!--# Window: EA_Window_HUDOpenParties
+            This is the default HUD Open Party button.
+        -->
+        <Window name="EA_Window_HUDOpenParties" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Scenario-Grouping-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Scenario-Grouping-Button-Highlighted" />
+                        <Pressed id="Scenario-Grouping-Button-Selected" />
+                        <PressedHighlit id="Scenario-Grouping-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+
+        <!--# Window: EA_Window_HUDPaperDoll                  
+            This is the default HUD PaperDoll button.
+        -->
+        <Window name="EA_Window_HUDPaperDoll" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="PaperDoll-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="PaperDoll-Button-Selected-Highlighted" />
+                        <Pressed id="PaperDoll-Button-Selected-Selected" />
+                        <PressedHighlit id="PaperDoll-Button-Selected-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDSpellbook                  
+            This is the default HUD Spellbook button.
+        -->
+        <Window name="EA_Window_HUDSpellbook" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Spellbook-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Spellbook-Button-Highlighted" />
+                        <Pressed id="Spellbook-Button-Selected" />
+                        <PressedHighlit id="Spellbook-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDTome                  
+            This is the default HUD Tome button.
+        -->
+        <Window name="EA_Window_HUDTome" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Tome-Button" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Tome-Button-Highlighted" />
+                        <Pressed id="Tome-Button-Selected" />
+                        <PressedHighlit id="Tome-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+
+        <!--# Window: EA_Window_HUDTomeNewEntires                  
+            This is the default HUD TomeNewEntires button.
+        -->
+        <Window name="EA_Window_HUDTomeNewEntries" inherits="EA_Window_HUDMenuButton" >
+            <Windows>
+                <DynamicImage name="$parentImage" inherits="EA_Image_HUDMenuButton" slice="Tome-Button-NEW-ENTRIES" />
+                <Button name="$parentButton" inherits="EA_Button_HUDMenuButton" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <NormalHighlit id="Tome-Button-Highlighted" />
+                        <Pressed id="Tome-Button-Selected-NEW-ENTRIES" />
+                        <PressedHighlit id="Tome-Button-Highlighted" />
+                    </TexSlices>
+                </Button>
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

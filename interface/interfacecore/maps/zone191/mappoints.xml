@@ -1,0 +1,87 @@
+<zone iname="Zandri">
+    <warcamp iname="Goldbarrow" id="1" mapIcon="1051" x="61143" y="45586">
+        <realm>Order</realm>
+        <services>
+            <service>Renown Trainer</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <warcamp iname="Da Dusty Dry" id="2" mapIcon="1050" x="57613" y="7357">
+        <realm>Destruction</realm>
+        <services>
+            <service>Renown Trainer</service>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Tomb of the Stars" id="3" mapIcon="1061" x="59228" y="25136">
+        <importance>major</importance>
+        <glyphs>
+            <glyph>1</glyph>
+            <glyph>2</glyph>
+            <glyph>3</glyph>
+        </glyphs>
+    </landmark>
+    <landmark iname="Tomb of the Sky" id="4" mapIcon="1061" x="60353" y="32174">
+        <importance>major</importance>
+        <glyphs>
+            <glyph>4</glyph>
+            <glyph>5</glyph>
+            <glyph>6</glyph>
+        </glyphs>
+    </landmark>
+    <landmark iname="Tomb of the Vulture Lord" id="7" mapIcon="4073" x="26605" y="25136">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Tomb of Amsu" id="8" mapIcon="1061" x="41256" y="34039">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Tomb of Nekh Akhet" id="9" mapIcon="1061" x="47646" y="23515">
+        <importance>major</importance>
+    </landmark>
+    <!-- BEGIN Battlefield Objectives -->
+    <battlefieldObjective iname="Tomb of the Moon" id="642" iconSet="2" x="10724" y="48639">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Tomb of the Sun" id="643" iconSet="2" x="14507" y="3818">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Sedjhet Temple" id="556" iconSet="2" x="46178" y="8352">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Obelisk of Judgment" id="558" iconSet="2" x="54201" y="24133">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Aerie of Death" id="557" iconSet="2" x="43684" y="19932">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Forbidden Vaults" id="561" iconSet="2" x="33623" y="18190">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Hall of the Heavens" id="560" iconSet="2" x="23213" y="3034">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Pit of Asaph" id="559" iconSet="2" x="7715" y="13899">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Temple of Ualatp" id="563" iconSet="2" x="4259" y="26601">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Quay of Seftu" id="562" iconSet="2" x="19951" y="26597">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Pit of Kem Senef" id="554" iconSet="2" x="12617" y="36972">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Library of Zandri" id="553" iconSet="2" x="21764" y="49002">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Tombs of the Bitter Wind" id="555" iconSet="2" x="31321" y="34595">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Quarry of Bone" id="552" iconSet="2" x="38155" y="44313">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Nikosi Temple" id="550" iconSet="2" x="50118" y="49621">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Carrion Nest" id="551" iconSet="2" x="54728" y="39674">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Reflecting Pool" id="564" iconSet="2" x="14558" y="26591">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Tomb of Burasut" id="565" iconSet="2" x="45207" y="33220">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Tomb of Rakmose" id="566" iconSet="2" x="44374" y="26218">
+    </battlefieldObjective>
+    <!-- END Battlefield Objectives -->
+</zone>

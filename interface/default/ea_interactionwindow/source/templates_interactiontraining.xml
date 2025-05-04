@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is documented with NaturalDocs style comments. All comments beginning with '#' will
+     be included in the output.
+ -->
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <Windows>
+
+        <Button name="EA_Templates_CoreTrainingAdvanceItem" inherits="EA_Button_CoreAdvance">
+            <Size>
+                <AbsPoint x="510" y="80" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionCoreTraining.SelectAdvance" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionCoreTraining.MouseOverAdvance" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Templates_RenownTrainingAdvanceItem">
+            <Size>
+                <AbsPoint x="510" y="80" />
+            </Size>
+
+            <Windows>
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="4" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-4" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <DynamicImage name="$parentSquare" textureScale="1.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="12" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_SquareFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+                <CircleImage name="$parentCircle" handleinput="false" layer="background" textureScale="1.0" numsegments="8">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSquare">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_RoundFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </CircleImage>
+
+                <Label name="$parentName" wordwrap="false" font="font_clear_default" maxchars="40" inherits="DefaultWindowText" handleinput="false">
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSquare">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentType" wordwrap="false" font="font_clear_default" maxchars="20" inherits="DefaultWindowText" handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentReq" wordwrap="false" font="font_clear_default" maxchars="200" inherits="DefaultWindowText" handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="150" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentType">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentPointCost" wordwrap="false" font="font_default_text_large" maxchars="10" inherits="DefaultWindowText" handleinput="false" textalign="right">
+                    <Size>
+                        <AbsPoint x="100" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.SelectAdvance" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionRenownTraining.MouseOverAdvance" />
+            </EventHandlers>
+        </Button>        
+
+        <Button name="EA_Templates_TomeTrainingAdvanceItem">
+          <Size>
+            <AbsPoint x="510" y="80" />
+          </Size>
+
+          <Windows>
+            <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                  <AbsPoint x="4" y="2" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                  <AbsPoint x="-4" y="-2" />
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+
+
+            <DynamicImage name="$parentSquare" textureScale="1.0" handleinput="false" layer="background">
+              <Size>
+                <AbsPoint x="64" y="64" />
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                  <AbsPoint x="12" y="8" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+                <DynamicImage name="$parentFrame" texture="EA_SquareFrame" textureScale="1.0" handleinput="false" layer="background" >
+                  <Size>
+                    <AbsPoint x="64" y="64" />
+                  </Size>
+                </DynamicImage>
+              </Windows>
+            </DynamicImage>
+            <CircleImage name="$parentCircle" handleinput="false" layer="background" textureScale="1.0" numsegments="8">
+              <Size>
+                <AbsPoint x="64" y="64" />
+              </Size>
+              <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parentSquare">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+                <DynamicImage name="$parentFrame" texture="EA_RoundFrame" textureScale="1.0" handleinput="false" layer="background" >
+                  <Size>
+                    <AbsPoint x="64" y="64" />
+                  </Size>
+                </DynamicImage>
+              </Windows>
+            </CircleImage>
+
+            <Label name="$parentName" wordwrap="false" font="font_clear_default" maxchars="40" inherits="DefaultWindowText" handleinput="false">
+              <Size>
+                <AbsPoint x="400" y="18" />
+              </Size>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSquare">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentType" wordwrap="false" font="font_clear_default" maxchars="20" inherits="DefaultWindowText" handleinput="false" textalign="left">
+              <Size>
+                <AbsPoint x="400" y="18" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                  <AbsPoint x="0" y="2" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <Label name="$parentReq" wordwrap="false" font="font_clear_default" maxchars="200" inherits="DefaultWindowText" handleinput="false" textalign="left">
+              <Size>
+                <AbsPoint x="400" y="150" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentType">
+                  <AbsPoint x="0" y="2" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+          </Windows>
+          <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.SelectAdvance" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionTomeTraining.MouseOverAdvance" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="EA_Templates_CoreTrainingSortButton" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="375" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionCoreTraining.ChangeSorting" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionCoreTraining.OnMouseOverSortButton" />
+            </EventHandlers>
+            <Windows>
+                <!-- Arrow Image Definitions -->
+                <DynamicImage name="$parentUpArrow" texture="shared_01" slice="UP-arrow-depressed" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="9" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="-12" y="-6"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="9" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentUpArrow">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Button>
+
+        <Button name="EA_Templates_RenownTrainingSortButton" inherits="EA_Templates_TomeTrainingSortButton" >
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.ChangeSorting" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionRenownTraining.OnMouseOverSortButton" />
+            </EventHandlers>
+        </Button>        
+
+        <Button name="EA_Templates_TomeTrainingSortButton" inherits="EA_Button_ListSort" >
+            <Size>
+                <AbsPoint x="375" y="40" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTomeTraining.ChangeSorting" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionTomeTraining.OnMouseOverSortButton" />
+            </EventHandlers>
+            <Windows>
+                <!-- Arrow Image Definitions -->
+                <DynamicImage name="$parentUpArrow" texture="shared_01" slice="UP-arrow-depressed" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="9" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right">
+                            <AbsPoint x="-12" y="-6"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentDownArrow" texture="shared_01" slice="DOWN-arrow-depressed" handleinput="false" layer="secondary" >
+                    <Size>
+                        <AbsPoint x="9" y="12" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentUpArrow">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Button>
+
+        <Window name="EA_Templates_SpecializationAbilityDisplay">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionSpecialtyTraining.MouseOverLinkedAbility" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <DynamicImage name="$parentFrame" texture="EA_SquareFrame" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" />
+                        <Anchor point="bottomright" relativePoint="bottomright" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+
+        <!-- Tab button definition for the row of available subsections -->
+        <Button name="EA_Templates_AdvanceSectionTabButton" inherits="EA_Button_Tab">
+            <Size>
+                <AbsPoint x="160" y="55" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTraining.SelectTab" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionTraining.OnMouseOverTab" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+        <!-- Tab button definition for the row of available subsections -->
+        <Button name="EA_Templates_PathTabButton" inherits="EA_Button_Tab">
+            <Size>
+                <AbsPoint x="160" y="55" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.SelectTab" />
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionSpecialtyTraining.OnMouseOverTab" />
+            </EventHandlers>
+            <TextOffset x="0" y="5" />
+        </Button>
+
+        <!-- Filter check button and label combination -->
+        <Window name="EA_Templates_FilterCheckLabel" movable="false">
+            <Size>
+                <AbsPoint x="200" y="35" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTraining.ApplyFilters" />
+            </EventHandlers>
+            <Windows>
+                <Button name="$parentButton" inherits="EA_Button_DefaultCheckBox">
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Label name="$parentLabel" inherits="EA_CheckButtonLabel" handleinput="false">
+                    <Size>
+                        <AbsPoint x="255" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton">
+                            <AbsPoint x="5" y="3" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="255" b="255" a="255" />
+                </Label>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Button_CoreAdvance" inherits="EA_Button_ResizeIconFrame_NoNormalImage" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="510" y="72" />
+            </Size>
+
+            <Windows>
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="4" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-4" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+
+                <DynamicImage name="$parentSquare" textureScale="1.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="12" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_SquareFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+                <CircleImage name="$parentCircle" handleinput="false" layer="background" textureScale="1.0" numsegments="8">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSquare">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_RoundFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </CircleImage>
+
+                <Label name="$parentName" wordwrap="false" font="font_clear_default" maxchars="40" inherits="DefaultWindowText" handleinput="false">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSquare">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentType" wordwrap="false" font="font_clear_default" maxchars="20" inherits="DefaultWindowText" handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentCurrencyCost" inherits="MoneyFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentType">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Label name="$parentRank" wordwrap="false" font="font_default_text_huge" maxchars="4" inherits="DefaultWindowText" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="60" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                            <AbsPoint x="60" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="242" g="169" b="53"  />
+                </Label>
+
+                <Label name="$parentPath" wordwrap="true" font="font_default_text_large" maxchars="48" inherits="DefaultWindowText" handleinput="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="156" y="60" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="-2" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+        </Button>
+
+        <Button name="EA_Button_TomeAdvance" inherits="EA_Button_ResizeIconFrame_NoNormalImage" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="510" y="72" />
+            </Size>
+
+            <Windows>
+                <FullResizeImage name="$parentRowBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="4" y="2" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="-4" y="-2" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+
+                <DynamicImage name="$parentSquare" textureScale="1.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="12" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_SquareFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </DynamicImage>
+                <CircleImage name="$parentCircle" handleinput="false" layer="background" textureScale="1.0" numsegments="8">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentSquare">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <DynamicImage name="$parentFrame" texture="EA_RoundFrame" textureScale="1.0" handleinput="false" layer="background" >
+                            <Size>
+                                <AbsPoint x="64" y="64" />
+                            </Size>
+                        </DynamicImage>
+                    </Windows>
+                </CircleImage>
+
+                <Label name="$parentName" wordwrap="false" font="font_clear_default" maxchars="40" inherits="DefaultWindowText" handleinput="false">
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentSquare">
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Label name="$parentType" wordwrap="false" font="font_clear_default" maxchars="20" inherits="DefaultWindowText" handleinput="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="400" y="18" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Window name="$parentCurrencyCost" inherits="MoneyFrame" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentType">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+            </Windows>
+        </Button>        
+        
+        <!-- Filter Windows -->
+        <Window name="EA_Templates_FilterMenu" movable="false" layer="secondary">
+            <Size>
+                <AbsPoint x="200" y="378" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="-9" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentAvailable" inherits="EA_Templates_FilterCheckLabel">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="5" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentBlock2Separator" inherits="EA_Window_DefaultSeparator">
+                    <Size>
+                        <AbsPoint x="200" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAvailable">
+                            <AbsPoint x="-14" y="-5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentAvailable">
+                            <AbsPoint x="-6" y="-5"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentAction" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAvailable">
+                            <AbsPoint x="0" y="23" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentMorale" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAction">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentTactic" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMorale">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentBlock3Separator" inherits="EA_Window_DefaultSeparator">
+                    <Size>
+                        <AbsPoint x="200" y="28" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTactic">
+                            <AbsPoint x="-14" y="-5"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTactic">
+                            <AbsPoint x="-6" y="-5"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentHealing" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTactic">
+                            <AbsPoint x="0" y="23" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentDamage" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHealing">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentBuffs" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDamage">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentDebuffs" inherits="EA_Templates_FilterCheckLabel">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBuffs">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <!-- Filter Windows -->
+        <Window name="EA_Templates_ShortFilterMenu" movable="false" layer="secondary">
+            <Size>
+                <AbsPoint x="200" y="54" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="-9" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Window name="$parentAvailable" inherits="EA_Templates_FilterCheckLabel">
+                    <Size>
+                        <AbsPoint x="200" y="35" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="5" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+            </Windows>
+        </Window>
+
+        <!-- Spec Path Purchase Subwindow -->
+        <HorizontalResizeImage name="EA_Templates_PathBarBackground" texture="shared_01">
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <Sizes left="0" middle="22" right="0" />
+            <TexCoords>
+                <Middle x="368" y="78" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <HorizontalResizeImage name="EA_Templates_PathBarForeground" texture="shared_01">
+            <Size>
+                <AbsPoint x="22" y="22" />
+            </Size>
+            <Sizes left="0" middle="22" right="0" />
+            <TexCoords>
+                <Middle x="324" y="78" />
+            </TexCoords>
+        </HorizontalResizeImage>
+
+        <StatusBar name="EA_Templates_PathLevelStatusBar" foreground="EA_Templates_PathBarForeground" background="EA_Templates_PathBarBackground" />
+
+        <Window name="EA_Templates_SpecializationPurchase_Old">
+            <Size>
+                <AbsPoint x="990" y="60" />
+            </Size>
+            <Windows>
+                <Label name="$parentLevelText" font="font_default_text_large" wordwrap="false" textalign="left">
+                    <Size>
+                        <AbsPoint x="180" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="30" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <Button name="$parentButton" inherits="EA_Button_DefaultResizeable" textalign="center" font="font_default_text_huge">
+                    <Size>
+                        <AbsPoint x="50" y="39" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentLevelText">
+                            <AbsPoint x="0" y="-5" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_InteractionTraining.PurchaseSpecialization" />
+                    </EventHandlers>
+                    <TextOffset x="3" y="0" />
+                </Button>
+                <StatusBar name="$parentBar" inherits="EA_Templates_PathLevelStatusBar">
+                    <Size>
+                        <AbsPoint x="341" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentButton">
+                            <AbsPoint x="30" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_InteractionTraining.MouseOverSpecializationBar" />
+                    </EventHandlers>
+                </StatusBar>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Templates_SpecializationChange" inherits="EA_Button_Default"
+                backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization"
+                font="font_default_text_huge" textalign="center">
+            <Size>
+                <AbsPoint x="100" y="41" />
+            </Size>
+            <TexSlices>
+                <Normal          id="Button-base"     />
+                <NormalHighlit   id="button-roll"     />
+                <Pressed         id="Button-select"   />
+                <PressedHighlit  id="Button-select"   />
+                <Disabled        id="Button-Static"   />
+            </TexSlices>
+            <TextColors>
+                <Normal         r="255" g="204" b="102" a="255" />
+                <NormalHighlit  r="255" g="85"  b="0"   a="255" />
+                <Pressed        r="255" g="85"  b="0"   a="255" />
+                <PressedHighlit r="255" g="85"  b="0"   a="255" />
+                <Disabled       r="92"  g="92"  b="92"  a="255" />
+            </TextColors>
+        </Button>
+
+        <Window name="EA_Templates_SpecializationStep" handleinput="false" layer="background" popable="false" >
+            <Size>
+                <AbsPoint x="150" y="30" />
+            </Size>
+            <Windows>
+                <Label name="$parentLevelText" font="font_clear_medium" wordwrap="false" textalign="center">
+                    <Size>
+                        <AbsPoint x="30" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentEmpty" texture="EA_Training_Specialization" slice="bar-empty" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent"/>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentFull" texture="EA_Training_Specialization" slice="bar-fill" handleinput="false" layer="secondary">
+                    <Size>
+                        <AbsPoint x="100" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent"/>
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Window>
+
+        <Button name="EA_Templates_SpecializationActionAbility" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="popup" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="71" y="71" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionSpecialtyTraining.MouseOverSpecializationAbility" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionSpecialtyTraining.SelectSpecializationAbility" />
+            </EventHandlers>
+            <TexSlices>
+                <Normal          id="ability-white"   />
+                <NormalHighlit   id="ability-white"   />
+                <Pressed         id="ability-yellow"  />
+                <PressedHighlit  id="ability-yellow"  />
+                <Disabled        id="ability-black"   />
+                <DisabledPressed id="ability-yellow"  />
+            </TexSlices>
+
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" textureScale="1.0">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+                <DynamicImage name="$parentBackgroundRule" handleinput="false" texture="EA_Training_Specialization" slice="grey-bar" layer="background">
+                    <Size>
+                        <AbsPoint x="100" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Button name="EA_Templates_SpecializationTacticAbility" handleinput="true" inherits="EA_Templates_SpecializationActionAbility" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="popup" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="61" y="71" />
+            </Size>
+            <TexSlices>
+                <Normal          id="tactic-white"   />
+                <NormalHighlit   id="tactic-white"   />
+                <Pressed         id="tactic-yellow"  />
+                <PressedHighlit  id="tactic-yellow"  />
+                <Disabled        id="tactic-black"   />
+                <DisabledPressed id="tactic-yellow"  />
+            </TexSlices>
+        </Button>
+
+        <Button name="EA_Templates_SpecializationMoraleAbility" handleinput="true" inherits="EA_Templates_SpecializationActionAbility" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="popup" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="58" y="71" />
+            </Size>
+            <TexSlices>
+                <Normal          id="morale-white"   />
+                <NormalHighlit   id="morale-white"   />
+                <Pressed         id="morale-yellow"  />
+                <PressedHighlit  id="morale-yellow"  />
+                <Disabled        id="morale-black"   />
+                <DisabledPressed id="morale-yellow"  />
+            </TexSlices>
+            <Windows>
+                <CircleImage name="$parentIcon" handleinput="false" textureScale="1.0" numsegments="8">
+                    <Size>
+                        <AbsPoint x="42" y="42" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </CircleImage>
+                <DynamicImage name="$parentBackgroundRule" handleinput="false" texture="EA_Training_Specialization" slice="grey-bar" layer="background">
+                    <Size>
+                        <AbsPoint x="100" y="3" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Button name="EA_Templates_RenownAbility" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="default" drawchildrenfirst="true">
+            <Size>
+                <AbsPoint x="61" y="66" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionRenownTraining.MouseOverRenownAdvance" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.SelectRenownAbility" />
+            </EventHandlers>
+            <TexSlices>
+                <Normal          id="tactic-white"   />
+                <NormalHighlit   id="tactic-white"   />
+                <Pressed         id="tactic-yellow"  />
+                <PressedHighlit  id="tactic-yellow"  />
+                <Disabled        id="tactic-black"   />
+                <DisabledPressed id="tactic-yellow"  />
+            </TexSlices>
+
+            <Windows>
+                <DynamicImage name="$parentIcon" handleinput="false" textureScale="1.0">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+        <Button name="EA_Templates_RenownPassive" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="default" drawchildrenfirst="false">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_InteractionRenownTraining.MouseOverRenownAdvance" />
+                <EventHandler event="OnLButtonUp" function="EA_Window_InteractionRenownTraining.SelectRenownPassive" />
+                <EventHandler event="OnRButtonUp" function="EA_Window_InteractionRenownTraining.DeselectRenownPassive" />
+            </EventHandlers>
+
+            <Windows>
+                <CircleImage name="$parentIcon" handleinput="false" layer="background" numsegments="4">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <TexDims x="64" y="64" />
+                </CircleImage>
+                <DynamicImage name="$parentFrame" handleinput="false" texture="EA_DiamondFrame" >
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentIcon" />
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLabelFrame" handleinput="false" texture="shared_01" slice="Radio-Button" layer="popup">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-11" y="8" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLevel" font="font_clear_small" handleinput="false" wordwrap="false" textalign="center" layer="overlay">
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentLabelFrame">
+                            <AbsPoint x="2" y="-1" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+    </Windows>
+</Interface>
+

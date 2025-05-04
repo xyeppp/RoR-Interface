@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Interface.xsd">
+
+  <Windows>
+
+    <!-- *************** -->
+    <!-- Window Template -->
+    <!-- *************** -->
+    <Window name="TextEntryDlg" layer="popup"  savesettings="false" >
+      <Size>
+        <AbsPoint x="600" y="210"/>
+      </Size>
+      <Anchors>
+        <Anchor point="center" relativePoint="center" relativeTo="">
+          <AbsPoint x="0" y="-200"/>
+        </Anchor>
+      </Anchors>
+
+      <Windows>
+
+        <!-- Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+          </Anchors>
+        </Window>
+
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+        <!-- Text Label -->
+        <Label name="$parentTextLabel" font="font_default_text" textalign="left">
+          <Size>
+            <AbsPoint x="554" y="24"/>
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parent">
+              <AbsPoint x="0" y="55"/>
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" a="255" />
+        </Label>
+
+        <!-- Text Entry -->
+        <EditBox name="$parentTextEntry" inherits="EA_EditBox_DefaultFrame" taborder="1">
+          <Size>
+            <AbsPoint x="554" y="30"/>
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentTextLabel">
+              <AbsPoint x="0" y="7"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnKeyEnter" function="DialogManager.OnTextEntryDlgKeyEnter"/>
+          </EventHandlers>
+          <TextOffset x="8" y="3" />
+        </EditBox>
+
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+            <Size>
+                <AbsPoint x="0" y="75" />
+            </Size>
+        </Window>
+
+        <!-- Button 2 ("Cancel") -->
+        <Button name="$parentButtonCancel" inherits="EA_Button_DefaultResizeable" textalign="center">
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-30" y="-15"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="DialogManager.OnTextEntryDlgButtonCancel"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Button 1 ("Submit") -->
+        <Button name="$parentButtonSubmit" inherits="EA_Button_DefaultResizeable" textalign="center">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentButtonCancel">
+              <AbsPoint x="-5" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="DialogManager.OnTextEntryDlgButtonSubmit"/>
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+
+      <EventHandlers>
+        <EventHandler event="OnKeyEscape" function="DialogManager.OnTextEntryDlgKeyEscape"/>
+      </EventHandlers>
+
+    </Window>
+    
+    <Window name="TextEntryDlgMultiLine" layer="popup"  savesettings="false" >
+      <Size>
+        <AbsPoint x="600" y="270"/>
+      </Size>
+      <Anchors>
+        <Anchor point="center" relativePoint="center" relativeTo="">
+          <AbsPoint x="0" y="-200"/>
+        </Anchor>
+      </Anchors>
+
+      <Windows>
+
+        <!-- Background -->
+        <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" layer="background">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="32" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"/>
+          </Anchors>
+        </Window>
+        
+        <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+
+        <!-- Text Label -->
+        <Label name="$parentTextLabel" font="font_default_text" textalign="left">
+          <Size>
+            <AbsPoint x="554" y="24"/>
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="top" relativeTo="$parent">
+              <AbsPoint x="0" y="55"/>
+            </Anchor>
+          </Anchors>
+          <Color r="255" g="204" b="102" a="255" />
+        </Label>
+
+        <!-- Text Entry -->
+        <EditBox name="$parentTextEntry" inherits="EA_EditBox_DefaultFrame" taborder="1" scrolling="vert">
+          <Size>
+            <AbsPoint x="554" y="90"/>
+          </Size>
+          <Anchors>
+            <Anchor point="bottom" relativePoint="top" relativeTo="$parentTextLabel">
+              <AbsPoint x="0" y="7"/>
+            </Anchor>
+          </Anchors>
+          <TextOffset x="8" y="3" />
+        </EditBox>
+        
+        <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+            <Size>
+                <AbsPoint x="0" y="75" />
+            </Size>
+        </Window>
+
+        <!-- Button 2 ("Cancel") -->
+        <Button name="$parentButtonCancel" inherits="EA_Button_DefaultResizeable" textalign="center">
+          <Anchors>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="-30" y="-15"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="DialogManager.OnTextEntryDlgButtonCancel"/>
+          </EventHandlers>
+        </Button>
+
+        <!-- Button 1 ("Submit") -->
+        <Button name="$parentButtonSubmit" inherits="EA_Button_DefaultResizeable" textalign="center">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topright" relativeTo="$parentButtonCancel">
+              <AbsPoint x="-5" y="0"/>
+            </Anchor>
+          </Anchors>
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="DialogManager.OnTextEntryDlgButtonSubmit"/>
+          </EventHandlers>
+        </Button>
+
+      </Windows>
+
+      <EventHandlers>
+        <EventHandler event="OnKeyEscape" function="DialogManager.OnTextEntryDlgKeyEscape"/>
+      </EventHandlers>
+
+    </Window>
+
+    <!-- ************* -->
+    <!-- Clone Windows -->
+    <!-- ************* -->
+    <Window name="TextEntryDlg1" inherits="TextEntryDlg" id="1"/>
+    <Window name="TextEntryDlg2" inherits="TextEntryDlg" id="2"/>
+    <Window name="TextEntryDlg3" inherits="TextEntryDlg" id="3"/>
+    <Window name="TextEntryDlg4" inherits="TextEntryDlg" id="4"/>
+    <Window name="TextEntryDlg5" inherits="TextEntryDlg" id="5"/>
+    
+    <Window name="TextEntryDlg6" inherits="TextEntryDlgMultiLine" id="6"/>
+    <Window name="TextEntryDlg7" inherits="TextEntryDlgMultiLine" id="7"/>
+    <Window name="TextEntryDlg8" inherits="TextEntryDlgMultiLine" id="8"/>
+    <Window name="TextEntryDlg9" inherits="TextEntryDlgMultiLine" id="9"/>
+    <Window name="TextEntryDlg10" inherits="TextEntryDlgMultiLine" id="10"/>
+
+  </Windows>
+  
+</Interface>

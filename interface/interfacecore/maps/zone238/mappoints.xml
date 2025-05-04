@@ -1,0 +1,13 @@
+<zone iname="Blood of the Black Cairn">
+    <battlefieldObjective iname="The Northern Fountain" id="5150" iconSet="1" x="27377" y="28510">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Orchard" id="5151" iconSet="1" x="27052" y="37444">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Crossroads" id="5152" iconSet="1" x="24807" y="32695">
+    </battlefieldObjective>
+	<battlefieldObjective iname="The Tower" id="5153" iconSet="1" x="21670" y="28491">
+    </battlefieldObjective>
+	<battlefieldObjective iname="The Southern Fountain" id="5154" iconSet="1" x="22106" y="37495">
+    </battlefieldObjective>
+	
+</zone>

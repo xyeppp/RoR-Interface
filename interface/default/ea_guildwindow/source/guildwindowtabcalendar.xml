@@ -1,0 +1,840 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/GuildWindowTabCalendar.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!-- ComboBox Tiny -->
+    <Button name="Button_DefaultResizableComboBoxSelected_Calendar_Tiny"  inherits="EA_Button_DefaultResizableComboBoxSelected" >
+        <Size>
+          <AbsPoint x="60" y="28" />
+        </Size>
+        <OverlayOffset x="33" y="0" />
+    </Button>
+      
+    <ComboBox name="ComboBox_Template_Calendar_Tiny" selectedbutton="Button_DefaultResizableComboBoxSelected_Calendar_Tiny" 
+              menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonTiny"
+              scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+        <Size>
+          <AbsPoint x="60" y="28" />
+        </Size>
+        <MenuButtonOffset x="5" y="5" />
+    </ComboBox>
+
+    <!-- ComboBox Large -->
+    <Button name="Button_DefaultResizableComboBoxSelected_Calendar_Large"  inherits="EA_Button_DefaultResizableComboBoxSelected" >
+        <Size>
+          <AbsPoint x="90" y="28" />
+        </Size>
+        <OverlayOffset x="63" y="0" />
+    </Button>
+      
+    <ComboBox name="ComboBox_Template_Calendar_Large" selectedbutton="Button_DefaultResizableComboBoxSelected_Calendar_Large" 
+              menubackground="EA_Window_ComboBoxMenuBackground" menuitembutton="EA_Button_DefaultMenuButtonTiny"
+              scrollbar="EA_ScrollBar_DefaultVerticalChain" maxvisibleitems="10" >
+        <Size>
+          <AbsPoint x="90" y="28" />
+        </Size>
+        <MenuButtonOffset x="5" y="5" />
+    </ComboBox>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="GuildWindowTabCalendarSocket" movable="false" layer="secondary">
+      <Anchors>
+        <Anchor point="topleft" relativePoint="topleft" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="GuildWindowSocket">
+          <AbsPoint x="0" y="0"/>
+        </Anchor>
+      </Anchors>
+      <EventHandlers>
+        <EventHandler event="OnShutdown" function="GuildWindowTabCalendar.Shutdown"/>
+      </EventHandlers>
+      <Windows>
+
+        <Window name ="$parentLocked">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+            <!-- Padlock Image -->
+            <DynamicImage name="$parentImage" texture="EA_Guild" slice="lock" handleinput="true" layer="secondary">
+              <Size>
+                <AbsPoint x="71" y="96" />
+              </Size>
+              <Anchors>
+                <Anchor point="center" relativePoint="bottom" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </DynamicImage>
+
+            <!-- Calendar Locked Text -->
+            <Label name="$parentText" font="font_guild_MP_R_23" maxchars="128" textalign="top" wordwrap="true" popable="false">
+              <Size>
+                <AbsPoint x="500" y="250" />
+              </Size>
+              <Anchors>
+                <Anchor point="left" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="10" y="15" />
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="-10" y="-10" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+          </Windows>
+        </Window>
+        
+        <!--   The Actual Calendar itself -->
+        <Window name ="GuildWindowCalendar" inherits ="CalendarSocket">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="85" y="0" />
+            </Anchor>
+            <Anchor point="topleft" relativePoint="bottomright" relativeTo="$parentAppointmentSeperator">
+              <AbsPoint x="415" y="0" />
+            </Anchor>
+          </Anchors>
+        </Window>
+
+        <Label name="$parentTotalAppointments" font="font_guild_MP_R_17" maxchars="64" textalign="center" autoresize="true" wordwrap="true" popable="false">
+          <Size>
+            <AbsPoint x="300" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="top" relativePoint="bottom" relativeTo="$parentNewAppointmentButton">
+              <AbsPoint x="0" y="-10" />
+            </Anchor>
+          </Anchors>
+        </Label>
+
+        <!-- Calendar Command New Appointment Button -->
+        <Button name="$parentNewAppointmentButton" inherits="GuildWindowTabCalendarButtonTemplate">
+          <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.CalendarCommandNewAppointment" />
+            <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverNewAppointmentButton" />
+          </EventHandlers>
+          <Anchors>
+            <Anchor point="center" relativePoint="center" relativeTo="$parentNewAppointment">
+              <AbsPoint x="0" y="-20"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+
+        <!-- The Horizontal line that appears above the Appointment Date -->
+        <HorizontalResizeImage name="$parentAppointmentSeperator" inherits="EA_BrownHorizontalRule" layer="background" handleinput="false">
+          <Anchors>
+            <Anchor point="left" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="9" y="-50"/>
+            </Anchor>
+            <Anchor point="left" relativePoint="bottomright" relativeTo="$parentVertSeparator">
+              <AbsPoint x="8" y="-35"/>
+            </Anchor>
+          </Anchors>
+        </HorizontalResizeImage>
+        
+        
+        <Window name="$parentVertSeparator" inherits="EA_Window_DefaultVerticalSeparatorWithoutTop">
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentAppointments">
+                    <AbsPoint x="10" y="-30" />
+                </Anchor>
+                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentAppointments">
+                    <AbsPoint x="10" y="0" />
+                </Anchor>
+            </Anchors>
+        </Window>
+
+<!-- 
+    Current Appointment Components
+-->
+        <Window name ="$parentFilters" layer="secondary">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentAppointments">
+              <AbsPoint x="5" y="5" />
+            </Anchor>
+          </Anchors>
+          <Size>
+            <AbsPoint x="175" y="30" />
+          </Size>
+          <Windows>
+
+            <ComboBox name="$parentFilterComboBox" inherits="EA_Templates_GuildComboBox">
+              <Size>
+                <AbsPoint x="175" y="29" />
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="GuildWindowTabCalendar.OnSelectFilter" />
+              </EventHandlers>
+            </ComboBox>
+
+          </Windows>
+        </Window>
+        
+        <Window name ="$parentAppointments" layer="secondary">
+          <Anchors>
+            <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+              <AbsPoint x="0" y="30" />
+            </Anchor>
+            <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parent">
+              <AbsPoint x="-385" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+
+            <!-- List Box -->
+            <ListBox name="$parentList" rowdef="CalendarAppointmentSummaryRow" scrollbar="EA_ScrollBar_DefaultVerticalChain" visiblerows="22" rowcount="100" rowspacing="0">
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="5"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="-10" y="-10"/>
+                </Anchor>
+              </Anchors>
+              <ListData table="GuildWindowTabCalendar.appointmentListData" populationfunction="GuildWindowTabCalendar.UpdateAppointmentRow">
+                <ListColumns>
+                  <ListColumn windowname="StartDay"   variable="startDayString"  format="wstring" />
+                  <ListColumn windowname="StartTime"  variable="startTimeString" format="wstring" />
+                  <ListColumn windowname="Subject"    variable="subject"   format="wstring" />
+                </ListColumns>
+              </ListData>
+            </ListBox>
+            
+          </Windows>
+        </Window>        <!-- End of Current Appointments Components -->
+
+<!-- 
+    New Appointment Components
+-->
+        <Window name ="$parentNewAppointment" layer="secondary">
+          <Anchors>
+            <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAppointmentSeperator">
+              <AbsPoint x="0" y="0" />
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentVertSeparator">
+              <AbsPoint x="9" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+
+            <!-- New Appointment Event Name Edit Box -->
+            <EditBox name="$parentEventNameEditBox" inherits="EA_EditBox_DefaultFrame" maxchars="29" id="1" ignoreFormattingTags="true">
+              <Size>
+                <AbsPoint x="500" y="30"/>
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="7" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnKeyEscape" function="GuildWindowTabProfile.OnKeyEscapeEditBox" />
+              </EventHandlers>
+            </EditBox>
+
+            <!-- New Appointment Start Time Header -->
+            <Label name="$parentStartTimeHeader" font="font_guild_MP_R_19" maxchars="16" textalign="bottomleft" popable="false">
+              <Size>
+                <AbsPoint x="100" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEventNameEditBox">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Start Time Month Combo Box -->
+            <ComboBox name="$parentStartTimeMonthComboBox" inherits="ComboBox_Template_Calendar_Large" id="1">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStartTimeHeader">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="GuildWindowTabCalendar.OnSelChangedTime" />
+              </EventHandlers>
+            </ComboBox>
+
+            <!-- Start Time Day Combo Box -->
+            <ComboBox name="$parentStartTimeDayComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="2">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeMonthComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- Start Time Year Combo Box -->
+            <ComboBox name="$parentStartTimeYearComboBox" inherits="ComboBox_Template_Calendar_Large" id="3">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeDayComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="GuildWindowTabCalendar.OnSelChangedTime" />
+              </EventHandlers>
+            </ComboBox>
+
+            <!-- Start Time At Header -->
+            <Label name="$parentStartTimeAtHeader" font="font_guild_MP_R_19" maxchars="4" textalign="rightcenter" popable="false" textAutoFitMinScale=".5">
+              <Size>
+                <AbsPoint x="20" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeYearComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Start Time Hour Combo Box -->
+            <ComboBox name="$parentStartTimeHourComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="4">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeAtHeader">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- Start Time Minute Combo Box -->
+            <ComboBox name="$parentStartTimeMinuteComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="5">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeHourComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- Start Time AMPM Combo Box -->
+            <ComboBox name="$parentStartTimeAMPMComboBox" inherits="ComboBox_Template_Calendar_Large" id="6">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartTimeMinuteComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+            
+            <!-- New Appointment End Time Header -->
+            <Label name="$parentEndTimeHeader" font="font_guild_MP_R_19" maxchars="16" textalign="bottomleft" popable="false">
+              <Size>
+                <AbsPoint x="100" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentStartTimeMonthComboBox">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- End Time Month Combo Box -->
+            <ComboBox name="$parentEndTimeMonthComboBox" inherits="ComboBox_Template_Calendar_Large" id="7">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEndTimeHeader">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="GuildWindowTabCalendar.OnSelChangedTime" />
+              </EventHandlers>
+            </ComboBox>
+
+            <!-- End Time Day Combo Box -->
+            <ComboBox name="$parentEndTimeDayComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="8">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeMonthComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- End Time Year Combo Box -->
+            <ComboBox name="$parentEndTimeYearComboBox" inherits="ComboBox_Template_Calendar_Large" id="9">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeDayComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnSelChanged" function="GuildWindowTabCalendar.OnSelChangedTime" />
+              </EventHandlers>
+            </ComboBox>
+
+            <!-- End Time At Header -->
+            <Label name="$parentEndTimeAtHeader" font="font_guild_MP_R_19" maxchars="4" textalign="rightcenter" popable="false" textAutoFitMinScale=".5">
+              <Size>
+                <AbsPoint x="20" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeYearComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- End Time Hour Combo Box -->
+            <ComboBox name="$parentEndTimeHourComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="10">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeAtHeader">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- End Time Minute Combo Box -->
+            <ComboBox name="$parentEndTimeMinuteComboBox" inherits="ComboBox_Template_Calendar_Tiny" id="11">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeHourComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- End Time AMPM Combo Box -->
+            <ComboBox name="$parentEndTimeAMPMComboBox" inherits="ComboBox_Template_Calendar_Large" id="12">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndTimeMinuteComboBox">
+                  <AbsPoint x="5" y="0" />
+                </Anchor>
+              </Anchors>
+            </ComboBox>
+
+            <!-- New Appointment Description Edit Box -->
+            <EditBox name="$parentDescriptionEditBox" inherits="EA_EditBox_DefaultFrame_Multiline" maxchars="99" id="2" scrollbar="EA_ScrollBar_DefaultVerticalChain">
+              <Size>
+                <AbsPoint x="500" y="65"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEndTimeMonthComboBox">
+                  <AbsPoint x="0" y="15" />
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnKeyEscape" function="GuildWindowTabProfile.OnKeyEscapeEditBox" />
+              </EventHandlers>
+            </EditBox>
+            
+            <!-- New Appointment Lock Signup Header-->
+            <Label name="$parentLockSignupHeader" font="font_guild_MP_R_19" maxchars="32" textalign="rightcenter" autoresize="false" popable="false">
+              <Size>
+                <AbsPoint x="150" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentDescriptionEditBox">
+                  <AbsPoint x="0" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <!-- New Appointment Lock Signup Checkbox -->
+            <Button name="$parentLockSignupCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentLockSignupHeader">
+                  <AbsPoint x="5" y="0"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCheckboxLockSignup" />
+              </EventHandlers>
+            </Button>
+
+            <!-- New Appointment Share Signup Header-->
+            <Label name="$parentShareHeader" font="font_guild_MP_R_19" maxchars="32" textalign="rightcenter" autoresize="false" popable="false">
+              <Size>
+                <AbsPoint x="150" y="32" />
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentLockSignupCheckBox">
+                  <AbsPoint x="25" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            <!-- New Appointment Share Signup Checkbox -->
+            <Button name="$parentShareCheckBox" inherits="EA_Button_DefaultCheckBox" handleinput="true">
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentShareHeader">
+                  <AbsPoint x="5" y="0"/>
+                </Anchor>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCheckboxShare" />
+              </EventHandlers>
+            </Button>
+            
+            <!-- Button Background -->
+            <FullResizeImage name="$parentButtonBackground" inherits="EA_FullResizeImage_MetalFill" handleinput="false">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="-58"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="-8"/>
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+
+            <!-- Calendar Command Cancel Appointment Button -->
+            <Button name="$parentCancelButton" inherits="GuildWindowTabCalendarButtonTemplate">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarCommandNewAppointmentCancelButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="center" relativePoint="right" relativeTo="$parentButtonBackground">
+                  <AbsPoint x="-25" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+            
+            <!-- Calendar Command Create Appointment Button -->
+            <Button name="$parentCreateButton" inherits="GuildWindowTabCalendarButtonTemplate">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarCommandNewAppointmentCreateButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="center" relativePoint="left" relativeTo="$parentButtonBackground">
+                  <AbsPoint x="25" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+          </Windows>
+        </Window>        <!-- End of New Appointment Components -->
+
+<!-- 
+    Selected Appointment Components
+-->
+        <Window name ="$parentSelectedAppointment">
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+              <AbsPoint x="9" y="0" />
+            </Anchor>
+            <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentVertSeparator">
+              <AbsPoint x="9" y="0" />
+            </Anchor>
+          </Anchors>
+          <Windows>
+
+            <!-- Selected Appointment Button Background -->
+            <FullResizeImage name="$parentSelectedAppointmentButtonBackground" inherits="EA_FullResizeImage_MetalFill" layer="background" handleinput="false">
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="0" y="-60"/>
+                </Anchor>
+                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                  <AbsPoint x="0" y="-9"/>
+                </Anchor>
+              </Anchors>
+            </FullResizeImage>
+            
+            <!-- Selected Appointment Signups Back Button -->
+            <Button name="$parentBackButton" inherits="GuildWindowTabCalendarButtonTemplate">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarSelectedAppointmentBackButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="right" relativePoint="right" relativeTo="$parentSelectedAppointmentButtonBackground">
+                  <AbsPoint x="-10" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <!-- Selected Appointment Signups Signup Button -->
+            <Button name="$parentSignupButton" inherits="GuildWindowTabCalendarButtonTemplate" >
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarSelectedAppointmentSignupButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="left" relativePoint="left" relativeTo="$parentSelectedAppointmentButtonBackground">
+                  <AbsPoint x="10" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <!-- Selected Appointment Signups Signup Button -->
+            <DynamicImage name="$parentSignupButtonLock" texture="EA_HUD_01" slice="Icon-Lock" layer="secondary">
+              <Size>
+                <AbsPoint x="22" y="37" />
+              </Size>
+              <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parentSignupButton"/>
+              </Anchors>
+              <EventHandlers>
+                <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverSignupButtonLock" />
+              </EventHandlers>
+            </DynamicImage>
+            
+            <!-- Selected Appointment Signups Leave Button -->
+            <Button name="$parentLeaveButton" inherits="GuildWindowTabCalendarButtonTemplate" >
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarSelectedAppointmentLeaveButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="left" relativePoint="left" relativeTo="$parentSelectedAppointmentButtonBackground">
+                  <AbsPoint x="10" y="0"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <!-- Selected Appointment Signups Components -->
+            <Window name="$parentSignups" layer="secondary">
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parentSelectedAppointmentButtonBackground">
+                  <AbsPoint x="0" y="-250"/>
+                </Anchor>
+                <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentSelectedAppointmentButtonBackground">
+                  <AbsPoint x="0" y="0" />
+                </Anchor>
+              </Anchors>
+              <Windows>
+
+                <!-- Selected Appointment Signups Sort Bar -->
+                <Window name="$parentSortBar" layer="secondary">
+                  <Size>
+                    <AbsPoint x="300" y="32"/>
+                  </Size>
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                  </Anchors>
+
+                  <!-- Sort Buttons-->
+                  <Windows>
+
+                    <!-- Selected Appointment Signups Sort Bar Name Button-->
+                    <Button name="$parentNameButton" inherits="EA_Button_ListSort" id="1" >
+                      <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                          <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="365" y="0"/>
+                        </Anchor>
+                      </Anchors>
+                      <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpSignupListSortButton" />
+                        <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverSignupListSortButton" />
+                      </EventHandlers>
+                    </Button>
+
+                    <!-- Selected Appointment Signups Sort Bar Status Button-->
+                    <Button name="$parentStatusButton" inherits="EA_Button_ListSort" id="2" >
+                      <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentNameButton">
+                          <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                          <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                      </Anchors>
+                      <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpSignupListSortButton" />
+                        <EventHandler event="OnMouseOver" function="GuildWindowTabCalendar.OnMouseOverSignupListSortButton" />
+                      </EventHandlers>
+                    </Button>
+
+                    <!-- Arrow Image Definitions -->
+                    <DynamicImage name="SelectedAppointmentSignupListUpArrow" inherits="TemplateSortButonUpArrow" />
+                    <DynamicImage name="SelectedAppointmentSignupListDownArrow" inherits="TemplateSortButonDownArrow" />
+
+                  </Windows>
+                  <!-- End of Sort Buttons -->
+
+                </Window>
+                <!-- End of $parentSortButtonBar-->
+
+                <!-- Selected Appointment Signups List Box -->
+                <ListBox name="$parentList" rowdef="CalendarSignupRow" scrollbar="EA_ScrollBar_DefaultVerticalChain" visiblerows="7" rowcount="100" rowspacing="0">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortBar">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                  </Anchors>
+                  <ListData table="GuildWindowTabCalendar.signupListData" populationfunction="GuildWindowTabCalendar.UpdateSignupRow">
+                    <ListColumns>
+                      <ListColumn windowname="Name"     variable="name"     format="wstring" />
+                      <ListColumn windowname="Accepted" variable="accepted" format="wstring"  />
+                    </ListColumns>
+                  </ListData>
+                </ListBox>
+                
+              </Windows>
+            </Window>
+            <!-- End of Selected Appointment Signups Components -->
+            
+            
+
+            <!-- Selected Appointment Event Name -->
+            <Label name="$parentEventName" font="font_guild_MP_R_23" maxchars="32" textalign="center" popable="false" wordwrap="false" ignoreFormattingTags="true" textAutoFitMinScale="0.5" warnOnTextCropped="false">
+              <Size>
+                <AbsPoint x="360" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                  <AbsPoint x="5" y="15" />
+                </Anchor>
+              </Anchors>
+              <Color r="226" g="216" b="45" a="255"/>
+            </Label>
+            
+            <!-- Selected Appointment Creator Header -->
+            <Label name="$parentCreatorHeader" font="font_guild_MP_R_19" maxchars="24" textalign="rightcenter" popable="false">
+              <Size>
+                <AbsPoint x="180" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEventName">
+                  <AbsPoint x="0" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Selected Appointment Creator -->
+            <Label name="$parentCreator" font="font_guild_MP_R_19" maxchars="25" textalign="leftcenter" popable="false">
+              <Size>
+                <AbsPoint x="175" y="32"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentCreatorHeader">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            
+            <!-- Selected Appointment Start Date Header -->
+            <Label name="$parentStartDateHeader" font="font_guild_MP_R_19" maxchars="16" textalign="rightcenter" popable="false">
+              <Size>
+                <AbsPoint x="100" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentCreatorHeader">
+                  <AbsPoint x="-60" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            
+            <!-- Selected Appointment Start Date -->
+            <Label name="$parentStartDate" font="font_guild_MP_R_19" maxchars="32" textalign="leftcenter" popable="false">
+              <Size>
+                <AbsPoint x="230" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentStartDateHeader">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Selected Appointment End Date Header -->
+            <Label name="$parentEndDateHeader" font="font_guild_MP_R_19" maxchars="16" textalign="rightcenter" popable="false">
+              <Size>
+                <AbsPoint x="100" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentStartDateHeader">
+                  <AbsPoint x="0" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+            
+            <!-- Selected Appointment End Date -->
+            <Label name="$parentEndDate" font="font_guild_MP_R_19" maxchars="32" textalign="leftcenter" popable="false">
+              <Size>
+                <AbsPoint x="230" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentEndDateHeader">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Shared With Alliance Header -->
+            <Label name="$parentShareHeader" font="font_guild_MP_R_19" maxchars="24" textalign="rightcenter" popable="false">
+              <Size>
+                <AbsPoint x="180" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentEndDateHeader">
+                  <AbsPoint x="60" y="5" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Shared With Alliance Text -->
+            <Label name="$parentShareText" font="font_guild_MP_R_19" maxchars="32" textalign="leftcenter" popable="false">
+              <Size>
+                <AbsPoint x="150" y="28"/>
+              </Size>
+              <Anchors>
+                <Anchor point="right" relativePoint="left" relativeTo="$parentShareHeader">
+                  <AbsPoint x="10" y="0" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Selected Appointment Description -->
+            <Label name="$parentDescription" font="font_guild_MP_R_19" maxchars="99" textalign="topleft" wordwrap="true" popable="false">
+              <Size>
+                <AbsPoint x="350" y="85"/>
+              </Size>
+              <Anchors>
+                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentShareHeader">
+                  <AbsPoint x="10" y="10" />
+                </Anchor>
+              </Anchors>
+            </Label>
+
+            <!-- Selected Appointment Edit Button -->
+            <Button name="$parentEditButton" inherits="GuildWindowTabCalendarButtonTemplate">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarSelectedAppointmentEditButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                  <AbsPoint x="-15" y="50"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+            <!-- Selected Appointment Delete Button -->
+            <Button name="$parentDeleteButton" inherits="GuildWindowTabCalendarButtonTemplate">
+              <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="GuildWindowTabCalendar.OnLButtonUpCalendarSelectedAppointmentDeleteButton" />
+              </EventHandlers>
+              <Anchors>
+                <Anchor point="bottom" relativePoint="top" relativeTo="$parentEditButton">
+                  <AbsPoint x="0" y="20"/>
+                </Anchor>
+              </Anchors>
+            </Button>
+
+          </Windows>
+        </Window> <!-- End of Selected Appointment Components -->
+        
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Guild Window Tab Calendar -->
+</Interface>

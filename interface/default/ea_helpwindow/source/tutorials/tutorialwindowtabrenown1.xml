@@ -1,0 +1,21 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Scripts>
+    <Script file="Source/Tutorials/TutorialWindowTabRenown1.lua"/>
+  </Scripts>
+  <Windows>
+
+    <!--*******************************************************************-->
+    <!--                      Whole Window Definition                      -->
+    <!--*******************************************************************-->
+    <Window name="TutorialWindowTabRenown1Template" inherits="EA_Window_TutorialTabTemplate" >
+      <EventHandlers>
+        <EventHandler event="OnInitialize" function="TutorialWindowTabRenown1.Initialize"/>
+        <EventHandler event="OnShown" function="TutorialWindowTabRenown1.OnShown"/>
+      </EventHandlers>
+      <Windows>
+
+          
+      </Windows> <!-- End of Whole Window Children -->
+    </Window>    <!-- End of Whole Window Definition  -->
+  </Windows>     <!-- End of Tutorial Window Tab General -->
+</Interface>

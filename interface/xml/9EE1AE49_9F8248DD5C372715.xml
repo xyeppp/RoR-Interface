@@ -1,0 +1,223 @@
+<zone iname="The Blighted Isle">
+    <publicQuest iname="Nimosar" id="1" mapIcon="1072" x="10589" y="38827">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>340</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <chapter iname="Akrana's Storm" id="2" mapIcon="1253" x="12760" y="32057">
+        <race>DarkElf</race>
+        <number>2</number>
+		<ranks realm="destruction" min="3" max="4" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+		  <service>Renown Trainer</service>
+		  <service>Tradeskill Trainers</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <chapter iname="Poisonblade Heath" id="3" mapIcon="1253" x="13069" y="51971">
+        <race>DarkElf</race>
+        <number>3</number>
+		<ranks realm="destruction" min="5" max="7" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <landmark iname="Lake Menarhain" id="4" mapIcon="1037" x="15066" y="35563">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Nemesis Landing" id="5" mapIcon="1256" x="14812" y="5619">
+        <race>DarkElf</race>
+        <number>1</number>
+		<ranks realm="destruction" min="1" max="2" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+		  <service>Renown Trainer</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <publicQuest iname="Spires of Narthain" id="6" mapIcon="1072" x="16207" y="17349">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="1" max="2" />
+        <objectiveId>435</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Mistwood Grove" id="7" mapIcon="1072" x="20760" y="31878">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>339</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Golden Tor" id="8" mapIcon="1072" x="21671" y="46833">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="5" max="7" />
+        <objectiveId>341</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <warcamp iname="Cynathai Span" id="9" mapIcon="1055" x="26172" y="57217">
+        <race>DarkElf</race>
+        <services>
+          <service>Renown Trainer</service>
+          <service>Renown Gear Merchant</service>
+          <service>Quartermaster</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Lacorith" id="10" mapIcon="1208" x="35608" y="38321">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Fire Crystal Caverns" id="11" mapIcon="1060" x="36484" y="20345">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="The Forlorn Isle" id="12" mapIcon="1072" x="37129" y="28097">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>344</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <chapter iname="Moonrise Tower" id="13" mapIcon="1208" x="39231" y="4725">
+        <race>HighElf</race>
+        <number>1</number>
+		<ranks realm="order" min="1" max="2" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+		  <service>Renown Trainer</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <publicQuest iname="Thanalorn Forest" id="14" mapIcon="1072" x="41448" y="20390">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>345</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Swale of Miralei" id="15" mapIcon="1072" x="42123" y="34739">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>346</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <warcamp iname="Tor Aendris" id="16" mapIcon="1054" x="42860" y="47787">
+        <race>HighElf</race>
+        <services>
+          <service>Renown Trainer</service>
+          <service>Renown Gear Merchant</service>
+          <service>Quartermaster</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <chapter iname="Adunei" id="17" mapIcon="1208" x="44043" y="26460">
+        <race>HighElf</race>
+        <number>2</number>
+		<ranks realm="order" min="3" max="4" />
+		<services>
+          <service>Career Trainer</service>
+          <service>General Merchants</service>
+          <service>Healer</service>
+          <service>Rally Master</service>
+          <service>Kill Collector</service>
+          <service>Mailbox</service>
+		</services>
+    </chapter>
+    <landmark iname="Shrine of Lore" id="18" mapIcon="1005" x="5041" y="31733">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sternbrow's Lament" id="19" mapIcon="1206" x="50725" y="41376">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="House Arkaneth" id="20" mapIcon="1072" x="54651" y="7649">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="3" max="5" />
+        <objectiveId>434</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ruins of Erraneth" id="21" mapIcon="1072" x="55592" y="54293">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="5" max="7" />
+        <objectiveId>335</objectiveId>
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Watchtower" id="22" mapIcon="1072" x="6718" y="44952">
+        <difficulty>normal</difficulty>
+        <players min="6" max="9" />
+        <rewards>normal</rewards>
+		<ranks min="3" max="4" />
+        <objectiveId>338</objectiveId>
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Dreamshade Forest" id="23" mapIcon="1072" x="8306" y="52728">
+        <difficulty>hard</difficulty>
+        <players min="9" />
+        <rewards>advanced</rewards>
+		<ranks min="5" max="7" />
+        <objectiveId>343</objectiveId>
+        <realm>Destruction</realm>
+    
+</publicQuest>
+
+<landmark iname="Wild Hunt: Curse of Kurnous" id="26" mapIcon="1072" x="36019" y="60626" liveevent="23">
+
+        <importance>minor</importance>
+
+        <specialType>10</specialType>
+
+    </landmark>
+
+<!--<landmark iname="Live Event: Shrine of Khaine" id="24" mapIcon="1026" x="35932" y="51680">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+</landmark>-->
+
+
+<!--<landmark iname="Live Event: Shrine of Khaine" id="25" mapIcon="1026" x="41865" y="60108">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+</landmark>-->
+
+<zoneTransition iname="To Chrace" x="48000" y="65535">
+        <zone>206</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Chrace" x="16000" y="65535">
+        <zone>206</zone>
+    </zoneTransition>
+</zone>

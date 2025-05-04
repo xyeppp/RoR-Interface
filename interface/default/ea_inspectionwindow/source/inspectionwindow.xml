@@ -1,0 +1,686 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/InspectionWindow.lua" />
+    </Scripts>
+    <Windows>
+
+        <Window name="InspectionWindowBraggingRightTemplate">
+            <Size>
+                <AbsPoint x="480" y="50" />
+            </Size>
+            <Windows>
+                <Label name="$parentText" inherits="EA_Label_DefaultSubHeading" wordwrap="true" autoresize="true" textalign="left">
+                    <Size>
+                        <AbsPoint x="300" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="250" b="250" a="255"/>
+                </Label>
+                <Button name="$parentReward1" inherits="TomeRewardIconButton" id="1" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.OnClickReward"/>
+                        <EventHandler event="OnMouseOver" function="EA_Window_Inspection.OnMouseOverReward"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentReward2" inherits="TomeRewardIconButton" id="2" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+                            <AbsPoint x="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.OnClickReward"/>
+                        <EventHandler event="OnMouseOver" function="EA_Window_Inspection.OnMouseOverReward"/>
+                    </EventHandlers>
+                </Button>
+                <Button name="$parentCard" inherits="TomeRewardIconButton">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentReward1">
+                            <AbsPoint x="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.OnClickCard"/>
+                        <EventHandler event="OnMouseOver" function="EA_Window_Inspection.OnMouseOverCard"/>
+                    </EventHandlers>
+                </Button>
+            </Windows>
+        </Window>
+
+        <Label name="InspectionWindowTopStatsLabelDefaultLeft" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="right" >
+            <Size>
+                <AbsPoint x="150" y="55" />
+            </Size>
+            <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+        <Label name="InspectionWindowTopStatsLabelDefaultRight" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="right" >
+            <Size>
+                <AbsPoint x="75" y="28" />
+            </Size>
+            <Color r="255" g="255" b="255" a="255"/>
+        </Label>
+
+
+
+        <Window name="InspectionWindowStatsWindow">
+            <Size>
+                <AbsPoint x="210" y="22" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="1.0" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="16" y="16" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentLeft" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="leftt" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="18" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="125" y="28" />
+                    </Size>
+                    <Color r="255" g="255" b="0" a="255"/>
+                </Label>
+                <Label name="$parentRight" inherits="EA_Label_ChatText" layer="popup" handleinput="false" wordwrap="true" autoresize="true" textalign="left" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Size>
+                        <AbsPoint x="75" y="28" />
+                    </Size>
+                    <Color r="255" g="255" b="255" a="255"/>
+                </Label>
+            </Windows>
+        </Window>
+
+        <Button name="InspectionWindowDefaultButton" inherits="EA_Button_Default" texturescale="1.171" font="font_default_text" textalign="bottomright" drawchildrenfirst="true" draganddrop="true" gameactionbutton="right" >
+            <Size>
+                <AbsPoint x="75" y="75" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="1.171" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="75" y="75" />
+                    </Size>
+                </DynamicImage>
+            </Windows>
+            <TexCoords>
+                <Normal texture="EA_SquareFrame" x="0" y="0" />
+                <NormalHighlit texture="EA_SquareFrame_Highlight" x="0" y="0" />
+                <Pressed texture="EA_SquareFrame_Pressed" x="0" y="0" />
+                <Disabled texture="EA_SquareFrame" x="0" y="0" />
+            </TexCoords>
+            <TextOffset x="5" />
+        </Button>
+
+        <FullResizeImage name="InspectionWindowDefaultBG" handleinput="false" layer="background" texture="shared_01">
+            <Sizes>
+                <TopLeft x="16" y="15" />
+                <BottomRight x="16" y="15" />
+                <Middle x="78" y="25" />
+            </Sizes>
+            <TexCoords>
+                <TopLeft x="256" y="157" />
+                <TopCenter x="272" y="157" />
+                <TopRight x="350" y="157" />
+                <MiddleLeft x="256" y="172" />
+                <MiddleCenter x="272" y="172" />
+                <MiddleRight x="350" y="172" />
+                <BottomLeft x="256" y="197" />
+                <BottomCenter x="272" y="197" />
+                <BottomRight x="350" y="197" />
+            </TexCoords>
+        </FullResizeImage>
+
+        <Button name="InspectionWindowEquipmentButton" inherits="InspectionWindowDefaultButton" draganddrop="true" gameactionbutton="right" >
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_Inspection.EquipmentMouseOver" />
+            </EventHandlers>
+        </Button>
+
+        <Button name="InspectionWindowTrophyButton" inherits="InspectionWindowDefaultButton" draganddrop="true" gameactionbutton="right" >
+
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="EA_Window_Inspection.TrophyMouseOver" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentIconBase" textureScale="1.171" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="75" y="75" />
+                    </Size>
+                </DynamicImage>
+
+                <!-- NOTE: OPTIMIZATION: Currently the lock icon is a separate icon file that is overlayed on top of the 
+					trophy icon. We could save adding this window by just making the locked icon include 
+					the trophy icon in the background so we can just use the IconBase Image -->
+                <DynamicImage name="$parentLockIcon" textureScale="1.171" handleinput="false" layer="background">
+                    <Size>
+                        <AbsPoint x="75" y="75" />
+                    </Size>
+                </DynamicImage>
+
+                <DynamicImage name="$parentMiniIcon" handleinput="true" layer="background">
+                    <EventHandlers>
+                        <EventHandler event="OnMouseOver" function="EA_Window_Inspection.TrophyMiniIconMouseOver" />
+                    </EventHandlers>
+                    <Size>
+                        <AbsPoint x="22" y="22" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="2" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+            </Windows>
+        </Button>
+
+        <Button name="TrophyLeftArrowButton" inherits="DefaultButton" backgroundtexture="shared_01" highlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="30" y="56" />
+            </Size>
+            <TexCoords>
+                <Normal x="482" y="0" />
+                <NormalHighlit x="482" y="56" />
+                <Pressed x="482" y="112" />
+            </TexCoords>
+        </Button>
+
+        <Button name="TrophyRightArrowButton" inherits="DefaultButton" backgroundtexture="shared_01" highlighttexture="shared_01">
+            <Size>
+                <AbsPoint x="30" y="56" />
+            </Size>
+            <TexCoords>
+                <Normal x="452" y="0" />
+                <NormalHighlit x="452" y="56" />
+                <Pressed x="452" y="112" />
+            </TexCoords>
+        </Button>
+        
+        <Window name="EA_Window_Inspection" movable="false" layer="secondary" savesettings="false">
+            <Size>
+                <AbsPoint x="545" y="760" />
+            </Size>
+            <Anchors>
+                <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                    <AbsPoint x="35" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_Inspection.Initialize" />
+                <EventHandler event="OnShown" function="EA_Window_Inspection.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+                <EventHandler event="OnShutdown" function="EA_Window_Inspection.Shutdown" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentBackground" inherits="EA_Window_DefaultFrame" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="31" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                            <AbsPoint x="0" y="-40" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" layer="background" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_CharacterImage" sticky="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-50" y="-60" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" >
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentTitleBar">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.Hide" />
+                    </EventHandlers>
+                </Button>
+
+                <Window name="$parentContents">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        
+                        <FullResizeImage name="$parentBG" handleinput="false" layer="background" inherits="InspectionWindowDefaultBG">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="EA_Window_InspectionBackground">
+                                    <AbsPoint x="9" y="5" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="EA_Window_InspectionBackground">
+                                    <AbsPoint x="-10" y="-9" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+                        <DynamicImage name="$parentPaperdollBackgroundImage" texture="EA_PaperDollChatBubbles" textureScale="1.2" layer="background" handleinput="true" draganddrop="true" slice="PaperDollBackground">
+                            <Size>
+                                <AbsPoint x="375" y="510" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentBackgroundImageLabel">
+                                    <AbsPoint x="0" y="15" />
+                                </Anchor>
+                            </Anchors>
+                        </DynamicImage>
+                        <NifDisplay name="$parentScene" nif="TargetPaperDollNif" scale="1.00" ortho="false" fov="0.58" autoprops="false" rotateaxis="3"
+                                    layer="secondary" sticky="false" >
+                            <Size>
+                                <AbsPoint x="380" y="700" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentPaperdollBackgroundImage" />
+                            </Anchors>
+                            <Translation x="0.0" y="-170.0" z="40.0" />
+                            <Rotation x="0.0" y="180.0" z="180.0" />
+                        </NifDisplay>
+
+                        <Window name="$parentBackgroundImageLabel" inherits="EA_Window_DefaultFrame" >
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentEquipmentSlot8">
+                                    <AbsPoint x="0" y="-30" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentEquipmentSlot23">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentBGImageLabel" handleinput="false" layer="background" inherits="InspectionWindowDefaultBG">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackgroundImageLabel">
+                                    <AbsPoint x="9" y="5" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackgroundImageLabel">
+                                    <AbsPoint x="-9" y="-9" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <Window name="$parentStatsFrame" inherits="EA_Window_DefaultFrame" >
+                            <Size>
+                                <AbsPoint x="0" y="108" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPaperdollBackgroundImage">
+                                    <AbsPoint x="-2" y="-15" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPaperdollBackgroundImage">
+                                    <AbsPoint x="2" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                        <FullResizeImage name="$parentStatsFrameBackgroundImage" handleinput="false" layer="background" inherits="InspectionWindowDefaultBG">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentStatsFrame">
+                                    <AbsPoint x="9" y="5" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentStatsFrame">
+                                    <AbsPoint x="-9" y="-9" />
+                                </Anchor>
+                            </Anchors>
+                        </FullResizeImage>
+
+                        <VerticalResizeImage name="$parentBackgroundTopLeft" texture="shared_01" reverseFill="true" layer="background">
+                            <Size>
+                                <AbsPoint x="10" y="50" />
+                            </Size>
+                            <Sizes top="2" middle="75" bottom="2" />
+                            <TexCoords>
+                                <Top x="311" y="54" />
+                                <Middle x="311" y="54" />
+                                <Bottom x="311" y="54" />
+                            </TexCoords>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentPaperdollBackgroundImage">
+                                    <AbsPoint x="5" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentPaperdollBackgroundImage">
+                                    <AbsPoint x="5" y="0" />
+                                </Anchor>
+                            </Anchors>
+                        </VerticalResizeImage>
+
+                        <Label name="$parentImageNameLabel" inherits="EA_Label_DefaultSubHeading" layer="popup" handleinput="false">
+                            <Size>
+                                <AbsPoint x="255" y="30" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentImageTitleLabel">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="250" b="250" a="255"/>
+                        </Label>
+
+                        <Label name="$parentImageTitleLabel" inherits="EA_Label_DefaultSubHeading" layer="popup" handleinput="false">
+                            <Size>
+                                <AbsPoint x="255" y="35" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom" relativeTo="$parentStatsFrame">
+                                    <AbsPoint x="0" y="-2" />
+                                </Anchor>
+                            </Anchors>
+                            <Color r="255" g="250" b="250" a="255"/>
+                        </Label>
+
+                        <Window name="$parentEquipment" draganddrop="true" layer="background">
+                            <Size>
+                                <AbsPoint x="540" y="675" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+
+                                <!-- Right hand slot -->
+                                <Button name="$parentSlot1" inherits="InspectionWindowEquipmentButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot12">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Left hand slot -->
+                                <Button name="$parentSlot2" inherits="InspectionWindowEquipmentButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot5">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Ranged slot -->
+                                <Button name="$parentSlot3" inherits="InspectionWindowEquipmentButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot2">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Pocket 2 slot -->
+                                <Button name="$parentSlot12" inherits="InspectionWindowEquipmentButton" id="12">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot11">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Banner slot -->
+                                <Button name="$parentSlot5" inherits="InspectionWindowEquipmentButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot1">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Left Column -->
+                                <Button name="$parentSlot15" inherits="InspectionWindowEquipmentButton" id="15">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot9">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Helm slot -->
+                                <Button name="$parentSlot9" inherits="InspectionWindowEquipmentButton" id="9">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot10">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Shoulders slot -->
+                                <Button name="$parentSlot10" inherits="InspectionWindowEquipmentButton" id="10">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot13">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Back slot -->
+                                <Button name="$parentSlot13" inherits="InspectionWindowEquipmentButton" id="13">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot6">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Body slot -->
+                                <Button name="$parentSlot6" inherits="InspectionWindowEquipmentButton" id="6">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot7">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Gloves slot -->
+                                <Button name="$parentSlot7" inherits="InspectionWindowEquipmentButton" id="7">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot14">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Belt slot -->
+                                <Button name="$parentSlot14" inherits="InspectionWindowEquipmentButton" id="14">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot8">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Boots slot -->
+                                <Button name="$parentSlot8" inherits="InspectionWindowEquipmentButton" id="8">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot11">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Pocket 1 slot -->
+                                <Button name="$parentSlot11" inherits="InspectionWindowEquipmentButton" id="11">
+                                    <Anchors>
+                                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="EA_Window_InspectionContents">
+                                            <AbsPoint x="10" y="-10" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Right Column -->
+                                <!-- Accessory 1 slot -->
+                                <Button name="$parentSlot17" inherits="InspectionWindowEquipmentButton" id="17">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot18">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Accessory 2 slot -->
+                                <Button name="$parentSlot18" inherits="InspectionWindowEquipmentButton" id="18">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot19">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Accessory 3 slot -->
+                                <Button name="$parentSlot19" inherits="InspectionWindowEquipmentButton" id="19">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot20">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Accessory 4 slot -->
+                                <Button name="$parentSlot20" inherits="InspectionWindowEquipmentButton" id="20">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot21">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+
+                                <!-- Trophy 1 slot -->
+                                <Button name="$parentSlot21" inherits="InspectionWindowTrophyButton" id="1">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot22">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Trophy 2 slot -->
+                                <Button name="$parentSlot22" inherits="InspectionWindowTrophyButton" id="2">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot23">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Trophy 3 slot -->
+                                <Button name="$parentSlot23" inherits="InspectionWindowTrophyButton" id="3">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot24">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Trophy 4 slot -->
+                                <Button name="$parentSlot24" inherits="InspectionWindowTrophyButton" id="4">
+                                    <Anchors>
+                                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentSlot25">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                                <!-- Trophy 5 slot -->
+                                <Button name="$parentSlot25" inherits="InspectionWindowTrophyButton" id="5">
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="left" relativeTo="$parentSlot3">
+                                            <AbsPoint x="0" y="0" />
+                                        </Anchor>
+                                    </Anchors>
+                                </Button>
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </Window> <!-- END CONTENTS -->
+
+                <Window name="$parentBrags">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Label name="$parentHeader" inherits="EA_Label_DefaultSubHeading" textalign="center">
+                            <Size>
+                                <AbsPoint x="500" y="50" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                                    <AbsPoint x="0" y="10" />
+                                </Anchor>
+                            </Anchors>
+                        </Label>
+                        <Window name="$parentAnchor">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="top" relativeTo="$parentHeader">
+                                    <AbsPoint x="0" y="50" />
+                                </Anchor>
+                            </Anchors>
+                        </Window>
+                    </Windows>
+                </Window>
+                
+                <!-- TABS -->
+                <Window name="$parentTabs">
+                    <Size>
+                        <AbsPoint x="545" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="0" y="-8" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-10" y="40" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentCharTab" inherits="EA_Button_BottomTab">
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.OnTabSelectChar" />
+                            </EventHandlers>
+                            <TextOffset x="0" y="5" />
+                        </Button>
+                        <Button name="$parentBragsTab" inherits="EA_Button_BottomTab">
+                            <Anchors>
+                                <Anchor point="topleft" relativePoint="topright" relativeTo="$parentCharTab">
+                                    <AbsPoint x="0" y="0" />
+                                </Anchor>
+                            </Anchors>
+                            <EventHandlers>
+                                <EventHandler event="OnLButtonUp" function="EA_Window_Inspection.OnTabSelectBrags" />
+                            </EventHandlers>
+                            <TextOffset x="0" y="5" />
+                        </Button>
+                    </Windows>
+                </Window>
+            
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

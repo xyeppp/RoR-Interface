@@ -1,0 +1,419 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Interface.xsd">
+
+    <Windows>
+
+        <!-- Realm Flag Icons-->
+        <DynamicImage name="WorldMapSidebarDividerLine" texture="EA_BigMap01_d5" slice="Horizontal-Rule" handleinput="false" layer="background">
+            <Size>
+                <AbsPoint x="266" y="19" />
+            </Size>
+            <TexDims x="266" y="19"  />
+        </DynamicImage>
+
+
+        <Window name="ParchmentDividerLine"  handleinput="false"  layer="background">
+            <Size>
+                <AbsPoint x="400" y="20" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentLeft" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                      <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="320" y="738" />
+                    <TexDims x="100" y="20" />
+                </DynamicImage>
+                <DynamicImage name="$parentCenter" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="350" y="738" />
+                    <TexDims x="200" y="20" />
+                </DynamicImage>
+                <DynamicImage name="$parentRight" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="477" y="738" />
+                    <TexDims x="100" y="20" />
+                </DynamicImage>
+            </Windows>  
+        </Window>
+
+        <Window name="ParchmentDividerLineNoCenter"  handleinput="false"  layer="background">
+            <Size>
+                <AbsPoint x="400" y="20" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentLeft" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="320" y="738" />
+                    <TexDims x="100" y="20" />
+                </DynamicImage>
+                <DynamicImage name="$parentCenter" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLeft" >
+                            <AbsPoint x="20" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentRight" >
+                            <AbsPoint x="-20" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="350" y="738" />
+                    <TexDims x="50" y="20" />
+                </DynamicImage>
+                <DynamicImage name="$parentRight" texture="EA_BigMap01_d5" handleinput="false" >
+                    <Size>
+                        <AbsPoint x="100" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords x="477" y="738" />
+                    <TexDims x="100" y="20" />
+                </DynamicImage>
+            </Windows>
+        </Window>    
+
+        <!-- ScrollWork Pieces -->
+         <DynamicImage name="WorldMapScrollWorkTopLeft" texture="EA_BigMap01_d5" slice="MapBorder-TopLeft" >
+            <Size>
+                <AbsPoint x="116" y="129" />
+            </Size>
+            <TexDims x="116" y="129" />
+        </DynamicImage>
+        
+        <DynamicImage name="WorldMapScrollWorkTopRight" texture="EA_BigMap01_d5" slice="MapBorder-TopRight" >
+            <Size>
+                <AbsPoint x="80" y="128" />
+            </Size>
+            <Anchors>
+                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <TexDims x="80" y="128" />
+        </DynamicImage>
+        
+        <DynamicImage name="WorldMapScrollWorkBottomLeft" texture="EA_BigMap01_d5" slice="MapBorder-BottomLeft" >
+            <Size>
+                <AbsPoint x="88" y="129" />
+            </Size>
+            <TexDims x="88" y="129" />
+        </DynamicImage>
+                
+        <DynamicImage name="WorldMapScrollWorkBottomRight" texture="EA_BigMap01_d5" slice="MapBorder-BottomRight" >
+            <Size>
+                <AbsPoint x="81" y="128" />
+            </Size>
+            <TexDims x="81" y="128" />
+        </DynamicImage>
+        
+        
+        <HorizontalResizeImage name="WorldMapScrollWorkHorizResize" texture="EA_BigMap01_d5">
+            <Size>
+                <AbsPoint x="0" y="29" />
+            </Size>
+            <Sizes left="0" middle="91" right="0" />
+            <TexSlices>
+                <Middle id="MapBorder-HorizontalSpan"  />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+        <VerticalResizeImage name="WorldMapScrollWorkVertResize" texture="EA_BigMap01_d5" >
+            <Size>
+                <AbsPoint x="28" y="0" />
+            </Size>
+            <Sizes top="0" middle="91" bottom="0" />
+            <TexSlices>
+                <Middle id="MapBorder-VerticalSpan"  />
+            </TexSlices>
+        </VerticalResizeImage>
+        
+        
+        
+       <HorizontalResizeImage name="WorldMapScrollTitleBackground" texture="EA_BigMap01_d5">
+            <Size>
+                <AbsPoint x="0" y="85" />
+            </Size>
+            <Sizes left="162" middle="294" right="162" />
+            <TexSlices>
+                <Left id="Map-Name-Scroll-LeftEnd"  />
+                <Middle id="Map-Name-Scroll-Center"  />
+                <Right id="Map-Name-Scroll-RightEnd"  />
+            </TexSlices>
+        </HorizontalResizeImage>
+               
+         
+       
+        <Window name="WorldMapScrollworkBorder" skipinput="true" layer="secondary" >
+            <Size>
+                <AbsPoint x="1075" y="1110" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentTopLeft" inherits="WorldMapScrollWorkTopLeft" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="15" y="55" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentTopRight" inherits="WorldMapScrollWorkTopRight" handleinput="false">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="-15" y="55" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <HorizontalResizeImage name="$parentTitleBackground" inherits="WorldMapScrollTitleBackground" handleinput="false">
+                    <Size>
+                        <AbsPoint x="700" y="85" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="">
+                            <AbsPoint x="15" y="10" />
+                        </Anchor>
+                    </Anchors>                
+                </HorizontalResizeImage>
+                
+                <Label name="$parentTitleText" inherits="TOKHeading" layer="popup" textalign="center" textAutoFitMinScale="0.5" autoresize="false" wordwrap="false" handleinput="true">
+                    <Size>
+                        <AbsPoint x="622" y="74" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTitleBackground">
+                            <AbsPoint x="142" y="20" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentTitleBackground">
+                            <AbsPoint x="-142" y="-20" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                
+                <HorizontalResizeImage name="$parentTopMiddleLeft" inherits="WorldMapScrollWorkHorizResize" handleinput="false">
+                    <Size>
+                        <AbsPoint x="100" y="29" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTopLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTitleBackground">
+                            <AbsPoint x="0" y="45" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>             
+             
+                <HorizontalResizeImage name="$parentTopMiddleRight" inherits="WorldMapScrollWorkHorizResize" handleinput="false">
+                    <Size>
+                        <AbsPoint x="20" y="29" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTitleBackground">
+                            <AbsPoint x="0" y="45" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTopRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                
+                <VerticalResizeImage name="$parentLeftMiddle" inherits="WorldMapScrollWorkVertResize" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBottomLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentRightMiddle" inherits="WorldMapScrollWorkVertResize" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottomRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <DynamicImage name="$parentBottomLeft"  inherits="WorldMapScrollWorkBottomLeft" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentBottomRight" inherits="WorldMapScrollWorkBottomRight" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-15" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <HorizontalResizeImage name="$parentBottomMiddle" inherits="WorldMapScrollWorkHorizResize" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentBottomLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentBottomRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+        </Window>
+
+        <!-- Only the scrollwork, no knobs -->
+        <Window name="WorldMapScrollWorkFrame" handleinput="false" layer="secondary" >
+            <Size>
+                <AbsPoint x="1045" y="1045" />
+            </Size>
+            <Windows>
+                <DynamicImage name="$parentTopLeft" inherits="WorldMapScrollWorkTopLeft">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentTopRight" inherits="WorldMapScrollWorkTopRight">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <HorizontalResizeImage name="$parentTopMiddle" inherits="WorldMapScrollWorkHorizResize">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTopLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                         <Anchor point="topleft" relativePoint="topright" relativeTo="$parentTopRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+                <VerticalResizeImage name="$parentLeftMiddle" inherits="WorldMapScrollWorkVertResize" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBottomLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <VerticalResizeImage name="$parentRightMiddle" inherits="WorldMapScrollWorkVertResize" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBottomRight">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </VerticalResizeImage>
+                <DynamicImage name="$parentBottomLeft"  inherits="WorldMapScrollWorkBottomLeft" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentBottomRight" inherits="WorldMapScrollWorkBottomRight" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <HorizontalResizeImage name="$parentBottomMiddle" inherits="WorldMapScrollWorkHorizResize">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentBottomLeft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentBottomRight">
+                            <AbsPoint x="1" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+            </Windows>
+        </Window>
+        
+        <FullResizeImage name="ParchmentFullResizeImage" texture="EA_BigMap01_d5">
+            <Size>
+                <AbsPoint x="1600" y="1200" />
+            </Size>
+            <Sizes>
+                <TopLeft x="223" y="123" />
+                <BottomRight x="216" y="126" />
+                <Middle  x="328" y="384" />
+            </Sizes>
+            <TexSlices>
+                <TopLeft id="Parchment-Top-Left" />
+                <TopCenter id="Parchment-Top-Center" />
+                <TopRight id="Parchment-Top-Right" />
+                <MiddleLeft id="Parchment-Middle-Left" />
+                <MiddleCenter id="Parchment-Middle-Center" />
+                <MiddleRight id="Parchment-Middle-Right" />
+                <BottomLeft id="Parchment-Bottom-Left"  />
+                <BottomCenter id="Parchment-Bottom-Center" />
+                <BottomRight id="Parchment-Bottom-Right" />
+            </TexSlices>
+        </FullResizeImage>        
+                       
+
+        <Button name="EA_Button_Parchment_MapText" textalign="center" inherits="EA_Button_Default" font="font_journal_text" 
+                    sticky="false" wordwrap="true" autoresize="true">
+            <Size>
+                <AbsPoint x="400" y="32"/>
+            </Size>
+            <TextColors>
+                <Normal r="170" g="25" b="25" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="85" b="0" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="82" g="50" b="29"  />
+            </TextColors>
+        </Button>
+
+        <Label name="EA_Label_Parchment_Text" font="font_journal_body"  textalign="left" wordwrap="true" autoresize="true" handleinput="false">
+            <Size>
+                <AbsPoint x="350" y="24" />
+            </Size>
+            <Color r="82" g="50" b="29"  />
+        </Label>
+
+    </Windows>
+
+</Interface>

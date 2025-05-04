@@ -1,0 +1,278 @@
+<zone iname="Troll Country">
+    <chapter iname="Felde" id="1" mapIcon="1039" x="12382" y="63038">
+        <race>Chaos</race>
+        <number>6</number>
+        <ranks realm="destruction" min="12" max="13" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <chapter iname="Felde Castle" id="2" mapIcon="1035" x="18009" y="54855">
+        <race>Empire</race>
+        <number>6</number>
+        <ranks realm="order" min="12" max="13" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Cave" id="3" mapIcon="1062" x="2070" y="56340">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Suskarg Caves" id="4" mapIcon="1063" x="2337" y="35245">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="The Troll Pit" id="5" mapIcon="1063" x="2579" y="44086">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Frozen Cavern" id="6" mapIcon="1063" x="3311" y="13905">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Great Eagle Nests" id="7" mapIcon="1064" x="33167" y="35934">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Trovolek Advance" id="8" mapIcon="1065" x="42318" y="38050">
+        <race>Chaos</race>
+        <number>8</number>
+        <ranks realm="destruction" min="16" max="17" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Shiver Hollow" id="9" mapIcon="1063" x="39781" y="3724">
+        <importance>major</importance>
+    </landmark>
+    <warcamp iname="Blackbramble Hollow" id="10" mapIcon="1053" x="40365" y="60634">
+        <race>Empire</race>
+        <services>
+            <service>Quartermaster</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Flight Master</service>
+        </services>
+    </warcamp>
+    <landmark iname="Plague Graves" id="11" mapIcon="1070" x="44782" y="47852">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gront's Lair" id="12" mapIcon="1062" x="54163" y="3759">
+        <importance>major</importance>
+    </landmark>
+    <chapter iname="Trollhaugen" id="13" mapIcon="1040" x="55429" y="18830">
+        <race>Chaos</race>
+        <number>9</number>
+        <ranks realm="destruction" min="18" max="19" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Deeprock Mine" id="14" mapIcon="1060" x="62234" y="25328">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Den" id="15" mapIcon="1062" x="62921" y="45046">
+        <importance>minor</importance>
+    </landmark>
+    <chapter iname="Suskarg" id="16" mapIcon="1066" x="6462" y="23478">
+        <race>Empire</race>
+        <number>5</number>
+        <ranks realm="order" min="10" max="11" />
+        <services>
+            <service>Craft Supply Merchant</service>
+            <service>Healer</service>
+            <service>Rally Master</service>
+            <service>Kill Collector</service>
+            <service>Mailbox</service>
+        </services>
+    </chapter>
+    <landmark iname="Iceflow Maw" id="17" mapIcon="1063" x="7882" y="7864">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="18" mapIcon="1259" x="18578" y="61005" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="45753" y="61489" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: The Murderball Rally" id="20" mapIcon="1097" x="34231" y="64351" liveevent="30">
+        <importance>minor</importance>
+        <specialType>11</specialType>
+    </landmark>
+    <landmark iname="Live Event: Cradle's Nest - Order" id="21" mapIcon="1096" x="18760" y="59961" liveevent="30">
+        <importance>minor</importance>
+        <specialType>14</specialType>
+    </landmark>
+    <landmark iname="Trovolek" id="22" mapIcon="1040" x="38053" y="43039">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Suskarg Fields" id="23" mapIcon="1069" x="9645" y="44916">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Blighted Belltower" id="24" mapIcon="1032" x="29104" y="33231">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Plaguewood" id="25" mapIcon="1064" x="47189" y="32463">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Suskarg Mill" id="26" mapIcon="1033" x="8347" y="38180">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bonegut Tribe" id="27" mapIcon="1076" x="12071" y="15436">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Riphorn Herdstone" id="28" mapIcon="1026" x="61618" y="54175">
+        <importance>major</importance>
+    </landmark>
+    <publicQuest iname="Deathstone Quarry" id="201" iconSet="1" x="22121" y="41001">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="The Blighted Farm" id="210" iconSet="1" x="27023" y="53231">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Tearing the Portal" id="236" iconSet="1" x="31720" y="4445">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Trovolek" id="221" iconSet="1" x="36339" y="42075">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="The Blightstone Trolls" id="235" iconSet="1" x="38388" y="17390">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>normal</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Grave Digger" id="212" iconSet="1" x="39888" y="56298">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Plaguewood Thicket" id="220" iconSet="1" x="44634" y="32589">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Welcome to Troll Country" id="202" iconSet="1" x="4532" y="25753">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Slayer's Demise" id="213" iconSet="1" x="46050" y="52465">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="12" max="13" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Lursa's Blight" id="219" iconSet="1" x="51409" y="29157">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="16" max="17" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Plague Trolls" id="217" iconSet="1" x="51851" y="56947">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Lissariel's Glade" id="209" iconSet="1" x="58454" y="62061">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="14" max="15" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Bog Hunters" id="214" iconSet="1" x="59017" y="51437">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Griffon Outpost" id="216" iconSet="1" x="59868" y="27593">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="14" max="15" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Plague Altar" id="233" iconSet="1" x="62396" y="6839">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>basic</rewards>
+        <ranks min="18" max="19" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Plague on the Wind" id="204" iconSet="1" x="6062" y="37368">
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
+        <ranks min="10" max="11" />
+        <realm>Order</realm>
+    </publicQuest>
+    <!-- BEGIN Ostland points -->
+    <battlefieldObjective iname="Crypt of Weapons: Artisan's Gift" id="241" iconSet="1" x="25973" y="9516" zone="107">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Kinschel's Stronghold: Healing Boon" id="242" iconSet="1" x="56365" y="5827" zone="107">
+    </battlefieldObjective>
+    <keep iname="Mandred's Hold" id="11" iconSet="1" x="39452" y="3851" zone="107">
+        <objectiveId>603</objectiveId>
+    </keep>
+    <!-- END Ostland points -->
+    <battlefieldObjective iname="Ruins of Greystone Keep: Merchant's Gift" id="239" iconSet="1" x="3059" y="50968">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Monastery of Morr: Defensive Boon" id="240" iconSet="1" x="33897" y="59849">
+    </battlefieldObjective>
+    <keep iname="Stonetroll Keep" id="12" iconSet="1" x="2485" y="56602">
+        <objectiveId>602</objectiveId>
+    </keep>
+    <zoneTransition iname="To Norsca" x="0" y="32000">
+        <zone>100</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Ostland" x="32000" y="65535">
+        <zone>107</zone>
+    </zoneTransition>
+    <zoneTransition iname="To Talabecland" x="65535" y="32000">
+        <zone>108</zone>
+    </zoneTransition>
+</zone>

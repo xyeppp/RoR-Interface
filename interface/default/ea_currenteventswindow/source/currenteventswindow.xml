@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+
+    <Windows>
+
+
+        <!-- General Event Template -->
+        <Button name="EA_Window_EventTemplate" inherits="EA_Button_Default" >
+            <Size>
+                <AbsPoint x="325" y="175" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.OnClickEvent" />
+            </EventHandlers>
+            <ResizeImages>
+                <NormalHighlit def="EA_Button_ResizeIconFrameHighlight" />
+                <Pressed def="EA_Button_ResizeIconFramePressed" />
+                <PressedHighlit def="EA_Button_ResizeIconFramePressed"  />
+            </ResizeImages>
+        </Button>
+
+        <Button name="EA_Window_HeadlineEventTemplate" inherits="EA_Window_EventTemplate" >
+            <Size>
+                <AbsPoint x="670" y="175" />
+            </Size>
+            <Windows>
+
+                <!-- Border -->
+                <VerticalResizeImage name="$parentBorderLeft" inherits="TomeLeftEdgeLine" />
+                <VerticalResizeImage name="$parentBorderRight" inherits="TomeRightEdgeLine" />
+                <HorizontalResizeImage name="$parentBorderTop" inherits="TomeTopEdgeLine" />
+                <HorizontalResizeImage name="$parentBorderBottom" inherits="TomeBottomEdgeLine" />
+
+                <!-- Icon -->
+                <DynamicImage name="$parentIcon" handleinput="true" slice="WarReport-CityATTACKS" texture="EA_BigMap01_d5">
+                    <Size>
+                        <AbsPoint x="100" y="100" />
+                    </Size>
+                    <TexDims x="68" y="68" />
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="25" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentNoEventIcon" handleinput="true" slice="WarReport-NoEventBlank" texture="EA_BigMap01_d5">
+                    <Size>
+                        <AbsPoint x="100" y="100" />
+                    </Size>
+                    <TexDims x="68" y="68" />
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Title -->
+                <Label name="$parentTitle" inherits="TOKTitleMedium" textalign="center" handleinput="false" autoresize="false" textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="0" y="40" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="-15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="95" g="57" b="36" a="255"/>
+                </Label>
+
+                <!-- Text -->
+                <Label name="$parentText" inherits="TOKTextHuge" textalign="left" handleinput="false"  wordwrap="true" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="0" y="110" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="115" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitle">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="95" g="57" b="36" a="255"/>
+                </Label>
+
+                <!-- Clock -->
+                <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentTime" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTime" inherits="TOKText" textalign="left" handleinput="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                            <AbsPoint x="25" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+            </Windows>
+        </Button>
+
+        <!-- RVR Event Template -->
+        <Button name="EA_Window_RightSideEventTemplate" inherits="EA_Window_EventTemplate" >
+            <Windows>
+
+                <!-- Border -->
+                <VerticalResizeImage name="$parentBorderLeft" inherits="TomeLeftEdgeLine" />
+                <VerticalResizeImage name="$parentBorderRight" inherits="TomeRightEdgeLine" />
+                <HorizontalResizeImage name="$parentBorderTop" inherits="TomeTopEdgeLine" />
+                <HorizontalResizeImage name="$parentBorderBottom" inherits="TomeBottomEdgeLine" />
+
+                <!-- Icon -->
+                <DynamicImage name="$parentIcon" handleinput="true" slice="WarReport-KeepATTACKS" texture="EA_BigMap01_d5">
+                    <Size>
+                        <AbsPoint x="68" y="68" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <DynamicImage name="$parentNoEventIcon" handleinput="true" slice="WarReport-NoEventBlank" texture="EA_BigMap01_d5">
+                    <Size>
+                        <AbsPoint x="100" y="100" />
+                    </Size>
+                    <TexDims x="68" y="68" />
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+
+                <!-- Title -->
+                <Label name="$parentTitle" inherits="TOKTitleSmall" textalign="center" handleinput="false" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="0" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="15" y="15" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="topright" >
+                            <AbsPoint x="-15" y="15" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="95" g="57" b="36" a="255"/>
+                </Label>
+
+                <!-- Text -->
+                <Label name="$parentText" inherits="TOKText" textalign="left" handleinput="false" autoresize="false" textAutoFitMinScale="0.5">
+                    <Size>
+                        <AbsPoint x="0" y="85" />
+                    </Size>                   
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTitle">
+                            <AbsPoint x="63" y="5" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitle">
+                            <AbsPoint x="5" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="95" g="57" b="36" a="255"/>
+                </Label>
+
+                <!-- Clock -->
+                <DynamicImage name="$parentClockImage" inherits="EA_DynamicImage_ClockIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parentTime" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentTime" inherits="TOKText" textalign="left" handleinput="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                            <AbsPoint x="25" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+            </Windows>
+        </Button>
+
+        <!-- Main Current Events Window  -->
+        <Window name="EA_Window_CurrentEvents" movable="true" layer="secondary" inherits="EA_Window_Default" savesettings="false" >
+            <Size>
+                <AbsPoint x="900" y="1024" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" >
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="EA_Window_CurrentEvents.Initialize" />
+                <EventHandler event="OnUpdate" function="EA_Window_CurrentEvents.Update" />
+                <EventHandler event="OnShown" function="EA_Window_CurrentEvents.OnShown" />
+                <EventHandler event="OnHidden" function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <FullResizeImage name="$parentBackgroundTexture" inherits="ParchmentFullResizeImage" layer="background" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <Window name="$parentBorder" inherits="WorldMapScrollworkBorder" layer="background" handleinput="true" >
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="50" y="20" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-50" y="-50" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+                <Button name="$parentClose" inherits="TomeCloseButton">
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parentBackgroundTexture" >
+                            <AbsPoint x="-40" y="4" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.Hide" />
+                    </EventHandlers>
+                </Button>
+
+
+                <!-- Tier Buttons -->
+                <Label name="$parentTierText" inherits="TOKTitleMedium" textalign="center" >
+                    <Size>
+                        <AbsPoint x="300" y="100" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent" >
+                            <AbsPoint x="0" y="110" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentTierDivider1" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTierText">
+                            <AbsPoint x="-125" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentTierDivider2" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTierText">
+                            <AbsPoint x="125" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <Button name="$parentLowerTierButton" inherits="Button_MapArrow_West" layer="secondary"  >
+                    <Anchors>
+                        <Anchor point="left" relativePoint="center" relativeTo="$parentBorder" >
+                            <AbsPoint x="-5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.OnClickLowerTierButton" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_CurrentEvents.OnMouseOverLowerTierButton" />
+                    </EventHandlers>
+                </Button>
+
+                <Button name="$parentHigherTierButton" inherits="Button_MapArrow_East" layer="secondary" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="center" relativeTo="$parentBorder" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors> 
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.OnClickHigherTierButton" />
+                        <EventHandler event="OnMouseOver" function="EA_Window_CurrentEvents.OnMouseOverHigherTierButton" />
+                    </EventHandlers>
+                </Button>
+
+                <!-- Events -->
+                <Button name="$parentHeadlineEvent" inherits="EA_Window_HeadlineEventTemplate" >
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" >
+                            <AbsPoint x="0" y="170" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentEvent1" inherits="EA_Window_RightSideEventTemplate" >
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentHeadlineEvent" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentEvent2" inherits="EA_Window_RightSideEventTemplate" >
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentHeadlineEvent" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentEvent3" inherits="EA_Window_RightSideEventTemplate" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentEvent1" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                <Button name="$parentEvent4" inherits="EA_Window_RightSideEventTemplate" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentEvent2" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+
+                <!-- Instructions -->
+                <Label name="$parentInstructions" inherits="TOKText" textalign="center" autoresize="false" textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="600" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="150" y="-165" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-150" y="-165" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentNoEventsText" inherits="TOKText" textalign="center" autoresize="false" textAutoFitMinScale="0.5" >
+                    <Size>
+                        <AbsPoint x="600" y="75" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" >
+                            <AbsPoint x="150" y="-150" />
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" >
+                            <AbsPoint x="-150" y="-150" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Window name="$parentInstructionsDivider1" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentInstructions">
+                            <AbsPoint x="-125" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                <Window name="$parentInstructionsDivider2" inherits="ParchmentDividerLine">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="$parentInstructions">
+                            <AbsPoint x="125" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+
+
+                <!-- Go Button -->
+                <Button name="$parentGoButton" inherits="TOKHeadingButton" textalign="center" autoresize="false">
+                    <Size>
+                        <AbsPoint x="100" y="50" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+                            <AbsPoint x="0" y="-120"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.OnGoButton"/>
+                    </EventHandlers>
+                    <ResizeImages>
+                        <NormalHighlit def="EA_Button_ResizeIconFrameHighlight" />
+                        <Pressed def="EA_Button_ResizeIconFramePressed" />
+                        <PressedHighlit def="EA_Button_ResizeIconFramePressed"  />
+                    </ResizeImages>
+                    <Windows>
+                        <VerticalResizeImage name="$parentBorderLeft" inherits="TomeLeftEdgeLine" />
+                        <VerticalResizeImage name="$parentBorderRight" inherits="TomeRightEdgeLine" />
+                        <HorizontalResizeImage name="$parentBorderTop" inherits="TomeTopEdgeLine" />
+                        <HorizontalResizeImage name="$parentBorderBottom" inherits="TomeBottomEdgeLine" />
+                    </Windows>
+                </Button>
+
+                <!-- Cooldown Clock  -->
+                <DynamicImage name="$parentCooldownClockImage" inherits="EA_DynamicImage_ClockIcon" handleinput="false" >
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentGoButton" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentCooldownTimer" inherits="TOKText" textalign="left" handleinput="false" autoresizewidth="true" >
+                    <Size>
+                        <AbsPoint x="200" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentCooldownClockImage" >
+                            <AbsPoint x="5" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <!-- Settings -->
+                <Window name="$parentShowOnLogin" inherits="WorldMapCheckButton" id="2">
+                    <Size>
+                        <AbsPoint x="400" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent">
+                            <AbsPoint x="100" y="-30" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="EA_Window_CurrentEvents.ToggleShowOnLogin" />
+                    </EventHandlers>
+                </Window>
+
+
+            </Windows>
+        </Window>
+
+    </Windows>
+</Interface>

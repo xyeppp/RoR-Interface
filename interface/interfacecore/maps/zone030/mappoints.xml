@@ -1,0 +1,8 @@
+<zone iname="Gates of Ekrund">
+    <battlefieldObjective iname="Gate Switch" id="5000" iconSet="1" x="30550" y="30370">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Ammunitions Cache" id="5001" iconSet="1" x="28420" y="30760">
+    </battlefieldObjective>
+    <battlefieldObjective iname="Supply Room" id="5002" iconSet="1" x="32640" y="29890">
+    </battlefieldObjective>
+</zone>

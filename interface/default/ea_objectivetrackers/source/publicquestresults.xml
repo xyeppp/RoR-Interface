@@ -1,0 +1,161 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Scripts>
+        <Script file="Source/PublicQuestResults.lua" />
+    </Scripts>
+    <Windows>
+
+        <!-- Alt PQ Tracker Window -->
+        <Window name="EA_Window_PublicQuestResults" sticky="false" savesettings="false" skipinput="true">
+            <Size>
+                <AbsPoint x="300" y="300"/>
+            </Size>
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="topright" relativeTo="EA_Window_PublicQuestTracker" >
+                    <AbsPoint x="0" y="5"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"    function="EA_Window_PublicQuestResults.Initialize" />
+                <EventHandler event="OnUpdate"        function="EA_Window_PublicQuestResults.Update" />
+                <EventHandler event="OnShutdown"      function="EA_Window_PublicQuestResults.Shutdown" />
+            </EventHandlers>
+            <Windows>
+                <Window name="$parentData">
+                    <Size>
+                        <AbsPoint x="300" y="40"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright" relativeTo="$parent" >
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                        <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+                    </EventHandlers>
+                    <Windows>
+                        <Label name="$parentPQName" font="font_default_sub_heading" maxchars="64"
+                               textalign="left" autoresize="true" handleinput="false" wordwrap="true">
+                            <Size>
+                                <AbsPoint x="300" y="16" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Color r="226" g="216" b="5" a="255"/>
+                        </Label>
+
+                        <Window name="$parentTimer" handleinput="false">
+                            <Size>
+                                <AbsPoint x="300" y="23" />
+                            </Size>
+                            <Anchors>
+                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPQName">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                                <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentPQName">
+                                    <AbsPoint x="0" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                            <Windows>
+                                <Label name="$parentLabel" font="font_chat_text" maxchars="64" textalign="left" autoresize="true" handleinput="false">
+                                    <Size>
+                                        <AbsPoint x="300" y="23" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="226" g="216" b="5" a="255"/>
+                                </Label>
+                                <Label name="$parentText" font="font_default_sub_heading" maxchars="16" textalign="left" autoresize="true" handleinput="false">
+                                    <Size>
+                                        <AbsPoint x="65" y="23" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                                            <AbsPoint x="0" y="0"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="0" a="255"/>
+                                </Label>
+                                <DynamicImage name="$parentImage" handleinput="false" layer="overlay"
+                                              texture="EA_HUD_01" slice="Clock" >
+                                    <Size>
+                                        <AbsPoint x="22" y="23" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topright" relativeTo="$parentText">
+                                            <AbsPoint x="-5" y="-2" />
+                                        </Anchor>
+                                    </Anchors>
+                                </DynamicImage>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+
+                </Window>
+
+                <Label name="$parentActionText" font="font_journal_text" maxchars="200" layer="secondary"
+                       textalign="left" autoresize="true" wordwrap="true">
+                    <Size>
+                        <AbsPoint x="240" y="100"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentData">
+                            <AbsPoint x="-30" y="40"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="100" g="62" b="50" a="255"/>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                        <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+                    </EventHandlers>
+                </Label>
+                
+                <FullResizeImage name="$parentActionTextBackground" inherits="EA_FullResizeImage_DefaultBubbleBackground" handleinput="true">
+                    <Size>
+                        <AbsPoint x="300" y="100"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentActionText">
+                            <AbsPoint x="-30" y="-20"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentActionText">
+                            <AbsPoint x="30" y="30"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp"     function="EA_Window_PublicQuestResults.OnClicked" />
+                        <EventHandler event="OnMouseOver"   function="EA_Window_PublicQuestResults.OnMouseOverResults" />
+                    </EventHandlers>
+                </FullResizeImage>
+
+                <Window name="$parentButton">
+                    <Size>
+                        <AbsPoint x="100" y="100"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentActionText">
+                            <AbsPoint x="0" y="40" />
+                        </Anchor>
+                    </Anchors>
+
+                    <Windows>
+                        <Button name="$parentPending" inherits="EA_Button_PublicQuestLootPending" />
+                        <Button name="$parentWin"     inherits="EA_Button_PublicQuestLootWin" />
+                        <Button name="$parentLose"    inherits="EA_Button_PublicQuestLootLose" />
+                    </Windows>
+                </Window>
+
+            </Windows>
+
+        </Window>
+
+
+    </Windows>
+</Interface>

@@ -1,0 +1,289 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+    <Scripts>
+        <Script file="Source/TipsWindow.lua"/>
+    </Scripts>
+    <Windows>
+
+    <VerticalScrollbar name="TipsWindowVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="TipsWindow.OnVertScrollLButtonUp" />
+      </EventHandlers>
+    </VerticalScrollbar>
+    
+    <Button name="TipsRowLabel" maxchars="80" inherits="ManualWindowTextButton">
+      <EventHandlers>
+        <EventHandler event="OnLButtonUp" function="TipsWindow.OnLButtonUpRow" />
+        <EventHandler event="OnRButtonUp" function="TipsWindow.OnRButtonUpRow" />
+      </EventHandlers>
+    </Button>
+    
+    <Button name="TipsSortButtonTemplate" inherits="EA_Button_ListSort" textalign="center" textAutoFitMinScale="1.0" >
+        <EventHandlers>
+            <EventHandler event="OnLButtonUp" function="TipsWindow.OnSortList" />
+        </EventHandlers>
+    </Button>
+    
+    <!-- Single Row Definition -->
+    <Window name="TipsWindowRow">
+      <Size>
+        <AbsPoint x="300" y="26"/>
+      </Size>
+      <Windows>
+
+        <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground">
+          <Size>
+            <AbsPoint x="300" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+              <AbsPoint x="4" y="0" />
+            </Anchor>
+          </Anchors>
+        </FullResizeImage>
+
+        <!-- Data Labels -->
+        <Button name="$parentName" maxchars="80" inherits="TipsRowLabel">
+          <Size>
+            <AbsPoint x="300" y="26"/>
+          </Size>
+          <Anchors>
+            <Anchor point="left" relativePoint="left" relativeTo="">
+              <AbsPoint x="20" y="6"/>
+            </Anchor>
+          </Anchors>
+        </Button>
+      </Windows>
+    </Window>
+    
+        <!--*******************************************************************-->
+        <!--                      Whole Window Definition                      -->
+        <!--*******************************************************************-->
+        <Window name="TipsWindow" inherits="EA_Window_Default" layer="secondary" movable="true" savesettings="false">
+            <Size>
+                <AbsPoint x="900" y="605"/>
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="EA_Window_Help">
+                    <AbsPoint x="0" y="0"/>
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnInitialize"  function="TipsWindow.Initialize"/>
+                <EventHandler event="OnShutdown"    function="TipsWindow.Shutdown"/>
+                <EventHandler event="OnShown"       function="TipsWindow.OnShown" />
+                <EventHandler event="OnHidden"      function="WindowUtils.OnHidden" />
+            </EventHandlers>
+            <Windows>
+
+                <!-- Title Bar, Close button, and Corner Image -->
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" />
+                <Button name="$parentClose" inherits="EA_Button_DefaultWindowClose">
+                  <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="TipsWindow.Hide" />
+                  </EventHandlers>
+                </Button>
+                <DynamicImage name="$parentCornerImage" inherits="EA_Default_HelpImage"/>
+
+                <!-- Main Window Background -->
+                <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" handleinput="true" popable="false">
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="topleft" >
+                      <AbsPoint x="0" y="32" />
+                    </Anchor>
+                    <Anchor point="bottomright" relativePoint="bottomright" />
+                  </Anchors>
+                </Window>
+
+                <!-- Help Title Text-->
+                <Label name="$parentHeaderText" font="font_default_heading" maxchars="32" textalign="center" autoresize="false" popable="false">
+                  <Size>
+                    <AbsPoint x="900" y="32" />
+                  </Size>
+                  <Anchors>
+                    <Anchor point="top" relativePoint="top" relativeTo="$parentBackground">
+                      <AbsPoint x="0" y="15" />
+                    </Anchor>
+                  </Anchors>
+                </Label>
+
+                <!-- Top Seperator -->
+                <Window name="$parentTopSeperator" inherits="EA_Window_DefaultSeparator" handleinput="false" >
+                  <Anchors>
+                    <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                    <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentBackground" >
+                      <AbsPoint x="0" y="64" />
+                    </Anchor>
+                  </Anchors>
+                </Window>
+                
+              <!-- Sort Button Bar -->
+              <Window name="$parentSortButtonBar">
+                  <Size>
+                      <AbsPoint x="306" y="32" />
+                  </Size>
+                  <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTopSeperator">
+                          <AbsPoint x="10" y="-8"/>
+                        </Anchor>
+                  </Anchors>
+                  <!-- Sort Buttons-->
+                  <Windows>
+
+                      <!-- Sort by Player Name Button-->
+                      <Button name="$parentNameButton" inherits="TipsSortButtonTemplate" id="1" >
+                          <Anchors>
+                              <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                              <Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+                                  <AbsPoint x="0" y="0"/>
+                              </Anchor>
+                          </Anchors>
+                      </Button>
+
+                      <!-- Arrow Image Definitions -->
+                     <DynamicImage name="$parentUpArrow" inherits="EA_ListSortUpArrow" />
+                     <DynamicImage name="$parentDownArrow" inherits="EA_ListSortDownArrow" />
+
+                  </Windows>
+                 </Window> <!-- End of Sort Buttons -->
+                  
+                <ListBox name="$parentList" scrollbar="TipsWindowVertScroll" rowdef="TipsWindowRow" visiblerows="16" rowcount="256" rowspacing="0">
+                  <Anchors>
+                    <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentSortButtonBar">
+                      <AbsPoint x="0" y="0"/>
+                    </Anchor>
+                    <Anchor point="topleft" relativePoint="bottomright" relativeTo="$parentButtonBackground">
+                      <AbsPoint x="340" y="8"/>
+                    </Anchor>
+                  </Anchors>
+                  <ListData table="TipsWindow.data" populationfunction="TipsWindow.PopulateTipsList">
+                    <ListColumns>
+                      <ListColumn windowname="Name" variable="name"  format="wstring" />
+                    </ListColumns>
+                  </ListData>
+                </ListBox>
+              
+                <!-- Main  Window -->
+                <ScrollWindow name="TipsWindowMain" childscrollwindow="TipsWindowMainScrollChild" scrollbar="TipsWindowMainScrollbar" lineheight="18">
+
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentList" >
+                            <AbsPoint x="10" y="0" />
+                        </Anchor>
+                        <Anchor point="topright" relativePoint="bottomright" relativeTo="$parentButtonBackground" >
+                          <AbsPoint x="-15" y="8" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <VerticalScrollbar name="$parentScrollbar" inherits="EA_ScrollBar_DefaultVerticalChain" layer="popup">
+                            <Size>
+                                <AbsPoint x="20" y="200"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="topright" relativePoint="topright">
+                                    <AbsPoint x="4" y="0"/>
+                                </Anchor>
+                            </Anchors>
+                        </VerticalScrollbar>
+                        <Window name="$parentScrollChild">
+                            <Size>
+                                <AbsPoint x="320" y="0"/>
+                            </Size>
+                            <Windows>
+
+                                <!-- Topic title -->
+                                <Label name="$parentTopicLabel" inherits="DefaultWindowSubTitle" textalign="left">
+                                    <Size>
+                                        <AbsPoint x="500" y="25" />
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                                            <AbsPoint x="5" y="5" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="204" b="102" a="255"/>
+                                </Label>
+
+                                <!-- Topic's Text -->
+                                <Label name="$parentMainText" font="font_chat_text" maxchars="4096" textalign="left" wordwrap="true" autoresize="true">
+                                    <Size>
+                                        <AbsPoint x="500" y="200"/>
+                                    </Size>
+                                    <Anchors>
+                                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentTopicLabel">
+                                            <AbsPoint x="5" y="30" />
+                                        </Anchor>
+                                    </Anchors>
+                                    <Color r="255" g="255" b="255" a="255" />
+                                </Label>
+
+                            </Windows>
+                        </Window>
+                    </Windows>
+                </ScrollWindow>
+
+              <!-- Button Bar Barground -->
+              <Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="background" >
+                <Size>
+                  <AbsPoint x="0" y="75" />
+                </Size>
+              </Window>
+
+
+             <!-- Tutorials -->
+
+            <Label name="$parentTutorialsLabel" inherits="DefaultWindowSubTitle" textalign="leftcenter" autoresizewidth="true" autoresize="true" >
+                <Size>
+                    <AbsPoint x="300" y="25" />
+                </Size>
+                <Anchors>
+                    <Anchor point="left" relativePoint="left" relativeTo="$parentButtonBackground">
+                        <AbsPoint x="15" y="5" />
+                    </Anchor>
+                </Anchors>
+                <Color r="255" g="204" b="102" a="255"/>
+            </Label>
+
+
+            <ComboBox name="$parentTutorialsComboBox" inherits="EA_ComboBox_DefaultResizableLarge" >
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentTutorialsLabel">
+                        <AbsPoint x="10" y="0" />
+                    </Anchor>
+                </Anchors>
+            </ComboBox>
+
+            <Button name="$parentTutorialsShowButton" inherits="EA_Button_DefaultResizeable" textalign="center">
+                <Anchors>
+                    <Anchor point="right" relativePoint="left" relativeTo="$parentTutorialsComboBox">
+                        <AbsPoint x="10" y="0" />
+                    </Anchor>
+                </Anchors>
+                <EventHandlers>
+                    <EventHandler event="OnLButtonUp" function="TipsWindow.ShowTutorial"/>
+                </EventHandlers>
+            </Button>
+
+
+                <!-- Back Button -->
+              <Button name="$parentBackButton" inherits="EA_Button_DefaultResizeable" >
+                <Size>
+                  <AbsPoint x="150" y="39" />
+                </Size>
+                <Anchors>
+                  <Anchor point="right" relativePoint="right" relativeTo="$parentButtonBackgroundButtonBackgroundFill">
+                    <AbsPoint x="-25" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <EventHandlers>
+                  <EventHandler event="OnLButtonUp" function="TipsWindow.OnLButtonUpBackButton" />
+                </EventHandlers>
+              </Button>
+              
+            </Windows>
+        </Window>
+    </Windows>
+</Interface>

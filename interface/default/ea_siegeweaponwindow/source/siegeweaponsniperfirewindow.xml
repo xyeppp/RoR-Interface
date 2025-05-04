@@ -1,0 +1,97 @@
+<Interface xmlns:xsi="http://wutf-8.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="Source/SiegeWeaponSniperFireWindow.lua" />
+	</Scripts>
+	<Windows>
+		
+		
+        <DynamicImage name="SiegeWeaponCrossHair" texture="EA_CrossHairs"  sticky="false" alpha="0.8" />
+		
+
+        <DynamicImage name="SiegeWeaponCrossHairLeft" inherits="SiegeWeaponCrossHair" >
+            <Size>
+                <AbsPoint x="187" y="33" />
+            </Size>
+            <TexCoords x="0" y="33" />
+            <TexDims x="187" y="33" />
+        </DynamicImage>
+        
+         <DynamicImage name="SiegeWeaponCrossHairRight" inherits="SiegeWeaponCrossHair">
+            <Size>
+                <AbsPoint x="187" y="33" />
+            </Size>
+            <TexCoords x="0" y="0" />
+            <TexDims x="187" y="33" />
+        </DynamicImage>
+        
+                
+         <DynamicImage name="SiegeWeaponCrossHairTop" inherits="SiegeWeaponCrossHair">
+            <Size>
+                <AbsPoint x="33" y="187" />
+            </Size>
+            <TexCoords x="0" y="70" />
+            <TexDims x="33" y="187" />
+        </DynamicImage>
+        
+                        
+         <DynamicImage name="SiegeWeaponCrossHairBottom" texture="EA_CrossHairs"  sticky="false" >
+            <Size>
+                <AbsPoint x="33" y="187" />
+            </Size>
+            <TexCoords x="33" y="70" />
+            <TexDims x="33" y="187" />
+        </DynamicImage>
+        
+
+		<!-- Bug Report Window -->
+		<Window name="SiegeWeaponSniperFireWindow" movable="false" layer="secondary" savesettings="false" >
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+				<Anchor point="bottomright" relativePoint="bottomright" relativeTo="">
+					<AbsPoint x="0" y="0" />
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="SiegeWeaponSniperFireWindow.Initialize" />	
+				<EventHandler event="OnUpdate" function="SiegeWeaponSniperFireWindow.Update" />			
+			</EventHandlers>
+			<Windows>                                                         
+                
+                <!-- Cross Hairs -->
+                <Window name="$parentCrossHairs" >
+                   <Anchors>
+				        <Anchor point="center" relativePoint="center" relativeTo="">
+					        <AbsPoint x="0" y="0" />
+				        </Anchor>
+			        </Anchors>
+			        <Windows>
+			            <DynamicImage name="$parentTop" inherits="SiegeWeaponCrossHairTop" >
+                            <Anchors>
+				                <Anchor point="top" relativePoint="top" relativeTo="" />
+			                </Anchors>           
+                        </DynamicImage>
+                        <DynamicImage name="$parentBottom" inherits="SiegeWeaponCrossHairBottom" >
+                            <Anchors>
+				                <Anchor point="bottom" relativePoint="bottom" relativeTo="" />
+			                </Anchors>           
+                        </DynamicImage>
+                        <DynamicImage name="$parentLeft" inherits="SiegeWeaponCrossHairLeft" >
+                            <Anchors>
+				                <Anchor point="left" relativePoint="left" relativeTo="" />
+			                </Anchors>           
+                        </DynamicImage>
+                        <DynamicImage name="$parentRight" inherits="SiegeWeaponCrossHairRight" >
+                            <Anchors>
+				                <Anchor point="right" relativePoint="right" relativeTo="" />
+			                </Anchors>           
+                        </DynamicImage>			    
+			        </Windows>
+                </Window>
+                                
+             
+			</Windows>
+		</Window>
+	</Windows>
+</Interface>

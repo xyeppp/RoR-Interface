@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+  <Assets>
+    <Icon id="-1" texture="Textures/NoIconDef.dds" name="No Icon Def Found" />
+    <Icon id="-2" texture="Textures/NoIconFile.dds" name="Icon Texture File Not Nound" />
+    <Icon id="-100" texture="Textures/Non.dds" name="Non" />
+    <Icon id="-101" texture="Textures/Nok.dds" name="Nok" />
+    <Icon id="-102" texture="Textures/Inv.dds" name="Inv" />
+  </Assets>
+</Interface>
