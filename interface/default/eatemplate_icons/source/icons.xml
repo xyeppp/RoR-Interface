@@ -5493,6 +5493,15 @@
     <Icon id="15305" texture="Textures/we_axe_2h_03.dds" name="" />
     <Icon id="15306" texture="Textures/we_staff_01.dds" name="" />
     <Icon id="15307" texture="Textures/we_staff_02.dds" name="" />
+    <Icon id="15308" texture="Textures/cloak_animal_griffon.dds" name="" />
+    <Icon id="15309" texture="Textures/cloak_animal_treekin.dds" name="" />
+    <Icon id="15310" texture="Textures/cloak_t3_ch_01.dds" name="" />
+    <Icon id="15311" texture="Textures/cloak_t3_de_01.dds" name="" />
+    <Icon id="15312" texture="Textures/cloak_t3_dw_01.dds" name="" />
+    <Icon id="15313" texture="Textures/cloak_t3_em_01.dds" name="" />
+    <Icon id="15314" texture="Textures/cloak_t3_go_01.dds" name="" />
+    <Icon id="15315" texture="Textures/cloak_t3_he_01.dds" name="" />
+    <Icon id="15316" texture="Textures/cloak_t3_or_01.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />

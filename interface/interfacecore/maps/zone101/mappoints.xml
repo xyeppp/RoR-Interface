@@ -261,7 +261,7 @@
     <!-- END Ostland points -->
     <battlefieldObjective iname="Ruins of Greystone Keep: Merchant's Gift" id="239" iconSet="1" x="3059" y="50968">
     </battlefieldObjective>
-    <battlefieldObjective iname="Monastery of Morr: Defensive Boon" id="240" iconSet="1" x="33897" y="59849">
+    <battlefieldObjective iname="Monastery of Morr: Defensive Boon" id="240" iconSet="1" x="32645" y="59704">
     </battlefieldObjective>
     <keep iname="Stonetroll Keep" id="12" iconSet="1" x="2485" y="56602">
         <objectiveId>602</objectiveId>
