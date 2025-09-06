@@ -3106,22 +3106,22 @@ end
 function RoR_SoR.DefaultSettings()
 RoR_SoR.Settings ={
 ShowT1 = true,
-ShowT4 = true,
+ShowT4 = false,
 StackDir = 1,
 Offset = 1,
-Enabled = true,
+Enabled = false,
 HideCombat = false,
-AAONumbers = true,
+AAONumbers = false,
 HideScenario = false,
-ShowForts = true,
+ShowForts = false,
 DrawBackground = true,
 DrawBanner = true,
 OnlyActive = false,
 ShowBONames = true,
 ShowUnclaimed = true,
 ShowPairings = true,
-ShowCity = true,
-ShowCity_Status = true,
+ShowCity = false,
+ShowCity_Status = false,
 Version = version
 }
 WindowSetScale("RoR_SoR_Main_Window",0.753)

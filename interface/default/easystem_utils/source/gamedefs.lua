@@ -129,7 +129,7 @@ BonusTypes[GameData.BonusTypes.EBONUS_BUILD_TIME              ] =  { name=GetStr
 BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_DAMAGE         ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_DMG ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_RANGE                   ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RANGE ), desc=L"", multiplier=1/12 }       
 BonusTypes[GameData.BonusTypes.EBONUS_AUTO_ATTACK_SPEED       ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AUTO_ATK_SPEED ), desc=L"" }  
-BonusTypes[GameData.BonusTypes.EBONUS_RADIUS                  ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RADIUS ), desc=L"" }  
+BonusTypes[GameData.BonusTypes.EBONUS_RADIUS                  ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RADIUS ), desc=L"", multiplier=1/12 }  
 BonusTypes[GameData.BonusTypes.EBONUS_AUTO_ATTACK_DAMAGE      ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AUTO_ATK_DMG ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_AP_COST                 ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AP_COST ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_HIT_RATE       ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_HIT_RATE ), desc=L"" }  
@@ -189,12 +189,12 @@ BonusTypes[GameData.BonusTypes.EBONUS_INTERACT_TIME					] =  { name=GetString( S
 BonusTypes[GameData.BonusTypes.EBONUS_FORTITUDE                     ] =  { name=GetString( StringTables.Default.LABEL_FORTITUDE ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_OUT_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_HEAL ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_OUT_DMG_SNAPSHOT            ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_DMG_SNAPSHOT ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_OUT_HEAL_SNAPSHOT             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_HEAL_SNAPSHOT ), desc=L"" }	
-BonusTypes[GameData.BonusTypes.EBONUS_INCOMING_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_INCOMING_HEAL ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }	
-BonusTypes[GameData.BonusTypes.EBONUS_ARMOR_PENETRATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_ARMOR_PENETRATION ), desc=L"" }	
-BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRITICAL_HEAL ), desc=L"" }	
-BonusTypes[GameData.BonusTypes.EBONUS_LOOT_CHANCE             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_LOOT_CHANCE ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }	
-BonusTypes[GameData.BonusTypes.EBONUS_CASTER_DURATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CASTER_DURATION ), desc=L"" }	
+BonusTypes[GameData.BonusTypes.EBONUS_OUT_HEAL_SNAPSHOT             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_HEAL_SNAPSHOT ), desc=L"" }
+BonusTypes[GameData.BonusTypes.EBONUS_INCOMING_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_INCOMING_HEAL ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }
+BonusTypes[GameData.BonusTypes.EBONUS_ARMOR_PENETRATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_ARMOR_PENETRATION ), desc=L"", format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }	
+BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRITICAL_HEAL ), desc=L"" }
+BonusTypes[GameData.BonusTypes.EBONUS_LOOT_CHANCE             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_LOOT_CHANCE ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }
+BonusTypes[GameData.BonusTypes.EBONUS_CASTER_DURATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CASTER_DURATION ), desc=L"" }
 -- These bonuses require player info that is not available during startup
 -- NOTE: ideally this would show the specialization paths of the career that the item is for, rather than that of the player,
 --    but since not all items have a career restriction set, this was considered a reasonable solution by design.

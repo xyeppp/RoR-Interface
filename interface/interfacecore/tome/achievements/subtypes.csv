@@ -2,15 +2,8 @@
 1,1,Portrait_RvR.dds
 2,1,Portrait_RvR.dds
 3,2,Portrait_Exploration.dds
-4,2,Portrait_Exploration.dds
 5,6,Portrait_Cities.dds
 6,6,Portrait_Cities.dds
-7,6,Portrait_Cities.dds
-8,6,Portrait_Cities.dds
-9,2,Portrait_Exploration.dds
-10,2,Portrait_Exploration.dds
-11,2,Portrait_Exploration.dds
-12,2,Portrait_Exploration.dds
 13,9,Portrait_Guilds.dds
 14,4,Portrait_Tradeskills.dds
 15,4,Portrait_Tradeskills.dds
@@ -40,7 +33,6 @@
 40,1,Portrait_RvR.dds
 41,4,Portrait_Tradeskills.dds
 42,4,Portrait_Tradeskills.dds
-43,2,Portrait_Exploration.dds
 44,2,Portrait_Exploration.dds
 45,11,Portrait_Career.dds
 46,1,Portrait_RvR.dds
@@ -49,7 +41,7 @@
 49,11,Portrait_Exploration.dds
 50,8,Portrait_Pursuits.dds
 51,8,Portrait_Pursuits.dds
-52,4,Portrait_Tradeskills.dds
+52,8,Portrait_Tradeskills.dds
 53,2,Portrait_Exploration.dds
 54,2,Portrait_Exploration.dds
 55,2,Portrait_Exploration.dds
@@ -101,8 +93,9 @@
 101,8,Portrait_Pursuits.dds
 102,10,Portrait_Exploration.dds
 103,10,Portrait_Exploration.dds
+104,10,Portrait_Exploration.dds
 105,10,EA_TomeLiveEvent02_d5.dds
-106,10,heavy_metal.dds
+106,10,Portrait_Exploration.dds
 107,10,keg_end.dds
 108,10,murder_night.dds
 109,10,EA_TomeLiveEvent04_d5.dds
@@ -122,3 +115,4 @@
 178,2,Portrait_Exploration.dds
 179,12,
 180,13,
+181,11,Portrait_Exploration.dds
