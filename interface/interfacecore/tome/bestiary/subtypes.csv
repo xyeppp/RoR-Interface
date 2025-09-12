@@ -2,7 +2,7 @@ SubType Id#,Type Id#,Image
 1,1,portrait_wolf.dds
 2,1,portrait_vulture.dds
 3,1,portrait_spiderv2.dds
-4,0,Portrait_Placeholder.dds
+4,1,Portrait_Placeholder.dds
 5,1,Portrait_Cold_One.dds
 6,0,Portrait_Placeholder.dds
 7,2,portrait_chaosfury.dds

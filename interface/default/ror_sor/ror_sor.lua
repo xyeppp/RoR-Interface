@@ -188,7 +188,7 @@ RegisterEventHandler(  SystemData.Events.PUBLIC_QUEST_UPDATED, "RoR_SoR.UpdateOb
 RegisterEventHandler(  SystemData.Events.PUBLIC_QUEST_INFO_UPDATED, "RoR_SoR.UpdateObjectives")
 RegisterEventHandler(  SystemData.Events.PUBLIC_QUEST_REMOVED, "RoR_SoR.UpdateObjectives")
 
---RegisterEventHandler( SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED, "RoR_SoR.OnCombat" )
+RegisterEventHandler( SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED, "RoR_SoR.OnCombat" )
 
 
 --RegisterEventHandler(TextLogGetUpdateEventId("Chat"), "RoR_SoR.OnChatLogUpdated")
@@ -2756,9 +2756,9 @@ local function MakeCallBack( SelectedOption )
    EA_Window_ContextMenu.AddMenuItem( L"Set Stack down" ,MakeCallBack(4), false, true )
  end
    if RoR_SoR.Settings.HideCombat == true then
-  EA_Window_ContextMenu.AddMenuItem( L"<icon00057> Hide In Scenario" , MakeCallBack(5), false, true )
+  EA_Window_ContextMenu.AddMenuItem( L"<icon00057> Hide In Combat" , MakeCallBack(5), false, true )
   else
-   EA_Window_ContextMenu.AddMenuItem(L"<icon00058> Hide In Scenario" ,MakeCallBack(5), false, true )
+   EA_Window_ContextMenu.AddMenuItem(L"<icon00058> Hide In Combat" ,MakeCallBack(5), false, true )
    end
 
   if RoR_SoR.Settings.DrawBackground == true then
@@ -3110,8 +3110,8 @@ ShowT4 = false,
 StackDir = 1,
 Offset = 1,
 Enabled = false,
-HideCombat = false,
-AAONumbers = false,
+HideCombat = true,
+AAONumbers = true,
 HideScenario = false,
 ShowForts = false,
 DrawBackground = true,
@@ -3119,7 +3119,7 @@ DrawBanner = true,
 OnlyActive = false,
 ShowBONames = true,
 ShowUnclaimed = true,
-ShowPairings = true,
+ShowPairings = false,
 ShowCity = false,
 ShowCity_Status = false,
 Version = version

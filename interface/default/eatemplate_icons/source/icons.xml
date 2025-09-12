@@ -6937,6 +6937,7 @@
     <Icon id="30463" texture="Textures/mtx_primer_13.dds" name="" />
     <Icon id="30464" texture="Textures/mtx_primer_14.dds" name="" />
     <Icon id="30465" texture="Textures/mtx_primer_15.dds" name="" />
+    <Icon id="36000" texture="Textures/archetype_tank_immaculatedefense_g.dds" name="" />
     <Icon id="40000" texture="Textures/icon_ch_ror_axe_1h_01.dds" name="" />
     <Icon id="40001" texture="Textures/icon_ch_ror_axe_2h_01.dds" name="" />
     <Icon id="40002" texture="Textures/icon_ch_ror_shield_01.dds" name="" />
