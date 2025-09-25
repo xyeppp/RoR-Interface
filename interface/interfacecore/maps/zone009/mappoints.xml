@@ -134,14 +134,14 @@
     </publicQuest>
     <publicQuest iname="Ambush Pass" id="91" iconSet="1" x="19203" y="12110">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Evil Axis" id="92" iconSet="1" x="20071" y="16614">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
@@ -155,14 +155,14 @@
     </publicQuest>
     <publicQuest iname="Battlegut Ogres" id="119" iconSet="1" x="32382" y="20998">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Duraz Dok" id="113" iconSet="1" x="36026" y="31618">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
@@ -176,21 +176,21 @@
     </publicQuest>
     <publicQuest iname="Burnbeard's Oath" id="103" iconSet="1" x="44342" y="59282">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Kazad Urbar" id="104" iconSet="1" x="58095" y="56890">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Duraz Deb" id="121" iconSet="1" x="58713" y="11174">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Destruction</realm>
@@ -211,14 +211,14 @@
     </publicQuest>
     <publicQuest iname="Gates of Grung Grimaz" id="108" iconSet="1" x="8062" y="42398">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Night Riders" id="109" iconSet="1" x="8309" y="56554">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>

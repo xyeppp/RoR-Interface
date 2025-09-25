@@ -153,7 +153,7 @@
     </publicQuest>
     <publicQuest iname="Cliffs of Vaul" id="463" iconSet="1" x="22087" y="54705">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>
@@ -167,7 +167,7 @@
     </publicQuest>
     <publicQuest iname="Dominion of Khaine" id="465" iconSet="1" x="28502" y="63243">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>
@@ -181,28 +181,28 @@
     </publicQuest>
     <publicQuest iname="Dragonwatch Falls" id="456" iconSet="1" x="38479" y="4797">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Caladain's Furnace" id="468" iconSet="1" x="38779" y="62861">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Keepers Watch" id="454" iconSet="1" x="40187" y="21825">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="36" max="36" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Caladain Steppe" id="469" iconSet="1" x="46064" y="48693">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
@@ -216,14 +216,14 @@
     </publicQuest>
     <publicQuest iname="Galiron's Mouth" id="459" iconSet="1" x="47245" y="28689">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Dragonwatch" id="455" iconSet="1" x="49241" y="5021">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>

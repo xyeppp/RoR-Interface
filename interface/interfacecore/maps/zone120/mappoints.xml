@@ -7,7 +7,7 @@
     </landmark>
     <publicQuest iname="Unlikely Allies" id="520" iconSet="1" x="36634" y="29323">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
@@ -28,14 +28,14 @@
     </publicQuest>
     <publicQuest iname="Sundered Fortress" id="284" iconSet="1" x="47383" y="25180">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="34" max="35" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="The Sundered Fortress" id="294" iconSet="1" x="51671" y="30950">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="34" max="35" />
         <realm>Order</realm>

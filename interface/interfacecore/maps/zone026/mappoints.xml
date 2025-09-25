@@ -18,22 +18,22 @@
         <importance>minor</importance>
     </landmark>
     <publicQuest iname="Flamerock Mine" id="516" iconSet="1" x="37055" y="47626">
-        <difficulty>easy</difficulty>
-        <players min="2" max="3" />
-        <rewards>basic</rewards>
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Da Drakk Cult" id="177" iconSet="1" x="42005" y="32956">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="The Cult of Drakk" id="139" iconSet="1" x="47338" y="25438">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="36" max="36" />
         <realm>Order</realm>
@@ -46,15 +46,15 @@
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Gutbash Tribe Stronghold" id="523" iconSet="1" x="50852" y="53220">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
-    <publicQuest iname="Emberlight Mine" id="517" iconSet="1" x="64117" y="5532">
+    <publicQuest iname="Emberlight Mine" id="517" iconSet="1" x="62695" y="7086">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="36" max="36" />
         <realm>Order</realm>

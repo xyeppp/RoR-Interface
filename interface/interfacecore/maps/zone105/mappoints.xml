@@ -56,9 +56,7 @@
 
 
 
-    <landmark iname="Raven Host Reinforcements" id="8" mapIcon="1069" x="3467" y="43418">
-        <importance>major</importance>
-    </landmark>
+
     <warcamp iname="Ravensworn" id="9" mapIcon="1052" x="44414" y="38091">
         <race>Chaos</race>
         <services>
@@ -145,42 +143,42 @@
     </landmark>
     <publicQuest iname="Gates of Praag" id="286" iconSet="1" x="11166" y="2960">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="34" max="35" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Hell's Fall" id="303" iconSet="1" x="11747" y="12931">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Broken Ground" id="288" iconSet="1" x="11839" y="43768">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="36" max="36" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Griffon's Last Stand" id="301" iconSet="1" x="13103" y="23197">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Southern Breach" id="299" iconSet="1" x="39314" y="49688">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Eastern Breach" id="287" iconSet="1" x="42939" y="23532">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
@@ -193,22 +191,22 @@
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Cinderash Enclave" id="291" iconSet="1" x="58616" y="26510">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="36" max="36" />
+        <realm>Destruction</realm>
+    </publicQuest>
+    <publicQuest iname="Tomb of Deathsword" id="290" iconSet="1" x="62791" y="2392">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
         <ranks min="36" max="36" />
         <realm>Destruction</realm>
     </publicQuest>
-    <publicQuest iname="Tomb of Deathsword" id="290" iconSet="1" x="59303" y="1548">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
-        <ranks min="36" max="36" />
-        <realm>Destruction</realm>
-    </publicQuest>
     <publicQuest iname="Wings of the Griffon" id="300" iconSet="1" x="62194" y="57510">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
@@ -224,6 +222,13 @@
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
+        <ranks min="36" max="36" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Gospodar Square" id="289" iconSet="1" x="3467" y="43418">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
         <ranks min="36" max="36" />
         <realm>Order</realm>
     </publicQuest>

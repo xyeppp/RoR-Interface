@@ -1730,6 +1730,11 @@
     <Icon id="2665" texture="Textures/abi_or_stompdayard.dds" name="" />
     <Icon id="2666" texture="Textures/abi_gs_clobber.dds" name="" />
     <Icon id="2667" texture="Textures/abi_or_chopfasta2.dds" name="" />
+    <Icon id="2668" texture="Textures/abi_obj_control_one.dds" name="" />
+    <Icon id="2669" texture="Textures/abi_obj_control_two.dds" name="" />
+    <Icon id="2670" texture="Textures/abi_obj_control_three.dds" name="" />
+    <Icon id="2671" texture="Textures/abi_obj_control_four.dds" name="" />
+    <Icon id="2672" texture="Textures/abi_obj_control_blank.dds" name="" />
     <Icon id="3000" texture="Textures/Dw_TL_Shield01.dds" name="TL" />
     <Icon id="3001" texture="Textures/Dw_TL_Shield02.dds" name="TL" />
     <Icon id="3002" texture="Textures/Dw_TL_Shield03.dds" name="TL" />
@@ -5587,6 +5592,28 @@
     <Icon id="15399" texture="Textures/cloak_dp_we_01.dds" name="" />
     <Icon id="15400" texture="Textures/cloak_dp_dk_01.dds" name="" />
     <Icon id="15401" texture="Textures/cloak_dp_so_01.dds" name="" />
+    <Icon id="15402" texture="Textures/all_bit_skull_sos_01.dds" name="" />
+    <Icon id="15403" texture="Textures/all_bit_skull_sos_02.dds" name="" />
+    <Icon id="15404" texture="Textures/all_bit_skull_sos_03.dds" name="" />
+    <Icon id="15405" texture="Textures/all_bit_skull_sos_04.dds" name="" />
+    <Icon id="15406" texture="Textures/all_bit_skull_sos_05.dds" name="" />
+    <Icon id="15407" texture="Textures/all_bit_skull_sos_06.dds" name="" />
+    <Icon id="15408" texture="Textures/all_bit_skull_sos_128_01.dds" name="" />
+    <Icon id="15409" texture="Textures/all_bit_skull_sos_128_02.dds" name="" />
+    <Icon id="15410" texture="Textures/all_bit_skull_sos_128_03.dds" name="" />
+    <Icon id="15411" texture="Textures/all_bit_skull_sos_128_04.dds" name="" />
+    <Icon id="15412" texture="Textures/all_bit_skull_sos_128_05.dds" name="" />
+    <Icon id="15413" texture="Textures/all_bit_skull_sos_128_06.dds" name="" />
+    <Icon id="15414" texture="Textures/cloak_pirate_02.dds" name="" />
+    <Icon id="15415" texture="Textures/itm_ge_keg_sos_01.dds" name="" />
+    <Icon id="15416" texture="Textures/itm_ge_pirate_coin_01.dds" name="" />
+    <Icon id="15417" texture="Textures/hat_pirate_14_01.dds" name="" />
+    <Icon id="15418" texture="Textures/hat_pirate_15_01.dds" name="" />
+    <Icon id="15419" texture="Textures/hat_pirate_16_01.dds" name="" />
+    <Icon id="15420" texture="Textures/hat_pirate_17_01.dds" name="" />
+    <Icon id="15421" texture="Textures/hat_pirate_18_01.dds" name="" />
+    <Icon id="15422" texture="Textures/hat_pirate_19_01.dds" name="" />
+    <Icon id="15423" texture="Textures/hat_pirate_20_01.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />

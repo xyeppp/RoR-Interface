@@ -149,7 +149,7 @@
     </landmark>
     <publicQuest iname="Morkfang da Mad" id="94" iconSet="1" x="10454" y="28533">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
@@ -163,21 +163,21 @@
     </publicQuest>
     <publicQuest iname="Valley of the Rangers" id="99" iconSet="1" x="11645" y="43938">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Ambush Canyon" id="96" iconSet="1" x="16308" y="13907">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Skargor da Traitor" id="98" iconSet="1" x="19527" y="4038">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="32" max="33" />
         <realm>Destruction</realm>
@@ -191,21 +191,21 @@
     </publicQuest>
     <publicQuest iname="Muck Pen" id="112" iconSet="1" x="33553" y="24519">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Gobbo Carvas" id="110" iconSet="1" x="40254" y="29959">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Poisonwing Canyon" id="126" iconSet="1" x="43524" y="51575">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Order</realm>
@@ -217,7 +217,7 @@
         <ranks min="39" max="39" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Dammaz Skar" id="127" iconSet="1" x="47630" y="53666">
+    <publicQuest iname="Dammaz Skar" id="127" iconSet="1" x="51240" y="53920">
         <difficulty>hard</difficulty>
         <players min="24" />
         <rewards>advanced</rewards>
@@ -231,23 +231,16 @@
         <ranks min="40" max="40" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Dammaz Skar" id="624" iconSet="1" x="48091" y="60795">
-        <difficulty>hard</difficulty>
-        <players min="24" />
-        <rewards>advanced</rewards>
-        <ranks min="40" max="40" />
-        <realm>Order</realm>
-    </publicQuest>
     <publicQuest iname="Bait and Hit" id="178" iconSet="1" x="58784" y="19815">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Da Great Smashin' Pit" id="105" iconSet="1" x="59221" y="28885">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>

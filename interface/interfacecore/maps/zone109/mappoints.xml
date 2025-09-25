@@ -157,15 +157,15 @@
     </landmark>
     <publicQuest iname="The Enemy Within" id="297" iconSet="1" x="12036" y="16859">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Root of Rebellion" id="307" iconSet="1" x="3588" y="47861">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
     </publicQuest>
@@ -185,14 +185,14 @@
     </publicQuest>
     <publicQuest iname="Castle Grauenburg" id="298" iconSet="1" x="4524" y="7947">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Ambush at Garrisonburg" id="311" iconSet="1" x="47765" y="15126">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
@@ -206,14 +206,14 @@
     </publicQuest>
     <publicQuest iname="Reikland Training Grounds" id="318" iconSet="1" x="48698" y="55937">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Hunting the Hunters" id="314" iconSet="1" x="55098" y="49238">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
@@ -227,7 +227,7 @@
     </publicQuest>
     <publicQuest iname="Vulgar Display of Power" id="315" iconSet="1" x="56880" y="34139">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
@@ -241,22 +241,22 @@
     </publicQuest>
     <publicQuest iname="Dark Retribution" id="317" iconSet="1" x="61070" y="7575">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Heinrich Estate" id="302" iconSet="1" x="7772" y="61974">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Fields of Ruin" id="305" iconSet="1" x="8301" y="56546">
-        <difficulty>easy</difficulty>
-        <players min="2" max="3" />
-        <rewards>basic</rewards>
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
     </publicQuest>

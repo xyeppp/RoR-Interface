@@ -50,21 +50,21 @@
     </publicQuest>
     <publicQuest iname="Fallen Keep of Grom Rodrin" id="137" iconSet="1" x="4513" y="10820">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Whoosha's Boyz" id="144" iconSet="1" x="5609" y="40938">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Peak's Edge" id="525" iconSet="1" x="20671" y="37777">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="37" max="37" />
         <realm>Order</realm>

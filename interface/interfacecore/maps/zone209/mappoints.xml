@@ -111,37 +111,37 @@
         <importance>minor</importance>
         <specialType>10</specialType>
     </landmark>
-    <publicQuest iname="The Well of Sar-Saroth" id="452" iconSet="1" x="10345" y="15307">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
-        <ranks min="32" max="33" />
-        <realm>Order</realm>
-    </publicQuest>
-    <publicQuest iname="The Tower of Lysean" id="451" iconSet="1" x="19201" y="5972">
+    <publicQuest iname="The Well of Sar-Saroth" id="452" iconSet="1" x="8560" y="14885">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
     </publicQuest>
+    <publicQuest iname="The Tower of Lysean" id="451" iconSet="1" x="19201" y="5972">
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
+        <ranks min="32" max="33" />
+        <realm>Order</realm>
+    </publicQuest>
     <publicQuest iname="The Senthoi Pool" id="480" iconSet="1" x="19252" y="59813">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Blind Justice" id="476" iconSet="1" x="27116" y="55838">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Dawnbreak Manor" id="475" iconSet="1" x="35646" y="49366">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Destruction</realm>
@@ -155,28 +155,28 @@
     </publicQuest>
     <publicQuest iname="Last Stand" id="493" iconSet="1" x="44802" y="54291">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Siege of Anyerrial" id="444" iconSet="1" x="45096" y="5882">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="30" max="31" />
+        <realm>Order</realm>
+    </publicQuest>
+    <publicQuest iname="Ceylnath Vineyards" id="446" iconSet="1" x="49174" y="20534">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Ceylnath Vineyards" id="446" iconSet="1" x="49174" y="20534">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
-        <ranks min="30" max="31" />
-        <realm>Order</realm>
-    </publicQuest>
     <publicQuest iname="Da Orcwerks" id="445" iconSet="1" x="54822" y="6021">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Order</realm>
@@ -197,7 +197,7 @@
     </publicQuest>
     <publicQuest iname="Woodsong Manor" id="478" iconSet="1" x="7601" y="63477">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Destruction</realm>
@@ -210,9 +210,9 @@
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Neversong" id="453" iconSet="1" x="9652" y="23489">
-        <difficulty>hard</difficulty>
-        <players min="9" />
-        <rewards>advanced</rewards>
+        <difficulty>normal</difficulty>
+        <players min="3"  max="6" />
+        <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Order</realm>
     </publicQuest>

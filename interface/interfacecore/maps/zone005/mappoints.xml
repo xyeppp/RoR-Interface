@@ -155,28 +155,28 @@
     </publicQuest>
     <publicQuest iname="Ungry 'Ungry Greenskins" id="124" iconSet="1" x="24945" y="7548">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="34" max="35" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Reichart's Raiders" id="128" iconSet="1" x="2810" y="51565">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="34" max="35" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Und-a-Runki" id="129" iconSet="1" x="3766" y="62445">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="34" max="35" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Ruins of Mingol Kurdak" id="138" iconSet="1" x="61292" y="5270">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="37" max="37" />
         <realm>Destruction</realm>
@@ -190,7 +190,7 @@
     </publicQuest>
     <publicQuest iname="Red with Envy" id="123" iconSet="1" x="6465" y="12179">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="34" max="35" />
         <realm>Order</realm>

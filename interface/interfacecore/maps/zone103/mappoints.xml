@@ -146,14 +146,14 @@
     </landmark>
 	<publicQuest iname="Daemonic Gifts of Khorne" id="907" iconSet="1" x="44665" y="53422" liveevent="36">
         <difficulty>hard</difficulty>
-        <players min="9"/>
+        <players min="6"/>
         <rewards>advanced</rewards>
         <ranks min="36" max="40" />
         <realm>Order</realm>
     </publicQuest>
 	<publicQuest iname="Daemonic Gifts of Khorne" id="908" iconSet="1" x="21135" y="15997" liveevent="36">
         <difficulty>hard</difficulty>
-        <players min="9"/>
+        <players min="6"/>
         <rewards>advanced</rewards>
         <ranks min="36" max="40" />
         <realm>Destruction</realm>
@@ -167,14 +167,14 @@
     </publicQuest>
     <publicQuest iname="Sands of Time" id="308" iconSet="1" x="13805" y="35579">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="The Storm is Coming" id="328" iconSet="1" x="14050" y="12287">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
@@ -188,7 +188,7 @@
     </publicQuest>
     <publicQuest iname="Reaping Pain" id="327" iconSet="1" x="22147" y="21483">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
@@ -202,21 +202,21 @@
     </publicQuest>
     <publicQuest iname="Lost Artifacts" id="321" iconSet="1" x="26862" y="55072">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Dance of Bones" id="320" iconSet="1" x="33453" y="57356">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Fall of Grimclan" id="309" iconSet="1" x="3907" y="56629">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="32" max="33" />
         <realm>Destruction</realm>
@@ -230,14 +230,14 @@
     </publicQuest>
     <publicQuest iname="Altar of Madness" id="331" iconSet="1" x="47737" y="18084">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Reaping Field" id="326" iconSet="1" x="54604" y="36188">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>
@@ -258,7 +258,7 @@
     </publicQuest>
     <publicQuest iname="Madness" id="325" iconSet="1" x="60293" y="41801">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>

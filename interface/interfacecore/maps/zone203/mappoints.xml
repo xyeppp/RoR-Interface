@@ -98,7 +98,7 @@
     </landmark>
     <publicQuest iname="The Vault of the Dragon Princes" id="448" iconSet="1" x="14331" y="21457">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
@@ -112,7 +112,7 @@
     </publicQuest>
     <publicQuest iname="Shrine of Tethlis" id="473" iconSet="1" x="27692" y="48238">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>
@@ -133,14 +133,14 @@
     </publicQuest>
     <publicQuest iname="Shrine of the Dragontamer" id="472" iconSet="1" x="39431" y="48526">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="39" max="39" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Battle of Avethir" id="449" iconSet="1" x="4115" y="2920">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="30" max="31" />
         <realm>Destruction</realm>
@@ -154,28 +154,28 @@
     </publicQuest>
     <publicQuest iname="Ulan Bel" id="466" iconSet="1" x="55440" y="35535">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Malyros' Rest" id="461" iconSet="1" x="57546" y="25400">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="32" max="33" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Drake's Rest" id="471" iconSet="1" x="57942" y="65176">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="38" max="38" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Fortress of Caledor" id="458" iconSet="1" x="60840" y="3453">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="32" max="32" />
         <realm>Destruction</realm>
@@ -196,7 +196,7 @@
     </publicQuest>
     <publicQuest iname="Might of Ulthuan" id="484" iconSet="1" x="7967" y="44002">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="40" max="40" />
         <realm>Order</realm>
