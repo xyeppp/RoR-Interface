@@ -1,4 +1,4 @@
----
+------@meta
 -- @desc Gets the name of ability/macro/item on the hotbar slot.
 -- @param slotId number The slot ID of the hotbar.
 -- @return string The name of ability/macro/item on the hotbar slot.
