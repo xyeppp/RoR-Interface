@@ -1,0 +1,44 @@
+name: Build & Publish Site (codex)
+
+on:
+  push:
+    branches: [codex]
+    paths:
+      - 'interface/**'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'tools/**'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build site
+        run: mkdocs build --strict
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          commit_message: "Deploy preview from codex: ${{ github.sha }}"
+          full_commit_message: "Deploy preview from codex: ${{ github.sha }}"

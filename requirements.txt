@@ -1,0 +1,4 @@
+mkdocs==1.6.0
+mkdocs-material==9.5.34
+mkdocs-simple-hooks==0.1.5
+pillow==11.3.0
