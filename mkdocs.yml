@@ -1,0 +1,34 @@
+site_name: RoR Interface & Addon Docs
+site_url: https://xyeppp.github.io/RoR-Interface
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - tables
+  - toc:
+      permalink: true
+plugins:
+  - search
+  - mkdocs-simple-hooks:
+      hooks:
+        on_pre_build: "tools.interface_index:generate_docs"
+nav:
+  - Home: index.md
+  - Interface Browser:
+      - Latest overview: interface/latest/index.md
+repo_url: https://github.com/xyeppp/RoR-Interface
+extra:
+  interface_index:
+    interface_dir: interface
+    output_subdir: interface/latest
+    max_code_entries: 200
+    max_image_entries: 300
+    truncate_bytes: 8000
