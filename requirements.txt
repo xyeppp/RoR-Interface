@@ -1,0 +1,6 @@
+mkdocs==1.6.0
+mkdocs-material==9.5.34
+mkdocs-table-reader-plugin==2.1.1
+mkdocs-simple-hooks==0.1.6
+Pillow==10.4.0
+pillow-dds==1.0.1
