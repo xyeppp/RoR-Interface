@@ -1,0 +1,81 @@
+name: Build & Publish Site (codex)
+
+on:
+  push:
+    branches: [ codex ]
+    paths:
+      - 'interface/**'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'tools/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare directories
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path docs/interface/latest | Out-Null
+          New-Item -ItemType Directory -Force -Path docs/interface/latest/images | Out-Null
+
+      - name: Copy LUA/XML/CSV from repo interface/
+        shell: pwsh
+        run: |
+          robocopy interface docs\interface\latest\lua  *.lua /S
+          robocopy interface docs\interface\latest\xml  *.xml /S
+          robocopy interface docs\interface\latest\csv  *.csv /S
+          exit 0
+
+      - name: Install DirectXTex (texconv) for DDS conversion
+        shell: pwsh
+        run: choco install directxtex -y
+
+      - name: Convert DDS -> PNG
+        shell: pwsh
+        run: |
+          $root = Resolve-Path interface
+          $dds = Get-ChildItem -Path $root -Recurse -Include *.dds
+          # Optional: cap conversions to avoid long builds (set to 0 for unlimited)
+          $MAX = 0
+          $count = 0
+          foreach ($f in $dds) {
+            if ($MAX -gt 0 -and $count -ge $MAX) { break }
+            $rel = $f.DirectoryName.Substring($root.Path.Length).TrimStart('\\','/')
+            $outDir = Join-Path "docs/interface/latest/images" $rel
+            New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+            & "C:\Program Files\Microsoft DirectXTex\texconv.exe" -ft png -o $outDir $f.FullName
+            $count++
+          }
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install MkDocs & plugins
+        run: pip install mkdocs mkdocs-material mkdocs-table-reader-plugin
+
+      - name: Generate interface index
+        run: python tools/make_interface_index.py
+
+      - name: Build site
+        run: mkdocs build --strict
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          # Tie deployment to the codex branch commits (safe to preview before merge)
+          full_commit_message: "Deploy preview from codex: ${{ github.sha }}"
+          commit_message: "Deploy preview from codex: ${{ github.sha }}"
