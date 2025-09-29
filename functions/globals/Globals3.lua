@@ -1,4 +1,4 @@
----
+-------@meta
 -- @desc Refunds all spent Renown points.
 function RefundRenownPoints()   end
 ---
