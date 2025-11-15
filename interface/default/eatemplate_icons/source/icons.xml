@@ -5614,6 +5614,8 @@
     <Icon id="15421" texture="Textures/hat_pirate_18_01.dds" name="" />
     <Icon id="15422" texture="Textures/hat_pirate_19_01.dds" name="" />
     <Icon id="15423" texture="Textures/hat_pirate_20_01.dds" name="" />
+    <Icon id="15424" texture="Textures/ch_bankerdisk_01_nurgle.dds" name="" />
+    <Icon id="15425" texture="Textures/ch_disk_light_08_nur.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
