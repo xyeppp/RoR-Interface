@@ -1245,7 +1245,7 @@ local function SetItemTooltipBonusData (tooltipWindow, itemData)
             DisplayPassiveAbilityLine( tooltipWindow, iCurPassiveAbility, bonus, bonusText)
             iCurPassiveAbility = iCurPassiveAbility + 1
         -- Handle on Use text
-        elseif ((bonus.type == GameDefs.ITEMBONUS_USE) and (bonus.reference > 0))
+        elseif ((bonus.type == GameDefs.ITEMBONUS_USE))
         then
             -- don't want the breaks on the first use effect
             if useEffectDesc == L""

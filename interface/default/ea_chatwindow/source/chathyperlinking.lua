@@ -15,6 +15,7 @@ local QUEST_TAG     = L"QUEST:"    -- Format: "QUEST:<Quest #>"                 
 local TOME_TAG      = L"TOME:"     -- Format: "TOME:<Section #>:<Entry #>"      Example: "TOME:2:55"
 local GUILD_TAG     = L"GUILD:"    -- Format: "GUILD:<Guild #>"                 Example: "GUILD:1212"
 local URL    		= L"URL:"      -- Format: "URL:<Url #>"                		Example: "URL:8" 
+local WEBLINK    	= L"WEBLINK:"  -- Format: "WEBLINK:<UrlAdress>"             Example: "WEBLINK:www.returnofreckoning.com" 
 local ERASE         = L""
 
 EA_ChatWindow.HyperLinks =
@@ -99,6 +100,13 @@ function EA_ChatWindow.OnHyperLinkLButtonUp( linkData, flags, x, y )
        EA_ChatWindow.OnUrlLinkLButtonUp(  tonumber(urlLink), flags, x, y )
        return
     end
+
+	local webLink, findCount = wstring.gsub( linkData, WEBLINK, ERASE )
+    if( findCount > 0  ) 
+    then       
+       EA_ChatWindow.OnWebLinkLButtonUp( webLink, flags, x, y )
+       return
+    end
 end
 
 
@@ -162,6 +170,9 @@ DialogManager.MakeTwoButtonDialog( L"This will open site \n"..towstring(GetStrin
 	
 end
 
+function EA_ChatWindow.OnWebLinkLButtonUp( webLink, flags, x, y )
+DialogManager.MakeTextEntryDialog( L"Copy Link", L" Highlight text and ctrl+c to copy link (Use at your own risk)",towstring(webLink),nil, nil, 1000, true,nil,true)
+end
 
 function EA_ChatWindow.OnPlayerLinkRButtonUp( playerName, flags, x, y, wndGroupId)
 	
