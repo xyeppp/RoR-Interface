@@ -291,6 +291,15 @@
 			<Slice id="KarakEightPeaksRatbreakerStand" left="306" top="975" width="64" height="46" />
 			<Slice id="KarakEightPeaksTrainers" left="374" top="977" width="46" height="46" />
 			<Slice id="KarakEightPeaksBank" left="424" top="978" width="50" height="46" />
+			<Slice id="CrownDarkBlue" left="510" top="412" width="42" height="28" />
+			<Slice id="CrownDarkPurple" left="558" top="412" width="42" height="28" />
+			<Slice id="CrownDarkGreen" left="598" top="414" width="42" height="28" />
+			<Slice id="CrownLightGreen" left="639" top="412" width="42" height="28" />
+			<Slice id="CrownLightBlue" left="510" top="437" width="42" height="28" />
+			<Slice id="CrownLightGold" left="555" top="437" width="42" height="28" />
+			<Slice id="CrownPink" left="598" top="439" width="42" height="28" />
+			<Slice id="CrownRed" left="640" top="440" width="42" height="28" />
+			<Slice id="CrownDarkGold" left="511" top="462" width="42" height="28" />
         </Texture>
 
         <!-- General Icons -->
@@ -453,7 +462,7 @@
 
         <!--  Circular Player Pips --> 
         <MapIcon id="00055" texture="map_markers01" slice="PlayerCircleDestruction" pointX="8" pointY="8" name="DestuctionPlayerCircle" /> 
-        <MapIcon id="00056" texture="map_markers01" slice="PlayerCircleDestuctionLite" pointX="8" pointY="8" name="DestuctionPlayerCircle-Lite" /> 
+        <MapIcon id="00056" texture="map_markers01" slice="PlayerCircleDestructionLite" pointX="8" pointY="8" name="DestuctionPlayerCircle-Lite" /> 
         <MapIcon id="00057" texture="map_markers01" slice="PlayerCircleOrder" pointX="8" pointY="8" name="OrderPlayerCircle" /> 
         <MapIcon id="00058" texture="map_markers01" slice="PlayerCircleOrderLite" pointX="8" pointY="8" name="OrderPlayerCircle-Lite" /> 
         <MapIcon id="00059" texture="map_markers01" slice="PlayerCircleGroupmate" pointX="8" pointY="8" name="GroupmateCircle" /> 
@@ -733,9 +742,20 @@
         <MapIcon id="01716" texture="map_markers01" slice="DestructionNumberedCircle08" pointX="15" pointY="15" name="DestructionNumberedCircle08"/>
         <MapIcon id="01717" texture="map_markers01" slice="DestructionNumberedCircle09" pointX="15" pointY="15" name="DestructionNumberedCircle09"/>
 
-        <!-- RoR RvR Icons 1800-1900 -->
+        <!-- RoR RvR Icons 1800-1849 -->
         <MapIcon id="01800" texture="map_markers01" slice="RamOrder" pointX="19" pointY="17" name="RamOrder"/>
         <MapIcon id="01801" texture="map_markers01" slice="RamDestruction" pointX="19" pointY="17" name="RamDestruction"/>
+		
+        <!-- RoR Crown Icons 1850-1900 -->
+        <MapIcon id="01850" texture="map_markers01" slice="CrownDarkBlue" pointX="21" pointY="14" name="CrownDarkBlue"/>
+        <MapIcon id="01851" texture="map_markers01" slice="CrownDarkPurple" pointX="21" pointY="14" name="CrownDarkPurple"/>
+        <MapIcon id="01852" texture="map_markers01" slice="CrownDarkGreen" pointX="21" pointY="14" name="CrownDarkGreen"/>
+        <MapIcon id="01853" texture="map_markers01" slice="CrownLightGreen" pointX="21" pointY="14" name="CrownLightGreen"/>
+        <MapIcon id="01854" texture="map_markers01" slice="CrownLightBlue" pointX="21" pointY="14" name="CrownLightBlue"/>
+        <MapIcon id="01855" texture="map_markers01" slice="CrownLightGold" pointX="21" pointY="14" name="CrownLightGold"/>
+        <MapIcon id="01856" texture="map_markers01" slice="CrownPink" pointX="21" pointY="14" name="CrownPink"/>
+        <MapIcon id="01857" texture="map_markers01" slice="CrownRed" pointX="21" pointY="14" name="CrownRed"/>
+        <MapIcon id="01858" texture="map_markers01" slice="CrownDarkGold" pointX="21" pointY="14" name="CrownDarkGold"/>
 		
 		<!-- RoR Dungeon Icons 2000-2099 -->
         <MapIcon id="02001" texture="map_markers01" slice="DungeonHuntersVale" pointX="41" pointY="25" name="DungeonHuntersVale"/>
