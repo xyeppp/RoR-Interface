@@ -5630,6 +5630,10 @@
     <Icon id="15435" texture="Textures/all_bit_kegend_present_10.dds" name="" />
     <Icon id="15436" texture="Textures/all_bit_kegend_present_11.dds" name="" />
     <Icon id="15437" texture="Textures/all_bit_kegend_present_12.dds" name="" />
+    <Icon id="15438" texture="Textures/itm_ge_scroll_02_green.dds" name="" />
+    <Icon id="15439" texture="Textures/itm_ge_scroll_03_blue.dds" name="" />
+    <Icon id="15440" texture="Textures/cloak_hexensnacht_16.dds" name="" />
+    <Icon id="15441" texture="Textures/itm_ge_mentorsmark.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
@@ -7042,6 +7046,7 @@
     <Icon id="41007" texture="Textures/itm_ge_crown_green.dds" name="" />
     <Icon id="41008" texture="Textures/itm_ge_crown_darkgreen.dds" name="" />
     <Icon id="41009" texture="Textures/itm_ge_crown_purple.dds" name="" />
+    <Icon id="41010" texture="Textures/itm_ge_crown_blackred.dds" name="" />
     <Icon id="50001" texture="Textures/CH_Disk_Med_02.dds" name="" />
     <Icon id="50002" texture="Textures/CH_Disk_Med_01.dds" name="" />
     <Icon id="50003" texture="Textures/CH_Disk_Manticore_01.dds" name="" />

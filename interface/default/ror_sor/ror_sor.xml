@@ -36,6 +36,10 @@
 		 <Icon id="29961" texture="original/defend.dds" name=" "/>		 
 		 <Icon id="29962" texture="original/broadcast.dds" name=" "/>			
 		 <Icon id="29963" texture="original/relocating.dds" name=" "/>	
+		 <Icon id="29964" texture="original/ram_blue.tga" name=" "/>			
+		 <Icon id="29965" texture="original/ram_red.tga" name=" "/>	
+		 <Icon id="29966" texture="original/battle.tga" name=" "/>	
+		 <Icon id="29967" texture="original/attack.tga" name=" "/>	
 		 
 		 <Icon id="29979" texture="original/Time.Tga" name=" "/>			 
 		 <Icon id="29980" texture="original/Door.Tga" name=" "/>	
