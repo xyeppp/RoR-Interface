@@ -2531,7 +2531,6 @@
     <Icon id="4693" texture="Textures/abi_dw_lookslikeachallenge.dds" name="" />
     <Icon id="4694" texture="Textures/abi_dw_figure13.dds" name="" />
     <Icon id="4695" texture="Textures/abi_dw_runeoffulmination.dds" name="" />
-    <Icon id="4696" texture="Textures/abi_dw_rune_red.dds" name="" />
     <Icon id="4697" texture="Textures/abi_dw_cancelancestorrune.dds" name="" />
     <Icon id="5000" texture="Textures/Abi_ge_Swing.dds" name="" />
     <Icon id="5001" texture="Textures/Abi_ge_Shoot.dds" name="" />
@@ -5634,6 +5633,42 @@
     <Icon id="15439" texture="Textures/itm_ge_scroll_03_blue.dds" name="" />
     <Icon id="15440" texture="Textures/cloak_hexensnacht_16.dds" name="" />
     <Icon id="15441" texture="Textures/itm_ge_mentorsmark.dds" name="" />
+    <Icon id="15442" texture="Textures/itm_ge_skullhorned_bronze.dds" name="" />
+    <Icon id="15443" texture="Textures/itm_ge_skullhorned_grey.dds" name="" />
+    <Icon id="15444" texture="Textures/itm_ge_skullhorned_red.dds" name="" />
+    <Icon id="15445" texture="Textures/van_pig_02.dds" name="" />
+    <Icon id="15446" texture="Textures/mnt_armoredbull_01.dds" name="" />
+    <Icon id="15447" texture="Textures/cloak_tome_squig_01.dds" name="" />
+    <Icon id="15448" texture="Textures/cloak_lv_dralel_01.dds" name="" />
+    <Icon id="15449" texture="Textures/cloak_lv_sarthain_01.dds" name="" />
+    <Icon id="15450" texture="Textures/cloak_lv_sechar_01.dds" name="" />
+    <Icon id="15451" texture="Textures/cloak_lv_nkari_01.dds" name="" />
+    <Icon id="15452" texture="Textures/all_bit_nightofmasks_rose_01_orange.dds" name="" />
+    <Icon id="15453" texture="Textures/all_bit_nightofmasks_rose_01_purple.dds" name="" />
+    <Icon id="15454" texture="Textures/all_bit_nightofmasks_rose_01_pink.dds" name="" />
+    <Icon id="15455" texture="Textures/all_bit_nightofmasks_rose_01_yellow.dds" name="" />
+    <Icon id="15456" texture="Textures/all_bit_nightofmasks_rose_01_blue.dds" name="" />
+    <Icon id="15457" texture="Textures/all_bit_nightofmasks_rose_01_black.dds" name="" />
+    <Icon id="15458" texture="Textures/all_bit_nightofmasks_rose_01_white.dds" name="" />
+    <Icon id="15459" texture="Textures/all_bit_nightofmasks_rose_01_red.dds" name="" />
+    <Icon id="15460" texture="Textures/mnt_bull_armored_01.dds" name="" />
+    <Icon id="15461" texture="Textures/itm_ge_silk02_a.dds" name="" />
+    <Icon id="15462" texture="Textures/itm_ge_breadloaf_02.dds" name="" />
+    <Icon id="15463" texture="Textures/itm_ge_breadloaf_02_lefthalf.dds" name="" />
+    <Icon id="15464" texture="Textures/itm_ge_breadloaf_02_righthalf.dds" name="" />
+    <Icon id="15465" texture="Textures/itm_ge_estalia_coin_copper.dds" name="" />
+    <Icon id="15466" texture="Textures/itm_ge_estalia_coin_silver.dds" name="" />
+    <Icon id="15467" texture="Textures/itm_ge_estalia_coin_gold.dds" name="" />
+    <Icon id="15468" texture="Textures/itm_ge_myrmidia_brooch.dds" name="" />
+    <Icon id="15469" texture="Textures/cloak_estalia_01.dds" name="" />
+    <Icon id="15470" texture="Textures/ch_disk_t3_01_estalia_01.dds" name="" />
+    <Icon id="15471" texture="Textures/ch_disk_t4_01_estalia_01.dds" name="" />
+    <Icon id="15472" texture="Textures/mnt_bull_01.dds" name="" />
+    <Icon id="15473" texture="Textures/mask_nightmasks_cat_01.dds" name="" />
+    <Icon id="15474" texture="Textures/mask_nightmasks_cornflower_01.dds" name="" />
+    <Icon id="15475" texture="Textures/mask_nightmasks_fish_01.dds" name="" />
+    <Icon id="15476" texture="Textures/mask_nightmasks_moon_01.dds" name="" />
+    <Icon id="15477" texture="Textures/mask_nightmasks_sunmoon_01.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
