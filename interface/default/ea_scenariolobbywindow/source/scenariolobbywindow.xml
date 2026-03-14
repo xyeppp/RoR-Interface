@@ -66,16 +66,17 @@
                         <Anchor point="center" relativePoint="center" relativeTo="$parentIcon" />                        
                     </Anchors>
                 </DynamicImage>
-								<Label name="$parent_DestroText" font="font_default_text" autoresize="true" textAutoFitMinScale="0.3" textalign="left" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+				
+								<Label name="$parent_DestroText" font="font_clear_tiny" autoresize="true" textAutoFitMinScale="0.3" textalign="left" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
 								<Size><AbsPoint x="52" y="22" /></Size>
-								<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="-5" y="0" /></Anchor></Anchors>
-								<Color r="200" g="55" b="55" />
+								<Anchors><Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="-4" y="0" /></Anchor></Anchors>
+								<Color r="255" g="104" b="20" />
 								</Label>
 
-            					<Label name="$parent_OrderText" font="font_default_text" autoresize="true" textAutoFitMinScale="0.3" textalign="right" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Label name="$parent_OrderText" font="font_clear_tiny" autoresize="true" textAutoFitMinScale="0.3" textalign="right" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
 								<Size><AbsPoint x="52" y="22" /></Size>
-								<Anchors><Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="5" y="0" /></Anchor></Anchors>
-								<Color r="55" g="104" b="203" />
+								<Anchors><Anchor point="bottomleft" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="6" y="0" /></Anchor></Anchors>								
+								<Color r="145" g="190" b="250" />
 								</Label>
 								
 								<Label name="$parent_Text" font="font_clear_tiny" autoresize="true" textAutoFitMinScale="0.3" textalign="left" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
@@ -136,7 +137,7 @@
 			        </Size>
 			        <Anchors>
 				        <Anchor point="topright" relativePoint="topright" relativeTo="$parent">
-					        <AbsPoint x="-5" y="8" />
+					        <AbsPoint x="-3" y="8" />
 				        </Anchor>
 			        </Anchors>
 			    </DynamicImage>	
@@ -192,8 +193,8 @@
                         <AnimFrame id="5" x="288" y="0" />
                         <AnimFrame id="6" x="360" y="0" />
                     </AnimFrames>
+					
                 </AnimatedImage>
-			           
 					</Windows>
 			    </DynamicImage>
 
@@ -221,15 +222,15 @@
 				</Label>				
 		
 								<Button name="$parent_MDps" handleinput="true" inherits="EA_Button_Scenario_DiamondTemplate" layer="overlay" id="1">	
-								<Anchors><Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="60" y="-6" /></Anchor></Anchors>
+								<Anchors><Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="80" y="-6" /></Anchor></Anchors>
 								</Button>
 		
 								<Button name="$parent_Tank" handleinput="true" inherits="EA_Button_Scenario_DiamondTemplate" layer="overlay" id="2">	
-								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parent_MDps"><AbsPoint x="25" y="0" /></Anchor></Anchors>
+								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parent_MDps"><AbsPoint x="45" y="0" /></Anchor></Anchors>
 								</Button>
 																
 								<Button name="$parent_Healer" handleinput="true" inherits="EA_Button_Scenario_DiamondTemplate" layer="overlay" id="3">	
-								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parent_Tank"><AbsPoint x="25" y="0" /></Anchor></Anchors>
+								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parent_Tank"><AbsPoint x="45" y="0" /></Anchor></Anchors>
 								</Button>
 
 
@@ -252,7 +253,12 @@
                             </AnimFrames>
                             <TexDims x="37" y="37" />
                         </AnimatedImage>
-				
+						
+								<Label name="$parentQTime" font="font_clear_tiny" autoresize="true" textAutoFitMinScale="0.3" textalign="right" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLoading"><AbsPoint x="-4" y="-2" /></Anchor></Anchors>
+								<Color r="255" g="204" b="20" />
+								</Label>
 	
 			</Windows>
 		</Button>
@@ -804,6 +810,19 @@
 
 
                 <!-- ScenarioMap -->
+
+                <Label name="$parentTier" font="font_default_text" textalign="right" layer="popup" handleinput="false" autoresizewidth="true" wordwrap="false">
+                    <Size>
+                        <AbsPoint x="75" y="30" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTitleBar">
+                            <AbsPoint x="-40" y="5" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="255" g="204" b="102" />
+                </Label>
+				
                 <MapDisplay name="$parentScenarioMap" loadingAnim="MapLoadingAnim" pinTexture="map_markers01" sticky="false" >
                     <Size>
                         <AbsPoint x="384" y="384" />

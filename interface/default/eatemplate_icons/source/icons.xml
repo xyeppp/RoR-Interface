@@ -5669,6 +5669,37 @@
     <Icon id="15475" texture="Textures/mask_nightmasks_fish_01.dds" name="" />
     <Icon id="15476" texture="Textures/mask_nightmasks_moon_01.dds" name="" />
     <Icon id="15477" texture="Textures/mask_nightmasks_sunmoon_01.dds" name="" />
+    <Icon id="15478" texture="Textures/armor_ch_ze_03_c_shoulders.dds" name="" />
+    <Icon id="15479" texture="Textures/armor_ch_ze_03_c_helmet.dds" name="" />
+    <Icon id="15480" texture="Textures/armor_ch_mr_03_c_shoulders.dds" name="" />
+    <Icon id="15481" texture="Textures/armor_ch_mr_03_c_helmet.dds" name="" />
+    <Icon id="15482" texture="Textures/armor_gs_bz_03_d_shoulders.dds" name="" />
+    <Icon id="15483" texture="Textures/armor_gs_bz_03_d_helmet.dds" name="" />
+    <Icon id="15484" texture="Textures/armor_gs_sh_03_c_shoulders.dds" name="" />
+    <Icon id="15485" texture="Textures/armor_gs_sh_03_c_helmet.dds" name="" />
+    <Icon id="15486" texture="Textures/armor_he_wl_03_c_shoulders.dds" name="" />
+    <Icon id="15487" texture="Textures/armor_he_wl_03_c_helmet.dds" name="" />
+    <Icon id="15488" texture="Textures/armor_em_wh_03_c_shoulders.dds" name="" />
+    <Icon id="15489" texture="Textures/armor_em_wh_03_c_helmet.dds" name="" />
+    <Icon id="15490" texture="Textures/armor_em_kn_03_c_shoulders.dds" name="" />
+    <Icon id="15491" texture="Textures/armor_em_kn_03_c_helmet.dds" name="" />
+    <Icon id="15492" texture="Textures/armor_em_bw_03_c_shoulders.dds" name="" />
+    <Icon id="15493" texture="Textures/armor_em_bw_03_c_helmet.dds" name="" />
+    <Icon id="15494" texture="Textures/armor_em_wp_03_c_shoulders.dds" name="" />
+    <Icon id="15495" texture="Textures/armor_em_wp_03_c_helmet.dds" name="" />
+    <Icon id="15496" texture="Textures/armor_dw_sl_03_c_shoulders.dds" name="" />
+    <Icon id="15497" texture="Textures/armor_dw_sl_03_c_helmet.dds" name="" />
+    <Icon id="15498" texture="Textures/cloak_wakingday_snowleopard_01.dds" name="" />
+    <Icon id="15499" texture="Textures/itm_ge_animal_fish02.dds" name="" />
+    <Icon id="15500" texture="Textures/itm_ge_kislevbear01.dds" name="" />
+    <Icon id="15501" texture="Textures/van_bat_01.dds" name="" />
+    <Icon id="15502" texture="Textures/van_hawk_01.dds" name="" />
+    <Icon id="15503" texture="Textures/all_bit_wakingday_claw_01_gray.dds" name="" />
+    <Icon id="15504" texture="Textures/all_bit_wakingday_claw_01_blonde.dds" name="" />
+    <Icon id="15505" texture="Textures/all_bit_wakingday_claw_01_brown.dds" name="" />
+    <Icon id="15506" texture="Textures/all_bit_wakingday_claw_01_black.dds" name="" />
+    <Icon id="15507" texture="Textures/all_bit_wakingday_claw_01_red.dds" name="" />
+    <Icon id="15508" texture="Textures/all_bit_wakingday_claw_01_white.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
@@ -7021,6 +7052,7 @@
     <Icon id="30465" texture="Textures/mtx_primer_15.dds" name="" />
     <Icon id="36000" texture="Textures/archetype_tank_immaculatedefense_g.dds" name="" />
     <Icon id="36001" texture="Textures/archetype_tank_immaculatedefense_r.dds" name="" />
+    <Icon id="36002" texture="Textures/archetype_tank_immaculatedefense_p.dds" name="" />
     <Icon id="40000" texture="Textures/icon_ch_ror_axe_1h_01.dds" name="" />
     <Icon id="40001" texture="Textures/icon_ch_ror_axe_2h_01.dds" name="" />
     <Icon id="40002" texture="Textures/icon_ch_ror_shield_01.dds" name="" />

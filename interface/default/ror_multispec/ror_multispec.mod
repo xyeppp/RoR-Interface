@@ -11,7 +11,8 @@
             <Dependency name="EASystem_WindowUtils" />
             <Dependency name="EATemplate_DefaultWindowSkin" />
             <Dependency name="EATemplate_UnitFrames" />
-            <Dependency name="EA_InteractionWindow" />	  
+            <Dependency name="EA_InteractionWindow" />	
+			<Dependency name="EA_AbilitiesWindow" />				
         </Dependencies>
  
         <Files>

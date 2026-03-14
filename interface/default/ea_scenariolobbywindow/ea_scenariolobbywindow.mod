@@ -10,6 +10,8 @@
             <Dependency name="EA_LegacyTemplates" />
             <Dependency name="EASystem_Tooltips" />
             <Dependency name="EA_ContextMenu" />
+            <Dependency name="EA_ActionBars" />			
+			<Dependency name="EA_TrialAlertWindow" />						
             <Dependency name="ror_PacketHandling" />			
         </Dependencies>
         <Files>        

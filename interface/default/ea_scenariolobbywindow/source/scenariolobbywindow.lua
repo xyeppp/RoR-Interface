@@ -41,10 +41,12 @@ EA_Window_ScenarioLobby.NUM_JOIN_MODES  = 2
 EA_Window_ScenarioLobby.ENABLED = 1
 EA_Window_ScenarioLobby.WEEKEND_WARFRONT = 2
 EA_Window_ScenarioLobby.ALLOW_GROUP_QUEUE = 4
-EA_Window_ScenarioLobby.CHALLENGE_MODE = 8
+EA_Window_ScenarioLobby.LIVE_EVENT = 8
 EA_Window_ScenarioLobby.HEALER_INCENTIVE = 16
 EA_Window_ScenarioLobby.TANK_INCENTIVE = 32
 EA_Window_ScenarioLobby.DPS_INCENTIVE = 64
+EA_Window_ScenarioLobby.DUNGEON = 128
+EA_Window_ScenarioLobby.COMBINEDQUEUE = 256
 
 EA_Window_ScenarioLobby.MAX_BLACKLIST_COUNT = 10
 
@@ -58,7 +60,7 @@ EA_Window_ScenarioLobby.joinMode        = EA_Window_ScenarioLobby.JOIN_MODE_SOLO
 EA_Window_ScenarioLobby.playerActiveQueues = nil    -- List of scenarios for which the player is actively queued.
 
 local Selected_Scenario = 0
-local Insentive_Labels = {["MDps"]=L"DPS <icon45>+50% Renown",["Tank"]=L"Tanks <icon45>+50% Renown",["Healer"]=L"Healer <icon45>+50% Renown"}
+local Insentive_Labels = {["MDps"]=L"DPS <br>+25% <icon45>Renown <br>+25% <icon41>Experience <br>+1 <icon25023>WarCrest",["Tank"]=L"Tanks <br>+25% <icon45>Renown <br>+25% <icon41>Experience <br>+1 <icon25023>WarCrest",["Healer"]=L"Healer <br>+25% <icon45>Renown <br>+25% <icon41>Experience <br>+1 <icon25023>WarCrest"}
 local Insentive_Id = {[1]="DpsIncentive",[2]="TankIncentive",[3]="HealerIncentive"}
 local Bool_Convert = {["true"] = L"1",["false"]= L"0"}
 local Preferences_Icon = {["true"] = "City-Rating-Star",["false"]= "City-Rating-Star-Slot"}
@@ -219,18 +221,20 @@ name = GetScenarioName( SCList.queueId ) or L"?",
 Enabled = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.ENABLED) or false,
 WeekendWarfront = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.WEEKEND_WARFRONT ) or false,
 AllowGroupQueue = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.ALLOW_GROUP_QUEUE ) or false,
-ChallengeMode = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.CHALLENGE_MODE ) or false,
+LiveEvent = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.LIVE_EVENT ) or false,
 HealerIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.HEALER_INCENTIVE ) or false,
 TankIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.TANK_INCENTIVE ) or false,
 DpsIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.DPS_INCENTIVE ) or false,
+Dungeon = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.DUNGEON ) or false,
+Combinedqueue = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.COMBINEDQUEUE ) or false,
 blacklistCount = SCList.blacklistCount or 0,
 blacklist = SCList.blacklist or {},
 iconId = SCList.iconId or 130,
 aQT = SCList.averageQueueTime or 0,
-stats = SCList.stats or {tanks=0,healers=0,dps=0}
+stats = SCList.stats or {destructionTanks=0,destructionHealers=0,destructionDps=0,orderTanks=0,orderHealers=0,orderDps=0}
 }
 
-d(SCList)
+--d(SCList)
 EA_Window_ScenarioLobby.PopulateBlackList()
 EA_Window_ScenarioLobby.UpdateListData()
 end
@@ -329,10 +333,12 @@ function EA_Window_ScenarioLobby.GetFlag(set, flag)
             Enabled = 1,
             WeekendWarfront = 2,
             AllowGroupQueue = 4,
-            ChallengeMode = 8,
+            LiveEvent = 8,
             HealerIncentive = 16,
             TankIncentive = 32,
             DpsIncentive = 64,
+			Dungeon = 128,
+			Combinedqueue = 256,
 --]]
 end
 
@@ -344,9 +350,13 @@ local QueueData = GetScenarioQueueData()
 for i=1,math.min(#EA_Window_ScenarioLobby.ListData,6) do	
 	local rowName   = "EA_Window_ScenarioLobbyScenarioListRow"..i
 	local RowNumber = 	ListBoxGetDataIndex("EA_Window_ScenarioLobbyScenarioList",i)
+		if RowNumber == nil or EA_Window_ScenarioLobby.ListData[RowNumber] == nil then break end
 	local SCData = EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id]
 	--if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id] == nil then return end
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id] == nil then EA_Window_ScenarioLobby.BuildQueueList({queueId=EA_Window_ScenarioLobby.ListData[RowNumber].id,flags=5}) end
+	if SCData == nil then 
+		EA_Window_ScenarioLobby.BuildQueueList({queueId=EA_Window_ScenarioLobby.ListData[RowNumber].id,flags=5}) 
+	break
+	end
 
 	AnimatedImageStartAnimation( rowName.."Loading", 0, true, false, 0.0 )
 	AnimatedImageStartAnimation( rowName.."IconActive", 0, true, false, 0.0 )
@@ -360,15 +370,30 @@ for i=1,math.min(#EA_Window_ScenarioLobby.ListData,6) do
 	CircleImageSetTexture(rowName.."_HealerIcon","icon022706", 31,31)	
 --check if insentives are met
 	if SCData ~= nil then
-		WindowSetShowing(rowName.."_MDpsInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].DpsIncentive or false)
-		WindowSetShowing(rowName.."_TankInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].TankIncentive or false)
-		WindowSetShowing(rowName.."_HealerInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].HealerIncentive or false)
+		WindowSetShowing(rowName.."_MDpsInsentive",SCData.DpsIncentive or false)
+		WindowSetShowing(rowName.."_TankInsentive",SCData.TankIncentive or false)
+		WindowSetShowing(rowName.."_HealerInsentive",SCData.HealerIncentive or false)
 
-		LabelSetText(rowName.."_MDps_Text",towstring(SCData.stats.dps))
-		LabelSetText(rowName.."_Tank_Text",towstring(SCData.stats.tanks))
-		LabelSetText(rowName.."_Healer_Text",towstring(SCData.stats.healers))
+		--LabelSetText(rowName.."_MDps_Text",towstring(SCData.stats.dps))
+		--LabelSetText(rowName.."_Tank_Text",towstring(SCData.stats.tanks))
+		--LabelSetText(rowName.."_Healer_Text",towstring(SCData.stats.healers))
+		LabelSetText(rowName.."_MDps_OrderText",towstring(SCData.stats.orderDps))
+		LabelSetText(rowName.."_Tank_OrderText",towstring(SCData.stats.orderTanks))
+		LabelSetText(rowName.."_Healer_OrderText",towstring(SCData.stats.orderHealers))
+
+		LabelSetText(rowName.."_MDps_DestroText",towstring(SCData.stats.destructionDps))
+		LabelSetText(rowName.."_Tank_DestroText",towstring(SCData.stats.destructionTanks))
+		LabelSetText(rowName.."_Healer_DestroText",towstring(SCData.stats.destructionHealers))		
 		
-		WindowSetShowing(rowName.."Weekend",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].WeekendWarfront or false)
+		WindowSetShowing(rowName.."_MDps_OrderText",SCData.stats.orderDps>0)
+		WindowSetShowing(rowName.."_Tank_OrderText",SCData.stats.orderTanks>0)
+		WindowSetShowing(rowName.."_Healer_OrderText",SCData.stats.orderHealers>0)
+
+		WindowSetShowing(rowName.."_MDps_DestroText",SCData.stats.destructionDps>0)
+		WindowSetShowing(rowName.."_Tank_DestroText",SCData.stats.destructionTanks>0)
+		WindowSetShowing(rowName.."_Healer_DestroText",SCData.stats.destructionHealers>0)
+		
+		WindowSetShowing(rowName.."Weekend",(SCData.WeekendWarfront) or false)
 	end
 	
 	
@@ -378,17 +403,27 @@ for i=1,math.min(#EA_Window_ScenarioLobby.ListData,6) do
 	WindowSetTintColor(rowName.."Background", 0,0,0)
 	LabelSetTextColor( rowName.."Name", 255,255,255 )
 --set icon
-	EA_Window_ScenarioLobby.ListData[RowNumber].iconNum = EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].iconId
+	EA_Window_ScenarioLobby.ListData[RowNumber].iconNum = SCData.iconId
 
---check if Weekend warfront
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].WeekendWarfront == true then
-		LabelSetText( rowName.."WF",L"<icon49>Weekend Warfront")
-	else
-		LabelSetText( rowName.."WF",L"")	
+--check if Special Events
+	local SpecialEvent = L""
+	
+	if SCData.WeekendWarfront == true then
+		SpecialEvent = SpecialEvent..L"<icon49>Weekend Warfront  "			
 	end
 
+	if SCData.LiveEvent == true then
+		SpecialEvent = SpecialEvent..L"<icon43>Live Event  "
+	end
+
+	if SCData.Dungeon == true then
+		SpecialEvent = SpecialEvent..L"<icon43>Dungeon  "
+	end
+	
+LabelSetText( rowName.."WF",SpecialEvent)
+
 --check if scenario is disabled
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].Enabled == false then
+	if SCData.Enabled == false then
 		WindowSetAlpha(rowName,0.65)
 		WindowSetTintColor(rowName, 200,100,100)
 		WindowSetTintColor(rowName.."Background", 0,0,0)
@@ -413,6 +448,7 @@ for i=1,math.min(#EA_Window_ScenarioLobby.ListData,6) do
 		if v.id == EA_Window_ScenarioLobby.ListData[RowNumber].id then
 			WindowSetShowing(rowName.."Loading",true)
 			WindowSetShowing(rowName.."IconActive",true)
+		
 		end
 		
 	end
@@ -422,6 +458,7 @@ end
 
 --sets all other stuff thats not bound to a listing (buttons and whatnot)
 local SelectedScenario = EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id]
+if SelectedScenario == nil then return end
 WindowSetShowing("EA_Window_ScenarioLobbyJoinMode2Button",(SelectedScenario.AllowGroupQueue) and SelectedScenario.Enabled)
 
 
@@ -456,6 +493,16 @@ WindowSetShowing("EA_Window_ScenarioLobbyJoinMode1",(not EA_Window_ScenarioLobby
 	if EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id) then
 		WindowSetShowing("EA_Window_BlacklistWindow",false)
 	end
+
+	local tier = L""
+	if(GameData.Player.level < 16) then
+		tier =  L"Tier 1"
+	elseif (GameData.Player.level < 40) then
+	    tier = L"Tier2-Tier3"
+	else
+		tier = L"Tier4"
+	end
+	LabelSetText("EA_Window_ScenarioLobbyTier",tier)
 
 end
 
@@ -499,6 +546,7 @@ function EA_Window_ScenarioLobby.toggleButton()
 local Scenarionumber = ListBoxGetDataIndex("EA_Window_BlacklistWindowList" ,WindowGetId(SystemData.MouseOverWindow.name))
 local SelectedSCQ = GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id
 local _listData = EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ]
+	if _listData == nil or _listData.blacklist[Scenarionumber] == nil then return end
 local allowedblacklists = _listData.blacklistCount
 local blacklistnumber = 0
 
@@ -515,8 +563,8 @@ end
 
 EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked = not EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked
 
-TextLogAddEntry("Chat", 0, L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] )
---SendChatText(L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] ,L"/s")
+--TextLogAddEntry("Chat", 0, L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] )
+SendChatText(L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] ,L"/s")
 
 EA_Window_ScenarioLobby.PopulateBlackList()
 end
@@ -692,13 +740,13 @@ function EA_Window_ScenarioLobby.OnJoinMultiQueue()
         return
     end
 
-	EA_Window_ScenarioLobby.joinMode = 2
+	--EA_Window_ScenarioLobby.joinMode = 2
 
     -- Join the Queue for this scenario
 	local index = EA_Window_ScenarioLobby.selectedQueue
 	GameData.ScenarioQueueData.selectedId = GameData.ScenarioQueueData[index].id
     
-    local joinSingleEvent = EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.joinMode ].joinSingleEvent
+    local joinSingleEvent = EA_Window_ScenarioLobby.joinModes[ 2 ].joinSingleEvent
     
     BroadcastEvent( joinSingleEvent )   
     --WindowSetShowing("EA_Window_ScenarioLobby", false)
