@@ -508,12 +508,17 @@ function TomeWindow.DisplayQuest( questId )
     ButtonSetPressedFlag("TomeWindowQuestInfoMapBtn", questData.trackingPin )
     
    -- Starting Dialog  
+  	local G_Name = towstring(GameData.Guild.m_GuildName) or L"Guildless"
+	
     local startText = questData.startDesc
+	startText = wstring.gsub(towstring(startText), L"|g",G_Name)	
+	
     LabelSetText("TomeWindowQuestInfoStartDlgText", startText )   
     
     
     -- Description
     local descText = questData.journalDesc
+	descText = wstring.gsub(towstring(descText), L"|g",G_Name)		
     LabelSetText("TomeWindowQuestInfoDescriptionText", descText )
 
     local anchorWindow = "TomeWindowQuestInfoRequirementsLabel"

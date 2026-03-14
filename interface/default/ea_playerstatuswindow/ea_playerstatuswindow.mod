@@ -14,7 +14,8 @@
             <Dependency name="EASystem_LayoutEditor" />
             <Dependency name="EA_TacticsWindow" />
         </Dependencies>
-        <Files>        
+        <Files>     
+            <File name="Textures/EA_ScenarioSummary01_d5.xml" />
             <File name="Source/PlayerWindow.xml" />
         </Files>
         <OnInitialize>

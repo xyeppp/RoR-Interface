@@ -1,0 +1,8 @@
+<zone iname="Pyramid of Settra">
+  <battlefieldObjective iname="Arbitex Fellhand" id="5170" iconSet="1" x="35190" y="31401">
+  </battlefieldObjective>
+  <battlefieldObjective iname="Minarvine Bloodkissed" id="5171" iconSet="1" x="30381" y="31415">
+  </battlefieldObjective>
+  <battlefieldObjective iname="Krispid the Sordid" id="5172" iconSet="1" x="32851" y="35543">
+  </battlefieldObjective>
+</zone>

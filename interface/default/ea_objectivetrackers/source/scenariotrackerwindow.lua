@@ -179,7 +179,7 @@ function EA_Window_ScenarioTracker.UpdateObjectives()
             
             LabelSetText( targetFrame.."Name", data.name )
 
-            local owner = TrackerUtils.GetFlagSliceForOwner(data.controllingRealm)
+            local owner = TrackerUtils.GetFlagSliceForOwner(data.controllingRealm,data.isFortress)
             DynamicImageSetTextureSlice(targetFrame.."Owner", owner)
             displayIndex = displayIndex + 1
         else

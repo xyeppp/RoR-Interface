@@ -33,24 +33,23 @@ ScreenFlashWindow.curFlashTimer = 0
 function ScreenFlashWindow.Initialize()
     
     
-    WindowRegisterEventHandler( "ScreenFlashWindow", SystemData.Events.PLAYER_CUR_HIT_POINTS_UPDATED, "ScreenFlashWindow.OnPlayerHitPointsUpdated")
+    -- WindowRegisterEventHandler( "ScreenFlashWindow", SystemData.Events.PLAYER_CUR_HIT_POINTS_UPDATED, "ScreenFlashWindow.OnPlayerHitPointsUpdated")
     
     
-    WindowSetTintColor("ScreenFlashWindow", ScreenFlashWindow.DAMAGE_ALERT_COLOR.r, ScreenFlashWindow.DAMAGE_ALERT_COLOR.g, ScreenFlashWindow.DAMAGE_ALERT_COLOR.b )
+    -- WindowSetTintColor("ScreenFlashWindow", ScreenFlashWindow.DAMAGE_ALERT_COLOR.r, ScreenFlashWindow.DAMAGE_ALERT_COLOR.g, ScreenFlashWindow.DAMAGE_ALERT_COLOR.b )
 
 end
 
 function ScreenFlashWindow.OnUpdate( timePassed )
 
-    if( ScreenFlashWindow.curFlashTimer > 0 ) then
-        ScreenFlashWindow.curFlashTimer = ScreenFlashWindow.curFlashTimer - timePassed    
+    -- if( ScreenFlashWindow.curFlashTimer > 0 ) then
+    --     ScreenFlashWindow.curFlashTimer = ScreenFlashWindow.curFlashTimer - timePassed    
         
-        if( ScreenFlashWindow.curFlashTimer < 0 ) then        
-            ScreenFlashWindow.curFlashTimer = 0            
-            WindowSetShowing( "ScreenFlashWindow", false )
-        end
-    end
-
+    --     if( ScreenFlashWindow.curFlashTimer < 0 ) then        
+    --         ScreenFlashWindow.curFlashTimer = 0            
+    --         WindowSetShowing( "ScreenFlashWindow", false )
+    --     end
+    -- end
 end
 
 

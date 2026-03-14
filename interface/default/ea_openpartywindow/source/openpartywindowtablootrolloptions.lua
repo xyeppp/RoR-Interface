@@ -11,6 +11,7 @@ local ComboBoxes = {
     { windowName = "Currency", varName = "currency", tooltip = GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_CURRENCY_TOOLTIP ) },
     { windowName = "Potions", varName = "potion" },
     { windowName = "Talismans", varName = "talisman" },
+    { windowName = "Event", varName = "event" },
 }
 local ComboBoxIndexToRollType = { GameData.LootRoll.INVALID, GameData.LootRoll.PASS, GameData.LootRoll.GREED, GameData.LootRoll.NEED }
 local RollTypeToComboBoxIndex = {
@@ -70,6 +71,7 @@ function EA_Window_OpenPartyLootRollOptions.Initialize()
     LabelSetText( PARENT_WINDOW.."CurrencyTitle", GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_CURRENCY ) )
     LabelSetText( PARENT_WINDOW.."PotionsTitle", GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_POTIONS ) )
     LabelSetText( PARENT_WINDOW.."TalismansTitle", GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_TALISMANS ) )
+    LabelSetText( PARENT_WINDOW.."EventTitle", GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_EVENT ) )
     LabelSetText( PARENT_WINDOW.."TrashTitle", GetStringFromTable( "SocialStrings", StringTables.Social.AUTO_ROLL_OPTION_TRASH ) )
     DefaultColor.LabelSetTextColor( PARENT_WINDOW.."TrashTitle", GameDefs.ItemRarity[SystemData.ItemRarity.UTILITY].color )
     

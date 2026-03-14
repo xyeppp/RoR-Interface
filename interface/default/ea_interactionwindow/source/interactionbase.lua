@@ -130,6 +130,13 @@ function EA_Window_InteractionBase.GenerateMenu(interactionTargetID)
     --    return
     --end
 
+	--RoR inject
+	if TargetInfo:UnitIsNPC("selffriendlytarget") then
+		if TargetInfo:UnitNPCTitle("selffriendlytarget"):match(GetStringFromTable("npctitles", 2)) or TargetInfo:UnitNPCTitle("selffriendlytarget"):match(GetStringFromTable("npctitles", 3)) or TargetInfo:UnitNPCTitle("selffriendlytarget"):match(GetStringFromTable("npctitles", 181)) then
+			EA_Window_InteractionBase.optionListData[#EA_Window_InteractionBase.optionListData+1] = {trainType=32,type=0}	--inject the option
+		end
+	end
+
     EA_Window_InteractionBase.RefreshLists()
     
 end
@@ -266,6 +273,9 @@ function EA_Window_InteractionBase.PopulateOptions(dataIndexTable)
             elseif (optionData.trainType == GameData.InteractTrainerType.TOME)
             then
                 optionText = GetString( StringTables.Default.LABEL_TOME_TRAINING_FROM_TRAINER )
+            elseif (optionData.trainType == 32) --RoR Specc injection
+            then
+                optionText = GetString( StringTables.Default.LABEL_MULTI_SPEC_FROM_TRAINER )
             end 
         elseif (optionData.type == GameData.InteractType.INFLUENCE)
         then
@@ -385,6 +395,13 @@ function EA_Window_InteractionBase.OptionLButtonUp()
     local buttonIndex = WindowGetId(SystemData.ActiveWindow.name)
     local optionIndex = ListBoxGetDataIndex("EA_Window_InteractionBaseOptionList", buttonIndex)
     local optionData  = EA_Window_InteractionBase.optionListData[optionIndex]
+
+    --RoR specc injection
+    if (optionData.trainType == 32) then
+        InteractionUtils.StoreRequestedTrainingType(GameData.InteractTrainerType.NONE)
+        SendChatText(L"]spec list",ChatSettings.Channels[0].serverCmd)
+        return
+    end
 
     if (optionData.type == GameData.InteractType.TRAINER)
     then

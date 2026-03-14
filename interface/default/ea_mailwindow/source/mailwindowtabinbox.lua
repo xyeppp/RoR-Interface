@@ -136,6 +136,7 @@ function MailWindowTabInbox.Initialize()
 	ButtonSetText("MailWindowTabInboxOpenMessageButton",   GetMailString( StringTables.Mail.BUTTON_MAIL_OPEN) )
 	ButtonSetText("MailWindowTabInboxDeleteMessageButton", GetMailString( StringTables.Mail.BUTTON_MAIL_DELETE) )
 	ButtonSetText("MailWindowTabInboxReturnMessageButton", GetMailString( StringTables.Mail.BUTTON_MAIL_RETURN) )
+	ButtonSetDisabledFlag("MailWindowTabInboxReturnMessageButton",true)	
 
 	--LabelSetText("MailWindowTabInboxSelectAllCheckBoxButtonHeader", GetMailString( StringTables.Mail.LABEL_MAIL_HEADER_INBOX_SELECT_ALL) )
 	LabelSetText("MailWindowTabInboxSortComboBoxHeader", GetMailString(StringTables.Mail.HEADER_SORT_COMBOBOX))
@@ -176,6 +177,10 @@ function MailWindowTabInbox.UpdateListButtonStates()
             --ButtonSetDisabledFlag(rowWindow, EA_Window_InteractionTraining.HasAbilityFilter( EA_Window_InteractionTraining.advanceData[data] ) )
         end
     end
+	
+	if MailWindowTabInbox.SelectedMessageDataIndex > 0 then	
+		ButtonSetDisabledFlag("MailWindowTabInboxReturnMessageButton", not MailWindowTabInbox.listData[MailWindowTabInbox.SelectedMessageDataIndex].isReturnable)	
+	end
 end
 
 -- Whenever the # of headers changes, we have to updated the header text and account for if no headers exist.
@@ -496,6 +501,7 @@ function MailWindowTabInbox.ConfirmDeleteMessage()
 end
 
 function MailWindowTabInbox.OnLButtonReturnMessage()
+if ButtonGetDisabledFlag("MailWindowTabInboxReturnMessageButton") == true then return end
 	MailWindowTabMessage.OnClose()
 	SendMailboxCommand(MailWindow.MAILBOX_RETURN_MESSAGE,					-- Msg type, according to warinterface::LuaSendMailboxCommand
 						GameData.MailboxType.PLAYER,						-- Mailbox Type

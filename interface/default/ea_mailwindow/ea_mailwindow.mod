@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModuleFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 
-    <UiMod name="EA_MailWindow" version="2.1" date="7/23/2008" >
+    <UiMod name="EA_MailWindow" version="3.1" date="7/23/2008" >
         <Author name="EAMythic" email="" />
         <Description text="This module contains all of the screens for the Default EA Mail Window." />
         <Dependencies>

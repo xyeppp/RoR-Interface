@@ -6,7 +6,9 @@ local SCOUT_STANCE          = 9080
 local ASSAULT_STANCE        = 9090
 local SKIRMISH_STANCE       = 9094
 local WITCH_HUNTER_STEALTH  = 8090
+local WITCH_HUNTER_STEALTH2 = 6012
 local WITCH_ELF_STEALTH     = 9393
+local WITCH_ELF_STEALTH2    = 6013
 local SQUIG_ARMOR           = 1830
 local PLAY_AS_MONSTER       = 27950
 
@@ -24,7 +26,7 @@ ActionBarStanceSwaps =
     
     m_Swaps =
     {
-        [NO_STANCE]             = { 1 },        
+        [NO_STANCE]             = { 1 },
         [GIFT_OF_SAVAGERY]      = { 1 },
         [GIFT_OF_BRUTALITY]     = { 7 },
         [GIFT_OF_MONSTROSITY]   = { 8 },
@@ -32,7 +34,9 @@ ActionBarStanceSwaps =
         [ASSAULT_STANCE]        = { 7 },
         [SKIRMISH_STANCE]       = { 8 },
         [WITCH_HUNTER_STEALTH]  = { 6 },
+        [WITCH_HUNTER_STEALTH2] = { 6 },
         [WITCH_ELF_STEALTH]     = { 6 },
+        [WITCH_ELF_STEALTH2]    = { 6 },
         [SQUIG_ARMOR]           = { 6 },
         [PLAY_AS_MONSTER]       = { 11 }, -- DO NOT REUSE FOR ANY OTHER STANCE!!!
                                          -- PaM is available to all careers and must

@@ -189,6 +189,10 @@ function UiModVersionMismatchWindow.UpdateInstructions()
  
 end
 
+function UiModVersionMismatchWindow.OnClickModRow()
+
+end
+
 function UiModVersionMismatchWindow.OnClickModListSortButton()
     local type = WindowGetId( SystemData.ActiveWindow.name )
     

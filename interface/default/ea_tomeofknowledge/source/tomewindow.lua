@@ -373,14 +373,13 @@ function TomeWindow.ToggleShowing()
     else
         WindowSetShowing( "TomeWindow", true )
         Sound.Play( Sound.TOME_OPEN )
+		RoR_MatchMakingRaiting.Enable()
     end
 end
 
 function TomeWindow.OnOpen()
    WindowUtils.OnShown()
    TomeWindow.PlayFlipAnim( TomeWindow.FLIP_FORWARD_MULTI )   
-   
-
     local pageData = TomeWindow.Pages[ TomeWindow.currentState.pageType ]
     if pageData ~= nil
     then

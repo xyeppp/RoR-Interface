@@ -50,6 +50,7 @@ function MailWindowTabAuction.Initialize()
 	ButtonSetText("MailWindowTabAuctionOpenMessageButton",   GetMailString( StringTables.Mail.BUTTON_MAIL_OPEN) )
 	ButtonSetText("MailWindowTabAuctionDeleteMessageButton", GetMailString( StringTables.Mail.BUTTON_MAIL_DELETE) )
 	ButtonSetText("MailWindowTabAuctionReturnMessageButton", GetMailString( StringTables.Mail.BUTTON_MAIL_RETURN) )
+	ButtonSetDisabledFlag("MailWindowTabAuctionReturnMessageButton",true)	
 
 	--LabelSetText("MailWindowTabAuctionSelectAllCheckBoxButtonHeader", GetMailString( StringTables.Mail.LABEL_MAIL_HEADER_Auction_SELECT_ALL) )
 	WindowRegisterEventHandler( "MailWindowTabAuction", SystemData.Events.MAILBOX_HEADER_UPDATED, "MailWindowTabAuction.OnHeaderUpdated")
@@ -74,6 +75,10 @@ function MailWindowTabAuction.UpdateListButtonStates()
             --ButtonSetDisabledFlag(rowWindow, EA_Window_InteractionTraining.HasAbilityFilter( EA_Window_InteractionTraining.advanceData[data] ) )
         end
     end
+	
+	if MailWindowTabAuction.SelectedMessageDataIndex > 0 then	
+		ButtonSetDisabledFlag("MailWindowTabAuctionReturnMessageButton", not MailWindowTabAuction.listData[MailWindowTabAuction.SelectedMessageDataIndex].isReturnable)	
+	end
 end
 
 -- Whenever the # of headers changes, we have to updated the header text and account for if no headers exist.
@@ -376,6 +381,7 @@ function MailWindowTabAuction.ConfirmDeleteMessage()
 end
 
 function MailWindowTabAuction.OnLButtonReturnMessage()
+if ButtonGetDisabledFlag("MailWindowTabAuctionReturnMessageButton") == true then return end
 	MailWindowTabMessage.OnClose()
 	SendMailboxCommand(MailWindow.MAILBOX_RETURN_MESSAGE,					-- Msg type, according to warinterface::LuaSendMailboxCommand
 						GameData.MailboxType.AUCTION,					-- Mailbox Type

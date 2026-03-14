@@ -176,8 +176,6 @@ function EA_Window_Backpack.ShowCurrentList( )
     
 end
 
-
-
 function EA_Window_Backpack.DisplaySortedData()
     if EA_Window_Backpack.shouldSortIncresing then
         ListBoxSetDisplayOrder( "EA_Window_BackpackListViewList", EA_Window_Backpack.displayOrder )
@@ -248,12 +246,8 @@ function EA_Window_Backpack.PopulateListDisplayData()
     end
 end
 
-
-
 --------------------------
 -- Filtering Functions 
-
-
 function EA_Window_Backpack.ResetListViewFilters()
     
     ButtonSetPressedFlag( "EA_Window_BackpackListViewFilterArmorButton", true )
@@ -325,13 +319,9 @@ function EA_Window_Backpack.CreateFilteredList( backpackType )
     return displayOrder
 end
 
-
-
 ----------------------------------------------------------------
 -- Sorting Functions
 ----------------------------------------------------------------
-
-
 -- keep the forward and backward order lists for clicking on sort headers
 function EA_Window_Backpack.InitDataForSorting( filteredIndices )
     
@@ -343,7 +333,6 @@ function EA_Window_Backpack.InitDataForSorting( filteredIndices )
     end
   
 end
-
 
 -- clears the column header sort arrow if set
 function EA_Window_Backpack.ClearSortButton()
@@ -358,8 +347,7 @@ function EA_Window_Backpack.ClearSortButton()
     end
     
 end
-
-     
+  
 -- Update the sort buttons
 -- They have 3 states to switch between if you keep pressng the same button: 
 --		increasing, decreasing, and off
@@ -448,9 +436,36 @@ function EA_Window_Backpack.ListViewInventoryLButtonUp()
     EA_Window_Backpack.EquipmentLButtonUp( slotNum )
 end 
 
-function EA_Window_Backpack.ListViewInventoryRButtonUp( flags )
+-- function EA_Window_Backpack.ListViewInventoryRButtonUp( flags )
+    -- local slotNum = EA_Window_Backpack.GetSlotNumForActiveListRow()
+    -- if not slotNum then
+        -- return
+    -- end
 
-	local slotNum = EA_Window_Backpack.GetSlotNumForActiveListRow()
+    -- EA_Window_Backpack.EquipmentRButtonUp( slotNum, flags )
+-- end
+
+function EA_Window_Backpack.ListViewInventoryRButtonUp( flags )
+    local slotNum = EA_Window_Backpack.GetSlotNumForActiveListRow()
+    if not slotNum then
+        return
+    end
+
+    -- If the current backpack type is the quest bag, use quest item location directly
+    local backpackType = EA_Window_Backpack.GetCurrentBackpackType and EA_Window_Backpack.GetCurrentBackpackType() or EA_Window_Backpack.currentMode
+
+    if backpackType == EA_Window_Backpack.TYPE_QUEST then
+        -- Same logic as QuestItemRButtonUp, but using the list view slot
+        local itemData = DataUtils.GetQuestItems()[slotNum]
+        if EA_Window_Backpack.ValidItem( itemData ) then
+            SendUseItem( GameData.ItemLocs.QUEST_ITEM, slotNum, 0, 0, 0 )
+        end
+        return
+    end
+
+    -- All non-quest cases go through the normal handler
     EA_Window_Backpack.EquipmentRButtonUp( slotNum, flags )
-end 
+end
+
+
 

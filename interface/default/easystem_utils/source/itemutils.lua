@@ -78,8 +78,8 @@ end
 function ItemUtils.GetFormattedBonus (bonus, bonusIsAContribution, currChargesRemaining, itemLevel, careers)
 
     -- Handle stat increases...
-    if (bonus.reference > 0)
-    then
+    --if (bonus.reference > 0)
+    --then
     
         if (bonus.type == GameDefs.ITEMBONUS_MAGIC)
         then
@@ -98,8 +98,7 @@ function ItemUtils.GetFormattedBonus (bonus, bonusIsAContribution, currChargesRe
             if (itemAbility and itemAbility ~= L"") 
             then
                 local useString     = GetString (StringTables.Default.LABEL_USE_ITEM)
-                local chargesLeft   = GetString (StringTables.Default.LABEL_ITEM_CHARGES)
-
+                
                 itemUseAbilityDesc = useString..L" "..itemAbility
                 
                 -- TODO: Ensure that this is the desired behavior.  If the item actually has multiple
@@ -108,20 +107,22 @@ function ItemUtils.GetFormattedBonus (bonus, bonusIsAContribution, currChargesRe
                 -- This seems like the desired behavior for all items that have "uses".
                 -- This will not be the way that items with procs on them should display their abilities,
                 -- but that's handled below.
+            end
+
                 if (bonus.value > 1)
                 then
+					local chargesLeft   = GetString (StringTables.Default.LABEL_ITEM_CHARGES)
                     return (itemUseAbilityDesc..L"<br>"..chargesLeft..L" "..currChargesRemaining..L"/"..bonus.value)
                 else
                     return (itemUseAbilityDesc)
                 end
-            end
-
+				
         -- Handle passive/proc abilities/effects
         elseif (bonus.type == GameDefs.ITEMBONUS_CONTINUOUS)
         then
             return GetAbilityDesc (bonus.reference, itemLevel)
         end
-    end
+    --end
     
     return (L"")
 end

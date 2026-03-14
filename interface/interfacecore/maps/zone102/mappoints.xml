@@ -1,11 +1,11 @@
 <zone iname="High Pass">
-    <landmark iname="Cave" id="1" mapIcon="1063" x="13641" y="61756">
+    <landmark iname="Feiten's Cave" id="1" mapIcon="1062" x="13641" y="61756">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="2" mapIcon="1062" x="17056" y="60368">
+    <landmark iname="Feiten's Cave" id="2" mapIcon="1063" x="17056" y="60368">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="3" mapIcon="1063" x="25308" y="21535">
+    <landmark iname="Oathbearer Cave" id="3" mapIcon="1063" x="25308" y="21535">
         <importance>minor</importance>
     </landmark>
     <landmark iname="Cave" id="4" mapIcon="1062" x="2605" y="55511">
@@ -23,7 +23,7 @@
             <service>Flight Master</service>
         </services>
     </warcamp>
-    <chapter iname="Bloodmarr" id="7" mapIcon="1065" x="36300" y="33325">
+    <chapter iname="Bloodmarr" id="7" mapIcon="1044" x="36300" y="31825">
         <race>Chaos</race>
         <number>13</number>
         <ranks realm="destruction" min="26" max="27" />
@@ -59,13 +59,13 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Cave" id="10" mapIcon="1063" x="43683" y="63220">
+    <landmark iname="Hallenfurt Cave" id="10" mapIcon="1062" x="43683" y="63220">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="11" mapIcon="1062" x="46927" y="59134">
+    <landmark iname="Hallenfurt Cave" id="11" mapIcon="1062" x="46479" y="59556">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="12" mapIcon="1063" x="47595" y="2934">
+    <landmark iname="Prospector Cave" id="12" mapIcon="1062" x="47595" y="2934">
         <importance>minor</importance>
     </landmark>
     <chapter iname="Jaggedspine Ridge" id="13" mapIcon="1065" x="48900" y="21080">
@@ -80,25 +80,25 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Cave" id="14" mapIcon="1063" x="49033" y="19011">
+    <landmark iname="Jaggedspine Cave" id="14" mapIcon="1062" x="49033" y="19011">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="15" mapIcon="1062" x="55368" y="24307">
+    <landmark iname="Luminous S. Cave" id="15" mapIcon="1063" x="55368" y="24307">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="16" mapIcon="1063" x="55415" y="2696">
+    <landmark iname="Bloodhewn Cave" id="16" mapIcon="1062" x="55415" y="2696">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="17" mapIcon="1062" x="58379" y="40967">
+    <landmark iname="CW Cave" id="17" mapIcon="1062" x="58379" y="40967">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="18" mapIcon="1062" x="58597" y="16125">
+    <landmark iname="Luminous C. Cave" id="18" mapIcon="1063" x="58597" y="16125">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="19" mapIcon="1062" x="58946" y="3597">
+    <landmark iname="Luminous N. Cave" id="19" mapIcon="1063" x="58946" y="3597">
         <importance>minor</importance>
     </landmark>
-    <chapter iname="Raven's End" id="20" mapIcon="1032" x="9300" y="58400">
+    <chapter iname="Raven's End" id="20" mapIcon="1065" x="9300" y="58400">
         <race>Empire</race>
         <number>11</number>
         <ranks realm="order" min="22" max="23" />
@@ -110,14 +110,14 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Cave" id="21" mapIcon="1062" x="11870" y="48750">
+    <landmark iname="Cave" id="21" mapIcon="1063" x="11870" y="48750">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1026" x="38134" y="59359" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="38134" y="59359" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1026" x="20584" y="64307" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="20584" y="64307" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -125,15 +125,34 @@
 	    <importance>minor</importance>
 	    <specialType>17</specialType>
     </landmark>
-    <publicQuest iname="Temple of Heimkel" id="277" iconSet="1" x="11634" y="9039">
+    <landmark iname="Bonestomper Tribe" id="25" mapIcon="1076" x="5532" y="16365">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Tomb of the Traitor" id="26" mapIcon="1061" x="5173" y="39341">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Lost Miner Camp" id="27" mapIcon="1065" x="44442" y="6548">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Brighthollow" id="28" mapIcon="1214" x="60410" y="5881">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="The Luminous Vale" id="29" mapIcon="1208" x="57000" y="35732">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Deathmire Forest" id="30" mapIcon="1064" x="45233" y="50434">
+        <importance>minor</importance>
+    </landmark>
+    <publicQuest iname="Temple of Heimkel" id="277" iconSet="1" x="11671" y="7526">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
+		<ranks min="28" max="29" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Chaos Ruins" id="260" iconSet="1" x="14456" y="36500">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="20" max="21" />
         <realm>Order</realm>
@@ -147,7 +166,7 @@
     </publicQuest>
     <publicQuest iname="Lake of the Damned" id="259" iconSet="1" x="20414" y="43014">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="22" max="23" />
         <realm>Order</realm>
@@ -161,7 +180,7 @@
     </publicQuest>
     <publicQuest iname="Temple of Change" id="258" iconSet="1" x="25703" y="48314">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="22" max="23" />
         <realm>Order</realm>
@@ -182,21 +201,21 @@
     </publicQuest>
     <publicQuest iname="Shrine of Tzeentch" id="268" iconSet="1" x="31847" y="42072">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="24" max="25" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Echoes of War" id="272" iconSet="1" x="36540" y="48236">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="24" max="25" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Keep of Asavar Kul" id="278" iconSet="1" x="36909" y="22133">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
@@ -210,22 +229,23 @@
     </publicQuest>
     <publicQuest iname="Tempest Horn" id="271" iconSet="1" x="49967" y="27785">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Tower of the Elves" id="275" iconSet="1" x="59875" y="33610">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="28" max="29" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="The Foetid Plains" id="262" iconSet="1" x="9603" y="21861">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
+		<ranks min="20" max="21" />
         <realm>Order</realm>
     </publicQuest>
     <!-- BEGIN Talabecland points -->

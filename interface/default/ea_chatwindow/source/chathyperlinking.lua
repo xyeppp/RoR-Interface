@@ -14,6 +14,8 @@ local ITEM_TAG      = L"ITEM:"     -- Format: "ITEM:<Item #>"                   
 local QUEST_TAG     = L"QUEST:"    -- Format: "QUEST:<Quest #>"                 Example: "QUEST:5678"
 local TOME_TAG      = L"TOME:"     -- Format: "TOME:<Section #>:<Entry #>"      Example: "TOME:2:55"
 local GUILD_TAG     = L"GUILD:"    -- Format: "GUILD:<Guild #>"                 Example: "GUILD:1212"
+local URL    		= L"URL:"      -- Format: "URL:<Url #>"                		Example: "URL:8" 
+local WEBLINK    	= L"WEBLINK:"  -- Format: "WEBLINK:<UrlAdress>"             Example: "WEBLINK:www.returnofreckoning.com" 
 local ERASE         = L""
 
 EA_ChatWindow.HyperLinks =
@@ -22,6 +24,7 @@ EA_ChatWindow.HyperLinks =
     Quests      = {},
     Abilities   = {},
     Guilds      = {},
+    Urls        = {},	
 }
 
 local CLOSE_BUTTON_OFFSET = 12
@@ -90,6 +93,20 @@ function EA_ChatWindow.OnHyperLinkLButtonUp( linkData, flags, x, y )
        EA_ChatWindow.OnFriendedLinkLButtonUp( playerName, flags, x, y )
        return
     end
+	
+	 local urlLink, findCount = wstring.gsub( linkData, URL, ERASE )
+    if( findCount > 0  ) 
+    then       
+       EA_ChatWindow.OnUrlLinkLButtonUp(  tonumber(urlLink), flags, x, y )
+       return
+    end
+
+	local webLink, findCount = wstring.gsub( linkData, WEBLINK, ERASE )
+    if( findCount > 0  ) 
+    then       
+       EA_ChatWindow.OnWebLinkLButtonUp( webLink, flags, x, y )
+       return
+    end
 end
 
 
@@ -145,22 +162,52 @@ function EA_ChatWindow.OnPlayerLinkLButtonUp( playerName, flags, x, y )
 
 end
 
+function EA_ChatWindow.OnUrlLinkLButtonUp( urlLink, flags, x, y )
+	local function ClickCallBack( SelectedOption )
+		    return function() OpenURL(SelectedOption) end
+		end		
+DialogManager.MakeTwoButtonDialog( L"This will open site \n"..towstring(GetStringFromTable("UrlStrings", urlLink))..L" in a web browser window \n\n Auto cancel in:", GetString(StringTables.Default.LABEL_YES),ClickCallBack(urlLink),GetString(StringTables.Default.LABEL_NO),nil,60,nil )
+	
+end
+
+function EA_ChatWindow.OnWebLinkLButtonUp( webLink, flags, x, y )
+DialogManager.MakeTextEntryDialog( L"Copy Link", L" Highlight text and ctrl+c to copy link (Use at your own risk)",towstring(webLink),nil, nil, 1000, true,nil,true)
+end
+
 function EA_ChatWindow.OnPlayerLinkRButtonUp( playerName, flags, x, y, wndGroupId)
-    --d( L"EA_ChatWindow.OnPlayerLinkRButtonUp: "..playerName )
+	
+    local WindowGroup = wndGroupId
+	local _X = x
+	local _Y = y
+	
+if wndGroupId ~= nil then	
+	local wndGroup = EA_ChatWindowGroups[wndGroupId]
+    local activeTabId = wndGroup.activeTab
+    local activeTabName = EA_ChatTabManager.GetTabName( wndGroup.Tabs[activeTabId].tabManagerId )
     
+    local offendingMessage = towstring(LogDisplayGetStringFromCursorPos(activeTabName.."TextLog", x, y))
+	local FormatedMessage = wstring.gsub(towstring(wstring.gsub(towstring(offendingMessage),L"<br>", L"")),L"\n", L"")
+	
+	ReportText = FormatedMessage
+ end	
     local function PassParametersToReportSpam()
-        PlayerMenuWindow.OnReportSpam(wndGroupId, x, y)
+        PlayerMenuWindow.OnReportSpam(WindowGroup, _X, _Y)
     end
     
+	local function ReportDialog()
+      DialogManager.MakeTwoButtonDialog( L"Are you sure you want to report?", GetPregameString( StringTables.Pregame.LABEL_OKAY ) , PassParametersToReportSpam, GetPregameString( StringTables.Pregame.LABEL_CANCEL ), nil,60, 2, nil, nil, dialogType, DialogManager.TYPE_MODAL,_okDialog )
+    end	
+	
+	
     local CustomButtons = {}
     
     if (wndGroupId ~= nil)
     then
         -- Create a Context Menu, make a custom button "Report Spam" that only appears
         -- when the player is clicking a player hyperlink in a chat window.
-        table.insert(CustomButtons, PlayerMenuWindow.NewCustomItem(GetString( StringTables.Default.LABEL_PLAYER_MENU_REPORT_SPAM ), PassParametersToReportSpam, false))
+        table.insert(CustomButtons, PlayerMenuWindow.NewCustomItem(GetString( StringTables.Default.LABEL_PLAYER_MENU_REPORT_SPAM ), ReportDialog, false))
     end
-    
+
     PlayerMenuWindow.ShowMenu( playerName, 0,  CustomButtons)
 
 end
@@ -394,8 +441,11 @@ function EA_ChatWindow.LayoutQuestWindow( windowName, questData )
     -- Quest Name
     LabelSetText(windowName.."TitleLabel", questData.name )
 
+	local G_Name = towstring(GameData.Guild.m_GuildName) or L"Guildless"
+	local mainText = questData.startDesc
+	mainText = wstring.gsub(towstring(mainText), L"|g",G_Name)	
     -- Quest Starting Text
-    LabelSetText(windowName.."InfoScrollChildText", questData.startDesc )
+    LabelSetText(windowName.."InfoScrollChildText", mainText )
     
     local scrollWindowHeight = 0
     local _, textHeight = LabelGetTextDimensions(windowName.."InfoScrollChildText")
@@ -404,7 +454,10 @@ function EA_ChatWindow.LayoutQuestWindow( windowName, questData )
                          EA_Window_InteractionQuest.QUEST_TEXT_WIDTH_EXTENT, textHeight )
     
     -- Quest Journal Text
-    LabelSetText(windowName.."InfoScrollChildJournalEntryText", questData.journalDesc )
+ 	local journalDesc = questData.journalDesc
+	journalDesc = wstring.gsub(towstring(journalDesc), L"|g",G_Name)		
+	
+    LabelSetText(windowName.."InfoScrollChildJournalEntryText", journalDesc )
     
     
     local _, textHeight = LabelGetTextDimensions( windowName.."InfoScrollChildJournalEntryText" )

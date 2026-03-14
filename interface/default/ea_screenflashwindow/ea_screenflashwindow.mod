@@ -13,9 +13,11 @@
             <File name="Textures/ScreenFlashTextures.xml" />
             <File name="Source/ScreenFlashWindow.xml" />
         </Files>
+        <!-- Disabled
         <OnInitialize>
             <CreateWindow name="ScreenFlashWindow" show="false" />
         </OnInitialize>   
+        -->
     </UiMod>
     
 </ModuleFile>    

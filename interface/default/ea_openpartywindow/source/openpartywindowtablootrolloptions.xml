@@ -23,7 +23,7 @@
         
         <Window name="EA_Template_AutoRollRow">
             <Size>
-                <AbsPoint x="1032" y="70" />
+                <AbsPoint x="1032" y="62" />
             </Size>
             <Windows>
                 <FullResizeImage name="$parentBackground" inherits="EA_FullResizeImage_TintableSolidBackground" layer="background" handleinput="false" alpha="0.1">
@@ -184,12 +184,20 @@
                     </Anchors>
                 </Window>
                 
+                <Window name="$parentEvent" inherits="EA_Template_AutoRollRow" id="7">
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTalismans">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
                 <Label name="$parentTrashTitle" inherits="EA_Template_AutoRollTitle">
                     <Size>
                         <AbsPoint x="100" y="28" />
                     </Size>
                     <Anchors>
-                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTalismans">
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentEvent">
                             <AbsPoint x="25" y="35" />
                         </Anchor>
                     </Anchors>
@@ -207,7 +215,7 @@
                         <AbsPoint x="600" y="50" />
                     </Size>
                     <Anchors>
-                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTalismans">
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentEvent">
                             <AbsPoint x="-50" y="25" />
                         </Anchor>
                     </Anchors>

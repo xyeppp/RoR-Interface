@@ -1,0 +1,8 @@
+<zone iname="Black Crag Keep">
+    <battlefieldObjective iname="The Northern Ruins" id="5015" iconSet="1" x="28435" y="28433">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Central Ruins" id="5016" iconSet="1" x="30080" y="31636">
+    </battlefieldObjective>
+    <battlefieldObjective iname="The Southern Ruins" id="5017" iconSet="1" x="32098" y="34781">
+    </battlefieldObjective>
+</zone>

@@ -307,10 +307,32 @@
                 </Window>
                 
                 <!-- Teir 4 -->
-                <Window name="$parentStonewatch" inherits="EA_Button_FlightPairingMapBottomLabel" id="10">
+				 <Window name="$parentKarazAKarak" inherits="EA_Button_FlightPairingMapTopLabel" id="62">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="842" y="109" />
+                            <AbsPoint x="841" y="109" />
+                        </Anchor>
+                    </Anchors>
+                    <Windows>
+                        <Button name="$parentFlightButton" inherits="EA_Button_FlightSmall"  />
+                        <Label name="$parentText" inherits="EA_Label_WorldMapPairing" layer="background">
+                            <Anchors>
+                                <Anchor point="top" relativePoint="bottom">
+                                    <AbsPoint x="0" y="-15" />
+                                </Anchor>
+                            </Anchors>
+                            <Size>
+                                <AbsPoint x="236" y="120" />
+                            </Size>
+                            <Color r="0" g="0" b="0"  />
+                        </Label>
+                    </Windows>
+                </Window>
+                
+                <Window name="$parentStonewatch" inherits="EA_Button_FlightPairingMapCityWing" id="10">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="850" y="183" />
                         </Anchor>
                     </Anchors>
                 </Window>
@@ -355,10 +377,18 @@
                     </Anchors>
                 </Window>
                 
-                <Window name="$parentButchersPass" inherits="EA_Button_FlightPairingMapBottomLabel" id="4">
+                <Window name="$parentButchersPass" inherits="EA_Button_FlightPairingMapCityWing" id="4">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="842" y="814" />>
+                            <AbsPoint x="848" y="759" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+				
+				<Window name="$parentKarakEightPeaks" inherits="EA_Button_FlightPairingMapBottomLabel" id="61">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="843" y="816" />
                         </Anchor>
                     </Anchors>
                 </Window>
@@ -732,8 +762,16 @@
                 
                <Window name="$parentNecZandri" inherits="EA_Button_FlightPairingMapBottomLabel" id="191">
                     <Anchors>
-                        <Anchor point="center" relativePoint="center" >
-                            <AbsPoint x="18" y="-31" />
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="113" y="218" />
+                        </Anchor>
+                    </Anchors>
+                </Window>
+                
+               <Window name="$parentGarQuaph" inherits="EA_Button_FlightPairingMapBottomLabel" id="413">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" >
+                            <AbsPoint x="564" y="275" />
                         </Anchor>
                     </Anchors>
                 </Window>

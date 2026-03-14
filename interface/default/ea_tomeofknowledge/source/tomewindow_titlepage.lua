@@ -31,7 +31,8 @@ TomeWindow.TitlePage.stats[4] = NewTomeStat( "TomeWindowTitlePageStatTomeXp",
                                              StringTables.Default.TEXT_TOTAL_XP_FROM_TOME_UNLOCKS, 
                                              SystemData.Events.TOME_STAT_TOTAL_XP_UPDATED,  
                                              "GameData.Tome.Statistics.totalXp" )
-                                             
+
+ 
 TomeWindow.NewEntries = {}
 TomeWindow.NewEntries.unreadEntryWindowCount = 0
 
@@ -78,6 +79,12 @@ function TomeWindow.InitalizeTitlePage()
     ButtonSetDisabledFlag( "TomeWindowTitlePageStatHoursPlayedText", true )
     WindowRegisterEventHandler( "TomeWindowTitlePageStatHoursPlayed", SystemData.Events.TOME_STAT_PLAYED_TIME_UPDATED, "TomeWindow.OnUpdateTimePlayed" )
     TomeWindow.OnUpdateTimePlayed()
+
+	ButtonSetDisabledFlag( "TomeWindowTitlePageStatSoloMMRText", true )
+	TomeWindow.OnUpdateSoloMMR()
+   
+   	ButtonSetDisabledFlag( "TomeWindowTitlePageStatPremadeMMRText", true )	
+	TomeWindow.OnUpdatePremadeMMR()
    
     PageWindowAddPageBreak( "TomeWindowTitlePagePageWindow", PARENT_WINDOW.."NewEntriesTitleAnchor" )     
     LabelSetText( PARENT_WINDOW.."NewEntriesTitle", wstring.upper( GetString( StringTables.Default.LABEL_NEW_ENTRIES ) ) )
@@ -113,6 +120,17 @@ function TomeWindow.OnUpdateTimePlayed()
     TomeWindow.SetTOCItemText( "TomeWindowTitlePageStatHoursPlayed", id, GetString( StringTables.Default.LABEL_HOURS_PLAYED ), timeString )
 end
 
+function TomeWindow.OnUpdateSoloMMR()
+    local id = WindowGetId( "TomeWindowTitlePageStatSoloMMR" )
+--    TomeWindow.SetTOCItemText( "TomeWindowTitlePageStatSoloMMR", id, L"MMR Solo", L"1500" )
+TomeWindow.SetTOCItemText( "TomeWindowTitlePageStatSoloMMR", id, L"MMR Solo", L"0" )
+end
+
+function TomeWindow.OnUpdatePremadeMMR()
+    local id = WindowGetId( "TomeWindowTitlePageStatPremadeMMR" )
+--    TomeWindow.SetTOCItemText( "TomeWindowTitlePageStatPremadeMMR", id, L"MMR Premade", L"1500" )
+    TomeWindow.SetTOCItemText( "TomeWindowTitlePageStatPremadeMMR", id, L"MMR Premade", L"0" )
+end
 
 function TomeWindow.UpdateNewEntriesList()
         

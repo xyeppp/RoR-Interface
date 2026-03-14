@@ -51,13 +51,26 @@ function InterfaceCore.Initialize()
     
     InterfaceCore.inGame = false    
     
+	GameData = GameData
+	GameData.BonusTypes.EBONUS_OUT_HEAL = 100
+	GameData.BonusTypes.EBONUS_OUT_DMG_SNAPSHOT = 101
+	GameData.BonusTypes.EBONUS_OUT_HEAL_SNAPSHOT = 102
+	GameData.BonusTypes.EBONUS_INCOMING_HEAL = 103
+	GameData.BonusTypes.EBONUS_ARMOR_PENETRATION = 107
+	GameData.BonusTypes.EBONUS_CRITICAL_HEAL = 113
+	GameData.BonusTypes.EBONUS_LOOT_CHANCE = 114
+	GameData.BonusTypes.EBONUS_CASTER_DURATION = 115
+	GameData.BonusTypes.EBONUS_NUM_BONUS_TYPES = nil
+	GameData.BonusTypes.EBONUS_NUM_BONUS_TYPES = 115
+    
     -- Load the Core String Tables
     LoadStringTable("Pregame",            "data/strings/<LANG>",           "pregame.txt",             "cache/<LANG>", "StringTables.Pregame" )
     LoadStringTable("ServerLocation",     "data/strings/<LANG>/interface", "serverlocation.txt",      "cache/<LANG>", "StringTables.ServerLocation" )
     LoadStringTable("ServerLanguage",     "data/strings/<LANG>/interface", "serverlanguages.txt",      "cache/<LANG>", "StringTables.ServerLanguage" )
     LoadStringTable("AuthorizationError", "data/strings/<LANG>",           "authorizationerrors.txt", "cache/<LANG>", "" )
     LoadStringTable("Hardcoded",          "data/strings/<LANG>",           "hardcoded.txt",           "cache/<LANG>", "" )
-
+	LoadStringTable("UrlStrings",         "data/strings/<LANG>",           "urls.txt",                "cache/<LANG>", "" )
+	
     -- Load the language specific fonts
     local fontDirectory  = FontLanguageDirectories[SystemData.Settings.Language.active]
     LoadResources( "interface/interfacecore/fonts", fontDirectory.."/fonts.xml", IsInternalBuild() )
@@ -427,4 +440,340 @@ end
 
 function InterfaceCore.GetScale()
     return scale
+end
+
+-- Nerfed buttons blocker.
+-- We allow setting this in combat on action bars, that is blocked server side instead.
+-- Several function have local bindings here, so they can't be overrridden by later lua code
+local GetPlayerMoraleLevelLocal = GetPlayerMoraleLevel
+local GetAbilityDataLocal = GetAbilityData
+local GetHotbarDataLocal = GetHotbarData
+local GetHotbarPageLocal = GetHotbarPage
+local orgWindowSetGameActionData = WindowSetGameActionData
+local StringMatchLocal = string.match
+local tonumberLocal = tonumber
+local mathfloorlocal = math.floor
+
+local function HotBarDataForWindow(windowName)
+    local actionBar = tonumberLocal(StringMatchLocal(windowName, "EA_ActionBar([1-5])"))
+    local buttonNum = tonumberLocal(StringMatchLocal(windowName, "EA_ActionBar[1-5]Action(1?[0-9])Action"))
+    local hotbarSlot = (GetHotbarPageLocal(actionBar) - 1) * 12 + buttonNum -- 12 == GameData.HOTBAR_BUTTONS_PER_BAR
+    return GetHotbarDataLocal(hotbarSlot)
+end
+
+function WindowSetGameActionData (windowName, gameActionType, gameActionId, gameActionText)
+    gameActionType = mathfloorlocal(gameActionType)
+    gameActionId = mathfloorlocal(gameActionId)
+
+	if (gameActionType ~= 1) -- 1 == GameData.PlayerActions.DO_ABILITY
+	then
+        if (StringMatchLocal(windowName, "EA_ActionBar[1-5]Action1?[0-9]Action"))
+        then
+            -- block if trying to override/disable a hotbar slot with an ability
+            local abilityType, abilityId = HotBarDataForWindow(windowName)
+            if (abilityType == 1) -- 1 == GameData.PlayerActions.DO_ABILITY
+            then
+                return
+            end
+        end
+        
+        orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+        return
+    end
+
+    if (StringMatchLocal(windowName, "EA_StanceBarAction[1-4]Action"))
+    then
+        -- Only allow stance actions on stance bars
+        if (gameActionId == 8415 or -- Gift of Release
+            gameActionId == 8394 or -- Gift of Savagery
+            gameActionId == 8398 or -- Gift of Brutality
+            gameActionId == 8403 or -- Gift of Monstrosity
+            gameActionId == 1830 or -- Squig Armor
+            gameActionId == 9393 or -- Shadow Prowler
+            gameActionId == 8090 or -- Incognito
+            gameActionId == 9080 or -- Scout Stance
+            gameActionId == 2975 or -- Assault Stance
+            gameActionId == 9090 or -- Assault Stance orig
+            gameActionId == 9094    -- Skirmish stance 
+            )
+        then
+            orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+        end
+    elseif (StringMatchLocal(windowName, "EA_GrantedAbilitiesAction[1-9]Action"))
+    then
+        -- Check that ability is a granted ability
+        local abilityData = GetAbilityDataLocal(gameActionId)
+        if (abilityData ~= nil and abilityData.isGranted)
+        then
+            orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+        end
+    elseif (StringMatchLocal(windowName, "EA_ActionBar[1-5]Action1?[0-9]Action"))
+    then
+        -- Check that ability in hotbar slot matches the action we are trying to set, ignore otherwise
+        local abilityType, abilityId = HotBarDataForWindow(windowName)
+        if (gameActionType ~= abilityType or gameActionId ~= abilityId)
+        then
+            return
+        end
+        orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+    elseif (StringMatchLocal(windowName, "EA_MoraleBarContentsButton[1-4]"))
+    then
+        local abilityData = GetAbilityDataLocal(gameActionId)
+        if (abilityData == nil) then return end
+        if (abilityData.moraleLevel == 0) then return end
+        orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+    else
+        local abilityData = GetAbilityDataLocal(gameActionId)
+        if (abilityData == nil) then return end
+
+        -- Morale
+        if (abilityData.moraleLevel > 0) then
+            local inCombat = GameData.Player.inCombat == true or GetPlayerMoraleLevelLocal() > 0
+            if (inCombat) then return end
+
+            orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+        end
+
+        -- Enemy target type
+        if (abilityData.targetType == 1) then return end
+
+        -- Else, allow click casting
+        if (windowName == SystemData.MouseOverWindow.name)
+        then
+            orgWindowSetGameActionData(windowName, gameActionType, gameActionId, gameActionText)
+        end
+    end
+end
+
+local orgRemoveBinding = RemoveBinding
+function RemoveBinding (action, deviceId, buttons)
+    local inCombat = GameData.Player.inCombat == true or GetPlayerMoraleLevelLocal() > 0
+
+	if (inCombat)
+	then
+        if (EA_ChatWindow ~= nil)
+        then
+            EA_ChatWindow.Print (L"You can't rebind keys while in combat", SystemData.ChatLogFilters.USER_ERROR)
+        end
+        return
+	end
+	orgRemoveBinding(action, deviceId, buttons)
+end
+
+local orgAddBinding = AddBinding
+function AddBinding (action, deviceId, buttons)
+    local inCombat = GameData.Player.inCombat == true or GetPlayerMoraleLevelLocal() > 0
+
+	if (inCombat)
+	then
+        if (EA_ChatWindow ~= nil)
+        then
+            EA_ChatWindow.Print (L"You can't rebind keys while in combat", SystemData.ChatLogFilters.USER_ERROR)
+        end
+        return
+	end
+	orgAddBinding(action, deviceId, buttons)
+end
+
+local orgWindowSetGameActionTrigger = WindowSetGameActionTrigger
+function WindowSetGameActionTrigger(windowName, actionId)
+    -- Only allow correct GameActionTrigger to trigger each hotbar button
+    -- Action IDs ACTION_BAR_1 to ACTION_BAR_60
+    -- over 60 are allowed, but not to ActionBar buttons, only for addon use basically
+    if (StringMatchLocal(windowName, "EA_ActionBar[1-5]Action1?[0-9]")) then
+        if (actionId < 51 or actionId > 110) then
+            return
+        end
+
+        local actionBar = tonumberLocal(StringMatchLocal(windowName, "EA_ActionBar([1-5])"))
+        local buttonNum = tonumberLocal(StringMatchLocal(windowName, "EA_ActionBar[1-5]Action(1?[0-9])"))
+
+        if (actionId ~= (actionBar - 1) * 12 + buttonNum + 50) then
+            return
+        end
+    elseif (actionId >= 51 and actionId <= 110) then
+        return
+    end
+
+    orgWindowSetGameActionTrigger(windowName, actionId)
+end
+
+local orgWindowSetParent = WindowSetParent
+function WindowSetParent(windowName, parentName)
+    -- For EA_ActionBar windows, only allow parent to be the correct button
+    if (StringMatchLocal(windowName, "^EA_ActionBar[1-5]Action1?[0-9][]") and
+        not StringMatchLocal(windowName, parentName)) then
+        return
+    end
+    orgWindowSetParent(windowName, parentName)
+end
+
+-- Return if player has specified buff
+local GetBuffsLocal = GetBuffs
+local pairsLocal = pairs
+local function HasBuff(entry)
+    -- 6 = GameData.BuffTargetType.SELF
+    local buffData = GetBuffsLocal(6)
+    if (buffData == nil)
+    then
+        return false
+    end
+
+    for _, b in pairsLocal( buffData )
+    do
+        if (b.abilityId == entry)
+        then
+            return true
+        end
+    end
+    return false
+end
+
+local orgSetHotbarPage = SetHotbarPage
+function SetHotbarPage(physicalBar, logicalBar)
+    physicalBar = mathfloorlocal(physicalBar)
+    logicalBar = mathfloorlocal(logicalBar)
+
+    if (logicalBar == 11 and GameData.Player.isPlayAsMonster == false)
+    then
+        return
+    end
+
+    if (logicalBar == 9 or logicalBar == 10)
+    then
+        return
+    end
+
+    if (logicalBar >= 6 and physicalBar ~= 1)
+    then
+        return
+    end
+
+    -- Allow it for bars 1-5 for now
+    if (logicalBar >= 1 and logicalBar <= 5)
+    then
+        orgSetHotbarPage(physicalBar, logicalBar)
+        return
+    end
+
+    -- Allow it all for BO & SM for now for Plan B
+    if (GameData.Player.career.line == GameData.CareerLine.BLACK_ORC or
+        GameData.Player.career.line == GameData.CareerLine.SWORDMASTER)
+    then
+        orgSetHotbarPage(physicalBar, logicalBar)
+        return
+    end
+
+    -- Stance swaps, see stanceswaps.lua for details
+
+    -- Mara Stances
+    if (GameData.Player.career.line == GameData.CareerLine.MARAUDER)
+    then
+        if (logicalBar == 7 or logicalBar == 8)
+        then
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+    -- SW Stances
+    elseif (GameData.Player.career.line == GameData.CareerLine.SHADOW_WARRIOR)
+    then
+        if (logicalBar >= 2 and logicalBar <= 6)
+        then
+            return
+        end
+
+        -- Assault stance
+        if (logicalBar == 7)
+        then
+            if (not HasBuff(9090))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+        -- Skirmish stance
+        if (logicalBar == 8)
+        then
+            if (not HasBuff(9094))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+        -- Scout/No stance
+        if (logicalBar == 1)
+        then
+            if (HasBuff(9094))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+    -- WE
+    elseif (GameData.Player.career.line == GameData.CareerLine.WITCH_ELF)
+    then
+        -- Shadow Prowler
+        if (logicalBar == 6)
+        then
+            if (not HasBuff(9393) and not HasBuff(6013))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+        if (logicalBar == 1)
+        then
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+    -- WH
+    elseif (GameData.Player.career.line == GameData.CareerLine.WITCH_HUNTER)
+    then
+        -- Incognito
+        if (logicalBar == 6)
+        then
+            if (not HasBuff(8090) and not HasBuff(6012))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+        if (logicalBar == 1)
+        then
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+    -- Squig
+    elseif (GameData.Player.career.line == GameData.CareerLine.SQUIG_HERDER)
+    then
+        -- Squig Armor
+        if (logicalBar == 6)
+        then
+            if (not HasBuff(1830))
+            then
+                return
+            end
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+
+        if (logicalBar == 1)
+        then
+            orgSetHotbarPage(physicalBar, logicalBar)
+            return
+        end
+    end
 end

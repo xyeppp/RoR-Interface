@@ -123,7 +123,16 @@ local function InitSignupListData()
     for key, value in ipairs( signupData ) do
         -- These should match the data that was retrieved from war_interface::GetGuildSignupData
         GuildWindowTabCalendar.signupListData[key] = {}
-        GuildWindowTabCalendar.signupListData[key].name = value.name
+  	local icon = L""
+
+		for index, memberData in ipairs(GuildWindowTabRoster.memberListData) do
+			if memberData.memberID == value.memberID then
+				 icon = L"<icon"..towstring(Icons.GetCareerIconIDFromCareerNamesID(tonumber(memberData.careerID)))..L">" or L""
+			end
+		end
+ 	
+	
+        GuildWindowTabCalendar.signupListData[key].name = icon..value.name
         GuildWindowTabCalendar.signupListData[key].rank = value.rank
 		GuildWindowTabCalendar.signupListData[key].accepted = value.accepted
 

@@ -133,17 +133,20 @@ function EditAppealWindow.ConfirmedCancelAppeal()
 end
 
 function EditAppealWindow.OnLButtonUpBackButton()
-	TextEditBoxSetText("EditAppealWindowEditBox", L"")
 	EditAppealWindow.Hide()
 	EA_Window_Help.OnShown()
 end
 
+function EditAppealWindow.Clear()
+    TextEditBoxSetText( "EditAppealWindowEditBox", L"" )
+end
+
 function EditAppealWindow.OnShown()
-	EditAppealWindow.Show()
+	EditAppealWindow.Clear()
 end
 
 function EditAppealWindow.OnHidden()
-	EditAppealWindow.Hide()
+	EditAppealWindow.Clear()
 end
 
 function EditAppealWindow.UpdateHelpLog(log)

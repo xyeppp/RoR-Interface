@@ -21,12 +21,6 @@
     <landmark iname="Sigmar Crypts" id="7" mapIcon="1074" x="13135" y="39166">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Warpblade Tunnels" id="8" mapIcon="1074" x="36696" y="40203">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="Warpblade Tunnels" id="9" mapIcon="1074" x="30419" y="28430">
-        <importance>major</importance>
-    </landmark>
     <landmark iname="Warpblade Tunnels" id="10" mapIcon="1074" x="25633" y="35587">
         <importance>major</importance>
     </landmark>

@@ -1,0 +1,23 @@
+<zone iname="Karaz-A-Karak Middle Deeps">
+    <zoneTransition iname="To Main Level" x="48000" y="0">
+        <zone>062</zone>
+    </zoneTransition>
+    <landmark iname="Ungdrin Grimazul" id="1" mapIcon="2109" x="19276" y="15121">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Engineers Guild" id="2" mapIcon="2110" x="38084" y="31370">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Grungni's Citadel" id="3" mapIcon="2111" x="20728" y="48795">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="To Main Level" id="4" mapIcon="2102" x="25568" y="30471">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Crypts" id="5" mapIcon="2112" x="13537" y="31163">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Cannon Foundry" id="6" mapIcon="2113" x="38222" y="37455">
+        <importance>major</importance>
+    </landmark>
+</zone>

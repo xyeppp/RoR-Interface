@@ -1,7 +1,9 @@
 local function IsForSameEquipSlot( sourceSlot, source, targetEquipSlot )
     local sourceEquipData = DataUtils.GetItemData( source, sourceSlot )
     
-    return sourceEquipData.equipSlot == targetEquipSlot
+    return sourceEquipData.equipSlot == targetEquipSlot or
+			((sourceEquipData.equipSlot == GameData.EquipSlots.RIGHT_HAND or sourceEquipData.equipSlot == GameData.EquipSlots.EITHER_HAND) and (targetEquipSlot == GameData.EquipSlots.RIGHT_HAND or targetEquipSlot == GameData.EquipSlots.EITHER_HAND)) or
+			((sourceEquipData.equipSlot == GameData.EquipSlots.LEFT_HAND or sourceEquipData.equipSlot == GameData.EquipSlots.EITHER_HAND) and (targetEquipSlot == GameData.EquipSlots.LEFT_HAND or targetEquipSlot == GameData.EquipSlots.EITHER_HAND))
 end
 
 function CharacterWindow.PrintError( stringId, itemName )

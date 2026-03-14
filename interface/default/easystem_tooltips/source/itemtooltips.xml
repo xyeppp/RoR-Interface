@@ -108,12 +108,23 @@
                     </Anchors>
                     <Color r="0" g="255" b="0" a="255"/>
                 </Label>
-                <Label name="$parentBonus1" font="font_chat_text_no_outline" wordwrap="true" autoresize="true" sticky="false" >
+                <Label name="$parentPiece9" font="font_chat_text_no_outline" wordwrap="false" autoresize="true" sticky="false" >
                     <Size>
                         <AbsPoint x="400" y="20" />
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPiece8">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="255" b="0" a="255"/>
+                </Label>
+                <Label name="$parentBonus1" font="font_chat_text_no_outline" wordwrap="true" autoresize="true" sticky="false" >
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPiece9">
                             <AbsPoint x="-20" y="10" />
                         </Anchor>
                     </Anchors>
@@ -169,6 +180,17 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBonus5">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0" g="255" b="0" a="255"/>
+                </Label>
+                <Label name="$parentBonus7" font="font_chat_text_no_outline" wordwrap="true" autoresize="true" sticky="false" >
+                    <Size>
+                        <AbsPoint x="400" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentBonus6">
                             <AbsPoint x="0" y="0" />
                         </Anchor>
                     </Anchors>

@@ -1,8 +1,8 @@
 <zone iname="Talabecland">
-    <landmark iname="The Schuler Estate" id="1" mapIcon="1066" x="10262" y="49204">
+    <landmark iname="The Schuler Estate" id="1" mapIcon="1069" x="10262" y="49204">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Steinbruck Farm" id="2" mapIcon="1065" x="14200" y="29900">
+    <landmark iname="Steinbruck Farm" id="2" mapIcon="1069" x="14200" y="29900">
         <importance>major</importance>
     </landmark>
     <chapter iname="Witches' Hollow" id="3" mapIcon="1065" x="14424" y="3020">
@@ -29,8 +29,8 @@
             <service>Flight Master</service>
         </services>
     </warcamp>
-    <landmark iname="Bell Tower" id="6" mapIcon="1032" x="22593" y="50083">
-        <importance>major</importance>
+    <landmark iname="Harrowdowns Bell Tower" id="6" mapIcon="1032" x="22593" y="50083">
+        <importance>minor</importance>
     </landmark>
     <chapter iname="Goblin's Head Coaching Inn" id="7" mapIcon="1031" x="2560" y="29830">
         <race>Chaos</race>
@@ -50,7 +50,7 @@
     <landmark iname="Horned Tower" id="9" mapIcon="1032" x="30222" y="17647">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Unterbaum" id="10" mapIcon="1030" x="31370" y="44840">
+    <landmark iname="Unterbaum" id="10" mapIcon="1030" x="36130" y="46774">
         <importance>major</importance>
     </landmark>
     <chapter iname="Volgen" id="11" mapIcon="1031" x="41740" y="5540">
@@ -65,7 +65,7 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <chapter iname="Unterbaum Cemetery" id="12" mapIcon="1070" x="44751" y="43588">
+    <chapter iname="One Tree Hill" id="12" mapIcon="1070" x="44751" y="43588">
         <race>Empire</race>
         <number>14</number>
         <ranks realm="order" min="28" max="29" />
@@ -80,19 +80,19 @@
     <landmark iname="Haunted Windmill" id="13" mapIcon="1033" x="45806" y="49520">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Bell Tower" id="14" mapIcon="1032" x="46168" y="28089">
+    <landmark iname="Leaning Bell Tower" id="14" mapIcon="1032" x="46168" y="28089">
         <importance>major</importance>
     </landmark>
     <landmark iname="Dortwald" id="15" mapIcon="1031" x="46591" y="52489">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Blackhorn Herdstone" id="16" mapIcon="1068" x="48283" y="39330">
+    <landmark iname="Blackhorn Herdstone" id="16" mapIcon="1026" x="48083" y="39330">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Blackwood Shore" id="17" mapIcon="1042" x="50470" y="17097">
+    <landmark iname="Blackwood Shore Landing" id="17" mapIcon="1042" x="50470" y="17097">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Bell Tower" id="18" mapIcon="1032" x="54482" y="60672">
+    <landmark iname="Baronholtz Bell Tower" id="18" mapIcon="1032" x="54482" y="60672">
         <importance>major</importance>
     </landmark>
     <landmark iname="Rindlewood" id="19" mapIcon="1064" x="6020" y="12039">
@@ -110,11 +110,11 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1026" x="31420" y="1891" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="31420" y="1891" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1026" x="47788" y="2331" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="47788" y="2331" liveevent="7">
 	    <importance>minor</importance>
 	    <specialType>6</specialType>
     </landmark>
@@ -126,6 +126,30 @@
 	    <importance>minor</importance>
 	    <specialType>14</specialType>
     </landmark>
+    <landmark iname="Rindlewood Temple" id="25" mapIcon="1034" x="14224" y="16553">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Hazelhof" id="26" mapIcon="1039" x="19779" y="14123">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Riverhome" id="27" mapIcon="1039" x="34876" y="20315">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Unterbaum Docks" id="28" mapIcon="1038" x="18044" y="42627">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Meuselbach Catacombs" id="29" mapIcon="1060" x="26911" y="63544">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Welleborn" id="30" mapIcon="1039" x="41245" y="61445">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Unterbaum Castle" id="31" mapIcon="1035" x="30213" y="52100">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="Hergig" id="32" mapIcon="1039" x="53760" y="19392">
+        <importance>major</importance>
+    </landmark>
     <publicQuest iname="Army of Faith" id="247" iconSet="1" x="11189" y="16722">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
@@ -135,22 +159,22 @@
     </publicQuest>
     <publicQuest iname="Knightly Riders" id="253" iconSet="1" x="12455" y="8723">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="22" max="23" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Mudflats" id="245" iconSet="1" x="15225" y="37308">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="20" max="21" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Meuselbach Farm" id="263" iconSet="1" x="15573" y="58039">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
         <ranks min="24" max="25" />
         <realm>Order</realm>
     </publicQuest>
@@ -163,43 +187,43 @@
     </publicQuest>
     <publicQuest iname="Suderheim" id="244" iconSet="1" x="25111" y="25646">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="20" max="21" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Unterbaum Castle" id="255" iconSet="1" x="30727" y="53249">
-        <difficulty>easy</difficulty>
-        <players min="2" max="3" />
-        <rewards>basic</rewards>
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Village Vermin" id="252" iconSet="1" x="35425" y="23358">
-        <difficulty>easy</difficulty>
-        <players min="2" max="3" />
-        <rewards>basic</rewards>
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
         <ranks min="24" max="25" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Unterbaum Cemetary" id="256" iconSet="1" x="39804" y="41364">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Krueger Haus" id="250" iconSet="1" x="40313" y="16074">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
+        <difficulty>hard</difficulty>
+        <players min="6" />
+        <rewards>advanced</rewards>
         <ranks min="24" max="25" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Bitterspring" id="251" iconSet="1" x="50723" y="8090">
-        <difficulty>hard</difficulty>
-        <players min="9" />
-        <rewards>advanced</rewards>
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
         <ranks min="24" max="25" />
         <realm>Destruction</realm>
     </publicQuest>
@@ -212,21 +236,21 @@
     </publicQuest>
     <publicQuest iname="Wagon Defense" id="248" iconSet="1" x="62230" y="28927">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Bitterschaum Swamp" id="243" iconSet="1" x="62437" y="48451">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Serpent's Fang" id="254" iconSet="1" x="6333" y="15134">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="22" max="23" />
         <realm>Destruction</realm>

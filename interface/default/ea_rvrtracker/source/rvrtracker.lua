@@ -94,11 +94,16 @@ function EA_Window_RvRTracker.CreateObjectiveTimers()
         return
     end
     
+    --[[
     local objectivesData = nil
     if GlyphDisplay.DoesZoneHaveZoneControl( GameData.Player.zone ) 
     then
         objectivesData = GetZoneObjectivesData( GameData.Player.zone )
     end
+    d("RVRTracker _ create Timers")
+    d(objectivesData)
+    ]]--
+
     
     if (objectivesData ~= nil)
     then
@@ -131,6 +136,7 @@ function EA_Window_RvRTracker.RefreshObjectiveTimers()
     end
     
     local objectivesData = GetZoneObjectivesData( GameData.Player.zone )
+
     if (objectivesData ~= nil)
     then
         for _, objectivePoint in ipairs(objectivesData)

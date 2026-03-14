@@ -95,9 +95,9 @@ function MailWindowTabSend.SetItemAttachment(attachmentSlotNum, backpackSlotNum)
         local currentBackpackType = EA_BackpackUtilsMediator.GetCurrentBackpackType()
         local itemData = EA_BackpackUtilsMediator.GetItemsFromBackpack( currentBackpackType )[backpackSlotNum]
 
-        if	itemData.uniqueID == 0 or itemData.boundToPlayer == true
+        if	itemData.uniqueID == 0 or (itemData.boundToPlayer == true and not itemData.flags[GameData.Item.EITEMFLAG_ACCOUNT_BOUND])
         then
-			if itemData.boundToPlayer == true
+			if (itemData.boundToPlayer == true and not itemData.flags[GameData.Item.EITEMFLAG_ACCOUNT_BOUND])
 			then
 				MailWindow.OnResultsUpdated(9)
 			end

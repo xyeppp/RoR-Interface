@@ -76,6 +76,10 @@ local function GetChatChannelFromText( text )
     return nil        
 end
 
+local function escape(s)
+    return (s:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]","%%%1"))
+end
+
 ----------------------------------------------------------------
 -- Tab Manager
 ----------------------------------------------------------------
@@ -777,6 +781,21 @@ function EA_ChatWindow.OnKeyEnter()
     
     if( chatText ~= L"" ) 
     then
+	
+			for key in wstring.gmatch(chatText, L"<url>([.%S]+)</url>") do	
+			key = towstring(escape(tostring(key)))											
+			local Mention_name = LinkReplace(key)
+				chatText = wstring.gsub (chatText,L"<url>",L"")	
+				chatText = wstring.gsub (chatText,L"</url>",L"")	
+				chatText = wstring.gsub (chatText,key,Mention_name)			
+		end	
+		
+		for w in wstring.gmatch(chatText, L"@(%a+)") do
+			local Mention_name = ChatReplace(w)
+			chatText = wstring.gsub (chatText, L"@"..w,Mention_name)
+		end
+		
+		chatText = wstring.gsub(chatText, L"_$AT_",L"@")
         SendChatText( chatText, chatChannel )
     end 
     
@@ -787,6 +806,23 @@ function EA_ChatWindow.OnKeyEnter()
     WindowSetShowing( "EA_TextEntryGroupEntryBox", false )
 
 end
+
+function LinkReplace(_name)
+	--make sure to convert @ symbols so it doesn't do a link within a link
+	_name = wstring.gsub (_name, L"@",L"_$AT_")
+	local word  = CreateHyperLink( L"WEBLINK:"..towstring(_name),towstring(_name), {75,100,255}, {} )
+	return word
+end
+
+function ChatReplace(_name)
+	local _nameFormatted = wstring.lower(towstring(_name))
+	local _begin = wstring.upper(wstring.match(_nameFormatted, L"(.)"))
+	local _end = wstring.match(_nameFormatted, L".(.*)")
+	_nameFormatted = _begin .. _end					
+	local word  = CreateHyperLink( L"PLAYERNS:"..towstring(_nameFormatted), L"@"..towstring(_nameFormatted), {236,94,96}, {} )
+	return word
+end
+
 
 -- EA_TextEntryGroupEntryBoxTextInput OnKeyEscape Handler
 function EA_ChatWindow.OnKeyEscape()

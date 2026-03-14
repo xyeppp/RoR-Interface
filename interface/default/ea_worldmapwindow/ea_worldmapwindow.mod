@@ -30,10 +30,10 @@
             <File name="Source/WorldMapWindow.lua" />
             <File name="Source/MapDefs.lua" />
             <File name="Source/MapIconTemplates.lua" />
-            <File name="Source/ZoneView.lua" />
             <File name="Source/CampaignView.lua" />
             <File name="Source/PairingView.lua" />
             <File name="Source/WorldView.lua" />
+            <File name="Source/ZoneView.lua" />
         </Files>
         <OnInitialize>
             <CreateWindow name="EA_Window_WorldMap" show="false" />

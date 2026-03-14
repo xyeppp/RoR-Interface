@@ -1,0 +1,56 @@
+<zone iname="Karak Eight Peaks">
+    <zoneTransition iname="To Da Deeps" x="48000" y="65535">
+        <zone>096</zone>
+    </zoneTransition>
+    <landmark iname="To Middle Deeps" id="1" mapIcon="2118" x="23282" y="36892">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Arena" id="2" mapIcon="2119" x="19572" y="29753">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Throne Room" id="3" mapIcon="2120" x="32792" y="41144">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Shines Keepin Place" id="4" mapIcon="2129" x="41388" y="28525">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Shines Hall" id="5" mapIcon="2125" x="37181" y="27062">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Stunty Diggin Pit" id="6" mapIcon="2121" x="23374" y="40138">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Temple of Gork" id="7" mapIcon="2117" x="43628" y="40412">
+        <importance>major</importance>
+    </landmark>
+    <textPoint iname="Bloody Sun Hall" id="20" x="40800" y="17500">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+    <textPoint iname="Shineyz Hall" id="21" x="40800" y="18600">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="WAAAGH! Room" id="22" x="40800" y="19700">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Destruction Headquaters" id="23" x="40800" y="20800">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Flya Boyz" id="24" x="40800" y="21900">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Da Great Green Hall" id="25" x="40800" y="23000">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+</zone>

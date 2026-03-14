@@ -47,7 +47,7 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Marshfang Spider Cave" id="6" mapIcon="1060" x="27988" y="7046">
+    <landmark iname="Marshfang Spider Cave" id="6" mapIcon="1062" x="27988" y="7046">
         <importance>minor</importance>
     </landmark>
     <landmark iname="Hargruk's Camp" id="7" mapIcon="1021" x="31520" y="11711">
@@ -56,7 +56,7 @@
     <landmark iname="Dawr Galaz Grung" id="8" mapIcon="1061" x="3194" y="31963">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Dragoneye Cavern" id="9" mapIcon="1060" x="36166" y="15404">
+    <landmark iname="Dragoneye Cavern" id="9" mapIcon="1062" x="36166" y="15404">
         <importance>minor</importance>
     </landmark>
     <warcamp iname="Thurarikson's Warcamp" id="10" mapIcon="1051" x="39847" y="42374">
@@ -68,10 +68,10 @@
             <service>Flight Master</service>
         </services>
     </warcamp>
-    <landmark iname="Fellwing Cave" id="11" mapIcon="1061" x="49364" y="40535">
+    <landmark iname="Marshlight Cave" id="11" mapIcon="1063" x="49364" y="40535">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Cave" id="12" mapIcon="1063" x="54610" y="38013">
+    <landmark iname="Oathhold Breach" id="12" mapIcon="1063" x="54610" y="38013">
         <importance>minor</importance>
     </landmark>
     <chapter iname="Oathhold" id="13" mapIcon="1003" x="55137" y="40895">
@@ -98,29 +98,25 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Nushtar's Tomb" id="15" mapIcon="1060" x="60425" y="10141">
+    <landmark iname="Nushtar's Tomb" id="15" mapIcon="1062" x="60425" y="10141">
         <importance>major</importance>
     </landmark>
     <landmark iname="Falcon's Tomb" id="16" mapIcon="1060" x="61522" y="52666">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Mourkain Tomb" id="17" mapIcon="1061" x="6523" y="14463">
+    <landmark iname="Mourkain Tomb" id="17" mapIcon="1063" x="6523" y="14463">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Tainted Mine" id="18" mapIcon="1061" x="9095" y="7053">
-        <importance>major</importance>
+    <landmark iname="Tainted Mine" id="18" mapIcon="1063" x="9095" y="7053">
+        <importance>minor</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1026" x="19144" y="37922" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="19144" y="37922" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1026" x="23183" y="42778" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="23183" y="42778" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
-    </landmark>
-    <landmark iname="Live Event: Bitter Rivals" id="21" mapIcon="1180" x="19025" y="40801" liveevent="9">
-        <importance>minor</importance>
-        <specialType>7</specialType>
     </landmark>
     <landmark iname="Withered Skaven Tunnel" id="22" mapIcon="1063" x="16380" y="41550">
     	<importance>major</importance>
@@ -129,6 +125,21 @@
     	<importance>major</importance>
     </landmark>
     <landmark iname="Damp Skaven Tunnel" id="24" mapIcon="1063" x="38935" y="36305">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Hammerstriker Tower" id="25" mapIcon="1002" x="32297" y="20233">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Gorglut's Camp" id="26" mapIcon="1021" x="20596" y="31206">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Agymah's Tomb" id="27" mapIcon="1063" x="46824" y="57838">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="The Tower of Neborhest" id="28" mapIcon="1080" x="43815" y="47227">
+    	<importance>major</importance>
+    </landmark>
+    <landmark iname="Fellwing Cave" id="29" mapIcon="1063" x="46127" y="40644">
     	<importance>major</importance>
     </landmark>
     <publicQuest iname="Marsh Conquest - conflict" id="35" iconSet="1" x="16523" y="16880">
@@ -140,21 +151,21 @@
     </publicQuest>
     <publicQuest iname="Battle at Blood Fen - conflict" id="37" iconSet="1" x="16539" y="4495">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="12" max="13" />
         <realm>Both</realm>
     </publicQuest>
     <publicQuest iname="Assault on Coal Ridge Depot" id="34" iconSet="1" x="18970" y="23826">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="12" max="13" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Specter of Battle" id="36" iconSet="1" x="32794" y="20142">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="12" max="13" />
         <realm>Destruction</realm>
@@ -168,7 +179,7 @@
     </publicQuest>
     <publicQuest iname="Axerust Peak" id="30" iconSet="1" x="3789" y="37298">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="10" max="11" />
         <realm>Order</realm>
@@ -180,28 +191,28 @@
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="The Tower of Neborhest" id="48" iconSet="1" x="45481" y="50991">
+    <publicQuest iname="The Tower of Neborhest" id="48" iconSet="1" x="44218" y="52724">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Dam Boglar" id="41" iconSet="1" x="51225" y="14009">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Neborhest's Vanguard" id="49" iconSet="1" x="57814" y="48933">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Legacy of the Mourkain" id="40" iconSet="1" x="59512" y="9759">
+    <publicQuest iname="Legacy of the Mourkain" id="40" iconSet="1" x="62891" y="9905">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
@@ -210,14 +221,14 @@
     </publicQuest>
     <publicQuest iname="Tree of Beards" id="39" iconSet="1" x="59609" y="33156">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Foul Ruins" id="31" iconSet="1" x="6653" y="27955">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="10" max="11" />
         <realm>Order</realm>

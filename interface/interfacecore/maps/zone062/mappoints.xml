@@ -1,0 +1,68 @@
+<zone iname="Karaz-A-Karak">
+    <zoneTransition iname="To Middle Deeps" x="48000" y="65535">
+        <zone>097</zone>
+    </zoneTransition>
+    <landmark iname="Feast Hall" id="1" mapIcon="2100" x="38465" y="36371">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Vault" id="2" mapIcon="2101" x="25732" y="30738">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="To Middle Deeps" id="3" mapIcon="2102" x="17047" y="36899">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Flight Master" id="4" mapIcon="2103" x="10357" y="22170">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="To Flight Deck" id="5" mapIcon="2102" x="16988" y="29271">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="To Main Level" id="6" mapIcon="2102" x="16284" y="21994">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Throne Room" id="7" mapIcon="2104" x="28666" y="22640">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Exchange" id="8" mapIcon="2105" x="25732" y="34787">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="The Forge" id="9" mapIcon="2106" x="20685" y="32733">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="War Room" id="10" mapIcon="2107" x="32245" y="34904">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Tavern District" id="11" mapIcon="2108" x="38524" y="28801">
+        <importance>major</importance>
+    </landmark>
+    <textPoint iname="High King's Hold" id="14" x="38000" y="10400">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+    <textPoint iname="Order Headquaters" id="15" x="38000" y="12000">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+   <textPoint iname="War Room" id="16" x="38000" y="13600">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Warrior's Stand" id="17" x="38000" y="15200">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Ancestor Temples" id="18" x="38000" y="16800">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+       <textPoint iname="Merchant District" id="19" x="38000" y="18400">
+       <font>font_default_text_no_outline</font>
+       <anchor>left</anchor>
+       <color r="99" g="69" b="41" />
+   </textPoint>
+</zone>

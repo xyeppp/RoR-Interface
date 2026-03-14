@@ -1,0 +1,2353 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+	<Scripts>
+		<Script file="ror_rankedleaderboard.lua"/>
+	</Scripts>
+	          <Assets>
+         <Texture name="Stats_bg2" file="textures/bg_2.tga"/>         
+		 <Texture name="no" file="textures/no.tga"/> 
+		 <Texture name="Book_Mark" file="textures/book_mark.tga"/> 
+		 <Texture name="Middle-divider" file="textures/middle-divider.tga"/> 
+		 <Texture name="Ruleset-divider" file="textures/divider-ruleset.tga"/> 
+		
+		
+		
+		 
+		<Texture name="Ranked_Corner" file="textures/ror_icon_corner_ranked.dds"/> 	
+		<Texture name="Ranked_Corner2" file="textures/ror_icon_corner_ranked.tga"/> 			
+	
+		<Texture name="LB_marks" file="textures/marks.tga"> 
+				  <Slice id="CircleDone"   left="0" top="0" width="32" height="32" />
+				  <Slice id="CircleNotDone"   left="33" top="0" width="32" height="32" />
+		</Texture>
+	
+		<Texture name="Rewardsbar" file="textures/rewardsbar.tga"> 
+				  <Slice id="Rewardsbar_Diamond"   left="98" top="102" width="29" height="46" />
+				  <Slice id="Rewardsbar_DiamondAvalible"   left="131" top="102" width="29" height="46" />
+				  <Slice id="Rewardsbar_Swords"   left="459" top="133" width="49" height="45" />
+		</Texture>
+		
+		<Texture name="Selector" file="textures/selector.tga"> 
+				  <Slice id="Selector_Left"   left="0" top="0" width="50" height="25" />
+                  <Slice id="Selector_Mid"  left="50" top="0" width="10" height="25" />
+				  <Slice id="Selector_Right"  left="60" top="0" width="50" height="25" />
+		</Texture>
+		
+		<Texture name="Stats_Flag" file="textures/flag.tga"> 
+				<Slice id="Season_Pressed"   left="0" top="0" width="126" height="113" />
+                  <Slice id="Season_Highlit"  left="0" top="113" width="126" height="113" />
+				  <Slice id="Season_Normal"  left="0" top="226" width="126" height="113" />
+				  
+					<Slice id="PreSeason_Normal"   left="126" top="0" width="126" height="113" />
+                  <Slice id="PreSeason_Highlit"  left="126" top="113" width="126" height="113" />
+				  <Slice id="PreSeason_Pressed"  left="126" top="226" width="126" height="113" />			
+		</Texture>
+
+		 
+		
+		<Texture name="top-btns" file="textures/top-btns.tga"> 
+		          <Slice id="LB_Normal"   left="0" top="0" width="147" height="40" />
+                  <Slice id="LB_Highlit"  left="0" top="41" width="147" height="40" />
+				  <Slice id="LB_Pressed_Highlit"  left="0" top="82" width="147" height="40" />
+				  <Slice id="LB_Pressed"  left="0" top="123" width="147" height="40" />
+		          <Slice id="Rewards_Normal"   left="152" top="0" width="133" height="40" />
+                  <Slice id="Rewards_Highlit"  left="152" top="41" width="133" height="40" />
+				  <Slice id="Rewards_Pressed_Highlit"  left="152" top="82" width="133" height="40" />	
+				  <Slice id="Rewards_Pressed"  left="152" top="123" width="133" height="40" />	
+				  <Slice id="Exclemation"  left="293" top="0" width="12" height="32" />	
+				  <Slice id="Ruleset_Normal"   left="308" top="0" width="133" height="40" />
+                  <Slice id="Ruleset_Highlit"  left="308" top="41" width="133" height="40" />
+				  <Slice id="Ruleset_Pressed_Highlit"  left="308" top="82" width="133" height="40" />	
+				  <Slice id="Ruleset_Pressed"  left="308" top="123" width="133" height="40" />	
+		</Texture>
+		
+		<Texture name="queue-wait_texture" file="textures/queue-btn.tga"> 
+		          <Slice id="Join_Normal"   left="0" top="0" width="192" height="58" />
+                  <Slice id="Join_Highlit"  left="0" top="58" width="192" height="58" />
+				  <Slice id="Join_Pressed"  left="0" top="116" width="192" height="58" />
+					<Slice id="Not_Eligible"  left="0" top="406" width="192" height="58" />				  
+		</Texture>
+      </Assets>
+	<Windows>
+	
+        <!-- Templates -->	
+
+        <Button name="LBInfluenceDiamond" backgroundtexture="Rewardsbar" highlighttexture="Rewardsbar" texturescale="1">
+            <Size>
+                <AbsPoint x="29" y="46" />
+            </Size>
+            <TexSlices>
+                <Normal          id="Rewardsbar_Diamond" />
+                <NormalHighlit   id="Rewardsbar_Diamond" />
+                <Pressed         id="Rewardsbar_DiamondAvalible" />
+                <PressedHighlit  id="Rewardsbar_DiamondAvalible" />
+                <Disabled        id="Rewardsbar_Diamond" />
+                <DisabledPressed id="Rewardsbar_DiamondAvalible" />
+            </TexSlices>
+        </Button>
+
+		 	<Button name="TopicButton" font="font_default_sub_heading" autoresize="false" textalign="right" layer="popup" handleinput="true" warnOnTextCropped="false">	
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnInfoLBU" />
+			</EventHandlers>
+					<Size><AbsPoint x="250" y="32" /></Size>  
+					<TextColors>
+						<Normal r="255" g="175" b="73" a="255"/>
+						<NormalHighlit r="255" g="85" b="0" a="255"/>
+						<Pressed r="95" g="57" b="36" a="255"/>
+						<PressedHighlit r="95" g="57" b="36" a="255"/>
+						<Disabled r="95" g="57" b="36" a="255" />
+						<DisabledPressed r="95" g="57" b="36" a="255" />
+					</TextColors>  
+			</Button>		
+
+
+	   <Button name="LBIconButtonWithStacks" drawchildrenfirst="false">
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverGivenReward" />
+			</EventHandlers>
+			<Size>
+				<AbsPoint x="56" y="56" />
+			</Size>
+			<Windows>			
+				<!--DynamicImage name="$parentIconBase" handleinput="false" layer="background">
+					<Size>
+						<AbsPoint x="64" y="64" />
+					</Size>
+				</DynamicImage-->
+				<CircleImage name="$parentIconBase" handleinput="false" layer="background" textureScale="0.775" numsegments="6" startangle="90">
+   					<Size>
+						<AbsPoint x="50" y="50" />
+					</Size>	
+                    <TexDims x="56" y="56" />
+                </CircleImage>
+			
+				<DynamicImage name="$parentIconFrame" texture="EA_HexFrame_Pressed" textureScale="0.85" handleinput="false" layer="default">
+					<Size>
+						<AbsPoint x="55" y="55" />
+					</Size>
+					    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="-3" y="-3" />
+                        </Anchor>
+                    </Anchors>
+				</DynamicImage>
+			
+                <Label name="$parentText" font="font_clear_medium_bold" maxchars="12" textalign="right" handleinput="false" autoresize="true" wordwrap="false" layer="overlay">
+                    <Size>
+                        <AbsPoint x="40" y="20" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topright">
+                            <AbsPoint x="-5" y="5" />
+                        </Anchor>
+                    </Anchors>
+					<Color r="255" g="255" b="255" a="255" />
+                </Label>
+			</Windows>
+		</Button>
+
+
+        <HorizontalResizeImage name="LB_Selector" texture="Selector" handleinput="false" layer="background" texturescale="1" >
+
+            <Sizes left="50" middle="10" right="50" />
+			            <TexSlices>
+				<Left id="Selector_Left" />	
+                <Middle id="Selector_Mid" />
+				<Right id="Selector_Right" />
+            </TexSlices>
+        </HorizontalResizeImage>
+
+
+
+        <AnimatedImage name="queue-wait_template" fps="8" layer="overlay" handleinput="false" texture="queue-wait_texture" sticky="false">
+            <Size>
+                <AbsPoint x="192" y="58"/>
+            </Size>
+            <AnimFrames>
+                <AnimFrame id="1" x="0" y="174" />
+                <AnimFrame id="2" x="0" y="232" />
+                <AnimFrame id="3" x="0" y="290" />
+                <AnimFrame id="4" x="0" y="348" /> 
+            </AnimFrames>
+        </AnimatedImage>
+
+       <Button name="LB_DiamondTemplate" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization" layer="default" drawchildrenfirst="false">
+            <Size>
+                <AbsPoint x="64" y="64" />
+            </Size>
+            <Anchors>
+                <Anchor point="center" relativePoint="center" relativeTo="$parent">
+                    <AbsPoint x="0" y="0" />
+                </Anchor>
+            </Anchors>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+            </EventHandlers>
+
+            <Windows>
+                <CircleImage name="$parentIcon" handleinput="false" layer="background" textureScale="0.87" numsegments="4">
+                    <Size>
+                        <AbsPoint x="55" y="55" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" />
+                    </Anchors>
+                    <TexDims x="55" y="55" />
+                </CircleImage>
+                <DynamicImage name="$parentFrame" handleinput="false" textureScale="0.9" texture="EA_DiamondFrame" >
+                    <Size>
+                        <AbsPoint x="57" y="57" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentIcon" />
+                    </Anchors>
+                </DynamicImage>
+            </Windows>
+        </Button>
+
+
+
+		<Button name="RoR_RankWindow_Destro_Template" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization"  textureScale="0.62" layer="default" drawchildrenfirst="true">	
+			<Size><AbsPoint x="36" y="36" /></Size>					   
+								<TexSlices>
+								<Normal          id="morale-white"   />
+								<NormalHighlit   id="morale-white"   />
+								<Pressed         id="morale-white"  />
+								<PressedHighlit  id="morale-white"  />
+								<Disabled        id="morale-white"   />
+								<DisabledPressed id="morale-white"  />
+							</TexSlices>
+							<Windows>
+								<DynamicImage name="$parentIcon" texture="EA_HUD_01" slice="Rank-Circle-ConTintable" textureScale="1.0" layer="overlay" sticky="true" handleinput="false" popable="false">
+								<Size><AbsPoint x="25" y="25" /></Size>
+								<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="5" y="7" /></Anchor></Anchors>          
+								<TexCoords x="0" y="0" />
+								<TintColor r="0" g="0" b="0" a="1.0"/>
+								</DynamicImage>	
+								
+								<Label name="$parentText" font="font_default_text_no_outline" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="22" y="22" /></Size>
+								<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parentIcon"><AbsPoint x="-1" y="2" /></Anchor></Anchors>
+								<Color r="255" g="255" b="255" />
+								</Label>			
+								
+							</Windows>
+
+							<TintColor r="255" g="20" b="20" a="1.0"/>	
+						</Button>
+
+			<Button name="RoR_RankWindow_Order_Template" handleinput="true" inherits="EA_Button_Default" backgroundtexture="EA_Training_Specialization" highlighttexture="EA_Training_Specialization"  textureScale="0.62" layer="default" drawchildrenfirst="true">	
+			<Size><AbsPoint x="36" y="36" /></Size>					   
+								<TexSlices>
+								<Normal          id="morale-white"   />
+								<NormalHighlit   id="morale-white"   />
+								<Pressed         id="morale-white"  />
+								<PressedHighlit  id="morale-white"  />
+								<Disabled        id="morale-white"   />
+								<DisabledPressed id="morale-white"  />
+							</TexSlices>
+							<Windows>
+								<DynamicImage name="$parentIcon" texture="EA_HUD_01" slice="Rank-Circle-ConTintable" textureScale="1.0" layer="overlay" sticky="true" handleinput="false" popable="false">
+								<Size><AbsPoint x="25" y="25" /></Size>
+								<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="5" y="7" /></Anchor></Anchors>          
+								<TexCoords x="0" y="0" />
+								<TintColor r="255" g="255" b="255" a="1.0"/>
+								</DynamicImage>	
+
+								<Label name="$parentText" font="font_default_text_no_outline" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="22" y="22" /></Size>
+								<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parentIcon"><AbsPoint x="-1" y="2" /></Anchor></Anchors>
+								<Color r="0" g="0" b="0" />
+								</Label>	
+								
+							</Windows>
+							<TintColor r="100" g="100" b="255" a="1.0"/>	
+						</Button>
+
+		
+				<Window name="RoR_RankedLeaderboardClass_Template" layer="overlay" handleinput="false"sticky="true">
+			<Size><AbsPoint x="300" y="25" /></Size>
+				<Windows>		
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" autoresize="false" autoresizewidth="true" warnOnTextCropped="false">
+								    <Size><AbsPoint x="430" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="3"/></Anchor></Anchors>
+									</Label>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="right" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="100" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="right" relativeTo="$parent"><AbsPoint x="0" y="3"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+		
+									<Label name="$parentDott" inherits="TOKText" textalign="left" wordwrap="false" autoresize="false" sticky="true" warnOnTextCropped="false">
+								    <Size><AbsPoint x="300" y="25"/></Size>
+									<Color r="140" g="120" b="0" />  								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"><AbsPoint x="0" y="0"/></Anchor></Anchors>									
+									</Label>		
+
+         <HorizontalResizeImage name="$parentImage" inherits="LB_Selector" layer="default" handleinput="false">			
+									<!--Size>
+											<AbsPoint x="340" y="25" />
+										</Size-->
+
+				                	<Anchors>
+		                    	<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="-20" y="0"/></Anchor>								
+								<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="20" y="0"/></Anchor>
+							</Anchors>
+		</HorizontalResizeImage>
+
+
+								
+								
+
+								        <HorizontalResizeImage name="$parent_HorizLine" inherits="TomeResizableHorizontalRule"  layer="default" handleinput="false">
+										<!--Size>
+											<AbsPoint x="300" y="5" />
+										</Size-->
+										<Anchors>
+										<Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="0" y="2" /></Anchor>
+										<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="0" y="7" /></Anchor>
+										</Anchors>
+									</HorizontalResizeImage>
+								
+								<!--DynamicImage name="$parentImage" handleinput="false"  texturescale="0.63">
+								<Size><AbsPoint x="20" y="20" /></Size>
+								<Anchors><Anchor point="left" relativePoint="right" relativeTo="$parentLabel"><AbsPoint x="-4" y="0" /></Anchor></Anchors>
+								</DynamicImage-->			
+				</Windows>			
+			</Window>	
+		
+		
+		
+		<Button name="Ranked_LeaderboardPlayerHeaderButton" inherits="EA_Button_Default" backgroundtexture="RoR_GroupScoreboard01_d8" highlighttexture="RoR_GroupScoreboard01_d8" font="font_default_text_small" layer="secondary">
+			 <TextColors>
+                <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="204" b="102" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+		</Button>
+		
+		<VerticalScrollbar name="GroupScoreboardVertScroll" inherits="EA_ScrollBar_DefaultVerticalChain" >
+			<EventHandlers>
+				<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnVertScrollLButtonUp" />
+			</EventHandlers>
+		</VerticalScrollbar>
+	
+	    <!-- Top Sort Buttons (Icons) -->
+		<Window name="GroupScoreboardPlayerHeader" savesettings="false" layer="secondary" skipinput="true">
+            <Size>
+                <AbsPoint x="926" y="25"/>
+            </Size>
+            <Windows>
+                <!-- Filter Combo -->
+				
+				<HorizontalResizeImage name="$parentImage" inherits="LB_Selector" layer="background" alpha="0.2" handleinput="false">			
+									<!--Size>
+											<AbsPoint x="340" y="25" />
+										</Size-->
+
+				                	<Anchors>
+		                    	<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="-30" y="0"/></Anchor>								
+								<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="30" y="0"/></Anchor>
+							</Anchors>
+		</HorizontalResizeImage>
+				
+				
+				 <Button name="$parentRank" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="1" textalign="left">
+					<Size>
+                        <AbsPoint x="58" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="15" y="5"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+				
+				  <Button name="$parentCareer" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="2" textalign="top">
+                    <Size>
+                        <AbsPoint x="58" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRank">
+                            <AbsPoint x="-3" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+				
+                <Button name="$parentName" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="16" id="3" textalign="top">
+                    <Size>
+                        <AbsPoint x="130" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareer">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentRenown" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="4" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="-5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+                
+                <Button name="$parentWins" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="5" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRenown">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                
+                <Button name="$parentLosses" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="6" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentWins">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentDraws" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="7" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLosses">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentTotal" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="8" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDraws">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                <Button name="$parentRate" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="9" textalign="top">
+                    <Size>
+                        <AbsPoint x="68" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTotal">
+                            <AbsPoint x="5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+
+                 <Button name="$parentGuild" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="10" textalign="top">
+                    <Size>
+                        <AbsPoint x="210" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRate">
+                            <AbsPoint x="-10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>
+				
+                 <Button name="$parentRating" inherits="Ranked_LeaderboardPlayerHeaderButton" maxchars="64" id="11" textalign="top">
+                    <Size>
+                        <AbsPoint x="65" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuild">
+                            <AbsPoint x="-5" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Button>				
+                
+
+				
+            </Windows>
+        </Window>
+
+        <Label name="PlayerRowLabel" font="font_name_plate_titles_old" maxchars="80">
+            <EventHandlers>
+                <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnLButtonUpPlayerRow" />                
+            </EventHandlers>
+        </Label>
+
+        <Label name="PlayerRowLabelWithTooltip" inherits="PlayerRowLabel">
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverPlayerRow" />
+            </EventHandlers>
+        </Label>
+
+        <!-- Single Row Definition -->
+        <Window name="GroupScoreboardPlayerRow" savesettings="false">
+			<Size>
+				<AbsPoint x="956" y="26"/>
+			</Size>
+            <Windows>
+
+                <!-- Background Pieces -->
+				
+
+			<!--	
+                <FullResizeImage name="$parentBackgroundRank" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRank" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRank" />
+                    </Anchors>
+                </FullResizeImage>
+				
+				  <FullResizeImage name="$parentBackgroundCareer" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentCareer" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentCareer" />
+                    </Anchors>
+                </FullResizeImage>
+				
+                <FullResizeImage name="$parentBackgroundName" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentName" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentName" />
+                    </Anchors>
+                </FullResizeImage>
+
+                <FullResizeImage name="$parentBackgroundRenown" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRenown" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRenown" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundWins" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentWins" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentWins" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundLosses" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentLosses" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentLosses" />
+                    </Anchors>
+                </FullResizeImage>
+                <FullResizeImage name="$parentBackgroundDraws" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentDraws" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentDraws" />
+                    </Anchors>
+                </FullResizeImage>
+				 <FullResizeImage name="$parentBackgroundGuild" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentGuild" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentGuild" />
+                    </Anchors>
+                </FullResizeImage>
+				 <FullResizeImage name="$parentBackgroundRating" inherits="EA_FullResizeImage_TintableSolidBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRating" />
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRating" />
+                    </Anchors>
+                </FullResizeImage>				
+
+-->
+                <!-- Selected Player Highlight Border -->
+				
+				         <HorizontalResizeImage name="$parentBookark" inherits="LB_Selector" layer="default" handleinput="false">			
+
+                   <Size>
+                        <AbsPoint x="900" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                            <AbsPoint x="-10" y="5"/>
+                        </Anchor>
+                    </Anchors>
+		</HorizontalResizeImage>
+			
+	
+				   <!--DynamicImage name="$parentBookark" texture="Book_Mark" layer="default" textureScale="1">
+                    <Size>
+                        <AbsPoint x="512" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage-->			
+				
+                <FullResizeImage name="$parentSelectionBorder" handleinput="false" layer="background" texture="EA_TilableSquareFrame_Highlight">
+                    <Size>
+                        <AbsPoint x="64" y="64" />
+                    </Size>
+                    <Sizes>
+                        <TopLeft x="10" y="10" />
+                        <BottomRight x="10" y="10" />
+                        <Middle x="44" y="44" />
+                    </Sizes>
+                    <TexCoords>
+                        <TopLeft x="0" y="0" />
+                        <TopCenter x="10" y="0" />
+                        <TopRight x="54" y="0" />
+                        <MiddleLeft x="0" y="10" />
+                        <MiddleCenter x="10" y="10" />
+                        <MiddleRight x="54" y="10" />
+                        <BottomLeft x="0" y="54" />
+                        <BottomCenter x="10" y="54" />
+                        <BottomRight x="54" y="54" />
+                    </TexCoords>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentRank">
+                            <AbsPoint x="-4" y="-4"/>
+                        </Anchor>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentRating">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </FullResizeImage>
+
+                <!-- Data Labels -->
+
+                <Label name="$parentRank" maxchars="64" inherits="PlayerRowLabel"  handleinput="true" textalign="center">
+                    <Size>
+                        <AbsPoint x="60" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="">
+                            <AbsPoint x="5" y="6"/>
+                        </Anchor>
+                    </Anchors>
+			 <EventHandlers>			 
+                <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverPlayerRow" />
+            </EventHandlers>
+                </Label>
+				
+                <DynamicImage name="$parentQualifyIcon" texture="no" textureScale="0.65">
+                    <Size>
+                        <AbsPoint x="20" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="right" relativePoint="left" relativeTo="$parentRank">
+                            <AbsPoint x="-10" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>				
+				
+				 <Label name="$parentCareer" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRank">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+                <DynamicImage name="$parentCareerIcon" textureScale="0.75">
+                    <Size>
+                        <AbsPoint x="25" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="center" relativePoint="center" relativeTo="$parentCareer">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <Label name="$parentName" maxchars="80" inherits="PlayerRowLabel"  >
+                    <Size>
+                        <AbsPoint x="115.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareer">
+                            <AbsPoint x="0" y="2"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentRenown" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentName">
+                            <AbsPoint x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+					<Color r="237" g="75" b="237" />					
+                </Label>
+                <Label name="$parentWins" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRenown">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+					<Color r="75" g="235" b="75" />
+                </Label>
+                <Label name="$parentLosses" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentWins">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+					<Color r="235" g="75" b="75" />
+                </Label>
+                <Label name="$parentDraws" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLosses">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+				<Color r="235" g="235" b="75" />
+                </Label>
+               <Label name="$parentTotal" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentDraws">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+				<Color r="235" g="235" b="75" />
+                </Label>
+               <Label name="$parentRate" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="70.6" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentTotal">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+				<Color r="235" g="235" b="75" />
+                </Label>
+
+
+                <Label name="$parentGuild" maxchars="26" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="180" y="26"/>
+                    </Size>
+									<EventHandlers>
+									<EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" />
+									<EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" />
+									</EventHandlers>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentRate">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+                <Label name="$parentRating" maxchars="16" inherits="PlayerRowLabel"  textalign="center">
+                    <Size>
+                        <AbsPoint x="100" y="26"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentGuild">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </Label>
+
+
+            </Windows>
+		</Window>
+		
+		
+		<!-- Map togler-->
+		<Window name="RoR_RankedLeaderboard_Toggler" handleinput="true" layer="default" movable="true" sticky="true" savesettings="true">
+      <Size>
+        <AbsPoint x="17" y="33" />
+      </Size>
+	                      <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="EA_Window_OverheadMapAdvWarButton">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+					                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.ToggleAdvancedWarWindow" />
+                        <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseoverAdvancedWarBtn" />
+                    </EventHandlers>
+      <Windows>
+	  					<DynamicImage name="$parentIcon"  texture="EA_ScenarioSummary01_d5" handleinput="false" slice="rank" sticky="true" texturescale="1">
+					<Size><AbsPoint x="17" y="33" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+				</DynamicImage>
+	           <!--Button name="$parentButton" inherits="DefaultButton" handleinput="false"  backgroundtexture="EA_ScenarioSummary01_d5"  highlighttexture="EA_ScenarioSummary01_d5" layer="popup">
+                    <Size>
+                        <AbsPoint x="17" y="33" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                    <TexSlices>
+                        <Normal         id="rank" />
+                        <NormalHighlit  id="rank-highlighted" />
+                        <Pressed        id="rank-highlighted" />
+                        <PressedHighlit id="rank-highlighted" />
+                    </TexSlices>
+                </Button-->
+
+      </Windows>
+    </Window>
+		
+		
+		
+			
+		
+				
+		<!-- Whole Window Definition -->
+		<Window name="RoR_RankedLeaderboard" inherits="EA_Window_Default" movable="true" layer="secondary" savesettings="true" >
+			<Size>
+				<!--AbsPoint x="944" y="785"/-->
+				<AbsPoint x="1028" y="655"/>
+			</Size>
+			<Anchors>
+				<Anchor point="center" relativePoint="center" relativeTo="">
+					<AbsPoint x="0" y="0"/>
+				</Anchor>
+			</Anchors>
+			<EventHandlers>
+				<EventHandler event="OnInitialize" function="RoR_RankedLeaderboard.Initialize"/>
+				<EventHandler event="OnShown" function="RoR_RankedLeaderboard.OnShown"/>			
+				<EventHandler event="OnHidden" function="RoR_RankedLeaderboard.OnHidden"/>						
+			</EventHandlers>
+			<Windows>
+			    <Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" />
+				<DynamicImage name="$parentCornerImage" inherits="EA_Default_TrainingImage" texture="Ranked_Corner"  mirrorTexCoords="false" layer="overlay"/>
+                <Window name="$parentTitleBar" inherits="EA_TitleBar_Default" layer="popup" /> 
+				
+                <!--Window name="$parentButtonBackground" inherits="EA_Window_DefaultButtonBottomFrame" layer="default" >
+                    <Size>
+                        <AbsPoint x="0" y="75" />
+                    </Size>
+                </Window-->   
+
+				
+			    <!-- General Window Settings -->
+                <!--Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground">
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo=""/>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo=""/>
+                    </Anchors>
+                </Window-->
+				<Button name="$parentClose" inherits="EA_Button_DefaultWindowClose" layer="overlay">
+					<EventHandlers>
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.ToggleShowing"/>
+					</EventHandlers>
+				</Button>	
+				
+			<!-- RANKED LIST WINDOW-->		
+			
+		<Window name="$parentList" >
+			<Size>
+				<AbsPoint x="1028" y="643"/>
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+					<AbsPoint x="0" y="15"/>
+				</Anchor>
+			</Anchors>
+			
+				<Windows>
+
+					<ComboBox name="$parentCareerCombo" inherits="EA_ComboBox_DefaultResizableMediumLarge" maxvisibleitems="15" layer="overlay">
+            <Size><AbsPoint x="210" y="28" /></Size>	   
+			<OverlayOffset x="160" y="0" />   
+            <MenuButtonOffset x="5" y="5" />
+		              <Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="20" y="120" /></Anchor></Anchors>
+			           <EventHandlers><EventHandler event="OnSelChanged" function="RoR_RankedLeaderboard.CareerSelect" /></EventHandlers>
+        </ComboBox>		
+				
+
+					<ComboBox name="$parentSeasonCombo" inherits="EA_ComboBox_DefaultResizableMedium" maxvisibleitems="15" layer="overlay">
+            <Size><AbsPoint x="170" y="28" /></Size>	   
+			<OverlayOffset x="160" y="0" />   
+            <MenuButtonOffset x="5" y="5" />
+		              <Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="80" y="120" /></Anchor></Anchors>
+			           <EventHandlers><EventHandler event="OnSelChanged" function="RoR_RankedLeaderboard.SeasonSelect" /></EventHandlers>
+        </ComboBox>		
+				
+			<ComboBox name="$parentTypeCombo" inherits="EA_ComboBox_DefaultResizableSmall" maxvisibleitems="15" layer="overlay">
+            <Size><AbsPoint x="120" y="28" /></Size>	   
+			<OverlayOffset x="160" y="0" />   
+            <MenuButtonOffset x="5" y="5" />
+		              <Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="-175" y="120" /></Anchor></Anchors>
+			           <EventHandlers><EventHandler event="OnSelChanged" function="RoR_RankedLeaderboard.TypeSelect" /></EventHandlers>
+        </ComboBox>			
+	
+				
+				
+					<EditBox name="$parentSearchBox" inherits="EA_EditBox_DefaultFrame" maxchars="50" input="text">
+					<Size><AbsPoint x="180" y="30" /></Size>
+					<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentCareerCombo" ><AbsPoint x="7" y="0" /></Anchor></Anchors>
+					
+					<EventHandlers><EventHandler event="OnKeyEnter" function="RoR_RankedLeaderboard.OnSearch" /><EventHandler event="OnKeyEscape" function="" /></EventHandlers>
+						<!--	<EventHandlers><EventHandler event="OnRButtonUp" function="RoR_SoR.OnTabRBU" /><EventHandler event="OnMouseOver" function="RoR_SoR.ShowPopper"/><EventHandler event="OnSizeUpdated" function="RoR_SoR.OnSizeUpdated" /></EventHandlers> -->
+				</EditBox>		
+				
+								<Label name="$parentInputText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="125" y="22" /></Size>
+								<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parentSearchBox"><AbsPoint x="5" y="5" /></Anchor></Anchors>
+									<Color r="154" g="139" b="110" />  
+								</Label>		
+				
+				
+						 <Button name="$parentFindMe" inherits="EA_Button_Default" font="font_default_text_small" id="8" textalign="left" layer="overlay">
+						<EventHandlers>				
+						  <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.JumpToCurrent" />
+						</EventHandlers>
+						<Size><AbsPoint x="160" y="35" /></Size>						
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentSearchBox"><AbsPoint x="10" y="7"/></Anchor></Anchors>
+        
+			<TextColors>
+               <Normal r="255" g="204" b="102" a="255" />
+                <NormalHighlit r="255" g="85" b="0" a="255" />
+                <Pressed r="255" g="204" b="102" a="255" />
+                <PressedHighlit r="255" g="85" b="0" a="255" />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+				</Button>
+				
+				
+				
+				<!-- PAGE -->
+
+		<ComboBox name="$parentPageCombo" inherits="EA_ComboBox_DefaultResizableTiny" warnOnTextCropped="false" id="1" maxvisibleitems="15">		
+		<Size><AbsPoint x="72" y="28"/></Size>
+							<Anchors>
+								<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+									<AbsPoint x="-30" y="-11" />
+								</Anchor>
+							</Anchors>
+							<EventHandlers>
+								<EventHandler event="OnSelChanged" function="RoR_RankedLeaderboard.OnUpdatePageCombo" />
+							</EventHandlers>
+						</ComboBox>
+						
+						<Button name="$parentPagePrev" textureScale="0.5" backgroundtexture="shared_01" id="1" highlighttexture="shared_01">
+							<Size>
+								<AbsPoint x="15" y="28" />
+							</Size>
+							
+							<Anchors>
+								<Anchor point="topleft" relativePoint="topright" relativeTo="$parentPageCombo" >
+									<AbsPoint x="0" y="0" />
+								</Anchor>
+							</Anchors>
+							
+							<EventHandlers>
+							        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnPrevNextCombo" />
+									 <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+						    </EventHandlers>
+							
+							<TexSlices>
+								<Normal 		id="Big-Left-Arrow-Button" />
+								<NormalHighlit 	id="Big-Left-Arrow-Button-rollover" />
+								<Pressed 		id="Big-Left-Arrow-Button-depressed" />
+								<PressedHighlit id="Big-Left-Arrow-Button-depressed" />
+							</TexSlices>
+						</Button>
+						
+						<Button name="$parentPageNext" textureScale="0.5" backgroundtexture="shared_01"  id="2" highlighttexture="shared_01">
+							<Size>
+								<AbsPoint x="15" y="28" />
+							</Size>
+							
+							<Anchors>
+								<Anchor point="topright" relativePoint="topleft" relativeTo="$parentPageCombo" >
+									<AbsPoint x="3" y="0" />
+								</Anchor>
+							</Anchors>
+							
+							<EventHandlers>
+							        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnPrevNextCombo" />
+									<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+						    </EventHandlers>
+							
+							<TexSlices>
+								<Normal 		id="Big-Right-Arrow-Button" />
+								<NormalHighlit 	id="Big-Right-Arrow-Button-rollover" />
+								<Pressed 		id="Big-Right-Arrow-Button-depressed" />
+								<PressedHighlit id="Big-Right-Arrow-Button-depressed" />
+							</TexSlices>
+						</Button>
+ 
+								
+				
+                <!-- Player List ***************************************************************************** -->
+
+                <!-- List Border -->
+                <Window name="$parentPlayerListBackground" savesettings="false" layer="background">
+					<Size>
+						<AbsPoint x="1028" y="750"/>
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScoreBackground">
+							<AbsPoint x="0" y="-3"/>
+						</Anchor>
+					</Anchors>
+				</Window>
+
+                <!-- Sort Buttons -->
+				<Window name="$parentPlayerListHeader" inherits="GroupScoreboardPlayerHeader">
+					<Anchors>
+						<Anchor point="topleft" relativePoint="topleft" relativeTo="$parentPlayerListBackground">												
+							<AbsPoint x="47" y="152"/>
+						</Anchor>
+					</Anchors>
+				</Window>
+                
+                <HorizontalResizeImage name="$parentDivider1" inherits="DefaultWindowRule">
+                    <Size>
+                        <AbsPoint x="926" y="2" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayerListHeader">
+                            <AbsPoint x="0" y="1" />
+                        </Anchor>
+                    </Anchors>
+                </HorizontalResizeImage>
+				
+				<!-- Listview: Order -->
+				<ListBox name="$parentPlayerList" scrollbar="" rowdef="GroupScoreboardPlayerRow" visiblerows="15" rowcount="100" rowspacing="2">
+					<Size>
+						<AbsPoint x="931" y="425"/> <!-- Height is also adjusted by the Lua code, so changes here need to be made in the Lua code as well -->
+					</Size>
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentPlayerListHeader">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<ListData table="RoR_RankedLeaderboard.playersData" populationfunction="RoR_RankedLeaderboard.UpdatePlayerRow">
+						<ListColumns>
+							<ListColumn windowname="Name" variable="character_name"  format="wstring" />							
+							<ListColumn windowname="Rank" variable="rank" format="number" style="comma"/>
+							<ListColumn windowname="Renown" variable="renown_rank" format="number" style="comma" />													
+							<ListColumn windowname="Wins" variable="wins" format="number" style="comma" />		
+							<ListColumn windowname="Losses" variable="losses" format="number" style="comma" />
+							<ListColumn windowname="Draws" variable="draws" format="number" style="comma" />							
+							<ListColumn windowname="Total" variable="total_matches" format="number" style="comma" />														
+							<ListColumn windowname="Rate" variable="win_rate" format="number" style="comma" />																					
+							<ListColumn windowname="CareerIcon" variable="career" format="icon" />		
+							<ListColumn windowname="Rating" variable="rating" format="number" style="comma" />	
+							<ListColumn windowname="Guild" variable="guild_name"  format="wstring" />														
+                        </ListColumns>
+					</ListData>
+				</ListBox>
+                
+                <!--Button name="$parentResetButton" inherits="EA_Button_DefaultResizeable" layer="secondary">
+                    <Anchors>
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+                            <AbsPoint x="-50" y="-10" />
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnResetClicked" />
+                    </EventHandlers>
+                </Button-->
+				
+        <Button name="$parentPrevButton" backgroundtexture="EA_Pregame01_d5" id="1" highlighttexture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="50" y="67" />
+            </Size>
+			             <Anchors>
+                        <Anchor point="left" relativePoint="left" relativeTo="$parent">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+            <TexSlices>
+                <Normal          texture="" id="ArrowLeft-Rollover"  />
+                <NormalHighlit   texture="" id="ArrowLeft"   />
+                <Pressed         texture="" id="ArrowLeft-Selected"   />
+                <PressedHighlit  texture="" id="ArrowLeft-Selected"   />
+                <Disabled        texture="" id="ArrowLeft"   />
+                <DisabledPressed texture="" id="ArrowLeft-Rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+			<EventHandlers>
+			 <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnPrevNextCombo" />
+			 </EventHandlers>
+        </Button>
+				
+       <Button name="$parentNextButton" backgroundtexture="EA_Pregame01_d5" id="2" highlighttexture="EA_Pregame01_d5">
+            <Size>
+                <AbsPoint x="50" y="67" />
+            </Size>
+						             <Anchors>
+                        <Anchor point="right" relativePoint="right" relativeTo="$parent">
+                            <AbsPoint x="0" y="30" />
+                        </Anchor>
+                    </Anchors>
+            <TexSlices>
+                <Normal          texture="" id="ArrowRight-Rollover"  />
+                <NormalHighlit   texture="" id="ArrowRight"   />
+                <Pressed         texture="" id="ArrowRight-Selected"   />
+                <PressedHighlit  texture="" id="ArrowRight-Selected"   />
+                <Disabled        texture="" id="ArrowRight"   />
+                <DisabledPressed texture="" id="ArrowRight-Rollover"   />
+            </TexSlices>
+            <Sounds>
+                <Sound event="OnLButtonDown" script="Sound.Play( GameData.Sound.PREGAME_ARROW_BUTTON )" />
+                <Sound event="OnMouseOver" script="Sound.Play( GameData.Sound.PREGAME_HILIGHT_BUTTON )" />
+            </Sounds>
+							<EventHandlers>
+							        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnPrevNextCombo" />
+						    </EventHandlers>
+        </Button>	
+	
+				
+				</Windows>			
+				</Window>
+
+
+		<!-- PLAYER STATS WINDOW -->
+		<Window name="$parentStats" >
+			<Size>
+				<AbsPoint x="1028" y="650"/>
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+					<AbsPoint x="0" y="15"/>
+				</Anchor>
+			</Anchors>
+			
+				<Windows>
+
+				<!-- PAGE -->
+
+                <Window name="$parentPlayerListBackground" savesettings="false" layer="background">
+					<Size>
+						<AbsPoint x="1028" y="650"/>
+					</Size>
+					
+					<Anchors>
+						<Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentScoreBackground">
+							<AbsPoint x="0" y="-3"/>
+						</Anchor>
+					</Anchors>
+				</Window>
+
+				<Label name="$parentTitle"  font="font_default_war_heading" autoresize="false" textalign="center" layer="overlay" handleinput="false">
+				<Size><AbsPoint x="400" y="50" /></Size>
+				<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parentClass0"><AbsPoint x="0" y="-20" /></Anchor></Anchors>
+				<Color r="255" g="201" b="96" />
+				</Label>
+	
+					<!--Label name="$parentTier" font="font_default_text_small" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="202" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle"><AbsPoint x="0" y="-5" /></Anchor></Anchors>
+						<Color r="184" g="169" b="140" />  
+						</Label-->	
+
+	
+				<Window name="$parentClass0" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="100" y="460"/></Anchor></Anchors>
+				</Window>
+
+				<Window name="$parentClass1" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass0"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+				
+				<Window name="$parentClass2" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass1"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+	
+				<Window name="$parentClass3" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass2"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+	
+				<Window name="$parentClass4" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass3"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>	
+<!--
+				<Window name="$parentClass5" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass4"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>	
+	
+				<Window name="$parentClass6" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass5"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+-->
+
+				<Label name="$parentTitle2"  font="font_default_war_heading" autoresize="false" textalign="center" layer="overlay" handleinput="false">
+				<Size><AbsPoint x="400" y="50" /></Size>
+				<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parentGroup0"><AbsPoint x="0" y="-20" /></Anchor></Anchors>
+				<Color r="255" g="201" b="96" />
+				</Label>
+
+				<Window name="$parentGroup0" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-100" y="460"/></Anchor></Anchors>
+				</Window>
+
+				<Window name="$parentGroup1" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup0"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+				
+				<Window name="$parentGroup2" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup1"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+	
+				<Window name="$parentGroup3" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup2"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+	
+				<Window name="$parentGroup4" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup3"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>	
+				<!--
+				<Window name="$parentGroup5" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup4"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>	
+	
+				<Window name="$parentGroup6" inherits="RoR_RankedLeaderboardClass_Template">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentGroup5"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+-->
+
+	
+		<!-- RANKED POP COUNT -->
+		
+				<Window name="$parentPop_Window" layer="default" sticky="true">
+					<Size><AbsPoint x="300" y="165" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="100" y="150"/></Anchor></Anchors>					
+					<Windows>		
+
+				<!--Window name="$parentBackground" inherits="EA_Window_DefaultBackgroundFrame" sticky="false" >
+					<Anchors>
+					<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+					<AbsPoint x="0" y="28" />
+					</Anchor>
+					<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent">
+					<AbsPoint x="0" y="0" />
+					</Anchor>
+					</Anchors>
+				</Window-->
+								<Label name="$parentHead" font="font_default_text_huge" autoresize="true" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="282" y="42" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="5" /></Anchor></Anchors>
+								<Color r="255" g="201" b="96" />
+								</Label>		
+	
+								<Label name="$parentSC" font="font_default_text_small" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="202" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="20" /></Anchor></Anchors>
+								<Color r="184" g="169" b="140" />  
+								</Label>		
+								
+								<Label name="$parentTank_Label" font="font_heading_medium_noshadow" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="50" y="40" /></Size>
+								<Anchors><Anchor point="left" relativePoint="right" relativeTo="$parentMDps_Label"><AbsPoint x="-5" y="0" /></Anchor></Anchors>
+								<Color r="255" g="255" b="255" />
+								</Label>	
+
+								<Button name="$parent_Tank" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="-105" y="80" /></Anchor></Anchors>
+								</Button>
+
+
+
+
+
+								
+								<Label name="$parent_Destro_TankText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parent_Tank"><AbsPoint x="0" y="-10" /></Anchor></Anchors>
+								<Color r="200" g="55" b="55" />
+								</Label>	
+
+								<Label name="$parent_Order_TankText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent_Tank"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								<Color r="55" g="104" b="203" />
+								</Label>	
+
+
+		<!--Button name="$parent_Order_Tank" handleinput="true" inherits="RoR_RankWindow_Order_Template">	
+		<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentTank_Label"><AbsPoint x="-18" y="0" /></Anchor></Anchors>
+		</Button-->
+
+		<!--Button name="$parent_Destro_Tank" handleinput="true" inherits="RoR_RankWindow_Destro_Template">	
+		<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parent_Order_Tank"><AbsPoint x="-4" y="0" /></Anchor></Anchors>
+		</Button-->
+
+	
+
+							<Label name="$parentMDps_Label" font="font_heading_medium_noshadow" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="50" y="32" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="-25" y="90" /></Anchor></Anchors>
+								<Color r="255" g="255" b="255" />
+								</Label>		
+
+								<Label name="$parent_Destro_MDpsText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parent_MDps"><AbsPoint x="0" y="-10" /></Anchor></Anchors>
+								<Color r="200" g="55" b="55" />
+								</Label>	
+
+								<Button name="$parent_MDps" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="-35" y="80" /></Anchor></Anchors>
+								</Button>
+
+								<Label name="$parent_Order_MDpsText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent_MDps"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								<Color r="55" g="104" b="203" />
+								</Label>	
+
+
+
+
+							<Label name="$parentRDps_Label" font="font_heading_medium_noshadow" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="50" y="32" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="25" y="90" /></Anchor></Anchors>
+								<Color r="255" g="255" b="255" />
+								</Label>		
+
+								<Label name="$parent_Destro_RDpsText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parent_RDps"><AbsPoint x="0" y="-10" /></Anchor></Anchors>
+								<Color r="200" g="55" b="55" />
+								</Label>	
+
+								<Button name="$parent_RDps" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="35" y="80" /></Anchor></Anchors>
+								</Button>
+
+								<Label name="$parent_Order_RDpsText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent_RDps"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								<Color r="55" g="104" b="203" />
+								</Label>	
+
+
+		<!--Button name="$parent_Order_Dps" handleinput="true" inherits="RoR_RankWindow_Order_Template">	
+		<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentDps_Label"><AbsPoint x="-18" y="0" /></Anchor></Anchors>
+		</Button-->
+
+		<!--Button name="$parent_Destro_Dps" handleinput="true" inherits="RoR_RankWindow_Destro_Template">	
+		<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parent_Order_Dps"><AbsPoint x="-4" y="0" /></Anchor></Anchors>
+		</Button-->
+
+
+							<Label name="$parentHealers_Label" font="font_heading_medium_noshadow" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="50" y="32" /></Size>
+								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentRDps_Label"><AbsPoint x="5" y="0" /></Anchor></Anchors>
+								<Color r="255" g="255" b="255" />
+								</Label>		
+							
+								<Label name="$parent_Destro_HealersText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="top" relativePoint="bottom" relativeTo="$parent_Healers"><AbsPoint x="0" y="-10" /></Anchor></Anchors>
+								<Color r="200" g="55" b="55" />
+								</Label>	
+
+								<Button name="$parent_Healers" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="105" y="80" /></Anchor></Anchors>
+								</Button>
+
+								<Label name="$parent_Order_HealersText" font="font_default_text_large" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent_Healers"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								<Color r="55" g="104" b="203" />
+								</Label>	
+
+		<!--Button name="$parent_Order_Healers" handleinput="true" inherits="RoR_RankWindow_Order_Template">	
+		<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentHealers_Label"><AbsPoint x="-18" y="0" /></Anchor></Anchors>
+		</Button-->
+
+		<!--Button name="$parent_Destro_Healers" handleinput="true" inherits="RoR_RankWindow_Destro_Template">	
+		<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parent_Order_Healers"><AbsPoint x="-4" y="0" /></Anchor></Anchors>
+		</Button-->
+
+
+		</Windows>		 				 
+	</Window>	
+
+
+				<Window name="$parentPop_Window_Group" layer="default" sticky="true">
+					<Size><AbsPoint x="300" y="165" /></Size>
+					<Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-100" y="150"/></Anchor></Anchors>					
+					<!--Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentGroup6"><AbsPoint x="0" y="40" /></Anchor></Anchors-->					
+					
+					<Windows>		
+
+								<Label name="$parentHead" font="font_default_text_huge" autoresize="true" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="282" y="42" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="5" /></Anchor></Anchors>
+								<Color r="255" g="201" b="96" />
+								</Label>		
+	
+								<DynamicImage name="$parentOrder" texture="EA_VictoryPoints01_32b" slice="Order-Symbol-horiz-WIN" textureScale="1.0" layer="overlay" sticky="true" handleinput="false" popable="false">
+								<Size><AbsPoint x="55" y="55" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="-55" y="85" /></Anchor></Anchors>          
+								</DynamicImage>	
+	
+								<Label name="$parent_OrderText" font="font_default_text_huge" autoresize="true" textAutoFitMinScale="0.3" textalign="right" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="32" /></Size>
+								<Anchors><Anchor point="left" relativePoint="right" relativeTo="$parentOrder"><AbsPoint x="-10" y="3" /></Anchor></Anchors>
+								<Color r="55" g="104" b="203" />
+								</Label>	
+	
+	
+	
+					<DynamicImage name="$parentIcon"  texture="Rewardsbar" handleinput="false" slice="Rewardsbar_Swords" texturescale="1">
+					<Size><AbsPoint x="49" y="45" /></Size>
+					<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="90" /></Anchor></Anchors>
+				</DynamicImage>
+	
+	
+								<DynamicImage name="$parentDestro" texture="EA_VictoryPoints01_32b" slice="Dest-Symbol-horiz-WIN" textureScale="1.0" layer="overlay" sticky="true" handleinput="false" popable="false">
+								<Size><AbsPoint x="55" y="55" /></Size>
+								<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="55" y="85" /></Anchor></Anchors>          
+								</DynamicImage>	
+	
+								<Label name="$parent_DestroText" font="font_default_text_huge" autoresize="true" textAutoFitMinScale="0.3" textalign="left" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="52" y="32" /></Size>
+								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentDestro"><AbsPoint x="10" y="3" /></Anchor></Anchors>
+								<Color r="200" g="55" b="55" />
+								</Label>	
+								
+	
+								<Label name="$parentSC" font="font_default_text_small" autoresize="true" textAutoFitMinScale="0.3" textalign="center" wordwrap="false" layer="overlay" popable="false" handleinput="false">	
+								<Size><AbsPoint x="202" y="22" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="-10" /></Anchor></Anchors>
+									<Color r="184" g="169" b="140" />  
+								</Label>		
+								
+		</Windows>		 				 
+	</Window>	
+
+<!--
+
+               <Button name="$parentJoinSoloButton" handleinput="true" layer="overlay" id="1" inherits="EA_Button_DefaultResizeable" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentClass4">
+                            <AbsPoint x="0" y="60"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.JoinButton" />
+                    </EventHandlers>
+                    <AnimatedImages>
+                        <Normal          def="EA_AnimatedImage_DefaultChoiceOverlay"  />
+                        <NormalHighlit   def="EA_AnimatedImage_DefaultChoiceOverlay" />
+                    </AnimatedImages>
+                </Button>
+
+                <Button name="$parentJoinGroupButton" inherits="EA_Button_DefaultResizeable"  handleinput="true" layer="overlay" id="2" >
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentGroup4">
+                            <AbsPoint x="0" y="60"/>
+                        </Anchor>
+                    </Anchors>
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.JoinButton" />
+                    </EventHandlers>
+                    <AnimatedImages>
+                        <Normal          def="EA_AnimatedImage_DefaultChoiceOverlay"  />
+                        <NormalHighlit   def="EA_AnimatedImage_DefaultChoiceOverlay" />
+                    </AnimatedImages>
+                </Button>
+				-->
+				
+<!--
+		<VerticalResizeImage name="LB_VertLine" inherits="TomeVertResizeLine"  handleinput="false">
+			<Size>
+				<AbsPoint x="5" y="460" />
+			</Size>
+			<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="220" /></Anchor></Anchors>
+		</VerticalResizeImage>
+-->
+
+								<DynamicImage name="$parentLB_VertLine" texture="Middle-divider" textureScale="1.0" layer="overlay" handleinput="false" >
+								<Size><AbsPoint x="262" y="298" /></Size>
+								<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parent"></Anchor></Anchors>          
+								</DynamicImage>	
+
+
+				        <!--Button name="$parentInfo" inherits="EA_Button_Default" font="font_default_sub_heading" id="5" textalign="left" layer="overlay">
+						<EventHandlers>				
+						   <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+						</EventHandlers>
+						<Size><AbsPoint x="140" y="35" /></Size>						
+						<Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-206" y="30"/></Anchor></Anchors>
+        
+			<TextColors>
+                <Normal r="186" g="135" b="77" a="255" />
+                <NormalHighlit r="225" g="162" b="92" a="255" />
+                <Pressed r="115" g="88" b="60" a="255" />
+                <PressedHighlit  r="225" g="162" b="92" a="255"  />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+			  <Windows>
+
+					<DynamicImage name="$parentIcon"  texture="top-btns" handleinput="false" slice="Exclemation" layer="overlay" texturescale="1">
+					<Size><AbsPoint x="12" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="-18" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+				  </Windows>
+				</Button-->
+
+				</Windows>			
+				</Window>
+		
+		<Window name="$parentRewards" >
+			<Size>
+				<AbsPoint x="1028" y="643"/>
+			</Size>
+			<Anchors>
+				<Anchor point="top" relativePoint="top" relativeTo="$parent">
+					<AbsPoint x="0" y="0"/>
+				</Anchor>
+			</Anchors>
+			
+				<Windows>
+
+									<Label name="$parentTitle" font="font_default_text_huge" textalign="center" warnOnTextCropped="false">
+								    <Size><AbsPoint x="700" y="40" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="145"/></Anchor></Anchors>
+									</Label>
+
+									<Label name="$parentSubTitle" font="font_default_text_large" textalign="center"  warnOnTextCropped="false">
+								    <Size><AbsPoint x="700" y="30" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentTitle"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+									</Label>
+
+
+									<Label name="$parentLabel" font="font_default_text" textalign="center" wordwrap="true" autoresize="true" autoresizewidth="true" warnOnTextCropped="false">
+								    <Size><AbsPoint x="700" y="400" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parent"><AbsPoint x="0" y="-50"/></Anchor></Anchors>
+									</Label>
+	
+					<Window name="$parentTasks" layer="default" sticky="true">
+					<Size><AbsPoint x="500" y="200" /></Size>
+					<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parent"><AbsPoint x="50" y="100"/></Anchor></Anchors>					
+					<!--Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentGroup6"><AbsPoint x="0" y="40" /></Anchor></Anchors-->					
+		
+					<Windows>		
+
+
+
+				<Window name="$parentClass1" inherits="RoR_RankedLeaderboardClass_Template" layer="default">
+				<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+				</Window>
+
+					<DynamicImage name="$parentIcon1"  texture="LB_marks" handleinput="false" slice="CircleNotDone"  texturescale="1">
+					<Size><AbsPoint x="32" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parentClass1"> <AbsPoint x="-5" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+
+
+				<Window name="$parentClass2" inherits="RoR_RankedLeaderboardClass_Template" layer="default">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass1"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+				
+					<DynamicImage name="$parentIcon2"  texture="LB_marks" handleinput="false" slice="CircleNotDone"texturescale="1">
+					<Size><AbsPoint x="32" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parentClass2"> <AbsPoint x="-5" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+				
+				<Window name="$parentClass3" inherits="RoR_RankedLeaderboardClass_Template" layer="default">
+				<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentClass2"><AbsPoint x="0" y="0"/></Anchor></Anchors>
+				</Window>
+						<DynamicImage name="$parentIcon3"  texture="LB_marks" handleinput="false" slice="CircleNotDone"  texturescale="1">
+					<Size><AbsPoint x="32" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parentClass3"> <AbsPoint x="-5" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+		</Windows>		 				 
+	</Window>	
+
+
+            			        <Window name="$parentProgress"  >
+            			        	<Size>
+										<AbsPoint x="425" y="184"/>
+									</Size>
+									 <Anchors>
+									    <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent">
+										    <AbsPoint x="0" y="-25"/>
+									    </Anchor>
+								    </Anchors>
+								    <Windows>
+
+								        <Window name="$parentBar"  >
+            			                    <Anchors>
+									            <Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+										            <AbsPoint x="0" y="0"/>
+									            </Anchor>
+								            </Anchors>
+											
+				<Size>
+				<AbsPoint x="374" y="40"/>
+			</Size>			
+			<EventHandlers>
+				<EventHandler event="OnMouseOver" function="TomeWindow.OnMouseOverInfluenceDisplay" />
+			</EventHandlers>
+			<Windows>
+				<StatusBar name="$parentStatus" background="" foreground="TomeGreenStatusFg" handleinput="false" >
+			        <Size>
+				        <AbsPoint x="374" y="15"/>
+			        </Size>
+			        <Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentFrame">
+							<AbsPoint x="7" y="0"/>
+						</Anchor>
+					</Anchors>
+			    </StatusBar>
+				<DynamicImage name="$parentFrame" texture="EA_Tome" handleinput="false" slice="InfluenceBarFrame" texturescale="1.18" >
+					<Size>
+						<AbsPoint x="374" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="top" relativePoint="top" relativeTo="">
+							<AbsPoint x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</DynamicImage>
+				<Button name="$parentCheck1" inherits="LBInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentCheck2">
+							<AbsPoint x="-125" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+				<Button name="$parentCheck2" inherits="LBInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="center" relativePoint="center" relativeTo="$parentCheck3">
+							<AbsPoint x="-125" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+				<Button name="$parentCheck3" inherits="LBInfluenceDiamond" handleinput="false" >
+					<Anchors>
+						<Anchor point="right" relativePoint="center" relativeTo="$parentFrame">
+							<AbsPoint x="0" y="12"/>
+						</Anchor>
+					</Anchors>
+				</Button>
+			</Windows>
+            			                </Window>
+
+                                        <Label name="$parentLevel1Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+                                        <Label name="$parentLevel2Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="100" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+                                        <Label name="$parentLevel3Label" inherits="TOKText" textalign="center" autoresize="false">
+                                            <Size>
+                                                <AbsPoint x="125" y="22"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentBarCheck3">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                        </Label>
+
+
+
+            			                <!-- Rewards -->
+
+								        <!-- Level 1 Rewards -->
+								        <Button name="$parentLevel1Reward1" inherits="LBIconButtonWithStacks" id="1">
+									        <Anchors>
+										        <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel1Label">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward2" inherits="LBIconButtonWithStacks" id="2">
+									        <Anchors>
+										        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward3" inherits="LBIconButtonWithStacks" id="3">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel1Reward1">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward1" />
+                                			</EventHandlers>
+								        </Button>
+                                        <Button name="$parentLevel1Reward4" inherits="LBIconButtonWithStacks" id="4">
+									        <Anchors>
+										        <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel1Reward2">
+											        <AbsPoint x="0" y="0"/>
+										        </Anchor>
+									        </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward1" />
+                                			</EventHandlers>
+								        </Button>
+
+								        <!-- Level 2 Rewards -->
+                                        <Button name="$parentLevel2Reward1" inherits="LBIconButtonWithStacks" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel2Label">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward2" inherits="LBIconButtonWithStacks" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward3" inherits="LBIconButtonWithStacks" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel2Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward2" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel2Reward4" inherits="LBIconButtonWithStacks" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel2Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward2" />
+                                			</EventHandlers>
+                                        </Button>
+
+								        <!-- Level 3 Rewards -->
+                                        <Button name="$parentLevel3Reward1" inherits="LBIconButtonWithStacks" id="1">
+                                            <Anchors>
+                                                <Anchor point="bottom" relativePoint="top" relativeTo="$parentLevel3Label">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward2" inherits="LBIconButtonWithStacks" id="2">
+                                            <Anchors>
+                                                <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward3" inherits="LBIconButtonWithStacks" id="3">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel3Reward1">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward3" />
+                                			</EventHandlers>
+                                        </Button>
+                                        <Button name="$parentLevel3Reward4" inherits="LBIconButtonWithStacks" id="4">
+                                            <Anchors>
+                                                <Anchor point="topright" relativePoint="topleft" relativeTo="$parentLevel3Reward2">
+                                                    <AbsPoint x="0" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                			<EventHandlers>
+                                				<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.OnMouseOverReward3" />
+                                			</EventHandlers>
+                                        </Button>
+
+								    </Windows>
+            			        </Window>				
+				
+				
+				        <Button name="$parentInfo" inherits="EA_Button_Default" font="font_default_sub_heading" id="5" textalign="right" layer="overlay">
+						<EventHandlers>				
+						   <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+						</EventHandlers>
+						<Size><AbsPoint x="140" y="35" /></Size>
+						<Anchors><Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="12" y="2"/></Anchor></Anchors>
+						<!--Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-230" y="45"/></Anchor></Anchors-->
+        
+			<TextColors>
+                <Normal r="186" g="135" b="77" a="255" />
+                <NormalHighlit r="225" g="162" b="92" a="255" />
+                <Pressed r="115" g="88" b="60" a="255" />
+                <PressedHighlit  r="225" g="162" b="92" a="255"  />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+			  <Windows>
+
+					<DynamicImage name="$parentIcon"  texture="top-btns" handleinput="false" slice="Exclemation" layer="overlay" texturescale="1">
+					<Size><AbsPoint x="12" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="5" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+				  </Windows>
+				</Button>
+				
+				
+				</Windows>			
+				</Window>
+
+
+
+
+		<Window name="$parentHowTo" >
+			<Size>
+				<AbsPoint x="1028" y="643"/>
+			</Size>
+			<Anchors>
+				<Anchor point="topleft" relativePoint="topleft" relativeTo="$parent">
+					<AbsPoint x="0" y="15"/>
+				</Anchor>
+			</Anchors>
+			
+				<Windows>
+
+									<Label name="$parentLabel" font="font_default_text_huge" textalign="left" wordwrap="false" autoresize="false" autoresizewidth="true" warnOnTextCropped="false">
+								    <Size><AbsPoint x="430" y="70" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="100" y="130"/></Anchor></Anchors>
+									</Label>
+				
+									<Label name="$parentInfoText" font="font_default_text" textalign="left" wordwrap="true" autoresize="true" autoresizewidth="true" warnOnTextCropped="false">
+								    <Size><AbsPoint x="600" y="400" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parentCareer_Window"><AbsPoint x="60" y="40"/></Anchor></Anchors>
+									</Label>
+				
+				
+								<DynamicImage name="$parentLB_HorizLine" texture="Ruleset-divider" textureScale="1.0" layer="background" handleinput="false" >
+								<Size><AbsPoint x="557" y="123" /></Size>
+								<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentLabel"><AbsPoint x="0" y="-30"/></Anchor></Anchors>          
+								</DynamicImage>	
+								
+								
+								<DynamicImage name="$parentLB_VertLine" texture="Middle-divider" textureScale="1.0" layer="background" handleinput="false" >
+								<Size><AbsPoint x="262" y="298" /></Size>
+								<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentCareer_Window"><AbsPoint x="-95" y="-10" /></Anchor></Anchors>          
+								</DynamicImage>	
+
+
+			
+				
+					<Window name="$parentCareer_Window" layer="default" sticky="true">
+					<Size><AbsPoint x="250" y="300" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="55" y="170"/></Anchor></Anchors>					
+					<Windows>		
+
+		 	<Button name="$parentTopic1" id="1" inherits="TopicButton">
+			<Anchors> <Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>		
+		 	<Button name="$parentTopic2" id="2" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic1"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>	
+		 	<Button name="$parentTopic3" id="3" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic2"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>	
+		 	<Button name="$parentTopic4" id="4" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic3"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>
+		 	<Button name="$parentTopic5" id="5" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic4"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>			
+			<Button name="$parentTopic6" id="6" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic5"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>
+			<Button name="$parentTopic7" id="7" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic6"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>
+			<Button name="$parentTopic8" id="8" inherits="TopicButton">
+			<Anchors> <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTopic7"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+			</Button>
+			
+			
+							<!--
+								<Button name="$parent_Tank" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								</Button>
+
+								<Button name="$parent_MDps" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent_Tank"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								</Button>
+
+
+								<Button name="$parent_RDps" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parent_MDps"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								</Button>
+
+
+								<Button name="$parent_Healers" handleinput="true" inherits="LB_DiamondTemplate" layer="overlay">	
+								<Anchors><Anchor point="bottomleft" relativePoint="topleft"  relativeTo="$parent_RDps"><AbsPoint x="0" y="10" /></Anchor></Anchors>
+								</Button>
+								-->
+
+		</Windows>		 				 
+	</Window>	
+				
+				
+				
+				</Windows>			
+				</Window>				
+				
+				<!-- TABS -->
+
+			<Button name="$parentTab2" font="font_default_sub_heading_no_outline" id="2" textalign="center" layer="overlay" inherits="EA_Button_Default" backgroundtexture="Stats_Flag" highlighttexture="Stats_Flag"  textureScale="1">
+          
+		  <Size>
+            <AbsPoint x="126" y="113" />
+          </Size>
+			<TextColors>
+                <Normal r="243" g="167" b="24" a="0.8" />
+                <NormalHighlit r="243" g="167" b="24" a="0.8"  />
+                <Pressed r="243" g="167" b="24" a="0.8"  />
+                <PressedHighlit  r="243" g="167" b="24" a="0.8"   />
+                <Disabled r="92" g="92" b="92" a="0.8" />
+            </TextColors>
+			
+		  		<EventHandlers>				
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnTabLBU" />			
+                <EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />            
+						</EventHandlers>
+				<Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-60" y="-3"/></Anchor></Anchors>
+				
+							  <Windows>
+
+										<Label name="$parentLabel" font="font_default_sub_heading_no_outline" textalign="center" handleinput="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="50" /></Size>
+									<Color r="243" g="167" b="24" />  								
+									<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parent"><AbsPoint x="0" y="5"/></Anchor></Anchors>
+									</Label>
+				  </Windows>
+        </Button>		
+
+
+
+			<Button name="$parentTab1" font="font_default_text" id="1" textalign="center" layer="overlay" inherits="EA_Button_Default" backgroundtexture="top-btns" highlighttexture="top-btns"  textureScale="1">
+          <Size>
+            <AbsPoint x="147" y="40" />
+          </Size>
+			<TexSlices>
+            <Normal             id="LB_Normal" />
+            <NormalHighlit      id="LB_Highlit" />
+            <Pressed            id="LB_Pressed_Highlit" />
+            <PressedHighlit     id="LB_Pressed_Highlit" />
+            <Disabled           id="LB_Pressed" />
+			<DisabledPressed    id="LB_Pressed_Highlit" />
+			</TexSlices>
+		  		<EventHandlers>				
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnTabLBU" />
+						</EventHandlers>
+				<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="75" y="35"/></Anchor></Anchors>
+        </Button>
+        
+				
+				<Button name="$parentTab3" font="font_default_text" id="3" textalign="center" layer="overlay" inherits="EA_Button_Default" backgroundtexture="top-btns" highlighttexture="top-btns"  textureScale="1">
+          <Size>
+            <AbsPoint x="133" y="40" />
+          </Size>
+			<TexSlices>
+            <Normal             id="Rewards_Normal" />
+            <NormalHighlit      id="Rewards_Highlit" />
+            <Pressed            id="Rewards_Pressed_Highlit" />
+            <PressedHighlit     id="Rewards_Pressed_Highlit" />
+            <Disabled           id="Rewards_Pressed" />
+			<DisabledPressed    id="Rewards_Pressed_Highlit" />
+			</TexSlices>
+		  		<EventHandlers>				
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnTabLBU" />
+						</EventHandlers>
+				<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parentTab1"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+        </Button>			
+
+
+
+
+        <!--Button name="$parentTab4" inherits="EA_Button_Default" font="font_default_sub_heading" id="4" textalign="left" layer="overlay">
+						<EventHandlers>				
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnTabLBU" />			
+						</EventHandlers>
+						<Size><AbsPoint x="140" y="35" /></Size>
+						<Anchors><Anchor point="topright" relativePoint="topright" relativeTo="$parent"><AbsPoint x="-205" y="45"/></Anchor></Anchors>
+                        <Sounds>
+							<Sound event="OnLButtonDown" script="Sound.Play( 999)" />            
+						</Sounds>
+			<TextColors>
+                <Normal r="186" g="135" b="77" a="255" />
+                <NormalHighlit r="225" g="162" b="92" a="255" />
+                <Pressed r="115" g="88" b="60" a="255" />
+                <PressedHighlit  r="225" g="162" b="92" a="255"  />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+			  <Windows>
+					<DynamicImage name="$parentIcon"  texture="top-btns" handleinput="false" slice="Exclemation" layer="overlay" texturescale="1">
+					<Size><AbsPoint x="12" y="32" /></Size>
+					<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="-15" y="-5" /></Anchor></Anchors>
+					</DynamicImage>
+				  </Windows>
+        </Button-->
+		
+			<Button name="$parentTab4" font="font_default_text" id="4" textalign="center" layer="overlay" inherits="EA_Button_Default" backgroundtexture="top-btns" highlighttexture="top-btns"  textureScale="1">
+          <Size>
+            <AbsPoint x="133" y="40" />
+          </Size>
+			<TexSlices>
+            <Normal             id="Ruleset_Normal" />
+            <NormalHighlit      id="Ruleset_Highlit" />
+            <Pressed            id="Ruleset_Pressed_Highlit" />
+            <PressedHighlit     id="Ruleset_Pressed_Highlit" />
+            <Disabled           id="Ruleset_Pressed" />
+			<DisabledPressed    id="Ruleset_Pressed_Highlit" />
+			</TexSlices>
+		  		<EventHandlers>				
+						<EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.OnTabLBU" />
+						</EventHandlers>
+		<Anchors><Anchor point="topright" relativePoint="topleft" relativeTo="$parentJoinButton"><AbsPoint x="52" y="0"/></Anchor></Anchors>
+       
+		</Button>		
+		
+
+		<Button name="$parentJoinButton" handleinput="true" inherits="EA_Button_Default" id="1" backgroundtexture="queue-wait_texture" highlighttexture="queue-wait_texture"  textureScale="1" layer="overlay" drawchildrenfirst="true">	
+			<Size><AbsPoint x="192" y="58" /></Size>					   
+								<TexSlices>
+								<Normal          id="Join_Normal"   />
+								<NormalHighlit   id="Join_Highlit"   />
+								<Pressed         id="Join_Pressed"  />
+								<PressedHighlit  id="Join_Pressed"  />
+							</TexSlices>
+						<AnimatedImages>
+                        <Disabled          def="queue-wait_template"  />
+                        <DisabledPressed   def="queue-wait_template" />
+                    </AnimatedImages>
+			 <Anchors>
+                <Anchor point="top" relativePoint="top" relativeTo="$parent">
+                    <AbsPoint x="0" y="36" />
+                </Anchor>
+            </Anchors>
+			          <EventHandlers>
+						  <EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.JoinButton" />
+					</EventHandlers>
+			</Button>
+
+				   <DynamicImage name="$parentNotEligible" handleinput="true" texture="queue-wait_texture" slice="Not_Eligible" layer="overlay" textureScale="1">
+                    <Size>
+                        <AbsPoint x="192" y="58"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentJoinButton">
+                            <AbsPoint x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+					<EventHandlers>
+						<EventHandler event="OnMouseOver" function="RoR_RankedLeaderboard.ToolTips" />
+                    </EventHandlers>
+                </DynamicImage>			
+
+
+		 	<Button name="$parentLeaveButton" font="font_default_text" autoresize="false" id="3"textalign="center" layer="popup" handleinput="true" warnOnTextCropped="false">
+					<Size><AbsPoint x="130" y="30" /></Size>  
+					<Anchors> <Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinButton"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+                    <EventHandlers><EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.JoinButton" /></EventHandlers>
+					<TextColors>
+						<Normal r="184" g="169" b="140" a="255"/>
+						<NormalHighlit r="255" g="85" b="0" a="255"/>
+						<Pressed r="95" g="57" b="36" a="255"/>
+						<PressedHighlit r="95" g="57" b="36" a="255"/>
+						<Disabled r="95" g="57" b="36" a="255" />
+						<DisabledPressed r="95" g="57" b="36" a="255" />
+					</TextColors>  
+			</Button>		
+
+
+				        <Button name="$parentGroupQueue" inherits="EA_Button_DefaultCheckBox" font="font_default_text" id="1" textalign="left" layer="overlay">
+						<Anchors><Anchor point="bottom" relativePoint="top" relativeTo="$parentJoinButton"><AbsPoint x="-50" y="5"/></Anchor></Anchors>
+<EventHandlers><EventHandler event="OnLButtonUp" function="RoR_RankedLeaderboard.UpdateGroupButton" /></EventHandlers>      	  
+			<TextColors>
+                <Normal r="184" g="169" b="140" a="255" />
+                <NormalHighlit r="225" g="162" b="92" a="255" />
+                <Pressed r="115" g="88" b="60" a="255" />
+                <PressedHighlit  r="225" g="162" b="92" a="255"  />
+                <Disabled r="92" g="92" b="92" a="255" />
+            </TextColors>
+
+							  <Windows>
+
+										<Label name="$parentLabel" font="font_default_text_small" textalign="left" handleinput="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="150" y="20" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parent"><AbsPoint x="5" y="0"/></Anchor></Anchors>
+									</Label>
+				  </Windows>
+
+				</Button>
+
+
+
+
+
+
+
+								<DynamicImage name="$parentBGImage"  alpha="0.8" texture="Stats_bg2" layer="background" handleinput="false"  texturescale="1">
+								<Size><AbsPoint x="1014" y="613" /></Size>
+								<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="7" y="35" /></Anchor></Anchors>
+								<!--TintColor r="200" g="200" b="200" a="0.2"/-->
+								</DynamicImage>	
+
+
+			</Windows>
+		</Window>
+		
+		
+							<Window name="RewardInfoLegends" layer="overlay">
+					<Size><AbsPoint x="250" y="135" /></Size>
+					<Anchors><Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent"><AbsPoint x="10" y="-20"/></Anchor></Anchors>					
+					
+		
+					<Windows>		
+
+									<Label name="$parentTitle" font="font_default_text_large" textalign="center" warnOnTextCropped="false">
+								    <Size><AbsPoint x="200" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="top" relativePoint="top" relativeTo="$parent"><AbsPoint x="0" y="5"/></Anchor></Anchors>
+									</Label>
+
+
+				<Window name="$parentRow1" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="35"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+					</Windows>
+				</Window>
+
+				<Window name="$parentRow2" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRow1"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+
+					</Windows>
+				</Window>
+				<Window name="$parentRow3" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRow2"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+
+					</Windows>
+				</Window>				
+
+				<Window name="$parentRow4" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRow3"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+
+					</Windows>
+				</Window>
+
+				<Window name="$parentRow5" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRow4"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+
+					</Windows>
+				</Window>
+				
+				<Window name="$parentRow6" layer="default">
+				  			        <Size><AbsPoint x="255" y="25"/></Size>
+									<Anchors><Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRow5"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Windows>
+									<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0"/></Anchor></Anchors>						
+									<Label name="$parentLabel" font="font_default_text_small" textalign="left" wordwrap="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="160" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  								
+									<Anchors><Anchor point="left" relativePoint="left" relativeTo="$parent"><AbsPoint x="10" y="0"/></Anchor></Anchors>
+									</Label>
+		
+		
+							<DynamicImage name="$parentIcon"  texture="EA_Tome" handleinput="false" slice="CircleNotDone" layer="overlay" texturescale="0.33">
+						<Size><AbsPoint x="21" y="23" /></Size>
+						<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentLabel"> <AbsPoint x="10" y="-5" /></Anchor></Anchors>
+						</DynamicImage>
+		
+									<Label name="$parentValue" font="font_default_text_small"  textalign="left" wordwrap="false" autoresize="false" autoresizewidth="false" warnOnTextCropped="false">
+								    <Size><AbsPoint x="50" y="25" /></Size>
+									<Color r="184" g="169" b="140" />  	 								
+									<Anchors><Anchor point="right" relativePoint="left" relativeTo="$parentIcon"><AbsPoint x="2" y="5"/></Anchor></Anchors>
+									<EventHandlers><EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp" /><EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp" /></EventHandlers>
+									</Label>
+
+					</Windows>
+				</Window>				
+
+
+						<Window name="$parentBackground" inherits="EA_Window_DefaultTooltipBackground" handleinput="false" layer="background"> 
+						<Anchors><Anchor point="topleft" relativePoint="topleft" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor><Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parent"><AbsPoint x="0" y="0" /></Anchor></Anchors>
+						</Window>
+		</Windows>		 				 
+	</Window>	
+		
+		
+		
+		
+	</Windows>
+</Interface>

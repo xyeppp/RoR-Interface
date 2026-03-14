@@ -461,12 +461,19 @@
                         </Anchor>
                     </Anchors>
                 </Label>
+                <Label name="$parentRatingTimer" inherits="EA_Label_PairingMapToolTipTextSmall" layer="overlay">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="$parentTimeLeft" >
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>
+                </Label>
                 <Window name="$parentSectionBreak1" inherits="ParchmentDividerLineNoCenter" layer="overlay" >
                     <Anchors>
-                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentTimeLeft">
+                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentRatingTimer">
                             <AbsPoint x="0" y="0" />
                         </Anchor>
-                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentTimeLeft">
+                        <Anchor point="bottomright" relativePoint="topright" relativeTo="$parentRatingTimer">
                             <AbsPoint x="0" y="0" />
                         </Anchor>
                     </Anchors>

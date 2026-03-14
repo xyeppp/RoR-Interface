@@ -95,3 +95,17 @@ interface/default\EA_VideoPlayer\EA_VideoPlayer.mod
 interface/default\EA_WorldMapWindow\EA_WorldMapWindow.mod
 interface/default\EA_XpBarWindow\EA_XpBarWindow.mod
 interface/default\EA_ZoneControlWindow\EA_ZoneControlWindow.mod
+interface/default\json\json.mod
+interface/default\RoR_PacketHandling\RoR_PacketHandling.mod
+interface/default\RoR_ScenarioSurrenderWindow\RoR_ScenarioSurrenderWindow.mod
+interface/default\RoR_MatchMakingRaiting\RoR_MatchMakingRaiting.mod
+interface/default\RoR_CitySiege\RoR_CitySiege.mod
+interface/default\RoR_GroupScoreboard\RoR_GroupScoreboard.mod
+interface/default\RoR_ScenarioExtendedStats\RoR_ScenarioExtendedStats.mod
+interface/default\RoR_MultiSpec\RoR_MultiSpec.mod
+interface/default\RoR_RankedLeaderboard\RoR_RankedLeaderboard.mod
+interface/default\RoR_MapExtension\RoR_MapExtension.mod
+interface/default\RoR_RRQ\RoR_RRQ.mod
+interface/default\RoR_SoR\RoR_SoR.mod
+interface/default\RoR_GuildLog\GuildLog.mod
+interface/default\ror_votewindow\ror_votewindow.mod

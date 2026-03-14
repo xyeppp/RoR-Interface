@@ -17,6 +17,7 @@ ScenarioSummaryWindow.FILTER_REALM_DESTR_ONLY	= 2
 ScenarioSummaryWindow.FILTER_REALM_SHOW_ALL		= 3
 ScenarioSummaryWindow.NUM_FILTER_TYPES			= 3
 
+ScenarioSummaryWindow.ArchetypeIcons = {165,106,157,160}
                 
             
 function NewSortData( param_label, param_varName, param_title, param_desc )
@@ -29,14 +30,15 @@ ScenarioSummaryWindow.sortData = {}
 ScenarioSummaryWindow.sortData[1] = NewSortData( "Name",        "name",         GetString(StringTables.Default.LABEL_PLAYER),        GetString(StringTables.Default.TEXT_SORTBY_PLAYER) )
 ScenarioSummaryWindow.sortData[2] = NewSortData( "GroupKills",  "groupkills",   GetString(StringTables.Default.LABEL_TOTAL_KILLS),         GetString(StringTables.Default.TEXT_SORTBY_KILLS) )
 ScenarioSummaryWindow.sortData[3] = NewSortData( "Deaths",      "deaths",       GetString(StringTables.Default.LABEL_DEATHS),        GetString(StringTables.Default.TEXT_SORTBY_DEATHS) )
-ScenarioSummaryWindow.sortData[4] = NewSortData( "Renown",      "renown",       GetString(StringTables.Default.LABEL_RENOWN_EARNED), GetString(StringTables.Default.TEXT_SORTBY_RENOWN_EARNED) )
-ScenarioSummaryWindow.sortData[5] = NewSortData( "DeathBlows",  "deathblows",   GetString(StringTables.Default.LABEL_DEATH_BLOWS),   GetString(StringTables.Default.TEXT_SORTBY_DEATH_BLOWS) )
-ScenarioSummaryWindow.sortData[6] = NewSortData( "DamageDealt", "damagedealt", GetString(StringTables.Default.LABEL_DAMAGE_DEALT),  GetString(StringTables.Default.TEXT_SORTBY_DAMAGE_DEALT) )
+ScenarioSummaryWindow.sortData[4] = NewSortData( "DeathBlows",  "deathblows",   GetString(StringTables.Default.LABEL_DEATH_BLOWS),   GetString(StringTables.Default.TEXT_SORTBY_DEATH_BLOWS) )
+ScenarioSummaryWindow.sortData[5] = NewSortData( "DamageDealt", "damagedealt",  GetString(StringTables.Default.LABEL_DAMAGE_DEALT),  GetString(StringTables.Default.TEXT_SORTBY_DAMAGE_DEALT) )
+ScenarioSummaryWindow.sortData[6] = NewSortData( "KillDamageDealt",         "killdamagedealt",          GetString(StringTables.Default.LABEL_KILL_DAMAGE_DEALT),           GetString(StringTables.Default.TEXT_SORTBY_KILL_DAMAGE_DEALT)) 
 ScenarioSummaryWindow.sortData[7] = NewSortData( "HealingDealt", "healingdealt", GetString(StringTables.Default.LABEL_HEALING_DEALT), GetString(StringTables.Default.TEXT_SORTBY_HEALING_DEALT) )
-ScenarioSummaryWindow.sortData[8] = NewSortData( "SoloKills",   "solokills",    GetString(StringTables.Default.LABEL_SOLO_KILLS),    GetString(StringTables.Default.TEXT_SORTBY_SOLO_KILLS) )
+ScenarioSummaryWindow.sortData[8] = NewSortData( "Protection",   "protection",    GetString(StringTables.Default.LABEL_PROTECTION),    GetString(StringTables.Default.TEXT_SORTBY_PROTECTION) )
 ScenarioSummaryWindow.sortData[9] = NewSortData( "Career",      "career",       GetString(StringTables.Default.LABEL_CAREER),        GetString(StringTables.Default.TEXT_SORTBY_CAREER) )
 ScenarioSummaryWindow.sortData[10] = NewSortData( "Rank",        "rank",         GetString(StringTables.Default.LABEL_RANK),          GetString(StringTables.Default.TEXT_SORTBY_RANK) )
-ScenarioSummaryWindow.sortData[11] = NewSortData( "Experience",  "experience",   GetString(StringTables.Default.LABEL_XP_EARNED),          GetString(StringTables.Default.TEXT_SORTBY_XP)) 
+ScenarioSummaryWindow.sortData[11] = NewSortData( "ObjectiveScore",  "objectivescore",   GetString(StringTables.Default.LABEL_OBJECTIVESCORE),          GetString(StringTables.Default.TEXT_SORTBY_OBJECTIVESCORE)) 
+
 ScenarioSummaryWindow.NUM_SORT_TYPES = 11
 
                                 
@@ -156,22 +158,25 @@ local function UpdatePlayerData()
             ScenarioSummaryWindow.playersData[key] = {}
             ScenarioSummaryWindow.playersData[key].name = value.name
             ScenarioSummaryWindow.playersData[key].career = value.career
+            ScenarioSummaryWindow.playersData[key].archetype = tonumber(string.sub(value.experiencebonus, -1))
             ScenarioSummaryWindow.playersData[key].rank = value.rank
             ScenarioSummaryWindow.playersData[key].realm = value.realm
-            ScenarioSummaryWindow.playersData[key].solokills = value.solokills
+            ScenarioSummaryWindow.playersData[key].protection = value.solokills
             ScenarioSummaryWindow.playersData[key].groupkills= value.groupkills
             ScenarioSummaryWindow.playersData[key].renown = value.renown
             ScenarioSummaryWindow.playersData[key].deaths = value.deaths
             ScenarioSummaryWindow.playersData[key].damagedealt = value.damagedealt
             ScenarioSummaryWindow.playersData[key].deathblows = value.deathblows
             ScenarioSummaryWindow.playersData[key].healingdealt = value.healingdealt
-            ScenarioSummaryWindow.playersData[key].renownbonus = value.renownbonus
+            ScenarioSummaryWindow.playersData[key].renownbonus = value.renown
             ScenarioSummaryWindow.playersData[key].experience = value.experience
-            ScenarioSummaryWindow.playersData[key].experiencebonus = value.experiencebonus
+            ScenarioSummaryWindow.playersData[key].experiencebonus = value.experience
             ScenarioSummaryWindow.playersData[key].isplayer = value.isplayer
             ScenarioSummaryWindow.playersData[key].careerIcon = Icons.GetCareerIconIDFromCareerNamesID(value.careerId)
-        end        
-    end    
+			ScenarioSummaryWindow.playersData[key].objectivescore = tonumber(string.sub(value.experiencebonus, 1, -2))
+			ScenarioSummaryWindow.playersData[key].killdamagedealt = value.renownbonus
+        end
+    end
 
     UpdatePlayerList()
     
@@ -194,8 +199,8 @@ function ScenarioSummaryWindow.Initialize()
     WindowRegisterEventHandler( "ScenarioSummaryWindow", SystemData.Events.TOGGLE_SCENARIO_SUMMARY_WINDOW,  "ScenarioSummaryWindow.ToggleShowing" )
     
         
-    LabelSetText("ScenarioSummaryWindowBonusXPLabel", GetString(StringTables.Default.LABEL_XP_BONUS ) )
-    LabelSetText("ScenarioSummaryWindowBonusRenownLabel", GetString(StringTables.Default.LABEL_RENOWN_BONUS ) )
+    LabelSetText("ScenarioSummaryWindowBonusXPLabel", GetString(StringTables.Default.LABEL_XP_EARNED ) )
+    LabelSetText("ScenarioSummaryWindowBonusRenownLabel", GetString(StringTables.Default.LABEL_RENOWN_EARNED ) )
     
     LabelSetText("ScenarioSummaryWindowOrderLabel", wstring.upper(GetString(StringTables.Default.LABEL_ORDER )) )
     LabelSetText("ScenarioSummaryWindowDestructionLabel", wstring.upper(GetString(StringTables.Default.LABEL_DESTRUCTION )) )
@@ -228,11 +233,11 @@ function ScenarioSummaryWindow.Initialize()
     ButtonSetText("ScenarioSummaryWindowPlayerListHeaderDeathsText", GetString(StringTables.Default.LABEL_DEATHS) )
     ButtonSetText("ScenarioSummaryWindowPlayerListHeaderDeathBlowsText", GetString(StringTables.Default.LABEL_DEATH_BLOWS_SHORT) )
     ButtonSetText("ScenarioSummaryWindowPlayerListHeaderDamageDealtText", GetString(StringTables.Default.LABEL_DAMAGE) )
+    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderKillDamageDealtText", GetString(StringTables.Default.LABEL_KILL_DAMAGE) )
     ButtonSetText("ScenarioSummaryWindowPlayerListHeaderHealingDealtText", GetString(StringTables.Default.LABEL_HEALING_DEALT_SHORT) )
-    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderSoloKillsText", GetString(StringTables.Default.LABEL_SOLO_KILLS) )
-    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderExperienceText", GetString(StringTables.Default.LABEL_XP) )
-    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderRenownText", GetString(StringTables.Default.LABEL_RENOWN) )
-    
+    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderProtectionText", GetString(StringTables.Default.LABEL_PROTECTION_SHORT) )
+    ButtonSetText("ScenarioSummaryWindowPlayerListHeaderObjectiveScoreText", GetString(StringTables.Default.LABEL_OBJECTIVESCORE) )  
+	
     -- Leave now button
     ButtonSetText("ScenarioSummaryWindowLeaveNowButton", GetString(StringTables.Default.LABEL_LEAVE_NOW))
         
@@ -389,13 +394,23 @@ end
 -- Callback from the <List> that updates a single row.
 function ScenarioSummaryWindow.UpdatePlayerIcon(rowFrame, memberData)
 
-	if memberData.careerIcon ~= nil and memberData.careerIcon ~=0 then
-		local texture, x, y = GetIconData(memberData.careerIcon)		
-		DynamicImageSetTexture(rowFrame.."CareerIcon", texture, x, y)
-		WindowSetShowing(rowFrame.."CareerIcon", true)
-	else
-		WindowSetShowing(rowFrame.."CareerIcon", false)
-	end
+    if memberData.careerIcon ~= nil and memberData.careerIcon ~=0 then
+        local texture, x, y = GetIconData(memberData.careerIcon)
+        DynamicImageSetTexture(rowFrame.."CareerIcon", texture, x, y)
+        WindowSetShowing(rowFrame.."CareerIcon", true)
+
+        local ATIcon = memberData.archetype
+        if ATIcon > 0 then
+            WindowSetShowing(rowFrame.."Archetype",true)
+            local texture2, x2, y2 = GetIconData(ScenarioSummaryWindow.ArchetypeIcons[ATIcon])
+            DynamicImageSetTexture(rowFrame.."Archetype", texture2, x2, y2)    
+        else
+            WindowSetShowing(rowFrame.."Archetype",false)
+        end
+    else
+        WindowSetShowing(rowFrame.."Archetype",false)
+        WindowSetShowing(rowFrame.."CareerIcon", false)
+    end
 end
 
 function ScenarioSummaryWindow.UpdatePlayerRow()
@@ -478,7 +493,7 @@ function ScenarioSummaryWindow.OnSortPlayerList()
     -- Otherwise change the type and use the up order.	
     else
         ScenarioSummaryWindow.display.type = type
-        ScenarioSummaryWindow.display.order = ScenarioSummaryWindow.SORT_ORDER_UP
+        ScenarioSummaryWindow.display.order = ScenarioSummaryWindow.SORT_ORDER_DOWN
     end
 
     UpdatePlayerList()
@@ -726,5 +741,59 @@ function ScenarioSummaryWindow.SetDisplayMode( mode )
         WindowSetLayer("ScenarioSummaryWindow", Window.Layers.SECONDARY )
         WindowSetMovable("ScenarioSummaryWindow", true )
     end 
+
+end
+
+function ScenarioSummaryWindow.GetExtendedStat(playerName, statId)
+
+    if RoR_ScenarioExtendedStats == nil then return L"0" end
+    if RoR_ScenarioExtendedStats.playersData == nil then return L"0" end
+    if RoR_ScenarioExtendedStats.playersData[playerName] == nil then return L"0" end
+    if RoR_ScenarioExtendedStats.playersData[playerName][statId] == nil then return L"0" end
+
+    return RoR_ScenarioExtendedStats.playersData[playerName][statId]
+
+end
+
+-- Displays a tooltip with information on the type of sort being hovered over
+function ScenarioSummaryWindow.OnMouseOverPlayerRow()
+    if RoR_ScenarioExtendedStats == nil then return end
+    -- Parse values if we have no cached version
+    if RoR_ScenarioExtendedStats.playersData == nil then RoR_ScenarioExtendedStats.UpdatePlayerData() end
+
+    local windowName	= SystemData.ActiveWindow.name
+    local rowIndex	    = WindowGetId (windowName)
+    local playerIndex   = ListBoxGetDataIndex( "ScenarioSummaryWindowPlayerList", rowIndex )
+    local categoryName  = windowName:gsub("ScenarioSummaryWindowPlayerListRow%d+", "")
+    local playerName    = wstring.sub(ScenarioSummaryWindow.playersData[playerIndex].name, 1, -3)
+
+    Tooltips.CreateTextOnlyTooltip (windowName, nil)
+    if categoryName == "GroupKills" then
+        Tooltips.SetTooltipText (1, 1, GetString(StringTables.Default.LABEL_KILLS))
+        Tooltips.SetTooltipColorDef (1, 1, Tooltips.COLOR_HEADING)	
+        Tooltips.SetTooltipText (2, 1, GetString(StringTables.Default.LABEL_SOLO_KILLS)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 1))
+    elseif categoryName == "Deaths" then
+        Tooltips.SetTooltipText (1, 1, GetString(StringTables.Default.LABEL_DEATHS))
+        Tooltips.SetTooltipColorDef (1, 1, Tooltips.COLOR_HEADING)	
+        Tooltips.SetTooltipText (2, 1, GetString(StringTables.Default.LABEL_DAMAGE_RECEIVED)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 7))
+        Tooltips.SetTooltipText (3, 1, GetString(StringTables.Default.LABEL_HEALING_RECEIVED)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 9))
+        Tooltips.SetTooltipText (4, 1, GetString(StringTables.Default.LABEL_PROTECTION_RECEIVED)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 10))
+    elseif categoryName == "HealingDealt" then
+        Tooltips.SetTooltipText (1, 1, GetString(StringTables.Default.LABEL_HEALING_DEALT_SHORT))
+        Tooltips.SetTooltipColorDef (1, 1, Tooltips.COLOR_HEADING)	
+        Tooltips.SetTooltipText (2, 1, GetString(StringTables.Default.LABEL_HEALING_SELF)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 3))
+        Tooltips.SetTooltipText (3, 1, GetString(StringTables.Default.LABEL_HEALING_OTHERS)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 4))
+        Tooltips.SetTooltipText (4, 1, GetString(StringTables.Default.LABEL_RESURRECTIONS)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 8))
+    elseif categoryName == "Protection" then
+        Tooltips.SetTooltipText (1, 1, GetString(StringTables.Default.LABEL_PROTECTION_SHORT))
+        Tooltips.SetTooltipColorDef (1, 1, Tooltips.COLOR_HEADING)	
+        Tooltips.SetTooltipText (2, 1, GetString(StringTables.Default.LABEL_PROTECTION_SELF)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 5))
+        Tooltips.SetTooltipText (3, 1, GetString(StringTables.Default.LABEL_PROTECTION_OTHERS)..L": "..ScenarioSummaryWindow.GetExtendedStat(playerName, 6))
+    end
+    Tooltips.Finalize ()
+    
+    local anchor = { Point="top", RelativeTo=windowName, RelativePoint="bottom", XOffset=0, YOffset=-10 }
+    Tooltips.AnchorTooltip (anchor)
+    Tooltips.SetTooltipAlpha (1)
 
 end

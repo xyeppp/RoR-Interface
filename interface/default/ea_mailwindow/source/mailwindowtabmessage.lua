@@ -21,6 +21,7 @@ function MailWindowTabMessage.Initialize()
 	ButtonSetText("MailWindowTabMessageCommandTakeItemButton", GetMailString(StringTables.Mail.BUTTON_MAIL_TAKE_ITEM) )
 	ButtonSetText("MailWindowTabMessageDeleteMessageButton", GetMailString( StringTables.Mail.BUTTON_MAIL_DELETE) )
     ButtonSetText("MailWindowTabMessageReportSpamMessageButton", GetMailString(StringTables.Mail.BUTTON_MAIL_REPORT_SPAM))
+	ButtonSetDisabledFlag("MailWindowTabMessageReportSpamMessageButton",true)	
 
 	WindowRegisterEventHandler( "MailWindowTabMessage", SystemData.Events.MAILBOX_MESSAGE_OPENED, "MailWindowTabMessage.OnMessageOpened")
 	WindowRegisterEventHandler( "MailWindowTabMessage", SystemData.Events.INTERACT_MAILBOX_CLOSED,"MailWindowTabMessage.OnClose")
@@ -125,6 +126,7 @@ function MailWindowTabMessage.PopulateFields(mailboxType)
 				MailWindowTabMessage.UpdateCommandButtons(data)
 				LabelSetText("MailWindowTabMessageFromText", data.from)
 				LabelSetText("MailWindowTabMessageSubjectText", data.subject)
+	ButtonSetDisabledFlag("MailWindowTabMessageReportSpamMessageButton", not data.isReturnable)	
 			break
 		end
 	end
@@ -319,6 +321,7 @@ end
 -- The message is also deleted from the player's inbox and the offender is put
 -- on temporary ignore.
 function MailWindowTabMessage.OnLButtonReportSpamMessage()
+if ButtonGetDisabledFlag("MailWindowTabMessageReportSpamMessageButton") == true then return end
     local senderName = nil
     local subject = L""
     

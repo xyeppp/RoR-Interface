@@ -34,7 +34,7 @@ Screen Id,Description,Image Name,Realm,Race,Always Unlocked,Desc Group Id,Tip Gr
 1033, ,zone_002.dds,0,0,1,33,1
 1034, ,zone_005.dds,0,0,1,34,1
 1035, ,zone_035.dds,0,0,1,35,1
-1036, ,zone_009.dds,0,0,1,36,1
+1036, ,zone_036.dds,0,0,1,36,1
 1037, ,zone_037.dds,0,0,1,37,1
 1038, ,zone_008.dds,0,0,1,38,1
 1039, ,zone_005.dds,0,0,1,39,1
@@ -135,7 +135,7 @@ Screen Id,Description,Image Name,Realm,Race,Always Unlocked,Desc Group Id,Tip Gr
 1134, ,zone_109.dds,0,0,1,134,1
 1135, ,zone_135.dds,0,0,1,135,1
 1136, ,zone_105.dds,0,0,1,136,1
-1137, ,zone_105.dds,0,0,1,137,1
+1137, ,zone_137.dds,0,0,1,137,1
 1138, ,zone_138.dds,0,0,1,138,1
 1139, ,zone_102.dds,0,0,1,139,1
 1140, ,zone_140.dds,0,0,1,140,1
@@ -150,8 +150,8 @@ Screen Id,Description,Image Name,Realm,Race,Always Unlocked,Desc Group Id,Tip Gr
 1149, ,zone_149.dds,0,0,1,149,1
 1150, ,zone_150.dds,0,0,1,150,1
 1151, ,zone_151.dds,0,0,1,151,1
-1152, ,zone_152.dds,0,0,1,152,1
-1153, ,zone_153.dds,0,0,1,153,1
+1152, ,zone_169.dds,0,0,1,152,1
+1153, ,zone_169.dds,0,0,1,153,1
 1154, ,zone_154.dds,0,0,1,154,1
 1155, ,zone_155.dds,0,0,1,155,1
 1156, ,zone_155.dds,0,0,1,156,1
@@ -298,7 +298,11 @@ Screen Id,Description,Image Name,Realm,Race,Always Unlocked,Desc Group Id,Tip Gr
 1297, ,zone_297.dds,0,0,1,297,1
 1298, ,zone_298.dds,0,0,1,298,1
 1299, ,zone_299.dds,0,0,1,299,1
-1300, ,zone_410.dds,0,0,1,300,1
-1301, ,zone_411.dds,0,0,1,301,1
+1410, ,zone_410.dds,0,0,1,410,1
+1411, ,zone_411.dds,0,0,1,411,1
+1412, ,zone_412.dds,0,0,1,412,1
+1413, ,zone_413.dds,0,0,1,413,1
+1414, ,zone_414.dds,0,0,1,414,1
+1415, ,zone_415.dds,0,0,1,415,1
 10000,Order Scenario Exit,O_ScenarioLoading01.dds,0,0,1,0,0
 10001,Destruction Scenario Exit,D_ScenarioLoading01.dds,0,0,1,0,0

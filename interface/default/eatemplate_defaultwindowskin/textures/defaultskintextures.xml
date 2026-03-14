@@ -238,6 +238,7 @@
         <Texture name="EA_CornerIcon_Talisman"      file="Textures/EA_Icon_Corner_Talisman.dds" />
         <Texture name="EA_CornerIcon_Training"      file="Textures/EA_Icon_Corner_Training.dds" />
         <Texture name="EA_CornerIcon_Social"        file="Textures/EA_Icon_Corner_Social.dds" />
+        <Texture name="RoR_CornerIcon_Ranked"        file="Textures/RoR_Icon_Corner_Ranked.dds" />
 
         <Texture name="EA_DefaultSelectionOverlay" file="Textures/EA_ImportantButtonFX_d5.dds" />
 

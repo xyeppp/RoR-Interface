@@ -1,12 +1,12 @@
 <zone iname="Ostland">
-    <landmark iname="Ferlangen Cemetary" id="1" mapIcon="1060" x="11224" y="29632">
+    <landmark iname="Ferlangen Crypt" id="1" mapIcon="1060" x="11224" y="29632">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Felde Farms" id="2" mapIcon="1065" x="11600" y="3100">
+    <landmark iname="Felde Farms" id="2" mapIcon="1069" x="11600" y="3100">
         <importance>major</importance>
     </landmark>
     <landmark iname="Lonely Farm" id="3" mapIcon="1069" x="17601" y="44992">
-        <importance>major</importance>
+        <importance>minor</importance>
     </landmark>
     <warcamp iname="Raven's Edge" id="4" mapIcon="1052" x="28055" y="5304">
         <race>Chaos</race>
@@ -20,7 +20,7 @@
     <landmark iname="Gerstmann Crypt" id="5" mapIcon="1061" x="30713" y="18617">
         <importance>major</importance>
     </landmark>
-    <chapter iname="Bohsenfels" id="6" mapIcon="1030" x="30842" y="28294">
+    <chapter iname="Bohsenfels" id="6" mapIcon="1039" x="30842" y="28294">
         <race>Empire</race>
         <number>8</number>
         <ranks realm="order" min="16" max="17" />
@@ -62,7 +62,7 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <chapter iname="Kournos' Encampment" id="11" mapIcon="1065" x="53714" y="13171">
+    <chapter iname="Kournar's Encampment" id="11" mapIcon="1065" x="53714" y="13171">
         <race>Chaos</race>
         <number>7</number>
         <ranks realm="destruction" min="14" max="15" />
@@ -75,15 +75,15 @@
         </services>
     </chapter>
     <landmark iname="Tomb of the Last Rites" id="12" mapIcon="1062" x="53765" y="6709">
-        <importance>major</importance>
+        <importance>minor</importance>
     </landmark>
     <landmark iname="Tomb of the Last Rites" id="13" mapIcon="1062" x="57096" y="7508">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Grimwood Monastery" id="14" mapIcon="1034" x="59363" y="50704">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Grim Monastery" id="14" mapIcon="1034" x="59363" y="50704">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="Bell Tower" id="15" mapIcon="1032" x="60356" y="2365">
+    <landmark iname="Lissariel's Tower" id="15" mapIcon="1214" x="60356" y="3665">
         <importance>major</importance>
     </landmark>
     <landmark iname="The Catacombs" id="16" mapIcon="1060" x="61905" y="60571">
@@ -92,7 +92,7 @@
     <landmark iname="The Catacombs" id="17" mapIcon="1060" x="61951" y="44737">
         <importance>major</importance>
     </landmark>
-    <chapter iname="Ferlangen" id="18" mapIcon="1030" x="7387" y="28692">
+    <chapter iname="Ferlangen" id="18" mapIcon="1039" x="7387" y="28692">
         <race>Chaos</race>
         <number>5</number>
         <ranks realm="destruction" min="10" max="11" />
@@ -107,11 +107,11 @@
     <landmark iname="Black Mire Bell Tower" id="19" mapIcon="1032" x="9047" y="35441">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1026" x="35250" y="558" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="35250" y="558" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1026" x="44816" y="6542" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="44816" y="6542" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -119,16 +119,31 @@
         <importance>minor</importance>
         <specialType>15</specialType>
     </landmark>
+    <landmark iname="Hochnar" id="23" mapIcon="1039" x="42650" y="17068">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Wolfenburg" id="24" mapIcon="1030" x="45418" y="57972">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gashthorn Herdstone" id="25" mapIcon="1026" x="20706" y="37791">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Krul'Gor Herdstone" id="26" mapIcon="1026" x="18674" y="20054">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ostland Mustering Camp" id="27" mapIcon="1065" x="9205" y="8525">
+        <importance>major</importance>
+    </landmark>
     <publicQuest iname="Gore Wood" id="227" iconSet="1" x="10519" y="55894">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Silkens" id="208" iconSet="1" x="11573" y="1660">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="12" max="13" />
         <realm>Destruction</realm>
@@ -142,7 +157,7 @@
     </publicQuest>
     <publicQuest iname="Krul'Gor Herd" id="207" iconSet="1" x="17584" y="21257">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="10" max="11" />
         <realm>Destruction</realm>
@@ -163,21 +178,21 @@
     </publicQuest>
     <publicQuest iname="Siege of Bohsenfels" id="223" iconSet="1" x="28373" y="34238">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Bells of War" id="205" iconSet="1" x="3205" y="11159">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="10" max="11" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Wayshrine of Sigmar" id="206" iconSet="1" x="32626" y="13493">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="12" max="13" />
         <realm>Destruction</realm>
@@ -198,21 +213,21 @@
     </publicQuest>
     <publicQuest iname="Wolfenburg" id="230" iconSet="1" x="42050" y="58254">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Ragash's Last Stand" id="215" iconSet="1" x="48812" y="9860">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="14" max="15" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Nurenmir's Lancers" id="225" iconSet="1" x="7746" y="46825">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
@@ -233,9 +248,6 @@
         <objectiveId>602</objectiveId>
     </keep>
     <!-- END Troll Country points -->
-    <zoneTransition iname="To Troll Country" x="52422" y="0">
-    <zone>101</zone>
-    </zoneTransition>
     <zoneTransition iname="To Troll Country" x="63688" y="0">
     <zone>101</zone>
     </zoneTransition>
@@ -243,9 +255,6 @@
     <zone>101</zone>
     </zoneTransition>
     <zoneTransition iname="To Troll Country" x="14810" y="0">
-    <zone>101</zone>
-    </zoneTransition>
-    <zoneTransition iname="To Troll Country" x="8797" y="0">
     <zone>101</zone>
     </zoneTransition>
     <zoneTransition iname="To Nordland" x="0" y="27740">

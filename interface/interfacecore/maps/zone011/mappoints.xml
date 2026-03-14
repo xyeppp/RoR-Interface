@@ -25,14 +25,14 @@
     <landmark iname="Da Gobbo Camp" id="5" mapIcon="1027" x="17934" y="38075">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Mouth of Morngrim" id="6" mapIcon="1063" x="1997" y="20151">
+    <landmark iname="Mouth of Morngrim" id="6" mapIcon="1061" x="1997" y="20151">
         <importance>major</importance>
     </landmark>
     <landmark iname="Sharpthorn Mine" id="7" mapIcon="1061" x="20273" y="60663">
         <importance>major</importance>
     </landmark>
     <landmark iname="Old Stoneson Mine" id="8" mapIcon="1062" x="24845" y="34866">
-        <importance>major</importance>
+        <importance>minor</importance>
     </landmark>
     <landmark iname="Forgotten Hold" id="9" mapIcon="1060" x="26430" y="25693">
         <importance>major</importance>
@@ -68,10 +68,10 @@
     <landmark iname="Traitor's Watch" id="16" mapIcon="1065" x="37857" y="16381">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Spore Rock" id="17" mapIcon="1060" x="39942" y="48013">
-        <importance>major</importance>
+    <landmark iname="Spore Rock" id="17" mapIcon="1062" x="39942" y="48013">
+        <importance>minor</importance>
     </landmark>
-    <landmark iname="Da Start" id="18" mapIcon="1060" x="43307" y="50902">
+    <landmark iname="Da Start" id="18" mapIcon="1062" x="43307" y="50902">
         <importance>major</importance>
     </landmark>
     <chapter iname="Skalfson's Watch" id="19" mapIcon="1025" x="43401" y="19642">
@@ -90,13 +90,13 @@
     <landmark iname="Da Stumps" id="20" mapIcon="1064" x="44868" y="57153">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Mouth of Morngrim" id="21" mapIcon="1063" x="4609" y="22024">
+    <landmark iname="Mouth of Morngrim" id="21" mapIcon="1061" x="4609" y="22024">
         <importance>major</importance>
     </landmark>
     <landmark iname="Gran Thewn Watch" id="22" mapIcon="1002" x="48034" y="33764">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Glon Barak" id="23" mapIcon="1061" x="54087" y="20711">
+    <landmark iname="Gnol Barak" id="23" mapIcon="1061" x="54087" y="20711">
         <importance>major</importance>
     </landmark>
     <landmark iname="Forgehand's Workshop" id="24" mapIcon="1002" x="55552" y="11324">
@@ -128,7 +128,7 @@
             <service>Flight Master</service>
         </services>
     </warcamp>
-    <chapter iname="Scarzag's Stompin' Grounds" id="27" mapIcon="1020" x="42563" y="52756">
+    <chapter iname="Skarzag's Stompin' Grounds" id="27" mapIcon="1020" x="42563" y="52756">
         <race>Greenskin</race>
         <number>1</number>
         <ranks realm="destruction" min="1" max="2" />
@@ -141,17 +141,41 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1026" x="13157" y="18157" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1259" x="13157" y="18157" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1026" x="11354" y="8702" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1259" x="11354" y="8702" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
     <landmark iname="Live Event: Bitter Rivals" id="30" mapIcon="1180" x="2756" y="11487" liveevent="9">
         <importance>minor</importance>
         <specialType>7</specialType>
+    </landmark>
+    <landmark iname="Wolftoof Wud" id="31" mapIcon="1064" x="5719" y="52531">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Sharpthorn Wud" id="32" mapIcon="1064" x="25789" y="56627">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ironmane's Lock" id="33" mapIcon="1008" x="38672" y="61861">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloody Sun Camp" id="34" mapIcon="1027" x="46787" y="45743">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Snotwood" id="35" mapIcon="1064" x="59528" y="21069">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Gutrot Mine" id="36" mapIcon="1060" x="63055" y="21543">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Bloodhammer Falls" id="37" mapIcon="1038" x="29022" y="9549">
+        <importance>major</importance>
+    </landmark>
+    <landmark iname="Ironmane Mine" id="38" mapIcon="1060" x="22576" y="10458">
+        <importance>minor</importance>
     </landmark>
     <publicQuest iname="Siege of Komar" id="17" iconSet="1" x="1486" y="35185">
         <difficulty>easy</difficulty>
@@ -164,40 +188,40 @@
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
-        <ranks min="5" max="7" />
+        <ranks min="3" max="4" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Sharpthorn Rock Mine" id="5" iconSet="1" x="17947" y="61615">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="3" max="4" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Sharpthorn Wud" id="3" iconSet="1" x="24135" y="50168">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="3" max="4" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Urgog's Rage" id="4" iconSet="1" x="33779" y="56229">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
-        <ranks min="1" max="3" />
+        <ranks min="1" max="2" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Marghaz Bloodtoof Ritual" id="20" iconSet="1" x="39863" y="39419">
         <difficulty>hard</difficulty>
-        <players min="6" max="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="8" max="9" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Traitors Watch" id="21" iconSet="1" x="42340" y="10823">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="8" max="9" />
         <realm>Order</realm>
@@ -218,10 +242,24 @@
     </publicQuest>
     <publicQuest iname="Kron Komar Gap" id="9" iconSet="1" x="7880" y="30789">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="5" max="7" />
         <realm>Both</realm>
+	</publicQuest>	
+   	<publicQuest iname="Bloodhorn Barrens" id="496" iconSet="1" x="19528" y="32502">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Order</realm>
+    </publicQuest>
+	<publicQuest iname="Scartusk Camp" id="495" iconSet="1" x="11489" y="58128">
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="5" max="7" />
+        <realm>Destruction</realm>
     </publicQuest>
     <battlefieldObjective iname="The Lookout: Artisan's Gift" id="2" iconSet="1" x="16435" y="13515">
     </battlefieldObjective>

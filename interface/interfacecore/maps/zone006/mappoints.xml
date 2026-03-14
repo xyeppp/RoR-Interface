@@ -27,7 +27,7 @@
     <landmark iname="Ancestor's Watch" id="6" mapIcon="1005" x="24900" y="38644">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Burguz's Boyz" id="7" mapIcon="1027" x="34039" y="30384">
+    <landmark iname="Burguz's Boyz" id="7" mapIcon="1027" x="33839" y="29884">
         <importance>major</importance>
     </landmark>
     <landmark iname="Redhammer Tunnel" id="8" mapIcon="1060" x="40951" y="34981">
@@ -50,14 +50,14 @@
     <landmark iname="Redhammer Tunnel" id="10" mapIcon="1060" x="45632" y="33353">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Njorinsson's Tomb" id="11" mapIcon="1060" x="46412" y="51700">
+    <landmark iname="Njorinsson's Tomb" id="11" mapIcon="1061" x="46412" y="51700">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Norri's Tunnel" id="12" mapIcon="1062" x="51705" y="20966">
-        <importance>major</importance>
+    <landmark iname="Norri's Tunnel" id="12" mapIcon="1060" x="51705" y="20966">
+        <importance>minor</importance>
     </landmark>
-    <landmark iname="Norri's Tunnel" id="13" mapIcon="1062" x="54155" y="13091">
-        <importance>major</importance>
+    <landmark iname="Norri's Tunnel" id="13" mapIcon="1061" x="54155" y="13091">
+        <importance>minor</importance>
     </landmark>
     <landmark iname="Durak's Mine" id="14" mapIcon="1060" x="54691" y="32095">
         <importance>major</importance>
@@ -88,10 +88,10 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="The Wolf Den" id="17" mapIcon="1060" x="59279" y="54016">
-        <importance>major</importance>
+    <landmark iname="The Wolf Den" id="17" mapIcon="1062" x="59279" y="54016">
+        <importance>minor</importance>
     </landmark>
-    <landmark iname="Crawla Cave" id="18" mapIcon="1060" x="59507" y="37398">
+    <landmark iname="Crawla Cave" id="18" mapIcon="1062" x="59507" y="37398">
         <importance>minor</importance>
     </landmark>
     <landmark iname="Goldfist's Tomb" id="19" mapIcon="1060" x="60821" y="46635">
@@ -100,20 +100,27 @@
     <landmark iname="Snorrison's Tomb" id="20" mapIcon="1060" x="61341" y="42826">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Crawla Cave" id="21" mapIcon="1060" x="64543" y="32427">
+    <landmark iname="Crawla Cave" id="21" mapIcon="1062" x="64543" y="32427">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1026" x="62399" y="7141" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="22" mapIcon="1259" x="62399" y="7141" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1026" x="52286" y="8388" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="23" mapIcon="1259" x="52286" y="8388" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Cave" id="24" mapIcon="1063" x="41862" y="27774">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Dragonback Pass" id="25" mapIcon="2004" x="53700" y="19100">
+        <importance>major</importance>
+        <specialType>1</specialType>
     </landmark>
     <publicQuest iname="Battle of Bitterstone" id="283" iconSet="1" x="35523" y="31188">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="2" max="3" />
         <realm>Order</realm>
@@ -122,41 +129,41 @@
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
-        <ranks min="2" max="3" />
+        <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Durak's Gate" id="16" iconSet="1" x="43230" y="17724">
-        <difficulty>easy</difficulty>
-        <players min="2" max="3" />
-        <rewards>basic</rewards>
-        <ranks min="2" max="3" />
+        <difficulty>normal</difficulty>
+        <players min="3" max="6" />
+        <rewards>normal</rewards>
+        <ranks min="3" max="4" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Engine Number Nine" id="15" iconSet="1" x="51687" y="26076">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="3" max="4" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Goldfist Hole Recovery" id="13" iconSet="1" x="52169" y="40576">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Broketoof Camp" id="12" iconSet="1" x="53993" y="49769">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Murgluk's Gits" id="14" iconSet="1" x="60660" y="29427">
-        <difficulty>normal</difficulty>
-        <players min="6" max="9" />
-        <rewards>normal</rewards>
+        <difficulty>easy</difficulty>
+        <players min="2" max="3" />
+        <rewards>basic</rewards>
         <ranks min="3" max="4" />
         <realm>Order</realm>
     </publicQuest>
@@ -170,7 +177,7 @@
     <battlefieldObjective iname="Ironmane Outpost: Healing Boon" id="5098" iconSet="1" x="20828" y="5870" zone="11">
     </battlefieldObjective>
     <!-- END Mount Bloodhorn points -->
-    <zoneTransition iname="To Mount Bloodhorn" x="65535" y="32000">
+    <zoneTransition iname="To Mount Bloodhorn" x="65535" y="30000">
         <zone>011</zone>
 	</zoneTransition>
 	<zoneTransition iname="To Barak Varr" x="0" y="32000">

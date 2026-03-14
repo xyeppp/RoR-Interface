@@ -1,0 +1,194 @@
+<Interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Interface.xsd">
+   <Scripts>
+      <Script file="ror_rrq.lua" />
+   </Scripts>
+   
+   
+   <Windows>
+    <!-- Main Window Stuff here -->
+	<!--EA_Window_RRQTestTracker -->
+		     <Window name="EA_Window_ROR_RRQTracker" inherits="EA_Window_RRQ_RORContainer" layer="default" movable="true" savesettings="true">         
+            <Anchors>
+                <Anchor point="bottomright" relativePoint="bottomright" >
+                    <AbsPoint x="0" y="-140" />
+                </Anchor>
+            </Anchors> 
+            <EventHandlers>
+                <EventHandler event="OnInitialize" function="RoR_Window_RRQTracker.Initialize" />
+            </EventHandlers>			
+            <Windows>     
+            
+
+                <Window name="$parentBarContainer" inherits="EA_Window_RRQ_RORContainer" >
+                
+                </Window> 
+        
+           </Windows>
+        </Window>	
+	
+	            <Window name="EA_Window_WorldMapRRQ_RORContainer" inherits="EA_Window_RRQ_RORContainer" layer="popup">
+                    <Anchors>
+                        <Anchor point="top" relativePoint="bottom" relativeTo="EA_Window_WorldMapTombKingsBarContainer">
+                            <AbsPoint x="0" y="-35" />
+                        </Anchor>
+                    </Anchors>
+                </Window> 
+
+	
+	            <Window name="EA_Window_WorldMapRRQ_RORTrackerToggle" inherits="WorldMapCheckButton" layer="popup">
+                    <Size>
+                        <AbsPoint x="150" y="25" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="top" relativeTo="EA_Window_WorldMapRRQ_RORContainer">
+                            <AbsPoint x="0" y="10" />
+                        </Anchor>
+                    </Anchors>                                   
+                    <EventHandlers>
+                        <EventHandler event="OnLButtonUp" function="RoR_Window_RRQTracker.ToggleHUDTracker" />
+                    </EventHandlers>
+                </Window>
+
+	    <Window name="EA_Window_RRQ_RORContainer" >
+            <Size>
+                <AbsPoint x="49" y="140" />
+            </Size>
+        </Window>
+	
+	
+	
+	      <Window name="ROR_RRQBarsTemplate" savesettings="false" >
+            <Size>
+                <AbsPoint x="62" y="108" />
+            </Size>
+            <EventHandlers>
+                <EventHandler event="OnMouseOver" function="ror_rrq.DefaultOnMouseoverCallback" />
+            </EventHandlers>
+            <Windows>
+                <DynamicImage name="$parentBackground" texture="ror_rrq_textures" slice="ror_rrq-Background" handleinput="false" layer="background">
+                               <Size>
+                <AbsPoint x="49" y="140" />
+            </Size>
+					<Anchors>
+                        <Anchor point="topleft" relativePoint="topleft">
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+
+                    </Anchors>
+                </DynamicImage>
+				
+                <DynamicImage name="$parentCircle" texture="ror_rrq_textures" slice="ror_rrq-Circle" layer="secondary" handleinput="false">
+                                <Size>
+							<AbsPoint x="35" y="36" />
+					</Size>
+					<Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentLockIcon" inherits="TKLock" layer="overlay" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parent" >
+                            <AbsPoint x="0" y="5" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				
+							<Label name="$parentTimerLabel" font="font_clear_medium" autoresize="true" textalign="center" layer="overlay" popable="false" handleinput="false">	
+							<Size><AbsPoint x="35" y="35" /></Size>
+							<Anchors><Anchor point="center" relativePoint="center" relativeTo="$parentLockIcon"><AbsPoint x="0" y="7" /></Anchor></Anchors>
+							<Color r="255" g="255" b="255" a="1" />
+							</Label>
+				
+			
+                <DynamicImage name="$parentRealmSymbol0" texture="ror_rrq_textures" slice="ror_rrq-Symbol" layer="secondary" handleinput="false">
+                                <Size>
+                <AbsPoint x="31" y="31" />
+            </Size>
+					<Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="2" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>				
+                <DynamicImage name="$parentRealmSymbol1" inherits="TKRealmSymbol1" layer="secondary" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                <DynamicImage name="$parentRealmSymbol2" inherits="TKRealmSymbol2" layer="secondary" handleinput="false">
+                    <Anchors>
+                        <Anchor point="bottom" relativePoint="bottom" relativeTo="$parentBackground" >
+                            <AbsPoint x="0" y="6" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+                
+                <!-- Progress Bars -->
+				
+                <VerticalResizeImage name="$parentBar1" texture="ror_rrq_textures" handleinput="false" layer="default" >
+                    <Anchors>
+                        <!-- <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="20" y="43" />
+                        </Anchor> -->
+                        <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parentBackground">
+                            <AbsPoint x="12" y="-25" />
+                        </Anchor>
+                    </Anchors>
+				           <Size>
+                <AbsPoint x="10" y="0" />
+            </Size>
+            <Sizes top="0" middle="8" bottom="0" />
+            <TexSlices>
+                <Middle id="ror_rrq-Bar_Blue" />
+            </TexSlices>	
+                </VerticalResizeImage>
+				
+			 <DynamicImage name="$parentBar1Glow"  texture="ror_rrq_textures" slice="ror_rrq-Bar_BlueGlow" layer="default" handleinput="false">
+              <Size>
+                <AbsPoint x="10" y="5" />
+            </Size>
+					<Anchors>					
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBar1" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				
+                <VerticalResizeImage name="$parentBar2"  texture="ror_rrq_textures" handleinput="false" layer="default" >
+                      <Anchors>
+                        <!-- <Anchor point="topleft" relativePoint="topleft" relativeTo="$parentBackground">
+                            <AbsPoint x="20" y="43" />
+                        </Anchor> -->
+                        <Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentBackground">
+                            <AbsPoint x="-12" y="-25" />
+                        </Anchor>
+                    </Anchors>
+				           <Size>
+                <AbsPoint x="10" y="0" />
+            </Size>
+            <Sizes top="0" middle="8" bottom="0" />
+            <TexSlices>
+                <Middle id="ror_rrq-Bar_Red" />
+            </TexSlices>	
+                </VerticalResizeImage>
+							 <DynamicImage name="$parentBar2Glow"  texture="ror_rrq_textures" slice="ror_rrq-Bar_RedGlow" layer="default" handleinput="false">
+              <Size>
+                <AbsPoint x="10" y="5" />
+            </Size>
+					<Anchors>					
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentBar2" >
+                            <AbsPoint x="0" y="0" />
+                        </Anchor>
+                    </Anchors>
+                </DynamicImage>
+				
+            </Windows>
+        </Window>  
+	
+   </Windows>
+   
+</Interface>

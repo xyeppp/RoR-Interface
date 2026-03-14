@@ -19,10 +19,14 @@ local function GetDefaultAbilityGlow (self, powerPool, powerPoolMax, powerThresh
     then
         return 1
     end
+
+    if not self.improvesEvery or self.improvesEvery <= 0 then
+        return math.min(1, powerCap or 0)
+    end
     
     local glowLevel = powerPool - powerThreshold
-    glowLevel = math.floor (glowLevel / self.improvesEvery) + 1
-    return math.min (glowLevel, powerCap)
+    glowLevel = math.floor(glowLevel / self.improvesEvery) + 1
+    return math.min(glowLevel, powerCap)
 end
 
 local function GetExactAbilityGlow (self, powerPool, powerPoolMax, powerThreshold, powerCap)
@@ -42,22 +46,30 @@ local function GetTippingPointAbilityGlow (self, powerPool, powerPoolMax, powerT
     then
         return 0
     end
-        
+
     -- This has exceeded the threshold by too much and should not cause the icon to glow...
     if (powerPool >= (powerThreshold + powerPoolMax))
     then 
         return 0
     end
-    
+
+    if (powerCap == 0)
+    then
+        return 0
+    end
+
     local glowLevel = 0
-    
+
     if (powerPool >= powerThreshold)
     then
-        glowLevel = (powerPool - powerThreshold) + 1
-        
-        glowLevel = math.min (glowLevel, powerCap)
+        if ((powerPool - powerThreshold) + 1 == powerCap)
+        then
+            glowLevel = 2
+        else
+            glowLevel = 1
+        end
     end
-    
+
     return glowLevel
 end
 
@@ -321,13 +333,28 @@ function CareerResourceData:Create (careerLine, tooltipPointsFunction)
     return self
 end
 
+-- function CareerResourceData:OverrideGetPointsString (newPointsStringFunction)
+    -- if (newPointsStringFunction and not self.m_OriginalPointsStringFunction) 
+    -- then
+        -- self.m_OriginalPointsStringFunction = self.GetString
+        -- self.GetPointsString                = newPointsStringFunction
+    -- elseif (not newPointsStringFunction and self.m_OriginalPointsStringFunction) 
+    -- then
+        -- self.GetPointsString                = self.m_OriginalPointsStringFunction
+        -- self.m_OriginalPointsStringFunction = nil
+    -- end
+-- end
+
 function CareerResourceData:OverrideGetPointsString (newPointsStringFunction)
     if (newPointsStringFunction and not self.m_OriginalPointsStringFunction) 
     then
-        self.m_OriginalPointsStringFunction = self.GetString
+        -- Store the original GetPointsString so we can restore it later
+        self.m_OriginalPointsStringFunction = self.GetPointsString
         self.GetPointsString                = newPointsStringFunction
+
     elseif (not newPointsStringFunction and self.m_OriginalPointsStringFunction) 
     then
+        -- Restore the original function
         self.GetPointsString                = self.m_OriginalPointsStringFunction
         self.m_OriginalPointsStringFunction = nil
     end

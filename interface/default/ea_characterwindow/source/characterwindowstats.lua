@@ -310,45 +310,57 @@ end
 function CharacterWindow.GetStrengthTooltipDesc()
     local AbilDam = g_currentStrength / 5
     local AutoDam = g_currentStrength / 10
-    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",AutoDam)}
+    local ParryStrikethrough = g_currentStrength / 100
+    local BlockStrikethrough = g_currentStrength / 200
+    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",AutoDam), wstring.format(L"%.01f",ParryStrikethrough), wstring.format(L"%.01f",BlockStrikethrough)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_STRENGTH_DESC, Params )
 end
 
 function CharacterWindow.GetBallisticSkillTooltipDesc()
     local AbilDam = g_currentBallisticskill / 5
     local AutoDam = g_currentBallisticskill / 10
-    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",AutoDam)}
+    local DodgeStrikethrough = g_currentBallisticskill / 100
+    local BlockStrikethrough = g_currentBallisticskill / 200
+    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",AutoDam), wstring.format(L"%.01f",DodgeStrikethrough), wstring.format(L"%.01f",BlockStrikethrough)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_BALLISTICSKILL_DESC, Params )
 end
 
 function CharacterWindow.GetIntelligenceTooltipDesc()
     local AbilDam = g_currentIntelligence / 5
-    local Params = {wstring.format(L"%.01f",AbilDam)}
+    local DisruptStrikethrough = g_currentIntelligence / 100
+    local BlockStrikethrough = g_currentIntelligence / 200
+    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",DisruptStrikethrough), wstring.format(L"%.01f",BlockStrikethrough)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_INTELLIGENCE_DESC, Params )
 end
 
 function CharacterWindow.GetToughnessTooltipDesc()
     local DamReducToughness = g_currentToughness / 5
     local DamReducFortitude = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_FORTITUDE, 0 ) / 5
-    return GetFormatStringFromTable( "Default", StringTables.Default.TEXT_TOUGHNESS_DESC, {wstring.format(L"%.01f",DamReducToughness),wstring.format(L"%.01f",DamReducFortitude)} )
+    local BlockChance = g_currentToughness / 200
+    return GetFormatStringFromTable( "Default", StringTables.Default.TEXT_TOUGHNESS_DESC, {wstring.format(L"%.01f",DamReducToughness),wstring.format(L"%.01f",DamReducFortitude), wstring.format(L"%.01f",BlockChance)} )
 end
 
 function CharacterWindow.GetWeaponSkillTooltipDesc()
-    local Params = {CharacterWindow.CalcArmorPenetration()}
+    local BlockStrikethrough = g_currentWeaponskill / 200
+    local Params = {CharacterWindow.CalcArmorPenetration(), wstring.format(L"%.01f",BlockStrikethrough)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_WEAPONSKILL_DESC, Params )
 end
 
 function CharacterWindow.GetInitiativeTooltipDesc()
-    local CritHit = (GameData.Player.battleLevelWithRenown * 7.5 + 50)/g_currentInitiative * .1
-    local CritHit = CritHit * 100
-    CritHit = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_CRITICAL_HIT_RATE_REDUCTION, CritHit )
-    local Params = {wstring.format(L"%.01f",CritHit)}
+    local CritHit = 15 + GameData.Player.battleLevelWithRenown / 4.0 - g_currentInitiative / 100 * 5
+    -- Adding 100 and then subtracting 100 to be able to show negative numbers
+    -- GetBonus always returns a positive number
+    CritHit = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_CRITICAL_HIT_RATE_REDUCTION, CritHit + 100) - 100
+    local ParryChance = g_currentInitiative / 100 * 3
+    local DodgeChance = g_currentInitiative / 100 * 3
+    local Params = {wstring.format(L"%.01f",CritHit), wstring.format(L"%.01f",ParryChance), wstring.format(L"%.01f",DodgeChance)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_INITIATIVE_DESC, Params )
 end
 
 function CharacterWindow.GetWillPowerTooltipDesc()
     local AbilDam = g_currentWillpower / 5
-    local Params = {wstring.format(L"%.01f",AbilDam)}
+    local DisruptChance = g_currentWillpower / 100 * 3
+    local Params = {wstring.format(L"%.01f",AbilDam), wstring.format(L"%.01f",DisruptChance)}
     return GetFormatStringFromTable("Default", StringTables.Default.TEXT_WILLPOWER_DESC, Params )
 end
 
@@ -1037,8 +1049,13 @@ end
 
 function CharacterWindow.UpdateBlockskillLabel(wndName)
     local leftText = GetString( StringTables.Default.LABEL_BONUS_BLOCK )..L":"
-    local baseVal = GameData.Player.Stats[GameData.Stats.BLOCKSKILL].baseValue / 100
-    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_BLOCK, baseVal ) 
+    local baseVal = 0
+    if(CharacterWindow.equipmentData[GameData.EquipSlots.LEFT_HAND] ~= nil)
+    then
+        baseVal = CharacterWindow.equipmentData[GameData.EquipSlots.LEFT_HAND].blockRating / 100 * 3
+    end
+    local toughnessValue = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_TOUGHNESS, GameData.Player.Stats[GameData.Stats.TOUGHNESS].baseValue )
+    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_BLOCK, baseVal ) + toughnessValue / 200
     if( currentVal > 100 )
     then
         currentVal = 100
@@ -1051,7 +1068,9 @@ end
 function CharacterWindow.UpdateParryskillLabel(wndName)
     local leftText = GetString( StringTables.Default.LABEL_BONUS_PARRY )..L":"
     local baseVal = GameData.Player.Stats[GameData.Stats.PARRYSKILL].baseValue / 100
-    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_PARRY, baseVal )
+    local initiativeValue = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_INITIATIVE, GameData.Player.Stats[GameData.Stats.INITIATIVE].baseValue ) 
+    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_PARRY, baseVal ) + initiativeValue / 100 * 3
+
     if( currentVal > 100 )
     then
         currentVal = 100
@@ -1064,7 +1083,8 @@ end
 function CharacterWindow.UpdateEvadeskillLabel(wndName)
     local leftText = GetString( StringTables.Default.LABEL_BONUS_EVADE )..L":"
     local baseVal = GameData.Player.Stats[GameData.Stats.EVADESKILL].baseValue / 100
-    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_EVADE, baseVal )
+    local initiativeValue = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_INITIATIVE, GameData.Player.Stats[GameData.Stats.INITIATIVE].baseValue ) 
+    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_EVADE, baseVal ) + initiativeValue / 100 * 3
     if( currentVal > 100 )
     then
         currentVal = 100
@@ -1077,7 +1097,8 @@ end
 function CharacterWindow.UpdateDisruptskillLabel(wndName)
     local leftText = GetString( StringTables.Default.LABEL_BONUS_DISRUPT )..L":"
     local baseVal = GameData.Player.Stats[GameData.Stats.DISRUPTSKILL].baseValue / 100
-    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_DISRUPT, baseVal )
+    local willpowerValue = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_WILLPOWER, GameData.Player.Stats[GameData.Stats.WILLPOWER].baseValue ) 
+    local currentVal = CharacterWindow.CalculateValueWithBonus( GameData.BonusTypes.EBONUS_DISRUPT, baseVal ) + willpowerValue / 100 * 3
     if( currentVal > 100 )
     then
         currentVal = 100

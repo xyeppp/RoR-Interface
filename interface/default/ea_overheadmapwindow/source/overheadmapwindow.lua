@@ -89,7 +89,7 @@ function EA_Window_OverheadMap.Initialize()
 
     WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.CITY_RATING_UPDATED,      "EA_Window_OverheadMap.UpdateCityRating")
     WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.TOGGLE_WORLD_MAP_WINDOW,  "EA_Window_OverheadMap.ToggleWorldMapWindow")
-    WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.LOADING_END,              "EA_Window_OverheadMap.UpdateMap" )
+    WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.LOADING_END,              "EA_Window_OverheadMap.OnLoadingEnd" )
     WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.USER_SETTINGS_CHANGED,    "EA_Window_OverheadMap.UpdateMinimapBorder" )
  
     WindowRegisterEventHandler( "EA_Window_OverheadMap", SystemData.Events.SCENARIO_BEGIN,                 "EA_Window_OverheadMap.UpdateScenarioButtons")
@@ -159,6 +159,11 @@ function EA_Window_OverheadMap.Initialize()
     
     WindowUtils.AddWindowStateButton( "EA_Window_OverheadCurrentEventsButton", "EA_Window_CurrentEvents" )
     
+end
+
+function EA_Window_OverheadMap.OnLoadingEnd()
+	EA_Window_OverheadMap.UpdateMap()
+	EA_Window_OverheadMap.UpdateScenarioButtons()
 end
 
 function EA_Window_OverheadMap.UpdateMap()
@@ -365,6 +370,7 @@ function EA_Window_OverheadMap.OnZoneChange()
     EA_Window_OverheadMap.UpdateMap()
     EA_Window_OverheadMap.OnAreaNameChange()   
     EA_Window_OverheadMap.UpdateCityRating()
+	EA_Window_OverheadMap.DeactivateRallyCall()
 end
 
 function EA_Window_OverheadMap.OnAreaNameChange()
@@ -750,13 +756,19 @@ function EA_Window_OverheadMap.OnMouseOverCityRating()
     end
         
     local cityRating = GetCityRatingForCityId( cityId )
-    
+    if cityRating==nil then 
+      cityRating = 5
+    end  
     -- Get the Strings for the Title
     local titleText = GetStringFromTable("RvRCityStrings", StringTables.RvRCity.LABEL_CITY_RANK )
     
     -- Determine Rating Text
     local ratingText = L""
+    
     local descStringId = StringTables.RvRCity[ "CITY_"..cityId.."_RATING_"..cityRating.."_DESC" ]
+
+
+    
     if( descStringId ~= nil )
     then
         ratingText = GetStringFromTable( "RvRCityStrings", descStringId )

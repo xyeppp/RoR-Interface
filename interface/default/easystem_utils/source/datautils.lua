@@ -1813,6 +1813,7 @@ local validSlots = {
                     [GameData.EquipSlots.RIGHT_HAND] = true,
                     [GameData.EquipSlots.LEFT_HAND] = true,
                     [GameData.EquipSlots.RANGED] = true,
+                    [GameData.EquipSlots.EITHER_HAND] = true,
                     [GameData.EquipSlots.BODY] = true,
                     [GameData.EquipSlots.GLOVES] = true,
                     [GameData.EquipSlots.BOOTS] = true,
@@ -1876,9 +1877,9 @@ function DataUtils.GetAbilityTypeText (abilityData)
 -- Defensive/Offensive: This is apparently the fallback string which is intended for tactics.
 -- It should almost never be used, but it's set on every ability...    
 
-    if      (abilityData.isHex)             then return AbilityTypeStringCache["isHex"]
+    if      (abilityData.isCripple)         then return AbilityTypeStringCache["isCripple"]
+    elseif  (abilityData.isHex)             then return AbilityTypeStringCache["isHex"]	
     elseif  (abilityData.isCurse)           then return AbilityTypeStringCache["isCurse"]
-    elseif  (abilityData.isCripple)         then return AbilityTypeStringCache["isCripple"]
     elseif  (abilityData.isAilment)         then return AbilityTypeStringCache["isAilment"]
     elseif  (abilityData.isBolster)         then return AbilityTypeStringCache["isBolster"]
     elseif  (abilityData.isAugmentation)    then return AbilityTypeStringCache["isAugmentation"]
@@ -2025,4 +2026,38 @@ function DataUtils.GetPQTimerRemaining( timerState, timerValue )
     else
         return nil
     end
+end
+
+function DataUtils.bxor(a,b)
+    local p,c=1,0
+    while a>0 and b>0 do
+        local ra,rb=a%2,b%2
+        if ra~=rb then c=c+p end
+        a,b,p=(a-ra)/2,(b-rb)/2,p*2
+    end
+    if a<b then a=b end
+    while a>0 do
+        local ra=a%2
+        if ra>0 then c=c+p end
+        a,p=(a-ra)/2,p*2
+    end
+    return c
+end
+
+function DataUtils.band(a,b)
+    local p,c=1,0
+    while a>0 and b>0 do
+        local ra,rb=a%2,b%2
+        if ra+rb>1 then c=c+p end
+        a,b,p=(a-ra)/2,(b-rb)/2,p*2
+    end
+    return c
+end
+
+function DataUtils.shl(x, by)
+  return x * 2 ^ by
+end
+
+function DataUtils.shr(x, by)
+  return math.floor(x / 2 ^ by)
 end

@@ -1,8 +1,8 @@
 <zone iname="Chrace">
-    <landmark iname="Dragonscale Caverns" id="1" mapIcon="1060" x="11920" y="61813">
+    <landmark iname="Dragonscale Caverns" id="1" mapIcon="1062" x="11920" y="61813">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Emlyria Caverns" id="2" mapIcon="1060" x="12791" y="23214">
+    <landmark iname="Emlyria Caverns" id="2" mapIcon="1062" x="12791" y="23214">
         <importance>minor</importance>
     </landmark>
     <chapter iname="Malagurn's Charge" id="3" mapIcon="1253" x="18742" y="25358">
@@ -18,19 +18,19 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Pridehome Den" id="4" mapIcon="1060" x="29634" y="59456">
-        <importance>major</importance>
+    <landmark iname="Pridehome Den" id="4" mapIcon="1062" x="29634" y="59456">
+        <importance>minor</importance>
     </landmark>
-    <landmark iname="Lionhome Caverns" id="5" mapIcon="1060" x="29728" y="24910">
+    <landmark iname="Whiteclaw Caverns" id="5" mapIcon="1062" x="29728" y="24910">
         <importance>minor</importance>
     </landmark>
     <landmark iname="Thanuil's Retreat" id="6" mapIcon="1209" x="35187" y="40034">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Flamescale Caverns" id="7" mapIcon="1060" x="39946" y="37705">
+    <landmark iname="Flamescale Caverns" id="7" mapIcon="1062" x="39946" y="37705">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Stone of Melanar" id="8" mapIcon="1064" x="42900" y="43454">
+    <landmark iname="Stone of Melanar" id="8" mapIcon="1212" x="42900" y="43454">
         <importance>major</importance>
     </landmark>
     <landmark iname="Lyriana's Repose" id="9" mapIcon="1209" x="48426" y="47197">
@@ -65,7 +65,7 @@
     <landmark iname="Yenlui" id="12" mapIcon="1208" x="53584" y="11203">
         <importance>major</importance>
     </landmark>
-    <landmark iname="The Everstar Stone" id="13" mapIcon="1064" x="61712" y="32511">
+    <landmark iname="The Everstar Stone" id="13" mapIcon="1212" x="61712" y="32511">
         <importance>major</importance>
     </landmark>
     <landmark iname="Lyriana's Mansion" id="14" mapIcon="1209" x="63041" y="43194">
@@ -74,27 +74,45 @@
     <landmark iname="Everstar Lake" id="15" mapIcon="1037" x="63281" y="36370">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Shadowsong Landing" id="16" mapIcon="1255" x="9123" y="2510">
+    <landmark iname="Shadowsong Landing" id="16" mapIcon="1257" x="9123" y="2510">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="17" mapIcon="1026" x="34065" y="9195" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="17" mapIcon="1259" x="34065" y="9195" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="18" mapIcon="1026" x="29803" y="4996" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="18" mapIcon="1259" x="29803" y="4996" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
+    </landmark>
+	<landmark iname="Stone of Gon'Seraph" id="19" mapIcon="1212" x="20197" y="5039">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="Lionmarch Camp" id="20" mapIcon="1206" x="7175" y="9907">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="Sea Guard Landing" id="21" mapIcon="1204" x="5704" y="15279">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="Tor Achare" id="22" mapIcon="1207" x="25378" y="20281">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="The Illboughs Stone" id="23" mapIcon="1212" x="8630" y="32924">
+        <importance>major</importance>
+    </landmark>
+	<landmark iname="Sweetstar Lake" id="24" mapIcon="1037" x="60191" y="59388">
+        <importance>major</importance>
     </landmark>
     <publicQuest iname="Stone of Valetear" id="364" iconSet="1" x="15824" y="54392">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Gon'Seraph" id="342" iconSet="1" x="14891" y="8495">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="5" max="7" />
         <realm>Destruction</realm>
@@ -106,16 +124,16 @@
         <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
-    <publicQuest iname="Tor Achare" id="359" iconSet="1" x="25067" y="20540">
+    <publicQuest iname="Tor Achare" id="359" iconSet="1" x="24159" y="21446">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="8" max="9" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Blackwood Hill Garrison" id="370" iconSet="1" x="38218" y="32793">
         <difficulty>normal</difficulty>
-        <players min="6" max="9" />
+        <players min="3" max="6" />
         <rewards>normal</rewards>
         <ranks min="8" max="9" />
         <realm>Order</realm>
@@ -129,7 +147,7 @@
     </publicQuest>
     <publicQuest iname="Shattered Beach" id="336" iconSet="1" x="56082" y="3578">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
         <ranks min="5" max="7" />
         <realm>Order</realm>
@@ -138,14 +156,14 @@
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
-        <ranks min="5" max="7" />
+        <ranks min="8" max="9" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Elisia" id="373" iconSet="1" x="62574" y="12111">
         <difficulty>hard</difficulty>
-        <players min="9" />
+        <players min="6" />
         <rewards>advanced</rewards>
-        <ranks min="8" max="8" />
+        <ranks min="8" max="9" />
         <realm>Order</realm>
     </publicQuest>
     <battlefieldObjective iname="The Tower of Nightflame: Merchant's Gift" id="5073" iconSet="1" x="45150" y="3516">

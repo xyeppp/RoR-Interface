@@ -110,9 +110,17 @@
                           </Anchors>
                         </Button>
 
+                        <Button name="$parentServer" inherits="EA_Templates_SettingsWindowTabButton" id="7">
+                          <Anchors>
+                            <Anchor point="right" relativePoint="left" relativeTo="$parentInterface">
+                              <AbsPoint x="0" y="0" />
+                            </Anchor>
+                          </Anchors>
+                        </Button>
+
 		                <Window name="$parentSeparatorRight" inherits="EA_Window_TabSeparatorRightSide" layer="background" popable="false">
 		                  <Anchors>
-		                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentInterface">
+		                    <Anchor point="bottomright" relativePoint="topleft" relativeTo="$parentServer">
 		                      <AbsPoint x="0" y="-6" />
 		                    </Anchor>
 		                    <Anchor point="bottomright" relativePoint="bottomright" >
@@ -142,6 +150,7 @@
                 <Window name ="SWTabChat" inherits ="SettingsWindowTabChat"/>
                 <Window name ="SWTabTargetting" inherits ="SettingsWindowTabTargetting"/>
                 <Window name ="SWTabInterface" inherits ="SettingsWindowTabInterface"/>  
+                <Window name ="SWTabServer" inherits ="SettingsWindowTabServer"/>  				
                 
                 
                 <Button name="$parentOkayButton" inherits="SettingsWindowTabbedButton" >

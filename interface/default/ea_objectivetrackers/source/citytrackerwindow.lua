@@ -29,7 +29,7 @@ local IncompleteQuestTitleColor = IncompleteCounterColor
 local function CheckObjectiveOutOfRange(index)
     if ( ( index < 1 ) or ( index > EA_Window_CityTracker.NUM_OBJECTIVES ) )
     then
-        ERROR(L"Active objective #"..index..L" updated, the City Tracker only supports "..EA_Window_CityTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_CityTracker.NUM_QUESTS..L" quests")
+        --ERROR(L"Active objective #"..index..L" updated, the City Tracker only supports "..EA_Window_CityTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_CityTracker.NUM_QUESTS..L" quests")
         return true
     end
     return false
@@ -396,7 +396,7 @@ function EA_Window_CityTracker.UpdateQuestVisibility()
     else
         if (numActiveObjectives > 2)
         then
-            ERROR(L""..numActiveObjectives..L" objectives detected, City Tracker will only display the first two.")
+            --ERROR(L""..numActiveObjectives..L" objectives detected, City Tracker will only display the first two.")
         end
         
         WindowSetShowing("EA_Window_CityTrackerObjective1", true)
