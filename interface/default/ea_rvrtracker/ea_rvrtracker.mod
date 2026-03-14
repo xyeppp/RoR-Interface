@@ -5,7 +5,7 @@
         <Author name="EAMythic" email="" />
         <Description text="This is the default RvR Tracker window." />
         <Dependencies>
-            <!-- Dependency name="EASystem_GlyphDisplay" / !-->
+            <Dependency name="EASystem_GlyphDisplay" />
             <Dependency name="EASystem_LayoutEditor" />
             <Dependency name="EASystem_Tooltips" />
             <Dependency name="EASystem_Utils" />

@@ -21,7 +21,6 @@ MapUtils.openTomeToQuestCallback = nil
 MapUtils.openTomeToEventTaskCallback = nil
 MapUtils.toggleTomeCallback = nil
 
-
 function MapUtils.RegisterOpenTomeToQuestCallback( callbackFunction )
 
     if callbackFunction == nil then
@@ -101,16 +100,14 @@ function MapUtils.UpdateCityRatingWindow( cityId, windowName )
 
     -- Show the Rating Stars    
     local sliceName = "star-order"
-    if( cityId == GameData.CityId.CHAOS or cityId == GameData.CityId.GREENSKIN )
+    if( cityId == GameData.CityId.CHAOS )
     then
         --DEBUG( L"Destruction"..controlledBy )
         sliceName = "star-destruction"
     end
 
     local cityRating = GetCityRatingForCityId( cityId )
-    if cityRating==nil then 
-      cityRating = 5
-    end
+
     for rating = 1, GameDefs.NUM_CITY_RANKS 
     do
         local showStar = rating <= cityRating
@@ -132,24 +129,15 @@ function MapUtils.GetCityActivityStrings( cityId, cityState, cityRating )
     if (cityState == SystemData.CityStates.PILLAGE or cityState == SystemData.CityStates.KINGUNLOCKED or cityState == SystemData.CityStates.MARTIAL)
     then
         statePrefix = "CAPTURED"
-    elseif (cityState == SystemData.CityStates.TRANSITION)
-    then
-        statePrefix = "TRANSITION"
     elseif (cityState == SystemData.CityStates.STARTUP)
     then
-        statePrefix = "STARTUP"
-    elseif (cityState == SystemData.CityStates.OPEN)
-    then
         statePrefix = "CONTESTED"
-    elseif (cityState == SystemData.CityStates.SHUTDOWN)
-    then
-        statePrefix = "SHUTDOWN"
     else
         statePrefix = "PEACEFUL"
     end
     
     local itemsText = {}
-    if (cityRating==nil) then cityRating = 5 end
+    
     for rating = Tooltips.NUM_CITY_RANKS, 1, -1
     do        
         if( rating <= cityRating )

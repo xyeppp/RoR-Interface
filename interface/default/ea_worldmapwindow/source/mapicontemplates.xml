@@ -170,7 +170,7 @@
                         </Anchor>
                     </Anchors>
                 </Label>
-               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
             </Windows>
         </Window>
         
@@ -186,7 +186,7 @@
                         </Anchor>
                     </Anchors>
                 </Label>
-               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
             </Windows>
         </Window>
         
@@ -202,7 +202,7 @@
                         </Anchor>
                     </Anchors>
                 </Label>
-               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
             </Windows>
         </Window>
         
@@ -218,7 +218,7 @@
                         </Anchor>
                     </Anchors>
                 </Label>
-               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+               <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
             </Windows>
         </Window>
         
@@ -346,7 +346,7 @@
             </Windows>
         </Window>
         
-        <Window name="WorldMapCityButtonDown" inherits="WorldMapCityButtonTemplate">
+        <Window name="WorldMapCityButtonOrder" inherits="WorldMapCityButtonTemplate">
             <Size>
                 <AbsPoint x="87" y="88" />
             </Size>
@@ -385,7 +385,7 @@
             </Windows>
         </Window>
         
-        <Window name="WorldMapCityButtonUp" inherits="WorldMapCityButtonTemplate">
+        <Window name="WorldMapCityButtonDestruction" inherits="WorldMapCityButtonTemplate">
             <Size>
                 <AbsPoint x="87" y="88" />
             </Size>
@@ -427,7 +427,7 @@
             </Windows>
         </Window>
         
-        <Window name="WorldMapCityButtonSmallDown" inherits="WorldMapCityButtonTemplate">
+        <Window name="WorldMapCityButtonSmallOrder" inherits="WorldMapCityButtonTemplate">
             <Size>
                 <AbsPoint x="59" y="61" />
             </Size>
@@ -459,7 +459,7 @@
             </Windows>
         </Window>
         
-        <Window name="WorldMapCityButtonSmallUp" inherits="WorldMapCityButtonTemplate">
+        <Window name="WorldMapCityButtonSmallDestruction" inherits="WorldMapCityButtonTemplate">
             <Size>
                 <AbsPoint x="59" y="61" />
             </Size>

@@ -295,7 +295,6 @@ function EA_Window_WorldMap.ZoomOut()
 end
 
 function EA_Window_WorldMap.CreateAppropriateZoneTooltip( zoneId, anchor, clickText )
-
     -- Find out if it is a normal zone, city, or fort -- we have different types of tooltips for each
     local iconType = nil
     local pairingNum = 0
@@ -330,15 +329,13 @@ function EA_Window_WorldMap.CreateAppropriateZoneTooltip( zoneId, anchor, clickT
             return 
         end
     
+        local zoneData = GetCampaignZoneData( zoneId )    
+        if (zoneData == nil)
+        then
+            return
+        end
         
         if ((iconType == EA_Window_WorldMap.ICON_ZONE) or (iconType == EA_Window_WorldMap.ICON_ZONE_MINI)) then
-		
-			local zoneData = GetCampaignZoneData( zoneId )    
-			if (zoneData == nil)
-			then
-				return
-			end
-			
             Tooltips.CreatePairingMapZoneTooltip( zoneData.controllingRealm,
                                                   GetZoneName( zoneId ),
                                                   zoneData.tierId,
@@ -347,13 +344,6 @@ function EA_Window_WorldMap.CreateAppropriateZoneTooltip( zoneId, anchor, clickT
                                                   anchor,
                                                   clickText )
         elseif ((iconType == EA_Window_WorldMap.ICON_FORT) or (iconType == EA_Window_WorldMap.ICON_FORT_MINI)) then
-		
-			local zoneData = GetCampaignZoneData( zoneId )    
-			if (zoneData == nil)
-			then
-				return
-			end
-			
             local timeLeft = 0
             local pairingData = GetCampaignPairingData(EA_Window_WorldMap.currentPairing)
             if (pairingData ~= nil) then
@@ -373,31 +363,22 @@ function EA_Window_WorldMap.CreateAppropriateZoneTooltip( zoneId, anchor, clickT
                                                   anchor,
                                                   clickText )
         elseif ((iconType == EA_Window_WorldMap.ICON_CITY) or (iconType == EA_Window_WorldMap.ICON_CITY_MINI)) then
-            
+            -- zoneId is always the peaceful version. If the city is contested, we must translate it into the contested zone ID.
             local zoneIdForRanks = zoneId
-			local cityRatingTimeLeft = 0
-            local citySiegeTimeLeft = 0
-			local cityControllingRealm = GameData.Realm.DESTRUCTION;
-			local citySiegeStatus = RoR_CitySiege.GetCity(GameDefs.ZoneCityIds[zoneId]);
-            local cityState = SystemData.CityStates.NONE
-			
-            if (citySiegeStatus ~= nil) then
-                cityRatingTimeLeft = citySiegeStatus.ratingTimer
-                citySiegeTimeLeft = citySiegeStatus.timeLeft
-				cityControllingRealm = citySiegeStatus.controllingRealm;
-				cityState = citySiegeStatus.state
-				
-				-- zoneId is always the peaceful version. If the city is contested, we must translate it into the contested zone ID.
-				if (citySiegeStatus.controllingRealm ~= citySiegeStatus.initialRealm) then
-					zoneIdForRanks = MapUtils.GetContestedCityZoneFromPeacefulZone(zoneId)
-				end
+            if (zoneData.controllingRealm ~= zoneData.initialRealm) then
+                zoneIdForRanks = MapUtils.GetContestedCityZoneFromPeacefulZone(zoneId)
             end
-			            
-            Tooltips.CreatePairingMapCityTooltip( cityControllingRealm,
+            
+            local cityState = SystemData.CityStates.NONE
+            local cityData = GetCampaignCityData(GameDefs.ZoneCityIds[zoneId])
+            if (cityData ~= nil) then
+                cityState = cityData.cityState
+            end
+            
+            Tooltips.CreatePairingMapCityTooltip( zoneData.controllingRealm,
                                                   GetZoneName( zoneId ),
                                                   GetZoneRanksForCurrentRealm( zoneIdForRanks ),
-                                                  cityRatingTimeLeft,
-                                                  citySiegeTimeLeft,
+                                                  GameData.CityScenarioData.timeLeft,
                                                   cityState,
                                                   GameDefs.ZoneCityIds[zoneId],
                                                   SystemData.ActiveWindow.name,

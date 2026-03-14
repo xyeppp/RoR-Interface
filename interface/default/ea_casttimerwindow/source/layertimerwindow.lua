@@ -320,8 +320,6 @@ function LayerTimerWindow.HasQueuedCastBarHide ()
 end
 
 function LayerTimerWindow.SetbackCastBar (newCastTime)
-    if (castTimer.current == nil) then castTimer.current = 0 end
-    if (newCastTime == nil) then newCastTime = 0 end
     assert (castTimer.current > 0)
     -- If setback amount is deisred here's how to get it: newCastTime - castTimer.current
     castTimer.current = newCastTime

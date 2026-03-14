@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ModuleFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 
-    <UiMod name="EA_OpenPartyWindow" version="1.4" date="12/11/2025" >
+    <UiMod name="EA_OpenPartyWindow" version="1.2" date="4/22/2009" >
         <Author name="EAMythic" email="" />
         <Description text="This is the default EA Open Party window." />
         <Dependencies>

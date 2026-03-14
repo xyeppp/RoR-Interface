@@ -649,16 +649,14 @@ function PlayerWindow.UpdateRelicBonuses()
     PlayerWindow.RelicOwnershipCount = 0
     
     -- Cache the data to the window in a format that allows quick lookups for pairings
-  if (relicData~=nil) then
     for index, data in ipairs( relicData ) 
-    do	    
+	do	    
         local race          = relicData[index].race
         local status        = relicData[index].status
         
         PlayerWindow.RelicBonusDetails[race].owned = PlayerRealmOwnsRelic(race, status)        
-    end	
-  end
-  
+	end	
+	
 	-- Clear out old status text	
     PlayerWindow.RelicBonusText[GameData.Pairing.GREENSKIN_DWARVES].value = L""
     PlayerWindow.RelicBonusText[GameData.Pairing.EMPIRE_CHAOS].value = L""

@@ -54,7 +54,7 @@ function GetPregameStringFormat( id, paramTable)
       	index = index + 1
     end
     
-    local text = GetStringFormatFromTable( "Pregame", id, params )
+    text = GetStringFormatFromTable( "Pregame", id, params )
 	
 	return text
 end

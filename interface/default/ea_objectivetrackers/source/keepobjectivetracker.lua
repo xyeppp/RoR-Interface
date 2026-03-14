@@ -27,7 +27,7 @@ local IncompleteQuestTitleColor = IncompleteCounterColor
 local function CheckObjectiveOutOfRange(index)
     if ( ( index < 1 ) or ( index > EA_Window_KeepObjectiveTracker.NUM_OBJECTIVES ) )
     then
-        --ERROR(L"Active objective #"..index..L" updated, the Keep Tracker only supports "..EA_Window_KeepObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_KeepObjectiveTracker.NUM_QUESTS..L" quests")
+        ERROR(L"Active objective #"..index..L" updated, the Keep Tracker only supports "..EA_Window_KeepObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_KeepObjectiveTracker.NUM_QUESTS..L" quests")
         return true
     end
     return false
@@ -423,29 +423,24 @@ function EA_Window_KeepObjectiveTracker.UpdateTracker()
         local questData = objectiveData.Quest[questIndex]
         local questWindowString = "EA_Window_KeepObjectiveTrackerDuringActionQuest"
         
-        local count = 0
-        for _ in pairs(DataUtils.activeObjectivesData) do count = count + 1 end
-        
-        if (DataUtils.activeObjectivesData~=nil) and (count~=0) then 
-	  if (DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex] ~= nil) then 
-            if ( questData ~= nil and DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isKeep )
-            then
+        if ( questData ~= nil and DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isKeep )
+        then
 
-              local questName = questData.name
-              LabelSetText( questWindowString, questName )            
-              LabelSetTextColor(questWindowString, CompleteCounterColor.r, CompleteCounterColor.g, CompleteCounterColor.b)
+            local questName = questData.name
+            LabelSetText( questWindowString, questName )            
+            LabelSetTextColor(questWindowString, CompleteCounterColor.r, CompleteCounterColor.g, CompleteCounterColor.b)
         
             -- DEBUG(L"Made it through 03")    
             
-              WindowSetShowing( questWindowString, true )
+            WindowSetShowing( questWindowString, true )
             --DEBUG(L"  Quest #"..questIndex..L" '"..GameData.ActiveObjectives[objective].Quest[questIndex].name..L"'")
             
             -- Quest name            
-              local questName = DataUtils.activeObjectivesData[objective].Quest[questIndex].name
+            local questName = DataUtils.activeObjectivesData[objective].Quest[questIndex].name
 
             -- Conditions
-              for index, data in ipairs(questData.conditions)
-              do
+            for index, data in ipairs(questData.conditions)
+            do
                 local conditionName = data.name
                 local nameLabel     = questWindowString
 
@@ -455,13 +450,12 @@ function EA_Window_KeepObjectiveTracker.UpdateTracker()
                     LabelSetText( nameLabel, conditionName )            
                     LabelSetTextColor(nameLabel, IncompleteCounterColor.r, IncompleteCounterColor.g, IncompleteCounterColor.b)
                 end
-              end
-            
-            else
-              WindowSetShowing(questWindowString, false)
             end
-          end
+            
+        else
+            WindowSetShowing(questWindowString, false)
         end
+        
     end        
     -- DEBUG(L"Made it through 07 - exiting")
 

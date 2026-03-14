@@ -240,8 +240,7 @@ function Tooltips.CreateMapPointTooltip( mapDisplay, points, anchor, mapDisplayT
                     pinDesc = GetStringFormatFromTable("MapPointTypes", StringTables.MapPointTypes.PIN_TYPE_WAR_CAMP, { factionName } )
                     
                 elseif ( ptData.pointType == SystemData.MapPips.PUBLIC_QUEST ) then
-                    -- The IDs for the chapter 22 hard PQ, this is needed as we cannot set very hard in the mappoints for PQ
-                    local ch_22_vhard_ids = {116, 127, 319, 332, 482, 494}
+                
                     local difficultyStr = L""
                     if (ptData.difficulty == SystemData.PublicQuestTypes.EASY_DIFFICULTY) then
                         difficultyStr = GetStringFromTable( "MapSystem", StringTables.MapSystem.TOOLTIP_PUBLIC_QUEST_EASY_DIFFICULTY )
@@ -249,9 +248,6 @@ function Tooltips.CreateMapPointTooltip( mapDisplay, points, anchor, mapDisplayT
                         difficultyStr = GetStringFromTable( "MapSystem", StringTables.MapSystem.TOOLTIP_PUBLIC_QUEST_NORMAL_DIFFICULTY )
                     elseif (ptData.difficulty == SystemData.PublicQuestTypes.HARD_DIFFICULTY) then
                         difficultyStr = GetStringFromTable( "MapSystem", StringTables.MapSystem.TOOLTIP_PUBLIC_QUEST_HARD_DIFFICULTY )
-                    end
-                    if ptData.id ~= nil and HasValue(ch_22_vhard_ids, ptData.id) then
-                        difficultyStr = GetStringFromTable( "MapSystem", StringTables.MapSystem.TOOLTIP_PUBLIC_QUEST_VERY_HARD_DIFFICULTY )
                     end
                     pinDesc = GetStringFormatFromTable("MapPointTypes", StringTables.MapPointTypes.PIN_TYPE_PUBLIC_QUEST, { difficultyStr } )
                     
@@ -1033,7 +1029,7 @@ function Tooltips.CreatePairingMapFortTooltip( pairingId, realmId, controlledBy,
 end
 
 
-function Tooltips.CreatePairingMapCityTooltip( controlledBy, zoneName, zoneRanksText, ratingTimer, timeLeft, cityState, cityId, mouseOverWindow, anchor, clickText )
+function Tooltips.CreatePairingMapCityTooltip( controlledBy, zoneName, zoneRanksText, timeLeft, cityState, cityId, mouseOverWindow, anchor, clickText )
 
     if( controlledBy == nil )
     then
@@ -1042,11 +1038,11 @@ function Tooltips.CreatePairingMapCityTooltip( controlledBy, zoneName, zoneRanks
 
     -- Build the (<REALM> City) text
     local realmName = L""
-    if( cityId == GameData.CityId.EMPIRE or cityId == GameData.CityId.DWARF )
+    if( cityId == GameData.CityId.EMPIRE )
     then
         realmName = GetRealmName( GameData.Realm.ORDER )
     
-    elseif( cityId == GameData.CityId.CHAOS or cityId == GameData.CityId.GREENSKIN )
+    elseif( cityId == GameData.CityId.CHAOS )
     then
         realmName = GetRealmName( GameData.Realm.DESTRUCTION )
     end
@@ -1081,12 +1077,6 @@ function Tooltips.CreatePairingMapCityTooltip( controlledBy, zoneName, zoneRanks
     end                                           
     height = height + SetTextRtnHeight("PairingMapCityToolTipRatingDesc", ratingDescText )
     
-    local ratingTimeLeftText = L""
-    if ((cityState == SystemData.CityStates.SHUTDOWN or cityState == SystemData.CityStates.SAFE) and ratingTimer > 0) then
-        ratingTimeLeftText = GetStringFormatFromTable("MapSystem", StringTables.MapSystem.TEXT_CITY_RATING_TIME_REMAINING, { TimeUtils.FormatClock(ratingTimer) } )
-    end
-    height = height + SetTextRtnHeight( "PairingMapCityToolTipRatingTimer", ratingTimeLeftText )
-
     local width, _ = WindowGetDimensions( "PairingMapCityToolTip" )
     WindowSetDimensions( "PairingMapCityToolTip", width, height + Tooltips.MAP_TOOLTIP_VERTICAL_BORDER )
     
@@ -1128,14 +1118,4 @@ function Tooltips.OnMouseOverMapPoint()
                                     pointsArray, 
                                     Tooltips.ANCHOR_CURSOR,
                                     Tooltips.MAP_TYPE_OTHER )   
-end
-
-function HasValue (tab, val)
-    for index, value in ipairs(tab) do
-        if value == val then
-            return true
-        end
-    end
-
-    return false
 end

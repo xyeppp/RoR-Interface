@@ -31,7 +31,7 @@ local IncompleteQuestTitleColor = IncompleteCounterColor
 local function CheckObjectiveOutOfRange(index)
     if ( ( index < 1 ) or ( index > EA_Window_BattlefieldObjectiveTracker.NUM_OBJECTIVES ) )
     then
-        --ERROR(L"Active objective #"..index..L" updated, the BO Tracker only supports "..EA_Window_BattlefieldObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_BattlefieldObjectiveTracker.NUM_QUESTS..L" quests")
+        ERROR(L"Active objective #"..index..L" updated, the BO Tracker only supports "..EA_Window_BattlefieldObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_BattlefieldObjectiveTracker.NUM_QUESTS..L" quests")
         return true
     end
     return false
@@ -40,7 +40,7 @@ end
 local function CheckQuestOutOfRange(index)
     if ( ( index < 1 ) or ( index > EA_Window_BattlefieldObjectiveTracker.NUM_QUESTS ) )
     then
-        --ERROR(L"Active quest #"..index..L" updated, the BO Tracker only supports "..EA_Window_BattlefieldObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_BattlefieldObjectiveTracker.NUM_QUESTS..L" quests")
+        ERROR(L"Active quest #"..index..L" updated, the BO Tracker only supports "..EA_Window_BattlefieldObjectiveTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_BattlefieldObjectiveTracker.NUM_QUESTS..L" quests")
         return true
     end
     return false
@@ -481,10 +481,9 @@ function EA_Window_BattlefieldObjectiveTracker.UpdateTracker()
         -- DEBUG(L"Made it through 02")
         local questData = objectiveData.Quest[questIndex]
         local questWindowString = "EA_Window_BattlefieldObjectiveTrackerMainQuest"..questIndex
-        if DataUtils.activeObjectivesData ~= nil then
-          if (DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex] ~= nil) then
-          if ( questData ~= nil and DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isBattlefieldObjective )
-          then
+        
+        if ( questData ~= nil and DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isBattlefieldObjective )
+        then
             -- DEBUG(L"Made it through 03")    
             
             WindowSetShowing( questWindowString, true )
@@ -558,11 +557,10 @@ function EA_Window_BattlefieldObjectiveTracker.UpdateTracker()
                 WindowSetShowing(questWindowString.."DataCondition"..index, false)
             end
                        
-          else
+        else
             WindowSetShowing(questWindowString, false)
-          end
-	  end
         end
+        
     end        
     -- DEBUG(L"Made it through 07 - exiting")
     EA_Window_BattlefieldObjectiveTracker.UpdateObjectiveDimensions(objective)

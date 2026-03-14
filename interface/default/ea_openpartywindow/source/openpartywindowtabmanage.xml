@@ -196,7 +196,7 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootHeaderText">
-                            <AbsPoint x="30" y="20" />
+                            <AbsPoint x="30" y="45" />
                         </Anchor>
                     </Anchors>
                 </Label>
@@ -218,7 +218,7 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootModeCombo">
-                            <AbsPoint x="20" y="10" />
+                            <AbsPoint x="20" y="20" />
                         </Anchor>
                     </Anchors>
                     <EventHandlers>
@@ -233,7 +233,7 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentNeedOnUseButton">
-                            <AbsPoint x="0" y="10" />
+                            <AbsPoint x="0" y="15" />
                         </Anchor>
                     </Anchors>
                     <EventHandlers>
@@ -248,7 +248,7 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentAutoLootRvR">
-                            <AbsPoint x="-20" y="20" />
+                            <AbsPoint x="-20" y="30" />
                         </Anchor>
                     </Anchors>
                 </Label>
@@ -270,7 +270,7 @@
                     </Size>
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLootThresholdCombo">
-                            <AbsPoint x="0" y="20" />
+                            <AbsPoint x="0" y="40" />
                         </Anchor>
                     </Anchors>
                 </Label>
@@ -290,7 +290,7 @@
                     <Anchors>
                         <Anchor point="bottomleft" relativePoint="bottomleft" relativeTo="$parent" />
                         <Anchor point="bottom" relativePoint="topright" relativeTo="$parentVertSeparator">
-                            <AbsPoint x="4" y="-250" />
+                            <AbsPoint x="4" y="-185" />
                         </Anchor>
                     </Anchors>
                     <Windows>
@@ -373,30 +373,6 @@
                             </Anchors>
                         </Label>
 
-
-                <Label name="$parentLeaderMarkText" inherits="EA_Label_DefaultText" textalign="left" >
-                    <Size>
-                        <AbsPoint x="250" y="25" />
-                    </Size>
-                    <Anchors>
-                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentMasterLooterText">
-                            <AbsPoint x="-30" y="15" />
-                        </Anchor>
-                    </Anchors>
-                </Label>
-
-
-                <ComboBox name="$parentLeaderMarkCombo" inherits="EA_ComboBox_DefaultResizable" layer="overlay" >
-                    <Anchors>
-                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentLeaderMarkText">
-                            <AbsPoint x="0" y="0" />
-                        </Anchor>
-                    </Anchors>
-                    <EventHandlers>
-                        <EventHandler event="OnSelChanged" function="EA_Window_OpenPartyManage.OnLeaderMarkSelChange" />
-						<EventHandler event="OnMouseOver" function="EA_Window_OpenPartyManage.OnMouseoverLeaderMark" />                    
-					</EventHandlers>
-                </ComboBox>
                     </Windows>
                 </Window>
 

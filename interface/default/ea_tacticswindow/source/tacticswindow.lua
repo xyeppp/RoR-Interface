@@ -880,7 +880,7 @@ function TacticsEditor.GuessTacticsIfNeeded()
 end
 
 local function IsTacticSlotBlocked( slot )
-	local allowedNumTacticSlots = math.min(math.max( math.floor( GameData.Player.battleLevel / 8 ), 1 ), 4)
+	local allowedNumTacticSlots = math.max( math.floor( GameData.Player.battleLevel / 10 ), 1 )
 	if( slot > allowedNumTacticSlots )
 	then
 		return true

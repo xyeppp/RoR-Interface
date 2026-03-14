@@ -6,8 +6,6 @@ AuctionWindowSellControls = {}
 AuctionWindowSellControls.itemInventorySlot = { slot = 0, backpack = 0 }
 AuctionWindowSellControls.itemJustPickedUp = false
 
-AuctionWindowSellControls.buyOutPrice = 0
-
 local WINDOW_NAME = "AuctionWindow"
 local SELL_CONTROLS_NAME = WINDOW_NAME.."SellControls"
 
@@ -19,12 +17,7 @@ function AuctionWindowSellControls.Initialize()
     WindowRegisterEventHandler( "AuctionWindow", SystemData.Events.GUILD_INFO_UPDATED,  "AuctionWindowSellControls.UpdateRestrictionTypes" )
 	WindowRegisterEventHandler( "AuctionWindow", SystemData.Events.GUILD_EXP_UPDATED,   "AuctionWindowSellControls.UpdateRestrictionTypes" )
     WindowRegisterEventHandler( "AuctionWindow", SystemData.Events.ALLIANCE_UPDATED,    "AuctionWindowSellControls.UpdateRestrictionTypes" )
-	
-	-- City ranking updated so deposit might change
-    WindowRegisterEventHandler( "AuctionWindow", SystemData.Events.CITY_RATING_UPDATED, "AuctionWindowSellControls.CalculateDeposit")
-	
-    MoneyFrame.RegisterCallbackForValueChanged( SELL_CONTROLS_NAME.."BuyOutPrice", AuctionWindowSellControls.BuyOutPriceChangedByUser )
-	
+    
     ButtonSetText( SELL_CONTROLS_NAME.."CreateButton", GetStringFromTable( "AuctionHouseStrings",  StringTables.AuctionHouse.CREATE_AUCTION_CREATE_BUTTON ) )
     ButtonSetText( SELL_CONTROLS_NAME.."ClearButton", GetStringFromTable( "AuctionHouseStrings",  StringTables.AuctionHouse.CREATE_AUCTION_CLEAR_BUTTON ) )
     LabelSetText( SELL_CONTROLS_NAME.."BuyOutPriceHeader", GetStringFromTable( "AuctionHouseStrings",  StringTables.AuctionHouse.CREATE_AUCTION_BUY_OUT_PRICE_LABEL ) )
@@ -128,15 +121,17 @@ function AuctionWindowSellControls.UpdateRestrictionTypes()
 end
 
 function AuctionWindowSellControls.UpdatePrices( itemData )
-	
     local basePrice = itemData.sellPrice * itemData.stackCount
+    local depositPrice = math.floor( basePrice * GameData.Auction.DEPOSIT_MULTIPLIER )    
+    
+    if depositPrice < 1
+    then
+		depositPrice = 1
+    end
 
-    AuctionWindowSellControls.buyOutPrice = math.floor( basePrice * DEFAULT_BUY_OUT_PRICE_MULTIPLIER )
-	
-	AuctionWindowSellControls.CalculateDeposit()
-	
-    MoneyFrame.FormatMoney( SELL_CONTROLS_NAME.."BuyOutPrice", AuctionWindowSellControls.buyOutPrice, MoneyFrame.SHOW_EMPTY_WINDOWS )
-
+    local buyOutPrice = math.floor( basePrice * DEFAULT_BUY_OUT_PRICE_MULTIPLIER )
+    MoneyFrame.FormatMoney( SELL_CONTROLS_NAME.."BuyOutPrice", buyOutPrice, MoneyFrame.SHOW_EMPTY_WINDOWS )
+    MoneyFrame.FormatMoney( SELL_CONTROLS_NAME.."DepositPrice", depositPrice, MoneyFrame.HIDE_EMPTY_WINDOWS )
     MoneyFrame.FormatMoney( SELL_CONTROLS_NAME.."VendorPrice", basePrice, MoneyFrame.HIDE_EMPTY_WINDOWS )
 end
 
@@ -216,8 +211,8 @@ function AuctionWindowSellControls.Create()
         return
     end
         
-    AuctionWindowSellControls.buyOutPrice = MoneyFrame.ConvertCurrencyToBrass( SELL_CONTROLS_NAME.."BuyOutPrice" )
-    if( AuctionWindowSellControls.buyOutPrice < 1 )
+    local buyOutPrice = MoneyFrame.ConvertCurrencyToBrass( SELL_CONTROLS_NAME.."BuyOutPrice" )
+    if( buyOutPrice < 1 )
     then
         local okayText = GetString (StringTables.Default.LABEL_OKAY)
         DialogManager.MakeOneButtonDialog( GetStringFromTable( "AuctionHouseStrings",  StringTables.AuctionHouse.LABEL_ERROR_NO_PRICE ), okayText)  
@@ -226,7 +221,7 @@ function AuctionWindowSellControls.Create()
     
     local restrictionChoice = ComboBoxGetSelectedMenuItem( SELL_CONTROLS_NAME.."RestrictionComboBox" )
     
-    CreateAuction( AuctionWindowSellControls.itemInventorySlot.slot, AuctionWindowSellControls.itemInventorySlot.backpack, AuctionWindowSellControls.buyOutPrice, restrictionChoice ) 
+    CreateAuction( AuctionWindowSellControls.itemInventorySlot.slot, AuctionWindowSellControls.itemInventorySlot.backpack, buyOutPrice, restrictionChoice ) 
 
     Sound.Play( Sound.AUCTION_HOUSE_CREATE_AUCTION )
 
@@ -234,34 +229,4 @@ function AuctionWindowSellControls.Create()
     
     -- Refresh display to include newly sold item
     AuctionWindowListDataManager.SendPlayersAuctionSearch()
-end
-
-function AuctionWindowSellControls.BuyOutPriceChangedByUser( money )
-	AuctionWindowSellControls.buyOutPrice = money
-	
-	AuctionWindowSellControls.CalculateDeposit()
-end
-
-function AuctionWindowSellControls.CalculateDeposit()
-
-	-- Get the city for the current pairing the player is in
-	-- 1* 10%, 2* 8%, 3* 6%, 4* 4%, 5* 2%
-	if RoR_CitySiege.GetCityFromPairing() ~= nil then
-		local pairingCityRating = GetCityRatingForCityId(RoR_CitySiege.GetCityFromPairing())
-		local depositPrice = math.floor( (AuctionWindowSellControls.buyOutPrice / 100) * (12 - 2 * pairingCityRating) )
-		
-		if depositPrice < 1
-		then
-			depositPrice = 1
-		end
-		
-		d("New Deposit Price: "..depositPrice)
-		
-		MoneyFrame.FormatMoney( SELL_CONTROLS_NAME.."DepositPrice", depositPrice, MoneyFrame.HIDE_EMPTY_WINDOWS )
-	end
-end
-
--- OnShutdown Handler
-function AuctionWindowSellControls.Shutdown()
-	MoneyFrame.UnregisterCallbackForValueChanged( SELL_CONTROLS_NAME.."BuyOutPrice" )
 end

@@ -30,23 +30,11 @@ EA_Window_ScenarioLobby.cityInstanceWait = 0
 EA_Window_ScenarioLobby.fightFlagPressed = false
 EA_Window_ScenarioLobby.isLowLevel = false
 
-EA_Window_ScenarioLobby.selectedQueue    = 1
-EA_Window_ScenarioLobby.AllQueue    = 0
-EA_Window_ScenarioLobby.AllData    = {}
+EA_Window_ScenarioLobby.selectedQueue    = nil
 
 EA_Window_ScenarioLobby.JOIN_MODE_SOLO  = 1
 EA_Window_ScenarioLobby.JOIN_MODE_GROUP = 2
 EA_Window_ScenarioLobby.NUM_JOIN_MODES  = 2
-
-EA_Window_ScenarioLobby.ENABLED = 1
-EA_Window_ScenarioLobby.WEEKEND_WARFRONT = 2
-EA_Window_ScenarioLobby.ALLOW_GROUP_QUEUE = 4
-EA_Window_ScenarioLobby.CHALLENGE_MODE = 8
-EA_Window_ScenarioLobby.HEALER_INCENTIVE = 16
-EA_Window_ScenarioLobby.TANK_INCENTIVE = 32
-EA_Window_ScenarioLobby.DPS_INCENTIVE = 64
-
-EA_Window_ScenarioLobby.MAX_BLACKLIST_COUNT = 10
 
 EA_Window_ScenarioLobby.joinModes = {}
 EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.JOIN_MODE_SOLO ] = { text=GetString( StringTables.Default.LABEL_JOIN_SOLO),      joinSingleEvent=SystemData.Events.INTERACT_JOIN_SCENARIO_QUEUE,         joinAllEvent=SystemData.Events.INTERACT_JOIN_SCENARIO_QUEUE_ALL  }
@@ -57,53 +45,47 @@ EA_Window_ScenarioLobby.joinMode        = EA_Window_ScenarioLobby.JOIN_MODE_SOLO
 
 EA_Window_ScenarioLobby.playerActiveQueues = nil    -- List of scenarios for which the player is actively queued.
 
-local Selected_Scenario = 0
-local Insentive_Labels = {["MDps"]=L"DPS <icon45>+50% Renown",["Tank"]=L"Tanks <icon45>+50% Renown",["Healer"]=L"Healer <icon45>+50% Renown"}
-local Insentive_Id = {[1]="DpsIncentive",[2]="TankIncentive",[3]="HealerIncentive"}
-local Bool_Convert = {["true"] = L"1",["false"]= L"0"}
-local Preferences_Icon = {["true"] = "City-Rating-Star",["false"]= "City-Rating-Star-Slot"}
-
-
-
-----------------------------------------------------------------
 ----------------------------------------------------------------
 -- EA_Window_ScenarioLobby Functions
+----------------------------------------------------------------
 
 -- OnInitialize Handler
 function EA_Window_ScenarioLobby.Initialize()
-    EA_Window_ScenarioLobby.SC_queue_Data = {}
-	CreateWindow("EA_Window_BlacklistWindow", false )	
-	
-	-- Lobby Window
+	  
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.INTERACT_SHOW_SCENARIO_QUEUE_LIST, "EA_Window_ScenarioLobby.UpdateQueueList")
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_ACTIVE_QUEUE_UPDATED, "EA_Window_ScenarioLobby.OnPlayerActiveQueuesUpdated" )
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowJoinPrompt" )
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED, "EA_Window_ScenarioLobby.OnPlayerCombatFlagUpdated" ) 
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.PLAYER_IS_BEING_THROWN, "EA_Window_ScenarioLobby.OnPlayerCombatFlagUpdated" )      
+    
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_STARTING_SCENARIO_UPDATED, "EA_Window_ScenarioLobby.UpdateStartingScenario" )        
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.GROUP_UPDATED, "EA_Window_ScenarioLobby.OnGroupUpdated")
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.BATTLEGROUP_UPDATED, "EA_Window_ScenarioLobby.OnGroupUpdated")
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_LEVELED_OUT_OF_BRACKETS, "EA_Window_ScenarioLobby.OnLeveledOutOfBrackets")
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_LEVELED_NEED_REJOIN_BRACKET, "EA_Window_ScenarioLobby.OnLevelNeedRejoinQueue")
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_CAPTURE_SHOW_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowCityCaptureJoinPrompt" )
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.LOADING_BEGIN, "EA_Window_ScenarioLobby.HideCityCapturePrompt" )
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_SCENARIO_INSTANCE_ID_SELECTED, "EA_Window_ScenarioLobby.HasInstanceEnableButton" )
+    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_CAPTURE_SHOW_LOW_LEVEL_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowCityCaptureLowLevelJoinPrompt" )
+    
+    
+    EA_Window_ScenarioLobby.OnPlayerActiveQueuesUpdated()
+    
+    -- Lobby Window
     LabelSetText( "EA_Window_ScenarioLobbyTitleBarText", GetString( StringTables.Default.LABEL_SCENARIO_LOBBY) )               
                
     for mode = 1, EA_Window_ScenarioLobby.NUM_JOIN_MODES do
         local text = EA_Window_ScenarioLobby.joinModes[mode].text
-        ButtonSetText("EA_Window_ScenarioLobbyJoinMode"..mode.."Button", text )
+        LabelSetText("EA_Window_ScenarioLobbyJoinMode"..mode.."Label", text )
     end
- 
-
-ButtonSetText("EA_Window_ScenarioLobbyPreferencesButton", L"Preferences" ) 
-ButtonSetText("EA_Window_ScenarioLobbyScenarioTabButton", L"Scenarios" )
-ButtonSetText("EA_Window_ScenarioLobbyDungeonTabButton", L"Dungeons" )	   
-ButtonSetText("EA_Window_ScenarioLobbyLeaveButton", GetString( StringTables.Default.LABEL_LEAVE ) )	
-ButtonSetPressedFlag("EA_Window_ScenarioLobbyScenarioTabButton",true)	   
-ButtonSetStayDownFlag("EA_Window_ScenarioLobbyScenarioTabButton",true)
-ButtonSetDisabledFlag("EA_Window_ScenarioLobbyDungeonTabButton",true)	
-	   
-    --ButtonSetText("EA_Window_ScenarioLobbyCancelButton", GetString( StringTables.Default.LABEL_CANCEL ) )
+       
+    ButtonSetText("EA_Window_ScenarioLobbyCancelButton", GetString( StringTables.Default.LABEL_CANCEL ) )
     ButtonSetText("EA_Window_ScenarioLobbyJoinButton", GetString( StringTables.Default.LABEL_SCENARIO_JOIN ) )	
-    --ButtonSetText("EA_Window_ScenarioLobbyJoinAllButton", GetString( StringTables.Default.LABEL_SCENARIO_JOIN_ALL ) )	
-	ButtonSetText("EA_Window_ScenarioLobbyJoinAllButton", L"Join Selected" )	
-	WindowSetShowing("EA_Window_ScenarioLobbyJoinButton",false)
-	WindowSetShowing("EA_Window_ScenarioLobbyJoinAllButton",false)
+    ButtonSetText("EA_Window_ScenarioLobbyJoinAllButton", GetString( StringTables.Default.LABEL_SCENARIO_JOIN_ALL ) )	
 
-	
 	CreateMapInstance( "EA_Window_ScenarioLobbyScenarioMap", SystemData.MapTypes.NORMAL )
     EA_Window_ScenarioLobby.SelectJoinMode( EA_Window_ScenarioLobby.JOIN_MODE_SOLO ) 
     EA_Window_ScenarioLobby.OnGroupUpdated()
-
-	LabelSetText( "EA_Window_BlacklistWindowTitle", L"Scenario Blacklist" )               
 
 	-- In-Queue Window
 	CreateWindow("EA_Window_InScenarioQueue", false )
@@ -142,43 +124,10 @@ ButtonSetDisabledFlag("EA_Window_ScenarioLobbyDungeonTabButton",true)
     WindowSetShowing( "EA_Window_CityCaptureJoinPromptWindowBoxLowLevel", false )
     
     CreateWindow("EA_Window_CityInstanceWait", false )
-    WindowSetShowing("EA_Window_CityInstanceWait", false)   
-
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.INTERACT_UPDATED_SCENARIO_QUEUE_LIST, "EA_Window_ScenarioLobby.UpdateSCList")
-	  
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.INTERACT_SHOW_SCENARIO_QUEUE_LIST, "EA_Window_ScenarioLobby.UpdateQueueList")
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_ACTIVE_QUEUE_UPDATED, "EA_Window_ScenarioLobby.OnPlayerActiveQueuesUpdated" )
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowJoinPrompt" )
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.PLAYER_COMBAT_FLAG_UPDATED, "EA_Window_ScenarioLobby.OnPlayerCombatFlagUpdated" ) 
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.PLAYER_IS_BEING_THROWN, "EA_Window_ScenarioLobby.OnPlayerCombatFlagUpdated" )      
-    
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_STARTING_SCENARIO_UPDATED, "EA_Window_ScenarioLobby.UpdateStartingScenario" )        
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.GROUP_UPDATED, "EA_Window_ScenarioLobby.OnGroupUpdated")
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.BATTLEGROUP_UPDATED, "EA_Window_ScenarioLobby.OnGroupUpdated")
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_LEVELED_OUT_OF_BRACKETS, "EA_Window_ScenarioLobby.OnLeveledOutOfBrackets")
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.SCENARIO_SHOW_LEVELED_NEED_REJOIN_BRACKET, "EA_Window_ScenarioLobby.OnLevelNeedRejoinQueue")
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_CAPTURE_SHOW_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowCityCaptureJoinPrompt" )
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.LOADING_BEGIN, "EA_Window_ScenarioLobby.HideCityCapturePrompt" )
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_SCENARIO_INSTANCE_ID_SELECTED, "EA_Window_ScenarioLobby.HasInstanceEnableButton" )
-    WindowRegisterEventHandler( "EA_Window_ScenarioLobby", SystemData.Events.CITY_CAPTURE_SHOW_LOW_LEVEL_JOIN_PROMPT, "EA_Window_ScenarioLobby.ShowCityCaptureLowLevelJoinPrompt" )
-    
-    
-    EA_Window_ScenarioLobby.OnPlayerActiveQueuesUpdated()
-     
-	 --Saved Blacklists
-	if (EA_Window_ScenarioLobby.BlackList == nil) then
-		EA_Window_ScenarioLobby.BlackList = {}
-	end	
-	 
+    WindowSetShowing("EA_Window_CityInstanceWait", false)    
     --DEBUG(L"Initialization Complete...")
     --EA_Window_ScenarioLobby.ShowCityCaptureJoinPrompt()
     
-	WindowRegisterCoreEventHandler( "EA_Window_ScenarioLobbyScenarioMap", "OnShown", "EA_Window_ScenarioLobby.OnGroupUpdated" )
-	ror_PacketHandling.Register("SC_QUEUE:",EA_Window_ScenarioLobby.PacketUpdate)	
-
-	
---	EA_Window_ScenarioLobby.PopulateListData()
---	EA_Window_ScenarioLobby.UpdateStuffs()
 end
 
 -- OnShutdown Handler
@@ -188,7 +137,6 @@ end
 
 function EA_Window_ScenarioLobby.Hide()
 	WindowSetShowing( "EA_Window_ScenarioLobby", false )
-	WindowSetShowing( "EA_Window_BlacklistWindow", false )
 end
 
 function EA_Window_ScenarioLobby.UpdateQueueList()
@@ -196,329 +144,13 @@ function EA_Window_ScenarioLobby.UpdateQueueList()
 	WindowSetShowing("EA_Window_ScenarioLobby", GameData.ScenarioQueueData[1].id ~= 0 )
 	
 	EA_Window_ScenarioLobby.ShowScenario( 1 )
-
-	EA_Window_ScenarioLobby.PopulateListData()
-	EA_Window_ScenarioLobby.UpdateStuffs()
-end
-
---Info comming from Packethandler
-function EA_Window_ScenarioLobby.PacketUpdate(text)
-
-local text = string.gsub(text,"SC_QUEUE:","")
-local SCList = json.decode(text)
-
-EA_Window_ScenarioLobby.BuildQueueList(SCList)
-end
-
---Builds List from Packethandler
-function EA_Window_ScenarioLobby.BuildQueueList(data)
-local SCList = data
-
-EA_Window_ScenarioLobby.SC_queue_Data[SCList.queueId] = {
-name = GetScenarioName( SCList.queueId ) or L"?",
-Enabled = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.ENABLED) or false,
-WeekendWarfront = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.WEEKEND_WARFRONT ) or false,
-AllowGroupQueue = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.ALLOW_GROUP_QUEUE ) or false,
-ChallengeMode = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.CHALLENGE_MODE ) or false,
-HealerIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.HEALER_INCENTIVE ) or false,
-TankIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.TANK_INCENTIVE ) or false,
-DpsIncentive = EA_Window_ScenarioLobby.GetFlag(SCList.flags, EA_Window_ScenarioLobby.DPS_INCENTIVE ) or false,
-blacklistCount = SCList.blacklistCount or 0,
-blacklist = SCList.blacklist or {},
-iconId = SCList.iconId or 130,
-aQT = SCList.averageQueueTime or 0,
-stats = SCList.stats or {tanks=0,healers=0,dps=0}
-}
-
-d(SCList)
-EA_Window_ScenarioLobby.PopulateBlackList()
-EA_Window_ScenarioLobby.UpdateListData()
-end
-
-function EA_Window_ScenarioLobby.fakelist(ScenarioId)
-if ScenarioId == nil then ScenarioId = 100 end
-EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklistCount = 3
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2100,["blocked"]=false})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2000,["blocked"]=true})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2401,["blocked"]=false})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2105,["blocked"]=true})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2107,["blocked"]=false})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2108,["blocked"]=false})
-table.insert(EA_Window_ScenarioLobby.SC_queue_Data[ScenarioId].blacklist,{["scenarioId"]=2103,["blocked"]=false})
-EA_Window_ScenarioLobby.PopulateBlackList()
-end
-
---Update if and when scenarios are added / removed
-function EA_Window_ScenarioLobby.UpdateSCList()
-EA_Window_ScenarioLobby.selectedQueue = 1
-EA_Window_ScenarioLobby.ShowScenario( EA_Window_ScenarioLobby.selectedQueue )
-EA_Window_ScenarioLobby.PopulateListData()
-EA_Window_ScenarioLobby.UpdateStuffs()
-EA_Window_ScenarioLobby.UpdateListData()
-EA_Window_ScenarioLobby.UpdateStuffs()
-end
-
---updates the ListData with ScenarioData
-function EA_Window_ScenarioLobby.PopulateListData()
-EA_Window_ScenarioLobby.ListData = {}
-   
-    for row, data in ipairs(GameData.ScenarioQueueData) 
-    do
-	if (data ~= nil) and (data.id ~= nil) and (data.id ~= 0) then
-
-		EA_Window_ScenarioLobby.ListData[row] = data
-		EA_Window_ScenarioLobby.ListData[row].name = GetScenarioName(data.id)
-end
-end
-return
-end
-
---Populates the Blacklists in the Preferences window
-function EA_Window_ScenarioLobby.PopulateBlackList()  
-
-local scenarioId = GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id
-if EA_Window_ScenarioLobby.SC_queue_Data[scenarioId] == nil or EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklist[1] == nil then 
-WindowSetShowing("EA_Window_BlacklistWindow",false)
-return 
-end
-
-EA_Window_ScenarioLobby.BlackList = {}
-local blacklistnumber = 0
-local allowedblacklists = EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklistCount
-
-EA_Window_ScenarioLobby.BlackList = EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklist
-
-local startindex = 1
-local endindex = math.min(#EA_Window_ScenarioLobby.BlackList,EA_Window_ScenarioLobby.MAX_BLACKLIST_COUNT+1)
-
-local displayOrder = {}
-for i=startindex,endindex do
-table.insert(displayOrder, i)
-end
-
-
-ListBoxSetVisibleRowCount("EA_Window_BlacklistWindowList", endindex) 
-WindowSetDimensions("EA_Window_BlacklistWindow",250,55 +(40*endindex))
-
-
-    for row, data in ipairs(EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklist)  do
-	local rowName = "EA_Window_BlacklistWindowListRow"..row
-	if (data ~= nil) and (data.scenarioId ~= nil) and (data.scenarioId ~= 0) then
-		EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklist[row].name = GetScenarioName(data.scenarioId)
-		if DoesWindowExist(rowName) then
-		ButtonSetPressedFlag(rowName.."Blacklist",EA_Window_ScenarioLobby.SC_queue_Data[scenarioId].blacklist[row].blocked)
-			if data.blocked == true then
-				LabelSetTextColor(rowName.."Name",155,55,55)
-				blacklistnumber = blacklistnumber +1
-			else
-				LabelSetTextColor(rowName.."Name",200,200,200)
-			end
-		end	
-	end
-end
-
-LabelSetText("EA_Window_BlacklistWindowCounter",towstring(blacklistnumber).. L"/" ..towstring(allowedblacklists) .. L" selected")
-ListBoxSetDisplayOrder("EA_Window_BlacklistWindowList", displayOrder )
-end
-
-
---Send your value and a flag to test, return true if flag is in range of value
-function EA_Window_ScenarioLobby.GetFlag(set, flag)
-  return set % (2*flag) >= flag
-  --[[ Flags:
-            Enabled = 1,
-            WeekendWarfront = 2,
-            AllowGroupQueue = 4,
-            ChallengeMode = 8,
-            HealerIncentive = 16,
-            TankIncentive = 32,
-            DpsIncentive = 64,
---]]
-end
-
-
-function EA_Window_ScenarioLobby.UpdateListData()
-local QueueData = GetScenarioQueueData()
-
---Run throu the main listings
-for i=1,math.min(#EA_Window_ScenarioLobby.ListData,6) do	
-	local rowName   = "EA_Window_ScenarioLobbyScenarioListRow"..i
-	local RowNumber = 	ListBoxGetDataIndex("EA_Window_ScenarioLobbyScenarioList",i)
-	local SCData = EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id]
-	--if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id] == nil then return end
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id] == nil then EA_Window_ScenarioLobby.BuildQueueList({queueId=EA_Window_ScenarioLobby.ListData[RowNumber].id,flags=5}) end
-
-	AnimatedImageStartAnimation( rowName.."Loading", 0, true, false, 0.0 )
-	AnimatedImageStartAnimation( rowName.."IconActive", 0, true, false, 0.0 )
 	
-	WindowSetShowing(rowName.."IconActive",false)
-	WindowSetShowing(rowName.."Loading",false)
-	ButtonSetPressedFlag(rowName,false)
-
-	CircleImageSetTexture(rowName.."_MDpsIcon","icon022657", 31,31)
-	CircleImageSetTexture(rowName.."_TankIcon","icon022724", 31,31)
-	CircleImageSetTexture(rowName.."_HealerIcon","icon022706", 31,31)	
---check if insentives are met
-	if SCData ~= nil then
-		WindowSetShowing(rowName.."_MDpsInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].DpsIncentive or false)
-		WindowSetShowing(rowName.."_TankInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].TankIncentive or false)
-		WindowSetShowing(rowName.."_HealerInsentive",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].HealerIncentive or false)
-
-		LabelSetText(rowName.."_MDps_Text",towstring(SCData.stats.dps))
-		LabelSetText(rowName.."_Tank_Text",towstring(SCData.stats.tanks))
-		LabelSetText(rowName.."_Healer_Text",towstring(SCData.stats.healers))
-		
-		WindowSetShowing(rowName.."Weekend",EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].WeekendWarfront or false)
-	end
+	-- Hide the Prev/Next Buttons when we only have one scenario
+	local showButtons = GameData.ScenarioQueueData[2].id ~= 0
 	
-	
-	WindowSetFontAlpha(rowName.."Name",1)
-	WindowSetAlpha(rowName,1)
-	WindowSetTintColor(rowName, 255,255,255)
-	WindowSetTintColor(rowName.."Background", 0,0,0)
-	LabelSetTextColor( rowName.."Name", 255,255,255 )
---set icon
-	EA_Window_ScenarioLobby.ListData[RowNumber].iconNum = EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].iconId
+    WindowSetShowing("EA_Window_ScenarioLobbyPreviousScenarioButton", showButtons )
+	WindowSetShowing("EA_Window_ScenarioLobbyNextScenarioButton", showButtons )	
 
---check if Weekend warfront
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].WeekendWarfront == true then
-		LabelSetText( rowName.."WF",L"<icon49>Weekend Warfront")
-	else
-		LabelSetText( rowName.."WF",L"")	
-	end
-
---check if scenario is disabled
-	if EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].Enabled == false then
-		WindowSetAlpha(rowName,0.65)
-		WindowSetTintColor(rowName, 200,100,100)
-		WindowSetTintColor(rowName.."Background", 0,0,0)
-		WindowSetFontAlpha(rowName.."Name",0.55)
-		LabelSetTextColor( rowName.."Name", 255,155,155 )
-	end
-
---check if selected
-	if EA_Window_ScenarioLobby.selectedQueue == RowNumber then
-		ButtonSetPressedFlag(rowName,true)		
-		LabelSetTextColor( rowName.."Name", 255,204,102 )
-		WindowSetTintColor(rowName.."Background", 25,25,0)
-	end
-
---check if scenario has Preferences
-	DynamicImageSetTextureSlice(rowName.."Preferences",Preferences_Icon[tostring(EA_Window_ScenarioLobby.SC_queue_Data[EA_Window_ScenarioLobby.ListData[RowNumber].id].blacklistCount > 0)])	
-
-		
---check if queuing for the scenario and display the loading icon	
-	if QueueData ~= nil then
-	for k,v in ipairs(QueueData) do
-		if v.id == EA_Window_ScenarioLobby.ListData[RowNumber].id then
-			WindowSetShowing(rowName.."Loading",true)
-			WindowSetShowing(rowName.."IconActive",true)
-		end
-		
-	end
-	end
-	
-end
-
---sets all other stuff thats not bound to a listing (buttons and whatnot)
-local SelectedScenario = EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id]
-WindowSetShowing("EA_Window_ScenarioLobbyJoinMode2Button",(SelectedScenario.AllowGroupQueue) and SelectedScenario.Enabled)
-
-
-	if SelectedScenario.Enabled then
-		LabelSetTextColor( "EA_Window_ScenarioLobbyQT", 255,204,102 )
-		--WindowSetShowing("EA_Window_ScenarioLobbyQT", EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id].aQT ~= 0)
-		
-		if(SelectedScenario.aQT ~= 0) then
-			LabelSetText("EA_Window_ScenarioLobbyQT",L"Average Queue Time: "..towstring(TimeUtils.FormatClock(SelectedScenario.aQT)))
-		else
-			LabelSetText("EA_Window_ScenarioLobbyQT",L"")
-		end
-
-	else
-		LabelSetTextColor( "EA_Window_ScenarioLobbyQT", 255,55,55 )
-		LabelSetText("EA_Window_ScenarioLobbyQT",L"You are ineligable to join this scenario.")
-	end
-
---EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id, (EA_Window_ScenarioLobby.joinMode == EA_Window_ScenarioLobby.JOIN_MODE_GROUP) )
---ButtonSetDisabledFlag("EA_Window_ScenarioLobbyPreferencesButton",#EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id].blacklist == 0 or (not EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id)))
-WindowSetShowing("EA_Window_ScenarioLobbyLeave",EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id, (EA_Window_ScenarioLobby.joinMode == EA_Window_ScenarioLobby.JOIN_MODE_GROUP)))
-WindowSetShowing("EA_Window_ScenarioLobbyJoinMode1",(not EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id, (EA_Window_ScenarioLobby.joinMode == EA_Window_ScenarioLobby.JOIN_MODE_GROUP))) and SelectedScenario.Enabled)
-
-	if (SelectedScenario.blacklistCount == 0) or
-	(#SelectedScenario.blacklist == 0) or
-	(EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id)) then
-		ButtonSetDisabledFlag("EA_Window_ScenarioLobbyPreferencesButton",true)
-	else
-		ButtonSetDisabledFlag("EA_Window_ScenarioLobbyPreferencesButton",false)
-	end
-	
-	if EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id) then
-		WindowSetShowing("EA_Window_BlacklistWindow",false)
-	end
-
-end
-
-function EA_Window_ScenarioLobby.UpdateStuffs()
-
-local startindex = 1
-local endindex = 0
-	for k,v in pairs(EA_Window_ScenarioLobby.ListData) do
-		if v.id ~= 0 then
-			endindex = endindex+1
-		end
-	end
-
-
-local displayOrder = {}
-for i=startindex,endindex do
-table.insert(displayOrder, i)
-end
-ListBoxSetDisplayOrder("EA_Window_ScenarioLobbyScenarioList", displayOrder )
-end
-
-function EA_Window_ScenarioLobby.SelectScenario()
-local Scenarionumber = ListBoxGetDataIndex("EA_Window_ScenarioLobbyScenarioList" ,WindowGetId(SystemData.MouseOverWindow.name))
-local _listData = EA_Window_ScenarioLobby.ListData[Scenarionumber]
-EA_Window_ScenarioLobby.ShowScenario( Scenarionumber )
-EA_Window_ScenarioLobby.PopulateBlackList()  
-EA_Window_ScenarioLobby.UpdateListData()
-end
-
-function EA_Window_ScenarioLobby.List_Join()
-local Scenarionumber = ListBoxGetDataIndex("EA_Window_ScenarioLobbyScenarioList" ,WindowGetId(SystemData.MouseOverWindow.name))
-local _listData = EA_Window_ScenarioLobby.ListData[Scenarionumber]
-EA_Window_ScenarioLobby.ShowScenario( Scenarionumber )
-	GameData.ScenarioQueueData.selectedId = _listData.id   
-    local joinSingleEvent = EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.joinMode ].joinSingleEvent    
-    BroadcastEvent( joinSingleEvent )   
-	EA_Window_ScenarioLobby.UpdateListData()
-end
-
-function EA_Window_ScenarioLobby.toggleButton()
-local Scenarionumber = ListBoxGetDataIndex("EA_Window_BlacklistWindowList" ,WindowGetId(SystemData.MouseOverWindow.name))
-local SelectedSCQ = GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id
-local _listData = EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ]
-local allowedblacklists = _listData.blacklistCount
-local blacklistnumber = 0
-
-for k,v in pairs(_listData.blacklist) do 
-	if v.blocked == true then
-		blacklistnumber = blacklistnumber +1
-	end
-end
-
-if EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked == false and blacklistnumber >= allowedblacklists then
-	d(L"Maximum Blacklists met")
-	return
-end
-
-EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked = not EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked
-
-TextLogAddEntry("Chat", 0, L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] )
---SendChatText(L"]scenario blacklist "..towstring(SelectedSCQ)..L" "..towstring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].scenarioId)..L" "..Bool_Convert[tostring(EA_Window_ScenarioLobby.SC_queue_Data[SelectedSCQ].blacklist[Scenarionumber].blocked)] ,L"/s")
-
-EA_Window_ScenarioLobby.PopulateBlackList()
 end
 
 function EA_Window_ScenarioLobby.ShowScenario( index )
@@ -536,8 +168,8 @@ function EA_Window_ScenarioLobby.ShowScenario( index )
 	if( name == L"" ) then
 		name = L"Scenario #"..queueData.id 
 	end
-								
-	LabelSetText( "EA_Window_ScenarioLobbyScenarioName", name)
+	
+	LabelSetText( "EA_Window_ScenarioLobbyScenarioName", name )
 	LabelSetText( "EA_Window_ScenarioLobbyScenarioDesc", GetScenarioLobbyDesc( queueData.id ) )
 
     MapSetMapView( "EA_Window_ScenarioLobbyScenarioMap", GameDefs.MapLevel.ZONE_MAP, queueData.zone )
@@ -547,25 +179,48 @@ function EA_Window_ScenarioLobby.ShowScenario( index )
 end
 
 function EA_Window_ScenarioLobby.UpdateLobbyJoinButtons()
-   
-   local inLeadershipPosition = GameData.Player.isGroupLeader or GameData.Player.isWarbandAssistant   
-   
+    
    local scenarioId = GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id
    local withGroup  = (EA_Window_ScenarioLobby.joinMode == EA_Window_ScenarioLobby.JOIN_MODE_GROUP)
 
    local playerQueuedForThisScenario = EA_Window_ScenarioLobby.IsPlayerInQueue( scenarioId, withGroup )
    local playerQueuedForAllScenarios = EA_Window_ScenarioLobby.IsPlayerInAllQueues( withGroup )
    
-   --ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinButton", playerQueuedForThisScenario )
-   --ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinAllButton", playerQueuedForAllScenarios )
-   
-   
-   ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinMode1Button", playerQueuedForThisScenario )
-   ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinMode2Button", (playerQueuedForThisScenario) or (not inLeadershipPosition) )
-	--ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinMode2Button",not inLeadershipPosition )
+   ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinButton", playerQueuedForThisScenario )
+   ButtonSetDisabledFlag("EA_Window_ScenarioLobbyJoinAllButton", playerQueuedForAllScenarios )
 
-EA_Window_ScenarioLobby.UpdateListData()
 end
+
+function EA_Window_ScenarioLobby.OnPreviousScenario()
+    
+    local scenarioIndex = EA_Window_ScenarioLobby.selectedQueue - 1
+    
+    -- Roll Over
+    if( scenarioIndex < 1 ) then
+        for index = EA_Window_ScenarioLobby.MAX_SCENARIOS, 1, -1 do
+            if( GameData.ScenarioQueueData[index].id ~= 0 ) then                
+                scenarioIndex = index
+                break
+            end
+        end    
+    end 
+    
+    EA_Window_ScenarioLobby.ShowScenario( scenarioIndex )
+end
+
+function EA_Window_ScenarioLobby.OnNextScenario()
+    
+    local scenarioIndex = EA_Window_ScenarioLobby.selectedQueue + 1
+    
+    -- Roll Over
+    if( scenarioIndex > EA_Window_ScenarioLobby.MAX_SCENARIOS 
+        or GameData.ScenarioQueueData[scenarioIndex].id == 0 ) then
+           scenarioIndex = 1   
+    end
+    
+     EA_Window_ScenarioLobby.ShowScenario( scenarioIndex )
+end
+
 
 
 function EA_Window_ScenarioLobby.OnMouseOverMapPoint()
@@ -576,7 +231,7 @@ function EA_Window_ScenarioLobby.SelectJoinMode( mode )
     EA_Window_ScenarioLobby.joinMode = mode    
     for mode = 1, EA_Window_ScenarioLobby.NUM_JOIN_MODES do
         local pressed = mode == EA_Window_ScenarioLobby.joinMode
-        --ButtonSetPressedFlag("EA_Window_ScenarioLobbyJoinMode"..mode.."Button", pressed )
+        ButtonSetPressedFlag("EA_Window_ScenarioLobbyJoinMode"..mode.."Button", pressed )
     end
 end
 
@@ -598,32 +253,6 @@ function EA_Window_ScenarioLobby.OnQueueAsPartyMouseOver()
     Tooltips.AnchorTooltip( Tooltips.ANCHOR_WINDOW_RIGHT )
 end
 
-
-function EA_Window_ScenarioLobby.InsentiveTooltip()
-	local HasIncentive = (WindowGetShowing(SystemData.MouseOverWindow.name.."Insentive") == true)
-
-	if HasIncentive then
-		local ArchType = string.match(SystemData.MouseOverWindow.name,"Row%d_(.+)")
-		Tooltips.CreateTextOnlyTooltip( SystemData.ActiveWindow.name )
-		Tooltips.SetTooltipText( 1, 1, Insentive_Labels[ArchType] )
-		Tooltips.Finalize()
-		Tooltips.AnchorTooltip( Tooltips.ANCHOR_WINDOW_RIGHT )
-	end
-end
-
-function EA_Window_ScenarioLobby.BlacklistTooltip()
-    local rowName   = SystemData.MouseOverWindow.name
-	local Scenarionumber = ListBoxGetDataIndex("EA_Window_BlacklistWindowList" ,WindowGetId(SystemData.MouseOverWindow.name))
-
-	local ScenarioID = EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id].blacklist[Scenarionumber].scenarioId
-
-	Tooltips.CreateTextOnlyTooltip( SystemData.MouseOverWindow.name )
-    Tooltips.SetTooltipText( 1, 1, GetScenarioLobbyDesc( ScenarioID ))
-    Tooltips.Finalize()
-    Tooltips.AnchorTooltip( Tooltips.ANCHOR_WINDOW_RIGHT )
-end
-
-
 function EA_Window_ScenarioLobby.OnGroupUpdated()
     local inLeadershipPosition = GameData.Player.isGroupLeader or GameData.Player.isWarbandAssistant
     -- Disable the join selections option when the player is not grouped or is not the group leader/assistant.
@@ -635,35 +264,14 @@ function EA_Window_ScenarioLobby.OnGroupUpdated()
         EA_Window_ScenarioLobby.SelectJoinMode( EA_Window_ScenarioLobby.JOIN_MODE_SOLO ) 
         EA_Window_ScenarioLobby.UpdateLobbyJoinButtons()
     end
-	EA_Window_ScenarioLobby.PopulateListData()
-	EA_Window_ScenarioLobby.UpdateStuffs()	
-end
-
-	-- Pressing Preferences bnutton
-function EA_Window_ScenarioLobby.OnPreferences()
-    if (EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id].blacklistCount == 0) or
-	(#EA_Window_ScenarioLobby.SC_queue_Data[GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id].blacklist == 0) or
-	(EA_Window_ScenarioLobby.IsPlayerInQueue( GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id))
-	then
-		return
-	end
-	
-	WindowSetShowing("EA_Window_BlacklistWindow", not WindowGetShowing("EA_Window_BlacklistWindow"))
-	EA_Window_ScenarioLobby.PopulateBlackList()	
 end
 
 function EA_Window_ScenarioLobby.OnCancel()
     -- Just close the window
     WindowSetShowing("EA_Window_ScenarioLobby", false )
-	WindowSetShowing( "EA_Window_BlacklistWindow", false )
 end
 
-function EA_Window_ScenarioLobby.OnHidden()
-WindowUtils.OnHidden()
-WindowSetShowing( "EA_Window_BlacklistWindow", false )
-end
 
---Join as Solo
 function EA_Window_ScenarioLobby.OnJoinSingleQueue()
 
     if( ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
@@ -671,8 +279,6 @@ function EA_Window_ScenarioLobby.OnJoinSingleQueue()
         return
     end
 
-	EA_Window_ScenarioLobby.joinMode = 1
-
     -- Join the Queue for this scenario
 	local index = EA_Window_ScenarioLobby.selectedQueue
 	GameData.ScenarioQueueData.selectedId = GameData.ScenarioQueueData[index].id
@@ -680,64 +286,32 @@ function EA_Window_ScenarioLobby.OnJoinSingleQueue()
     local joinSingleEvent = EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.joinMode ].joinSingleEvent
     
     BroadcastEvent( joinSingleEvent )   
-    --WindowSetShowing("EA_Window_ScenarioLobby", false)
-	EA_Window_ScenarioLobby.UpdateListData()
+    WindowSetShowing("EA_Window_ScenarioLobby", false)
 end
-
---Join as Party
-function EA_Window_ScenarioLobby.OnJoinMultiQueue()
-
-    if( ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
-    then
-        return
-    end
-
-	EA_Window_ScenarioLobby.joinMode = 2
-
-    -- Join the Queue for this scenario
-	local index = EA_Window_ScenarioLobby.selectedQueue
-	GameData.ScenarioQueueData.selectedId = GameData.ScenarioQueueData[index].id
-    
-    local joinSingleEvent = EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.joinMode ].joinSingleEvent
-    
-    BroadcastEvent( joinSingleEvent )   
-    --WindowSetShowing("EA_Window_ScenarioLobby", false)
-	EA_Window_ScenarioLobby.UpdateListData()
-end
-
 
 function EA_Window_ScenarioLobby.OnJoinAllQueues()
 
     if( ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
     then
         return
-    end 
-	EA_Window_ScenarioLobby.AllData    = {}
-	
-	for _, availQueueData in ipairs( GameData.ScenarioQueueData )
-    do  
-        if( availQueueData.id ~= 0)
-        then
-			table.insert(EA_Window_ScenarioLobby.AllData,availQueueData.id)
-        end  
     end
-end
-
-function EA_Window_ScenarioLobby.OnLeaveQueue()
-	GameData.ScenarioQueueData.selectedId = GameData.ScenarioQueueData[EA_Window_ScenarioLobby.selectedQueue].id
-	BroadcastEvent( SystemData.Events.INTERACT_LEAVE_SCENARIO_QUEUE ) 	
+    
+    local joinAllEvent = EA_Window_ScenarioLobby.joinModes[ EA_Window_ScenarioLobby.joinMode ].joinAllEvent
+    
+    BroadcastEvent( joinAllEvent )   
+    WindowSetShowing("EA_Window_ScenarioLobby", false)
 end
 
 function EA_Window_ScenarioLobby.OnLeaveActiveQueue()
 	GameData.ScenarioQueueData.selectedId = GameData.ScenarioData.activeQueue
-    BroadcastEvent( SystemData.Events.INTERACT_LEAVE_SCENARIO_QUEUE ) 	
+    BroadcastEvent( SystemData.Events.INTERACT_LEAVE_SCENARIO_QUEUE )    
 end
 
 function EA_Window_ScenarioLobby.OnLeaveActiveQueueFromLobby()
     -- A cancel request initiated from the lobby window
 	EA_Window_ScenarioLobby.OnLeaveActiveQueue()    
     WindowSetShowing("EA_Window_ScenarioJoinPrompt", false)
-    WindowSetShowing("EA_Window_ScenarioStarting", false)		
+    WindowSetShowing("EA_Window_ScenarioStarting", false)	
 end
 
 -- In-Queue Window
@@ -752,7 +326,6 @@ function EA_Window_ScenarioLobby.OnPlayerActiveQueuesUpdated()
          EA_Window_ScenarioLobby.UpdateLobbyJoinButtons()
     end
 	
-	WindowSetShowing("EA_Window_ScenarioJoinPrompt", false)
 end
 
 function EA_Window_ScenarioLobby.UpdateWaitTime( timePassed )
@@ -772,8 +345,7 @@ end
 
 -- Join Window
 function EA_Window_ScenarioLobby.ShowJoinPrompt()
-EA_Window_ScenarioLobby.Hide()
-d(L"Join prompt")
+
 	local name = GetScenarioName( GameData.ScenarioData.startingScenario )
 	if( name == L"" ) then
 		name = L"Scenario #"..GameData.ScenarioData.startingScenario
@@ -803,7 +375,7 @@ function EA_Window_ScenarioLobby.UpdateLaunchingJoinButtons()
 
 	-- Disable the 'Join Now' Button if the player is in combat & Show the description text.
 	local flagValue = false
-	if( GameData.Player.inCombat == true)
+	if( GameData.Player.inCombat == true or GameData.Player.isBeingThrown == true )
 	then
 	    flagValue = true
 	end
@@ -1106,12 +678,11 @@ end
 
 
 function EA_Window_ScenarioLobby.IsPlayerInAllQueues( withGroup )
-if Is_StateMachine_Running == true then return true end
       
     for _, availQueueData in ipairs( GameData.ScenarioQueueData )
     do
         -- The Available Queue List contains 0 entries at the end        
-        if( availQueueData.id ~= 0 and availQueueData.id ~= 3000 and availQueueData.id ~= 3001)
+        if( availQueueData.id ~= 0 )
         then
              if( not EA_Window_ScenarioLobby.IsPlayerInQueue( availQueueData.id, withGroup ) )
              then
@@ -1119,6 +690,7 @@ if Is_StateMachine_Running == true then return true end
              end
         end
     
-    end  
+    end
+    
     return true
 end

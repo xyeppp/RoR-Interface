@@ -353,20 +353,17 @@ end
 local function FadeInComponent (frame)
     assert (frame)    
     frame:Show (true, Frame.FORCE_OVERRIDE)
-	frame:SetAlpha(1.0)	
-  --  frame:StartAlphaAnimation (Window.AnimationType.SINGLE_NO_RESET, 0, PetWindow.BACKGROUND_ALPHA, PetWindow.FADE_IN_TIME, 0, 0)
+    frame:StartAlphaAnimation (Window.AnimationType.SINGLE_NO_RESET, 0, PetWindow.BACKGROUND_ALPHA, PetWindow.FADE_IN_TIME, 0, 0)
 end
 
 local function FadeOutComponent (frame)
     assert (frame)
-    --frame:StartAlphaAnimation (Window.AnimationType.SINGLE_NO_RESET, PetWindow.BACKGROUND_ALPHA, 0, PetWindow.FADE_IN_TIME, 0, 0)
-	frame:SetAlpha(0.0)
+    frame:StartAlphaAnimation (Window.AnimationType.SINGLE_NO_RESET, PetWindow.BACKGROUND_ALPHA, 0, PetWindow.FADE_IN_TIME, 0, 0)
 end
 
 local function StopComponentFade (frame)
     assert (frame)
     frame:StopAlphaAnimation ()
-	frame:SetAlpha(1.0)	
     frame:Show (true)
 end
 
@@ -392,7 +389,7 @@ function PetWindow:UpdatePet()
         FadeInComponent (self)
         FadeInComponent (self.m_UnitFrame)
         FadeInComponent (self.m_Actionbar)
-    elseif ((showing == true) and (hasPet == false) and (self.m_FadeTimeRemaining == 0))
+    elseif ((showing == true) and (hasPet == false))
     then
         FadeOutComponent (self)
         FadeOutComponent (self.m_UnitFrame)

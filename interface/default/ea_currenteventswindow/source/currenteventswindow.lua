@@ -126,21 +126,15 @@ function EA_Window_CurrentEvents.OnLoadingBegin()
     m_isUpdateOnLogin = SystemData.LoadingData.initialLoad 
 end
 
--- function EA_Window_CurrentEvents.OnLoadingEnd()
-
-    -- -- If the window is showing, force an update on the data
-    -- -- as the player is now fully connected to the world.    
-    -- if( m_isUpdateOnLogin )
-    -- then
-       -- CurrentEventsUpdate()
-    -- end
-
--- end
-
--- Test Below
-
 function EA_Window_CurrentEvents.OnLoadingEnd()
-    CurrentEventsUpdate()
+
+    -- If the window is showing, force an update on the data
+    -- as the player is now fully connected to the world.    
+    if( m_isUpdateOnLogin )
+    then
+       CurrentEventsUpdate()
+    end
+
 end
 
 function EA_Window_CurrentEvents.HandleShowOnInitialUpdate( hasEvents )

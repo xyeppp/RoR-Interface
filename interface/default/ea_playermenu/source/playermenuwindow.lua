@@ -122,9 +122,6 @@ function PlayerMenuWindow.AddInteractionMenuItems( targetSelf )
     -- Assist the Player
     EA_Window_ContextMenu.AddMenuItem( GetString( StringTables.Default.LABEL_ASSIST ), PlayerMenuWindow.OnAssist, disableAllButTarget, true, EA_Window_ContextMenu.CONTEXT_MENU_1, nil )
 
-	-- Duel the Player
-	EA_Window_ContextMenu.AddMenuItem( GetString( StringTables.Default.LABEL_PLAYER_MENU_INITIATE_DUEL ), PlayerMenuWindow.OnDuel, GameData.Player.inCombat, true, EA_Window_ContextMenu.CONTEXT_MENU_1, nil )
-
     -- Trade the the Player
     local isTrial, isBuddied = GetAccountData()
     if( isTrial == false )
@@ -271,11 +268,6 @@ function PlayerMenuWindow.OnAssist()
     SendChatText( L"/assist "..SystemData.UserInput.selectedGroupMember, L"" )
 end
 
-function PlayerMenuWindow.OnDuel() 
-	SendChatText( L"/duel "..PlayerMenuWindow.curPlayer.name, L"" )
-	PlayerMenuWindow.Done()
-end
-
 function PlayerMenuWindow.OnFollow()    
     if( ButtonGetDisabledFlag(SystemData.ActiveWindow.Name ) == true ) then
         return
@@ -368,80 +360,14 @@ function PlayerMenuWindow.OnReportSpam(wndGroupId, cursorX, cursorY)
         return
     end
     
-	if ReportText == nil then return end
     -- Do bunch of window/tab checks.  We want to make sure we're grabbing text from the
     -- correct chat window.
     local wndGroup = EA_ChatWindowGroups[wndGroupId]
     local activeTabId = wndGroup.activeTab
     local activeTabName = EA_ChatTabManager.GetTabName( wndGroup.Tabs[activeTabId].tabManagerId )
     
-    local offendingMessage = towstring(LogDisplayGetStringFromCursorPos(activeTabName.."TextLog", cursorX, cursorY))
-	local FormatedMessage = wstring.gsub(towstring(wstring.gsub(towstring(offendingMessage),L"<br>", L"")),L"\n", L"")
-
-	local SearchInt = 0
-	local SearchID = 0
-	for i=1,TextLogGetNumEntries("Chat")-1 do
-
-		local _, filterId, text = TextLogGetEntry( "Chat", i )
-		text = text:match( L"%[.+%]+%[.+%]:(.+)")
-		--if text == nil then continue end
-
-		if string.find(tostring(ReportText),tostring(text)) then
-		
-		SearchInt = i
-		SearchID = filterId
-
-	
-		end
-	end
-
-FinalTable = {}
-FinalText = L""
-ReportTable = {}
-local counter = 1
-	for a = 1, SearchInt do
-		local timer, filterId, text = TextLogGetEntry( "Chat", a )
-		if filterId == SearchID and (SearchID ~= 0)then 
-		ReportTable[counter] = timer..text
-		counter = counter+1
-		end
-	end
-
-
-	for q = 0,3 do
-	if ReportTable ~= nil then
-	FinalTable[4-q] = ReportTable[#ReportTable-q]
-	else
-	FinalTable[1] = ReportText
-	end
-	end
-	
-	if #ReportTable == 0 then FinalTable[1] = ReportText end
-	
-	
-	for q = 1,4 do
-	if FinalTable[q] ~= nil then 
-	FinalText = FinalText..towstring(L"\n"..towstring(FinalTable[q]))
-	end
-	end	
-	
-counter = 1
-ReportTable2 = {}
-	for b = SearchInt+1, TextLogGetNumEntries("Chat")-1 do
-		local timer, filterId, text = TextLogGetEntry( "Chat", b )
-		if filterId == SearchID and (counter <= 3) and (SearchID ~= 0) then 
-		ReportTable2[counter] = timer..text
-		counter = counter+1
-		end
-	end
-
-	for q = 1,3 do
-	if ReportTable2[q] ~= nil then 
-	FinalText = FinalText..towstring(L"\n"..towstring(ReportTable2[q]))
-	end
-	end	
-
-    HelpUtils.AutoReportGoldSeller(PlayerMenuWindow.curPlayer.name, FinalText)
+    local offendingMessage = LogDisplayGetStringFromCursorPos(activeTabName.."TextLog", cursorX, cursorY)
+    HelpUtils.AutoReportGoldSeller(PlayerMenuWindow.curPlayer.name, offendingMessage)
     AddTemporaryIgnore(PlayerMenuWindow.curPlayer.name)
     PlayerMenuWindow.Done()
 end

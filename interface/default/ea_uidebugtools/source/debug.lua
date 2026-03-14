@@ -263,7 +263,7 @@ end
 if (GetLoadLuaDebugLibrary ())
 then
     luaAssert = assert
-    if condition == nil then condition = false end
+    
     function assert (condition)
         if (not condition)
         then

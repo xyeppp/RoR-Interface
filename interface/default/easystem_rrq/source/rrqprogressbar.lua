@@ -18,20 +18,16 @@ RRQProgressBar.RealmResourceQuestData = {}
 -- helps ensure they do their updates AFTER the system mod has updated with the new data
 RRQProgressBar.UpdateListeners = {}
 
-RRQProgressBarTracker = { }
-
 ----------------------------------------------------------------
 -- Local Variables
 ----------------------------------------------------------------
+
+local RRQProgressBarTracker = { }
 
 local BAR_NEUTRAL_TINT        = { r=255, g=255, b=255 }
 local BAR_ORDER_TINT          = { r=0, g=0, b=255 }
 local BAR_DESTRUCTION_TINT    = { r=255, g=0, b=0 }
 local BAR_BACKGROUND_TINT     = { r=20, g=20, b=20 }
-
-local ipairs = ipairs
-local pairs = pairs
-local math_floor = math.floor
 
 -- when creating the tooltip, I use this table to select the right tooltips based on the bar instance's display type
 local TooltipLookupTable = { }
@@ -175,7 +171,7 @@ end
 -- Called after initial creation and every five minutes or so as the server updates 
 -- the client on the progress of the realm resource quest. 
 -- This will show/hide progress bars of the realms based on if we have data, and reanchor appropriately
-function UpdateStatusBars (self)
+local function UpdateStatusBars (self)
     
     local function AnchorBar(barWindowName, prevWindowName)
         if prevWindowName ~= nil
@@ -303,12 +299,7 @@ function RRQProgressBar.Create( windowName, parentName, displayType )
         windowTemplateName = "RRQBarsTombKingsTemplate"
         updateFunc = UpdateTKBars
         setupFunc  = SetupTKBars
-    elseif displayType ~= nil and displayType == 4 then
-        -- Create the RoR's DisplayType from templates
-        windowTemplateName = "ROR_RRQBarsTemplate"
-        updateFunc = UpdateRRQBars
-        setupFunc = SetupRRQBars
-	end
+    end
     
     CreateWindowFromTemplate(windowName, windowTemplateName, parentName);
         
@@ -545,104 +536,72 @@ end
 
 function RRQProgressBar.DefaultOnMouseoverCallback()
 
-    local barId = WindowGetId(SystemData.ActiveWindow.name)
-    if not barId then
-        return
-    end
-
-    local rrqID  = RRQProgressBar.GetRRQuestIDfromWindowID(barId)
-    local rrqData = rrqID and RRQProgressBar.RealmResourceQuestData[rrqID]
-    if not rrqData then
-        return
-    end
-
-    local tooltipSet = TooltipLookupTable[rrqData.displayType]
-    if not tooltipSet then
-        tooltipSet = TooltipLookupTable[GameData.RRQDisplayType.ERRQDISPLAY_DEFAULT]
-    end
-
-    Tooltips.CreateTextOnlyTooltip(SystemData.ActiveWindow.name)
-    Tooltips.SetTooltipText(1, 1, GetStringFromTable("WorldControl", tooltipSet.header))
-    Tooltips.SetTooltipColorDef(1, 1, Tooltips.COLOR_HEADING)
-
-    Tooltips.SetTooltipText(2, 1, GetStringFromTable("WorldControl", tooltipSet.desc))
-
-    local iRow = 3
-
-    -- Current counter numbers per realm
-    for iRealm = GameData.Realm.ORDER, GameData.Realm.DESTRUCTION do
-        local progress = rrqData.realmProgress[iRealm]
-        if progress then
-            local params   = { GetRealmName(iRealm), towstring(progress.curVal) }
-            local stringID = StringTables.WorldControl.TOOLTIP_RRQSTATUS_PROGRESS
-
-            if progress.maxVal == 100 then
-                stringID = StringTables.WorldControl.TOOLTIP_RRQSTATUS_PROGRESS_PERCENT
-            end
-
-            Tooltips.SetTooltipText(
-                iRow,
-                1,
-                GetStringFormatFromTable("WorldControl", stringID, params)
-            )
-            Tooltips.SetTooltipColorDef(iRow, 1, Tooltips.COLOR_HEADING)
-            iRow = iRow + 1
-        end
-    end
-
-    -- Access messages
-    if rrqData.displayType == GameData.RRQDisplayType.ERRQDISPLAY_TOMB_KINGS then
-        -- TK: only show if expedition is active and realmWithAccess is valid
-        if rrqData.minutesUntilUnpause == 0 and
-           (rrqData.realmWithAccess == GameData.Realm.ORDER or rrqData.realmWithAccess == GameData.Realm.DESTRUCTION)
+    
+    --Current Points
+    local barId = WindowGetId( SystemData.ActiveWindow.name )
+    local rrqID = RRQProgressBar.GetRRQuestIDfromWindowID(barId)
+    if ( rrqID ~= nil and RRQProgressBar.RealmResourceQuestData[rrqID] ~= nil )
+    then
+        local rrqData = RRQProgressBar.RealmResourceQuestData[rrqID]
+        
+        local tooltipSet = TooltipLookupTable[rrqData.displayType]
+        if tooltipSet == nil 
         then
-            local realm  = rrqData.realmWithAccess
-            local params = { GetRealmName(realm), GetCityNameForRealm(realm) }
-
-            Tooltips.SetTooltipText(
-                iRow,
-                1,
-                GetStringFormatFromTable("WorldControl", tooltipSet.access, params)
-            )
-            Tooltips.SetTooltipColorDef(iRow, 1, Tooltips.COLOR_HEADING)
+            tooltipSet = TooltipLookupTable[GameData.RRQDisplayType.ERRQDISPLAY_DEFAULT]
+        end
+        
+        Tooltips.CreateTextOnlyTooltip( SystemData.ActiveWindow.name )
+        Tooltips.SetTooltipText( 1, 1, GetStringFromTable("WorldControl", tooltipSet.header) )
+        Tooltips.SetTooltipColorDef( 1, 1, Tooltips.COLOR_HEADING )
+        
+        Tooltips.SetTooltipText( 2, 1, GetStringFromTable("WorldControl", tooltipSet.desc) )
+        
+        local iRow = 3
+        
+        -- Current counter numbers per-realm. May only show a percentage
+        -- tooltip won't show Neutral realm right now, maybe later if we ever do use it
+        for iRealm=GameData.Realm.ORDER, GameData.Realm.DESTRUCTION --[1, 2]
+        do
+            if rrqData.realmProgress[iRealm] ~= nil 
+            then
+                local params = { GetRealmName( iRealm ), towstring(rrqData.realmProgress[iRealm].curVal) }
+                local stringID = StringTables.WorldControl.TOOLTIP_RRQSTATUS_PROGRESS
+                if (rrqData.realmProgress[iRealm].maxVal == 100)
+                then
+                    stringID = StringTables.WorldControl.TOOLTIP_RRQSTATUS_PROGRESS_PERCENT
+                end
+                
+                Tooltips.SetTooltipText( iRow, 1, GetStringFormatFromTable( "WorldControl", 
+                                                    stringID,
+                                                    params ) )
+                Tooltips.SetTooltipColorDef( iRow, 1, Tooltips.COLOR_HEADING )
+                iRow = iRow + 1
+            end
+        end -- end for each realm
+        
+        -- if a realm has exclusive access, mention that
+        if rrqData.realmWithAccess == GameData.Realm.ORDER or rrqData.realmWithAccess == GameData.Realm.DESTRUCTION
+        then
+            local params = { GetRealmName( rrqData.realmWithAccess ), GetCityNameForRealm( rrqData.realmWithAccess ) }
+            Tooltips.SetTooltipText( iRow, 1, GetStringFormatFromTable( "WorldControl", 
+                                                                        tooltipSet.access,
+                                                                        params ) )
+            Tooltips.SetTooltipColorDef( iRow, 1, Tooltips.COLOR_HEADING )
             iRow = iRow + 1
         end
-    else
-        -- Non TK: if a realm has exclusive access, mention it
-        if rrqData.realmWithAccess == GameData.Realm.ORDER or rrqData.realmWithAccess == GameData.Realm.DESTRUCTION then
-            local realm  = rrqData.realmWithAccess
-            local params = { GetRealmName(realm), GetCityNameForRealm(realm) }
-
-            Tooltips.SetTooltipText(
-                iRow,
-                1,
-                GetStringFormatFromTable("WorldControl", tooltipSet.access, params)
-            )
-            Tooltips.SetTooltipColorDef(iRow, 1, Tooltips.COLOR_HEADING)
+        -- if the rrq is currently paused ("locked"), mention that too
+        if rrqData.paused
+        then
+            local params = { towstring(rrqData.minutesUntilUnpause) }
+            Tooltips.SetTooltipText( iRow, 1, GetStringFormatFromTable( "WorldControl", tooltipSet.paused, params ) )
+            Tooltips.SetTooltipColorDef( iRow, 1, Tooltips.COLOR_HEADING )
             iRow = iRow + 1
         end
     end
-
-    -- Paused / locked message
-    if rrqData.paused then
-        local minutes = rrqData.minutesUntilUnpause or 0
-        local params = {
-            towstring(minutes),
-            towstring(math_floor(minutes / 1440)),
-            towstring(math_floor((minutes % 1440) / 60)),
-            towstring(math_floor(minutes % 60)),
-        }
-
-        Tooltips.SetTooltipText(
-            iRow,
-            1,
-            GetStringFormatFromTable("WorldControl", tooltipSet.paused, params)
-        )
-        Tooltips.SetTooltipColorDef(iRow, 1, Tooltips.COLOR_HEADING)
-        iRow = iRow + 1
-    end
-
+    
+    
     Tooltips.Finalize()
-    Tooltips.AnchorTooltip(Tooltips.ANCHOR_WINDOW_TOP)
+    
+    Tooltips.AnchorTooltip( Tooltips.ANCHOR_WINDOW_TOP )
 end
 

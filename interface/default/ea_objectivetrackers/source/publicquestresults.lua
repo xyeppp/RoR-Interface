@@ -149,7 +149,14 @@ function EA_Window_PublicQuestResults.Clear()
  end
 
 function EA_Window_PublicQuestResults.OnClicked()
-	PQLootWindow.ToggleVisibility()
+
+    -- if isResetting is set and true then we enterred a PQ area with 
+    --   no PQ Scoreboard data so we have to deactivate the onClick opening up the Scoreboard
+    if PQData.isResetting == nil or PQData.isResetting == false
+    then
+        PQLootWindow.ToggleVisibility()
+    end
+
 end
 
 function EA_Window_PublicQuestResults.Show()

@@ -24,7 +24,7 @@
         </services>
     </chapter>
     <landmark iname="Enclave of the Withered Hand" id="3" mapIcon="1062" x="14607" y="5050">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <warcamp iname="Dour Guard" id="4" mapIcon="1051" x="15686" y="33842">
         <race>Dwarf</race>
@@ -51,10 +51,10 @@
         <importance>major</importance>
     </landmark>
     <landmark iname="Dragon Skeleton" id="7" mapIcon="1025" x="22145" y="55346">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <landmark iname="Olin's Hideout" id="8" mapIcon="1062" x="32824" y="16455">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <chapter iname="Dunhilda's Lads" id="9" mapIcon="1003" x="33032" y="12354">
         <race>Dwarf</race>
@@ -71,10 +71,10 @@
     <landmark iname="Bloodspike Cave" id="10" mapIcon="1063" x="3910" y="18545">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Khazad Bolg Tunnel" id="11" mapIcon="1060" x="41123" y="795">
-        <importance>minor</importance>
+    <landmark iname="Khazad Bolg Tunnel" id="11" mapIcon="1062" x="40494" y="101">
+        <importance>major</importance>
     </landmark>
-    <landmark iname="Mount Gunbad" id="12" mapIcon="2002" x="4485" y="3170">
+    <landmark iname="Mount Gunbad" id="12" mapIcon="1061" x="4236" y="3910">
         <importance>major</importance>
         <specialType>1</specialType>
     </landmark>
@@ -85,7 +85,7 @@
         <importance>minor</importance>
     </landmark>
     <landmark iname="Geyser Den" id="15" mapIcon="1062" x="4655" y="51332">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <warcamp iname="Muggar's Choppaz" id="16" mapIcon="1050" x="47037" y="44963">
         <race>Greenskin</race>
@@ -118,23 +118,23 @@
         <importance>minor</importance>
     </landmark>
     <landmark iname="Warpclaw Hideout" id="21" mapIcon="1063" x="8752" y="51017">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <landmark iname="Brokebone Pass" id="22" mapIcon="1022" x="9470" y="28991">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Cave of Whispers" id="23" mapIcon="1062" x="30236" y="28761">
+    <landmark iname="Cave of Whispers" id="23" mapIcon="1063" x="30236" y="28761">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="24" mapIcon="1259" x="31572" y="51655" liveevent="7">
-        <importance>minor</importance>
-        <specialType>6</specialType>
-    </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="25" mapIcon="1259" x="38253" y="51252" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="24" mapIcon="1026" x="31572" y="51655" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="26" mapIcon="1259" x="22799" y="34651" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="25" mapIcon="1026" x="38253" y="51252" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="26" mapIcon="1026" x="22799" y="34651" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -150,16 +150,10 @@
     </landmark>
     <landmark iname="Damp Skaven Tunnel" id="30" mapIcon="1063" x="37415" y="53340">
     	<importance>major</importance>
-    </landmark>
-    <landmark iname="Bloodmaw Rock" id="31" mapIcon="1076" x="39846" y="39242">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Bloodgash Ravine" id="32" mapIcon="1021" x="50152" y="8551">
-    	<importance>major</importance>
-    </landmark>
+    </landmark>    
     <publicQuest iname="Savage Assault" id="68" iconSet="1" x="10148" y="35079">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="20" max="21" />
         <realm>Order</realm>
@@ -173,7 +167,7 @@
     </publicQuest>
     <publicQuest iname="Revoltin' Gobbos" id="63" iconSet="1" x="12346" y="5629">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="22" max="23" />
         <realm>Both</realm>
@@ -194,35 +188,28 @@
     </publicQuest>
     <publicQuest iname="Fireforge's Camp" id="65" iconSet="1" x="22904" y="11457">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="22" max="23" />
-        <realm>Order</realm>
-    </publicQuest>
-    <publicQuest iname="Fireforge's Camp" id="65" iconSet="1" x="20236" y="8260">
-        <difficulty>normal</difficulty>
-        <players min="3" max="6" />
-        <rewards>normal</rewards>
-        <ranks min="22" max="23" />
-        <realm>Destruction</realm>
+        <realm>Both</realm>
     </publicQuest>
     <publicQuest iname="Putrid Tar Pits" id="86" iconSet="1" x="30563" y="18001">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Tomb of Kali'Amon" id="88" iconSet="1" x="35152" y="30725">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Cauldron" id="66" iconSet="1" x="3735" y="26774">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="20" max="21" />
         <realm>Order</realm>
@@ -236,14 +223,14 @@
     </publicQuest>
     <publicQuest iname="Skullsmasher's Boyz" id="133" iconSet="1" x="44336" y="31133">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Bloody Savages" id="132" iconSet="1" x="53851" y="19616">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>

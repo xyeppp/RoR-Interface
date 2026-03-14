@@ -1,5 +1,5 @@
 <zone iname="Ellyrion">
-    <chapter iname="Goldmead" id="1" mapIcon="1255" x="14936" y="36276">
+    <chapter iname="Goldmead" id="1" mapIcon="1251" x="14936" y="36676">
         <race>DarkElf</race>
         <number>9</number>
         <ranks realm="destruction" min="18" max="19" />
@@ -14,16 +14,16 @@
     <landmark iname="Highvale Cavern" id="2" mapIcon="1060" x="25189" y="52231">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Savageclaw Cavern" id="3" mapIcon="1063" x="2640" y="33193">
+    <landmark iname="Savageclaw Cavern" id="3" mapIcon="1060" x="2640" y="33193">
         <importance>minor</importance>
     </landmark>
     <landmark iname="Fortress of Korhandir" id="4" mapIcon="1211" x="3704" y="40367">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Elyr Caverns" id="5" mapIcon="1061" x="38591" y="53530">
+    <landmark iname="Elyr Caverns" id="5" mapIcon="1060" x="38591" y="53530">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Elyr Caverns" id="6" mapIcon="1061" x="40317" y="59943">
+    <landmark iname="Elyr Caverns" id="6" mapIcon="1060" x="40317" y="59943">
         <importance>minor</importance>
     </landmark>
     <chapter iname="Reaverspring" id="7" mapIcon="1206" x="42714" y="41689">
@@ -62,39 +62,13 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Live Event: Shrine of Khaine" id="10" mapIcon="1259" x="31330" y="16886" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="10" mapIcon="1026" x="31330" y="16886" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="11" mapIcon="1259" x="32012" y="26966" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="11" mapIcon="1026" x="32012" y="26966" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
-    </landmark>
-	<landmark iname="Hunters Vale" id="12" mapIcon="2001" x="56725" y="53783">
-        <importance>major</importance>
-		<specialType>1</specialType>
-    </landmark>
-	<landmark iname="Hunters Vale" id="13" mapIcon="2001" x="26287" y="33321">
-        <importance>major</importance>
-		<specialType>1</specialType>
-    </landmark>
-	<landmark iname="Irongob's Camp" id="14" mapIcon="1020" x="61829" y="10558">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Conqueror's Watch" id="15" mapIcon="1252" x="6268" y="48230">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Tor Elyr" id="16" mapIcon="1207" x="4271" y="61758">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Avelorn Relief Command" id="17" mapIcon="1206" x="28628" y="61226">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Tower of Milurien" id="18" mapIcon="1214" x="53432" y="46895">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Shining Encampment" id="19" mapIcon="1206" x="14009" y="19170">
-        <importance>major</importance>
     </landmark>
     <publicQuest iname="Monument of Narialle" id="399" iconSet="1" x="16539" y="26624">
         <difficulty>easy</difficulty>
@@ -112,35 +86,35 @@
     </publicQuest>
     <publicQuest iname="Reservation of Honor" id="400" iconSet="1" x="19638" y="13049">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="16" max="17" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Town of Berhessa" id="398" iconSet="1" x="2648" y="16999">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="16" max="17" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Reaver's End" id="393" iconSet="1" x="3782" y="41298">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="18" max="19" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="The Well Springs" id="387" iconSet="1" x="38350" y="38223">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Gate of Elthrai" id="391" iconSet="1" x="42345" y="60299">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="18" max="19" />
         <realm>Order</realm>
@@ -154,14 +128,14 @@
     </publicQuest>
     <publicQuest iname="Ellyrion Stables" id="392" iconSet="1" x="54669" y="17247">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Allies of War" id="394" iconSet="1" x="57741" y="31595">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="16" max="17" />
         <realm>Order</realm>
@@ -175,7 +149,7 @@
     </publicQuest>
     <publicQuest iname="Tor Elyr" id="396" iconSet="1" x="6520" y="59525">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="18" max="19" />
         <realm>Destruction</realm>

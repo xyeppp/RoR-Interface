@@ -177,21 +177,8 @@
 										</Anchor>
 									</Anchors>
                                 </Window>
-								<Window name="TomeWindowTitlePageStatSoloMMR" inherits="TomeWindowTitlePageStatItem" >
-									<Anchors>
-										<Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatHoursPlayed">
-											<AbsPoint x="0" y="5"/>
-										</Anchor>
-									</Anchors>
-                                </Window>
 
-								<Window name="TomeWindowTitlePageStatPremadeMMR" inherits="TomeWindowTitlePageStatItem" >
-									<Anchors>
-										<Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatSoloMMR">
-											<AbsPoint x="0" y="5"/>
-										</Anchor>
-									</Anchors>
-                                </Window>
+
 
 							    <!-- NEW ENTRIES -->
                                 <Window name="$parentNewEntriesTitleAnchor">
@@ -199,7 +186,7 @@
                                         <AbsPoint x="500" />
                                     </Size>
                                     <Anchors>
-                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatPremadeMMR">
+                                        <Anchor point="bottom" relativePoint="top" relativeTo="TomeWindowTitlePageStatHoursPlayed">
                                             <AbsPoint x="0" y="0"/>
                                         </Anchor>
                                     </Anchors>

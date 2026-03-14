@@ -224,7 +224,6 @@ local function AutoRoll( rollData )
         or  CheckAndDoAutoRollWithRarity( item.type == GameData.ItemTypes.CURRENCY, autoRollSettings.currency )
         or  CheckAndDoAutoRollWithRarity( item.type == GameData.ItemTypes.POTION, autoRollSettings.potion )
         or  CheckAndDoAutoRollWithRarity( item.type == GameData.ItemTypes.ENHANCEMENT, autoRollSettings.talisman )
-        or  CheckAndDoAutoRollWithRarity( item.flags[GameData.Item.EITEMFLAG_EVENT], autoRollSettings.event )
     then
         return rolled
     end

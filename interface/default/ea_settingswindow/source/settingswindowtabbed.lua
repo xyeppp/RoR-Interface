@@ -11,8 +11,7 @@ SettingsWindowTabbed.TABS_SOUND		    = 3
 SettingsWindowTabbed.TABS_CHAT		    = 4
 SettingsWindowTabbed.TABS_TARGETTING	= 5
 SettingsWindowTabbed.TABS_INTERFACE	    = 6
-SettingsWindowTabbed.TABS_SERVER		= 7
-SettingsWindowTabbed.TABS_MAX_NUMBER	= 7
+SettingsWindowTabbed.TABS_MAX_NUMBER	= 6
 
 SettingsWindowTabbed.SelectedTab		= SettingsWindowTabbed.TABS_GENERAL
 
@@ -24,7 +23,6 @@ SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_SOUND ]		= { window = "SWTa
 SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_CHAT ]		= { window = "SWTabChat",	name="SettingsWindowTabbedTabButtonsChat",	label=StringTables.UserSettings.LABEL_SETTINGS_TAB_CHAT,	tooltip=StringTables.UserSettings.TOOLTIP_SETTINGS_TAB_CHAT, tabClass=SettingsWindowTabChat }
 SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_TARGETTING ]	= { window = "SWTabTargetting",	name="SettingsWindowTabbedTabButtonsTargetting",	label=StringTables.UserSettings.LABEL_SETTINGS_TAB_TARGETTING,	tooltip=StringTables.UserSettings.TOOLTIP_SETTINGS_TAB_TARGETTING, tabClass=SettingsWindowTabTargetting }
 SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_INTERFACE ]	= { window = "SWTabInterface",	name="SettingsWindowTabbedTabButtonsInterface",	label=StringTables.UserSettings.LABEL_SETTINGS_TAB_INTERFACE,	tooltip=StringTables.UserSettings.TOOLTIP_SETTINGS_TAB_INTERFACE, tabClass=SettingsWindowTabInterface }
-SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_SERVER ]		= { window = "SWTabServer",	name="SettingsWindowTabbedTabButtonsServer",	label=StringTables.UserSettings.LABEL_SETTINGS_TAB_SERVER,	tooltip=StringTables.UserSettings.TOOLTIP_SETTINGS_TAB_SERVER, tabClass=SettingsWindowTabServer }
 
 
 function SettingsWindowTabbed.OnShow()

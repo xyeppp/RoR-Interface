@@ -61,13 +61,13 @@
         </services>
     </chapter>
     <landmark iname="Spida Hole" id="8" mapIcon="1062" x="42915" y="47191">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <landmark iname="Ancient's Reach" id="9" mapIcon="1005" x="44202" y="20216">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Khazad Bolg Tunnel" id="10" mapIcon="1061" x="44430" y="63002">
-        <importance>minor</importance>
+    <landmark iname="Khazad Bolg Tunnel" id="10" mapIcon="1063" x="44430" y="63002">
+        <importance>major</importance>
     </landmark>
     <landmark iname="Black Fire Mine" id="11" mapIcon="1061" x="44470" y="3826">
         <importance>major</importance>
@@ -96,30 +96,30 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Black Rock Mine" id="14" mapIcon="1061" x="50562" y="49599">
+    <landmark iname="Black Rock Mine" id="14" mapIcon="1063" x="50562" y="49599">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Hindelburg Mine" id="15" mapIcon="1060" x="57116" y="61959">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="Warpclaw Cave" id="16" mapIcon="1062" x="57729" y="51901">
+    <landmark iname="Warpclaw Cave" id="15" mapIcon="1060" x="57116" y="61959">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Ebon Hollow" id="17" mapIcon="1062" x="59700" y="45679">
+    <landmark iname="Warpclaw Cave" id="16" mapIcon="1060" x="57729" y="51901">
+        <importance>minor</importance>
+    </landmark>
+    <landmark iname="Ebon Hollow" id="17" mapIcon="1060" x="59700" y="45679">
         <importance>major</importance>
     </landmark>
     <landmark iname="Orehound's Lament" id="18" mapIcon="1061" x="7108" y="23344">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1259" x="11457" y="23216" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="19" mapIcon="1026" x="11457" y="23216" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1259" x="23092" y="7555" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="20" mapIcon="1026" x="23092" y="7555" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1259" x="15332" y="6389" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="21" mapIcon="1026" x="15332" y="6389" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -138,28 +138,28 @@
     </landmark>
     <publicQuest iname="Sigmarite Temple" id="72" iconSet="1" x="14422" y="39668">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Statue of Inspiration" id="54" iconSet="1" x="17307" y="55907">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="20" max="21" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Altstadt" id="70" iconSet="1" x="25489" y="34533">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Grimbeard Station" id="73" iconSet="1" x="27613" y="45336">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="24" max="25" />
         <realm>Both</realm>
@@ -187,35 +187,35 @@
     </publicQuest>
     <publicQuest iname="Blight Favored Cult" id="83" iconSet="1" x="44397" y="32937">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="28" max="29" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Thardrik Smashin'" id="55" iconSet="1" x="4504" y="58307">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="20" max="21" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Kolaz Umgal" id="75" iconSet="1" x="52203" y="36024">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="24" max="25" />
         <realm>Destruction</realm>
     </publicQuest>
-    <publicQuest iname="Blighted Herd" id="84" iconSet="1" x="54566" y="23087">
+    <publicQuest iname="Blighted Herd" id="84" iconSet="1" x="55135" y="22469">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
-        <ranks min="28" max="29" />
+        <ranks min="24" max="25" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Hindelburg" id="79" iconSet="1" x="57590" y="58272">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="24" max="25" />
         <realm>Order</realm>
@@ -227,27 +227,6 @@
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
-    <landmark iname="Gassy Mines" id="26" mapIcon="1060" x="24190" y="56615">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Blackfire Rangers" id="27" mapIcon="1068" x="59445" y="15748">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Kolaz Umgal Mine" id="28" mapIcon="1061" x="50653" y="39827">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Snow Peak Temple" id="29" mapIcon="1034" x="15602" y="36493">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Blighted Herdstone" id="30" mapIcon="1026" x="56007" y="21381">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Iceridge Forest" id="31" mapIcon="1064" x="52933" y="9375">
-    	<importance>minor</importance>
-    </landmark>
-    <landmark iname="Olfnir's Stand" id="32" mapIcon="1002" x="10328" y="24569">
-    	<importance>minor</importance>
-    </landmark>
     <battlefieldObjective iname="Furrig's Fall: Defensive Boon" id="76" iconSet="1" x="15972" y="5461">
     </battlefieldObjective>
     <battlefieldObjective iname="Bugman's Brewery: Merchant's Gift" id="100" iconSet="1" x="25109" y="18956">

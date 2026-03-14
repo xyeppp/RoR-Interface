@@ -170,7 +170,7 @@
                                 </Anchor>
                             </Anchors>
                         </Label>
-                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
                     </Windows>
                 </Window>
                 
@@ -185,8 +185,8 @@
                 <!-- Tier 4 -->        
                 <Window name="$parentTier4" inherits="EA_Window_TierNameTemplate" id="4">
                     <Anchors>
-                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone62" >
-                            <AbsPoint x="0" y="-8" />
+                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone10">
+                            <AbsPoint x="-20" y="-10" />
                         </Anchor>
                     </Anchors>
                     <EventHandlers>
@@ -230,28 +230,14 @@
                 </Window>
                 
                 <!-- Cities -->
-				<Window name="$parentZone62" inherits="WorldMapCityButtonUp" id="62">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="833" y="100" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone61" inherits="WorldMapCityButtonDown" id="61">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="833" y="809" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallDown" id="162">
+                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallOrder" id="162">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
                             <AbsPoint x="754" y="51" />
                         </Anchor>
                     </Anchors>
                 </Window>
-                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallUp" id="161">
+                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallDestruction" id="161">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
                             <AbsPoint x="755" y="888" />
@@ -267,10 +253,10 @@
                         </Anchor>
                     </Anchors>
                 </Window>
-                <Window name="$parentZone4" inherits="WorldMapFortButtonSmall" id="4"><!-- GreenSkin -->
+                <Window name="$parentZone4" inherits="WorldMapFortButton" id="4"><!-- GreenSkin -->
                    <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="859" y="772" />
+                            <AbsPoint x="851" y="818" />
                         </Anchor>
                     </Anchors>
                 </Window>
@@ -289,10 +275,10 @@
                         </Anchor>
                     </Anchors>
                 </Window>
-                <Window name="$parentZone10" inherits="WorldMapFortButtonSmall" id="10"><!-- Dwarf -->
+                <Window name="$parentZone10" inherits="WorldMapFortButton" id="10"><!-- Dwarf -->
                    <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="860" y="189" />
+                            <AbsPoint x="851" y="114" />
                         </Anchor>
                     </Anchors>
                 </Window>
@@ -305,20 +291,6 @@
                 </Window>
                 
                 <!-- City/Fortress timers -->
-                <Label name="$parentCityTimerOrder" inherits="ObjectiveMapTimer">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone62">
-                            <AbsPoint x="15" y="-3" />
-                        </Anchor>
-                    </Anchors>
-                </Label>
-                <Label name="$parentCityTimerDest" inherits="ObjectiveMapTimer">
-                    <Anchors>
-                        <Anchor point="bottomleft" relativePoint="topleft" relativeTo="$parentZone61">
-                            <AbsPoint x="15" y="3" />
-                        </Anchor>
-                    </Anchors>
-                </Label>
                 <Label name="$parentFortTimerOrder" inherits="ObjectiveMapTimer">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="bottomleft" relativeTo="$parentZone10">
@@ -502,28 +474,14 @@
 
                 
                 <!-- Cities -->
-                <Window name="$parentZone62" inherits="WorldMapCityButtonSmallDown" id="62">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="750" y="888" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone61" inherits="WorldMapCityButtonSmallUp" id="61">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="754" y="51" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone162" inherits="WorldMapCityButtonDown" id="162">
+                <Window name="$parentZone162" inherits="WorldMapCityButtonOrder" id="162">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
                             <AbsPoint x="833" y="809" />
                         </Anchor>
                     </Anchors>
                 </Window>
-                <Window name="$parentZone161" inherits="WorldMapCityButtonUp" id="161">
+                <Window name="$parentZone161" inherits="WorldMapCityButtonDestruction" id="161">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
                             <AbsPoint x="833" y="100" />
@@ -712,7 +670,7 @@
                                 </Anchor>
                             </Anchors>
                         </Label>
-                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIconWithLock" />
+                        <DynamicImage name="$parentControlIcon" inherits="EA_DynamicImage_LargeControlIcon" />
                     </Windows>
                 </Window>
                 
@@ -804,31 +762,17 @@
                 </Window>
                 
                 <!-- Cities -->
-                <Window name="$parentZone62" inherits="WorldMapCityButtonSmallDown" id="62">
+                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallOrder" id="162">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="902" y="766" />
+                            <AbsPoint x="902" y="736" />
                         </Anchor>
                     </Anchors>
                 </Window>
-                <Window name="$parentZone61" inherits="WorldMapCityButtonSmallDown" id="61">
+                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallDestruction" id="161">
                     <Anchors>
                         <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="43" y="766" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone162" inherits="WorldMapCityButtonSmallUp" id="162">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="902" y="705" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                <Window name="$parentZone161" inherits="WorldMapCityButtonSmallUp" id="161">
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="43" y="705" />
+                            <AbsPoint x="43" y="735" />
                         </Anchor>
                     </Anchors>
                 </Window>
@@ -943,16 +887,8 @@
                 
                 <Window name="$parentZone191" inherits="WorldMapLockZoneButton" id="191"> <!-- Necropolis of Zandri -->
                     <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="113" y="218" />
-                        </Anchor>
-                    </Anchors>
-                </Window>
-                
-                <Window name="$parentZone413" inherits="WorldMapLockZoneButton" id="413"> <!-- Garden of Qu'aph -->
-                    <Anchors>
-                        <Anchor point="topleft" relativePoint="topleft" >
-                            <AbsPoint x="564" y="275" />
+                        <Anchor point="center" relativePoint="center" >
+                            <AbsPoint x="18" y="-31" />
                         </Anchor>
                     </Anchors>
                 </Window>

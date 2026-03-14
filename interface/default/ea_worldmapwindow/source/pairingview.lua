@@ -41,7 +41,7 @@ EA_Window_WorldMap.pairingHasFortresses =
 
 EA_Window_WorldMap.pairingHasCapitalCities = 
 {
-    [GameData.Pairing.GREENSKIN_DWARVES]              = true,
+    [GameData.Pairing.GREENSKIN_DWARVES]              = false,
     [GameData.Pairing.EMPIRE_CHAOS]                   = true,
     [GameData.Pairing.ELVES_DARKELVES]                = false,
     [GameData.ExpansionMapRegion.TOMB_KINGS]          = false,
@@ -101,11 +101,10 @@ EA_Window_WorldMap.pairingMapZones =
         -- Tier 4
         
         -- Destruction City        
-        [ 61] = EA_Window_WorldMap.ICON_CITY,
         [161] = EA_Window_WorldMap.ICON_CITY_MINI,
         
         -- Destruction Forts
-        [  4] = EA_Window_WorldMap.ICON_FORT_MINI,        
+        [  4] = EA_Window_WorldMap.ICON_FORT,        
         [104] = EA_Window_WorldMap.ICON_FORT_MINI,
         [204] = EA_Window_WorldMap.ICON_FORT_MINI,
         
@@ -121,12 +120,11 @@ EA_Window_WorldMap.pairingMapZones =
         [  9] = EA_Window_WorldMap.ICON_ZONE,
         
         -- Order Forts
-        [ 10] = EA_Window_WorldMap.ICON_FORT_MINI,
+        [ 10] = EA_Window_WorldMap.ICON_FORT,
         [110] = EA_Window_WorldMap.ICON_FORT_MINI,
         [210] = EA_Window_WorldMap.ICON_FORT_MINI,
                         
         -- Order City        
-        [ 62] = EA_Window_WorldMap.ICON_CITY,
         [162] = EA_Window_WorldMap.ICON_CITY_MINI,     
     },
     
@@ -148,7 +146,6 @@ EA_Window_WorldMap.pairingMapZones =
         -- Tier 4
         
         -- Destruction City        
-        [061] = EA_Window_WorldMap.ICON_CITY_MINI,
         [161] = EA_Window_WorldMap.ICON_CITY,
         
         -- Destruction Forts
@@ -171,8 +168,7 @@ EA_Window_WorldMap.pairingMapZones =
         [110] = EA_Window_WorldMap.ICON_FORT_MINI,
         [210] = EA_Window_WorldMap.ICON_FORT_MINI,
                         
-        -- Order City      
-        [062] = EA_Window_WorldMap.ICON_CITY_MINI,  
+        -- Order City        
         [162] = EA_Window_WorldMap.ICON_CITY,         
     },
 
@@ -193,7 +189,6 @@ EA_Window_WorldMap.pairingMapZones =
         -- Tier 4
         
         -- Destruction City        
-        [061] = EA_Window_WorldMap.ICON_CITY_MINI,
         [161] = EA_Window_WorldMap.ICON_CITY_MINI,
         
         -- Destruction Forts
@@ -217,17 +212,12 @@ EA_Window_WorldMap.pairingMapZones =
         [210] = EA_Window_WorldMap.ICON_FORT,
                         
         -- Order City        
-        [062] = EA_Window_WorldMap.ICON_CITY_MINI,  
         [162] = EA_Window_WorldMap.ICON_CITY_MINI,         
     },
     
     [GameData.ExpansionMapRegion.TOMB_KINGS] =
     {
-		-- Tier 4
        [191] = EA_Window_WorldMap.ICON_ZONE,
-	   
-        -- Arena        
-       [413] = EA_Window_WorldMap.ICON_ZONE,
     }
 }
 
@@ -276,7 +266,7 @@ function EA_Window_WorldMap.InitializePairingView()
     LabelSetText( "EA_Window_WorldMapPairingViewRvRText",      GetStringFromTable("MapSystem", StringTables.MapSystem.TEXT_PAIRING_RVR ) )
     
     WindowRegisterEventHandler( "EA_Window_WorldMap", SystemData.Events.CITY_SCENARIO_UPDATE_TIME, "EA_Window_WorldMap.RefreshCityTimers")
-	
+        
     WindowRegisterEventHandler( "EA_Window_WorldMap", SystemData.Events.CAMPAIGN_ZONE_UPDATED, "EA_Window_WorldMap.OnCampaignZoneUpdated")
     WindowRegisterEventHandler( "EA_Window_WorldMap", SystemData.Events.CAMPAIGN_PAIRING_UPDATED, "EA_Window_WorldMap.OnCampaignPairingUpdated")
     WindowRegisterEventHandler( "EA_Window_WorldMap", SystemData.Events.CAMPAIGN_CITY_UPDATED, "EA_Window_WorldMap.OnCampaignCityUpdated")
@@ -543,14 +533,12 @@ function EA_Window_WorldMap.RefreshFortressTimers()
         
         for _, timer in pairs(EA_Window_WorldMap.pairingTimers[EA_Window_WorldMap.FORTRESS_TIMERS])
         do
-			if DoesWindowExist(pairingWindowName..timer.suffix) then
             if (timer.timeLeft > 0) then
                 LabelSetText(pairingWindowName..timer.suffix, TimeUtils.FormatClock(timer.timeLeft))
                 WindowSetShowing(pairingWindowName..timer.suffix, true)
             else
                 WindowSetShowing(pairingWindowName..timer.suffix, false)
             end
-			end
         end
     end
 end
@@ -561,32 +549,29 @@ function EA_Window_WorldMap.RefreshCityTimers()
     if (EA_Window_WorldMap.pairingHasCapitalCities[EA_Window_WorldMap.currentPairing]) then
         local pairingWindowName = GetPairingWindowName(EA_Window_WorldMap.currentPairing)
         
-		local cityDataMap = {}
-        if (EA_Window_WorldMap.currentPairing == GameData.Pairing.GREENSKIN_DWARVES) then
-            cityDataMap[GameData.Realm.ORDER] = RoR_CitySiege.GetCity(GameData.CityId.DWARF)
-            cityDataMap[GameData.Realm.DESTRUCTION] = RoR_CitySiege.GetCity(GameData.CityId.GREENSKIN)
-        elseif (EA_Window_WorldMap.currentPairing == GameData.Pairing.EMPIRE_CHAOS) then
-            cityDataMap[GameData.Realm.ORDER] = RoR_CitySiege.GetCity(GameData.CityId.EMPIRE)
-            cityDataMap[GameData.Realm.DESTRUCTION] = RoR_CitySiege.GetCity(GameData.CityId.CHAOS)
+        if (GameData.CityScenarioData.timeLeft > 0) then
+            local cityDataMap =
+            {
+                [GameData.Realm.ORDER] = GetCampaignCityData(GameData.CityId.EMPIRE),
+                [GameData.Realm.DESTRUCTION] = GetCampaignCityData(GameData.CityId.CHAOS),
+            }
+            
+            for realm, cityData in pairs(cityDataMap)
+            do
+                if (cityData ~= nil and cityData.cityState ~= SystemData.CityStates.NONE and cityData.cityState ~= SystemData.CityStates.SAFE) then
+                    EA_Window_WorldMap.pairingTimers[EA_Window_WorldMap.CITY_TIMERS][realm].timeLeft = GameData.CityScenarioData.timeLeft
+                end
+            end
         end
-		
-		for realm, cityData in pairs(cityDataMap)
-		do
-			if (cityData ~= nil and cityData.state ~= SystemData.CityStates.NONE and cityData.state ~= SystemData.CityStates.SAFE) then
-				EA_Window_WorldMap.pairingTimers[EA_Window_WorldMap.CITY_TIMERS][realm].timeLeft = cityData.timeLeft
-			end
-		end
         
         for _, timer in pairs(EA_Window_WorldMap.pairingTimers[EA_Window_WorldMap.CITY_TIMERS])
         do
-		if DoesWindowExist(pairingWindowName..timer.suffix) then
             if (timer.timeLeft > 0) then
                 LabelSetText(pairingWindowName..timer.suffix, TimeUtils.FormatClock(timer.timeLeft))
                 WindowSetShowing(pairingWindowName..timer.suffix, true)
             else
                 WindowSetShowing(pairingWindowName..timer.suffix, false)
             end
-		end	
         end
     end
 end

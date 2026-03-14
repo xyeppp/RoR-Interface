@@ -1,4 +1,6 @@
 <zone iname="Reikland Factory">
+    <battlefieldObjective iname="The Landing" id="7006" iconSet="1" x="32417" y="35629">
+    </battlefieldObjective>
     <battlefieldObjective iname="The Warehouse" id="7007" iconSet="1" x="34863" y="30161">
     </battlefieldObjective>
     <battlefieldObjective iname="The Machine Shop" id="7008" iconSet="1" x="30444" y="30357">

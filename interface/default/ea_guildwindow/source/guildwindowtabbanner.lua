@@ -407,12 +407,10 @@ function GuildWindowTabBanner.UpdatePurchasedTacticIcons()
                         then
                             tacticUpgraded = true
                             GuildWindowTabBanner.PurchasedTacticIconIDs[idx] = tacticID
-							if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..idx) then
-								DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..idx.."Icon", iconData.texture, iconData.x, iconData.y )
-								ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..idx, false)
-								WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..idx.."Icon", 255, 255, 255)
-								upgradedTacticIndex = idx
-							end
+                            DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..idx.."Icon", iconData.texture, iconData.x, iconData.y )
+                            ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..idx, false)
+                            WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..idx.."Icon", 255, 255, 255)
+                            upgradedTacticIndex = idx
                             break
                         end
                     end
@@ -430,11 +428,9 @@ function GuildWindowTabBanner.UpdatePurchasedTacticIcons()
                             for idx = 1, GuildWindowTabBanner.TOTAL_NUMBER_OF_AVAILABLE_TACTICS do
                                 if (GuildWindowTabBanner.PurchasedTacticIconIDs[idx] == tacticID)
                                 then
-									if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..idx) then
-										ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..idx, true)
-										WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..idx.."Icon", 92, 92, 92)
-									end
-								end
+                                    ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..idx, true)
+                                    WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..idx.."Icon", 92, 92, 92)
+                                end
                             end
                             break
                         end
@@ -451,22 +447,16 @@ function GuildWindowTabBanner.UpdatePurchasedTacticIcons()
             if (tacticUpgraded == false)
             then
                slotNumber = slotNumber +1
-			   if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..slotNumber) then
-					DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", iconData.texture, iconData.x, iconData.y )
-               end
-			   if (tacticUsed == false)
+               DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", iconData.texture, iconData.x, iconData.y )
+               if (tacticUsed == false)
                then
-			     if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..slotNumber) then
                     ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..slotNumber, false)
                     WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", 255, 255, 255)
-				end
-			   else
+               else
                     -- Make sure that all buttons that have been slotted are Disabled and Darkened
-                if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..slotNumber) then
-					ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..slotNumber, true)
+                    ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..slotNumber, true)
                     WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", 92, 92, 92)
-				end
-			   end
+               end
                     
 			   GuildWindowTabBanner.PurchasedTacticIconIDs[slotNumber] = tacticID
             end
@@ -476,12 +466,10 @@ function GuildWindowTabBanner.UpdatePurchasedTacticIcons()
     -- Fill in any empty slots remaining
     iconData = GuildWindowTabBanner.GUILD_TACTIC_ICON_GREY
     for slotNumber = slotNumber+1, GuildWindowTabBanner.TOTAL_NUMBER_OF_AVAILABLE_TACTICS do
-        if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..slotNumber) then
-			DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", iconData.texture, iconData.x, iconData.y )
-			WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", 255, 255, 255)
-			ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..slotNumber, true)
-		end
-	end
+        DynamicImageSetTexture("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", iconData.texture, iconData.x, iconData.y )
+        WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..slotNumber.."Icon", 255, 255, 255)
+		ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..slotNumber, true)
+    end
 
 end
 
@@ -820,13 +808,11 @@ function GuildWindowTabBanner.OnRButtonUpAvailTactic()
         end
 
 		if GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[slotNum] == 0 then
-            if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..tacticSlotNumber) then
-				ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..tacticSlotNumber, true)
-				WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..tacticSlotNumber.."Icon", 92, 92, 92)
-				GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[slotNum] = tacticID
-				GuildWindowTabBanner.UpdateSelectedBannerTacticIcons()
-				return
-			end
+            ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..tacticSlotNumber, true)
+            WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..tacticSlotNumber.."Icon", 92, 92, 92)
+            GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[slotNum] = tacticID
+            GuildWindowTabBanner.UpdateSelectedBannerTacticIcons()
+            return
         end
     end
 end
@@ -976,11 +962,9 @@ function GuildWindowTabBanner.OnLButtonUpTacticSlot()
             -- Swap the values between the two that are moving, and update the new slot with the tacticID
             GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[Cursor.Data.SourceSlot] = GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[tacticSlotNumber]
             GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[tacticSlotNumber] = tacticID
-            if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..availTacticSlotNumber) then
-				ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..availTacticSlotNumber, true)
-				WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..availTacticSlotNumber.."Icon", 92, 92, 92)
-            end
-			GuildWindowTabBanner.isMovingFromActiveSlot = false
+            ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..availTacticSlotNumber, true)
+            WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..availTacticSlotNumber.."Icon", 92, 92, 92)
+            GuildWindowTabBanner.isMovingFromActiveSlot = false
         else
             tacticID = GuildWindowTabBanner.PurchasedTacticIconIDs[Cursor.Data.SourceSlot]
             -- If this tactic exists on any Standard, don't allow it to be put on a Standard
@@ -1013,11 +997,9 @@ function GuildWindowTabBanner.OnLButtonUpTacticSlot()
             
             -- Stick the ability where the user clicked.
             GuildWindowTabBanner.Banners[GuildWindowTabBanner.CurrentBannerNumber].AbilityID[tacticSlotNumber] = tacticID
-				if DoesWindowExist("GWRewardsBannerAvailTacticSlot"..Cursor.Data.SourceSlot) then
-					ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..Cursor.Data.SourceSlot, true)
-					WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..Cursor.Data.SourceSlot.."Icon", 92, 92, 92)
-				end
-		end
+            ButtonSetDisabledFlag("GWRewardsBannerAvailTacticSlot"..Cursor.Data.SourceSlot, true)
+            WindowSetTintColor("GWRewardsBannerAvailTacticSlot"..Cursor.Data.SourceSlot.."Icon", 92, 92, 92)
+        end
             
         GuildWindowTabBanner.UpdateSelectedBannerTacticIcons()
         GuildWindowTabBanner.UpdatePurchasedTacticIcons()

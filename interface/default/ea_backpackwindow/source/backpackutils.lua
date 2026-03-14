@@ -240,7 +240,7 @@ function EA_Window_Backpack.DisplayItemTooltip( itemData, mouseOverWindowName )
             textColor       = Tooltips.COLOR_WARNING
         elseif( not atStore and not atRepairMan )
         then            
-            local isTradeSkillItem      = DataUtils.IsTradeSkillItem( itemData, nil ) or itemData.type == GameData.ItemTypes.CRAFTING
+            local isTradeSkillItem      = DataUtils.IsTradeSkillItem( itemData, nil )
             local isCurrencyItem        = ( itemData.type == GameData.ItemTypes.CURRENCY )
             local canAddCraftingItem    = EA_Window_Backpack.CanAddCraftingItem( itemData )
             local canAddEquipUpgradeItem = EquipmentUpgradeWindow and EquipmentUpgradeWindow.CanInsertItem( itemData )
@@ -553,31 +553,42 @@ function EA_Window_Backpack.GetCraftingWindowStatusAndAutoAddFunction( itemData 
     
 end
 
+
+
 -- OnRButtonUp Handler
 function EA_Window_Backpack.EquipmentRButtonUp( slot, flags )
 
     local inventory = EA_Window_Backpack.GetItemsFromBackpack( EA_Window_Backpack.currentMode )
-    local itemData  = inventory[slot]
-
+    local itemData = inventory[slot]
     -- If there's no item in this slot, do nothing
     if itemData == nil or itemData.id == nil or itemData.id == 0 then 
         return
     end
     
-    local cursorType      = EA_Window_Backpack.GetCursorForBackpack( EA_Window_Backpack.currentMode )
-    local isEnhanceable   = (itemData.numEnhancementSlots > 0)
-    local shiftPressed    = (flags == SystemData.ButtonFlags.SHIFT)
-    local controlPressed  = (flags == SystemData.ButtonFlags.CONTROL)
-    local atStore         = (EA_Window_InteractionStore and EA_Window_InteractionStore.InteractingWithStore ()) or
-                            (EA_Window_InteractionLibrarianStore and EA_Window_InteractionLibrarianStore.InteractingWithLibrarianStore ())
-    local atRepairMan     = EA_Window_InteractionStore.InteractingWithRepairMan() or EA_Window_InteractionLibrarianStore.InteractingWithRepairMan()
-    local isTrading       = EA_Window_Trade.TradeOpen()
-    local isMailing       = WindowGetShowing("MailWindow") and WindowGetShowing("MailWindowTabSend")
-    local isBankOpen      = BankWindow.IsShowing()
-    local isGuildVaultOpen= GuildVaultWindow.IsVaultOpen()
+    local cursorType = EA_Window_Backpack.GetCursorForBackpack( EA_Window_Backpack.currentMode )
+    
+    local isEnhanceable       = (itemData.numEnhancementSlots > 0)
+    local shiftPressed        = (flags == SystemData.ButtonFlags.SHIFT)
+    local controlPressed      = (flags == SystemData.ButtonFlags.CONTROL)
+    local atStore             = (EA_Window_InteractionStore and EA_Window_InteractionStore.InteractingWithStore ()) or
+                                (EA_Window_InteractionLibrarianStore and EA_Window_InteractionLibrarianStore.InteractingWithLibrarianStore ())
+    local atRepairMan         = EA_Window_InteractionStore.InteractingWithRepairMan() or EA_Window_InteractionLibrarianStore.InteractingWithRepairMan()
+    local isTrading           = EA_Window_Trade.TradeOpen()
+    local isMailing           = WindowGetShowing("MailWindow") and WindowGetShowing("MailWindowTabSend")
+    local isBankOpen          = BankWindow.IsShowing()
+    local isGuildVaultOpen    = GuildVaultWindow.IsVaultOpen()
 
-    local isTradeSkillItem= DataUtils.IsTradeSkillItem( itemData, nil ) or itemData.type == GameData.ItemTypes.CRAFTING
-    local isCurrencyItem  = ( itemData.type == GameData.ItemTypes.CURRENCY )
+    local isTradeSkillItem    = DataUtils.IsTradeSkillItem( itemData, nil )
+    local isCurrencyItem      = ( itemData.type == GameData.ItemTypes.CURRENCY )
+    
+    -- Things you can do when using backpack items while not at a store:
+    -- 1. Equip the item (if equippable)
+    -- 2. Enhance the item, (if enhanceable)
+    -- 3. Use the item (left up to the server to determine if it's usable.)
+    -- 4. Trade the item (if trade window open)
+    -- 5. Mail the item (if the Send Tab of the Mail Window is open)
+    -- 6. Put the item in the Guild Vault
+    -- 7. Put the item in the crafting window.
     
     -- Block all interactions if the Slot is considered locked
     local slotIsLocked, lockingWindow = EA_Window_Backpack.IsSlotLocked( slot, EA_Window_Backpack.currentMode )
@@ -586,110 +597,101 @@ function EA_Window_Backpack.EquipmentRButtonUp( slot, flags )
             EA_Window_Trade.ClearInventoryItem( slot, EA_Window_Backpack.currentMode )
 
         -- Allow right click to slot stacked crafting items even when they are locked
-        elseif ( itemData.stackCount > 1 ) then
+        elseif ( itemData.stackCount > 1 )
+        then
             EA_Window_Backpack.AutoAddCraftingItemIfPossible( slot )
         end
         return
     end
     
     -- If Shift is Pressed on a stacked item, Show the stack count window
-    if shiftPressed and itemData.stackCount and itemData.stackCount > 1 then
+    if( shiftPressed and itemData.stackCount > 1 ) then
         ItemStackingWindow.Show( cursorType, slot )
         return
     end
     
-    if not atStore and not atRepairMan then
+    
+    if (not atStore and not atRepairMan) then
     
         if isTrading then
             EA_Window_Trade.AddInventoryItem( slot, EA_Window_Backpack.currentMode )
             
-        elseif EA_Window_Backpack.AutoAddCraftingItemIfPossible( slot ) then
+        elseif EA_Window_Backpack.AutoAddCraftingItemIfPossible( slot )
+        then
             -- The item should be added now, in case all criteria were fulfilled
             
-        elseif EquipmentUpgradeWindow and EquipmentUpgradeWindow.AddItem( EA_Window_Backpack.currentMode, slot ) then
+        elseif EquipmentUpgradeWindow and EquipmentUpgradeWindow.AddItem( EA_Window_Backpack.currentMode, slot )
+        then
             -- The item should be added now, in case all criteria were fulfilled
             
         elseif isBankOpen then
             RequestMoveItem( cursorType, slot, Cursor.SOURCE_BANK, GameData.Inventory.FIRST_AVAILABLE_BANK_SLOT, itemData.stackCount )
         
         elseif isGuildVaultOpen then
-            GuildVaultWindow.OnRButtonUpBackpack( slot )
+            GuildVaultWindow.OnRButtonUpBackpack(slot)
         
         elseif isMailing then
-            MailWindowTabSend.AttachItem( slot )    -- Item stays in backpack until message is sent.
+            MailWindowTabSend.AttachItem( slot )    -- There is no 'Mailbox' slot.. The item stays in the backpack until the message is sent.
         
-        elseif isEnhanceable and shiftPressed then
-            BeginItemEnhancement( slot )
+        elseif (isEnhanceable and shiftPressed) then
+            BeginItemEnhancement (slot)
         
         elseif (itemData.equipSlot > 0) or (itemData.type == GameData.ItemTypes.TROPHY) then
             CharacterWindow.AutoEquipItem( slot )
         
         elseif EA_Window_Backpack.IsRefinable( itemData ) then
-            if controlPressed then
+            if( controlPressed )
+            then
                 EA_Window_Backpack.ConfirmThenRefine( slot, EA_Window_Backpack.currentMode )  
-            elseif isTradeSkillItem or isCurrencyItem then
+            elseif( isTradeSkillItem or isCurrencyItem )
+            then
                 TransferBetweenBackpacks( slot, EA_Window_Backpack.currentMode )
             end
             -- right clicking refinable items without holding control should avoid calling SendUseItem
         
-        elseif isTradeSkillItem or isCurrencyItem then
+        elseif ( isTradeSkillItem or isCurrencyItem )
+        then
             TransferBetweenBackpacks( slot, EA_Window_Backpack.currentMode )
-
         else
             -- try to use the item
-
-            -- Decide which item location to use based on which backpack type is active
-            local backpackType = EA_Window_Backpack.GetCurrentBackpackType
-                                  and EA_Window_Backpack.GetCurrentBackpackType()
-                                  or EA_Window_Backpack.currentMode
-
-            local itemLoc = GameData.ItemLocs.INVENTORY
-            if backpackType == EA_Window_Backpack.TYPE_QUEST then
-                itemLoc = GameData.ItemLocs.QUEST_ITEM
-            elseif backpackType == EA_Window_Backpack.TYPE_CURRENCY then
-                itemLoc = GameData.ItemLocs.CURRENCY
-            elseif backpackType == EA_Window_Backpack.TYPE_CRAFTING then
-                itemLoc = GameData.ItemLocs.CRAFTING
-            end
-
+            
             -- isHandled returns true if this item requires clicking on another item to be used (e.g. dyes)
-            local isHandled = UseItemTargeting.HandleUseItemChangeTargetCursor( cursorType, slot )
+            local isHandled = UseItemTargeting.HandleUseItemChangeTargetCursor( cursorType, slot )   
             if not isHandled then
-                if not ItemUtils.ShowUseOptions( itemData, itemLoc, slot ) then
-                    SendUseItem( itemLoc, slot, 0, 0, 0 )
+                if not ItemUtils.ShowUseOptions(itemData, GameData.ItemLocs.INVENTORY, slot)
+                then
+                    SendUseItem( GameData.ItemLocs.INVENTORY, slot, 0, 0, 0 )
                 end
+                
             end
         end
         return
-    end 
+    end        
 
-    -- Only try selling or repairing the item if at a store / repairman
-    if atRepairMan
-       and itemData.broken
-       and itemData.repairPrice > 0
-       and itemData.repairedName ~= nil
-       and itemData.repairedName ~= L""
-    then
+    -- Only try selling the item if it has a sellPrice...
+    if ( atRepairMan and itemData.broken and itemData.repairPrice > 0 and itemData.repairedName ~= nil and itemData.repairedName ~= L"") then
         -- try to repair item
-        if GameData.InteractStoreData.LibrarianType == GameData.InteractStoreData.STORE_TYPE_DEFAULT then
+        if GameData.InteractStoreData.LibrarianType == GameData.InteractStoreData.STORE_TYPE_DEFAULT
+        then
             EA_Window_InteractionStore.ConfirmThenRepairItem( slot )  
         else
             EA_Window_InteractionLibrarianStore.ConfirmThenRepairItem( slot )  
         end
         
-    elseif atStore
-       and itemData.sellPrice > 0
-       and not itemData.flags[GameData.Item.EITEMFLAG_NO_SELL]
-       and (not EA_Window_InteractionStore.repairModeOn or not EA_Window_InteractionLibrarianStore.repairModeOn)
-    then
+    elseif atStore and itemData.sellPrice > 0 and not itemData.flags[GameData.Item.EITEMFLAG_NO_SELL] and (not EA_Window_InteractionStore.repairModeOn or not EA_Window_InteractionLibrarianStore.repairModeOn) then
         -- If the player is interacting with a store, try to sell the item.
-        if GameData.InteractStoreData.LibrarianType == GameData.InteractStoreData.STORE_TYPE_DEFAULT then
+        if GameData.InteractStoreData.LibrarianType == GameData.InteractStoreData.STORE_TYPE_DEFAULT
+        then
             EA_Window_InteractionStore.ConfirmThenSellItem( slot, itemData.stackCount )
         else
             EA_Window_InteractionLibrarianStore.ConfirmThenSellItem( slot, itemData.stackCount )
         end
+             
     end
+    
 end
+
+
 
 function EA_Window_Backpack.MouseOverOverflowSlot()
     

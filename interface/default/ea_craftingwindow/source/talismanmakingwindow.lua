@@ -2,8 +2,6 @@
 TalismanMakingWindow = {}
 TalismanMakingWindow.versionNumber = 0.1
 
-TalismanMakingWindow.PerformingLock = false
-
 TalismanMakingWindow.craftingData = {}
 TalismanMakingWindow.maxResources = 4
 
@@ -304,8 +302,6 @@ end
 
 function TalismanMakingWindow.Initialize()
 
-    RegisterEventHandler( SystemData.Events.PLAYER_INVENTORY_SLOT_UPDATED, "TalismanMakingWindow.UpdateLock")    
-
     -- Set up the power meter
     TalismanMakingWindow.powerDynamicImage = DynamicImage:CreateFrameForExistingWindow( windowName.."PowerMeter" )
     local width, height = TalismanMakingWindow.powerDynamicImage:GetDimensions()
@@ -319,12 +315,6 @@ function TalismanMakingWindow.Initialize()
     TalismanMakingWindow.Clear()
     TalismanMakingWindow.timePassed = 0
 end
-
-function TalismanMakingWindow.UpdateLock()
-  TalismanMakingWindow.PerformingLock = false
-  ButtonSetPressedFlag( windowName.."CommitButton", false )    
-end
-
 
 function TalismanMakingWindow.OnHidden()
     if( SystemData.InputProcessed.EscapeKey == false )
@@ -782,12 +772,9 @@ function TalismanMakingWindow.OnSlotRButtonUp()
 end
 
 function TalismanMakingWindow.Perform()
-    if (not TalismanMakingWindow.PerformingLock) then
-      if( not ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
-      then
-          PerformCrafting( GameData.TradeSkills.TALISMAN, 1 )
-          TalismanMakingWindow.PerformingLock = true
-      end
+    if( not ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
+    then
+        PerformCrafting( GameData.TradeSkills.TALISMAN, 1 )
     end
 end
                 

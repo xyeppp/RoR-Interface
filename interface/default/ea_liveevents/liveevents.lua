@@ -21,39 +21,6 @@ end
 function LiveEvents.InitializeAutoEvents()
 	-- NOTE: These Guild Events are auto-generated client side only. The server knows nothing about them.
 	LiveEvents.autoGuildEvents = {}
-
-	--[[
-	LiveEvents.autoGuildEvents[1] = {}
-	LiveEvents.autoGuildEvents[1].appointmentID				= 0
-	LiveEvents.autoGuildEvents[1].guildID					= -1
-	LiveEvents.autoGuildEvents[1].creatorID					= -1
-	LiveEvents.autoGuildEvents[1].creatorName				= GetStringFromTable("LiveEventStrings", StringTables.LiveEventStrings.TEXT_CALENDAR_SYSTEM_EVENT_CREATOR_NAME)
-	LiveEvents.autoGuildEvents[1].bIsPlayersEvent			= false
-	LiveEvents.autoGuildEvents[1].subject					= GetStringFromTable("LiveEventStrings", StringTables.LiveEventStrings.TEXT_CALENDAR_SYSTEM_EVENT_NAME_KEG_END)
-	LiveEvents.autoGuildEvents[1].details					= GetStringFromTable("LiveEventStrings", StringTables.LiveEventStrings.TEXT_CALENDAR_SYSTEM_EVENT_DESC_KEG_END)
-	LiveEvents.autoGuildEvents[1].locked					= true
-	LiveEvents.autoGuildEvents[1].shared					= false
-
-	LiveEvents.autoGuildEvents[1].startMonth				= 12
-	LiveEvents.autoGuildEvents[1].startDay					= 22
-	LiveEvents.autoGuildEvents[1].startYear					= 2018
-	LiveEvents.autoGuildEvents[1].startHour					= 8
-	LiveEvents.autoGuildEvents[1].startMinute				= 0
-															-- GetTimeStamp params: (Month, Day, Year, Hour, Minute)
-	LiveEvents.autoGuildEvents[1].startTime					= GetTimeStamp(LiveEvents.autoGuildEvents[1].startMonth, LiveEvents.autoGuildEvents[1].startDay, LiveEvents.autoGuildEvents[1].startYear, LiveEvents.autoGuildEvents[1].startHour, LiveEvents.autoGuildEvents[1].startMinute)
-	LiveEvents.autoGuildEvents[1].startDayString			= StringUtils.FormatDateString(LiveEvents.autoGuildEvents[1].startMonth, LiveEvents.autoGuildEvents[1].startDay, LiveEvents.autoGuildEvents[1].startYear)
-	LiveEvents.autoGuildEvents[1].startTimeString			= StringUtils.FormatTimeString(LiveEvents.autoGuildEvents[1].startHour, LiveEvents.autoGuildEvents[1].startMinute)
-
-	LiveEvents.autoGuildEvents[1].endMonth					= 1
-	LiveEvents.autoGuildEvents[1].endDay					= 5
-	LiveEvents.autoGuildEvents[1].endYear					= 2019
-	LiveEvents.autoGuildEvents[1].endHour					= 8
-	LiveEvents.autoGuildEvents[1].endMinute					= 0
-
-    LiveEvents.autoGuildEvents[1].endTime					= GetTimeStamp(LiveEvents.autoGuildEvents[1].endMonth, LiveEvents.autoGuildEvents[1].endDay, LiveEvents.autoGuildEvents[1].endYear, LiveEvents.autoGuildEvents[1].endHour, LiveEvents.autoGuildEvents[1].endMinute)
-	LiveEvents.autoGuildEvents[1].endDayString				= StringUtils.FormatDateString(LiveEvents.autoGuildEvents[1].endMonth, LiveEvents.autoGuildEvents[1].endDay, LiveEvents.autoGuildEvents[1].endYear)
-	LiveEvents.autoGuildEvents[1].endTimeString				= StringUtils.FormatTimeString(LiveEvents.autoGuildEvents[1].endHour, LiveEvents.autoGuildEvents[1].endMinute)
-	--]]
 end
 
 function LiveEvents.CreateAutoEvents()

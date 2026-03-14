@@ -100,12 +100,6 @@
       <Slice id="Tab-Zealot1-Alchemy" left="880" top="416" width="43" height="48" />
       <Slice id="Tab-Zealot2-Witchcraft" left="923" top="416" width="43" height="48" />
       <Slice id="Tab-Zealot3-DarkRites" left="966" top="416" width="43" height="48" />
-      <Slice id="Tab-Knight1-Conquest" left="794" top="224" width="43" height="48" />
-      <Slice id="Tab-Knight2-Vigilance" left="837" top="224" width="43" height="48" />
-      <Slice id="Tab-Knight3-Glory" left="880" top="224" width="43" height="48" />
-      <Slice id="Tab-BlackGuard1-Malice" left="923" top="224" width="43" height="48" />
-      <Slice id="Tab-BlackGuard2-Loathing" left="966" top="224" width="43" height="48" />
-      <Slice id="Tab-BlackGuard3-Anguish" left="966" top="176" width="43" height="48" />
     </Texture>
   </Assets>
 </Interface>

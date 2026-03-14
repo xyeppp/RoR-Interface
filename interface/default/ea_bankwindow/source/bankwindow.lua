@@ -75,7 +75,6 @@ end
 
 -- Show the Bank
 function BankWindow.Show()
-    BankWindow.SwitchTabs( 1 )
     WindowSetShowing( WINDOW_NAME, true )
 end
 

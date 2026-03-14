@@ -220,7 +220,6 @@ function EA_Window_AdvancedWar.HandleFortressUpdate()
     
     EA_Window_AdvancedWar.fortressData = GetFortressStatuses()
         
-  if (EA_Window_AdvancedWar.fortressData~=nil) then 
     for index, data in ipairs( EA_Window_AdvancedWar.fortressData ) 
 	do	    
         local keepId        = EA_Window_AdvancedWar.fortressData[index].id
@@ -259,7 +258,7 @@ function EA_Window_AdvancedWar.HandleFortressUpdate()
         end
         
 	end
-  end
+
 end
 
 function EA_Window_AdvancedWar.UpdateRelicStatusInterfaceElements( relicRealm, status, relicUIName )
@@ -321,7 +320,6 @@ function EA_Window_AdvancedWar.HandleRelicUpdate()
 
     EA_Window_AdvancedWar.relicData = GetRelicStatuses()
     
-  if (EA_Window_AdvancedWar.relicData~=nil) then
     for index, data in ipairs( EA_Window_AdvancedWar.relicData ) 
 	do	    
         local race          = EA_Window_AdvancedWar.relicData[index].race
@@ -334,14 +332,13 @@ function EA_Window_AdvancedWar.HandleRelicUpdate()
         EA_Window_AdvancedWar.UpdateRelicStatusInterfaceElements( relicRealm, status, relicUIName )
         
 	end
-	end
+	
 end
  
 function EA_Window_AdvancedWar.HandleRelicZoneUpdate()
 
     EA_Window_AdvancedWar.relicData = GetRelicStatuses()
 
-  if (EA_Window_AdvancedWar.relicData~=nil) then
     for index, data in ipairs( EA_Window_AdvancedWar.relicData ) 
 	do	    
         local race          = EA_Window_AdvancedWar.relicData[index].race
@@ -360,5 +357,5 @@ function EA_Window_AdvancedWar.HandleRelicZoneUpdate()
         
         LabelSetText( relicUIName, zoneString )
 	end
-	end
+	
 end

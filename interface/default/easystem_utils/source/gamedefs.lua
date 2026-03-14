@@ -129,11 +129,11 @@ BonusTypes[GameData.BonusTypes.EBONUS_BUILD_TIME              ] =  { name=GetStr
 BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_DAMAGE         ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_DMG ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_RANGE                   ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RANGE ), desc=L"", multiplier=1/12 }       
 BonusTypes[GameData.BonusTypes.EBONUS_AUTO_ATTACK_SPEED       ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AUTO_ATK_SPEED ), desc=L"" }  
-BonusTypes[GameData.BonusTypes.EBONUS_RADIUS                  ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RADIUS ), desc=L"", multiplier=1/12 }  
+BonusTypes[GameData.BonusTypes.EBONUS_RADIUS                  ] =  { name=GetString( StringTables.Default.LABEL_BONUS_RADIUS ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_AUTO_ATTACK_DAMAGE      ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AUTO_ATK_DMG ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_AP_COST                 ] =  { name=GetString( StringTables.Default.LABEL_BONUS_AP_COST ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_HIT_RATE       ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_HIT_RATE ), desc=L"" }  
-BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_DAMAGE_TAKEN   ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_DMG_TAKEN ), desc=L"", multiplier=-1 }  
+BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_DAMAGE_TAKEN   ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRIT_DMG_TAKEN ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_EFFECT_RESIST           ] =  { name=GetString( StringTables.Default.LABEL_BONUS_EFFECT_RESIST ), desc=L"" }   
 BonusTypes[GameData.BonusTypes.EBONUS_EFFECT_BUFF             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_EFFECT_BUFF ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_MIN_RANGE               ] =  { name=GetString( StringTables.Default.LABEL_BONUS_MIN_RANGE ), desc=L"" }  
@@ -147,8 +147,8 @@ BonusTypes[GameData.BonusTypes.EBONUS_SETBACK_VALUE				] =  { name=GetString( St
 BonusTypes[GameData.BonusTypes.EBONUS_AGGRO_RADIUS				] =  { name=GetString( StringTables.Default.LABEL_BONUS_AGGRO_RADIUS ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_TARGET_DURATION			] =  { name=GetString( StringTables.Default.LABEL_BONUS_TARGET_DURATION ), desc=L"" }  
 BonusTypes[GameData.BonusTypes.EBONUS_SPEC						] =  { name=GetString( StringTables.Default.LABEL_BONUS_SPEC ), desc=L"" }  
-BonusTypes[GameData.BonusTypes.EBONUS_GOLD_LOOTED				] =  { name=GetString( StringTables.Default.LABEL_BONUS_GOLD_LOOTED ), desc=L"" }   
-BonusTypes[GameData.BonusTypes.EBONUS_XP_RECEIVED				] =  { name=GetString( StringTables.Default.LABEL_BONUS_XP_RECEIVED ), desc=L"" }   
+--BonusTypes[GameData.BonusTypes.EBONUS_GOLD_LOOTED				] =  { name=GetString( StringTables.Default.LABEL_BONUS_GOLD_LOOTED ), desc=L"" }   
+--BonusTypes[GameData.BonusTypes.EBONUS_XP_RECEIVED				] =  { name=GetString( StringTables.Default.LABEL_BONUS_XP_RECEIVED ), desc=L"" }   
 BonusTypes[GameData.BonusTypes.EBONUS_TRADE_SKILL_BUTCHERING	] =  { name=GetString( StringTables.Default.LABEL_BONUS_TRADE_SKILL_BUTCHERING ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_TRADE_SKILL_SCAVENGING	] =  { name=GetString( StringTables.Default.LABEL_BONUS_TRADE_SKILL_SCAVENGING ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_TRADE_SKILL_CULTIVATION	] =  { name=GetString( StringTables.Default.LABEL_BONUS_TRADE_SKILL_CULTIVATION ), desc=L"" }
@@ -161,8 +161,8 @@ BonusTypes[GameData.BonusTypes.EBONUS_HATE_CAUSED				] =  { name=GetString( Stri
 BonusTypes[GameData.BonusTypes.EBONUS_HATE_RECEIVED				] =  { name=GetString( StringTables.Default.LABEL_BONUS_HATE_RECEIVED ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_OFFHAND_CHANCE			] =  { name=GetString( StringTables.Default.LABEL_BONUS_OFFHAND_CHANCE ), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_OFFHAND_DAMAGE			] =  { name=GetString( StringTables.Default.LABEL_BONUS_OFFHAND_DAMAGE ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_RENOWN_RECEIVED			] =  { name=GetString( StringTables.Default.LABEL_BONUS_RENOWN_RECEIVED ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_INFLUENCE_RECEIVED		] =  { name=GetString( StringTables.Default.LABEL_BONUS_INFLUENCE_RECEIVED ), desc=L"" }
+--BonusTypes[GameData.BonusTypes.EBONUS_RENOWN_RECEIVED			] =  { name=GetString( StringTables.Default.LABEL_BONUS_RENOWN_RECEIVED ), desc=L"" }
+--BonusTypes[GameData.BonusTypes.EBONUS_INFLUENCE_RECEIVED		] =  { name=GetString( StringTables.Default.LABEL_BONUS_INFLUENCE_RECEIVED ), desc=L"" }
 --BonusTypes[GameData.BonusTypes.EBONUS_DISMOUNT_CHANCE			] =  { name=GetString( StringTables.Default.LABEL_BONUS_DISMOUNT_CHANCE ), desc=L"" }
 --BonusTypes[GameData.BonusTypes.EBONUS_GRAVITY					] =  { name=GetString( StringTables.Default.LABEL_BONUS_GRAVITY ), desc=L"" }
 --BonusTypes[GameData.BonusTypes.EBONUS_LEVITATION_HEIGHT			] =  { name=GetString( StringTables.Default.LABEL_BONUS_LEVITATION_HEIGHT ), desc=L"" }
@@ -187,14 +187,8 @@ BonusTypes[GameData.BonusTypes.EBONUS_SPEC_3						] =  { name=GetString(StringTa
 BonusTypes[GameData.BonusTypes.EBONUS_HEALING_POWER					] =  { name=GetString( StringTables.Default.LABEL_BONUS_HEALING_POWER), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_INTERACT_TIME					] =  { name=GetString( StringTables.Default.LABEL_BONUS_INTERACT_TIME), desc=L"" }
 BonusTypes[GameData.BonusTypes.EBONUS_FORTITUDE                     ] =  { name=GetString( StringTables.Default.LABEL_FORTITUDE ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_OUT_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_HEAL ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_OUT_DMG_SNAPSHOT            ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_DMG_SNAPSHOT ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_OUT_HEAL_SNAPSHOT             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_OUT_HEAL_SNAPSHOT ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_INCOMING_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_INCOMING_HEAL ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }
-BonusTypes[GameData.BonusTypes.EBONUS_ARMOR_PENETRATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_ARMOR_PENETRATION ), desc=L"", format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }	
-BonusTypes[GameData.BonusTypes.EBONUS_CRITICAL_HEAL             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CRITICAL_HEAL ), desc=L"" }
-BonusTypes[GameData.BonusTypes.EBONUS_LOOT_CHANCE             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_LOOT_CHANCE ), desc=GetString( StringTables.Default.LABEL_NONE), format=StringTables.Default.LABEL_BONUS_PREFIX_POSITIVE_PERCENT, }
-BonusTypes[GameData.BonusTypes.EBONUS_CASTER_DURATION             ] =  { name=GetString( StringTables.Default.LABEL_BONUS_CASTER_DURATION ), desc=L"" }
+		
+
 -- These bonuses require player info that is not available during startup
 -- NOTE: ideally this would show the specialization paths of the career that the item is for, rather than that of the player,
 --    but since not all items have a career restriction set, this was considered a reasonable solution by design.
@@ -402,24 +396,16 @@ GameDefs.MapLevel.NUM_MODES      = 4
 -- City Zones
 GameDefs.ZoneCityIds =
 {
-	[62]	= GameData.CityId.DWARF,		-- Peaceful  
-	[97]	= GameData.CityId.DWARF,		-- Peaceful  
-	[61]	= GameData.CityId.GREENSKIN,	-- Peaceful  
-	[96]	= GameData.CityId.GREENSKIN,	-- Peaceful  
-    [162]	= GameData.CityId.EMPIRE,		-- Peaceful    
-    [168]	= GameData.CityId.EMPIRE,		-- Contested
-    [161]	= GameData.CityId.CHAOS,		-- Peaceful
-    [167]	= GameData.CityId.CHAOS,		-- Contested
+    [162] = GameData.CityId.EMPIRE, -- Peaceful    
+    [168] = GameData.CityId.EMPIRE, -- Contested
+    [161] = GameData.CityId.CHAOS,  -- Peaceful
+    [167] = GameData.CityId.CHAOS,  -- Contested
 }
 
 GameDefs.PeacefulCityZoneIDs =
 {
-	[62]	= GameData.CityId.DWARF,		-- Peaceful  
-	[97]	= GameData.CityId.DWARF,		-- Peaceful  
-	[61]	= GameData.CityId.GREENSKIN,	-- Peaceful  
-	[96]	= GameData.CityId.GREENSKIN,	-- Peaceful  
-    [162]	= GameData.CityId.EMPIRE,		-- Peaceful    
-    [161]	= GameData.CityId.CHAOS,		-- Peaceful
+    [162] = GameData.CityId.EMPIRE, -- Peaceful    
+    [161] = GameData.CityId.CHAOS,  -- Peaceful
 }
 
 GameDefs.GuildHallCityMap =

@@ -9,17 +9,14 @@ Tooltips.ItemTooltip.WIDTH              = Tooltips.ItemTooltip.INTERNAL_WIDTH + 
 Tooltips.ItemTooltip.SET_PIECE_INDENT   = 20
 Tooltips.ItemTooltip.SET_SEPERATOR      = 20
 
-Tooltips.ItemTooltip.NUM_SET_PIECES     = 9
-Tooltips.ItemTooltip.NUM_SET_BONUSES    = 7
+Tooltips.ItemTooltip.NUM_SET_PIECES     = 8
+Tooltips.ItemTooltip.NUM_SET_BONUSES    = 6
 
 Tooltips.ItemTooltip.NUM_PASSIVES       = 5
 
 -- Stat Tooltip
 Tooltips.STAT_TOOLTIP_STAT_HEIGHT = 50
 Tooltips.ADVANCE_TOOLTIP_WIDTH = 300
-
-GameData.Item.EITEMFLAG_ACCOUNT_BOUND = 11
-GameData.Item.EITEMFLAG_EVENT = 12
 
 ---------------- BROKEN ITEM TOOLTIP  ----------------
 BrokenItemTooltip = {}
@@ -571,7 +568,6 @@ local function CalculateItemSetTooltipSize (tooltipWindow, isSetItem)
     itemSetSizeData[tooltipWindow.."SetBonus4"]   = { minHeight = 0 }
     itemSetSizeData[tooltipWindow.."SetBonus5"]   = { minHeight = 0 }
     itemSetSizeData[tooltipWindow.."SetBonus6"]   = { minHeight = 0 }
-    itemSetSizeData[tooltipWindow.."SetBonus7"]   = { minHeight = 0 }
     
     for labelName, sizeData in pairs (itemSetSizeData) do
         local x, y = LabelGetTextDimensions (labelName)
@@ -1245,7 +1241,7 @@ local function SetItemTooltipBonusData (tooltipWindow, itemData)
             DisplayPassiveAbilityLine( tooltipWindow, iCurPassiveAbility, bonus, bonusText)
             iCurPassiveAbility = iCurPassiveAbility + 1
         -- Handle on Use text
-        elseif ((bonus.type == GameDefs.ITEMBONUS_USE))
+        elseif ((bonus.type == GameDefs.ITEMBONUS_USE) and (bonus.reference > 0))
         then
             -- don't want the breaks on the first use effect
             if useEffectDesc == L""
@@ -1428,30 +1424,15 @@ local function GetBrokenItemIcon (itemData)
 end
 
 local function GetBindText( itemData )
-    if ( itemData.boundToPlayer)
+    if ( itemData.boundToPlayer )
     then
-        if (itemData.flags[GameData.Item.EITEMFLAG_ACCOUNT_BOUND])
-        then
-            return GetString( StringTables.Default.LABEL_BOUND_TO_ACCOUNT )
-        else
-            return GetString( StringTables.Default.LABEL_BOUND_TO_PLAYER )
-        end
+        return GetString( StringTables.Default.LABEL_BOUND_TO_PLAYER )
     elseif ( itemData.flags[GameData.Item.EITEMFLAG_BIND_ON_PICKUP] )
     then
-        if (itemData.flags[GameData.Item.EITEMFLAG_ACCOUNT_BOUND])
-        then
-            return GetString( StringTables.Default.LABEL_BIND_TO_ACCOUNT_ON_PICKUP )
-        else
-            return GetString( StringTables.Default.LABEL_BIND_ON_PICKUP )
-        end
+        return GetString( StringTables.Default.LABEL_BIND_ON_PICKUP )
     elseif ( itemData.flags[GameData.Item.EITEMFLAG_BIND_ON_EQUIP] )
     then
-        if (itemData.flags[GameData.Item.EITEMFLAG_ACCOUNT_BOUND])
-        then
-            return GetString( StringTables.Default.LABEL_BIND_TO_ACCOUNT_ON_EQUIP )
-        else
-            return GetString( StringTables.Default.LABEL_BIND_ON_EQUIP )
-        end
+        return GetString( StringTables.Default.LABEL_BIND_ON_EQUIP )
     else
         return L""
     end
@@ -1466,8 +1447,6 @@ local function UpdateItemDecayTime(tooltipWindow, itemData)
     if( itemData.timeLeftBeforeDecay > 0 ) then
         local currentTimeLeftBeforeDecay = itemData.timeLeftBeforeDecay;
         
-
-		
         if( not itemData.decayPaused )then
             currentTimeLeftBeforeDecay = currentTimeLeftBeforeDecay + itemData.timestamp - GetGameTime()
             if( currentTimeLeftBeforeDecay <= 0 ) then
@@ -1477,13 +1456,6 @@ local function UpdateItemDecayTime(tooltipWindow, itemData)
         
         decayText = GetStringFormat(StringTables.Default.LABEL_ITEM_DECAY_TIME, {})..TimeUtils.FormatTime(currentTimeLeftBeforeDecay)
     end
-	--Timer color
-		if( itemData.timeLeftBeforeDecay > 3600 ) then	
-	 	LabelSetTextColor(tooltipWindow.."DecayTime", 0,255,0 )
-		else
-		LabelSetTextColor(tooltipWindow.."DecayTime", 255,0,0 )
-	end	
-
     LabelSetText(tooltipWindow.."DecayTime", decayText )
 end
 
@@ -1649,7 +1621,7 @@ local function SetItemTooltipBaseData (tooltipWindow, itemData)
         
     -- Bound on pickup/ Bound on equip/ Bound to Player   
     LabelSetText(tooltipWindow.."Bind", GetBindText( itemData ) )
-
+    
     -- Description
     LabelSetText(tooltipWindow.."Description", itemData.description)
     

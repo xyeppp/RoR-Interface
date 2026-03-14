@@ -263,7 +263,7 @@ function HeraldryEditor.OnMouseoverHeraldrySaveButton()
     
     local anchor = { Point="top", RelativeTo=SystemData.MouseOverWindow.name, RelativePoint="bottomleft", XOffset=0, YOffset=-20 }
     Tooltips.AnchorTooltip (anchor)
-    -- Tooltips.SetTooltipAlpha (1)
+    Tooltips.SetTooltipAlpha (1)
 end
 
 function HeraldryEditor.OnLButtonUpSaveButton()
@@ -281,12 +281,11 @@ function HeraldryEditor.OnLButtonUpSaveButton()
         dialogText = GetFormatStringFromTable( "guildstrings", StringTables.Guild.DIALOG_CONFIRM_SAVING_HERALDRY, { heraldryCost, currencyText } )
     end
 
-     HeraldryEditor.OnLButtonUpSaveButtonConfirmed()
-    --DialogManager.MakeTwoButtonDialog( dialogText, 
-	--								   GetGuildString(StringTables.Guild.BUTTON_CONFIRM_YES),
-	--								   HeraldryEditor.OnLButtonUpSaveButtonConfirmed, 
-	--								   GetGuildString(StringTables.Guild.BUTTON_CONFIRM_NO),
-	--								   nil)
+    DialogManager.MakeTwoButtonDialog( dialogText, 
+									   GetGuildString(StringTables.Guild.BUTTON_CONFIRM_YES),
+									   HeraldryEditor.OnLButtonUpSaveButtonConfirmed, 
+									   GetGuildString(StringTables.Guild.BUTTON_CONFIRM_NO),
+									   nil)
 end
 
 function HeraldryEditor.OnLButtonUpSaveButtonConfirmed()

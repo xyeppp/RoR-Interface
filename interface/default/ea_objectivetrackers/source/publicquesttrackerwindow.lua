@@ -13,7 +13,6 @@ EA_Window_PublicQuestTracker.NUM_CONDITION_COUNTERS = 5
 EA_Window_PublicQuestTracker.WIDTH = 600
 EA_Window_PublicQuestTracker.CONDITION_NAME_WIDTH = 530
 
-OptOutVal = nil
 
 ----------------------------------------------------------------
 -- Local Variables
@@ -30,7 +29,7 @@ local IncompleteQuestTitleColor = IncompleteCounterColor
 local function CheckObjectiveOutOfRange(index)
     if ( ( index < 1 ) or ( index > EA_Window_PublicQuestTracker.NUM_OBJECTIVES ) )
     then
-        --ERROR(L"Active objective #"..index..L" updated, the Public Quest Tracker only supports "..EA_Window_PublicQuestTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_PublicQuestTracker.NUM_QUESTS..L" quests")
+        ERROR(L"Active objective #"..index..L" updated, the Public Quest Tracker only supports "..EA_Window_PublicQuestTracker.NUM_OBJECTIVES..L" objectives with "..EA_Window_PublicQuestTracker.NUM_QUESTS..L" quests")
         return true
     end
     return false
@@ -115,7 +114,7 @@ function EA_Window_PublicQuestTracker.OnLButtonUpOptOut()
         return
     end
     
-    if(ButtonGetDisabledFlag(SystemData.ActiveWindow.name) == true)
+    if(ButtonSetDisabledFlag(SystemData.ActiveWindow.name) == true)
     then
         return
     end
@@ -131,26 +130,16 @@ function EA_Window_PublicQuestTracker.OnLButtonUpOptOut()
             
     EA_Window_ContextMenu.CreateContextMenu( SystemData.ActiveWindow.name ) 
     
-    
-    
-    if (OptOutVal == nil) then 
-      -- None
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutNoneCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_NONE))
-      -- All (Loot and Gold Bags)
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutAllCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_ALL))
-      -- Gold Bags Only
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutGoldCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_GOLD))
-    else 
-      d("button click Opt out "..OptOutVal)
-      local Arr = {false, false, false}
-      Arr[OptOutVal+1] = true
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutNoneCheckBox", Arr[1])
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutAllCheckBox", Arr[2])
-      ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutGoldCheckBox", Arr[3])
-    end
-    
+    -- None
+    ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutNoneCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_NONE))
     EA_Window_ContextMenu.AddUserDefinedMenuItem("EA_Window_PublicQuestTrackerOptOutNone")
-    EA_Window_ContextMenu.AddUserDefinedMenuItem("EA_Window_PublicQuestTrackerOptOutAll")    
+    
+    -- All (Loot and Gold Bags)
+    ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutAllCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_ALL))
+    EA_Window_ContextMenu.AddUserDefinedMenuItem("EA_Window_PublicQuestTrackerOptOutAll")
+    
+    -- Gold Bags Only
+    ButtonSetPressedFlag("EA_Window_PublicQuestTrackerOptOutGoldCheckBox", TrackerUtils.ShouldOptOutOptionBeChecked(index, TrackerUtils.OPT_OUT_OPTION_GOLD))
     EA_Window_ContextMenu.AddUserDefinedMenuItem("EA_Window_PublicQuestTrackerOptOutGold")
     
     EA_Window_ContextMenu.Finalize()
@@ -167,7 +156,7 @@ function EA_Window_PublicQuestTracker.ToggleOptOutOptionNone()
     then
         return
     end    
-    OptOutVal = 0
+    
     TrackerUtils.SetOptOutOption( SystemData.ActiveWindow.name, index, TrackerUtils.OPT_OUT_OPTION_NONE )    
 end
 
@@ -178,7 +167,7 @@ function EA_Window_PublicQuestTracker.ToggleOptOutOptionAll()
     then
         return
     end    
-    OptOutVal = 1
+    
     TrackerUtils.SetOptOutOption( SystemData.ActiveWindow.name, index, TrackerUtils.OPT_OUT_OPTION_ALL )    
 end
 
@@ -189,7 +178,7 @@ function EA_Window_PublicQuestTracker.ToggleOptOutOptionGold()
     then
         return
     end    
-    OptOutVal = 2  
+      
     TrackerUtils.SetOptOutOption( SystemData.ActiveWindow.name, index, TrackerUtils.OPT_OUT_OPTION_GOLD )    
 end
 
@@ -240,7 +229,7 @@ function EA_Window_PublicQuestTracker.OnQuestAdded()
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     local index = GameData.ActiveObjectives.updatedObjectiveIndex    
     
-    --DEBUG(L"EA_Window_PublicQuestTracker.OnQuestAdded: index="..index )
+    -- DEBUG(L"EA_Window_PublicQuestTracker.OnQuestAdded: index="..index )
 
     if (CheckObjectiveOutOfRange(index))
     then
@@ -258,7 +247,7 @@ end
 
 function EA_Window_PublicQuestTracker.OnQuestResetting()
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
-    --DEBUG(L"EA_Window_PublicQuestTracker.OnQuestResetting" )
+    -- DEBUG(L"EA_Window_PublicQuestTracker.OnQuestResetting" )
 
     local index = GameData.ActiveObjectives.updatedObjectiveIndex
 
@@ -266,14 +255,14 @@ function EA_Window_PublicQuestTracker.OnQuestResetting()
     then
         return
     end
-    OptOutVal = nil
+    
     Sound.Play( Sound.PUBLIC_QUEST_CYCLING )
     
 end
 
 function EA_Window_PublicQuestTracker.OnQuestUpdated() 
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
---    DEBUG(L"EA_Window_PublicQuestTracker.OnQuestUpdated" )
+    -- DEBUG(L"EA_Window_PublicQuestTracker.OnQuestUpdated" )
 
     local index = GameData.ActiveObjectives.updatedObjectiveIndex
 
@@ -292,7 +281,7 @@ function EA_Window_PublicQuestTracker.OnQuestRemoved()
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     
     local index = GameData.ActiveObjectives.updatedObjectiveIndex
-    --DEBUG(L"EA_Window_PublicQuestTracker.OnQuestRemoved() index = "..index)
+    -- DEBUG(L"EA_Window_PublicQuestTracker.OnQuestRemoved() index = "..index)
 
     if (CheckObjectiveOutOfRange(index))
     then
@@ -310,14 +299,14 @@ function EA_Window_PublicQuestTracker.OnQuestRemoved()
 end
 
 function EA_Window_PublicQuestTracker.OnQuestCompleted()
-    --DEBUG(L"EA_Window_PublicQuestTracker.OnQuestCompleted()")
+    -- DEBUG(L"EA_Window_PublicQuestTracker.OnQuestCompleted()")
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     -- Sound
     Sound.Play( Sound.PUBLIC_QUEST_COMPLETED )
 end
 
 function EA_Window_PublicQuestTracker.OnQuestFailed()
-    --DEBUG(L" **EA_Window_PublicQuestTracker.OnQuestFailed" )
+    -- DEBUG(L" **EA_Window_PublicQuestTracker.OnQuestFailed" )
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     -- Sound
     Sound.Play( Sound.PUBLIC_QUEST_FAILED )
@@ -325,7 +314,7 @@ end
 
 function EA_Window_PublicQuestTracker.OnQuestConditionUpdated()
 
-    --DEBUG(L" **EA_Window_PublicQuestTracker.OnQuestConditionUpdated" )
+    -- DEBUG(L" **EA_Window_PublicQuestTracker.OnQuestConditionUpdated" )
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     local objective  = GameData.ActiveObjectives.updatedObjectiveIndex
     local questIndex = GameData.ActiveObjectives.updatedQuestIndex
@@ -410,7 +399,7 @@ end
 -- This is only called on initialization to populate the window without any state changing animations
 function EA_Window_PublicQuestTracker.UpdateFullList()
 
---    DEBUG(L"EA_Window_PublicQuestTracker.UpdateFullList()")
+    --DEBUG(L"EA_Window_PublicQuestTracker.UpdateFullList()")
     DataUtils.activeObjectivesData = GetActiveObjectivesData()
     local objectiveCount = 0
     
@@ -463,16 +452,10 @@ function EA_Window_PublicQuestTracker.UpdateFullList()
 end
 
 function EA_Window_PublicQuestTracker.UpdateQuestVisibility()
-    local PQFlag
-    if (DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex]==nil) then 
-      PQFlag = false
-    else 
-      PQFlag = DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isPublicQuest
-    end
     if ( #DataUtils.activeObjectivesData == 0) or 
          ( (PQData.currentState ~= PQData.STATE_CLEAR) and
          ( GameData.PQData.id == DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].id )) or
-         (not PQFlag) or
+         (not DataUtils.activeObjectivesData[GameData.ActiveObjectives.updatedObjectiveIndex].isPublicQuest) or
          GameData.Player.isInSiege
     then
         WindowSetShowing("EA_Window_PublicQuestTrackerObjective1", false)
@@ -480,7 +463,7 @@ function EA_Window_PublicQuestTracker.UpdateQuestVisibility()
     else
         if (#DataUtils.activeObjectivesData > 2)
         then
-            --ERROR(L""..#DataUtils.activeObjectivesData..L" objectives detected, Public Quest Tracker will only display the first two.")
+            ERROR(L""..#DataUtils.activeObjectivesData..L" objectives detected, Public Quest Tracker will only display the first two.")
         end
         
         WindowSetShowing("EA_Window_PublicQuestTrackerObjective1", true)

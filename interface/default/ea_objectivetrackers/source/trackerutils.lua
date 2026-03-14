@@ -5,31 +5,15 @@ TrackerUtils.OPT_OUT_OPTION_NONE    = 0     -- Player is not opting out of any o
 TrackerUtils.OPT_OUT_OPTION_ALL     = 1     -- Player is opting out of all objective loot
 TrackerUtils.OPT_OUT_OPTION_GOLD    = 2     -- Player is opting out of only gold bags
 
-function TrackerUtils.GetFlagSliceForOwner(realm,flag)
-    local Locked = flag or false
-    if Locked == false then
-        if (realm == GameData.Realm.ORDER)
-        then
-            return "FlagOrder"
-        elseif (realm == GameData.Realm.DESTRUCTION)
-        then
-            return "FlagDestruction"
-        else
-            if GameData.Player.zone == 191 then
-                return "FlagTK"
-            end
-            return "FlagNeutral"
-        end
+function TrackerUtils.GetFlagSliceForOwner(realm)
+    if (realm == GameData.Realm.ORDER)
+    then
+        return "FlagOrder"
+    elseif (realm == GameData.Realm.DESTRUCTION)
+    then
+        return "FlagDestruction"
     else
-        if (realm == GameData.Realm.ORDER)
-        then
-            return "FlagOrder-Locked"
-        elseif (realm == GameData.Realm.DESTRUCTION)
-        then
-            return "FlagDestruction-Locked"
-        else
-            return "FlagNeutral-Locked"
-        end
+        return "FlagNeutral"
     end
 end
 
@@ -41,7 +25,7 @@ function TrackerUtils.GetKeepSliceForOwner(realm)
     then
         return "DestructionKeep"
     else
-        --ERROR(L"Keeps cannot be unaligned.")
+        ERROR(L"Keeps cannot be unaligned.")
         return "OrderKeep"
     end
 end
@@ -161,24 +145,14 @@ end
 
 function TrackerUtils.SetOptOutOption( windowName, index, optOutValue)
                    
-    if DataUtils.activeObjectivesData[index]==nil then return end
-
     -- This flag was off, we're going to toggle it on and set the new looting
     -- opt out options per the representative checkbox opt out status value
     local checkBoxName = windowName.."CheckBox"
-    local objectiveId = DataUtils.activeObjectivesData[index].id
-
     if(ButtonGetPressedFlag(checkBoxName) == false) then
+        local objectiveId = DataUtils.activeObjectivesData[index].id
         LootRollOptOut(objectiveId, optOutValue) 
     end
-
-    --if (optOutValue==nil) then optOutValue = 0 end
-    --DataUtils.activeObjectivesData[index].optedOutForLoot = optOutValue
-    
-    --local Arr = {"None", "All bags", "Gold bags"}
-    --EA_ChatWindow.Print( "Opting out from bags: "..Arr[optOutValue+1], SystemData.ChatLogFilters.MISC )
-
+        
     EA_Window_ContextMenu.HideAll()    
-    --return windowName, objectiveId, optOutValue, index
+        
 end
-

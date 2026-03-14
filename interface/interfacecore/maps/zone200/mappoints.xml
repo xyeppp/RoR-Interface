@@ -58,10 +58,10 @@
     <landmark iname="Lacorith" id="6" mapIcon="1208" x="35608" y="38321">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Fire Crystal Caverns" id="7" mapIcon="1063" x="36484" y="20345">
+    <landmark iname="Fire Crystal Caverns" id="7" mapIcon="1060" x="36484" y="20345">
         <importance>minor</importance>
     </landmark>
-    <chapter iname="Moonrise Tower" id="8" mapIcon="1214" x="39231" y="4725">
+    <chapter iname="Moonrise Tower" id="8" mapIcon="1208" x="39231" y="4725">
         <race>HighElf</race>
         <number>1</number>
         <ranks realm="order" min="1" max="2" />
@@ -100,17 +100,17 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Shrine of Lore" id="11" mapIcon="1213" x="5041" y="31718">
-        <importance>minor</importance>
+    <landmark iname="Shrine of Lore" id="11" mapIcon="1005" x="5041" y="31733">
+        <importance>major</importance>
     </landmark>
     <landmark iname="Sternbrow's Lament" id="12" mapIcon="1206" x="50725" y="41376">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="13" mapIcon="1259" x="35932" y="51680" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="13" mapIcon="1026" x="35932" y="51680" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="14" mapIcon="1259" x="41865" y="60108" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="14" mapIcon="1026" x="41865" y="60108" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -118,37 +118,16 @@
         <importance>minor</importance>
         <specialType>10</specialType>
     </landmark>
-	<landmark iname="Calumel" id="16" mapIcon="1208" x="41124" y="12644">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Stone of Daroir Lacorith" id="17" mapIcon="1212" x="27978" y="37308">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Narthain" id="18" mapIcon="1208" x="8172" y="21045">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Ebon Wave Fleet" id="19" mapIcon="1256" x="58176" y="33569">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Erraneth" id="20" mapIcon="1210" x="57817" y="50941">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Halls of Lileath" id="21" mapIcon="1214" x="55074" y="14189">
-        <importance>major</importance>
-    </landmark>
-	<landmark iname="Halls of Aenarion" id="22" mapIcon="1214" x="17257" y="16492">
-        <importance>major</importance>
-    </landmark>
     <publicQuest iname="Nimosar" id="340" iconSet="1" x="10589" y="38827">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="3" max="4" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Spires of Narthain" id="435" iconSet="1" x="13986" y="18201">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="1" max="2" />
         <realm>Destruction</realm>
@@ -169,14 +148,14 @@
     </publicQuest>
     <publicQuest iname="The Forlorn Isle" id="344" iconSet="1" x="37129" y="28097">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="3" max="4" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Thanalorn Forest" id="345" iconSet="1" x="41448" y="20390">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="3" max="4" />
         <realm>Order</realm>
@@ -190,28 +169,28 @@
     </publicQuest>
     <publicQuest iname="House Arkaneth" id="434" iconSet="1" x="54651" y="7649">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
-        <ranks min="1" max="2" />
+        <ranks min="3" max="5" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Ruins of Erraneth" id="335" iconSet="1" x="55592" y="54293">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="5" max="7" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="The Watchtower" id="338" iconSet="1" x="6718" y="44952">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="3" max="4" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Dreamshade Forest" id="343" iconSet="1" x="8306" y="52728">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="5" max="7" />
         <realm>Destruction</realm>

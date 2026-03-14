@@ -110,23 +110,17 @@ function EA_Window_Backpack.DrawQuestItemsLayout( width )
 		end
 	end
 	
-    local height = EA_Window_Backpack.ResizePocket(
-        EA_Window_Backpack.POCKETS_START_INDEX[EA_Window_Backpack.TYPE_QUEST],
-        row,
-        width
-    )
-    height = height + EA_Window_Backpack.mainFrameTopHeight + EA_Window_Backpack.mainFrameBottomHeight
-    EA_Window_Backpack.views[EA_Window_Backpack.VIEW_MODE_QUEST].mainWindowWidth  = width
-    EA_Window_Backpack.views[EA_Window_Backpack.VIEW_MODE_QUEST].mainWindowHeight = height 
-
-    -- Only let quest layout resize the backpack when NOT in list view
-    if not EA_Window_Backpack.currentlyInListView
-       and (EA_Window_Backpack.currentMode == EA_Window_Backpack.VIEW_MODE_QUEST
-            or EA_Window_Backpack.currentMode == EA_Window_Backpack.VIEW_MODE_CRAFTING)
-    then
+	local height = EA_Window_Backpack.ResizePocket( EA_Window_Backpack.POCKETS_START_INDEX[EA_Window_Backpack.TYPE_QUEST], row, width )
+	height = height + EA_Window_Backpack.mainFrameTopHeight + EA_Window_Backpack.mainFrameBottomHeight
+	EA_Window_Backpack.views[EA_Window_Backpack.VIEW_MODE_QUEST].mainWindowWidth = width
+	EA_Window_Backpack.views[EA_Window_Backpack.VIEW_MODE_QUEST].mainWindowHeight = height 
+	
+	if EA_Window_Backpack.currentMode == EA_Window_Backpack.VIEW_MODE_QUEST or EA_Window_Backpack.currentMode == EA_Window_Backpack.VIEW_MODE_CRAFTING then
         WindowSetDimensions( EA_Window_Backpack.windowName, width, height )
-    end
+	end
+	
 end
+
 
 
 function EA_Window_Backpack.SetQuestBackpackSlot( buttonName, itemData, isLocked, highLightColor )
@@ -155,7 +149,7 @@ function EA_Window_Backpack.SetQuestBackpackSlot( buttonName, itemData, isLocked
     local texture, x, y = GetIconData(itemData.iconNum)
     DynamicImageSetTexture( buttonName.."Icon", texture, x, y)
     --DynamicImageSetTextureScale( buttonName.."Icon", EA_Window_Backpack.ICON_SCALE )
-
+    
     -- Count            
     WindowSetShowing( buttonName.."Text", itemData.stackCount > 1 )
     if itemData.stackCount > 1 then
@@ -221,19 +215,18 @@ function EA_Window_Backpack.QuestItemLButtonDown(flags, x, y)
     end
 end
 
-function EA_Window_Backpack.UseQuestItemSlot( slot )
-    local itemData = DataUtils.GetQuestItems()[slot]
+
+-- OnRButtonUp Handler
+function EA_Window_Backpack.QuestItemRButtonUp ()
+    
+    local slot      = WindowGetId(SystemData.ActiveWindow.name)
+    local itemData  = DataUtils.GetQuestItems()[slot]
     
     if EA_Window_Backpack.ValidItem( itemData ) then
-        SendUseItem( GameData.ItemLocs.QUEST_ITEM, slot, 0, 0, 0 )
+        SendUseItem( GameData.ItemLocs.QUEST_ITEM, slot, 0, 0, 0)
     end
 end
 
--- OnRButtonUp Handler for quest item buttons (icon view)
-function EA_Window_Backpack.QuestItemRButtonUp( flags )
-    local slot = WindowGetId( SystemData.ActiveWindow.name )
-    EA_Window_Backpack.UseQuestItemSlot( slot )
-end
 
 -- OnMouseOver Handler
 function EA_Window_Backpack.QuestItemMouseOver()
@@ -253,59 +246,30 @@ function EA_Window_Backpack.MouseOverQuestSlot( slot )
     end
 end
 
--- function EA_Window_Backpack.UpdateQuestItemSlot( updatedSlots )
 
-    -- -- Do not redraw quest icon layout while in list view
-    -- if not EA_Window_Backpack.currentlyInListView then
-        -- EA_Window_Backpack.DrawQuestItemsLayout()
-    -- end
-
-    -- for _, slot in ipairs( updatedSlots ) do    
-        -- local itemData = DataUtils.GetQuestItems()[slot]
-
-        -- EA_Window_Backpack.SetQuestBackpackSlot(
-            -- EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot,
-            -- itemData,
-            -- false,
-            -- nil
-        -- )
-        
-        -- -- If we are mousing over the updated slot, show the tooltip
-        -- if SystemData.MouseOverWindow.name == EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot then    
-            -- EA_Window_Backpack.MouseOverQuestSlot( slot )
-        -- end
-    -- end
--- end
-
+-- SystemData.Events.PLAYER_QUEST_ITEM_SLOT_UPDATED Handler
 function EA_Window_Backpack.UpdateQuestItemSlot( updatedSlots )
 
-    -- Do not redraw quest icon layout while in list view
-    if not EA_Window_Backpack.currentlyInListView then
-        EA_Window_Backpack.DrawQuestItemsLayout()
-    end
-
-    for _, slot in ipairs( updatedSlots ) do    
+    for _, slot in ipairs( updatedSlots )
+    do    
         local itemData = DataUtils.GetQuestItems()[slot]
+	    --local itemExists = EA_Window_Backpack.ValidItem( itemData )
+	    --WindowSetShowing( EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot, itemExists ) 
+    	
+	    EA_Window_Backpack.DrawQuestItemsLayout()
 
-        EA_Window_Backpack.SetQuestBackpackSlot(
-            EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot,
-            itemData,
-            false,
-            nil
-        )
-        
+	    EA_Window_Backpack.SetQuestBackpackSlot( EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot, itemData, false, nil )
+    	
+     
         -- If we are mousing over the updated slot, show the tooltip
-        if SystemData.MouseOverWindow.name == EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot then    
+        if( SystemData.MouseOverWindow.name == EA_Window_Backpack.QUEST_SLOT_NAME_BASE..slot ) then    
             EA_Window_Backpack.MouseOverQuestSlot( slot )
         end
-    end
-
-    -- NEW: if we are on the Quest tab in LIST VIEW, refresh the list data
-    if EA_Window_Backpack.currentlyInListView
-       and EA_Window_Backpack.currentMode == EA_Window_Backpack.TYPE_QUEST
-       and WindowGetShowing( "EA_Window_BackpackListView" )
-    then
-        EA_Window_Backpack.UpdateCurrentList( EA_Window_Backpack.TYPE_QUEST )
+    
     end
 end
+
+
+-- END Quest Item Handlers 
+-----------------------------
 

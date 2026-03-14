@@ -201,7 +201,6 @@ end
 
 function CraftingSystem.Initialize()
     -- Register Events  
-    
     RegisterEventHandler( SystemData.Events.PLAYER_CRAFTING_UPDATED, "CraftingSystem.UpdateCraftingStatus")
     RegisterEventHandler( SystemData.Events.CRAFTING_SHOW_WINDOW, "CraftingSystem.ToggleShowing" )
 end

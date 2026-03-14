@@ -232,18 +232,6 @@ AbilitiesWindow.FilterTabCareerTextures =
         [1] = "Tab-Zealot1-Alchemy",
         [2] = "Tab-Zealot2-Witchcraft",
         [3] = "Tab-Zealot3-DarkRites"
-    },
-    [GameData.CareerLine.KNIGHT]            =
-    {
-        [1] = "Tab-Knight1-Conquest",
-        [2] = "Tab-Knight2-Vigilance",
-        [3] = "Tab-Knight3-Glory"
-    },
-    [GameData.CareerLine.BLACKGUARD]        =
-    {
-        [1] = "Tab-BlackGuard1-Malice",
-        [2] = "Tab-BlackGuard2-Loathing",
-        [3] = "Tab-BlackGuard3-Anguish"
     }
 }
 

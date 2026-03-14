@@ -209,11 +209,6 @@ ServerSelectWindow.sortButtonData =
 
 -- OnInitialize Handler
 function ServerSelectWindow.Initialize()
-
-	if GameData and GameData.Account and GameData.Account.CharacterCreation then
-    GameData.Account.CharacterCreation.ShowPerSelectServer = false
-	end
-
     -- initialize the auto logged in boolean
     ServerSelectWindow.autoLoggedIn = false
 
@@ -629,7 +624,7 @@ function ServerSelectWindow.InitPreSelect()
         ServerSelectWindow.preselectedServerRealm = ServerSelectWindow.DESTRUCTION_ONLY
     -- else we have the same pop density so we'll randomly choose between the 2
     else
-        local randRealmIndex = math.random(1, 2)
+        randRealmIndex = math.random(1, 2)
         if ( randRealmIndex == 1 )
         then
             ServerSelectWindow.preselectedServerRealm = ServerSelectWindow.ORDER_ONLY

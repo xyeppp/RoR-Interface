@@ -203,7 +203,7 @@
               </Anchors>
             </Window>
 
-            <Label name="$parentText" font="font_default_text_huge" maxchars="512" textalign="center" wordwrap="true" autoresize="true">
+            <Label name="$parentText" font="font_default_text_huge" maxchars="512" textalign="center" autoresize="true">
               <Size>
                 <AbsPoint x="500" y="200" />
               </Size>

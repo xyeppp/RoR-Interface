@@ -283,12 +283,6 @@ function EA_Window_WorldMap.ClearZoneTransitionPoints()
     EA_Window_WorldMap.currentZoneTransitionPoints = 0
 end
 
-function doAnchors(trPointWindow, anPoint, maDisplay, relPos, anX, anY)
-  if anX==nil then anX = 0 end
-  if anY==nil then anY = 0 end
-  WindowAddAnchor(trPointWindow, anPoint, maDisplay, relPos, anX, anY)
-end
-
 function EA_Window_WorldMap.CreateZoneTransitionPoints()
     local mapDisplay = "EA_Window_WorldMapZoneViewMapDisplay"
     local transitionPointData = GetZoneTransitionPoints( mapDisplay )
@@ -335,7 +329,7 @@ function EA_Window_WorldMap.CreateZoneTransitionPoints()
         end
             
         CreateWindowFromTemplate(transPointWindow, templateName, parentWindow)
-        doAnchors(transPointWindow, anchorPoint, mapDisplay, "center", anchorX, anchorY)
+        WindowAddAnchor(transPointWindow, anchorPoint, mapDisplay, "center", anchorX, anchorY)
         WindowSetId(transPointWindow, transitionPoint.zone)
     end
     EA_Window_WorldMap.currentZoneTransitionPoints = #transitionPointData
@@ -380,7 +374,7 @@ function EA_Window_WorldMap.CreateMapTextPoints()
         end
             
         CreateWindowFromTemplate(textPointWindow, "MapTextPoint", mapDisplay)
-        doAnchors(textPointWindow, "topleft", mapDisplay, relPoint, x, y)
+        WindowAddAnchor(textPointWindow, "topleft", mapDisplay, relPoint, x, y)
         LabelSetFont(textPointWindow, textPoint.font, WindowUtils.FONT_DEFAULT_TEXT_LINESPACING)
         LabelSetTextColor(textPointWindow, textPoint.red, textPoint.green, textPoint.blue)
         LabelSetTextAlign(textPointWindow, align)
@@ -414,15 +408,10 @@ function EA_Window_WorldMap.CreateObjectiveTimers()
     end
     
     local objectivesData = nil
-
-    --[[
     if GlyphDisplay.DoesZoneHaveZoneControl( currentZoneId ) 
     then
         objectivesData = GetZoneObjectivesData( currentZoneId )
     end
-    d("world map window _ create timers")
-    d(objectivesData)
-    ]]--
     
     if (objectivesData ~= nil) then
         for _, objectivePoint in ipairs(objectivesData)
@@ -432,7 +421,7 @@ function EA_Window_WorldMap.CreateObjectiveTimers()
             local x, y = MapGetPointForCoordinates(mapDisplay, objectivePoint.objPositionX, objectivePoint.objPositionY)
             
             CreateWindowFromTemplate(objectiveTimerWindow, "ObjectiveMapTimer", mapDisplay)
-            doAnchors(objectiveTimerWindow, "topleft", mapDisplay, "topleft", x, y)
+            WindowAddAnchor(objectiveTimerWindow, "topleft", mapDisplay, "topleft", x, y)
             WindowSetId(objectiveTimerWindow, objectivePoint.objId)
         
             if (objectivePoint.objMapTimer > 0) then
@@ -660,7 +649,7 @@ function EA_Window_WorldMap.ShowQuests( zoneNum )
             CreateWindowFromTemplate( trackerWindowName, "ParchmentQuestTrackerData", parentWindow )
             WindowSetScale( trackerWindowName, EA_Window_WorldMap.GetResolutionScale() )   
                              
-            doAnchors( trackerWindowName, "bottomleft", anchorWindow, "topleft", xOffset, 0 )
+            WindowAddAnchor( trackerWindowName, "bottomleft", anchorWindow, "topleft", xOffset, 0 )
 
             EA_Window_WorldMap.questTrackerWindowCount = EA_Window_WorldMap.questTrackerWindowCount + 1
             

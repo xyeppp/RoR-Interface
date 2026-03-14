@@ -4,7 +4,6 @@ ApothecaryWindow.versionNumber = 0.1
 
 ApothecaryWindow.craftingData = {}
 ApothecaryWindow.maxResources = 4
-ApothecaryWindow.PerformingLock = false
 
 -- Static Info for each crafting skill
 ApothecaryWindow.staticSkillInfo =
@@ -250,9 +249,6 @@ ApothecaryWindow.EmptySlotToolTipText = ApothecaryWindow.ProductData[ApothecaryW
 function ApothecaryWindow.Initialize()
 
     local uiScale = InterfaceCore.GetScale()
-
-    RegisterEventHandler( SystemData.Events.PLAYER_INVENTORY_SLOT_UPDATED, "ApothecaryWindow.UpdateLock")  
-    RegisterEventHandler( SystemData.Events.PLAYER_CRAFTING_SLOT_UPDATED, "ApothecaryWindow.UpdateLock")      
     ApothecaryWindow.stabilityAnimationPoints =
     {
         [ApothecaryWindow.STATE_STABILITY_GOOD] =   {startX=-9, startY=uiScale * 5,  stopX=-9, stopY=uiScale * 24},
@@ -276,12 +272,6 @@ function ApothecaryWindow.OnHidden()
         ApothecaryWindow.Hide()
     end
 end
-
-function ApothecaryWindow.UpdateLock()
-  ApothecaryWindow.PerformingLock = false
-  ButtonSetPressedFlag( windowName.."CommitButton", false )    
-end
-
 
 function ApothecaryWindow.SetStaticData()
     local skillLevel = GameData.CraftingStatus.SkillLevel
@@ -801,13 +791,9 @@ function ApothecaryWindow.OnSlotRButtonUp()
 end
 
 function ApothecaryWindow.Perform()
-    if (not ApothecaryWindow.PerformingLock) then 
-   
-      if( not ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
-      then        
-          PerformCrafting( GameData.TradeSkills.APOTHECARY, 1 )
-          ApothecaryWindow.PerformingLock = true
-      end
+    if( not ButtonGetDisabledFlag( SystemData.ActiveWindow.name ) )
+    then        
+        PerformCrafting( GameData.TradeSkills.APOTHECARY, 1 )
     end
 end
                 

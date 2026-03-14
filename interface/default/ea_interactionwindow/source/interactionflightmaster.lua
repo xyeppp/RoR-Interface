@@ -50,7 +50,6 @@ EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DW
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][1] = {zoneName="MarshesOfMadness"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][8] = {zoneName="BlackFirePass"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][2] = {zoneName="TheBadlands"}
-EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][62] = {zoneName="KarazAKarak"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][10] = {zoneName="Stonewatch"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][9] = {zoneName="KadrinValley"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][5] = {zoneName="ThunderMountain"}
@@ -58,7 +57,6 @@ EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DW
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][27] = {zoneName="DeathPeak"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][3] = {zoneName="BlackCrag"}
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][4] = {zoneName="ButchersPass"}
-EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.GREENSKIN_DWARVES ][61] = {zoneName="KarakEightPeaks"}
 
 -- EvC Zone lookup table
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.EMPIRE_CHAOS ][100] = {zoneName="Norsca"}
@@ -92,13 +90,12 @@ EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.Pairing.ELVES_DARKEL
 
 -- TK Zone lookup table
 EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][191] = {zoneName="NecZandri"}
-EA_InteractionFlightMasterWindow.ZoneButtonLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][413] = {zoneName="GarQuaph"}
 
 -- Zone Numbers Table
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup = {}
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.GREENSKIN_DWARVES ] = {}
-EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.GREENSKIN_DWARVES ][GameData.Realm.ORDER] =  { 6, 11, 7, 1, 8, 2, 62, 10, 9, 5, 3, 4, 61 }
-EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.GREENSKIN_DWARVES ][GameData.Realm.DESTRUCTION] =  { 6, 11, 7, 1, 8, 2, 62, 10, 9, 5, 3, 4, 61 }
+EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.GREENSKIN_DWARVES ][GameData.Realm.ORDER] =  { 6, 11, 7, 1, 8, 2, 10, 9, 5, 3, 4 }
+EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.GREENSKIN_DWARVES ][GameData.Realm.DESTRUCTION] =  { 6, 11, 7, 1, 8, 2, 10, 9, 5, 3, 4 }
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.EMPIRE_CHAOS ] = {}
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.EMPIRE_CHAOS ][GameData.Realm.ORDER] =  { 100, 106, 101, 107, 102, 108, 161, 104, 103, 105, 109, 110, 162 }
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.EMPIRE_CHAOS ][GameData.Realm.DESTRUCTION] =  { 100, 106, 101, 107, 102, 108, 161, 104, 103, 105, 109, 110, 162 }
@@ -106,8 +103,8 @@ EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.ELVES_DARKE
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.ELVES_DARKELVES ][GameData.Realm.ORDER] =  { 200, 206, 201, 207, 202, 208, 204, 203, 205, 209, 210 }
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.Pairing.ELVES_DARKELVES ][GameData.Realm.DESTRUCTION] =  { 200, 206, 201, 207, 202, 208, 204, 203, 205, 209, 210 }
 EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ] = {}
-EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][GameData.Realm.ORDER] =  { 191, 413 }
-EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][GameData.Realm.DESTRUCTION] =  { 191, 413 }
+EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][GameData.Realm.ORDER] =  { 191 }
+EA_InteractionFlightMasterWindow.ZoneNumbersLookup[ GameData.ExpansionMapRegion.TOMB_KINGS ][GameData.Realm.DESTRUCTION] =  { 191 }
 
 
 local wingZoneLookUp =
@@ -120,8 +117,6 @@ local wingZoneLookUp =
 
 local smallFortZoneLookUp =
 {
-    [4]=true,
-    [10]=true,
     [104]=true,
     [110]=true
 }
@@ -404,13 +399,7 @@ function EA_InteractionFlightMasterWindow.OnMouseOverFlightMapPoint()
     end
     
     -- TODO: Need to get a better way to find out who owns the city
-    if( zoneNum == 61 )
-    then
-        GetCityOwner( 61, GameData.Realm.DESTRUCTION )
-    elseif( zoneNum == 62 )
-    then
-        GetCityOwner( 62, GameData.Realm.ORDER )
-    elseif( zoneNum == 161 )
+    if( zoneNum == 161 )
     then
         GetCityOwner( 161, GameData.Realm.DESTRUCTION )
     elseif( zoneNum == 162 )
@@ -428,7 +417,7 @@ function EA_InteractionFlightMasterWindow.OnMouseOverFlightMapPoint()
         if( flightData and (flightData.zoneAvailable == false) )
         then
             extraText = GetString( StringTables.Default.TOOLTIP_TRAVEL_WINDOW_LOCATION_UNAVAILABLE )
-        elseif ( controlledBy == GameData.Realm.NONE and ( zoneNum == 61 or zoneNum == 62 or zoneNum == 161 or zoneNum == 162 ) )
+        elseif ( controlledBy == GameData.Realm.NONE and ( zoneNum == 161 or zoneNum == 162 ) )
         then
             extraText = GetString( StringTables.Default.TOOLTIP_TRAVEL_WINDOW_CITY_CONTESTED )
         elseif ( zoneNum == 191 )   -- 191 is Zandri (Land of the Dead), TODO: Remove hardcoded numbers

@@ -26,8 +26,8 @@
     <landmark iname="Mingol Ironside" id="7" mapIcon="1002" x="24659" y="12987">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Crazy Stunty Hole" id="8" mapIcon="1062" x="25182" y="3408">
-        <importance>minor</importance>
+    <landmark iname="Crazy Stunty Hole" id="8" mapIcon="1060" x="25182" y="3408">
+        <importance>major</importance>
     </landmark>
     <landmark iname="Cave" id="9" mapIcon="1063" x="27784" y="55442">
         <importance>minor</importance>
@@ -72,10 +72,10 @@
         </services>
     </chapter>
     <landmark iname="Rikkit Duk" id="14" mapIcon="1062" x="37182" y="63500">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <landmark iname="Rikkit Duk" id="15" mapIcon="1063" x="40885" y="57096">
-        <importance>minor</importance>
+        <importance>major</importance>
     </landmark>
     <warcamp iname="Foultooth's Warcamp" id="16" mapIcon="1050" x="41231" y="43057">
         <race>Greenskin</race>
@@ -101,13 +101,13 @@
     <landmark iname="Longbeard's Strand" id="18" mapIcon="1060" x="46945" y="33480">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Wetfang Cave" id="19" mapIcon="1063" x="5456" y="28409">
-        <importance>minor</importance>
+    <landmark iname="Wetfang" id="19" mapIcon="1061" x="5456" y="28409">
+        <importance>major</importance>
     </landmark>
     <landmark iname="Khaz Kol Bar" id="20" mapIcon="1060" x="54894" y="12491">
         <importance>major</importance>
     </landmark>
-    <landmark iname="Grundadrakk's Mine" id="21" mapIcon="1060" x="58384" y="7796">
+    <landmark iname="Grundaddrak's Mine" id="21" mapIcon="1061" x="58384" y="7796">
         <importance>major</importance>
     </landmark>
     <landmark iname="Khaz Kol Bar" id="22" mapIcon="1060" x="59809" y="30385">
@@ -116,10 +116,10 @@
     <landmark iname="Steelanvil Mine" id="23" mapIcon="1060" x="59895" y="46219">
         <importance>major</importance>
     </landmark>
-    <landmark iname="One-Tusk Cave" id="24" mapIcon="1062" x="63304" y="59121">
+    <landmark iname="One-Tusk Cave" id="24" mapIcon="1060" x="63304" y="59121">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Ironrock Point Lighthouse" id="25" mapIcon="1002" x="7830" y="6039">
+    <landmark iname="Ironrock Point Lighthouse" id="25" mapIcon="1032" x="7830" y="5839">
         <importance>major</importance>
     </landmark>
     <chapter iname="Nogaz's Boyz" id="26" mapIcon="1023" x="9404" y="30880">
@@ -134,11 +134,15 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Live Event: Shrine of Khaine" id="27" mapIcon="1259" x="21378" y="31898" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="27" mapIcon="1026" x="21378" y="31898" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1259" x="43145" y="34980" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="28" mapIcon="1026" x="21057" y="31732" liveevent="7">
+        <importance>minor</importance>
+        <specialType>6</specialType>
+    </landmark>
+    <landmark iname="Live Event: Shrine of Khaine" id="29" mapIcon="1026" x="43145" y="34980" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
@@ -154,47 +158,38 @@
     </landmark>
     <landmark iname="Damp Skaven Tunnel" id="33" mapIcon="1063" x="45664" y="36509">
     	<importance>major</importance>
-    </landmark>
-    <landmark iname="Magrak Herdstone" id="34" mapIcon="1026" x="48280" y="49095">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Stonebeard's Forge" id="35" mapIcon="1003" x="52357" y="11695">
-    	<importance>major</importance>
-    </landmark>
-    <landmark iname="Jordsson's Camp" id="36" mapIcon="1065" x="49688" y="57053">
-    	<importance>minor</importance>
-    </landmark>
+    </landmark>    
     <publicQuest iname="Up the Creek Without a Battle" id="28" iconSet="1" x="14405" y="62440">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="10" max="11" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Long Drong and the Slayer Cove" id="51" iconSet="1" x="22395" y="4093">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="18" max="19" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="When the Ship Hits the Sand" id="52" iconSet="1" x="25030" y="20128">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="18" max="19" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Danurgi's Rangers" id="27" iconSet="1" x="3058" y="38308">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="10" max="11" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Bar Dawazbak - Conflict" id="33" iconSet="1" x="36709" y="56579">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="14" max="15" />
         <realm>Both</realm>
@@ -208,7 +203,7 @@
     </publicQuest>
     <publicQuest iname="Burn Rock Tower" id="32" iconSet="1" x="46625" y="41471">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="14" max="15" />
         <realm>Destruction</realm>
@@ -222,14 +217,14 @@
     </publicQuest>
     <publicQuest iname="Boarding the Seahammer" id="43" iconSet="1" x="54121" y="22754">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="16" max="17" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Fall of Firebrew" id="44" iconSet="1" x="54848" y="18859">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="16" max="17" />
         <realm>Destruction</realm>
@@ -243,12 +238,12 @@
     </publicQuest>
     <publicQuest iname="Korgoth's Raiders" id="45" iconSet="1" x="59070" y="61571">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="14" max="15" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Ironrock Point" id="50" iconSet="1" x="9977" y="8034">
+    <publicQuest iname="Ironrock Point" id="50" iconSet="1" x="8347" y="6679">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>

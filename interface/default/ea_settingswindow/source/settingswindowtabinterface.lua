@@ -22,12 +22,11 @@ local ACTION_BAR_VISIBILITY_LOOKUP = {}
 
 function SettingsWindowTabInterface.Initialize()
 
-    -- Interface/Server Settings can only be modified In-Game.
+    -- Interface Settings can only be modified In-Game.
     if( not InterfaceCore.inGame )
     then
         -- Disable the Tab
         ButtonSetDisabledFlag(SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_INTERFACE ].name, true )
-        ButtonSetDisabledFlag(SettingsWindowTabbed.Tabs[ SettingsWindowTabbed.TABS_SERVER ].name, true )
         return
     end
     

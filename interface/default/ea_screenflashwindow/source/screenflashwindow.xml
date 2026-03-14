@@ -14,12 +14,10 @@
 				<Anchor point="topleft" relativePoint="topleft" />
 				<Anchor point="bottomright" relativePoint="bottomright" />
 			</Anchors>
-			<!--
 			<EventHandlers>
 				<EventHandler event="OnInitialize" function="ScreenFlashWindow.Initialize" />
 				<EventHandler event="OnUpdate" function="ScreenFlashWindow.OnUpdate" />
 			</EventHandlers>	
-			-->
 			<TexCoords x="0" y="0" />
 			<TexDims x="256" y="256" />
 		</DynamicImage>

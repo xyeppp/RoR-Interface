@@ -164,12 +164,8 @@ function EA_Window_InteractionQuest.LayoutScrollChild()
     local isPending  = GameData.InteractQuestData.status == "pending"
     local isComplete = GameData.InteractQuestData.status == "complete"
 
-	local G_Name = towstring(GameData.Guild.m_GuildName) or L"Guildless"
-
     -- Quest Starting Text
     local mainText = GameData.InteractQuestData.text
-	mainText = wstring.gsub(towstring(mainText), L"|g",G_Name)	
-	
     LabelSetText("EA_Window_InteractionQuestInfoScrollChildText", mainText )
     
     local scrollWindowHeight = 0
@@ -180,8 +176,6 @@ function EA_Window_InteractionQuest.LayoutScrollChild()
     
     -- Quest Journal Text
     local journalText = GameData.InteractQuestData.journalText
-	journalText = wstring.gsub(towstring(journalText), L"|g",G_Name)
-	
     LabelSetText("EA_Window_InteractionQuestInfoScrollChildJournalEntryText", journalText )
     
     -- Hide the Journal Quest for the pending and complete windows
@@ -504,7 +498,7 @@ function EA_Window_InteractionQuest.LayoutChoiceRewards(isPending, isComplete)
         WindowSetShowing( "EA_Window_InteractionQuestInfoScrollChildChoiceReward", true )
         
         local rewardRows = 1
-        if (choiceRewardsCount > 4)
+        if (choiceRewardsCount > 5)
         then
             rewardRows = 2
         end

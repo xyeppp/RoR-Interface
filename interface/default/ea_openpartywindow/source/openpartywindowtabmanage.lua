@@ -83,7 +83,6 @@ function EA_Window_OpenPartyManage.Initialize()
     WindowRegisterEventHandler( PARENT_WINDOW, SystemData.Events.GROUP_UPDATED,             "EA_Window_OpenPartyManage.UpdateParty" )
     WindowRegisterEventHandler( PARENT_WINDOW, SystemData.Events.GROUP_SETTINGS_UPDATED,    "EA_Window_OpenPartyManage.UpdateSettings" )
     WindowRegisterEventHandler( PARENT_WINDOW, SystemData.Events.BATTLEGROUP_MEMBER_UPDATED,"EA_Window_OpenPartyManage.SingleMemberUpdate" )
-    WindowRegisterEventHandler( PARENT_WINDOW, SystemData.Events.PLAYER_ZONE_CHANGED, "EA_Window_OpenPartyManage.LeaderMarksZoneChange")
     
     LabelSetText( PARENT_WINDOW.."LootHeaderText", GetStringFromTable( "SocialStrings", StringTables.Social.HEADER_LOOT_OPTIONS ) )
     LabelSetText( PARENT_WINDOW.."WarbandHeaderText", GetStringFromTable( "SocialStrings", StringTables.Social.HEADER_WARBAND_MEMBERS ) )
@@ -115,11 +114,7 @@ function EA_Window_OpenPartyManage.Initialize()
     LabelSetText( PARENT_WINDOW.."LegendAssistantText", GetStringFromTable("SocialStrings", StringTables.Social.MANAGE_LEGEND_WARBAND_ASSISTANT) )
     LabelSetText( PARENT_WINDOW.."LegendMasterLooterText", GetStringFromTable("SocialStrings", StringTables.Social.MANAGE_LEGEND_MASTER_LOOTER) )
     
-	-- Leader Mark
-	LabelSetText( PARENT_WINDOW.."LegendLeaderMarkText", L"Leader Marks" )
-	ComboBoxAddMenuItem( PARENT_WINDOW.."LegendLeaderMarkCombo", L"None")
-	EA_Window_OpenPartyManage.SelectedMark = 1
-	
+
     -- Set Label Text
     ButtonSetText( PARENT_WINDOW.."ConvertToWarbandButton" , GetString( StringTables.Default.LABEL_PARTY_FORM_WARPARTY ) )
     
@@ -227,7 +222,6 @@ function EA_Window_OpenPartyManage.UpdateWarband()
     
     EA_Window_OpenPartyManage.UpdateMasterLooterList()
     EA_Window_OpenPartyManage.UpdateSettings()
-	EA_Window_OpenPartyManage.UpdateLeaderMarks()
 end
 
 function EA_Window_OpenPartyManage.UpdateParty()
@@ -307,16 +301,6 @@ function EA_Window_OpenPartyManage.ToggleWarbandVisibility()
     end
 end
 
-function EA_Window_OpenPartyManage.CountWarband()
-    local Counter = 0
-	local warband = PartyUtils.GetWarbandData()
-    for _, party in ipairs( warband )
-    do
-	Counter = Counter + table.getn(party.players)
-    end
-
-    return Counter
-end
 --------------------------------------------------------------------------------
 -- PARTY SETTINGS FUNCTIONS
 --------------------------------------------------------------------------------
@@ -341,7 +325,6 @@ function EA_Window_OpenPartyManage.UpdateSettings()
     
     -- LOOT THRESHOLD
     local disableThreshold = GameData.Player.Group.Settings.autoLootInRvR or GameData.Player.isGroupLeader == false
-    disableThreshold = ((GameData.Player.isGroupLeader == true) and (GameData.Player.Group.Settings.lootMode == 3)) == false
     ComboBoxSetSelectedMenuItem( PARENT_WINDOW.."LootThresholdCombo", GameData.Player.Group.Settings.lootThreshold )
     ComboBoxSetDisabledFlag( PARENT_WINDOW.."LootThresholdCombo", disableThreshold )
     
@@ -390,36 +373,6 @@ function EA_Window_OpenPartyManage.ToggleAutoLootRvR()
         SetGroupAutoLootInRvR( not isPressed )
         ButtonSetPressedFlag( PARENT_WINDOW.."AutoLootRvRButton", not isPressed )
     end
-end
-
-function EA_Window_OpenPartyManage.OnMouseoverLeaderMark()
-    local txtColumn = Tooltips.COLUMN_RIGHT_LEFT_ALIGN
-
-    Tooltips.CreateTextOnlyTooltip( SystemData.ActiveWindow.name )
-
-    local row = 1
-    local text = L"Leader Markers"
-    Tooltips.SetTooltipText( 1, 1, text)
-    Tooltips.SetTooltipColorDef( 1, 1, Tooltips.COLOR_HEADING )
-    row = row + 1
-
-    local text =  L"You must be leading a Warband of 16 or more players to activate a visible Leader Marker."
-    Tooltips.SetTooltipText( row, 1, text)
-    Tooltips.SetTooltipColorDef( row, 1, Tooltips.COLOR_BODY )
-    row = row + 1
-
-    local type = L"Unlocking New Colors:   "
-    Tooltips.SetTooltipText( row, 1, type)
-    Tooltips.SetTooltipColorDef( row, 1, Tooltips.COLOR_HEADING )
-    row = row + 1
-
-    local text =  L"Purchase and equip the item from the Commander Vendor in your capital city to add new colors. Once unlocked, you can swap out the pocket item."
-    Tooltips.SetTooltipText( row, 1, text)
-    Tooltips.SetTooltipColorDef( row, 1, Tooltips.COLOR_BODY )
-    row = row + 1
-
-    Tooltips.Finalize()
-    Tooltips.AnchorTooltip( Tooltips.ANCHOR_WINDOW_RIGHT )
 end
 
 function EA_Window_OpenPartyManage.OnMouseoverAutoLootRvR()
@@ -549,70 +502,6 @@ function EA_Window_OpenPartyManage.UpdateMasterLooterList()
             end
         end
     end
-end
-
---Builds Leader Marks Combobox and table
-function EA_Window_OpenPartyManage.UpdateLeaderMarks()
-	
-	--check if you are leader, if not set mark to none and disable choises
-	local isLeader = GameData.Player.isGroupLeader
-	local warbandActive = IsWarBandActive()
-	
-	ComboBoxSetDisabledFlag( PARENT_WINDOW.."LegendLeaderMarkCombo", (isLeader == false) or (EA_Window_OpenPartyManage.CountWarband() < 16) or (warbandActive == false))
-
-    EA_Window_OpenPartyManage.LeaderMarks = {}
-	ComboBoxClearMenuItems( PARENT_WINDOW.."LegendLeaderMarkCombo" )
-	
-	--1:st combobox choise should be "None" (0)
-	ComboBoxAddMenuItem( PARENT_WINDOW.."LegendLeaderMarkCombo", L"None")
-	EA_Window_OpenPartyManage.LeaderMarks[1] = 0
-if EA_Window_OpenPartyManage.CheckForMarks() == true then	
-	local currentSubTypeData = TomeGetAchievementsSubTypeData(175)
-
-	for _, entryData in ipairs(currentSubTypeData.entries) do 
-		if entryData.isUnlocked then
-		ComboBoxAddMenuItem( PARENT_WINDOW.."LegendLeaderMarkCombo", towstring(wstring.gsub(entryData.name,L"Warband Leader ",L"")))
-			table.insert(EA_Window_OpenPartyManage.LeaderMarks,entryData.unlockEventId)
-		end
-	end	
-end
-ComboBoxSetSelectedMenuItem( PARENT_WINDOW.."LegendLeaderMarkCombo", EA_Window_OpenPartyManage.SelectedMark)
-end
-
---Check if you have the ToK unlocked
-function EA_Window_OpenPartyManage.CheckForMarks()
-for _, typeData in ipairs(TomeGetAchievementsTOC()) do 
-	for _, subTypeData in ipairs(typeData.subtypes) do 
-		if subTypeData.id == 175 then 
-			return true 
-		end 
-	end 
-end 
-return false
-end
-
-function EA_Window_OpenPartyManage.LeaderMarksZoneChange()
-	local isLeader = GameData.Player.isGroupLeader
-	local warbandActive = IsWarBandActive()
-	ComboBoxSetDisabledFlag( PARENT_WINDOW.."LegendLeaderMarkCombo", (isLeader == false) or (EA_Window_OpenPartyManage.CountWarband() < 16) or (warbandActive == false))
-
-	if isLeader == false then
-		EA_Window_OpenPartyManage.SelectedMark = 1
-		return
-	end
-	
-	if EA_Window_OpenPartyManage.SelectedMark > 1 then
-		EA_Window_OpenPartyManage.OnLeaderMarkSelChange( EA_Window_OpenPartyManage.SelectedMark )
-	end
-	
-end
-
-
-function EA_Window_OpenPartyManage.OnLeaderMarkSelChange( newMode )
-if newMode == 0 then return end
-EA_Window_OpenPartyManage.SelectedMark = newMode
-SendChatText( L"]warbandmarker "..towstring(EA_Window_OpenPartyManage.LeaderMarks[newMode]),L"" )
-EA_Window_OpenPartyManage.UpdateLeaderMarks()
 end
 
 --------------------------------------------------------------------------------

@@ -89,10 +89,9 @@ local function BuildTasksFlatMap( rootTaskTable, parentTask )
         then
             task.parentTask = parentTask
         end
-        if LiveEventTasksFlat[task.taskId] == nil then --DupeCheck
-            LiveEventTasksFlat[task.taskId] = task
-            BuildTasksFlatMap ( task.subtasks, task )
-        end
+        
+        LiveEventTasksFlat[task.taskId] = task
+        BuildTasksFlatMap ( task.subtasks, task )
     end
 end
 
@@ -128,8 +127,6 @@ local function OnUpdateNavButtons( pageWindow )
     local numPages  = PageWindowGetNumPages( pageWindow )
     WindowSetShowing( "TomeWindowPreviousPageButton", curPage > 1 )
     WindowSetShowing( "TomeWindowNextPageButton", curPage + 2 <= numPages )
-    WindowStartAlphaAnimation("TomeWindowPreviousPageButton", Window.AnimationType.SINGLE_NO_RESET,0, 1, 0.5, false, 0, 0)
-    WindowStartAlphaAnimation("TomeWindowNextPageButton", Window.AnimationType.SINGLE_NO_RESET,0, 1, 0.5, false, 0, 0)
 end
 
 local function OnPreviousPage( pageWindow )
@@ -518,11 +515,9 @@ local function CreateOrUpdateTaskWindows_DefaultLayout(parentWindowName, anchorW
         SetLiveEventTaskImage( TomeWindow.CurrentLiveEventId, task.taskId )
         DynamicImageSetTexture( winName, task.textureName, 0, 0)
     end
-    local EventDupeCheck = {} --DupeCheck
+
     for _, task in ipairs( tasksTable )
     do
-     if EventDupeCheck[task.taskId] == nil then
-        EventDupeCheck[task.taskId] = true
         if (prevImageTextureName ~= task.textureName) and (prevContainerWindowName ~= nil)
         then
             WindowResizeOnChildren( prevContainerWindowName, true, 0 )
@@ -619,8 +614,7 @@ local function CreateOrUpdateTaskWindows_DefaultLayout(parentWindowName, anchorW
             WindowResizeOnChildren( curWinName, false, 0 )
         end
         
-        WindowSetId( curWinName, task.taskId )
-       end         
+        WindowSetId( curWinName, task.taskId )        
     end
     if prevContainerWindowName
     then

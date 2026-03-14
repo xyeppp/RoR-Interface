@@ -20,7 +20,7 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <chapter iname="Menuthil's Burden" id="5" mapIcon="1208" x="55165" y="43874">
+    <chapter iname="Menuthil's Burden" id="5" mapIcon="1205" x="55165" y="43874">
         <race>HighElf</race>
         <number>14</number>
         <ranks realm="order" min="28" max="29" />
@@ -32,13 +32,13 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Southern Stonewind Cavern" id="6" mapIcon="1062" x="57128" y="60235">
+    <landmark iname="Southern Stonewind Cavern" id="6" mapIcon="1060" x="57128" y="60235">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Northern Stonewind Cavern" id="7" mapIcon="1062" x="59853" y="42688">
+    <landmark iname="Northern Stonewind Cavern" id="7" mapIcon="1060" x="59853" y="42688">
         <importance>minor</importance>
     </landmark>
-    <landmark iname="Central Stonewind Cavern" id="8" mapIcon="1062" x="60427" y="50695">
+    <landmark iname="Central Stonewind Cavern" id="8" mapIcon="1060" x="60427" y="50695">
         <importance>minor</importance>
     </landmark>
     <chapter iname="Kyaran's Advance" id="9" mapIcon="1251" x="8861" y="34423">
@@ -53,7 +53,7 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <chapter iname="Knife's Edge" id="10" mapIcon="1255" x="9952" y="6108">
+    <chapter iname="Knife's Edge" id="10" mapIcon="1251" x="9952" y="6108">
         <race>DarkElf</race>
         <number>13</number>
         <ranks realm="destruction" min="26" max="27" />
@@ -65,21 +65,21 @@
             <service>Mailbox</service>
         </services>
     </chapter>
-    <landmark iname="Live Event: Shrine of Khaine" id="11" mapIcon="1259" x="33545" y="3745" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="11" mapIcon="1026" x="33545" y="3745" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="12" mapIcon="1259" x="21110" y="8392" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="12" mapIcon="1026" x="21110" y="8392" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
-    <landmark iname="Live Event: Shrine of Khaine" id="13" mapIcon="1259" x="28448" y="10613" liveevent="7">
+    <landmark iname="Live Event: Shrine of Khaine" id="13" mapIcon="1026" x="28448" y="10613" liveevent="7">
         <importance>minor</importance>
         <specialType>6</specialType>
     </landmark>
     <publicQuest iname="White Tower of Hoeth" id="430" iconSet="1" x="19675" y="51695">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="28" max="29" />
         <realm>Destruction</realm>
@@ -93,7 +93,7 @@
     </publicQuest>
     <publicQuest iname="House of Cards" id="429" iconSet="1" x="29508" y="56062">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="28" max="29" />
         <realm>Destruction</realm>
@@ -105,7 +105,7 @@
         <ranks min="28" max="29" />
         <realm>Destruction</realm>
     </publicQuest>
-    <publicQuest iname="The Siege of Silverglass" id="433" iconSet="1" x="42680" y="47824">
+    <publicQuest iname="Against All Odds" id="433" iconSet="1" x="39781" y="47824">
         <difficulty>easy</difficulty>
         <players min="2" max="3" />
         <rewards>basic</rewards>
@@ -121,61 +121,46 @@
     </publicQuest>
     <publicQuest iname="Hall of the Crimson Shroud" id="432" iconSet="1" x="44827" y="36212">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="The Platinum Tower" id="419" iconSet="1" x="54798" y="31953">
+    <publicQuest iname="The Ithilmar Tower" id="419" iconSet="1" x="54798" y="31953">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
-    <publicQuest iname="Sweating the Stone" id="431" iconSet="1" x="55125" y="56087">
+    <publicQuest iname="Sweating the Stone" id="431" iconSet="1" x="55993" y="56378">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="28" max="29" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Thanon Hall" id="420" iconSet="1" x="58499" y="20838">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Order</realm>
     </publicQuest>
     <publicQuest iname="Recompense" id="424" iconSet="1" x="7673" y="27244">
         <difficulty>hard</difficulty>
-        <players min="6" />
+        <players min="9" />
         <rewards>advanced</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
     <publicQuest iname="Whitemoon Manor" id="422" iconSet="1" x="9285" y="17498">
         <difficulty>normal</difficulty>
-        <players min="3" max="6" />
+        <players min="6" max="9" />
         <rewards>normal</rewards>
         <ranks min="26" max="27" />
         <realm>Destruction</realm>
     </publicQuest>
-	<landmark iname="Stormfire Tower" id="14" mapIcon="1214" x="40487" y="25266">
-        <importance>minor</importance>
-    </landmark>
-    <landmark iname="Stone of Avatheys" id="15" mapIcon="1212" x="56578" y="56756">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="Sinelian Hall" id="16" mapIcon="1209" x="44973" y="34578">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="Anurion's Manor" id="17" mapIcon="1214" x="30304" y="32137">
-        <importance>major</importance>
-    </landmark>
-    <landmark iname="The White Tower of Hoeth" id="18" mapIcon="1207" x="18522" y="47922">
-        <importance>major</importance>
-    </landmark>
     <battlefieldObjective iname="The Spire of Teclis: Healing Boon" id="5064" iconSet="1" x="39624" y="11013">
     </battlefieldObjective>
     <battlefieldObjective iname="Sari' Daroir: Defensive Boon" id="5063" iconSet="1" x="26326" y="6143">
