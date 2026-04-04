@@ -8,7 +8,6 @@ local Vote_Choices = {}
 local IsBoolChoice = nil
 local BoolChoice = {[1]=L"<icon29951>",[2]=L"<icon29952>",[3]=L"<icon29950>"}
 
-
 function ror_votewindow.Initialize()
 CreateWindow("RoR_Window_votewindow", false)
 
@@ -20,6 +19,7 @@ ror_votewindow.Total_Players = 0
 ror_votewindow.Vote_Choice = {}
 ror_votewindow.Player_Choices = {}
 ror_votewindow.Total_Votes_Casted = 0
+ror_votewindow.AnnouncementOptions = {[1]=L"GO!",[2]=L"All Ready!",[3]=L"Abort!"}
 
 PlayerName = tostring(wstring.sub( GameData.Player.name,1,-3 ))
 
@@ -209,7 +209,9 @@ for row,value in pairs(ror_votewindow.Players) do
 		ror_votewindow.Total_Players = ror_votewindow.Total_Players +1
 	
 	end
-end	
+end
+	--Play Sound
+	PlaySound(501)		
 end
 
 
@@ -242,8 +244,8 @@ for row,value in pairs(ror_votewindow.Players) do
 	if ror_votewindow.Total_Votes_Casted == ror_votewindow.Total_Players then
 		--ror_votewindow.Close(true)
 	end
-	
-	
+	--Play Sound
+	PlaySound(216)		
 end
 
 function ror_votewindow.AbortVote(Text,Style)
@@ -258,11 +260,23 @@ local Style = Style or 4
 
 Vote_Started = false
 WindowSetShowing("RoR_Window_votewindow", false)
-
+--Play Sound
+PlaySound(328)
 end
 
 function ror_votewindow.Announce()
-	ror_votewindow.Close(true)
+	local function MakeCallBack( SelectedOption )
+		    return function() SendChatText(L"]readycheck abort " .. ror_votewindow.AnnouncementOptions[SelectedOption], ChatSettings.Channels[0].serverCmd) end
+		end
+
+	EA_Window_ContextMenu.CreateContextMenu( SystemData.MouseOverWindow.name, EA_Window_ContextMenu.CONTEXT_MENU_1,L"")
+	EA_Window_ContextMenu.AddMenuItem( L"Announce Results" ,function() ror_votewindow.Close(true) end, false, true )
+
+	for k,v in ipairs(ror_votewindow.AnnouncementOptions) do
+		EA_Window_ContextMenu.AddMenuItem( towstring(v) ,MakeCallBack(k) , false, true )
+	end
+
+	EA_Window_ContextMenu.Finalize()
 end
 
 function ror_votewindow.Close(stats)

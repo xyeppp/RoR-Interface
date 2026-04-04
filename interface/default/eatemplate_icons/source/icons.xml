@@ -5700,6 +5700,55 @@
     <Icon id="15506" texture="Textures/all_bit_wakingday_claw_01_black.dds" name="" />
     <Icon id="15507" texture="Textures/all_bit_wakingday_claw_01_red.dds" name="" />
     <Icon id="15508" texture="Textures/all_bit_wakingday_claw_01_white.dds" name="" />
+    <Icon id="15509" texture="Textures/itm_ge_egg_black.dds" name="" />
+    <Icon id="15510" texture="Textures/itm_ge_egg_blue.dds" name="" />
+    <Icon id="15511" texture="Textures/itm_ge_egg_brown.dds" name="" />
+    <Icon id="15512" texture="Textures/itm_ge_egg_green.dds" name="" />
+    <Icon id="15513" texture="Textures/itm_ge_egg_indigo.dds" name="" />
+    <Icon id="15514" texture="Textures/itm_ge_egg_orange02.dds" name="" />
+    <Icon id="15515" texture="Textures/itm_ge_egg_palegreen.dds" name="" />
+    <Icon id="15516" texture="Textures/itm_ge_egg_pink.dds" name="" />
+    <Icon id="15517" texture="Textures/itm_ge_egg_red.dds" name="" />
+    <Icon id="15518" texture="Textures/itm_ge_egg_teal02.dds" name="" />
+    <Icon id="15519" texture="Textures/itm_ge_egg_yellow.dds" name="" />
+    <Icon id="15520" texture="Textures/mnt_griffon_01a.dds" name="" />
+    <Icon id="15521" texture="Textures/mnt_griffon_01b.dds" name="" />
+    <Icon id="15522" texture="Textures/mnt_griffon_01c.dds" name="" />
+    <Icon id="15523" texture="Textures/mnt_griffon_01d.dds" name="" />
+    <Icon id="15524" texture="Textures/mnt_griffon_01e.dds" name="" />
+    <Icon id="15525" texture="Textures/all_bit_egg_natural_01.dds" name="" />
+    <Icon id="15526" texture="Textures/all_bit_egg_natural_02.dds" name="" />
+    <Icon id="15527" texture="Textures/all_bit_egg_natural_03.dds" name="" />
+    <Icon id="15528" texture="Textures/all_bit_egg_natural_04.dds" name="" />
+    <Icon id="15529" texture="Textures/all_bit_egg_natural_05.dds" name="" />
+    <Icon id="15530" texture="Textures/all_bit_egg_natural_06.dds" name="" />
+    <Icon id="15531" texture="Textures/all_bit_egg_natural_07.dds" name="" />
+    <Icon id="15532" texture="Textures/all_bit_egg_natural_08.dds" name="" />
+    <Icon id="15533" texture="Textures/all_bit_egg_natural_09.dds" name="" />
+    <Icon id="15534" texture="Textures/all_bit_egg_natural_10.dds" name="" />
+    <Icon id="15535" texture="Textures/all_bit_egg_natural_11.dds" name="" />
+    <Icon id="15536" texture="Textures/all_bit_egg_natural_12.dds" name="" />
+    <Icon id="15537" texture="Textures/all_bit_egg_natural_13.dds" name="" />
+    <Icon id="15538" texture="Textures/all_bit_egg_natural_14.dds" name="" />
+    <Icon id="15539" texture="Textures/all_bit_egg_natural_15.dds" name="" />
+    <Icon id="15540" texture="Textures/all_bit_egg_natural_16.dds" name="" />
+    <Icon id="15541" texture="Textures/all_bit_egg_natural_17.dds" name="" />
+    <Icon id="15542" texture="Textures/all_bit_egg_painted_01.dds" name="" />
+    <Icon id="15543" texture="Textures/all_bit_egg_painted_02.dds" name="" />
+    <Icon id="15544" texture="Textures/all_bit_egg_painted_03.dds" name="" />
+    <Icon id="15545" texture="Textures/all_bit_egg_painted_04.dds" name="" />
+    <Icon id="15546" texture="Textures/all_bit_egg_painted_05.dds" name="" />
+    <Icon id="15547" texture="Textures/all_bit_egg_painted_06.dds" name="" />
+    <Icon id="15548" texture="Textures/all_bit_egg_painted_07.dds" name="" />
+    <Icon id="15549" texture="Textures/all_bit_egg_painted_08.dds" name="" />
+    <Icon id="15550" texture="Textures/all_bit_egg_painted_09.dds" name="" />
+    <Icon id="15551" texture="Textures/all_bit_egg_painted_10.dds" name="" />
+    <Icon id="15552" texture="Textures/all_bit_egg_painted_11.dds" name="" />
+    <Icon id="15553" texture="Textures/all_bit_egg_painted_12.dds" name="" />
+    <Icon id="15554" texture="Textures/all_bit_egg_painted_13.dds" name="" />
+    <Icon id="15555" texture="Textures/all_bit_egg_painted_14.dds" name="" />
+    <Icon id="15556" texture="Textures/all_bit_egg_painted_15.dds" name="" />
+    <Icon id="15557" texture="Textures/all_bit_egg_painted_16.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
