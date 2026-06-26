@@ -5,7 +5,7 @@ local Vote_Counter = 0
 local Vote_Timer = 60
 local PlayerName = tostring(wstring.sub( GameData.Player.name,1,-3 ))
 local Vote_Choices = {}
-local IsBoolChoice = nil
+local UseIcon = nil
 local BoolChoice = {[1]=L"<icon29951>",[2]=L"<icon29952>",[3]=L"<icon29950>"}
 
 function ror_votewindow.Initialize()
@@ -15,20 +15,26 @@ ror_PacketHandling.Register("ReadyCheck:",ror_votewindow.TextUpdate)
 
 ror_votewindow.Players = {}
 ror_votewindow.Has_Voted = false
+ror_votewindow.IsVoteStarted = Vote_Started
 ror_votewindow.Total_Players = 0
 ror_votewindow.Vote_Choice = {}
 ror_votewindow.Player_Choices = {}
 ror_votewindow.Total_Votes_Casted = 0
-ror_votewindow.AnnouncementOptions = {[1]=L"GO!",[2]=L"All Ready!",[3]=L"Abort!"}
+ror_votewindow.AnnouncementOptions = {
+	[1]={Title=L"GO!",Style=30,Sound=215},
+	[2]={Title=L"All Ready!",Style=32,Sound=325},
+	[3]={Title=L"Abort!",Style=4,Sound=328}
+}
 
 PlayerName = tostring(wstring.sub( GameData.Player.name,1,-3 ))
 
 
 	if (LibSlash ~= nil) then
-		LibSlash.RegisterSlashCmd("readycheck", function(input) ror_votewindow.StartReady(tonumber(input)) end)		
-		LibSlash.RegisterSlashCmd("rc", function(input) ror_votewindow.StartReady(tonumber(input)) end)		
-		LibSlash.RegisterSlashCmd("bio", function(input) ror_votewindow.BioReady(tonumber(input)) end)		
-		LibSlash.RegisterSlashCmd("vote", function() SendChatText(L"]readycheck start What kind you like?:60:SC:PQ:RVR:PvP:PvE", ChatSettings.Channels[0].serverCmd) end)		
+		LibSlash.RegisterSlashCmd("readycheck", function(input) ror_votewindow.TemplateStart(tonumber(input)) end)		
+		LibSlash.RegisterSlashCmd("rc", function(input) ror_votewindow.TemplateStart(tonumber(input)) end)
+		LibSlash.RegisterSlashCmd("bio", function(input) ror_votewindow.TemplateBio(tonumber(input)) end)
+		LibSlash.RegisterSlashCmd("vote", function(input) ror_votewindow.TemplateVote(tonumber(input)) end)
+		LibSlash.RegisterSlashCmd("food", function(input) ror_votewindow.TemplateFood(tonumber(input)) end)		
 	end
 
 
@@ -36,29 +42,24 @@ end
 
 
 function ror_votewindow.TextUpdate(text)
-local text = string.gsub(text,"ReadyCheck:","")
+local text,success = string.gsub(text,"ReadyCheck:","")
+
+			text,success = string.gsub(text,"Start:","")
+			--Decode Table
+			if success > 0 then 
+			local DecodedTable = json.decode(text)
+			ror_votewindow.StartVote(DecodedTable)
+			end
 
 			local SPLIT_TEXT = StringSplit(tostring(text),":")
-				if SPLIT_TEXT[1] == "Start" then
-					--DEBUG(L"Starting Vote")
-					local Title = SPLIT_TEXT[2] or L"Ready?"
-					local Timer = tonumber(SPLIT_TEXT[3]) or 60
-					local Choices = {}
-					if #SPLIT_TEXT > 3 then
-						for i=4,#SPLIT_TEXT do
-							table.insert(Choices,SPLIT_TEXT[i])
-						end
-					end
-					ror_votewindow.StartVote(Title,Timer,Choices)
-				elseif SPLIT_TEXT[1] == "Abort" then
-					--DEBUG(L"Abotring Vote")
-					local Command = SPLIT_TEXT[2] or nil
+				if SPLIT_TEXT[1] == "Abort" then
+					local Title = SPLIT_TEXT[2] or nil
 					local Style = tonumber(SPLIT_TEXT[3]) or 4
-					ror_votewindow.AbortVote(Command,Style)
+					local Sound = tonumber(SPLIT_TEXT[4]) or 0
+					ror_votewindow.AbortVote(Title,Style,Sound)
 				elseif SPLIT_TEXT[1] == "Answer" then
 					local PlayerID = tonumber(SPLIT_TEXT[2])
 					local Choice = tonumber(SPLIT_TEXT[3])
-					--DEBUG(L"Answering Vote: " .. towstring(PlayerID)..L" : ".. towstring(Choice))
 					ror_votewindow.AnswerVote(PlayerID,Choice)
 				end
 
@@ -100,32 +101,148 @@ end
 return Sorter
 end
 
-function ror_votewindow.StartReady(timer)
+function ror_votewindow.TemplateStart(timer)
 	if tonumber(timer) == nil then timer = 15 end
-	SendChatText(L"]readycheck start Ready?|bool:"..towstring(timer)..L":Yes:No", ChatSettings.Channels[0].serverCmd)
+local ReadyTable = {
+Title = "Ready?",
+Timer = timer,
+Sound = 501,
+Answers = {
+		[1] = {
+			Name = "No",
+			Icon = 29952,
+			Sound = 216,
+			},
+		[2] = {
+			Name = "Yes",
+			Icon = 29951,
+			Sound = 216,
+			},
+
+	},
+}
+ror_votewindow.CreateCheck(ReadyTable)
 end
 
-function ror_votewindow.BioReady(timer)
+function ror_votewindow.TemplateVote(timer)
+	if tonumber(timer) == nil then timer = 60 end
+local ReadyTable = {
+Title = "What kind you like?",
+Timer = timer,
+Sound = 330,
+Answers = {
+		[1] = {
+			Name = "SC",
+			Sound = 5073,
+			Color = {r=0,g=255,b=255}
+			},
+		[2] = {
+			Name = "PQ",
+			Sound = 5042,
+			Color = {r=255,g=0,b=255}
+			},
+		[3] = {
+			Name = "RvR",
+			Sound = 5013,
+			Color = {r=255,g=255,b=0}
+			},			
+		[4] = {
+			Name = "PvP",
+			Sound = 5120,
+			Color = {r=0,g=255,b=0}
+			},
+		[5] = {
+			Name = "PvE",
+			Sound = 5050,
+			Color = {r=125,g=125,b=255}
+			},			
+	},
+}
+ror_votewindow.CreateCheck(ReadyTable)
+end
+
+function ror_votewindow.TemplateFood(timer)
+	if tonumber(timer) == nil then timer = 60 end	
+local ReadyTable = {
+Title = "Food?",
+Timer = timer,
+Sound = 330,
+Answers = {
+		[1] = {
+			Name = "Pizza",
+			Sound = 5073,
+			Color = {r=0,g=255,b=255},
+			},
+		[2] = {
+			Name = "Pasta",
+			Sound = 5042,
+			Color = {r=255,g=0,b=255},
+			},
+		[3] = {
+			Name = "Burger",
+			Sound = 5013,
+			Color = {r=255,g=255,b=0},
+			},			
+		[4] = {
+			Name = "HotDog",
+			Sound = 5120,
+			Color = {r=0,g=255,b=0},
+			},
+		[5] = {
+			Name = "Nuggets",
+			Sound = 5050,
+			Color = {r=125,g=125,b=255},
+			},
+		[6] = {
+			Name = "Taccos",
+			Sound = 5042,
+			Color = {r=255,g=255,b=255},
+			},			
+	},
+}
+ror_votewindow.CreateCheck(ReadyTable)
+end
+
+function ror_votewindow.TemplateBio(timer)
 	if tonumber(timer) == nil then timer = 300 end
-	SendChatText(L"]readycheck start Bio Break |bool:"..towstring(timer)..L":Back", ChatSettings.Channels[0].serverCmd)
+
+local ReadyTable = {
+Title = "Bio Break ",
+Timer = timer,
+Sound = 501,
+Answers = {
+		[1] = {
+			Name = "Back",
+			Icon = 29951,
+			Sound = 501,
+			},
+	},
+}
+ror_votewindow.CreateCheck(ReadyTable)
 end
 
-function ror_votewindow.StartVote(Title,Timer,Choices)
+--encode and send Table
+function ror_votewindow.CreateCheck(ReadyTable)
+	local EncodedTable = json.encode(ReadyTable)
+	SendChatText(L"]readycheck start "..towstring(EncodedTable), ChatSettings.Channels[0].serverCmd)
+end
+
+function ror_votewindow.StartVote(VoteTable)
 local WindowName = "RoR_Window_votewindow"
 Vote_Started = true
-Vote_Timer = tonumber(Timer)
-Vote_Choices = Choices
+ror_votewindow.IsVoteStarted = Vote_Started
+Vote_Timer = tonumber(VoteTable.Timer) or 30
+Vote_Choices = VoteTable.Answers
 ror_votewindow.Players = ror_votewindow.GetPlayers()
 ror_votewindow.Vote_Choice = {}
 ror_votewindow.Player_Choices = {}
 ror_votewindow.Total_Players = 0
 ror_votewindow.Total_Votes_Casted = 0
 ror_votewindow.Has_Voted = false
-
-IsBoolChoice = string.find(Title,"|bool")
-if IsBoolChoice ~= nil then Title = string.gsub(Title,"|bool","") end
+UseIcon = VoteTable.ShowIcon or false
 
 local IsLeader = (GameData.Player.isGroupLeader == true)
+local Sound = tonumber(VoteTable.Sound) or 0
 
 if IsLeader then Vote_Timer = Vote_Timer + 5 end
 
@@ -152,105 +269,121 @@ for row=1,4 do
 		ButtonSetDisabledFlag(WindowName .. "Party" .. row .. col .. "Player",true)
 		LabelSetText(WindowName .. "Party".. row .. col .. "Name",L"")
 		LabelSetText(WindowName .. "Party".. row .. col .. "Choice",L"")
-		AnimatedImageStopAnimation (WindowName .. "Party".. row .. col.."Flash")
+		AnimatedImageStopAnimation (WindowName .. "Party".. row .. col.."Flash")		
 	end
 end
 
 --Set Labels
 WindowSetShowing(WindowName,true)
-LabelSetText(WindowName .. "Text",towstring(Title))
+LabelSetText(WindowName .. "Text",towstring(VoteTable.Title))
 LabelSetText(WindowName .. "TimerLabel",towstring(TimeUtils.FormatClock(Vote_Timer)))
 
 --Set Buttons, if more than 2 options, make a droplist!
-	if #Choices < 3 then
-		ButtonSetText(WindowName .. "_Choice_Vote_1",towstring(Choices[1] or L""))
-		ButtonSetText(WindowName .. "_Choice_Vote_2",towstring(Choices[2] or L""))
+	if #Vote_Choices < 3 and #Vote_Choices > 1 then
+		ButtonSetText(WindowName .. "_Choice_Vote_1",towstring(Vote_Choices[1].Name or L""))
+		ButtonSetText(WindowName .. "_Choice_Vote_2",towstring(Vote_Choices[2].Name or L""))
 		WindowSetShowing(WindowName .. "_Choice_Vote_1",not ror_votewindow.Has_Voted and Vote_Timer > 0)
-		WindowSetShowing(WindowName .. "_Choice_Vote_2",not ror_votewindow.Has_Voted and #Choices > 1 and Vote_Timer > 0)
-	else
+		WindowSetShowing(WindowName .. "_Choice_Vote_2",not ror_votewindow.Has_Voted and #Vote_Choices > 1 and Vote_Timer > 0)
+	
+	elseif #Vote_Choices > 2 then
 		WindowSetShowing(WindowName .. "_Choice_Vote_1",not ror_votewindow.Has_Voted and Vote_Timer > 0)
 		WindowSetShowing(WindowName .. "_Choice_Vote_2",false)
 		ButtonSetText(WindowName .. "_Choice_Vote_1",L"Vote")
 		
 		--Setup Combobox droplist
 		ComboBoxClearMenuItems(WindowName .. "_ChoiceCombo")
-		for i=1,#Choices do
-			ComboBoxAddMenuItem(WindowName .. "_ChoiceCombo", towstring(Choices[i]))
+		for i=1,#Vote_Choices do
+			ComboBoxAddMenuItem(WindowName .. "_ChoiceCombo", towstring(Vote_Choices[i].Name))
 		end		
 			ComboBoxSetSelectedMenuItem(WindowName .. "_ChoiceCombo", 1 )
+	
+	--if single button
+	else
+		WindowSetShowing(WindowName .. "_Choice_Vote_1",not ror_votewindow.Has_Voted and Vote_Timer > 0)
+		WindowSetShowing(WindowName .. "_Choice_Vote_2",false)
+		ButtonSetText(WindowName .. "_Choice_Vote_1",towstring(Vote_Choices[1].Name or L""))
 	end
 
 	WindowClearAnchors(WindowName .. "_Choice_Vote_1" )
-	if #Choices < 2 then
+	if #Vote_Choices < 2 then
 		WindowAddAnchor(WindowName .. "_Choice_Vote_1", "bottomleft", WindowName, "bottomleft", 100,-12)
 	else
 		WindowAddAnchor(WindowName .. "_Choice_Vote_1", "bottomleft", WindowName, "bottomleft", 180,-12)
 	end
-WindowSetShowing(WindowName .. "_ChoiceCombo",#Choices > 2)
-
+WindowSetShowing(WindowName .. "_ChoiceCombo",#Vote_Choices > 2)
 --Set the TimerBar
 	StatusBarSetMaximumValue(WindowName .. "Bar1", Vote_Timer  )
 	StatusBarSetCurrentValue(WindowName .. "Bar1", Vote_Timer  )
 	StatusBarSetForegroundTint(WindowName .. "Bar1", DefaultColor.YELLOW.r, DefaultColor.YELLOW.g, DefaultColor.YELLOW.b )
-
 --Add and Fill player icons
-for row,value in pairs(ror_votewindow.Players) do
-	WindowSetShowing(WindowName .. "Party" .. row,true)
-	Vote_Counter = 1
-	for k,v in pairs(ror_votewindow.Players[row]) do 
-		WindowSetShowing(WindowName .. "Party".. row .. Vote_Counter,true)
-		local txtr, x, y, disabledTexture = GetIconData (Icons.GetCareerIconIDFromCareerLine(tonumber(ror_votewindow.Players[row][k].career)))	
-		CircleImageSetTexture(WindowName .. "Party" .. row .. Vote_Counter .. "PlayerIcon",txtr, 16, 16)
-		WindowSetTintColor(WindowName .. "Party".. row .. Vote_Counter,75,75,75)
-		LabelSetText(WindowName .. "Party".. row .. Vote_Counter .."Name",towstring(ror_votewindow.Players[row][k].name))
-		if ror_votewindow.Vote_Choice[row] == nil then ror_votewindow.Vote_Choice[row] = {} end
-		ror_votewindow.Vote_Choice[row][k] = Vote_Counter
-		Vote_Counter = Vote_Counter+1
-		ror_votewindow.Total_Players = ror_votewindow.Total_Players +1
-	
-	end
-end
+	for row,value in pairs(ror_votewindow.Players) do
+		WindowSetShowing(WindowName .. "Party" .. row,true)
+		Vote_Counter = 1
+		for k,v in pairs(ror_votewindow.Players[row]) do 
+			WindowSetShowing(WindowName .. "Party".. row .. Vote_Counter,true)
+			local txtr, x, y, disabledTexture = GetIconData (Icons.GetCareerIconIDFromCareerLine(tonumber(ror_votewindow.Players[row][k].career)))	
+			CircleImageSetTexture(WindowName .. "Party" .. row .. Vote_Counter .. "PlayerIcon",txtr, 16, 16)
+			WindowSetTintColor(WindowName .. "Party".. row .. Vote_Counter,75,75,75)
+			LabelSetText(WindowName .. "Party".. row .. Vote_Counter .."Name",towstring(ror_votewindow.Players[row][k].name))
+			if ror_votewindow.Vote_Choice[row] == nil then ror_votewindow.Vote_Choice[row] = {} end
+			ror_votewindow.Vote_Choice[row][k] = Vote_Counter
+			Vote_Counter = Vote_Counter+1
+			ror_votewindow.Total_Players = ror_votewindow.Total_Players +1
+		
+		end
+	end	
 	--Play Sound
-	PlaySound(501)		
+	PlaySound(Sound)	
 end
 
 
 function ror_votewindow.AnswerVote(PlayerID,Choice)
 local WindowName = "RoR_Window_votewindow"
+local Sound = nil
 
-for row,value in pairs(ror_votewindow.Players) do
-	for k,v in pairs(ror_votewindow.Players[row]) do 
-		if PlayerID == ror_votewindow.Players[row][k].charId then
-			ror_votewindow.Total_Votes_Casted = ror_votewindow.Total_Votes_Casted + 1
-			WindowSetShowing(WindowName .. "Party".. row .. ror_votewindow.Vote_Choice[row][PlayerID].."Flash",true)
-			AnimatedImageStartAnimation (WindowName .. "Party".. row .. ror_votewindow.Vote_Choice[row][PlayerID].."Flash", 0, false, true, 0)		
-			--Choice is 0 when a player times out or closes the window before voting
-			if Choice == 0 then
-				WindowSetTintColor(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID],255,125,125)
-				LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",towstring(BoolChoice[3]))
-			else 
-				ror_votewindow.Player_Choices[Choice] = ror_votewindow.Player_Choices[Choice] + 1
-				WindowSetTintColor(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID],255,255,255)
-					if IsBoolChoice ~= nil then
-						LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",towstring(BoolChoice[Choice]))
-					else
-						LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",towstring(Vote_Choices[Choice]))
-					end
+if Choice > #Vote_Choices then
+	Choice = 0
+	error(L"Choice out of range")
+end
+
+	for row,value in pairs(ror_votewindow.Players) do
+		for k,v in pairs(ror_votewindow.Players[row]) do 
+			if PlayerID == ror_votewindow.Players[row][k].charId then
+				ror_votewindow.Total_Votes_Casted = ror_votewindow.Total_Votes_Casted + 1
+				WindowSetShowing(WindowName .. "Party".. row .. ror_votewindow.Vote_Choice[row][PlayerID].."Flash",true)
+				AnimatedImageStartAnimation (WindowName .. "Party".. row .. ror_votewindow.Vote_Choice[row][PlayerID].."Flash", 0, false, true, 0)		
+				--Choice is 0 when a player times out or closes the window before voting
+				if Choice == 0 then
+					WindowSetTintColor(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID],255,125,125)
+					LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",towstring(BoolChoice[3]))
+					Sound = 216
+				else 
+					ror_votewindow.Player_Choices[Choice] = ror_votewindow.Player_Choices[Choice] + 1
+					local _Color = Vote_Choices[Choice].Color or {r=255,g=255,b=255}
+					LabelSetTextColor(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",_Color.r,_Color.g,_Color.b)
+					WindowSetTintColor(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID],255,255,255)
+					Sound = Vote_Choices[Choice].Sound or 0
+						if Vote_Choices[Choice].Icon ~= nil then
+							LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",L"<icon"..towstring(Vote_Choices[Choice].Icon)..L">")
+						else
+							LabelSetText(WindowName .. "Party" .. row .. ror_votewindow.Vote_Choice[row][PlayerID] .. "Choice",towstring(Vote_Choices[Choice].Name))
+						end
+				end
 			end
 		end
-	end
 	end	
 	
 	if ror_votewindow.Total_Votes_Casted == ror_votewindow.Total_Players then
 		--ror_votewindow.Close(true)
 	end
 	--Play Sound
-	PlaySound(216)		
+	PlaySound(Sound)	
 end
 
-function ror_votewindow.AbortVote(Text,Style)
+function ror_votewindow.AbortVote(Text,Style,Sound)
 local Text = Text or nil
 local Style = Style or 4
+local Sound = Sound or 0
 
 	if Text ~= nil then
 						SystemData.AlertText.VecType = {Style}
@@ -259,39 +392,43 @@ local Style = Style or 4
 	end
 
 Vote_Started = false
+ror_votewindow.IsVoteStarted = Vote_Started
 WindowSetShowing("RoR_Window_votewindow", false)
 --Play Sound
-PlaySound(328)
+PlaySound(Sound)
+ror_votewindow.OnResults(ror_votewindow.Player_Choices)
 end
 
 function ror_votewindow.Announce()
+
 	local function MakeCallBack( SelectedOption )
-		    return function() SendChatText(L"]readycheck abort " .. ror_votewindow.AnnouncementOptions[SelectedOption], ChatSettings.Channels[0].serverCmd) end
+		    return function() SendChatText(L"]readycheck abort " .. ror_votewindow.AnnouncementOptions[SelectedOption].Title .. L":"..towstring(ror_votewindow.AnnouncementOptions[SelectedOption].Style)..L":"..towstring(ror_votewindow.AnnouncementOptions[SelectedOption].Sound), ChatSettings.Channels[0].serverCmd) end
 		end
 
 	EA_Window_ContextMenu.CreateContextMenu( SystemData.MouseOverWindow.name, EA_Window_ContextMenu.CONTEXT_MENU_1,L"")
 	EA_Window_ContextMenu.AddMenuItem( L"Announce Results" ,function() ror_votewindow.Close(true) end, false, true )
 
 	for k,v in ipairs(ror_votewindow.AnnouncementOptions) do
-		EA_Window_ContextMenu.AddMenuItem( towstring(v) ,MakeCallBack(k) , false, true )
+		EA_Window_ContextMenu.AddMenuItem( towstring(v.Title) ,MakeCallBack(k) , false, true )
 	end
 
 	EA_Window_ContextMenu.Finalize()
+
 end
 
-function ror_votewindow.Close(stats)
+function ror_votewindow.Close(stats)	
 	if GameData.Player.isGroupLeader == true then
 		if stats == true then		
 			local results = L"'" .. wstring.sub(towstring(LabelGetText("RoR_Window_votewindowText")),1,-2) .. L"' Results "
 			for k,v in pairs(ror_votewindow.Player_Choices) do
 			 if ror_votewindow.Player_Choices[k] > 0 then
-				results = results .. L" ("..towstring(Vote_Choices[k]) .. L"   ".. towstring(v) .. L") "
+				results = results .. L" ("..towstring(Vote_Choices[k].Name) .. L" = ".. towstring(v) .. L") "
 			 end
 			end
 		
 			SendChatText(L"]readycheck abort " .. towstring(results), ChatSettings.Channels[0].serverCmd)
 		else
-			SendChatText(L"]readycheck abort " .. L"Poll Aborted", ChatSettings.Channels[0].serverCmd)
+			SendChatText(L"]readycheck abort " .. L" :0:0", ChatSettings.Channels[0].serverCmd)
 		end	
 		
 	else
@@ -302,6 +439,10 @@ function ror_votewindow.Close(stats)
 	end
 end
 
+function ror_votewindow.OnResults(Results)
+
+
+end
 
 function ror_votewindow.SelectChoice()
 local WindowName = "RoR_Window_votewindow"
@@ -360,5 +501,6 @@ function ror_votewindow.Update(timeElapsed)
       end
 	 ror_votewindow.Close(true)
 	 Vote_Started = false
+	 ror_votewindow.IsVoteStarted = Vote_Started
 	end
 end

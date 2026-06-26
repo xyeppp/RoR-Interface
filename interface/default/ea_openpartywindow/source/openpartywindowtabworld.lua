@@ -259,7 +259,7 @@ local function InitComboBoxLookupTables()
     {
         [GameData.Realm.ORDER]          = { [1] = {}, [2] = {152}, [3] = {},        [4] = {177, 176} },
         [GameData.Realm.DESTRUCTION]    = { [1] = {}, [2] = {155}, [3] = {},        [4] = {195, 196} },
-        [GameData.Realm.NONE]           = { [1] = {}, [2] = {},    [3] = {60},      [4] = {160, 260, 179, 241, 242, 243, 244} },
+        [GameData.Realm.NONE]           = { [1] = {36}, [2] = {50},    [3] = {60},      [4] = {160, 260, 179, 241, 242, 243, 244} },
     }
     local filter = GameData.Realm.ORDER
     if( GameData.Player.realm == GameData.Realm.ORDER )

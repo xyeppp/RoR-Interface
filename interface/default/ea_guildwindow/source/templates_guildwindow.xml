@@ -526,7 +526,7 @@
               <!-- MemberTitleString -->
               <Label name="$parentTitleString" inherits="EA_Templates_GuildRosterRowText" ellipsisOnCrop="true" warnOnTextCropped="false">
                 <Size>
-                  <AbsPoint x="196" y="24" />
+                  <AbsPoint x="245" y="24" />
                 </Size>
                 <Anchors>
                   <Anchor point="right" relativePoint="left" relativeTo="$parentRealmCaptainIcon">

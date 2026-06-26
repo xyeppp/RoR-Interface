@@ -87,13 +87,13 @@
 					</Anchors>
 					<Color r="255" g="255" b="255" a="255" />
 				</Label>
-					<Label name="$parentChoice" textalign="left" font="font_clear_tiny" layer="popup" handleinput="false">
+					<Label name="$parentChoice" textalign="right" font="font_clear_tiny" layer="popup" handleinput="false">
 					<Size>
 						<AbsPoint x="70" y="22" />
 					</Size>
 					<Anchors>
-						<Anchor point="bottomright" relativePoint="bottomleft" relativeTo="$parentPlayer">
-							<AbsPoint x="-15" y="4" />
+						<Anchor point="bottomright" relativePoint="bottomright" relativeTo="$parentPlayer">
+							<AbsPoint x="0" y="4" />
 						</Anchor>
 					</Anchors>
 					<Color r="255" g="255" b="255" a="255" />

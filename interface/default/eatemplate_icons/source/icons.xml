@@ -5749,6 +5749,13 @@
     <Icon id="15555" texture="Textures/all_bit_egg_painted_14.dds" name="" />
     <Icon id="15556" texture="Textures/all_bit_egg_painted_15.dds" name="" />
     <Icon id="15557" texture="Textures/all_bit_egg_painted_16.dds" name="" />
+    <Icon id="15558" texture="Textures/mtx_primer_22.dds" name="" />
+    <Icon id="15559" texture="Textures/itm_ge_gem09.dds" name="" />
+    <Icon id="15560" texture="Textures/ring26_silver_moonstone.dds" name="" />
+    <Icon id="15561" texture="Textures/ring27_gold_moonstone.dds" name="" />
+    <Icon id="15562" texture="Textures/ring28_copper_moonstone.dds" name="" />
+    <Icon id="15563" texture="Textures/ring29_platinum_moonstone.dds" name="" />
+    <Icon id="15564" texture="Textures/ring30_iron_moonstone.dds" name="" />
     <Icon id="20065" texture="Textures/20065.dds" name="" />
     <Icon id="20066" texture="Textures/20066.dds" name="" />
     <Icon id="20067" texture="Textures/20067.dds" name="" />
@@ -6605,6 +6612,7 @@
     <Icon id="25031" texture="Textures/rvr_royal.dds" name="" />
     <Icon id="25032" texture="Textures/rvr_invader_shard.dds" name="" />
     <Icon id="25033" texture="Textures/rvr_royal_shard.dds" name="" />
+    <Icon id="25034" texture="Textures/ror_scenario_2.dds" name="" />
     <Icon id="25040" texture="Textures/itm_ror_ring01.dds" name="" />
     <Icon id="25041" texture="Textures/itm_ror_ring02.dds" name="" />
     <Icon id="25042" texture="Textures/itm_ror_ring03.dds" name="" />
@@ -7102,6 +7110,7 @@
     <Icon id="36000" texture="Textures/archetype_tank_immaculatedefense_g.dds" name="" />
     <Icon id="36001" texture="Textures/archetype_tank_immaculatedefense_r.dds" name="" />
     <Icon id="36002" texture="Textures/archetype_tank_immaculatedefense_p.dds" name="" />
+    <Icon id="36003" texture="Textures/abi_rvr_lockout.dds" name="" />
     <Icon id="40000" texture="Textures/icon_ch_ror_axe_1h_01.dds" name="" />
     <Icon id="40001" texture="Textures/icon_ch_ror_axe_2h_01.dds" name="" />
     <Icon id="40002" texture="Textures/icon_ch_ror_shield_01.dds" name="" />

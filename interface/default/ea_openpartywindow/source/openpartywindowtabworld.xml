@@ -87,7 +87,11 @@
                     </Anchors>
                     <Color r="253" g="253" b="253"/>
                 </Label>
-                <Label name="$parentNoteText" inherits="EA_Label_DefaultText_Small" maxchars="75" wordwrap="true" autoresize="true" autoresizewidth="true" >
+                <Label name="$parentNoteText" inherits="EA_Label_DefaultText_Small" handleinput="true" maxchars="75" wordwrap="true" autoresize="true" autoresizewidth="true" >
+                    <EventHandlers>
+						<EventHandler event="OnHyperLinkLButtonUp" function="EA_ChatWindow.OnHyperLinkLButtonUp"/>
+						<EventHandler event="OnHyperLinkRButtonUp" function="EA_ChatWindow.OnHyperLinkRButtonUp"/>
+					</EventHandlers>
                     <Size>
                         <AbsPoint x="320" y="20" />
                     </Size>

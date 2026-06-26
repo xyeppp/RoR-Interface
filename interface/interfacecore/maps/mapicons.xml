@@ -182,7 +182,7 @@
             <Slice id="Oval1" left="752" top="658" width="53" height="84" />
             <Slice id="Oval2" left="517" top="514" width="119" height="72" />
             <Slice id="Oval3" left="514" top="591" width="141" height="97" />
-            <Slice id="Oval4" left="658" top="525" width="185" height="107" />
+            <Slice id="Oval4" left="658" top="505" width="185" height="127" />
             <Slice id="Oval5" left="839" top="599" width="157" height="258" />
             <Slice id="PeasantHouse" left="50" top="228" width="43" height="34" />
             <Slice id="PlayerArrow" left="512" top="0" width="30" height="36" />
